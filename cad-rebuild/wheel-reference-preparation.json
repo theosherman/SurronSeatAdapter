@@ -1,0 +1,164 @@
+{
+  "document": "Surron Seat Adapter v3 v2",
+  "timelineMarker": 200,
+  "assets": [
+    {
+      "component": "Veteran Sherman L v2",
+      "assetName": "Veteran Sherman L",
+      "assetId": "urn:adsk.wipprod:dm.lineage:54Txd8JPRfyTjSgcSIMBXw",
+      "assetDesignType": 0,
+      "occurrenceTransform": [
+        1,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        1
+      ],
+      "bodies": [
+        {
+          "name": "RearHandle",
+          "boundsCm": [
+            [
+              -10.415146785354475,
+              -24.92719268798828,
+              -6.349952697753906
+            ],
+            [
+              10.5568004514026,
+              -18,
+              0.3041648864746094
+            ]
+          ],
+          "volumeCm3": 267.6182478908905,
+          "centerOfMassCm": [
+            0.34046959456410997,
+            -21.56638785120232,
+            -3.0179336509380543
+          ]
+        },
+        {
+          "name": "FrontHandle",
+          "boundsCm": [
+            [
+              -10.631708788332531,
+              19,
+              -6.350811004638672
+            ],
+            [
+              10.521227526655707,
+              23.688573837280273,
+              3.337482452392578
+            ]
+          ],
+          "volumeCm3": 342.40312239236454,
+          "centerOfMassCm": [
+            0.40520934890850696,
+            21.204092398680018,
+            -1.550665782396233
+          ]
+        },
+        {
+          "name": "Body",
+          "boundsCm": [
+            [
+              -12.452998386383054,
+              -18.045980861663818,
+              -6.3691163215637205
+            ],
+            [
+              13.344273796081541,
+              19.06501913833618,
+              2.497120714741347
+            ]
+          ],
+          "volumeCm3": 3888.5023385241466,
+          "centerOfMassCm": [
+            -0.0024756763969081,
+            1.4369128552071921,
+            -3.299769429668716
+          ]
+        }
+      ],
+      "sourceParameters": null
+    },
+    {
+      "component": "Sherman P Body Top Refined v4",
+      "assetName": "Sherman P Body Top Refined",
+      "assetId": "urn:adsk.wipprod:dm.lineage:48H6cadeS9q8Z8eF7BUEmQ",
+      "assetDesignType": 1,
+      "occurrenceTransform": [
+        -1.000000000000001,
+        6.920841937735345e-14,
+        -2.16840434497101e-18,
+        -0.029169701859548116,
+        -6.920841937735345e-14,
+        -1.000000000000001,
+        -4.8124738722678546e-34,
+        22.219752512903554,
+        -2.1684043449710123e-18,
+        1.509385527811777e-31,
+        1,
+        1.5,
+        0,
+        0,
+        0,
+        1
+      ],
+      "bodies": [
+        {
+          "name": "MeshBody1",
+          "boundsCm": [
+            [
+              -10.417273712158206,
+              -2.160360717773443,
+              -8.676989746093753
+            ],
+            [
+              10.559785461425783,
+              47.181243896484375,
+              1.9509460449218743
+            ]
+          ],
+          "volumeCm3": 4221.287871964949,
+          "centerOfMassCm": [
+            0.001940412942711197,
+            20.026654636924885,
+            -5.483507918530071
+          ]
+        }
+      ],
+      "sourceParameters": [
+        {
+          "name": "d1",
+          "expression": "0.1",
+          "value": 0.1,
+          "unit": ""
+        }
+      ]
+    }
+  ],
+  "status": "Inspection only; destination and fit scale pending user clarification",
+  "inferredHandleBoundaryPlanesMm": [
+    -180,
+    190
+  ],
+  "boundaryNote": "These are the L handle cut boundaries measured from body bounds, not recovered parametric split features or approved P planes.",
+  "scaleNote": "L asset is direct/non-parametric: original clearance scale is not stored. P's existing 0.1 is its source normalization, not the requested new fit allowance.",
+  "solidCraftTrial": {
+    "status": "failed; no candidate model saved",
+    "frontPlaneYmm": 190,
+    "error": "SMLib split refuses coincident/partially coincident edges (SmFace tests 33/34)",
+    "liveModelModified": false
+  }
+}
