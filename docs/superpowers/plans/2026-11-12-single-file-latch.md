@@ -34,12 +34,12 @@
 
 **Interfaces:** Builder consumes the current saved native document and accessory recipe; outputs named native Latch features and stage measurements. It must refuse an existing Latch rather than duplicate a partial build.
 
-- [ ] Inspect desktop path, dirty state, component tree, feature health and measured bodies. Save current user work and preserve a recovery copy before construction; capture fresh baseline, not just historical logs.
-- [ ] Discover current sketch/extrusion/split/component command contracts and install the recipe's exact frames and selected loops in the builder. Keep build operations staged, with rollback boundaries and explicit targets.
-- [ ] Add Latch at identity placement. Create the selected SideSketch regions with analytic R15/R5 arcs. Extrude in +X beyond the recipe's side plane and trim to that exact oblique plane. Choose the retained half by recipe geometry, not arbitrary split ordering.
-- [ ] Measure source stage 102: one closed half, volume 161420.26040408312 mm³ within 0.01%. Investigate a discrepancy before continuing.
-- [ ] Mirror about world YZ and join only the latch halves. Measure source stage 103: one closed Latch, volume 322840.5208081663 mm³ within 0.01%.
-- [ ] Show Latch, hide obstructing references as needed, frame it in the desktop viewport, save the file and capture a screenshot plus measured evidence. Verify adapter/printing baseline unchanged. Commit this visible-blank milestone.
+- [x] Inspect desktop path, dirty state, component tree, feature health and measured bodies. Save current user work and preserve a recovery copy before construction; capture fresh baseline, not just historical logs.
+- [x] Discover current sketch/extrusion/split/component command contracts and install the recipe's exact frames and selected loops in the builder. Keep build operations staged, with rollback boundaries and explicit targets.
+- [x] Add Latch at identity placement. Create the selected SideSketch regions with analytic R15/R5 arcs. Extrude in +X beyond the recipe's side plane and trim to that exact oblique plane. Choose the retained half by recipe geometry, not arbitrary split ordering.
+- [x] Measure source stage 102: one closed half, volume 161420.26040408312 mm³ within 0.01%. Investigate a discrepancy before continuing.
+- [x] Mirror about world YZ and join only the latch halves. Measure source stage 103: one closed Latch, volume 322840.5208081663 mm³ within 0.01%.
+- [x] Show Latch, hide obstructing references as needed, frame it in the desktop viewport, save the file and capture a screenshot plus measured evidence. Verify adapter/printing baseline unchanged. Commit this visible-blank milestone.
 
 ### Task 2: Complete the top shape, dependent slot and clearance
 
@@ -47,13 +47,13 @@
 
 **Interfaces:** Consumes Task 1's native blank and source sketch resolved by name/ownership, not stale numeric IDs. Produces one final Latch and per-stage measurements, selected-face records and dependency metadata.
 
-- [ ] Add acceptance assertions for stage volumes, final bounds, closedness, three offset faces, no latch fillet and unchanged existing body roles. Run against incomplete Task 1 evidence and confirm it rejects the blank as unfinished.
-- [ ] Intersect only Latch with the three exact selected TopCutSketch regions through both directions. Verify stage 104 volume 238753.4027 mm³ within 0.01%.
-- [ ] Resolve existing `M06_RearDovetailProfile`. Use it directly for the mating-slot tool; if cross-component use is unsupported, use native linked projection in Latch and verify the resulting frame/link. Do not trace an independent copy.
-- [ ] Cut only Latch using the recipe direction and exact Y=-263.445982162752 end plane. Use an overlong tool plus planar trim if needed to preserve the cap. Consume/hide helpers and exclude them from manufactured outputs. Verify stage 105 volume 232662.8943 mm³ within 0.01%.
-- [ ] Define `latchClearance=0.2 mm`. Resolve the three recipe mating faces using plane, point and area evidence; reject ambiguous selections. Apply signed `-latchClearance` offsets. Verify final volume 230819.7862464548 mm³ within 0.01% and all six bounds within 0.05 mm of the spec.
-- [ ] In a disposable native copy, compare zero and 0.2 mm clearance: exactly the intended mating planes move with the material-removing sign. Restore nominal; record face distances and material change.
-- [ ] Show and save the completed latch in the main UI. Run geometry acceptance with fresh evidence and verify adapter baseline unchanged. Commit the finished nominal geometry.
+- [x] Add acceptance assertions for stage volumes, final bounds, closedness, three offset faces, no latch fillet and unchanged existing body roles. Run against incomplete Task 1 evidence and confirm it rejects the blank as unfinished.
+- [x] Intersect only Latch with the three exact selected TopCutSketch regions through both directions. Verify stage 104 volume 238753.4027 mm³ within 0.01%.
+- [x] Resolve existing `M06_RearDovetailProfile`. Use it directly for the mating-slot tool; if cross-component use is unsupported, use native linked projection in Latch and verify the resulting frame/link. Do not trace an independent copy.
+- [x] Cut only Latch using the recipe direction and exact Y=-263.445982162752 end plane. Use an overlong tool plus planar trim if needed to preserve the cap. Consume/hide helpers and exclude them from manufactured outputs. Verify stage 105 volume 232662.8943 mm³ within 0.01%.
+- [x] Define `latchClearance=0.2 mm`. Resolve the three recipe mating faces using plane, point and area evidence; reject ambiguous selections. Apply signed `-latchClearance` offsets. Verify final volume 230819.7862464548 mm³ within 0.01% and all six bounds within 0.05 mm of the spec.
+- [x] In a disposable native copy, compare zero and 0.2 mm clearance: exactly the intended mating planes move with the material-removing sign. Restore nominal; record face distances and material change.
+- [x] Show and save the completed latch in the main UI. Run geometry acceptance with fresh evidence and verify adapter baseline unchanged. Commit the finished nominal geometry.
 
 ### Task 3: Prove updates and deliver printable files
 
@@ -61,13 +61,19 @@
 
 **Interfaces:** Consumes final nominal single-file design; produces fresh rebuild/dependency/export evidence and a saved, usable desktop document.
 
-- [ ] In a disposable copy, temporarily change the shared dovetail top half-width 10→10.25 mm symmetrically, preserving original sketch definition for restoration. Rebuild and measure both manufactured dovetail and latch-slot width changes; clearance remains 0.2 mm. Restore 10 mm and prove baseline latch/master/printing geometry returns. Never accept unchanged latch geometry as successful dependency propagation.
-- [ ] Save and reopen a validation copy without relying on cached geometry. Confirm healthy features, one unsplit master, two printing halves, one closed Latch, original placements and no extra manufactured helpers. Compare existing bodies with Task 1 baseline using spec tolerances.
-- [ ] Reuse the existing R20 and mounting-ceiling checks against fresh rebuilt output; confirm all five connector features remain child-only and unchanged. Preserve current print-child relationship without replaying or migrating its history.
-- [ ] Export explicitly the Latch solid alone to STEP and STL. Reimport/check exports in an isolated document for one closed body, expected bounds and geometry; STL volume tolerance accounts for recorded tessellation quality. Leave references and adapter bodies out of these exports.
-- [ ] Return to the saved authoritative file, show the finished Latch clearly, apply browser presentation order where supported, and record a final screenshot and measured state. Document same-document rebuild behavior and physical-fit limitation.
-- [ ] Run geometry and integration validators; commit only verified results. Report the native design and printable export paths, any actual limitations, and the finished UI state.
+- [x] In a disposable copy, temporarily change the shared dovetail top half-width 10→10.25 mm symmetrically, preserving original sketch definition for restoration. Rebuild and measure both manufactured dovetail and latch-slot width changes; clearance remains 0.2 mm. Restore 10 mm and prove baseline latch/master/printing geometry returns. Never accept unchanged latch geometry as successful dependency propagation.
+- [x] Save and reopen a validation copy without relying on cached geometry. Confirm healthy features, one unsplit master, two printing halves, one closed Latch, original placements and no extra manufactured helpers. Compare existing bodies with Task 1 baseline using spec tolerances.
+- [x] Reuse the existing R20 and mounting-ceiling checks against fresh rebuilt output; confirm all five connector features remain child-only and unchanged. Preserve current print-child relationship without replaying or migrating its history.
+- [x] Export explicitly the Latch solid alone to STEP and STL. Reimport/check exports in an isolated document for one closed body, expected bounds and geometry; STL volume tolerance accounts for recorded tessellation quality. Leave references and adapter bodies out of these exports.
+- [x] Return to the saved authoritative file, show the finished Latch clearly, apply browser presentation order where supported, and record a final screenshot and measured state. Document same-document rebuild behavior and physical-fit limitation.
+- [x] Run geometry and integration validators; commit only verified results. Report the native design and printable export paths, any actual limitations, and the finished UI state.
 
 ## Failure handling
 
 Keep the last healthy visible milestone if a later operation fails. Record the specific failing feature and measured discrepancy, investigate that operation in an isolated copy, and retain the original adapter unchanged. Do not restart modular migration or silently replace native dependencies with static imports. This plan is complete only when Task 3 passes; a visible blank is useful progress, not final acceptance.
+
+## Execution record
+
+Completed in the existing single file. Native geometry milestone: 58a397b. Integration evidence: SolidCraft/logs/single-file-latch/integration.json. All 72 original feature definitions/placements preserved; 81 healthy features total. Geometry acceptance, fresh rebuild, changed/restored dependency, signed clearance, R20/ceilings and latch-only export reimports passed. All 13 Node tests pass.
+
+Rulings: nominal geometry was committed as one combined milestone after the blank had been shown/saved; the very short nominal build did not require a separate blank-only commit. The slot uses a direct native shared sketch and an overlong cut whose extra extent lies entirely outside Latch; source-stage volume confirms equivalence. Zero-clearance comparison suppresses the offset feature because the kernel rejects offset distance zero. Browser order uses occurrence IDs. Container-roundtrip regression now tests container fidelity independently of the superseded modular partition schema.

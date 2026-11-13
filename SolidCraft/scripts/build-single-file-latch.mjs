@@ -1,7 +1,10 @@
 import fs from 'node:fs';
 import {cad,command as c,write} from './modular-cad.mjs';
+import {assertBuildContext} from './single-file-latch-guards.mjs';
 const recipe=JSON.parse(fs.readFileSync(new URL('../../cad-rebuild/accessories/latch-recipe.json',import.meta.url)));
 const stage=process.argv[2];
+const [doc,tree]=cad([c('document.inspect',{timeline:false,measure:false}),c('component.list')],'single-build-context');
+const latchComponent=assertBuildContext(doc,tree,stage);
 const feature=i=>recipe.features.find(f=>f.index===i);
 function sketch(index,name){
  const f=feature(index), frame=recipe.sketches.find(s=>s.name===f.profiles[0].sketch);
@@ -35,7 +38,7 @@ else if(stage==='top'){
 else if(stage==='clearance')cmds=[c('parameters.add',{name:'latchClearance',expression:'0.2 mm',comment:'Three mating faces; signed offset removes material.'}),c('solid.offset_face',{body:'Latch',faces:feature(106).inputFaces.map(f=>f.point),distance:'-latchClearance',name:'L06_MatingClearance'})];
 else if(stage==='show')cmds=[c('browser.visibility',{items:['Latch'],visible:true,isolate:true}),c('view.fit'),c('file.save')];
 else throw Error('Stage required: half, blank, top, slot, clearance, show');
-const results=cad([...cmds,c('inspect.measure',{bodies:stage==='half'?['Latch','Latch (1)']:['Latch']})],`single-build-${stage}`);
+const results=cad([...(latchComponent?[c('component.activate',{component:latchComponent.id})]:[]),...cmds,c('inspect.measure',{bodies:stage==='half'?['Latch','Latch (1)']:['Latch']})],`single-build-${stage}`);
 write(`SolidCraft/logs/single-file-latch/${stage}.json`,results);
 console.log(JSON.stringify(results.slice(-2)));
 

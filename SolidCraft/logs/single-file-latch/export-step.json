@@ -1,0 +1,55 @@
+{
+  "bodies": [
+    {
+      "area_mm2": 30537.601537805025,
+      "bbox": {
+        "max": [
+          60.865103223039426,
+          -150.22735384935612,
+          47.32124921082979
+        ],
+        "min": [
+          -60.8651032230394,
+          -222.4245484695098,
+          -45.66292135316061
+        ]
+      },
+      "center_of_mass": [
+        2.557022409269865e-12,
+        -184.11643574691072,
+        6.50213268134709
+      ],
+      "closed": true,
+      "density_g_cm3": 1.29,
+      "edges": 36,
+      "face_types": {
+        "cylinder": 1,
+        "plane": 13
+      },
+      "faces": 14,
+      "kernel": {
+        "edges": 36,
+        "faces": 14,
+        "shells": 1,
+        "vertices": 24
+      },
+      "mass_g": 297.7575242559251,
+      "material": "Default",
+      "measured_by": "smlib",
+      "name": "Latch",
+      "notes": [],
+      "vertices": 24,
+      "volume_mm3": 230819.78624490317
+    }
+  ],
+  "body_count": 1,
+  "total": {
+    "area_mm2": 30537.601537805025,
+    "edges": 36,
+    "faces": 14,
+    "mass_g": 297.7575242559251,
+    "open_bodies_skipped": 0,
+    "vertices": 24,
+    "volume_mm3": 230819.78624490317
+  }
+}

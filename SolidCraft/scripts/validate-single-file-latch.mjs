@@ -1,6 +1,7 @@
 import fs from 'node:fs';
 import assert from 'node:assert/strict';
-import {compareStageGeometry} from './modular-native-history.mjs';
+import {compareStageGeometry,sha256} from './modular-native-history.mjs';
+import path from 'node:path';
 const read=n=>JSON.parse(fs.readFileSync(`SolidCraft/logs/single-file-latch/${n}.json`));
 const baseline=read('baseline')[0], geometry=read('geometry')[0];
 for(const old of baseline.bodies)assert(compareStageGeometry(old,geometry.bodies.find(b=>b.name===old.name)).ok,`Changed ${old.name}`);
@@ -15,5 +16,8 @@ const slot=read('geometry')[2];assert.equal(slot.definition.sketch,read('geometr
 assert(!geometry.timeline.some(f=>f.name.startsWith('L')&&f.type.includes('Fillet')));
 if(process.argv[2]!=='geometry'){
  const r=read('integration');assert(r.ok&&r.dependency&&r.clearance&&r.rebuild&&r.exports,'Complete integration evidence');
+ assert.equal(sha256(fs.readFileSync('SolidCraft/models/seat-adapter.sc')),r.sourceHash,'Source changed since validation');
+ for(const ext of ['step','stl'])assert.equal(sha256(fs.readFileSync('SolidCraft/exports/latch.'+ext)),r.exportHashes[ext],'Export changed '+ext);
+ for(const [label,hash] of Object.entries(r.evidenceHashes))assert.equal(sha256(fs.readFileSync(path.join(r.evidenceDir,label+'-results.json'))),hash,'Evidence changed '+label);
 }
 console.log('PASS single-file latch '+(process.argv[2]??'integration'));

@@ -1,0 +1,65 @@
+{
+  "ok": true,
+  "sourceHash": "fdfac7285e4d20053e676dd4f15d3fd7b8e28fad0b716d8375673a3d8defcf98",
+  "runDir": "C:\\Projects\\Sherman P Seat Adapter\\SolidCraft\\models\\experiments\\single-file-latch\\check-zTxrAR",
+  "evidenceHashes": {
+    "rebuilt": "3c9f7ca3351ff14df6518a46c9f275cb3252183e7a4e699061f7d57f95641650",
+    "widened": "00d9cc7e80e7c27516ddcf42f19fe55b6cce8ab8811adad62d69c5687a65cb66",
+    "restored": "24063c6109d619324d0c33481beb06827c52063a4c9cbb24df803cee03ab4395",
+    "zero-clearance": "1ed3e778c9d3ea28b4231e0dc471b0fa130af3663cc2559834638fc62261a5fd"
+  },
+  "exportHashes": {
+    "step": "64151ced390ffc700e2ab15ac9f88278f54f148729bddea6a20a4533ee247613",
+    "stl": "a5726c4ede8ed438e8c4712dcc9b2a934d41931267122d7721a279a6c359374a"
+  },
+  "rebuild": true,
+  "dependency": {
+    "masterDelta": 449.6371530315373,
+    "latchDelta": -119.82387235874194
+  },
+  "clearance": {
+    "moved": [
+      {
+        "name": "F85:side:l6",
+        "normal": [
+          0,
+          0.8597932986246294,
+          -0.5106422266520648
+        ],
+        "delta": -0.20000000000005932
+      },
+      {
+        "name": "F85:side:l8#[F90:side:l4,F91:side:l3]",
+        "normal": [
+          0,
+          0.510642226652063,
+          0.8597932986246305
+        ],
+        "delta": -0.20000000000000195
+      },
+      {
+        "name": "F85:side:l8#[F90:side:l3,F91:side:l1]",
+        "normal": [
+          0,
+          0.510642226652063,
+          0.8597932986246306
+        ],
+        "delta": -0.19999999999997675
+      }
+    ],
+    "zeroMethod": "Offset feature suppressed; kernel rejects a zero-distance offset."
+  },
+  "exports": true,
+  "evidenceDir": "SolidCraft/logs/single-file-latch/runs/check-zTxrAR",
+  "geometryValidatedSourceHash": "6b8d3d798cfecce59f0dc00fb40c07515ad9e370835318576dfe671ed2e123f2",
+  "presentationOnlySave": {
+    "before": "6b8d3d798cfecce59f0dc00fb40c07515ad9e370835318576dfe671ed2e123f2",
+    "after": "fdfac7285e4d20053e676dd4f15d3fd7b8e28fad0b716d8375673a3d8defcf98",
+    "componentOrder": [
+      "AdapterBody",
+      "AdapterBodySplit",
+      "Latch",
+      "WheelScanReference"
+    ]
+  }
+}

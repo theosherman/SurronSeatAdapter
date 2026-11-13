@@ -49,3 +49,11 @@ No whole-model STEP XOR comparison or physical print-fit test has been performed
 - `exports/adapter-front.stl`, `exports/adapter-rear.stl`: individual halves, in the design's coordinates.
 - `scripts/generate-adapter.mjs`, `scripts/generate-child.mjs`: stage generators. Each also refreshes the combined replay when the other stage inputs exist; the combined script includes the scan stage.
 - `models/experiments/`: superseded investigations, not final deliverables.
+# Single-file latch delivery — 2026-11-12
+
+`models/seat-adapter.sc` now contains the native Latch sibling component, sharing the existing dovetail sketch directly. All 72 original feature definitions and placements are preserved; 81 total features are healthy. Adapter master and both printing-half volumes, bounds and centers of mass match the pre-latch baseline. Five connector-cut features remain in the printing child. Fresh output retains both analytic R20 cylinders and passes twelve mounting-ceiling material checks.
+
+Latch volume is **230819.78624755502 mm³**, matching the nofillet recipe (230819.7862464548 mm³). Bounds match within 0.05 mm. A temporary symmetric dovetail width edit grows the master by 449.6371530315373 mm³ and cuts 119.82387235874194 mm³ more from Latch; restoration returns baseline geometry. Three mating planes move inward exactly 0.2 mm. Zero-offset comparison suppresses the offset feature because the kernel rejects an actual zero-distance offset operation.
+
+Latch-only STEP and fine STL exports both reopen as one closed solid with accepted bounds/volume. The UI is saved with Latch visible and component order AdapterBody, AdapterBodySplit, Latch, WheelScanReference. See `logs/single-file-latch/BUILD-NOTES.md` for construction equivalents and `integration.json` for verification. Physical fit remains untested. Earlier modular migration failures below remain historical and do not block this single-file design.
+

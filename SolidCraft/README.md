@@ -77,3 +77,11 @@ node scripts/check-connection.mjs
 This checks MCP initialization and tool discovery. It also performs a read-only design inspection when the desktop port is reachable. It never creates geometry. Results are written to `logs/connection-check.json`.
 
 Setup references: [SolidCraft MCP documentation](https://docs.solidcraft.io/guide/mcp.html) and [official OpenAI MCP guidance](https://learn.chatgpt.com/docs/extend/mcp?surface=cli).
+# Single-file latch (2026-11-12)
+
+Open `models/seat-adapter.sc`: the adapter, dependent printing halves and new native **Latch** component are all in this one design. The saved view isolates the latch. Show AdapterBody to inspect it in assembly position; the parts remain separate solids. Dovetail sketch edits rebuild the latch slot within the same document, with no external-file refresh.
+
+Print exports: `exports/latch.stl` and `exports/latch.step`. Both contain only the latch. The native latch has editable analytic sketches/features, a direct reference to `M06_RearDovetailProfile`, and positive `latchClearance=0.2 mm` driving three negative face offsets. No fillets were added. Physical print fit is untested.
+
+Fresh rebuild, restored dependency, mating-plane and export checks are recorded in `logs/single-file-latch/integration.json`; construction details are in `logs/single-file-latch/BUILD-NOTES.md`. Run `node scripts/validate-single-file-latch.mjs` **from the repository root with the script path prefixed by `SolidCraft/`** to check saved acceptance evidence. Older modular-file plans are superseded. The older adapter build JSON does not include the appended latch.
+

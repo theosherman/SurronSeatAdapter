@@ -40,12 +40,14 @@ test('requires independent fresh master measurements and rejects a changed repla
  assert.throws(()=>validateStandalone({baseline,rebuilt:baseline,replayed:changed,features:58,healthy:true,assetsMatch:true}),/volume/);
 });
 test('container roundtrip preserves embedded assets and removes caches without touching source',()=>{
- const {readNative,writeNative,sha256,partitionCurrentDocument}=api();
+ const {readNative,writeNative,sha256}=api();
  const base=path.resolve('SolidCraft/models/seat-adapter.sc'), before=sha256(fs.readFileSync(base));
  const dir=fs.mkdtempSync(path.resolve('SolidCraft/models/experiments/history-test-'));
  const source=readNative(base,path.join(dir,'source.json'));
  const output=path.join(dir,'master.sc');
- writeNative({sourcePath:base,outputPath:output,document:partitionCurrentDocument(source.document,{masterComponentId:74}).masterDocument,expectedSha256:before});
+ // Container fidelity is independent of the historical migration schema.
+ // The live single-file assembly now includes latch history and browser order.
+ writeNative({sourcePath:base,outputPath:output,document:source.document,expectedSha256:before});
  const rebuilt=readNative(output,path.join(dir,'master.json'));
  assert.deepEqual(rebuilt.inventory.assets,source.inventory.assets);
  assert.equal(rebuilt.inventory.cacheEntries,0);
