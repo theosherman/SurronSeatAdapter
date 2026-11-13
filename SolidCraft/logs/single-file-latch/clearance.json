@@ -1,0 +1,74 @@
+[
+  {
+    "display_value": 0.2,
+    "name": "latchClearance",
+    "unit": "mm",
+    "value": 0.2
+  },
+  {
+    "changed_bodies": [
+      "Latch"
+    ],
+    "created_bodies": [],
+    "feature": 92,
+    "ms": 122.5682,
+    "name": "L06_MatingClearance",
+    "removed_bodies": [],
+    "warning": null
+  },
+  {
+    "bodies": [
+      {
+        "area_mm2": 30537.601537817623,
+        "bbox": {
+          "max": [
+            60.865103223039426,
+            -150.22735384935612,
+            47.32124921082979
+          ],
+          "min": [
+            -60.8651032230394,
+            -222.4245484695098,
+            -45.66292135316063
+          ]
+        },
+        "center_of_mass": [
+          6.89265563290765e-11,
+          -184.1164357473173,
+          6.502132681031646
+        ],
+        "closed": true,
+        "density_g_cm3": 1.29,
+        "edges": 36,
+        "face_types": {
+          "cylinder": 1,
+          "plane": 13
+        },
+        "faces": 14,
+        "kernel": {
+          "edges": 36,
+          "faces": 14,
+          "shells": 1,
+          "vertices": 24
+        },
+        "mass_g": 297.75752425934604,
+        "material": "Default",
+        "measured_by": "smlib",
+        "name": "Latch",
+        "notes": [],
+        "vertices": 24,
+        "volume_mm3": 230819.78624755502
+      }
+    ],
+    "body_count": 1,
+    "total": {
+      "area_mm2": 30537.601537817623,
+      "edges": 36,
+      "faces": 14,
+      "mass_g": 297.75752425934604,
+      "open_bodies_skipped": 0,
+      "vertices": 24,
+      "volume_mm3": 230819.78624755502
+    }
+  }
+]

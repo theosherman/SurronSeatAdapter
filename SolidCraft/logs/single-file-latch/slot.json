@@ -1,0 +1,68 @@
+[
+  {
+    "changed_bodies": [
+      "Latch"
+    ],
+    "created_bodies": [],
+    "feature": 91,
+    "ms": 7.3326,
+    "name": "L05_DependentDovetailSlot",
+    "removed_bodies": [],
+    "warning": null
+  },
+  {
+    "bodies": [
+      {
+        "area_mm2": 30683.004168559386,
+        "bbox": {
+          "max": [
+            60.94766386144667,
+            -149.9532667443008,
+            47.49320787055471
+          ],
+          "min": [
+            -60.94766386144666,
+            -222.4245484695098,
+            -45.66292135316063
+          ]
+        },
+        "center_of_mass": [
+          6.880879475231753e-11,
+          -183.95899532308218,
+          6.585539923137657
+        ],
+        "closed": true,
+        "density_g_cm3": 1.29,
+        "edges": 36,
+        "face_types": {
+          "cylinder": 1,
+          "plane": 13
+        },
+        "faces": 14,
+        "kernel": {
+          "edges": 36,
+          "faces": 14,
+          "shells": 1,
+          "vertices": 24
+        },
+        "mass_g": 300.13513360277534,
+        "material": "Default",
+        "measured_by": "smlib",
+        "name": "Latch",
+        "notes": [],
+        "vertices": 24,
+        "volume_mm3": 232662.89426571733
+      }
+    ],
+    "body_count": 1,
+    "total": {
+      "area_mm2": 30683.004168559386,
+      "edges": 36,
+      "faces": 14,
+      "mass_g": 300.13513360277534,
+      "open_bodies_skipped": 0,
+      "vertices": 24,
+      "volume_mm3": 232662.89426571733
+    }
+  }
+]

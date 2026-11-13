@@ -1,0 +1,384 @@
+[
+  {
+    "component": 82,
+    "grounded": false,
+    "name": "Latch",
+    "occurrence": 83,
+    "parent": 0
+  },
+  {
+    "attachment": "fixed",
+    "created": {
+      "constraints": [],
+      "curves": [],
+      "dimensions": [],
+      "points": []
+    },
+    "frame": "world",
+    "name": "L01_SideProfile",
+    "projected": null,
+    "sketch": 84
+  },
+  {
+    "created": {
+      "constraints": [],
+      "curves": [
+        "a1"
+      ],
+      "dimensions": [],
+      "point_count": 3
+    },
+    "sketch": {
+      "dof": 5,
+      "solved": true
+    }
+  },
+  {
+    "created": {
+      "constraints": [
+        "k1"
+      ],
+      "curves": [
+        "l1"
+      ],
+      "dimensions": [],
+      "points": [
+        "l1.start",
+        "l1.end"
+      ]
+    },
+    "sketch": {
+      "dof": 7,
+      "solved": true
+    }
+  },
+  {
+    "created": {
+      "constraints": [
+        "k2"
+      ],
+      "curves": [
+        "l2"
+      ],
+      "dimensions": [],
+      "points": [
+        "l2.start",
+        "l2.end"
+      ]
+    },
+    "sketch": {
+      "dof": 9,
+      "solved": true
+    }
+  },
+  {
+    "created": {
+      "constraints": [
+        "k3"
+      ],
+      "curves": [
+        "a2"
+      ],
+      "dimensions": [],
+      "point_count": 3
+    },
+    "sketch": {
+      "dof": 12,
+      "solved": true
+    }
+  },
+  {
+    "created": {
+      "constraints": [
+        "k4"
+      ],
+      "curves": [
+        "l3"
+      ],
+      "dimensions": [],
+      "points": [
+        "l3.start",
+        "l3.end"
+      ]
+    },
+    "sketch": {
+      "dof": 14,
+      "solved": true
+    }
+  },
+  {
+    "created": {
+      "constraints": [
+        "k5"
+      ],
+      "curves": [
+        "l4"
+      ],
+      "dimensions": [],
+      "points": [
+        "l4.start",
+        "l4.end"
+      ]
+    },
+    "sketch": {
+      "dof": 16,
+      "solved": true
+    }
+  },
+  {
+    "created": {
+      "constraints": [
+        "k6"
+      ],
+      "curves": [
+        "l5"
+      ],
+      "dimensions": [],
+      "points": [
+        "l5.start",
+        "l5.end"
+      ]
+    },
+    "sketch": {
+      "dof": 18,
+      "solved": true
+    }
+  },
+  {
+    "created": {
+      "constraints": [
+        "k7"
+      ],
+      "curves": [
+        "l6"
+      ],
+      "dimensions": [],
+      "points": [
+        "l6.start",
+        "l6.end"
+      ]
+    },
+    "sketch": {
+      "dof": 20,
+      "solved": true
+    }
+  },
+  {
+    "created": {
+      "constraints": [
+        "k8"
+      ],
+      "curves": [
+        "l7"
+      ],
+      "dimensions": [],
+      "points": [
+        "l7.start",
+        "l7.end"
+      ]
+    },
+    "sketch": {
+      "dof": 22,
+      "solved": true
+    }
+  },
+  {
+    "created": {
+      "constraints": [
+        "k9"
+      ],
+      "curves": [
+        "l8"
+      ],
+      "dimensions": [],
+      "points": [
+        "l8.start",
+        "l8.end"
+      ]
+    },
+    "sketch": {
+      "dof": 24,
+      "solved": true
+    }
+  },
+  {
+    "created": {
+      "constraints": [
+        "k10",
+        "k11"
+      ],
+      "curves": [
+        "l9"
+      ],
+      "dimensions": [],
+      "points": [
+        "l9.start",
+        "l9.end"
+      ]
+    },
+    "sketch": {
+      "dof": 24,
+      "solved": true
+    }
+  },
+  {
+    "created": {
+      "constraints": [
+        "k12",
+        "k13"
+      ],
+      "curves": [
+        "l10"
+      ],
+      "dimensions": [],
+      "points": [
+        "l10.start",
+        "l10.end"
+      ]
+    },
+    "sketch": {
+      "dof": 24,
+      "solved": true
+    }
+  },
+  {
+    "created": {
+      "constraints": [],
+      "curves": [],
+      "dimensions": [],
+      "points": []
+    },
+    "result": {
+      "changed": 12,
+      "fixed": true
+    },
+    "sketch": {
+      "dof": 0,
+      "solved": true
+    }
+  },
+  {
+    "profiles": 2,
+    "sketch": 84
+  },
+  {
+    "changed_bodies": [],
+    "created_bodies": [
+      "Latch"
+    ],
+    "feature": 85,
+    "ms": 3.9231,
+    "name": "L01_SideExtrusion",
+    "removed_bodies": [],
+    "warning": null
+  },
+  {
+    "changed_bodies": [
+      "Latch"
+    ],
+    "created_bodies": [
+      "Latch (1)"
+    ],
+    "feature": 86,
+    "ms": 13.408399999999999,
+    "name": "L02_ExactObliqueCap",
+    "removed_bodies": [],
+    "warning": null
+  },
+  {
+    "bodies": [
+      {
+        "area_mm2": 18361.929719037114,
+        "bbox": {
+          "max": [
+            120,
+            -149.9532667443008,
+            47.49320787055471
+          ],
+          "min": [
+            59.87670440483927,
+            -222.4245484695098,
+            -45.66292135316062
+          ]
+        },
+        "center_of_mass": [
+          93.917139705581,
+          -186.27832216102814,
+          4.502405899634338
+        ],
+        "closed": true,
+        "density_g_cm3": 1.29,
+        "edges": 24,
+        "face_types": {
+          "cylinder": 1,
+          "plane": 9
+        },
+        "faces": 10,
+        "kernel": {
+          "edges": 24,
+          "faces": 10,
+          "shells": 1,
+          "vertices": 16
+        },
+        "mass_g": 158.7544225882304,
+        "material": "Default",
+        "measured_by": "smlib",
+        "name": "Latch",
+        "notes": [],
+        "vertices": 16,
+        "volume_mm3": 123065.44386684526
+      },
+      {
+        "area_mm2": 22072.034193166008,
+        "bbox": {
+          "max": [
+            75.83122356301757,
+            -149.9532667443008,
+            47.49320787055471
+          ],
+          "min": [
+            0,
+            -222.4245484695098,
+            -45.662921353160634
+          ]
+        },
+        "center_of_mass": [
+          34.14185900774619,
+          -184.23680706503143,
+          6.572971398375309
+        ],
+        "closed": true,
+        "density_g_cm3": 1.29,
+        "edges": 24,
+        "face_types": {
+          "cylinder": 1,
+          "plane": 9
+        },
+        "faces": 10,
+        "kernel": {
+          "edges": 24,
+          "faces": 10,
+          "shells": 1,
+          "vertices": 16
+        },
+        "mass_g": 208.23213592306587,
+        "material": "Default",
+        "measured_by": "smlib",
+        "name": "Latch (1)",
+        "notes": [],
+        "vertices": 16,
+        "volume_mm3": 161420.2604054774
+      }
+    ],
+    "body_count": 2,
+    "total": {
+      "area_mm2": 40433.96391220312,
+      "edges": 48,
+      "faces": 20,
+      "mass_g": 366.98655851129627,
+      "open_bodies_skipped": 0,
+      "vertices": 32,
+      "volume_mm3": 284485.70427232265
+    }
+  }
+]
