@@ -1,0 +1,820 @@
+{
+  "commands": [
+    {
+      "command": "parameters.add",
+      "params": {
+        "name": "airtagPocketDepth",
+        "expression": "8.5 mm",
+        "comment": "AirTag pocket depth; verified locally at 8.5 and 8.6 mm only."
+      }
+    },
+    {
+      "command": "sketch.create",
+      "params": {
+        "name": "M01_BottomProfile",
+        "plane": {
+          "origin": [
+            0,
+            0,
+            0
+          ],
+          "x_dir": [
+            1,
+            0,
+            0
+          ],
+          "y_dir": [
+            0,
+            1,
+            0
+          ]
+        }
+      }
+    },
+    {
+      "command": "sketch.line",
+      "params": {
+        "points": [
+          [
+            79.99999999999999,
+            87.40394523824223
+          ],
+          [
+            22,
+            37.129087685415726
+          ]
+        ],
+        "infer": false
+      }
+    },
+    {
+      "command": "sketch.line",
+      "params": {
+        "points": [
+          [
+            80,
+            193.15953208748562
+          ],
+          [
+            79.99999999999999,
+            87.40394523824223
+          ]
+        ],
+        "infer": false
+      }
+    },
+    {
+      "command": "sketch.line",
+      "params": {
+        "points": [
+          [
+            0,
+            193.15953208748562
+          ],
+          [
+            80,
+            193.15953208748562
+          ]
+        ],
+        "infer": false
+      }
+    },
+    {
+      "command": "sketch.line",
+      "params": {
+        "points": [
+          [
+            0,
+            159.1595320874856
+          ],
+          [
+            0,
+            193.15953208748562
+          ]
+        ],
+        "infer": false
+      }
+    },
+    {
+      "command": "sketch.line",
+      "params": {
+        "points": [
+          [
+            43.00000000000001,
+            159.1595320874856
+          ],
+          [
+            0,
+            159.1595320874856
+          ]
+        ],
+        "infer": false
+      }
+    },
+    {
+      "command": "sketch.line",
+      "params": {
+        "points": [
+          [
+            43.00000000000001,
+            99.15953208748559
+          ],
+          [
+            43.00000000000001,
+            159.1595320874856
+          ]
+        ],
+        "infer": false
+      }
+    },
+    {
+      "command": "sketch.line",
+      "params": {
+        "points": [
+          [
+            0,
+            99.15953208748559
+          ],
+          [
+            43.00000000000001,
+            99.15953208748559
+          ]
+        ],
+        "infer": false
+      }
+    },
+    {
+      "command": "sketch.line",
+      "params": {
+        "points": [
+          [
+            0,
+            0
+          ],
+          [
+            0,
+            99.15953208748559
+          ]
+        ],
+        "infer": false
+      }
+    },
+    {
+      "command": "sketch.line",
+      "params": {
+        "points": [
+          [
+            0,
+            -290
+          ],
+          [
+            0,
+            0
+          ]
+        ],
+        "infer": false
+      }
+    },
+    {
+      "command": "sketch.line",
+      "params": {
+        "points": [
+          [
+            45.00000000000007,
+            -290
+          ],
+          [
+            0,
+            -290
+          ]
+        ],
+        "infer": false
+      }
+    },
+    {
+      "command": "sketch.line",
+      "params": {
+        "points": [
+          [
+            77.93135238304326,
+            -140.41371084378332
+          ],
+          [
+            45.00000000000007,
+            -290
+          ]
+        ],
+        "infer": false
+      }
+    },
+    {
+      "command": "sketch.line",
+      "params": {
+        "points": [
+          [
+            77.93135238304326,
+            -111.68245530911433
+          ],
+          [
+            77.93135238304326,
+            -140.41371084378332
+          ]
+        ],
+        "infer": false
+      }
+    },
+    {
+      "command": "sketch.line",
+      "params": {
+        "points": [
+          [
+            64.68750101999127,
+            -100
+          ],
+          [
+            77.93135238304326,
+            -111.68245530911433
+          ]
+        ],
+        "infer": false
+      }
+    },
+    {
+      "command": "sketch.line",
+      "params": {
+        "points": [
+          [
+            64.68750101999127,
+            -79.96131101324718
+          ],
+          [
+            64.68750101999127,
+            -100
+          ]
+        ],
+        "infer": false
+      }
+    },
+    {
+      "command": "sketch.line",
+      "params": {
+        "points": [
+          [
+            22.000000000000036,
+            -18.114927052326223
+          ],
+          [
+            64.68750101999127,
+            -79.96131101324718
+          ]
+        ],
+        "infer": false
+      }
+    },
+    {
+      "command": "sketch.line",
+      "params": {
+        "points": [
+          [
+            22.000000000000025,
+            0
+          ],
+          [
+            22.000000000000036,
+            -18.114927052326223
+          ]
+        ],
+        "infer": false
+      }
+    },
+    {
+      "command": "sketch.line",
+      "params": {
+        "points": [
+          [
+            21.999999999999996,
+            37.12908768541572
+          ],
+          [
+            22.000000000000025,
+            0
+          ]
+        ],
+        "infer": false
+      }
+    },
+    {
+      "command": "sketch.constraint.fix",
+      "params": {
+        "entities": [
+          "l1",
+          "l2",
+          "l3",
+          "l4",
+          "l5",
+          "l6",
+          "l7",
+          "l8",
+          "l9",
+          "l10",
+          "l11",
+          "l12",
+          "l13",
+          "l14",
+          "l15",
+          "l16",
+          "l17"
+        ],
+        "fixed": true
+      }
+    },
+    {
+      "command": "sketch.finish",
+      "params": {}
+    },
+    {
+      "command": "solid.extrude",
+      "params": {
+        "sketch": "M01_BottomProfile",
+        "distance": 150,
+        "distance2": 50,
+        "operation": "new",
+        "name": "M01_BottomExtrusion",
+        "body_name": "AdapterBody"
+      }
+    },
+    {
+      "command": "solid.mirror",
+      "params": {
+        "bodies": [
+          "AdapterBody"
+        ],
+        "plane": "YZ",
+        "combine": true,
+        "name": "M02_BaseMirror"
+      }
+    },
+    {
+      "command": "sketch.create",
+      "params": {
+        "name": "M03_SideProfiles",
+        "plane": {
+          "origin": [
+            0,
+            0,
+            0
+          ],
+          "x_dir": [
+            0,
+            1,
+            0
+          ],
+          "y_dir": [
+            0,
+            0,
+            1
+          ]
+        }
+      }
+    },
+    {
+      "command": "sketch.line",
+      "params": {
+        "points": [
+          [
+            126.48199772131767,
+            30.4393022721392
+          ],
+          [
+            194.60716317888767,
+            38.56273643562253
+          ]
+        ],
+        "infer": false
+      }
+    },
+    {
+      "command": "sketch.line",
+      "params": {
+        "points": [
+          [
+            99.15953208748556,
+            27.181295494912238
+          ],
+          [
+            126.48199772131767,
+            30.4393022721392
+          ]
+        ],
+        "infer": false
+      }
+    },
+    {
+      "command": "sketch.line",
+      "params": {
+        "points": [
+          [
+            94.09303350067768,
+            39.31132758690323
+          ],
+          [
+            99.15953208748556,
+            27.181295494912238
+          ]
+        ],
+        "infer": false
+      }
+    },
+    {
+      "command": "sketch.line",
+      "params": {
+        "points": [
+          [
+            59.37208075512329,
+            48.82213409534295
+          ],
+          [
+            94.09303350067768,
+            39.31132758690323
+          ]
+        ],
+        "infer": false
+      }
+    },
+    {
+      "command": "sketch.line",
+      "params": {
+        "points": [
+          [
+            36.22547244003656,
+            36.78920971219333
+          ],
+          [
+            59.37208075512329,
+            48.82213409534295
+          ]
+        ],
+        "infer": false
+      }
+    },
+    {
+      "command": "sketch.line",
+      "params": {
+        "points": [
+          [
+            -190.90793679412548,
+            83.0000240967807
+          ],
+          [
+            36.225472440036555,
+            36.78920971219333
+          ]
+        ],
+        "infer": false
+      }
+    },
+    {
+      "command": "sketch.line",
+      "params": {
+        "points": [
+          [
+            -190.90793679412542,
+            88.3941373688807
+          ],
+          [
+            -190.90793679412548,
+            83.0000240967807
+          ]
+        ],
+        "infer": false
+      }
+    },
+    {
+      "command": "sketch.line",
+      "params": {
+        "points": [
+          [
+            -263.445982162752,
+            109.10684591063722
+          ],
+          [
+            -190.90793679412542,
+            88.3941373688807
+          ]
+        ],
+        "infer": false
+      }
+    },
+    {
+      "command": "sketch.line",
+      "params": {
+        "points": [
+          [
+            -263.445982162752,
+            99.10684591063722
+          ],
+          [
+            -263.445982162752,
+            109.10684591063722
+          ]
+        ],
+        "infer": false
+      }
+    },
+    {
+      "command": "sketch.line",
+      "params": {
+        "points": [
+          [
+            -149.9532667443008,
+            31.702071992564843
+          ],
+          [
+            -263.445982162752,
+            99.10684591063722
+          ]
+        ],
+        "infer": false
+      }
+    },
+    {
+      "command": "sketch.line",
+      "params": {
+        "points": [
+          [
+            -149.9532667443008,
+            31.702071992564843
+          ],
+          [
+            -186.53073858932768,
+            -29.88520679397077
+          ]
+        ],
+        "infer": false
+      }
+    },
+    {
+      "command": "sketch.line",
+      "params": {
+        "points": [
+          [
+            194.60716317890004,
+            15.562736435622536
+          ],
+          [
+            -186.5307385893277,
+            -29.88520679397077
+          ]
+        ],
+        "infer": false
+      }
+    },
+    {
+      "command": "sketch.line",
+      "params": {
+        "points": [
+          [
+            194.60716317888767,
+            38.56273643562253
+          ],
+          [
+            194.60716317890004,
+            15.562736435622536
+          ]
+        ],
+        "infer": false
+      }
+    },
+    {
+      "command": "sketch.line",
+      "params": {
+        "points": [
+          [
+            94.09303350067768,
+            39.31132758690323
+          ],
+          [
+            126.48199772131767,
+            30.4393022721392
+          ]
+        ],
+        "infer": false
+      }
+    },
+    {
+      "command": "sketch.constraint.fix",
+      "params": {
+        "entities": [
+          "l1",
+          "l2",
+          "l3",
+          "l4",
+          "l5",
+          "l6",
+          "l7",
+          "l8",
+          "l9",
+          "l10",
+          "l11",
+          "l12",
+          "l13",
+          "l14"
+        ],
+        "fixed": true
+      }
+    },
+    {
+      "command": "sketch.finish",
+      "params": {}
+    },
+    {
+      "command": "solid.extrude",
+      "params": {
+        "sketch": "M03_SideProfiles",
+        "distance": 120,
+        "operation": "intersect",
+        "targets": [
+          "AdapterBody"
+        ],
+        "name": "M03_SideIntersection"
+      }
+    },
+    {
+      "command": "sketch.create",
+      "params": {
+        "name": "M04_RearProfile",
+        "plane": {
+          "origin": [
+            0,
+            -263.445982162752,
+            0
+          ],
+          "x_dir": [
+            1,
+            0,
+            0
+          ],
+          "y_dir": [
+            0,
+            0,
+            -1
+          ]
+        }
+      }
+    },
+    {
+      "command": "sketch.line",
+      "params": {
+        "points": [
+          [
+            21.076188391963527,
+            -109.10684591063722
+          ],
+          [
+            21.689542263650967,
+            -109.10684591063722
+          ]
+        ],
+        "infer": false
+      }
+    },
+    {
+      "command": "sketch.line",
+      "params": {
+        "points": [
+          [
+            90,
+            25.580075473268877
+          ],
+          [
+            21.689542263650967,
+            -109.10684591063722
+          ]
+        ],
+        "infer": false
+      }
+    },
+    {
+      "command": "sketch.line",
+      "params": {
+        "points": [
+          [
+            90,
+            55.58007547326888
+          ],
+          [
+            90,
+            25.580075473268877
+          ]
+        ],
+        "infer": false
+      }
+    },
+    {
+      "command": "sketch.line",
+      "params": {
+        "points": [
+          [
+            0,
+            55.58007547326888
+          ],
+          [
+            90,
+            55.58007547326888
+          ]
+        ],
+        "infer": false
+      }
+    },
+    {
+      "command": "sketch.line",
+      "params": {
+        "points": [
+          [
+            0,
+            28.846061822369418
+          ],
+          [
+            0,
+            55.58007547326888
+          ]
+        ],
+        "infer": false
+      }
+    },
+    {
+      "command": "sketch.line",
+      "params": {
+        "points": [
+          [
+            0,
+            -109.10684591063722
+          ],
+          [
+            0,
+            28.846061822369418
+          ]
+        ],
+        "infer": false
+      }
+    },
+    {
+      "command": "sketch.line",
+      "params": {
+        "points": [
+          [
+            0,
+            -109.10684591063722
+          ],
+          [
+            21.076188391963527,
+            -109.10684591063722
+          ]
+        ],
+        "infer": false
+      }
+    },
+    {
+      "command": "sketch.constraint.fix",
+      "params": {
+        "entities": [
+          "l1",
+          "l2",
+          "l3",
+          "l4",
+          "l5",
+          "l6",
+          "l7"
+        ],
+        "fixed": true
+      }
+    },
+    {
+      "command": "sketch.finish",
+      "params": {}
+    },
+    {
+      "command": "solid.extrude",
+      "params": {
+        "sketch": "M04_RearProfile",
+        "distance": 490,
+        "operation": "intersect",
+        "targets": [
+          "AdapterBody"
+        ],
+        "name": "M04_RearIntersection"
+      }
+    },
+    {
+      "command": "solid.mirror",
+      "params": {
+        "bodies": [
+          "AdapterBody"
+        ],
+        "plane": "YZ",
+        "combine": true,
+        "name": "M05_ShellMirror"
+      }
+    }
+  ]
+}

@@ -1,0 +1,249 @@
+{
+  "checkedAt": "2026-11-13T00:41:17.406Z",
+  "application": "SolidCraft 0.40.1",
+  "nativeDesign": "models/seat-adapter.sc",
+  "replay": "scripts/seat-adapter-build.json",
+  "master": {
+    "bbox": {
+      "max": [
+        77.93135238304326,
+        244.2852265589759,
+        109.10684591159225
+      ],
+      "min": [
+        -77.93135238438845,
+        -263.445982162752,
+        -29.88520679397079
+      ]
+    },
+    "closed": true,
+    "faces": 1013,
+    "name": "AdapterBodyMaster",
+    "volume_mm3": 1507476.8189659615
+  },
+  "child": {
+    "bodies": [
+      {
+        "bbox": {
+          "max": [
+            75.95208445426073,
+            244.2852265589759,
+            63.057113252747484
+          ],
+          "min": [
+            -75.95208445420147,
+            -109.93653499568696,
+            -20.751900973452972
+          ]
+        },
+        "closed": true,
+        "faces": 869,
+        "name": "AdapterBodyFront",
+        "volume_mm3": 853718.9764494072
+      },
+      {
+        "bbox": {
+          "max": [
+            77.93135238304326,
+            -92.88539833397249,
+            109.10684591159225
+          ],
+          "min": [
+            -77.93135238555938,
+            -263.445982162752,
+            -29.88520679397078
+          ]
+        },
+        "closed": true,
+        "faces": 224,
+        "name": "AdapterBodyRear",
+        "volume_mm3": 636139.6010264895
+      }
+    ],
+    "connectorRecesses": 5,
+    "totalVolumeMm3": 1489858.5774758966
+  },
+  "featureCount": 69,
+  "sketchCount": 25,
+  "allSketchesFixed": true,
+  "errors": [],
+  "warnings": [],
+  "filletFeatures": 0,
+  "inheritance": {
+    "parameter": "airtagPocketDepth",
+    "baselineMm": 8.5,
+    "testMm": 8.6,
+    "masterDeltaMm3": -102.42950781830586,
+    "childDeltaMm3": -102.42950781492982,
+    "passed": true,
+    "restored": true
+  },
+  "mountingCeilings": {
+    "ok": true,
+    "source": "exports/adapter-body.stl",
+    "triangles": 11496,
+    "checks": [
+      {
+        "name": "front -23 mounting ledge",
+        "pointMm": [
+          -17,
+          73.99550086131543,
+          42.231280197025576
+        ],
+        "expectedMaterial": true,
+        "material": true,
+        "rayAgreement": true,
+        "ok": true
+      },
+      {
+        "name": "front -23 access below ledge",
+        "pointMm": [
+          -17,
+          73.73131179163656,
+          41.266809287426845
+        ],
+        "expectedMaterial": false,
+        "material": false,
+        "rayAgreement": true,
+        "ok": true
+      },
+      {
+        "name": "front -23 small through hole",
+        "pointMm": [
+          -23,
+          73.99550086131543,
+          42.231280197025576
+        ],
+        "expectedMaterial": false,
+        "material": false,
+        "rayAgreement": true,
+        "ok": true
+      },
+      {
+        "name": "front 23 mounting ledge",
+        "pointMm": [
+          29,
+          73.99550086131543,
+          42.231280197025576
+        ],
+        "expectedMaterial": true,
+        "material": true,
+        "rayAgreement": true,
+        "ok": true
+      },
+      {
+        "name": "front 23 access below ledge",
+        "pointMm": [
+          29,
+          73.73131179163656,
+          41.266809287426845
+        ],
+        "expectedMaterial": false,
+        "material": false,
+        "rayAgreement": true,
+        "ok": true
+      },
+      {
+        "name": "front 23 small through hole",
+        "pointMm": [
+          23,
+          73.99550086131543,
+          42.231280197025576
+        ],
+        "expectedMaterial": false,
+        "material": false,
+        "rayAgreement": true,
+        "ok": true
+      },
+      {
+        "name": "rear -14.5 mounting ledge",
+        "pointMm": [
+          20.5,
+          -181.92058480597453,
+          78.62031024578977
+        ],
+        "expectedMaterial": true,
+        "material": true,
+        "rayAgreement": true,
+        "ok": true
+      },
+      {
+        "name": "rear -14.5 access below ledge",
+        "pointMm": [
+          20.5,
+          -182.11995274039154,
+          77.64038554116891
+        ],
+        "expectedMaterial": false,
+        "material": false,
+        "rayAgreement": true,
+        "ok": true
+      },
+      {
+        "name": "rear -14.5 small through hole",
+        "pointMm": [
+          14.5,
+          -181.92058480597453,
+          78.62031024578977
+        ],
+        "expectedMaterial": false,
+        "material": false,
+        "rayAgreement": true,
+        "ok": true
+      },
+      {
+        "name": "rear 14.5 mounting ledge",
+        "pointMm": [
+          -8.5,
+          -181.92058480597453,
+          78.62031024578977
+        ],
+        "expectedMaterial": true,
+        "material": true,
+        "rayAgreement": true,
+        "ok": true
+      },
+      {
+        "name": "rear 14.5 access below ledge",
+        "pointMm": [
+          -8.5,
+          -182.11995274039154,
+          77.64038554116891
+        ],
+        "expectedMaterial": false,
+        "material": false,
+        "rayAgreement": true,
+        "ok": true
+      },
+      {
+        "name": "rear 14.5 small through hole",
+        "pointMm": [
+          -14.5,
+          -181.92058480597453,
+          78.62031024578977
+        ],
+        "expectedMaterial": false,
+        "material": false,
+        "rayAgreement": true,
+        "ok": true
+      }
+    ],
+    "method": "Two independent triangle ray parity tests at 0.5 mm above/below each saved cap plane; annular sample 6 mm off bore axis."
+  },
+  "referenceComparison": {
+    "fusionPreFilletPreImprintMm3": 1527477.0129629427,
+    "solidCraftPreImprintMm3": 1527475.250404342,
+    "onshapeFinalMasterMm3": 1511781.8419273873,
+    "solidCraftFinalMasterMm3": 1507476.8189659615,
+    "exactOnshapeParity": false
+  },
+  "adaptations": [
+    "M06 long extrusion trimmed at exact rear plane",
+    "M14 exact triangular wedge replaces unsupported draft87",
+    "M17 left circular cutter uses an inscribed 256-gon with retained construction circle; maximum radial deviation 0.0015059632 mm",
+    "M17/M18 explicit reflected sketches instead of unreliable cut-feature mirrors"
+  ],
+  "onshapeApiCalls": 0,
+  "accessoryPartsExtracted": true,
+  "accessoryPartsBuilt": false
+}

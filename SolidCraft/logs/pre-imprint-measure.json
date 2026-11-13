@@ -1,0 +1,780 @@
+{
+  "bodies": [
+    {
+      "area_mm2": 206865.2402713985,
+      "bbox": {
+        "max": [
+          77.93135238304326,
+          244.2852265589759,
+          109.10684591159225
+        ],
+        "min": [
+          -77.93135238438845,
+          -263.445982162752,
+          -29.88520679397079
+        ]
+      },
+      "center_of_mass": [
+        -0.00002811380038269003,
+        -33.54703225929792,
+        29.74373619725216
+      ],
+      "closed": true,
+      "density_g_cm3": 1.29,
+      "edges": 477,
+      "face_types": {
+        "cylinder": 15,
+        "plane": 150
+      },
+      "faces": 165,
+      "kernel": {
+        "edges": 489,
+        "faces": 165,
+        "shells": 1,
+        "vertices": 330
+      },
+      "mass_g": 1970.4430730216013,
+      "material": "Default",
+      "measured_by": "smlib",
+      "name": "AdapterBodyMaster",
+      "notes": [],
+      "vertices": 318,
+      "volume_mm3": 1527475.250404342
+    }
+  ],
+  "body_count": 1,
+  "params": [
+    {
+      "comment": "AirTag pocket depth; verified locally at 8.5 and 8.6 mm only.",
+      "error": null,
+      "expression": "8.5 mm",
+      "model": false,
+      "name": "airtagPocketDepth",
+      "unit": "mm",
+      "value": 8.5
+    }
+  ],
+  "sketches": [
+    {
+      "curves": 17,
+      "dof": 0,
+      "id": 1,
+      "name": "M01_BottomProfile",
+      "profiles": 1,
+      "status": "solved",
+      "visible": false
+    },
+    {
+      "curves": 14,
+      "dof": 0,
+      "id": 4,
+      "name": "M03_SideProfiles",
+      "profiles": 2,
+      "status": "solved",
+      "visible": false
+    },
+    {
+      "curves": 7,
+      "dof": 0,
+      "id": 6,
+      "name": "M04_RearProfile",
+      "profiles": 1,
+      "status": "solved",
+      "visible": false
+    },
+    {
+      "curves": 5,
+      "dof": 0,
+      "id": 9,
+      "name": "M06_RearDovetailProfile",
+      "profiles": 1,
+      "status": "solved",
+      "visible": false
+    },
+    {
+      "curves": 4,
+      "dof": 0,
+      "id": 13,
+      "name": "M07_BoltProfiles",
+      "profiles": 4,
+      "status": "solved",
+      "visible": false
+    },
+    {
+      "curves": 2,
+      "dof": 0,
+      "id": 15,
+      "name": "M08_RearAccessProfiles",
+      "profiles": 2,
+      "status": "solved",
+      "visible": false
+    },
+    {
+      "curves": 1,
+      "dof": 0,
+      "id": 17,
+      "name": "M09_FrontAccessProfile0",
+      "profiles": 1,
+      "status": "solved",
+      "visible": false
+    },
+    {
+      "curves": 1,
+      "dof": 0,
+      "id": 22,
+      "name": "M09_FrontAccessProfile1",
+      "profiles": 1,
+      "status": "solved",
+      "visible": false
+    },
+    {
+      "curves": 5,
+      "dof": 0,
+      "id": 27,
+      "name": "M10_HangerProfile",
+      "profiles": 1,
+      "status": "solved",
+      "visible": false
+    },
+    {
+      "curves": 9,
+      "dof": 0,
+      "id": 32,
+      "name": "M12_HandleProfile",
+      "profiles": 2,
+      "status": "solved",
+      "visible": false
+    },
+    {
+      "curves": 6,
+      "dof": 0,
+      "id": 34,
+      "name": "M13_FrontCutProfile",
+      "profiles": 2,
+      "status": "solved",
+      "visible": false
+    },
+    {
+      "curves": 3,
+      "dof": 0,
+      "id": 36,
+      "name": "M14_FrontDraftWedgeProfile",
+      "profiles": 1,
+      "status": "solved",
+      "visible": false
+    },
+    {
+      "curves": 16,
+      "dof": 0,
+      "id": 38,
+      "name": "M15_SeatNotches",
+      "profiles": 5,
+      "status": "solved",
+      "visible": false
+    },
+    {
+      "curves": 4,
+      "dof": 0,
+      "id": 40,
+      "name": "M16_FrontDovetailProfile",
+      "profiles": 1,
+      "status": "solved",
+      "visible": false
+    },
+    {
+      "curves": 257,
+      "dof": 0,
+      "id": 42,
+      "name": "M17_SeatSideProfile",
+      "profiles": 1,
+      "status": "solved",
+      "visible": false
+    },
+    {
+      "curves": 1,
+      "dof": 0,
+      "id": 44,
+      "name": "M17_SeatSideReflectedProfile",
+      "profiles": 1,
+      "status": "solved",
+      "visible": false
+    },
+    {
+      "curves": 6,
+      "dof": 0,
+      "id": 46,
+      "name": "M18_RearCutProfiles",
+      "profiles": 2,
+      "status": "solved",
+      "visible": false
+    },
+    {
+      "curves": 6,
+      "dof": 0,
+      "id": 48,
+      "name": "M18_RearCutReflectedProfiles",
+      "profiles": 2,
+      "status": "solved",
+      "visible": false
+    },
+    {
+      "curves": 9,
+      "dof": 0,
+      "id": 50,
+      "name": "M19_BodyCavityProfile",
+      "profiles": 1,
+      "status": "solved",
+      "visible": false
+    },
+    {
+      "curves": 5,
+      "dof": 0,
+      "id": 52,
+      "name": "M20_AirTagProfile",
+      "profiles": 1,
+      "status": "solved",
+      "visible": false
+    }
+  ],
+  "timeline": [
+    {
+      "error": null,
+      "id": 1,
+      "ms": 0.441,
+      "name": "M01_BottomProfile",
+      "rolled_back": false,
+      "suppressed": false,
+      "type": "Sketch",
+      "warning": null
+    },
+    {
+      "error": null,
+      "id": 2,
+      "ms": 4.914199999999999,
+      "name": "M01_BottomExtrusion",
+      "rolled_back": false,
+      "suppressed": false,
+      "type": "ExtrudeFeature",
+      "warning": null
+    },
+    {
+      "error": null,
+      "id": 3,
+      "ms": 23.6386,
+      "name": "M02_BaseMirror",
+      "rolled_back": false,
+      "suppressed": false,
+      "type": "MirrorFeature",
+      "warning": null
+    },
+    {
+      "error": null,
+      "id": 4,
+      "ms": 0.16899999999999998,
+      "name": "M03_SideProfiles",
+      "rolled_back": false,
+      "suppressed": false,
+      "type": "Sketch",
+      "warning": null
+    },
+    {
+      "error": null,
+      "id": 5,
+      "ms": 20.3318,
+      "name": "M03_SideIntersection",
+      "rolled_back": false,
+      "suppressed": false,
+      "type": "ExtrudeFeature",
+      "warning": null
+    },
+    {
+      "error": null,
+      "id": 6,
+      "ms": 0.12079999999999999,
+      "name": "M04_RearProfile",
+      "rolled_back": false,
+      "suppressed": false,
+      "type": "Sketch",
+      "warning": null
+    },
+    {
+      "error": null,
+      "id": 7,
+      "ms": 15.7799,
+      "name": "M04_RearIntersection",
+      "rolled_back": false,
+      "suppressed": false,
+      "type": "ExtrudeFeature",
+      "warning": null
+    },
+    {
+      "error": null,
+      "id": 8,
+      "ms": 34.6782,
+      "name": "M05_ShellMirror",
+      "rolled_back": false,
+      "suppressed": false,
+      "type": "MirrorFeature",
+      "warning": null
+    },
+    {
+      "error": null,
+      "id": 9,
+      "ms": 0.0956,
+      "name": "M06_RearDovetailProfile",
+      "rolled_back": false,
+      "suppressed": false,
+      "type": "Sketch",
+      "warning": null
+    },
+    {
+      "error": null,
+      "id": 10,
+      "ms": 18.105,
+      "name": "M06_RearDovetail",
+      "rolled_back": false,
+      "suppressed": false,
+      "type": "ExtrudeFeature",
+      "warning": null
+    },
+    {
+      "error": null,
+      "id": 11,
+      "ms": 32.1934,
+      "name": "M06_RearDovetailEndPlane",
+      "rolled_back": false,
+      "suppressed": false,
+      "type": "SplitBodyFeature",
+      "warning": null
+    },
+    {
+      "error": null,
+      "id": 12,
+      "ms": 0.0072,
+      "name": "Remove1",
+      "rolled_back": false,
+      "suppressed": false,
+      "type": "RemoveFeature",
+      "warning": null
+    },
+    {
+      "error": null,
+      "id": 13,
+      "ms": 0.077,
+      "name": "M07_BoltProfiles",
+      "rolled_back": false,
+      "suppressed": false,
+      "type": "Sketch",
+      "warning": null
+    },
+    {
+      "error": null,
+      "id": 14,
+      "ms": 62.5443,
+      "name": "M07_BoltThroughHoles",
+      "rolled_back": false,
+      "suppressed": false,
+      "type": "ExtrudeFeature",
+      "warning": null
+    },
+    {
+      "error": null,
+      "id": 15,
+      "ms": 0.0599,
+      "name": "M08_RearAccessProfiles",
+      "rolled_back": false,
+      "suppressed": false,
+      "type": "Sketch",
+      "warning": null
+    },
+    {
+      "error": null,
+      "id": 16,
+      "ms": 48.6044,
+      "name": "M08_RearAccessCavities",
+      "rolled_back": false,
+      "suppressed": false,
+      "type": "ExtrudeFeature",
+      "warning": null
+    },
+    {
+      "error": null,
+      "id": 17,
+      "ms": 0.07050000000000001,
+      "name": "M09_FrontAccessProfile0",
+      "rolled_back": false,
+      "suppressed": false,
+      "type": "Sketch",
+      "warning": null
+    },
+    {
+      "error": null,
+      "id": 18,
+      "ms": 3.8268999999999997,
+      "name": "M09_AccessTool0",
+      "rolled_back": false,
+      "suppressed": false,
+      "type": "ExtrudeFeature",
+      "warning": null
+    },
+    {
+      "error": null,
+      "id": 19,
+      "ms": 17.0321,
+      "name": "M09_CeilingPlane0",
+      "rolled_back": false,
+      "suppressed": false,
+      "type": "SplitBodyFeature",
+      "warning": null
+    },
+    {
+      "error": null,
+      "id": 20,
+      "ms": 0.0051,
+      "name": "Remove2",
+      "rolled_back": false,
+      "suppressed": false,
+      "type": "RemoveFeature",
+      "warning": null
+    },
+    {
+      "error": null,
+      "id": 21,
+      "ms": 32.869099999999996,
+      "name": "M09_FrontAccessCavity0",
+      "rolled_back": false,
+      "suppressed": false,
+      "type": "CombineFeature",
+      "warning": null
+    },
+    {
+      "error": null,
+      "id": 22,
+      "ms": 0.0662,
+      "name": "M09_FrontAccessProfile1",
+      "rolled_back": false,
+      "suppressed": false,
+      "type": "Sketch",
+      "warning": null
+    },
+    {
+      "error": null,
+      "id": 23,
+      "ms": 3.9157999999999995,
+      "name": "M09_AccessTool1",
+      "rolled_back": false,
+      "suppressed": false,
+      "type": "ExtrudeFeature",
+      "warning": null
+    },
+    {
+      "error": null,
+      "id": 24,
+      "ms": 12.1321,
+      "name": "M09_CeilingPlane1",
+      "rolled_back": false,
+      "suppressed": false,
+      "type": "SplitBodyFeature",
+      "warning": null
+    },
+    {
+      "error": null,
+      "id": 25,
+      "ms": 0.0051,
+      "name": "Remove3",
+      "rolled_back": false,
+      "suppressed": false,
+      "type": "RemoveFeature",
+      "warning": null
+    },
+    {
+      "error": null,
+      "id": 26,
+      "ms": 33.9773,
+      "name": "M09_FrontAccessCavity1",
+      "rolled_back": false,
+      "suppressed": false,
+      "type": "CombineFeature",
+      "warning": null
+    },
+    {
+      "error": null,
+      "id": 27,
+      "ms": 0.0997,
+      "name": "M10_HangerProfile",
+      "rolled_back": false,
+      "suppressed": false,
+      "type": "Sketch",
+      "warning": null
+    },
+    {
+      "error": null,
+      "id": 28,
+      "ms": 1.6919000000000002,
+      "name": "M10_SeatHanger",
+      "rolled_back": false,
+      "suppressed": false,
+      "type": "ExtrudeFeature",
+      "warning": null
+    },
+    {
+      "error": null,
+      "id": 29,
+      "ms": 31.2406,
+      "name": "M11_HangerDraft",
+      "rolled_back": false,
+      "suppressed": false,
+      "type": "DraftFeature",
+      "warning": null
+    },
+    {
+      "error": null,
+      "id": 30,
+      "ms": 2.1273,
+      "name": "M11_HangerMirror",
+      "rolled_back": false,
+      "suppressed": false,
+      "type": "MirrorFeature",
+      "warning": null
+    },
+    {
+      "error": null,
+      "id": 31,
+      "ms": 30.656699999999997,
+      "name": "M11_JoinHangers",
+      "rolled_back": false,
+      "suppressed": false,
+      "type": "CombineFeature",
+      "warning": null
+    },
+    {
+      "error": null,
+      "id": 32,
+      "ms": 0.19469999999999998,
+      "name": "M12_HandleProfile",
+      "rolled_back": false,
+      "suppressed": false,
+      "type": "Sketch",
+      "warning": null
+    },
+    {
+      "error": null,
+      "id": 33,
+      "ms": 59.9206,
+      "name": "M12_HandleMount",
+      "rolled_back": false,
+      "suppressed": false,
+      "type": "ExtrudeFeature",
+      "warning": null
+    },
+    {
+      "error": null,
+      "id": 34,
+      "ms": 0.13660000000000003,
+      "name": "M13_FrontCutProfile",
+      "rolled_back": false,
+      "suppressed": false,
+      "type": "Sketch",
+      "warning": null
+    },
+    {
+      "error": null,
+      "id": 35,
+      "ms": 47.7485,
+      "name": "M13_FrontCut",
+      "rolled_back": false,
+      "suppressed": false,
+      "type": "ExtrudeFeature",
+      "warning": null
+    },
+    {
+      "error": null,
+      "id": 36,
+      "ms": 0.07150000000000001,
+      "name": "M14_FrontDraftWedgeProfile",
+      "rolled_back": false,
+      "suppressed": false,
+      "type": "Sketch",
+      "warning": null
+    },
+    {
+      "error": null,
+      "id": 37,
+      "ms": 42.1951,
+      "name": "M14_FrontDraftEquivalent",
+      "rolled_back": false,
+      "suppressed": false,
+      "type": "ExtrudeFeature",
+      "warning": null
+    },
+    {
+      "error": null,
+      "id": 38,
+      "ms": 0.1795,
+      "name": "M15_SeatNotches",
+      "rolled_back": false,
+      "suppressed": false,
+      "type": "Sketch",
+      "warning": null
+    },
+    {
+      "error": null,
+      "id": 39,
+      "ms": 46.7031,
+      "name": "M15_RearSeatNotches",
+      "rolled_back": false,
+      "suppressed": false,
+      "type": "ExtrudeFeature",
+      "warning": null
+    },
+    {
+      "error": null,
+      "id": 40,
+      "ms": 0.0832,
+      "name": "M16_FrontDovetailProfile",
+      "rolled_back": false,
+      "suppressed": false,
+      "type": "Sketch",
+      "warning": null
+    },
+    {
+      "error": null,
+      "id": 41,
+      "ms": 54.9592,
+      "name": "M16_FrontDovetail",
+      "rolled_back": false,
+      "suppressed": false,
+      "type": "ExtrudeFeature",
+      "warning": null
+    },
+    {
+      "error": null,
+      "id": 42,
+      "ms": 1.9126,
+      "name": "M17_SeatSideProfile",
+      "rolled_back": false,
+      "suppressed": false,
+      "type": "Sketch",
+      "warning": null
+    },
+    {
+      "error": null,
+      "id": 43,
+      "ms": 340.3894,
+      "name": "M17_SeatSideCut",
+      "rolled_back": false,
+      "suppressed": false,
+      "type": "ExtrudeFeature",
+      "warning": null
+    },
+    {
+      "error": null,
+      "id": 44,
+      "ms": 0.0562,
+      "name": "M17_SeatSideReflectedProfile",
+      "rolled_back": false,
+      "suppressed": false,
+      "type": "Sketch",
+      "warning": null
+    },
+    {
+      "error": null,
+      "id": 45,
+      "ms": 175.7493,
+      "name": "M17_SeatSideCutMirrored",
+      "rolled_back": false,
+      "suppressed": false,
+      "type": "ExtrudeFeature",
+      "warning": null
+    },
+    {
+      "error": null,
+      "id": 46,
+      "ms": 0.1003,
+      "name": "M18_RearCutProfiles",
+      "rolled_back": false,
+      "suppressed": false,
+      "type": "Sketch",
+      "warning": null
+    },
+    {
+      "error": null,
+      "id": 47,
+      "ms": 63.819100000000006,
+      "name": "M18_RearCut",
+      "rolled_back": false,
+      "suppressed": false,
+      "type": "ExtrudeFeature",
+      "warning": null
+    },
+    {
+      "error": null,
+      "id": 48,
+      "ms": 0.0687,
+      "name": "M18_RearCutReflectedProfiles",
+      "rolled_back": false,
+      "suppressed": false,
+      "type": "Sketch",
+      "warning": null
+    },
+    {
+      "error": null,
+      "id": 49,
+      "ms": 65.5355,
+      "name": "M18_RearCutMirrored",
+      "rolled_back": false,
+      "suppressed": false,
+      "type": "ExtrudeFeature",
+      "warning": null
+    },
+    {
+      "error": null,
+      "id": 50,
+      "ms": 0.11950000000000001,
+      "name": "M19_BodyCavityProfile",
+      "rolled_back": false,
+      "suppressed": false,
+      "type": "Sketch",
+      "warning": null
+    },
+    {
+      "error": null,
+      "id": 51,
+      "ms": 80.9097,
+      "name": "M19_DraftedUndersideCavity",
+      "rolled_back": false,
+      "suppressed": false,
+      "type": "ExtrudeFeature",
+      "warning": null
+    },
+    {
+      "error": null,
+      "id": 52,
+      "ms": 0.1148,
+      "name": "M20_AirTagProfile",
+      "rolled_back": false,
+      "suppressed": false,
+      "type": "Sketch",
+      "warning": null
+    },
+    {
+      "error": null,
+      "id": 53,
+      "ms": 73.15299999999999,
+      "name": "M20_AirTagPocket",
+      "rolled_back": false,
+      "suppressed": false,
+      "type": "ExtrudeFeature",
+      "warning": null
+    }
+  ],
+  "total": {
+    "area_mm2": 206865.2402713985,
+    "edges": 477,
+    "faces": 165,
+    "mass_g": 1970.4430730216013,
+    "open_bodies_skipped": 0,
+    "vertices": 318,
+    "volume_mm3": 1527475.250404342
+  }
+}

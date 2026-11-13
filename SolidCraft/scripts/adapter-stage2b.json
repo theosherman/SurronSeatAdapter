@@ -1,0 +1,372 @@
+{
+  "commands": [
+    {
+      "command": "solid.remove",
+      "params": {
+        "bodies": [
+          "AdapterBody"
+        ]
+      }
+    },
+    {
+      "command": "body.rename",
+      "params": {
+        "body": "AdapterBody (1)",
+        "name": "AdapterBodyMaster"
+      }
+    },
+    {
+      "command": "sketch.create",
+      "params": {
+        "name": "M07_BoltProfiles",
+        "plane": {
+          "origin": [
+            0,
+            8.627219333715026,
+            42.40413776674599
+          ],
+          "x_dir": [
+            -1,
+            0,
+            0
+          ],
+          "y_dir": [
+            0,
+            -0.9799247046208692,
+            0.1993679344170023
+          ]
+        }
+      }
+    },
+    {
+      "command": "sketch.circle.center",
+      "params": {
+        "center": [
+          14.500000000000002,
+          193.9428441873774
+        ],
+        "radius": 3.500000000000001
+      }
+    },
+    {
+      "command": "sketch.circle.center",
+      "params": {
+        "center": [
+          -14.500000000000002,
+          193.9428441873774
+        ],
+        "radius": 3.500000000000001
+      }
+    },
+    {
+      "command": "sketch.circle.center",
+      "params": {
+        "center": [
+          -23.000000000000014,
+          -64.05715581262261
+        ],
+        "radius": 3.500000000000001
+      }
+    },
+    {
+      "command": "sketch.circle.center",
+      "params": {
+        "center": [
+          23.000000000000014,
+          -64.05715581262261
+        ],
+        "radius": 3.500000000000001
+      }
+    },
+    {
+      "command": "sketch.constraint.fix",
+      "params": {
+        "entities": [
+          "c1",
+          "c2",
+          "c3",
+          "c4"
+        ],
+        "fixed": true
+      }
+    },
+    {
+      "command": "sketch.finish",
+      "params": {}
+    },
+    {
+      "command": "solid.extrude",
+      "params": {
+        "sketch": "M07_BoltProfiles",
+        "distance": 1000,
+        "direction": "symmetric",
+        "operation": "cut",
+        "targets": [
+          "AdapterBodyMaster"
+        ],
+        "name": "M07_BoltThroughHoles"
+      }
+    },
+    {
+      "command": "sketch.create",
+      "params": {
+        "name": "M08_RearAccessProfiles",
+        "plane": {
+          "origin": [
+            0,
+            8.627219333715026,
+            42.40413776674599
+          ],
+          "x_dir": [
+            -1,
+            0,
+            0
+          ],
+          "y_dir": [
+            0,
+            -0.9799247046208692,
+            0.1993679344170023
+          ]
+        }
+      }
+    },
+    {
+      "command": "sketch.circle.center",
+      "params": {
+        "center": [
+          14.500000000000002,
+          193.9428441873774
+        ],
+        "radius": 8.5
+      }
+    },
+    {
+      "command": "sketch.circle.center",
+      "params": {
+        "center": [
+          -14.500000000000002,
+          193.9428441873774
+        ],
+        "radius": 8.500000000000002
+      }
+    },
+    {
+      "command": "sketch.constraint.fix",
+      "params": {
+        "entities": [
+          "c1",
+          "c2"
+        ],
+        "fixed": true
+      }
+    },
+    {
+      "command": "sketch.finish",
+      "params": {}
+    },
+    {
+      "command": "solid.extrude",
+      "params": {
+        "sketch": "M08_RearAccessProfiles",
+        "distance": 500,
+        "direction": "negative",
+        "start_offset": -3,
+        "operation": "cut",
+        "targets": [
+          "AdapterBodyMaster"
+        ],
+        "name": "M08_RearAccessCavities"
+      }
+    },
+    {
+      "command": "sketch.create",
+      "params": {
+        "name": "M09_FrontAccessProfile0",
+        "plane": {
+          "origin": [
+            0,
+            8.627219333715026,
+            42.40413776674599
+          ],
+          "x_dir": [
+            -1,
+            0,
+            0
+          ],
+          "y_dir": [
+            0,
+            -0.9799247046208692,
+            0.1993679344170023
+          ]
+        }
+      }
+    },
+    {
+      "command": "sketch.circle.center",
+      "params": {
+        "center": [
+          -23,
+          -64.05715581262263
+        ],
+        "radius": 8.5
+      }
+    },
+    {
+      "command": "sketch.constraint.fix",
+      "params": {
+        "entities": [
+          "c1"
+        ],
+        "fixed": true
+      }
+    },
+    {
+      "command": "sketch.finish",
+      "params": {}
+    },
+    {
+      "command": "solid.extrude",
+      "params": {
+        "sketch": "M09_FrontAccessProfile0",
+        "distance": 400,
+        "direction": "symmetric",
+        "operation": "new",
+        "name": "M09_AccessTool0",
+        "body_name": "FrontAccessTool0"
+      }
+    },
+    {
+      "command": "solid.split_body",
+      "params": {
+        "body": "FrontAccessTool0",
+        "plane": {
+          "origin": [
+            23,
+            73.863406326476,
+            41.74904474222621
+          ],
+          "normal": [
+            0,
+            0.26418906967888117,
+            0.964470909598733
+          ]
+        },
+        "name": "M09_CeilingPlane0"
+      }
+    },
+    {
+      "command": "solid.remove",
+      "params": {
+        "bodies": [
+          "FrontAccessTool0"
+        ]
+      }
+    },
+    {
+      "command": "solid.combine",
+      "params": {
+        "target": "AdapterBodyMaster",
+        "tools": [
+          "FrontAccessTool0 (1)"
+        ],
+        "operation": "cut",
+        "name": "M09_FrontAccessCavity0"
+      }
+    },
+    {
+      "command": "sketch.create",
+      "params": {
+        "name": "M09_FrontAccessProfile1",
+        "plane": {
+          "origin": [
+            0,
+            8.627219333715026,
+            42.40413776674599
+          ],
+          "x_dir": [
+            -1,
+            0,
+            0
+          ],
+          "y_dir": [
+            0,
+            -0.9799247046208692,
+            0.1993679344170023
+          ]
+        }
+      }
+    },
+    {
+      "command": "sketch.circle.center",
+      "params": {
+        "center": [
+          23,
+          -64.05715581262263
+        ],
+        "radius": 8.5
+      }
+    },
+    {
+      "command": "sketch.constraint.fix",
+      "params": {
+        "entities": [
+          "c1"
+        ],
+        "fixed": true
+      }
+    },
+    {
+      "command": "sketch.finish",
+      "params": {}
+    },
+    {
+      "command": "solid.extrude",
+      "params": {
+        "sketch": "M09_FrontAccessProfile1",
+        "distance": 400,
+        "direction": "symmetric",
+        "operation": "new",
+        "name": "M09_AccessTool1",
+        "body_name": "FrontAccessTool1"
+      }
+    },
+    {
+      "command": "solid.split_body",
+      "params": {
+        "body": "FrontAccessTool1",
+        "plane": {
+          "origin": [
+            23,
+            73.863406326476,
+            41.74904474222621
+          ],
+          "normal": [
+            0,
+            0.26418906967888117,
+            0.964470909598733
+          ]
+        },
+        "name": "M09_CeilingPlane1"
+      }
+    },
+    {
+      "command": "solid.remove",
+      "params": {
+        "bodies": [
+          "FrontAccessTool1"
+        ]
+      }
+    },
+    {
+      "command": "solid.combine",
+      "params": {
+        "target": "AdapterBodyMaster",
+        "tools": [
+          "FrontAccessTool1 (1)"
+        ],
+        "operation": "cut",
+        "name": "M09_FrontAccessCavity1"
+      }
+    }
+  ]
+}

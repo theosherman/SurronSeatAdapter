@@ -1,0 +1,5652 @@
+{
+  "commands": [
+    {
+      "command": "parameters.add",
+      "params": {
+        "name": "airtagPocketDepth",
+        "expression": "8.5 mm",
+        "comment": "AirTag pocket depth; verified locally at 8.5 and 8.6 mm only."
+      }
+    },
+    {
+      "command": "sketch.create",
+      "params": {
+        "name": "M01_BottomProfile",
+        "plane": {
+          "origin": [
+            0,
+            0,
+            0
+          ],
+          "x_dir": [
+            1,
+            0,
+            0
+          ],
+          "y_dir": [
+            0,
+            1,
+            0
+          ]
+        }
+      }
+    },
+    {
+      "command": "sketch.line",
+      "params": {
+        "points": [
+          [
+            79.99999999999999,
+            87.40394523824223
+          ],
+          [
+            22,
+            37.129087685415726
+          ]
+        ],
+        "infer": false
+      }
+    },
+    {
+      "command": "sketch.line",
+      "params": {
+        "points": [
+          [
+            80,
+            193.15953208748562
+          ],
+          [
+            79.99999999999999,
+            87.40394523824223
+          ]
+        ],
+        "infer": false
+      }
+    },
+    {
+      "command": "sketch.line",
+      "params": {
+        "points": [
+          [
+            0,
+            193.15953208748562
+          ],
+          [
+            80,
+            193.15953208748562
+          ]
+        ],
+        "infer": false
+      }
+    },
+    {
+      "command": "sketch.line",
+      "params": {
+        "points": [
+          [
+            0,
+            159.1595320874856
+          ],
+          [
+            0,
+            193.15953208748562
+          ]
+        ],
+        "infer": false
+      }
+    },
+    {
+      "command": "sketch.line",
+      "params": {
+        "points": [
+          [
+            43.00000000000001,
+            159.1595320874856
+          ],
+          [
+            0,
+            159.1595320874856
+          ]
+        ],
+        "infer": false
+      }
+    },
+    {
+      "command": "sketch.line",
+      "params": {
+        "points": [
+          [
+            43.00000000000001,
+            99.15953208748559
+          ],
+          [
+            43.00000000000001,
+            159.1595320874856
+          ]
+        ],
+        "infer": false
+      }
+    },
+    {
+      "command": "sketch.line",
+      "params": {
+        "points": [
+          [
+            0,
+            99.15953208748559
+          ],
+          [
+            43.00000000000001,
+            99.15953208748559
+          ]
+        ],
+        "infer": false
+      }
+    },
+    {
+      "command": "sketch.line",
+      "params": {
+        "points": [
+          [
+            0,
+            0
+          ],
+          [
+            0,
+            99.15953208748559
+          ]
+        ],
+        "infer": false
+      }
+    },
+    {
+      "command": "sketch.line",
+      "params": {
+        "points": [
+          [
+            0,
+            -290
+          ],
+          [
+            0,
+            0
+          ]
+        ],
+        "infer": false
+      }
+    },
+    {
+      "command": "sketch.line",
+      "params": {
+        "points": [
+          [
+            45.00000000000007,
+            -290
+          ],
+          [
+            0,
+            -290
+          ]
+        ],
+        "infer": false
+      }
+    },
+    {
+      "command": "sketch.line",
+      "params": {
+        "points": [
+          [
+            77.93135238304326,
+            -140.41371084378332
+          ],
+          [
+            45.00000000000007,
+            -290
+          ]
+        ],
+        "infer": false
+      }
+    },
+    {
+      "command": "sketch.line",
+      "params": {
+        "points": [
+          [
+            77.93135238304326,
+            -111.68245530911433
+          ],
+          [
+            77.93135238304326,
+            -140.41371084378332
+          ]
+        ],
+        "infer": false
+      }
+    },
+    {
+      "command": "sketch.line",
+      "params": {
+        "points": [
+          [
+            64.68750101999127,
+            -100
+          ],
+          [
+            77.93135238304326,
+            -111.68245530911433
+          ]
+        ],
+        "infer": false
+      }
+    },
+    {
+      "command": "sketch.line",
+      "params": {
+        "points": [
+          [
+            64.68750101999127,
+            -79.96131101324718
+          ],
+          [
+            64.68750101999127,
+            -100
+          ]
+        ],
+        "infer": false
+      }
+    },
+    {
+      "command": "sketch.line",
+      "params": {
+        "points": [
+          [
+            22.000000000000036,
+            -18.114927052326223
+          ],
+          [
+            64.68750101999127,
+            -79.96131101324718
+          ]
+        ],
+        "infer": false
+      }
+    },
+    {
+      "command": "sketch.line",
+      "params": {
+        "points": [
+          [
+            22.000000000000025,
+            0
+          ],
+          [
+            22.000000000000036,
+            -18.114927052326223
+          ]
+        ],
+        "infer": false
+      }
+    },
+    {
+      "command": "sketch.line",
+      "params": {
+        "points": [
+          [
+            21.999999999999996,
+            37.12908768541572
+          ],
+          [
+            22.000000000000025,
+            0
+          ]
+        ],
+        "infer": false
+      }
+    },
+    {
+      "command": "sketch.constraint.fix",
+      "params": {
+        "entities": [
+          "l1",
+          "l2",
+          "l3",
+          "l4",
+          "l5",
+          "l6",
+          "l7",
+          "l8",
+          "l9",
+          "l10",
+          "l11",
+          "l12",
+          "l13",
+          "l14",
+          "l15",
+          "l16",
+          "l17"
+        ],
+        "fixed": true
+      }
+    },
+    {
+      "command": "sketch.finish",
+      "params": {}
+    },
+    {
+      "command": "solid.extrude",
+      "params": {
+        "sketch": "M01_BottomProfile",
+        "distance": 150,
+        "distance2": 50,
+        "operation": "new",
+        "name": "M01_BottomExtrusion",
+        "body_name": "AdapterBody"
+      }
+    },
+    {
+      "command": "solid.mirror",
+      "params": {
+        "bodies": [
+          "AdapterBody"
+        ],
+        "plane": "YZ",
+        "combine": true,
+        "name": "M02_BaseMirror"
+      }
+    },
+    {
+      "command": "sketch.create",
+      "params": {
+        "name": "M03_SideProfiles",
+        "plane": {
+          "origin": [
+            0,
+            0,
+            0
+          ],
+          "x_dir": [
+            0,
+            1,
+            0
+          ],
+          "y_dir": [
+            0,
+            0,
+            1
+          ]
+        }
+      }
+    },
+    {
+      "command": "sketch.line",
+      "params": {
+        "points": [
+          [
+            126.48199772131767,
+            30.4393022721392
+          ],
+          [
+            194.60716317888767,
+            38.56273643562253
+          ]
+        ],
+        "infer": false
+      }
+    },
+    {
+      "command": "sketch.line",
+      "params": {
+        "points": [
+          [
+            99.15953208748556,
+            27.181295494912238
+          ],
+          [
+            126.48199772131767,
+            30.4393022721392
+          ]
+        ],
+        "infer": false
+      }
+    },
+    {
+      "command": "sketch.line",
+      "params": {
+        "points": [
+          [
+            94.09303350067768,
+            39.31132758690323
+          ],
+          [
+            99.15953208748556,
+            27.181295494912238
+          ]
+        ],
+        "infer": false
+      }
+    },
+    {
+      "command": "sketch.line",
+      "params": {
+        "points": [
+          [
+            59.37208075512329,
+            48.82213409534295
+          ],
+          [
+            94.09303350067768,
+            39.31132758690323
+          ]
+        ],
+        "infer": false
+      }
+    },
+    {
+      "command": "sketch.line",
+      "params": {
+        "points": [
+          [
+            36.22547244003656,
+            36.78920971219333
+          ],
+          [
+            59.37208075512329,
+            48.82213409534295
+          ]
+        ],
+        "infer": false
+      }
+    },
+    {
+      "command": "sketch.line",
+      "params": {
+        "points": [
+          [
+            -190.90793679412548,
+            83.0000240967807
+          ],
+          [
+            36.225472440036555,
+            36.78920971219333
+          ]
+        ],
+        "infer": false
+      }
+    },
+    {
+      "command": "sketch.line",
+      "params": {
+        "points": [
+          [
+            -190.90793679412542,
+            88.3941373688807
+          ],
+          [
+            -190.90793679412548,
+            83.0000240967807
+          ]
+        ],
+        "infer": false
+      }
+    },
+    {
+      "command": "sketch.line",
+      "params": {
+        "points": [
+          [
+            -263.445982162752,
+            109.10684591063722
+          ],
+          [
+            -190.90793679412542,
+            88.3941373688807
+          ]
+        ],
+        "infer": false
+      }
+    },
+    {
+      "command": "sketch.line",
+      "params": {
+        "points": [
+          [
+            -263.445982162752,
+            99.10684591063722
+          ],
+          [
+            -263.445982162752,
+            109.10684591063722
+          ]
+        ],
+        "infer": false
+      }
+    },
+    {
+      "command": "sketch.line",
+      "params": {
+        "points": [
+          [
+            -149.9532667443008,
+            31.702071992564843
+          ],
+          [
+            -263.445982162752,
+            99.10684591063722
+          ]
+        ],
+        "infer": false
+      }
+    },
+    {
+      "command": "sketch.line",
+      "params": {
+        "points": [
+          [
+            -149.9532667443008,
+            31.702071992564843
+          ],
+          [
+            -186.53073858932768,
+            -29.88520679397077
+          ]
+        ],
+        "infer": false
+      }
+    },
+    {
+      "command": "sketch.line",
+      "params": {
+        "points": [
+          [
+            194.60716317890004,
+            15.562736435622536
+          ],
+          [
+            -186.5307385893277,
+            -29.88520679397077
+          ]
+        ],
+        "infer": false
+      }
+    },
+    {
+      "command": "sketch.line",
+      "params": {
+        "points": [
+          [
+            194.60716317888767,
+            38.56273643562253
+          ],
+          [
+            194.60716317890004,
+            15.562736435622536
+          ]
+        ],
+        "infer": false
+      }
+    },
+    {
+      "command": "sketch.line",
+      "params": {
+        "points": [
+          [
+            94.09303350067768,
+            39.31132758690323
+          ],
+          [
+            126.48199772131767,
+            30.4393022721392
+          ]
+        ],
+        "infer": false
+      }
+    },
+    {
+      "command": "sketch.constraint.fix",
+      "params": {
+        "entities": [
+          "l1",
+          "l2",
+          "l3",
+          "l4",
+          "l5",
+          "l6",
+          "l7",
+          "l8",
+          "l9",
+          "l10",
+          "l11",
+          "l12",
+          "l13",
+          "l14"
+        ],
+        "fixed": true
+      }
+    },
+    {
+      "command": "sketch.finish",
+      "params": {}
+    },
+    {
+      "command": "solid.extrude",
+      "params": {
+        "sketch": "M03_SideProfiles",
+        "distance": 120,
+        "operation": "intersect",
+        "targets": [
+          "AdapterBody"
+        ],
+        "name": "M03_SideIntersection"
+      }
+    },
+    {
+      "command": "sketch.create",
+      "params": {
+        "name": "M04_RearProfile",
+        "plane": {
+          "origin": [
+            0,
+            -263.445982162752,
+            0
+          ],
+          "x_dir": [
+            1,
+            0,
+            0
+          ],
+          "y_dir": [
+            0,
+            0,
+            -1
+          ]
+        }
+      }
+    },
+    {
+      "command": "sketch.line",
+      "params": {
+        "points": [
+          [
+            21.076188391963527,
+            -109.10684591063722
+          ],
+          [
+            21.689542263650967,
+            -109.10684591063722
+          ]
+        ],
+        "infer": false
+      }
+    },
+    {
+      "command": "sketch.line",
+      "params": {
+        "points": [
+          [
+            90,
+            25.580075473268877
+          ],
+          [
+            21.689542263650967,
+            -109.10684591063722
+          ]
+        ],
+        "infer": false
+      }
+    },
+    {
+      "command": "sketch.line",
+      "params": {
+        "points": [
+          [
+            90,
+            55.58007547326888
+          ],
+          [
+            90,
+            25.580075473268877
+          ]
+        ],
+        "infer": false
+      }
+    },
+    {
+      "command": "sketch.line",
+      "params": {
+        "points": [
+          [
+            0,
+            55.58007547326888
+          ],
+          [
+            90,
+            55.58007547326888
+          ]
+        ],
+        "infer": false
+      }
+    },
+    {
+      "command": "sketch.line",
+      "params": {
+        "points": [
+          [
+            0,
+            28.846061822369418
+          ],
+          [
+            0,
+            55.58007547326888
+          ]
+        ],
+        "infer": false
+      }
+    },
+    {
+      "command": "sketch.line",
+      "params": {
+        "points": [
+          [
+            0,
+            -109.10684591063722
+          ],
+          [
+            0,
+            28.846061822369418
+          ]
+        ],
+        "infer": false
+      }
+    },
+    {
+      "command": "sketch.line",
+      "params": {
+        "points": [
+          [
+            0,
+            -109.10684591063722
+          ],
+          [
+            21.076188391963527,
+            -109.10684591063722
+          ]
+        ],
+        "infer": false
+      }
+    },
+    {
+      "command": "sketch.constraint.fix",
+      "params": {
+        "entities": [
+          "l1",
+          "l2",
+          "l3",
+          "l4",
+          "l5",
+          "l6",
+          "l7"
+        ],
+        "fixed": true
+      }
+    },
+    {
+      "command": "sketch.finish",
+      "params": {}
+    },
+    {
+      "command": "solid.extrude",
+      "params": {
+        "sketch": "M04_RearProfile",
+        "distance": 490,
+        "operation": "intersect",
+        "targets": [
+          "AdapterBody"
+        ],
+        "name": "M04_RearIntersection"
+      }
+    },
+    {
+      "command": "solid.mirror",
+      "params": {
+        "bodies": [
+          "AdapterBody"
+        ],
+        "plane": "YZ",
+        "combine": true,
+        "name": "M05_ShellMirror"
+      }
+    },
+    {
+      "command": "sketch.edit",
+      "params": {
+        "sketch": "M01_BottomProfile"
+      }
+    },
+    {
+      "command": "sketch.constraint.fix",
+      "params": {
+        "entities": [
+          "l1",
+          "l2",
+          "l3",
+          "l4",
+          "l5",
+          "l6",
+          "l7",
+          "l8",
+          "l9",
+          "l10",
+          "l11",
+          "l12",
+          "l13",
+          "l14",
+          "l15",
+          "l16",
+          "l17"
+        ],
+        "fixed": true
+      }
+    },
+    {
+      "command": "sketch.finish",
+      "params": {}
+    },
+    {
+      "command": "sketch.edit",
+      "params": {
+        "sketch": "M03_SideProfiles"
+      }
+    },
+    {
+      "command": "sketch.constraint.fix",
+      "params": {
+        "entities": [
+          "l1",
+          "l2",
+          "l3",
+          "l4",
+          "l5",
+          "l6",
+          "l7",
+          "l8",
+          "l9",
+          "l10",
+          "l11",
+          "l12",
+          "l13",
+          "l14"
+        ],
+        "fixed": true
+      }
+    },
+    {
+      "command": "sketch.finish",
+      "params": {}
+    },
+    {
+      "command": "sketch.edit",
+      "params": {
+        "sketch": "M04_RearProfile"
+      }
+    },
+    {
+      "command": "sketch.constraint.fix",
+      "params": {
+        "entities": [
+          "l1",
+          "l2",
+          "l3",
+          "l4",
+          "l5",
+          "l6",
+          "l7"
+        ],
+        "fixed": true
+      }
+    },
+    {
+      "command": "sketch.finish",
+      "params": {}
+    },
+    {
+      "command": "sketch.create",
+      "params": {
+        "name": "M06_RearDovetailProfile",
+        "plane": {
+          "origin": [
+            0,
+            -124.77082228630329,
+            74.10298570063958
+          ],
+          "x_dir": [
+            1,
+            0,
+            0
+          ],
+          "y_dir": [
+            0,
+            0.5106422266520627,
+            0.8597932986246306
+          ]
+        }
+      }
+    },
+    {
+      "command": "sketch.line",
+      "params": {
+        "points": [
+          [
+            -14.618802153516901,
+            -57.31524097233774
+          ],
+          [
+            -10,
+            -49.31524097233765
+          ]
+        ],
+        "infer": false
+      }
+    },
+    {
+      "command": "sketch.line",
+      "params": {
+        "points": [
+          [
+            14.618802153517008,
+            -57.315240972337726
+          ],
+          [
+            -14.618802153516901,
+            -57.31524097233774
+          ]
+        ],
+        "infer": false
+      }
+    },
+    {
+      "command": "sketch.line",
+      "params": {
+        "points": [
+          [
+            10,
+            -49.31524097233765
+          ],
+          [
+            14.618802153517008,
+            -57.315240972337726
+          ]
+        ],
+        "infer": false
+      }
+    },
+    {
+      "command": "sketch.line",
+      "params": {
+        "points": [
+          [
+            10,
+            -49.31524097233765
+          ],
+          [
+            0,
+            -49.31524097233765
+          ]
+        ],
+        "infer": false
+      }
+    },
+    {
+      "command": "sketch.line",
+      "params": {
+        "points": [
+          [
+            0,
+            -49.31524097233765
+          ],
+          [
+            -10,
+            -49.31524097233765
+          ]
+        ],
+        "infer": false
+      }
+    },
+    {
+      "command": "sketch.constraint.fix",
+      "params": {
+        "entities": [
+          "l1",
+          "l2",
+          "l3",
+          "l4",
+          "l5"
+        ],
+        "fixed": true
+      }
+    },
+    {
+      "command": "sketch.finish",
+      "params": {}
+    },
+    {
+      "command": "solid.extrude",
+      "params": {
+        "sketch": "M06_RearDovetailProfile",
+        "distance": 300,
+        "operation": "join",
+        "targets": [
+          "AdapterBody"
+        ],
+        "name": "M06_RearDovetail"
+      }
+    },
+    {
+      "command": "solid.split_body",
+      "params": {
+        "body": "AdapterBody",
+        "plane": {
+          "origin": [
+            0,
+            -263.445982162752,
+            109.10684591063722
+          ],
+          "normal": [
+            0,
+            -1,
+            0
+          ]
+        },
+        "name": "M06_RearDovetailEndPlane"
+      }
+    },
+    {
+      "command": "solid.remove",
+      "params": {
+        "bodies": [
+          "AdapterBody"
+        ]
+      }
+    },
+    {
+      "command": "body.rename",
+      "params": {
+        "body": "AdapterBody (1)",
+        "name": "AdapterBodyMaster"
+      }
+    },
+    {
+      "command": "sketch.create",
+      "params": {
+        "name": "M07_BoltProfiles",
+        "plane": {
+          "origin": [
+            0,
+            8.627219333715026,
+            42.40413776674599
+          ],
+          "x_dir": [
+            -1,
+            0,
+            0
+          ],
+          "y_dir": [
+            0,
+            -0.9799247046208692,
+            0.1993679344170023
+          ]
+        }
+      }
+    },
+    {
+      "command": "sketch.circle.center",
+      "params": {
+        "center": [
+          14.500000000000002,
+          193.9428441873774
+        ],
+        "radius": 3.500000000000001
+      }
+    },
+    {
+      "command": "sketch.circle.center",
+      "params": {
+        "center": [
+          -14.500000000000002,
+          193.9428441873774
+        ],
+        "radius": 3.500000000000001
+      }
+    },
+    {
+      "command": "sketch.circle.center",
+      "params": {
+        "center": [
+          -23.000000000000014,
+          -64.05715581262261
+        ],
+        "radius": 3.500000000000001
+      }
+    },
+    {
+      "command": "sketch.circle.center",
+      "params": {
+        "center": [
+          23.000000000000014,
+          -64.05715581262261
+        ],
+        "radius": 3.500000000000001
+      }
+    },
+    {
+      "command": "sketch.constraint.fix",
+      "params": {
+        "entities": [
+          "c1",
+          "c2",
+          "c3",
+          "c4"
+        ],
+        "fixed": true
+      }
+    },
+    {
+      "command": "sketch.finish",
+      "params": {}
+    },
+    {
+      "command": "solid.extrude",
+      "params": {
+        "sketch": "M07_BoltProfiles",
+        "distance": 1000,
+        "direction": "symmetric",
+        "operation": "cut",
+        "targets": [
+          "AdapterBodyMaster"
+        ],
+        "name": "M07_BoltThroughHoles"
+      }
+    },
+    {
+      "command": "sketch.create",
+      "params": {
+        "name": "M08_RearAccessProfiles",
+        "plane": {
+          "origin": [
+            0,
+            8.627219333715026,
+            42.40413776674599
+          ],
+          "x_dir": [
+            -1,
+            0,
+            0
+          ],
+          "y_dir": [
+            0,
+            -0.9799247046208692,
+            0.1993679344170023
+          ]
+        }
+      }
+    },
+    {
+      "command": "sketch.circle.center",
+      "params": {
+        "center": [
+          14.500000000000002,
+          193.9428441873774
+        ],
+        "radius": 8.5
+      }
+    },
+    {
+      "command": "sketch.circle.center",
+      "params": {
+        "center": [
+          -14.500000000000002,
+          193.9428441873774
+        ],
+        "radius": 8.500000000000002
+      }
+    },
+    {
+      "command": "sketch.constraint.fix",
+      "params": {
+        "entities": [
+          "c1",
+          "c2"
+        ],
+        "fixed": true
+      }
+    },
+    {
+      "command": "sketch.finish",
+      "params": {}
+    },
+    {
+      "command": "solid.extrude",
+      "params": {
+        "sketch": "M08_RearAccessProfiles",
+        "distance": 500,
+        "direction": "negative",
+        "start_offset": -3,
+        "operation": "cut",
+        "targets": [
+          "AdapterBodyMaster"
+        ],
+        "name": "M08_RearAccessCavities"
+      }
+    },
+    {
+      "command": "sketch.create",
+      "params": {
+        "name": "M09_FrontAccessProfile0",
+        "plane": {
+          "origin": [
+            0,
+            8.627219333715026,
+            42.40413776674599
+          ],
+          "x_dir": [
+            -1,
+            0,
+            0
+          ],
+          "y_dir": [
+            0,
+            -0.9799247046208692,
+            0.1993679344170023
+          ]
+        }
+      }
+    },
+    {
+      "command": "sketch.circle.center",
+      "params": {
+        "center": [
+          -23,
+          -64.05715581262263
+        ],
+        "radius": 8.5
+      }
+    },
+    {
+      "command": "sketch.constraint.fix",
+      "params": {
+        "entities": [
+          "c1"
+        ],
+        "fixed": true
+      }
+    },
+    {
+      "command": "sketch.finish",
+      "params": {}
+    },
+    {
+      "command": "solid.extrude",
+      "params": {
+        "sketch": "M09_FrontAccessProfile0",
+        "distance": 400,
+        "direction": "symmetric",
+        "operation": "new",
+        "name": "M09_AccessTool0",
+        "body_name": "FrontAccessTool0"
+      }
+    },
+    {
+      "command": "solid.split_body",
+      "params": {
+        "body": "FrontAccessTool0",
+        "plane": {
+          "origin": [
+            23,
+            73.863406326476,
+            41.74904474222621
+          ],
+          "normal": [
+            0,
+            0.26418906967888117,
+            0.964470909598733
+          ]
+        },
+        "name": "M09_CeilingPlane0"
+      }
+    },
+    {
+      "command": "solid.remove",
+      "params": {
+        "bodies": [
+          "FrontAccessTool0"
+        ]
+      }
+    },
+    {
+      "command": "solid.combine",
+      "params": {
+        "target": "AdapterBodyMaster",
+        "tools": [
+          "FrontAccessTool0 (1)"
+        ],
+        "operation": "cut",
+        "name": "M09_FrontAccessCavity0"
+      }
+    },
+    {
+      "command": "sketch.create",
+      "params": {
+        "name": "M09_FrontAccessProfile1",
+        "plane": {
+          "origin": [
+            0,
+            8.627219333715026,
+            42.40413776674599
+          ],
+          "x_dir": [
+            -1,
+            0,
+            0
+          ],
+          "y_dir": [
+            0,
+            -0.9799247046208692,
+            0.1993679344170023
+          ]
+        }
+      }
+    },
+    {
+      "command": "sketch.circle.center",
+      "params": {
+        "center": [
+          23,
+          -64.05715581262263
+        ],
+        "radius": 8.5
+      }
+    },
+    {
+      "command": "sketch.constraint.fix",
+      "params": {
+        "entities": [
+          "c1"
+        ],
+        "fixed": true
+      }
+    },
+    {
+      "command": "sketch.finish",
+      "params": {}
+    },
+    {
+      "command": "solid.extrude",
+      "params": {
+        "sketch": "M09_FrontAccessProfile1",
+        "distance": 400,
+        "direction": "symmetric",
+        "operation": "new",
+        "name": "M09_AccessTool1",
+        "body_name": "FrontAccessTool1"
+      }
+    },
+    {
+      "command": "solid.split_body",
+      "params": {
+        "body": "FrontAccessTool1",
+        "plane": {
+          "origin": [
+            23,
+            73.863406326476,
+            41.74904474222621
+          ],
+          "normal": [
+            0,
+            0.26418906967888117,
+            0.964470909598733
+          ]
+        },
+        "name": "M09_CeilingPlane1"
+      }
+    },
+    {
+      "command": "solid.remove",
+      "params": {
+        "bodies": [
+          "FrontAccessTool1"
+        ]
+      }
+    },
+    {
+      "command": "solid.combine",
+      "params": {
+        "target": "AdapterBodyMaster",
+        "tools": [
+          "FrontAccessTool1 (1)"
+        ],
+        "operation": "cut",
+        "name": "M09_FrontAccessCavity1"
+      }
+    },
+    {
+      "command": "sketch.create",
+      "params": {
+        "name": "M10_HangerProfile",
+        "plane": {
+          "origin": [
+            0,
+            8.627219333715024,
+            42.404137766745976
+          ],
+          "x_dir": [
+            -1,
+            0,
+            0
+          ],
+          "y_dir": [
+            0,
+            -0.9799247046208692,
+            0.1993679344170023
+          ]
+        }
+      }
+    },
+    {
+      "command": "sketch.line",
+      "params": {
+        "points": [
+          [
+            -35.379898392003156,
+            47.07216028654833
+          ],
+          [
+            -51.00000000000004,
+            37.361518630788105
+          ]
+        ],
+        "infer": false
+      }
+    },
+    {
+      "command": "sketch.line",
+      "params": {
+        "points": [
+          [
+            -51.00000000000004,
+            37.361518630788105
+          ],
+          [
+            -51.00000000000004,
+            11.995622863126325
+          ]
+        ],
+        "infer": false
+      }
+    },
+    {
+      "command": "sketch.line",
+      "params": {
+        "points": [
+          [
+            -51.00000000000004,
+            11.995622863126325
+          ],
+          [
+            -22.00000000000002,
+            -0.43682270497073183
+          ]
+        ],
+        "infer": false
+      }
+    },
+    {
+      "command": "sketch.line",
+      "params": {
+        "points": [
+          [
+            -22.000000000000036,
+            27.29000122145888
+          ],
+          [
+            -22.00000000000002,
+            -0.43682270497073183
+          ]
+        ],
+        "infer": false
+      }
+    },
+    {
+      "command": "sketch.line",
+      "params": {
+        "points": [
+          [
+            -35.379898392003156,
+            47.07216028654833
+          ],
+          [
+            -22.000000000000036,
+            27.29000122145888
+          ]
+        ],
+        "infer": false
+      }
+    },
+    {
+      "command": "sketch.constraint.fix",
+      "params": {
+        "entities": [
+          "l1",
+          "l2",
+          "l3",
+          "l4",
+          "l5"
+        ],
+        "fixed": true
+      }
+    },
+    {
+      "command": "sketch.finish",
+      "params": {}
+    },
+    {
+      "command": "solid.extrude",
+      "params": {
+        "sketch": "M10_HangerProfile",
+        "distance": 1,
+        "direction": "negative",
+        "operation": "new",
+        "body_name": "SeatHanger",
+        "name": "M10_SeatHanger"
+      }
+    },
+    {
+      "command": "solid.draft",
+      "params": {
+        "body": "SeatHanger",
+        "faces": [
+          [
+            36.50000000000003,
+            -14.421708302962957,
+            46.07300852436447
+          ]
+        ],
+        "neutral": {
+          "origin": [
+            51.00000000000004,
+            -3.127587857177385,
+            44.795680319012845
+          ],
+          "normal": [
+            1,
+            0,
+            0
+          ]
+        },
+        "angle": "45 deg",
+        "name": "M11_HangerDraft"
+      }
+    },
+    {
+      "command": "solid.mirror",
+      "params": {
+        "bodies": [
+          "SeatHanger"
+        ],
+        "plane": "YZ",
+        "name": "M11_HangerMirror"
+      }
+    },
+    {
+      "command": "solid.combine",
+      "params": {
+        "target": "AdapterBodyMaster",
+        "tools": [
+          "SeatHanger",
+          "SeatHanger (2)"
+        ],
+        "operation": "join",
+        "name": "M11_JoinHangers"
+      }
+    },
+    {
+      "command": "sketch.create",
+      "params": {
+        "name": "M12_HandleProfile",
+        "plane": {
+          "origin": [
+            0,
+            0,
+            0
+          ],
+          "x_dir": [
+            0,
+            1,
+            0
+          ],
+          "y_dir": [
+            0,
+            0,
+            1
+          ]
+        }
+      }
+    },
+    {
+      "command": "sketch.arc.three_point",
+      "params": {
+        "start": [
+          194.97920809939498,
+          1.9323962994990984
+        ],
+        "end": [
+          204.77927008460935,
+          7.431934596771352
+        ],
+        "through": [
+          202.62900824063826,
+          -0.21786554447195905
+        ]
+      }
+    },
+    {
+      "command": "sketch.arc.three_point",
+      "params": {
+        "start": [
+          232.48416146937427,
+          10.735542883943445
+        ],
+        "end": [
+          204.77927008460935,
+          7.4319345967713595
+        ],
+        "through": [
+          216.15961617690624,
+          29.815388790587612
+        ]
+      }
+    },
+    {
+      "command": "sketch.arc.three_point",
+      "params": {
+        "start": [
+          232.48416146937427,
+          10.735542883943445
+        ],
+        "end": [
+          243.30261257856432,
+          7.694613421546354
+        ],
+        "through": [
+          236.37292229277077,
+          3.8058525981498748
+        ]
+      }
+    },
+    {
+      "command": "sketch.arc.three_point",
+      "params": {
+        "start": [
+          243.30261257856426,
+          7.69461342154637
+        ],
+        "end": [
+          214.82902641822054,
+          40.974047638822455
+        ],
+        "through": [
+          237.95993364223057,
+          31.944055014714298
+        ]
+      }
+    },
+    {
+      "command": "sketch.arc.three_point",
+      "params": {
+        "start": [
+          214.82902641822054,
+          40.97404763882245
+        ],
+        "end": [
+          193.15953208748553,
+          23.722780383110923
+        ],
+        "through": [
+          201.54341984318845,
+          35.42696373696279
+        ]
+      }
+    },
+    {
+      "command": "sketch.arc.three_point",
+      "params": {
+        "start": [
+          193.15953208748556,
+          23.722780383110923
+        ],
+        "end": [
+          194.97920809939498,
+          1.9323962994991128
+        ],
+        "through": [
+          191.70116270859904,
+          12.629823577137172
+        ]
+      }
+    },
+    {
+      "command": "sketch.line",
+      "params": {
+        "points": [
+          [
+            193.15953208748562,
+            38.39011687888413
+          ],
+          [
+            214.82902641822054,
+            40.97404763882245
+          ]
+        ],
+        "infer": false
+      }
+    },
+    {
+      "command": "sketch.line",
+      "params": {
+        "points": [
+          [
+            193.15953208748562,
+            38.28705841439343
+          ],
+          [
+            193.15953208748562,
+            38.39011687888413
+          ]
+        ],
+        "infer": false
+      }
+    },
+    {
+      "command": "sketch.line",
+      "params": {
+        "points": [
+          [
+            193.15953208748556,
+            23.722780383110923
+          ],
+          [
+            193.15953208748562,
+            38.28705841439343
+          ]
+        ],
+        "infer": false
+      }
+    },
+    {
+      "command": "sketch.constraint.fix",
+      "params": {
+        "entities": [
+          "a1",
+          "a2",
+          "a3",
+          "a4",
+          "a5",
+          "a6",
+          "l1",
+          "l2",
+          "l3"
+        ],
+        "fixed": true
+      }
+    },
+    {
+      "command": "sketch.finish",
+      "params": {}
+    },
+    {
+      "command": "solid.extrude",
+      "params": {
+        "sketch": "M12_HandleProfile",
+        "distance": 98,
+        "direction": "symmetric",
+        "operation": "join",
+        "targets": [
+          "AdapterBodyMaster"
+        ],
+        "name": "M12_HandleMount"
+      }
+    },
+    {
+      "command": "sketch.create",
+      "params": {
+        "name": "M13_FrontCutProfile",
+        "plane": {
+          "origin": [
+            0,
+            0,
+            0
+          ],
+          "x_dir": [
+            1,
+            0,
+            0
+          ],
+          "y_dir": [
+            0,
+            1,
+            0
+          ]
+        }
+      }
+    },
+    {
+      "command": "sketch.line",
+      "params": {
+        "points": [
+          [
+            80,
+            193.15953208748562
+          ],
+          [
+            49,
+            193.15953208748562
+          ]
+        ],
+        "infer": false
+      }
+    },
+    {
+      "command": "sketch.line",
+      "params": {
+        "points": [
+          [
+            49,
+            193.15953208748562
+          ],
+          [
+            80,
+            163.31122810793568
+          ]
+        ],
+        "infer": false
+      }
+    },
+    {
+      "command": "sketch.line",
+      "params": {
+        "points": [
+          [
+            80,
+            163.31122810793568
+          ],
+          [
+            80,
+            193.15953208748562
+          ]
+        ],
+        "infer": false
+      }
+    },
+    {
+      "command": "sketch.line",
+      "params": {
+        "points": [
+          [
+            -80,
+            163.31122810793568
+          ],
+          [
+            -80,
+            193.15953208748562
+          ]
+        ],
+        "infer": false
+      }
+    },
+    {
+      "command": "sketch.line",
+      "params": {
+        "points": [
+          [
+            -49,
+            193.15953208748562
+          ],
+          [
+            -80,
+            163.31122810793568
+          ]
+        ],
+        "infer": false
+      }
+    },
+    {
+      "command": "sketch.line",
+      "params": {
+        "points": [
+          [
+            -80,
+            193.15953208748562
+          ],
+          [
+            -49,
+            193.15953208748562
+          ]
+        ],
+        "infer": false
+      }
+    },
+    {
+      "command": "sketch.constraint.fix",
+      "params": {
+        "entities": [
+          "l1",
+          "l2",
+          "l3",
+          "l4",
+          "l5",
+          "l6"
+        ],
+        "fixed": true
+      }
+    },
+    {
+      "command": "sketch.finish",
+      "params": {}
+    },
+    {
+      "command": "solid.extrude",
+      "params": {
+        "sketch": "M13_FrontCutProfile",
+        "through_all": true,
+        "operation": "cut",
+        "targets": [
+          "AdapterBodyMaster"
+        ],
+        "name": "M13_FrontCut"
+      }
+    },
+    {
+      "command": "sketch.create",
+      "params": {
+        "name": "M14_FrontDraftWedgeProfile",
+        "plane": {
+          "origin": [
+            -43,
+            0,
+            0
+          ],
+          "x_dir": [
+            0,
+            1,
+            0
+          ],
+          "y_dir": [
+            0,
+            0,
+            1
+          ]
+        }
+      }
+    },
+    {
+      "command": "sketch.line",
+      "params": {
+        "points": [
+          [
+            159.1595320874856,
+            11.33586233574399
+          ],
+          [
+            159.1595320874856,
+            34.33586233574536
+          ],
+          [
+            176.73146895659514,
+            36.4311889499611
+          ]
+        ],
+        "closed": true,
+        "infer": false
+      }
+    },
+    {
+      "command": "sketch.constraint.fix",
+      "params": {
+        "entities": [
+          "l1",
+          "l2",
+          "l3"
+        ],
+        "fixed": true
+      }
+    },
+    {
+      "command": "sketch.finish",
+      "params": {}
+    },
+    {
+      "command": "solid.extrude",
+      "params": {
+        "sketch": "M14_FrontDraftWedgeProfile",
+        "distance": 86,
+        "operation": "cut",
+        "targets": [
+          "AdapterBodyMaster"
+        ],
+        "name": "M14_FrontDraftEquivalent"
+      }
+    },
+    {
+      "command": "sketch.create",
+      "params": {
+        "name": "M15_SeatNotches",
+        "plane": {
+          "origin": [
+            0,
+            8.945337453041247,
+            31.327496000740478
+          ],
+          "x_dir": [
+            -0.9999999999999999,
+            0,
+            0
+          ],
+          "y_dir": [
+            0,
+            -0.9615675208845653,
+            0.27456857573275
+          ]
+        }
+      }
+    },
+    {
+      "command": "sketch.line",
+      "params": {
+        "points": [
+          [
+            -30.999539027528403,
+            264.7089693376844
+          ],
+          [
+            -24.275440629112424,
+            264.7089693376844
+          ]
+        ],
+        "infer": false
+      }
+    },
+    {
+      "command": "sketch.line",
+      "params": {
+        "points": [
+          [
+            -30.999539027528403,
+            264.7089693376844
+          ],
+          [
+            -36.35629606105309,
+            244.70896933768438
+          ]
+        ],
+        "infer": false
+      }
+    },
+    {
+      "command": "sketch.line",
+      "params": {
+        "points": [
+          [
+            -27.060552189404234,
+            244.70896933768438
+          ],
+          [
+            -36.35629606105309,
+            244.70896933768438
+          ]
+        ],
+        "infer": false
+      }
+    },
+    {
+      "command": "sketch.line",
+      "params": {
+        "points": [
+          [
+            -24.275440629112424,
+            264.7089693376844
+          ],
+          [
+            -27.060552189404234,
+            244.70896933768438
+          ]
+        ],
+        "infer": false
+      }
+    },
+    {
+      "command": "sketch.line",
+      "params": {
+        "points": [
+          [
+            -36.35629606105308,
+            264.7089693376844
+          ],
+          [
+            -30.999539027528403,
+            264.7089693376844
+          ]
+        ],
+        "infer": false
+      }
+    },
+    {
+      "command": "sketch.line",
+      "params": {
+        "points": [
+          [
+            -36.35629606105309,
+            244.70896933768438
+          ],
+          [
+            -36.35629606105308,
+            264.7089693376844
+          ]
+        ],
+        "infer": false
+      }
+    },
+    {
+      "command": "sketch.line",
+      "params": {
+        "points": [
+          [
+            -13.5,
+            244.70896933768438
+          ],
+          [
+            -27.060552189404234,
+            244.70896933768438
+          ]
+        ],
+        "infer": false
+      }
+    },
+    {
+      "command": "sketch.line",
+      "params": {
+        "points": [
+          [
+            -13.5,
+            264.7089693376844
+          ],
+          [
+            -13.5,
+            244.70896933768438
+          ]
+        ],
+        "infer": false
+      }
+    },
+    {
+      "command": "sketch.line",
+      "params": {
+        "points": [
+          [
+            -24.275440629112424,
+            264.7089693376844
+          ],
+          [
+            -13.5,
+            264.7089693376844
+          ]
+        ],
+        "infer": false
+      }
+    },
+    {
+      "command": "sketch.line",
+      "params": {
+        "points": [
+          [
+            27.060552189404238,
+            244.70896933768438
+          ],
+          [
+            24.275440629112424,
+            264.7089693376844
+          ]
+        ],
+        "infer": false
+      }
+    },
+    {
+      "command": "sketch.line",
+      "params": {
+        "points": [
+          [
+            27.060552189404238,
+            244.70896933768438
+          ],
+          [
+            36.356296061053094,
+            244.70896933768438
+          ]
+        ],
+        "infer": false
+      }
+    },
+    {
+      "command": "sketch.line",
+      "params": {
+        "points": [
+          [
+            36.356296061053094,
+            244.70896933768438
+          ],
+          [
+            36.35629606105308,
+            264.7089693376844
+          ]
+        ],
+        "infer": false
+      }
+    },
+    {
+      "command": "sketch.line",
+      "params": {
+        "points": [
+          [
+            36.35629606105308,
+            264.7089693376844
+          ],
+          [
+            24.275440629112424,
+            264.7089693376844
+          ]
+        ],
+        "infer": false
+      }
+    },
+    {
+      "command": "sketch.line",
+      "params": {
+        "points": [
+          [
+            13.5,
+            264.7089693376844
+          ],
+          [
+            13.5,
+            244.70896933768438
+          ]
+        ],
+        "infer": false
+      }
+    },
+    {
+      "command": "sketch.line",
+      "params": {
+        "points": [
+          [
+            13.5,
+            244.70896933768438
+          ],
+          [
+            27.060552189404238,
+            244.70896933768438
+          ]
+        ],
+        "infer": false
+      }
+    },
+    {
+      "command": "sketch.line",
+      "params": {
+        "points": [
+          [
+            24.275440629112424,
+            264.7089693376844
+          ],
+          [
+            13.5,
+            264.7089693376844
+          ]
+        ],
+        "infer": false
+      }
+    },
+    {
+      "command": "sketch.constraint.fix",
+      "params": {
+        "entities": [
+          "l1",
+          "l2",
+          "l3",
+          "l4",
+          "l5",
+          "l6",
+          "l7",
+          "l8",
+          "l9",
+          "l10",
+          "l11",
+          "l12",
+          "l13",
+          "l14",
+          "l15",
+          "l16"
+        ],
+        "fixed": true
+      }
+    },
+    {
+      "command": "sketch.finish",
+      "params": {}
+    },
+    {
+      "command": "solid.extrude",
+      "params": {
+        "sketch": "M15_SeatNotches",
+        "distance": 8,
+        "direction": "negative",
+        "operation": "cut",
+        "targets": [
+          "AdapterBodyMaster"
+        ],
+        "name": "M15_RearSeatNotches"
+      }
+    },
+    {
+      "command": "sketch.create",
+      "params": {
+        "name": "M16_FrontDovetailProfile",
+        "plane": {
+          "origin": [
+            0,
+            0,
+            0
+          ],
+          "x_dir": [
+            0,
+            1,
+            0
+          ],
+          "y_dir": [
+            0,
+            0,
+            1
+          ]
+        }
+      }
+    },
+    {
+      "command": "sketch.line",
+      "params": {
+        "points": [
+          [
+            204.90784466264674,
+            39.68795987415995
+          ],
+          [
+            194.97818958158138,
+            38.503920191094934
+          ]
+        ],
+        "infer": false
+      }
+    },
+    {
+      "command": "sketch.line",
+      "params": {
+        "points": [
+          [
+            207.63715427321569,
+            46.05591630064844
+          ],
+          [
+            204.90784466264674,
+            39.68795987415995
+          ]
+        ],
+        "infer": false
+      }
+    },
+    {
+      "command": "sketch.line",
+      "params": {
+        "points": [
+          [
+            190.82803235133446,
+            44.051549861884915
+          ],
+          [
+            207.63715427321569,
+            46.05591630064844
+          ]
+        ],
+        "infer": false
+      }
+    },
+    {
+      "command": "sketch.line",
+      "params": {
+        "points": [
+          [
+            194.97818958158138,
+            38.503920191094934
+          ],
+          [
+            190.82803235133446,
+            44.051549861884915
+          ]
+        ],
+        "infer": false
+      }
+    },
+    {
+      "command": "sketch.constraint.fix",
+      "params": {
+        "entities": [
+          "l1",
+          "l2",
+          "l3",
+          "l4"
+        ],
+        "fixed": true
+      }
+    },
+    {
+      "command": "sketch.finish",
+      "params": {}
+    },
+    {
+      "command": "solid.extrude",
+      "params": {
+        "sketch": "M16_FrontDovetailProfile",
+        "distance": 80,
+        "direction": "symmetric",
+        "operation": "join",
+        "targets": [
+          "AdapterBodyMaster"
+        ],
+        "name": "M16_FrontDovetail"
+      }
+    },
+    {
+      "command": "sketch.create",
+      "params": {
+        "name": "M17_SeatSideProfile",
+        "plane": {
+          "origin": [
+            20.734457960456677,
+            32.55893705824783,
+            31.53629206339344
+          ],
+          "x_dir": [
+            -0.734548958762177,
+            0.6515051038369168,
+            -0.18968111887019787
+          ],
+          "y_dir": [
+            -0.5360976178983136,
+            -0.38583517061057654,
+            0.7508199286138196
+          ]
+        }
+      }
+    },
+    {
+      "command": "sketch.circle.center",
+      "params": {
+        "center": [
+          98.0000014603138,
+          39.00000058114529
+        ],
+        "radius": 20,
+        "construction": true
+      }
+    },
+    {
+      "command": "sketch.line",
+      "params": {
+        "points": [
+          [
+            118.0000014603138,
+            39.00000058114529
+          ],
+          [
+            117.99397783423788,
+            39.49082515160353
+          ],
+          [
+            117.97591058441725,
+            39.981354067693644
+          ],
+          [
+            117.9458105938876,
+            40.47129185313864
+          ],
+          [
+            117.90369599375774,
+            40.9603433877365
+          ],
+          [
+            117.849592152288,
+            41.448214085129614
+          ],
+          [
+            117.78353165960942,
+            41.93461007025252
+          ],
+          [
+            117.70555430809262,
+            42.419238356351315
+          ],
+          [
+            117.61570706837841,
+            42.90180702146785
+          ],
+          [
+            117.51404406108438,
+            43.382025384282684
+          ],
+          [
+            117.40062652420468,
+            43.859604179210564
+          ],
+          [
+            117.2755227762226,
+            44.33425573064326
+          ],
+          [
+            117.13880817495797,
+            44.805694126234535
+          ],
+          [
+            116.99056507217453,
+            45.273635389123115
+          ],
+          [
+            116.83088276397422,
+            45.737797648989684
+          ],
+          [
+            116.65985743700858,
+            46.19790131184505
+          ],
+          [
+            116.47759211053953,
+            46.653669228447086
+          ],
+          [
+            116.28419657438441,
+            47.10482686124509
+          ],
+          [
+            116.07978732278266,
+            47.55110244975093
+          ],
+          [
+            115.8644874842241,
+            47.992227174237414
+          ],
+          [
+            115.6384267472809,
+            48.42793531766524
+          ],
+          [
+            115.40174128248802,
+            48.85796442574097
+          ],
+          [
+            115.15457366031924,
+            49.28205546500972
+          ],
+          [
+            114.89707276530794,
+            49.699952978887225
+          ],
+          [
+            114.62939370636471,
+            50.11140524153733
+          ],
+          [
+            114.35169772334547,
+            50.516164409502196
+          ],
+          [
+            114.0641520899267,
+            50.91398667099395
+          ],
+          [
+            113.76693001284592,
+            51.304632392757824
+          ],
+          [
+            113.46021052756853,
+            51.6878662644182
+          ],
+          [
+            113.14417839044349,
+            52.06345744022082
+          ],
+          [
+            112.81902396741299,
+            52.431179678085655
+          ],
+          [
+            112.48494311934314,
+            52.79081147588663
+          ],
+          [
+            112.14213708404475,
+            53.14213620487624
+          ],
+          [
+            111.79081235505514,
+            53.484942240174625
+          ],
+          [
+            111.43118055725417,
+            53.81902308824447
+          ],
+          [
+            111.06345831938933,
+            54.144177511274975
+          ],
+          [
+            110.68786714358671,
+            54.460209648400024
+          ],
+          [
+            110.30463327192633,
+            54.76692913367741
+          ],
+          [
+            109.91398755016246,
+            55.06415121075818
+          ],
+          [
+            109.5161652886707,
+            55.351696844176956
+          ],
+          [
+            109.11140612070584,
+            55.62939282719619
+          ],
+          [
+            108.69995385805575,
+            55.89707188613943
+          ],
+          [
+            108.28205634417823,
+            56.15457278115073
+          ],
+          [
+            107.85796530490948,
+            56.401740403319515
+          ],
+          [
+            107.42793619683376,
+            56.638425868112385
+          ],
+          [
+            106.99222805340592,
+            56.86448660505559
+          ],
+          [
+            106.55110332891944,
+            57.079786443614154
+          ],
+          [
+            106.1048277404136,
+            57.2841956952159
+          ],
+          [
+            105.6536701076156,
+            57.47759123137102
+          ],
+          [
+            105.19790219101357,
+            57.659856557840065
+          ],
+          [
+            104.7377985281582,
+            57.830881884805706
+          ],
+          [
+            104.27363626829163,
+            57.99056419300602
+          ],
+          [
+            103.80569500540304,
+            58.13880729578946
+          ],
+          [
+            103.33425660981176,
+            58.275521897054084
+          ],
+          [
+            102.85960505837907,
+            58.400625645036165
+          ],
+          [
+            102.3820262634512,
+            58.51404318191586
+          ],
+          [
+            101.90180790063636,
+            58.615706189209895
+          ],
+          [
+            101.41923923551983,
+            58.70555342892411
+          ],
+          [
+            100.93461094942103,
+            58.783530780440906
+          ],
+          [
+            100.44821496429812,
+            58.849591273119486
+          ],
+          [
+            99.96034426690501,
+            58.903695114589226
+          ],
+          [
+            99.47129273230715,
+            58.94580971471909
+          ],
+          [
+            98.98135494686215,
+            58.97590970524874
+          ],
+          [
+            98.49082603077204,
+            58.99397695506937
+          ],
+          [
+            98.0000014603138,
+            59.00000058114529
+          ],
+          [
+            97.50917688985555,
+            58.99397695506937
+          ],
+          [
+            97.01864797376544,
+            58.97590970524874
+          ],
+          [
+            96.52871018832045,
+            58.94580971471909
+          ],
+          [
+            96.03965865372258,
+            58.903695114589226
+          ],
+          [
+            95.55178795632948,
+            58.849591273119486
+          ],
+          [
+            95.06539197120657,
+            58.783530780440906
+          ],
+          [
+            94.58076368510777,
+            58.70555342892411
+          ],
+          [
+            94.09819501999124,
+            58.615706189209895
+          ],
+          [
+            93.6179766571764,
+            58.51404318191586
+          ],
+          [
+            93.14039786224852,
+            58.400625645036165
+          ],
+          [
+            92.66574631081583,
+            58.275521897054084
+          ],
+          [
+            92.19430791522456,
+            58.13880729578946
+          ],
+          [
+            91.72636665233597,
+            57.99056419300602
+          ],
+          [
+            91.2622043924694,
+            57.830881884805706
+          ],
+          [
+            90.80210072961404,
+            57.659856557840065
+          ],
+          [
+            90.346332813012,
+            57.47759123137102
+          ],
+          [
+            89.895175180214,
+            57.2841956952159
+          ],
+          [
+            89.44889959170816,
+            57.079786443614154
+          ],
+          [
+            89.00777486722166,
+            56.86448660505559
+          ],
+          [
+            88.57206672379384,
+            56.63842586811239
+          ],
+          [
+            88.14203761571812,
+            56.401740403319515
+          ],
+          [
+            87.71794657644936,
+            56.15457278115073
+          ],
+          [
+            87.30004906257186,
+            55.89707188613943
+          ],
+          [
+            86.88859679992176,
+            55.62939282719619
+          ],
+          [
+            86.48383763195689,
+            55.351696844176956
+          ],
+          [
+            86.08601537046513,
+            55.06415121075818
+          ],
+          [
+            85.69536964870126,
+            54.766929133677415
+          ],
+          [
+            85.3121357770409,
+            54.460209648400024
+          ],
+          [
+            84.93654460123827,
+            54.14417751127498
+          ],
+          [
+            84.56882236337343,
+            53.819023088244464
+          ],
+          [
+            84.20919056557246,
+            53.484942240174625
+          ],
+          [
+            83.85786583658285,
+            53.14213620487624
+          ],
+          [
+            83.51505980128447,
+            52.79081147588663
+          ],
+          [
+            83.18097895321462,
+            52.431179678085655
+          ],
+          [
+            82.85582453018411,
+            52.063457440220816
+          ],
+          [
+            82.53979239305906,
+            51.6878662644182
+          ],
+          [
+            82.23307290778168,
+            51.304632392757824
+          ],
+          [
+            81.9358508307009,
+            50.91398667099396
+          ],
+          [
+            81.64830519728213,
+            50.516164409502196
+          ],
+          [
+            81.37060921426288,
+            50.11140524153733
+          ],
+          [
+            81.10293015531965,
+            49.699952978887225
+          ],
+          [
+            80.84542926030835,
+            49.28205546500972
+          ],
+          [
+            80.59826163813958,
+            48.857964425740974
+          ],
+          [
+            80.36157617334669,
+            48.427935317665245
+          ],
+          [
+            80.1355154364035,
+            47.99222717423743
+          ],
+          [
+            79.92021559784493,
+            47.55110244975093
+          ],
+          [
+            79.71580634624318,
+            47.10482686124509
+          ],
+          [
+            79.52241081008806,
+            46.653669228447086
+          ],
+          [
+            79.34014548361901,
+            46.19790131184505
+          ],
+          [
+            79.16912015665338,
+            45.73779764898969
+          ],
+          [
+            79.00943784845306,
+            45.273635389123115
+          ],
+          [
+            78.86119474566962,
+            44.805694126234535
+          ],
+          [
+            78.72448014440499,
+            44.33425573064326
+          ],
+          [
+            78.59937639642291,
+            43.85960417921057
+          ],
+          [
+            78.48595885954323,
+            43.382025384282684
+          ],
+          [
+            78.38429585224918,
+            42.90180702146786
+          ],
+          [
+            78.29444861253498,
+            42.419238356351315
+          ],
+          [
+            78.21647126101817,
+            41.934610070252525
+          ],
+          [
+            78.1504107683396,
+            41.448214085129614
+          ],
+          [
+            78.09630692686986,
+            40.9603433877365
+          ],
+          [
+            78.05419232674,
+            40.47129185313864
+          ],
+          [
+            78.02409233621034,
+            39.981354067693644
+          ],
+          [
+            78.00602508638971,
+            39.49082515160353
+          ],
+          [
+            78.0000014603138,
+            39.00000058114529
+          ],
+          [
+            78.00602508638971,
+            38.50917601068704
+          ],
+          [
+            78.02409233621034,
+            38.01864709459693
+          ],
+          [
+            78.05419232674,
+            37.528709309151935
+          ],
+          [
+            78.09630692686986,
+            37.03965777455407
+          ],
+          [
+            78.1504107683396,
+            36.55178707716097
+          ],
+          [
+            78.21647126101817,
+            36.065391092038055
+          ],
+          [
+            78.29444861253498,
+            35.580762805939266
+          ],
+          [
+            78.38429585224918,
+            35.09819414082272
+          ],
+          [
+            78.48595885954322,
+            34.61797577800789
+          ],
+          [
+            78.59937639642291,
+            34.14039698308001
+          ],
+          [
+            78.72448014440499,
+            33.66574543164732
+          ],
+          [
+            78.86119474566962,
+            33.194307036056045
+          ],
+          [
+            79.00943784845306,
+            32.726365773167466
+          ],
+          [
+            79.16912015665338,
+            32.26220351330089
+          ],
+          [
+            79.34014548361901,
+            31.802099850445522
+          ],
+          [
+            79.52241081008806,
+            31.346331933843494
+          ],
+          [
+            79.71580634624318,
+            30.895174301045493
+          ],
+          [
+            79.92021559784493,
+            30.448898712539652
+          ],
+          [
+            80.1355154364035,
+            30.007773988053152
+          ],
+          [
+            80.36157617334669,
+            29.572065844625335
+          ],
+          [
+            80.59826163813958,
+            29.142036736549606
+          ],
+          [
+            80.84542926030835,
+            28.717945697280854
+          ],
+          [
+            81.10293015531965,
+            28.300048183403348
+          ],
+          [
+            81.37060921426288,
+            27.888595920753247
+          ],
+          [
+            81.64830519728213,
+            27.483836752788378
+          ],
+          [
+            81.9358508307009,
+            27.086014491296623
+          ],
+          [
+            82.23307290778168,
+            26.695368769532752
+          ],
+          [
+            82.53979239305906,
+            26.312134897872383
+          ],
+          [
+            82.8558245301841,
+            25.936543722069757
+          ],
+          [
+            83.18097895321462,
+            25.568821484204918
+          ],
+          [
+            83.51505980128445,
+            25.20918968640395
+          ],
+          [
+            83.85786583658285,
+            24.857864957414336
+          ],
+          [
+            84.20919056557246,
+            24.51505892211595
+          ],
+          [
+            84.56882236337343,
+            24.18097807404611
+          ],
+          [
+            84.93654460123825,
+            23.8558236510156
+          ],
+          [
+            85.31213577704088,
+            23.539791513890552
+          ],
+          [
+            85.69536964870125,
+            23.23307202861317
+          ],
+          [
+            86.08601537046513,
+            22.935849951532386
+          ],
+          [
+            86.48383763195689,
+            22.64830431811361
+          ],
+          [
+            86.88859679992176,
+            22.37060833509438
+          ],
+          [
+            87.30004906257184,
+            22.102929276151144
+          ],
+          [
+            87.71794657644936,
+            21.845428381139847
+          ],
+          [
+            88.14203761571811,
+            21.59826075897106
+          ],
+          [
+            88.57206672379384,
+            21.361575294178188
+          ],
+          [
+            89.00777486722166,
+            21.135514557234984
+          ],
+          [
+            89.44889959170814,
+            20.920214718676423
+          ],
+          [
+            89.89517518021398,
+            20.715805467074677
+          ],
+          [
+            90.346332813012,
+            20.522409930919558
+          ],
+          [
+            90.80210072961404,
+            20.340144604450508
+          ],
+          [
+            91.2622043924694,
+            20.16911927748487
+          ],
+          [
+            91.72636665233597,
+            20.009436969284554
+          ],
+          [
+            92.19430791522454,
+            19.86119386650111
+          ],
+          [
+            92.66574631081582,
+            19.72447926523649
+          ],
+          [
+            93.14039786224852,
+            19.59937551725441
+          ],
+          [
+            93.6179766571764,
+            19.485957980374717
+          ],
+          [
+            94.09819501999122,
+            19.38429497308068
+          ],
+          [
+            94.58076368510777,
+            19.294447733366464
+          ],
+          [
+            95.06539197120655,
+            19.216470381849668
+          ],
+          [
+            95.55178795632948,
+            19.150409889171087
+          ],
+          [
+            96.03965865372258,
+            19.096306047701347
+          ],
+          [
+            96.52871018832045,
+            19.054191447571483
+          ],
+          [
+            97.01864797376544,
+            19.024091457041838
+          ],
+          [
+            97.50917688985555,
+            19.006024207221202
+          ],
+          [
+            98.0000014603138,
+            19.000000581145287
+          ],
+          [
+            98.49082603077204,
+            19.006024207221202
+          ],
+          [
+            98.98135494686215,
+            19.024091457041838
+          ],
+          [
+            99.47129273230713,
+            19.054191447571483
+          ],
+          [
+            99.960344266905,
+            19.096306047701347
+          ],
+          [
+            100.4482149642981,
+            19.150409889171087
+          ],
+          [
+            100.93461094942104,
+            19.216470381849668
+          ],
+          [
+            101.41923923551983,
+            19.29444773336646
+          ],
+          [
+            101.90180790063636,
+            19.384294973080678
+          ],
+          [
+            102.3820262634512,
+            19.485957980374714
+          ],
+          [
+            102.85960505837907,
+            19.59937551725441
+          ],
+          [
+            103.33425660981176,
+            19.72447926523649
+          ],
+          [
+            103.80569500540304,
+            19.861193866501107
+          ],
+          [
+            104.27363626829163,
+            20.00943696928455
+          ],
+          [
+            104.7377985281582,
+            20.169119277484867
+          ],
+          [
+            105.19790219101355,
+            20.340144604450504
+          ],
+          [
+            105.6536701076156,
+            20.522409930919554
+          ],
+          [
+            106.1048277404136,
+            20.715805467074674
+          ],
+          [
+            106.55110332891944,
+            20.92021471867642
+          ],
+          [
+            106.99222805340592,
+            21.13551455723498
+          ],
+          [
+            107.42793619683374,
+            21.361575294178184
+          ],
+          [
+            107.85796530490947,
+            21.59826075897106
+          ],
+          [
+            108.28205634417823,
+            21.845428381139843
+          ],
+          [
+            108.69995385805574,
+            22.10292927615114
+          ],
+          [
+            109.11140612070584,
+            22.370608335094378
+          ],
+          [
+            109.51616528867069,
+            22.64830431811361
+          ],
+          [
+            109.91398755016246,
+            22.935849951532383
+          ],
+          [
+            110.30463327192633,
+            23.233072028613165
+          ],
+          [
+            110.68786714358671,
+            23.53979151389055
+          ],
+          [
+            111.06345831938933,
+            23.855823651015594
+          ],
+          [
+            111.43118055725417,
+            24.180978074046102
+          ],
+          [
+            111.79081235505514,
+            24.515058922115948
+          ],
+          [
+            112.14213708404475,
+            24.857864957414332
+          ],
+          [
+            112.48494311934313,
+            25.209189686403946
+          ],
+          [
+            112.81902396741297,
+            25.568821484204914
+          ],
+          [
+            113.14417839044349,
+            25.936543722069743
+          ],
+          [
+            113.46021052756853,
+            26.31213489787237
+          ],
+          [
+            113.76693001284592,
+            26.695368769532738
+          ],
+          [
+            114.0641520899267,
+            27.086014491296623
+          ],
+          [
+            114.35169772334547,
+            27.48383675278838
+          ],
+          [
+            114.62939370636471,
+            27.888595920753243
+          ],
+          [
+            114.89707276530794,
+            28.30004818340334
+          ],
+          [
+            115.15457366031924,
+            28.717945697280847
+          ],
+          [
+            115.40174128248802,
+            29.1420367365496
+          ],
+          [
+            115.63842674728089,
+            29.572065844625328
+          ],
+          [
+            115.8644874842241,
+            30.007773988053145
+          ],
+          [
+            116.07978732278266,
+            30.448898712539638
+          ],
+          [
+            116.28419657438441,
+            30.89517430104548
+          ],
+          [
+            116.47759211053952,
+            31.34633193384348
+          ],
+          [
+            116.65985743700858,
+            31.802099850445526
+          ],
+          [
+            116.83088276397422,
+            32.26220351330089
+          ],
+          [
+            116.99056507217453,
+            32.72636577316746
+          ],
+          [
+            117.13880817495797,
+            33.19430703605604
+          ],
+          [
+            117.2755227762226,
+            33.665745431647316
+          ],
+          [
+            117.40062652420468,
+            34.14039698308
+          ],
+          [
+            117.51404406108436,
+            34.61797577800788
+          ],
+          [
+            117.6157070683784,
+            35.09819414082271
+          ],
+          [
+            117.70555430809262,
+            35.58076280593925
+          ],
+          [
+            117.78353165960942,
+            36.06539109203804
+          ],
+          [
+            117.849592152288,
+            36.55178707716097
+          ],
+          [
+            117.90369599375774,
+            37.03965777455408
+          ],
+          [
+            117.9458105938876,
+            37.528709309151935
+          ],
+          [
+            117.97591058441725,
+            38.01864709459692
+          ],
+          [
+            117.99397783423788,
+            38.509176010687035
+          ]
+        ],
+        "closed": true,
+        "infer": false,
+        "connect": false
+      }
+    },
+    {
+      "command": "sketch.constraint.fix",
+      "params": {
+        "entities": [
+          "c1",
+          "l1",
+          "l2",
+          "l3",
+          "l4",
+          "l5",
+          "l6",
+          "l7",
+          "l8",
+          "l9",
+          "l10",
+          "l11",
+          "l12",
+          "l13",
+          "l14",
+          "l15",
+          "l16",
+          "l17",
+          "l18",
+          "l19",
+          "l20",
+          "l21",
+          "l22",
+          "l23",
+          "l24",
+          "l25",
+          "l26",
+          "l27",
+          "l28",
+          "l29",
+          "l30",
+          "l31",
+          "l32",
+          "l33",
+          "l34",
+          "l35",
+          "l36",
+          "l37",
+          "l38",
+          "l39",
+          "l40",
+          "l41",
+          "l42",
+          "l43",
+          "l44",
+          "l45",
+          "l46",
+          "l47",
+          "l48",
+          "l49",
+          "l50",
+          "l51",
+          "l52",
+          "l53",
+          "l54",
+          "l55",
+          "l56",
+          "l57",
+          "l58",
+          "l59",
+          "l60",
+          "l61",
+          "l62",
+          "l63",
+          "l64",
+          "l65",
+          "l66",
+          "l67",
+          "l68",
+          "l69",
+          "l70",
+          "l71",
+          "l72",
+          "l73",
+          "l74",
+          "l75",
+          "l76",
+          "l77",
+          "l78",
+          "l79",
+          "l80",
+          "l81",
+          "l82",
+          "l83",
+          "l84",
+          "l85",
+          "l86",
+          "l87",
+          "l88",
+          "l89",
+          "l90",
+          "l91",
+          "l92",
+          "l93",
+          "l94",
+          "l95",
+          "l96",
+          "l97",
+          "l98",
+          "l99",
+          "l100",
+          "l101",
+          "l102",
+          "l103",
+          "l104",
+          "l105",
+          "l106",
+          "l107",
+          "l108",
+          "l109",
+          "l110",
+          "l111",
+          "l112",
+          "l113",
+          "l114",
+          "l115",
+          "l116",
+          "l117",
+          "l118",
+          "l119",
+          "l120",
+          "l121",
+          "l122",
+          "l123",
+          "l124",
+          "l125",
+          "l126",
+          "l127",
+          "l128",
+          "l129",
+          "l130",
+          "l131",
+          "l132",
+          "l133",
+          "l134",
+          "l135",
+          "l136",
+          "l137",
+          "l138",
+          "l139",
+          "l140",
+          "l141",
+          "l142",
+          "l143",
+          "l144",
+          "l145",
+          "l146",
+          "l147",
+          "l148",
+          "l149",
+          "l150",
+          "l151",
+          "l152",
+          "l153",
+          "l154",
+          "l155",
+          "l156",
+          "l157",
+          "l158",
+          "l159",
+          "l160",
+          "l161",
+          "l162",
+          "l163",
+          "l164",
+          "l165",
+          "l166",
+          "l167",
+          "l168",
+          "l169",
+          "l170",
+          "l171",
+          "l172",
+          "l173",
+          "l174",
+          "l175",
+          "l176",
+          "l177",
+          "l178",
+          "l179",
+          "l180",
+          "l181",
+          "l182",
+          "l183",
+          "l184",
+          "l185",
+          "l186",
+          "l187",
+          "l188",
+          "l189",
+          "l190",
+          "l191",
+          "l192",
+          "l193",
+          "l194",
+          "l195",
+          "l196",
+          "l197",
+          "l198",
+          "l199",
+          "l200",
+          "l201",
+          "l202",
+          "l203",
+          "l204",
+          "l205",
+          "l206",
+          "l207",
+          "l208",
+          "l209",
+          "l210",
+          "l211",
+          "l212",
+          "l213",
+          "l214",
+          "l215",
+          "l216",
+          "l217",
+          "l218",
+          "l219",
+          "l220",
+          "l221",
+          "l222",
+          "l223",
+          "l224",
+          "l225",
+          "l226",
+          "l227",
+          "l228",
+          "l229",
+          "l230",
+          "l231",
+          "l232",
+          "l233",
+          "l234",
+          "l235",
+          "l236",
+          "l237",
+          "l238",
+          "l239",
+          "l240",
+          "l241",
+          "l242",
+          "l243",
+          "l244",
+          "l245",
+          "l246",
+          "l247",
+          "l248",
+          "l249",
+          "l250",
+          "l251",
+          "l252",
+          "l253",
+          "l254",
+          "l255",
+          "l256"
+        ],
+        "fixed": true
+      }
+    },
+    {
+      "command": "sketch.finish",
+      "params": {}
+    },
+    {
+      "command": "solid.extrude",
+      "params": {
+        "sketch": "M17_SeatSideProfile",
+        "distance": 1000,
+        "direction": "symmetric",
+        "operation": "cut",
+        "targets": [
+          "AdapterBodyMaster"
+        ],
+        "name": "M17_SeatSideCut"
+      }
+    },
+    {
+      "command": "sketch.create",
+      "params": {
+        "name": "M17_SeatSideReflectedProfile",
+        "plane": {
+          "origin": [
+            -20.734457960456677,
+            32.55893705824783,
+            31.53629206339344
+          ],
+          "x_dir": [
+            0.734548958762177,
+            0.6515051038369168,
+            -0.18968111887019787
+          ],
+          "y_dir": [
+            0.5360976178983136,
+            -0.38583517061057654,
+            0.7508199286138196
+          ]
+        }
+      }
+    },
+    {
+      "command": "sketch.circle.center",
+      "params": {
+        "center": [
+          98.0000014603138,
+          39.00000058114529
+        ],
+        "radius": 20
+      }
+    },
+    {
+      "command": "sketch.constraint.fix",
+      "params": {
+        "entities": [
+          "c1"
+        ],
+        "fixed": true
+      }
+    },
+    {
+      "command": "sketch.finish",
+      "params": {}
+    },
+    {
+      "command": "solid.extrude",
+      "params": {
+        "sketch": "M17_SeatSideReflectedProfile",
+        "distance": 1000,
+        "direction": "symmetric",
+        "operation": "cut",
+        "targets": [
+          "AdapterBodyMaster"
+        ],
+        "name": "M17_SeatSideCutMirrored"
+      }
+    },
+    {
+      "command": "sketch.create",
+      "params": {
+        "name": "M18_RearCutProfiles",
+        "plane": {
+          "origin": [
+            0,
+            -47.32528017370812,
+            67.58750454859343
+          ],
+          "x_dir": [
+            1,
+            0,
+            0
+          ],
+          "y_dir": [
+            0,
+            -0.819152044288992,
+            -0.5735764363510457
+          ]
+        }
+      }
+    },
+    {
+      "command": "sketch.line",
+      "params": {
+        "points": [
+          [
+            70.99454966037831,
+            143.8653599822314
+          ],
+          [
+            44.921423391912434,
+            169.93848625069722
+          ]
+        ],
+        "infer": false
+      }
+    },
+    {
+      "command": "sketch.line",
+      "params": {
+        "points": [
+          [
+            67.77871005122091,
+            169.93848625069722
+          ],
+          [
+            70.99454966037831,
+            143.8653599822314
+          ]
+        ],
+        "infer": false
+      }
+    },
+    {
+      "command": "sketch.line",
+      "params": {
+        "points": [
+          [
+            44.921423391912434,
+            169.93848625069722
+          ],
+          [
+            67.77871005122091,
+            169.93848625069722
+          ]
+        ],
+        "infer": false
+      }
+    },
+    {
+      "command": "sketch.line",
+      "params": {
+        "points": [
+          [
+            76.7412285453071,
+            138.11868109730264
+          ],
+          [
+            70.99454966037831,
+            143.8653599822314
+          ]
+        ],
+        "infer": false
+      }
+    },
+    {
+      "command": "sketch.line",
+      "params": {
+        "points": [
+          [
+            72.81659792317427,
+            169.93848625069722
+          ],
+          [
+            76.7412285453071,
+            138.11868109730264
+          ]
+        ],
+        "infer": false
+      }
+    },
+    {
+      "command": "sketch.line",
+      "params": {
+        "points": [
+          [
+            67.77871005122091,
+            169.93848625069722
+          ],
+          [
+            72.81659792317427,
+            169.93848625069722
+          ]
+        ],
+        "infer": false
+      }
+    },
+    {
+      "command": "sketch.constraint.fix",
+      "params": {
+        "entities": [
+          "l1",
+          "l2",
+          "l3",
+          "l4",
+          "l5",
+          "l6"
+        ],
+        "fixed": true
+      }
+    },
+    {
+      "command": "sketch.finish",
+      "params": {}
+    },
+    {
+      "command": "solid.extrude",
+      "params": {
+        "sketch": "M18_RearCutProfiles",
+        "distance": 1000,
+        "direction": "symmetric",
+        "operation": "cut",
+        "targets": [
+          "AdapterBodyMaster"
+        ],
+        "name": "M18_RearCut"
+      }
+    },
+    {
+      "command": "sketch.create",
+      "params": {
+        "name": "M18_RearCutReflectedProfiles",
+        "plane": {
+          "origin": [
+            0,
+            -47.32528017370812,
+            67.58750454859343
+          ],
+          "x_dir": [
+            -1,
+            0,
+            0
+          ],
+          "y_dir": [
+            0,
+            -0.819152044288992,
+            -0.5735764363510457
+          ]
+        }
+      }
+    },
+    {
+      "command": "sketch.line",
+      "params": {
+        "points": [
+          [
+            70.99454966037831,
+            143.8653599822314
+          ],
+          [
+            44.921423391912434,
+            169.93848625069722
+          ]
+        ],
+        "infer": false
+      }
+    },
+    {
+      "command": "sketch.line",
+      "params": {
+        "points": [
+          [
+            67.77871005122091,
+            169.93848625069722
+          ],
+          [
+            70.99454966037831,
+            143.8653599822314
+          ]
+        ],
+        "infer": false
+      }
+    },
+    {
+      "command": "sketch.line",
+      "params": {
+        "points": [
+          [
+            44.921423391912434,
+            169.93848625069722
+          ],
+          [
+            67.77871005122091,
+            169.93848625069722
+          ]
+        ],
+        "infer": false
+      }
+    },
+    {
+      "command": "sketch.line",
+      "params": {
+        "points": [
+          [
+            76.7412285453071,
+            138.11868109730264
+          ],
+          [
+            70.99454966037831,
+            143.8653599822314
+          ]
+        ],
+        "infer": false
+      }
+    },
+    {
+      "command": "sketch.line",
+      "params": {
+        "points": [
+          [
+            72.81659792317427,
+            169.93848625069722
+          ],
+          [
+            76.7412285453071,
+            138.11868109730264
+          ]
+        ],
+        "infer": false
+      }
+    },
+    {
+      "command": "sketch.line",
+      "params": {
+        "points": [
+          [
+            67.77871005122091,
+            169.93848625069722
+          ],
+          [
+            72.81659792317427,
+            169.93848625069722
+          ]
+        ],
+        "infer": false
+      }
+    },
+    {
+      "command": "sketch.constraint.fix",
+      "params": {
+        "entities": [
+          "l1",
+          "l2",
+          "l3",
+          "l4",
+          "l5",
+          "l6"
+        ],
+        "fixed": true
+      }
+    },
+    {
+      "command": "sketch.finish",
+      "params": {}
+    },
+    {
+      "command": "solid.extrude",
+      "params": {
+        "sketch": "M18_RearCutReflectedProfiles",
+        "distance": 1000,
+        "direction": "symmetric",
+        "operation": "cut",
+        "targets": [
+          "AdapterBodyMaster"
+        ],
+        "name": "M18_RearCutMirrored"
+      }
+    },
+    {
+      "command": "sketch.create",
+      "params": {
+        "name": "M19_BodyCavityProfile",
+        "plane": {
+          "origin": [
+            0,
+            8.627219333715026,
+            42.40413776674599
+          ],
+          "x_dir": [
+            1,
+            0,
+            0
+          ],
+          "y_dir": [
+            0,
+            0.9799247046208692,
+            -0.1993679344170023
+          ]
+        }
+      }
+    },
+    {
+      "command": "sketch.line",
+      "params": {
+        "points": [
+          [
+            34.687501019991274,
+            -120.61562907218723
+          ],
+          [
+            34.68750101999131,
+            -67.54305316576978
+          ]
+        ],
+        "infer": false
+      }
+    },
+    {
+      "command": "sketch.line",
+      "params": {
+        "points": [
+          [
+            34.68750101999131,
+            -67.54305316576978
+          ],
+          [
+            6.000000000000001,
+            -27.80258143439239
+          ]
+        ],
+        "infer": false
+      }
+    },
+    {
+      "command": "sketch.line",
+      "params": {
+        "points": [
+          [
+            6.000000000000001,
+            -27.80258143439239
+          ],
+          [
+            0,
+            -27.802581434392394
+          ]
+        ],
+        "infer": false
+      }
+    },
+    {
+      "command": "sketch.line",
+      "params": {
+        "points": [
+          [
+            -6.000000000000001,
+            -27.802581434392387
+          ],
+          [
+            0,
+            -27.802581434392394
+          ]
+        ],
+        "infer": false
+      }
+    },
+    {
+      "command": "sketch.line",
+      "params": {
+        "points": [
+          [
+            -34.68750101999131,
+            -67.54305316576978
+          ],
+          [
+            -6.000000000000001,
+            -27.802581434392387
+          ]
+        ],
+        "infer": false
+      }
+    },
+    {
+      "command": "sketch.line",
+      "params": {
+        "points": [
+          [
+            -34.687501019991274,
+            -120.61562907218723
+          ],
+          [
+            -34.68750101999131,
+            -67.54305316576978
+          ]
+        ],
+        "infer": false
+      }
+    },
+    {
+      "command": "sketch.line",
+      "params": {
+        "points": [
+          [
+            -12.757336829221728,
+            -140.82792696673576
+          ],
+          [
+            -34.687501019991274,
+            -120.61562907218723
+          ]
+        ],
+        "infer": false
+      }
+    },
+    {
+      "command": "sketch.line",
+      "params": {
+        "points": [
+          [
+            12.757336829221728,
+            -140.82792696673576
+          ],
+          [
+            -12.757336829221728,
+            -140.82792696673576
+          ]
+        ],
+        "infer": false
+      }
+    },
+    {
+      "command": "sketch.line",
+      "params": {
+        "points": [
+          [
+            12.757336829221728,
+            -140.82792696673576
+          ],
+          [
+            34.687501019991274,
+            -120.61562907218723
+          ]
+        ],
+        "infer": false
+      }
+    },
+    {
+      "command": "sketch.constraint.fix",
+      "params": {
+        "entities": [
+          "l1",
+          "l2",
+          "l3",
+          "l4",
+          "l5",
+          "l6",
+          "l7",
+          "l8",
+          "l9"
+        ],
+        "fixed": true
+      }
+    },
+    {
+      "command": "sketch.finish",
+      "params": {}
+    },
+    {
+      "command": "solid.extrude",
+      "params": {
+        "sketch": "M19_BodyCavityProfile",
+        "through_all": true,
+        "direction": "negative",
+        "start_offset": -12,
+        "taper": "15 deg",
+        "operation": "cut",
+        "targets": [
+          "AdapterBodyMaster"
+        ],
+        "name": "M19_DraftedUndersideCavity"
+      }
+    },
+    {
+      "command": "sketch.create",
+      "params": {
+        "name": "M20_AirTagProfile",
+        "plane": {
+          "origin": [
+            0,
+            8.627219333715027,
+            42.404137766746
+          ],
+          "x_dir": [
+            -1,
+            0,
+            0
+          ],
+          "y_dir": [
+            0,
+            -0.9799247046208692,
+            0.1993679344170023
+          ]
+        }
+      }
+    },
+    {
+      "command": "sketch.arc.three_point",
+      "params": {
+        "start": [
+          -4.999999999999966,
+          42.29799946466719
+        ],
+        "end": [
+          4.999999999999969,
+          42.29799946466719
+        ],
+        "through": [
+          0,
+          10.586353368598402
+        ]
+      }
+    },
+    {
+      "command": "sketch.line",
+      "params": {
+        "points": [
+          [
+            4.999999999999945,
+            62.29799946466719
+          ],
+          [
+            4.999999999999967,
+            42.29799946466719
+          ]
+        ],
+        "infer": false
+      }
+    },
+    {
+      "command": "sketch.line",
+      "params": {
+        "points": [
+          [
+            0,
+            62.29799946466719
+          ],
+          [
+            4.999999999999945,
+            62.29799946466719
+          ]
+        ],
+        "infer": false
+      }
+    },
+    {
+      "command": "sketch.line",
+      "params": {
+        "points": [
+          [
+            -5.000000000000054,
+            62.29799946466719
+          ],
+          [
+            0,
+            62.29799946466719
+          ]
+        ],
+        "infer": false
+      }
+    },
+    {
+      "command": "sketch.line",
+      "params": {
+        "points": [
+          [
+            -4.999999999999966,
+            42.29799946466719
+          ],
+          [
+            -5.000000000000054,
+            62.29799946466719
+          ]
+        ],
+        "infer": false
+      }
+    },
+    {
+      "command": "sketch.constraint.fix",
+      "params": {
+        "entities": [
+          "a1",
+          "l1",
+          "l2",
+          "l3",
+          "l4"
+        ],
+        "fixed": true
+      }
+    },
+    {
+      "command": "sketch.finish",
+      "params": {}
+    },
+    {
+      "command": "solid.extrude",
+      "params": {
+        "sketch": "M20_AirTagProfile",
+        "distance": "airtagPocketDepth",
+        "direction": "negative",
+        "operation": "cut",
+        "targets": [
+          "AdapterBodyMaster"
+        ],
+        "name": "M20_AirTagPocket"
+      }
+    },
+    {
+      "command": "file.insert_mesh",
+      "params": {
+        "path": "C:/Projects/Sherman P Seat Adapter/SolidCraft/inputs/wheel_scan_mm.stl",
+        "name": "WheelScanReference",
+        "units": "mm",
+        "origin": false
+      }
+    },
+    {
+      "command": "mesh.convert",
+      "params": {
+        "body": "wheel_scan_mm",
+        "name": "WheelScanSolid"
+      }
+    },
+    {
+      "command": "solid.combine",
+      "params": {
+        "target": "AdapterBodyMaster",
+        "tools": [
+          "wheel_scan_mm"
+        ],
+        "operation": "cut",
+        "name": "M21_WheelImprint"
+      }
+    },
+    {
+      "command": "solid.move",
+      "params": {
+        "bodies": [
+          "AdapterBodyMaster"
+        ],
+        "translate": [
+          0,
+          0,
+          0
+        ],
+        "copy": true,
+        "name": "C01_DependentMasterCopy"
+      }
+    },
+    {
+      "command": "component.create",
+      "params": {
+        "name": "AdapterBodySplit",
+        "activate": false
+      }
+    },
+    {
+      "command": "component.move_bodies",
+      "params": {
+        "bodies": [
+          "AdapterBodyMaster (2)"
+        ],
+        "component": "AdapterBodySplit"
+      }
+    },
+    {
+      "command": "component.activate",
+      "params": {
+        "component": "AdapterBodySplit"
+      }
+    },
+    {
+      "command": "solid.split_body",
+      "params": {
+        "body": "AdapterBodyMaster (2)",
+        "plane": {
+          "origin": [
+            0,
+            -92.88539833894988,
+            63.05711325274752
+          ],
+          "normal": [
+            0,
+            0.979924704620868,
+            -0.19936793441700873
+          ]
+        },
+        "name": "C02_PrintSplit"
+      }
+    },
+    {
+      "command": "body.rename",
+      "params": {
+        "body": "AdapterBodyMaster (2)",
+        "name": "AdapterBodyFront"
+      }
+    },
+    {
+      "command": "body.rename",
+      "params": {
+        "body": "AdapterBodyMaster (2) (1)",
+        "name": "AdapterBodyRear"
+      }
+    },
+    {
+      "command": "sketch.create",
+      "params": {
+        "name": "C03_top_Profile",
+        "plane": {
+          "origin": [
+            0,
+            8.627219333715026,
+            42.40413776674599
+          ],
+          "x_dir": [
+            -1,
+            0,
+            0
+          ],
+          "y_dir": [
+            0,
+            -0.9799247046208692,
+            0.1993679344170023
+          ]
+        }
+      }
+    },
+    {
+      "command": "sketch.line",
+      "params": {
+        "points": [
+          [
+            -26.54700538379263,
+            83.59226295038653
+          ],
+          [
+            0,
+            83.59226295038653
+          ]
+        ],
+        "infer": false
+      }
+    },
+    {
+      "command": "sketch.line",
+      "params": {
+        "points": [
+          [
+            26.54700538379263,
+            83.59226295038653
+          ],
+          [
+            0,
+            83.59226295038653
+          ]
+        ],
+        "infer": false
+      }
+    },
+    {
+      "command": "sketch.line",
+      "params": {
+        "points": [
+          [
+            15,
+            103.59226295038653
+          ],
+          [
+            26.54700538379263,
+            83.59226295038653
+          ]
+        ],
+        "infer": false
+      }
+    },
+    {
+      "command": "sketch.line",
+      "params": {
+        "points": [
+          [
+            -15,
+            103.59226295038653
+          ],
+          [
+            15,
+            103.59226295038653
+          ]
+        ],
+        "infer": false
+      }
+    },
+    {
+      "command": "sketch.line",
+      "params": {
+        "points": [
+          [
+            -15,
+            103.59226295038653
+          ],
+          [
+            -26.54700538379263,
+            83.59226295038653
+          ]
+        ],
+        "infer": false
+      }
+    },
+    {
+      "command": "sketch.line",
+      "params": {
+        "points": [
+          [
+            15,
+            103.59226295038653
+          ],
+          [
+            26.54700538379263,
+            123.59226295038653
+          ]
+        ],
+        "infer": false
+      }
+    },
+    {
+      "command": "sketch.line",
+      "params": {
+        "points": [
+          [
+            26.54700538379263,
+            123.59226295038653
+          ],
+          [
+            0,
+            123.59226295038653
+          ]
+        ],
+        "infer": false
+      }
+    },
+    {
+      "command": "sketch.line",
+      "params": {
+        "points": [
+          [
+            -26.54700538379263,
+            123.59226295038653
+          ],
+          [
+            0,
+            123.59226295038653
+          ]
+        ],
+        "infer": false
+      }
+    },
+    {
+      "command": "sketch.line",
+      "params": {
+        "points": [
+          [
+            -15,
+            103.59226295038653
+          ],
+          [
+            -26.54700538379263,
+            123.59226295038653
+          ]
+        ],
+        "infer": false
+      }
+    },
+    {
+      "command": "sketch.constraint.fix",
+      "params": {
+        "entities": [
+          "l1",
+          "l2",
+          "l3",
+          "l4",
+          "l5",
+          "l6",
+          "l7",
+          "l8",
+          "l9"
+        ],
+        "fixed": true
+      }
+    },
+    {
+      "command": "sketch.finish",
+      "params": {}
+    },
+    {
+      "command": "solid.extrude",
+      "params": {
+        "sketch": "C03_top_Profile",
+        "distance": 8,
+        "direction": "negative",
+        "operation": "cut",
+        "targets": [
+          "AdapterBodyFront",
+          "AdapterBodyRear"
+        ],
+        "name": "C03_top"
+      }
+    },
+    {
+      "command": "sketch.create",
+      "params": {
+        "name": "C03_side_original_Profile",
+        "plane": {
+          "origin": [
+            40.182092317077846,
+            2.1465465393884937,
+            10.550613315607793
+          ],
+          "x_dir": [
+            0.05334441550751669,
+            -0.998576173025454,
+            0
+          ],
+          "y_dir": [
+            -0.2532620608025254,
+            -0.013529380100075242,
+            0.967303098533322
+          ]
+        }
+      }
+    },
+    {
+      "command": "sketch.line",
+      "params": {
+        "points": [
+          [
+            108.41887746696757,
+            -12.123813790051992
+          ],
+          [
+            103.9526102189825,
+            -16.13036553308185
+          ]
+        ],
+        "infer": false
+      }
+    },
+    {
+      "command": "sketch.line",
+      "params": {
+        "points": [
+          [
+            106.35780752188725,
+            -2.3385191761179414
+          ],
+          [
+            108.41887746696757,
+            -12.123813790051992
+          ]
+        ],
+        "infer": false
+      }
+    },
+    {
+      "command": "sketch.line",
+      "params": {
+        "points": [
+          [
+            106.35780752188725,
+            -2.3385191761179414
+          ],
+          [
+            100.65489830685405,
+            -0.47389415078744057
+          ]
+        ],
+        "infer": false
+      }
+    },
+    {
+      "command": "sketch.line",
+      "params": {
+        "points": [
+          [
+            100.65489830685405,
+            -0.47389415078744057
+          ],
+          [
+            102.30375426291829,
+            -8.30212984193465
+          ]
+        ],
+        "infer": false
+      }
+    },
+    {
+      "command": "sketch.line",
+      "params": {
+        "points": [
+          [
+            103.9526102189825,
+            -16.13036553308185
+          ],
+          [
+            102.30375426291829,
+            -8.30212984193465
+          ]
+        ],
+        "infer": false
+      }
+    },
+    {
+      "command": "sketch.line",
+      "params": {
+        "points": [
+          [
+            108.41887746696757,
+            -12.123813790051992
+          ],
+          [
+            114.12178668200079,
+            -13.988438815382452
+          ]
+        ],
+        "infer": false
+      }
+    },
+    {
+      "command": "sketch.line",
+      "params": {
+        "points": [
+          [
+            114.12178668200079,
+            -13.988438815382452
+          ],
+          [
+            112.47293072593655,
+            -6.160203124235268
+          ]
+        ],
+        "infer": false
+      }
+    },
+    {
+      "command": "sketch.line",
+      "params": {
+        "points": [
+          [
+            110.82407476987234,
+            1.6680325669119436
+          ],
+          [
+            112.47293072593655,
+            -6.160203124235268
+          ]
+        ],
+        "infer": false
+      }
+    },
+    {
+      "command": "sketch.line",
+      "params": {
+        "points": [
+          [
+            106.35780752188725,
+            -2.3385191761179414
+          ],
+          [
+            110.82407476987234,
+            1.6680325669119433
+          ]
+        ],
+        "infer": false
+      }
+    },
+    {
+      "command": "sketch.constraint.fix",
+      "params": {
+        "entities": [
+          "l1",
+          "l2",
+          "l3",
+          "l4",
+          "l5",
+          "l6",
+          "l7",
+          "l8",
+          "l9"
+        ],
+        "fixed": true
+      }
+    },
+    {
+      "command": "sketch.finish",
+      "params": {}
+    },
+    {
+      "command": "solid.extrude",
+      "params": {
+        "sketch": "C03_side_original_Profile",
+        "distance": 8,
+        "direction": "negative",
+        "operation": "cut",
+        "targets": [
+          "AdapterBodyFront",
+          "AdapterBodyRear"
+        ],
+        "name": "C03_side_original"
+      }
+    },
+    {
+      "command": "sketch.create",
+      "params": {
+        "name": "C03_side_mirrored_192_Profile",
+        "plane": {
+          "origin": [
+            45.98450366978466,
+            -2.1707449423700496,
+            -10.669552266162242
+          ],
+          "x_dir": [
+            -0.053344415507521975,
+            -0.9191942138120434,
+            0.39017479496838386
+          ],
+          "y_dir": [
+            0.2532620608025247,
+            -0.3904092913270806,
+            -0.8851208470053933
+          ]
+        }
+      }
+    },
+    {
+      "command": "sketch.line",
+      "params": {
+        "points": [
+          [
+            108.41887746696757,
+            -12.123813790051992
+          ],
+          [
+            103.9526102189825,
+            -16.13036553308185
+          ]
+        ],
+        "infer": false
+      }
+    },
+    {
+      "command": "sketch.line",
+      "params": {
+        "points": [
+          [
+            106.35780752188725,
+            -2.3385191761179414
+          ],
+          [
+            108.41887746696757,
+            -12.123813790051992
+          ]
+        ],
+        "infer": false
+      }
+    },
+    {
+      "command": "sketch.line",
+      "params": {
+        "points": [
+          [
+            106.35780752188725,
+            -2.3385191761179414
+          ],
+          [
+            100.65489830685405,
+            -0.47389415078744057
+          ]
+        ],
+        "infer": false
+      }
+    },
+    {
+      "command": "sketch.line",
+      "params": {
+        "points": [
+          [
+            100.65489830685405,
+            -0.47389415078744057
+          ],
+          [
+            102.30375426291829,
+            -8.30212984193465
+          ]
+        ],
+        "infer": false
+      }
+    },
+    {
+      "command": "sketch.line",
+      "params": {
+        "points": [
+          [
+            103.9526102189825,
+            -16.13036553308185
+          ],
+          [
+            102.30375426291829,
+            -8.30212984193465
+          ]
+        ],
+        "infer": false
+      }
+    },
+    {
+      "command": "sketch.line",
+      "params": {
+        "points": [
+          [
+            108.41887746696757,
+            -12.123813790051992
+          ],
+          [
+            114.12178668200079,
+            -13.988438815382452
+          ]
+        ],
+        "infer": false
+      }
+    },
+    {
+      "command": "sketch.line",
+      "params": {
+        "points": [
+          [
+            114.12178668200079,
+            -13.988438815382452
+          ],
+          [
+            112.47293072593655,
+            -6.160203124235268
+          ]
+        ],
+        "infer": false
+      }
+    },
+    {
+      "command": "sketch.line",
+      "params": {
+        "points": [
+          [
+            110.82407476987234,
+            1.6680325669119436
+          ],
+          [
+            112.47293072593655,
+            -6.160203124235268
+          ]
+        ],
+        "infer": false
+      }
+    },
+    {
+      "command": "sketch.line",
+      "params": {
+        "points": [
+          [
+            106.35780752188725,
+            -2.3385191761179414
+          ],
+          [
+            110.82407476987234,
+            1.6680325669119433
+          ]
+        ],
+        "infer": false
+      }
+    },
+    {
+      "command": "sketch.constraint.fix",
+      "params": {
+        "entities": [
+          "l1",
+          "l2",
+          "l3",
+          "l4",
+          "l5",
+          "l6",
+          "l7",
+          "l8",
+          "l9"
+        ],
+        "fixed": true
+      }
+    },
+    {
+      "command": "sketch.finish",
+      "params": {}
+    },
+    {
+      "command": "solid.extrude",
+      "params": {
+        "sketch": "C03_side_mirrored_192_Profile",
+        "distance": 8,
+        "direction": "positive",
+        "operation": "cut",
+        "targets": [
+          "AdapterBodyFront",
+          "AdapterBodyRear"
+        ],
+        "name": "C03_side_mirrored_192"
+      }
+    },
+    {
+      "command": "sketch.create",
+      "params": {
+        "name": "C03_side_mirrored_193_Profile",
+        "plane": {
+          "origin": [
+            -40.182092317077846,
+            2.1465465393884937,
+            10.550613315607793
+          ],
+          "x_dir": [
+            -0.05334441550751669,
+            -0.998576173025454,
+            0
+          ],
+          "y_dir": [
+            0.2532620608025254,
+            -0.013529380100075242,
+            0.967303098533322
+          ]
+        }
+      }
+    },
+    {
+      "command": "sketch.line",
+      "params": {
+        "points": [
+          [
+            108.41887746696757,
+            -12.123813790051992
+          ],
+          [
+            103.9526102189825,
+            -16.13036553308185
+          ]
+        ],
+        "infer": false
+      }
+    },
+    {
+      "command": "sketch.line",
+      "params": {
+        "points": [
+          [
+            106.35780752188725,
+            -2.3385191761179414
+          ],
+          [
+            108.41887746696757,
+            -12.123813790051992
+          ]
+        ],
+        "infer": false
+      }
+    },
+    {
+      "command": "sketch.line",
+      "params": {
+        "points": [
+          [
+            106.35780752188725,
+            -2.3385191761179414
+          ],
+          [
+            100.65489830685405,
+            -0.47389415078744057
+          ]
+        ],
+        "infer": false
+      }
+    },
+    {
+      "command": "sketch.line",
+      "params": {
+        "points": [
+          [
+            100.65489830685405,
+            -0.47389415078744057
+          ],
+          [
+            102.30375426291829,
+            -8.30212984193465
+          ]
+        ],
+        "infer": false
+      }
+    },
+    {
+      "command": "sketch.line",
+      "params": {
+        "points": [
+          [
+            103.9526102189825,
+            -16.13036553308185
+          ],
+          [
+            102.30375426291829,
+            -8.30212984193465
+          ]
+        ],
+        "infer": false
+      }
+    },
+    {
+      "command": "sketch.line",
+      "params": {
+        "points": [
+          [
+            108.41887746696757,
+            -12.123813790051992
+          ],
+          [
+            114.12178668200079,
+            -13.988438815382452
+          ]
+        ],
+        "infer": false
+      }
+    },
+    {
+      "command": "sketch.line",
+      "params": {
+        "points": [
+          [
+            114.12178668200079,
+            -13.988438815382452
+          ],
+          [
+            112.47293072593655,
+            -6.160203124235268
+          ]
+        ],
+        "infer": false
+      }
+    },
+    {
+      "command": "sketch.line",
+      "params": {
+        "points": [
+          [
+            110.82407476987234,
+            1.6680325669119436
+          ],
+          [
+            112.47293072593655,
+            -6.160203124235268
+          ]
+        ],
+        "infer": false
+      }
+    },
+    {
+      "command": "sketch.line",
+      "params": {
+        "points": [
+          [
+            106.35780752188725,
+            -2.3385191761179414
+          ],
+          [
+            110.82407476987234,
+            1.6680325669119433
+          ]
+        ],
+        "infer": false
+      }
+    },
+    {
+      "command": "sketch.constraint.fix",
+      "params": {
+        "entities": [
+          "l1",
+          "l2",
+          "l3",
+          "l4",
+          "l5",
+          "l6",
+          "l7",
+          "l8",
+          "l9"
+        ],
+        "fixed": true
+      }
+    },
+    {
+      "command": "sketch.finish",
+      "params": {}
+    },
+    {
+      "command": "solid.extrude",
+      "params": {
+        "sketch": "C03_side_mirrored_193_Profile",
+        "distance": 8,
+        "direction": "positive",
+        "operation": "cut",
+        "targets": [
+          "AdapterBodyFront",
+          "AdapterBodyRear"
+        ],
+        "name": "C03_side_mirrored_193"
+      }
+    },
+    {
+      "command": "sketch.create",
+      "params": {
+        "name": "C03_side_mirrored_192_193_Profile",
+        "plane": {
+          "origin": [
+            -45.98450366978466,
+            -2.1707449423700496,
+            -10.669552266162242
+          ],
+          "x_dir": [
+            0.053344415507521975,
+            -0.9191942138120434,
+            0.39017479496838386
+          ],
+          "y_dir": [
+            -0.2532620608025247,
+            -0.3904092913270806,
+            -0.8851208470053933
+          ]
+        }
+      }
+    },
+    {
+      "command": "sketch.line",
+      "params": {
+        "points": [
+          [
+            108.41887746696757,
+            -12.123813790051992
+          ],
+          [
+            103.9526102189825,
+            -16.13036553308185
+          ]
+        ],
+        "infer": false
+      }
+    },
+    {
+      "command": "sketch.line",
+      "params": {
+        "points": [
+          [
+            106.35780752188725,
+            -2.3385191761179414
+          ],
+          [
+            108.41887746696757,
+            -12.123813790051992
+          ]
+        ],
+        "infer": false
+      }
+    },
+    {
+      "command": "sketch.line",
+      "params": {
+        "points": [
+          [
+            106.35780752188725,
+            -2.3385191761179414
+          ],
+          [
+            100.65489830685405,
+            -0.47389415078744057
+          ]
+        ],
+        "infer": false
+      }
+    },
+    {
+      "command": "sketch.line",
+      "params": {
+        "points": [
+          [
+            100.65489830685405,
+            -0.47389415078744057
+          ],
+          [
+            102.30375426291829,
+            -8.30212984193465
+          ]
+        ],
+        "infer": false
+      }
+    },
+    {
+      "command": "sketch.line",
+      "params": {
+        "points": [
+          [
+            103.9526102189825,
+            -16.13036553308185
+          ],
+          [
+            102.30375426291829,
+            -8.30212984193465
+          ]
+        ],
+        "infer": false
+      }
+    },
+    {
+      "command": "sketch.line",
+      "params": {
+        "points": [
+          [
+            108.41887746696757,
+            -12.123813790051992
+          ],
+          [
+            114.12178668200079,
+            -13.988438815382452
+          ]
+        ],
+        "infer": false
+      }
+    },
+    {
+      "command": "sketch.line",
+      "params": {
+        "points": [
+          [
+            114.12178668200079,
+            -13.988438815382452
+          ],
+          [
+            112.47293072593655,
+            -6.160203124235268
+          ]
+        ],
+        "infer": false
+      }
+    },
+    {
+      "command": "sketch.line",
+      "params": {
+        "points": [
+          [
+            110.82407476987234,
+            1.6680325669119436
+          ],
+          [
+            112.47293072593655,
+            -6.160203124235268
+          ]
+        ],
+        "infer": false
+      }
+    },
+    {
+      "command": "sketch.line",
+      "params": {
+        "points": [
+          [
+            106.35780752188725,
+            -2.3385191761179414
+          ],
+          [
+            110.82407476987234,
+            1.6680325669119433
+          ]
+        ],
+        "infer": false
+      }
+    },
+    {
+      "command": "sketch.constraint.fix",
+      "params": {
+        "entities": [
+          "l1",
+          "l2",
+          "l3",
+          "l4",
+          "l5",
+          "l6",
+          "l7",
+          "l8",
+          "l9"
+        ],
+        "fixed": true
+      }
+    },
+    {
+      "command": "sketch.finish",
+      "params": {}
+    },
+    {
+      "command": "solid.extrude",
+      "params": {
+        "sketch": "C03_side_mirrored_192_193_Profile",
+        "distance": 8,
+        "direction": "negative",
+        "operation": "cut",
+        "targets": [
+          "AdapterBodyFront",
+          "AdapterBodyRear"
+        ],
+        "name": "C03_side_mirrored_192_193"
+      }
+    },
+    {
+      "command": "component.activate",
+      "params": {
+        "component": "root"
+      }
+    },
+    {
+      "command": "browser.visibility",
+      "params": {
+        "items": [
+          "AdapterBodyFront",
+          "AdapterBodyRear"
+        ],
+        "visible": false
+      }
+    },
+    {
+      "command": "browser.visibility",
+      "params": {
+        "items": [
+          "AdapterBodyMaster"
+        ],
+        "visible": true
+      }
+    }
+  ]
+}

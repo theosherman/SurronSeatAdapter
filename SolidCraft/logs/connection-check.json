@@ -1,0 +1,53 @@
+{
+  "checkedAt": "2026-11-13T00:24:03.858Z",
+  "executable": "C:/Program Files/SolidCraft/solidcraft-cli.exe",
+  "args": [
+    "mcp",
+    "--connect",
+    "127.0.0.1:7878",
+    "--allow-path",
+    "C:\\Projects\\Sherman P Seat Adapter\\SolidCraft",
+    "--compact"
+  ],
+  "server": {
+    "name": "solidcraft",
+    "title": "SolidCraft",
+    "version": "0.40.1"
+  },
+  "protocolVersion": "2024-11-05",
+  "toolCount": 22,
+  "tools": [
+    "list_commands",
+    "describe_command",
+    "execute",
+    "batch",
+    "inspect_design",
+    "measure",
+    "body_topology",
+    "set_parameter",
+    "check_parameters",
+    "screenshot",
+    "compare_picture",
+    "export",
+    "crash_reports",
+    "running",
+    "pending",
+    "cancel",
+    "undo",
+    "redo",
+    "new_design",
+    "open",
+    "save",
+    "skill_reference"
+  ],
+  "desktopListening": true,
+  "inspection": {
+    "content": [
+      {
+        "text": "{\"active_sketch\":null,\"bodies\":[],\"dirty\":false,\"hidden_origin\":[],\"marker\":0,\"metadata\":{},\"name\":\"Untitled\",\"params\":[],\"path\":null,\"redo\":0,\"revision\":1,\"selection\":[],\"sketches\":[],\"timeline\":[],\"undo\":0,\"units\":\"mm\"}",
+        "type": "text"
+      }
+    ]
+  },
+  "geometryCreated": false
+}

@@ -9,6 +9,7 @@ Thumbs.db
 
 # Superseded SolidCraft experiments and command-discovery transcripts.
 SolidCraft/models/experiments/
+SolidCraft/models/.~*.lock
 SolidCraft/scripts/*-test.json
 SolidCraft/scripts/diagnose-*.json
 SolidCraft/logs/*-request.json
@@ -18,3 +19,9 @@ SolidCraft/logs/diagnose-*.json
 SolidCraft/logs/*-result.json
 !SolidCraft/logs/child-result.json
 SolidCraft/logs/*-replay.json
+SolidCraft/logs/*-measure.json
+!SolidCraft/logs/pre-imprint-measure.json
+!SolidCraft/logs/imprinted-measure.json
+SolidCraft/logs/frame-check.json
+SolidCraft/logs/inspect-dovetail.json
+SolidCraft/logs/check-stage1.json
