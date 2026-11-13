@@ -1,0 +1,2805 @@
+{
+  "schemaVersion": "1.0",
+  "canonicalLengthUnit": "millimeter",
+  "angleUnit": "degree",
+  "sourceDocument": "Surron Seat Adapter v3 v2",
+  "timelineIndices": "zero-based",
+  "status": "Extracted source recipe; not yet built or validated in a target CAD engine",
+  "scope": {
+    "separatePart": true,
+    "fillets": false
+  },
+  "coordinateRule": "Profile loop coordinates are in the named parent sketch. global=origin+u*xAxis+v*yAxis+w*cross(xAxis,yAxis). Preserve local w. Frame axes are dimensionless.",
+  "startPlaneWarning": "Fusion startExtent.profilePlane is reported in profile-local coordinates. Use the named sketch frame for global sketch planes; FromEntity starts use their explicitly captured global entity plane.",
+  "externalDependencies": [
+    {
+      "name": "TrunkDovetailSketch",
+      "index": 17,
+      "origin": [
+        0,
+        -124.77082228630329,
+        74.10298570063958
+      ],
+      "xAxis": [
+        1,
+        0,
+        0
+      ],
+      "yAxis": [
+        0,
+        0.5106422266520627,
+        0.8597932986246306
+      ],
+      "referencePlane": {
+        "type": "adsk::fusion::BRepFace",
+        "body": "Body1",
+        "component": "AdapterBody",
+        "point": [
+          0,
+          -168.24200266681424,
+          0.9084325992970411
+        ],
+        "areaMm2": 9882.952013922815,
+        "geometry": {
+          "type": "adsk::core::Plane",
+          "origin": [
+            0,
+            -149.9532667443008,
+            31.702071992564843
+          ],
+          "normal": [
+            0,
+            -0.8597932986247211,
+            0.5106422266519105
+          ]
+        },
+        "isParamReversed": false
+      },
+      "isFullyConstrained": true,
+      "curves": [
+        {
+          "index": 0,
+          "type": "adsk::fusion::SketchLine",
+          "construction": false,
+          "reference": false,
+          "geometry": {
+            "type": "adsk::core::Line3D",
+            "start": [
+              0,
+              -49.315240972337726,
+              0
+            ],
+            "end": [
+              10,
+              -49.315240972337726,
+              -1.4843805096034244e-16
+            ]
+          }
+        },
+        {
+          "index": 1,
+          "type": "adsk::fusion::SketchLine",
+          "construction": false,
+          "reference": false,
+          "geometry": {
+            "type": "adsk::core::Line3D",
+            "start": [
+              10,
+              -49.315240972337726,
+              -1.4843805096034244e-16
+            ],
+            "end": [
+              14.618802153517008,
+              -57.315240972337726,
+              0
+            ]
+          }
+        },
+        {
+          "index": 2,
+          "type": "adsk::fusion::SketchLine",
+          "construction": false,
+          "reference": false,
+          "geometry": {
+            "type": "adsk::core::Line3D",
+            "start": [
+              14.618802153517008,
+              -57.315240972337726,
+              0
+            ],
+            "end": [
+              -14.618802153516901,
+              -57.31524097233774,
+              3.560620470044236e-16
+            ]
+          }
+        },
+        {
+          "index": 3,
+          "type": "adsk::fusion::SketchLine",
+          "construction": false,
+          "reference": false,
+          "geometry": {
+            "type": "adsk::core::Line3D",
+            "start": [
+              -14.618802153516901,
+              -57.31524097233774,
+              3.560620470044236e-16
+            ],
+            "end": [
+              -10.000000000000002,
+              -49.31524097233769,
+              -1.0170912527220497e-15
+            ]
+          }
+        },
+        {
+          "index": 4,
+          "type": "adsk::fusion::SketchLine",
+          "construction": false,
+          "reference": false,
+          "geometry": {
+            "type": "adsk::core::Line3D",
+            "start": [
+              -10.000000000000002,
+              -49.31524097233769,
+              -1.0170912527220497e-15
+            ],
+            "end": [
+              0,
+              -49.315240972337726,
+              0
+            ]
+          }
+        },
+        {
+          "index": 5,
+          "type": "adsk::fusion::SketchLine",
+          "construction": false,
+          "reference": true,
+          "geometry": {
+            "type": "adsk::core::Line3D",
+            "start": [
+              60.94766386144667,
+              -49.31524097233765,
+              -1.7763568394002505e-14
+            ],
+            "end": [
+              -60.94766386144667,
+              -49.31524097233765,
+              -1.7763568394002505e-14
+            ]
+          }
+        },
+        {
+          "index": 6,
+          "type": "adsk::fusion::SketchLine",
+          "construction": false,
+          "reference": true,
+          "geometry": {
+            "type": "adsk::core::Line3D",
+            "start": [
+              -67.77871005122091,
+              -120.94557222178524,
+              0
+            ],
+            "end": [
+              67.77871005122091,
+              -120.94557222178524,
+              0
+            ]
+          }
+        },
+        {
+          "index": 7,
+          "type": "adsk::fusion::SketchLine",
+          "construction": false,
+          "reference": true,
+          "geometry": {
+            "type": "adsk::core::Line3D",
+            "start": [
+              72.78069729473393,
+              -76.45089330774623,
+              0
+            ],
+            "end": [
+              60.94766386144667,
+              -49.31524097233763,
+              0
+            ]
+          }
+        },
+        {
+          "index": 8,
+          "type": "adsk::fusion::SketchLine",
+          "construction": false,
+          "reference": true,
+          "geometry": {
+            "type": "adsk::core::Line3D",
+            "start": [
+              -60.94766386144667,
+              -49.31524097233765,
+              0
+            ],
+            "end": [
+              -72.78069729473393,
+              -76.45089330774624,
+              0
+            ]
+          }
+        },
+        {
+          "index": 9,
+          "type": "adsk::fusion::SketchLine",
+          "construction": false,
+          "reference": true,
+          "geometry": {
+            "type": "adsk::core::Line3D",
+            "start": [
+              67.77871005122091,
+              -120.94557222178524,
+              0
+            ],
+            "end": [
+              72.78069729473393,
+              -76.45089330774623,
+              -2.220446049250313e-15
+            ]
+          }
+        },
+        {
+          "index": 10,
+          "type": "adsk::fusion::SketchLine",
+          "construction": false,
+          "reference": true,
+          "geometry": {
+            "type": "adsk::core::Line3D",
+            "start": [
+              -72.78069729473393,
+              -76.45089330774623,
+              0
+            ],
+            "end": [
+              -67.77871005122091,
+              -120.94557222178524,
+              0
+            ]
+          }
+        }
+      ],
+      "dimensions": [
+        {
+          "type": "adsk::fusion::SketchLinearDimension",
+          "parameter": {
+            "name": "d35",
+            "sourceExpression": "10 mm",
+            "value": 10,
+            "unit": "millimeter",
+            "sourceUnitLabel": "mm"
+          },
+          "isDriving": true
+        },
+        {
+          "type": "adsk::fusion::SketchOffsetDimension",
+          "parameter": {
+            "name": "d36",
+            "sourceExpression": "8 mm",
+            "value": 8,
+            "unit": "millimeter",
+            "sourceUnitLabel": "mm"
+          },
+          "isDriving": true
+        },
+        {
+          "type": "adsk::fusion::SketchAngularDimension",
+          "parameter": {
+            "name": "d37",
+            "sourceExpression": "60 deg",
+            "value": 59.99999999999999,
+            "unit": "degree",
+            "sourceUnitLabel": "deg"
+          },
+          "isDriving": true
+        }
+      ],
+      "constraints": [
+        {
+          "type": "adsk::fusion::ParallelConstraint",
+          "lineOne": {
+            "type": "adsk::fusion::SketchLine",
+            "sketch": "TrunkDovetailSketch",
+            "curve": 2
+          },
+          "lineTwo": {
+            "type": "adsk::fusion::SketchLine",
+            "sketch": "TrunkDovetailSketch",
+            "curve": 0
+          }
+        },
+        {
+          "type": "adsk::fusion::EqualConstraint"
+        },
+        {
+          "type": "adsk::fusion::ParallelConstraint",
+          "lineOne": {
+            "type": "adsk::fusion::SketchLine",
+            "sketch": "TrunkDovetailSketch",
+            "curve": 4
+          },
+          "lineTwo": {
+            "type": "adsk::fusion::SketchLine",
+            "sketch": "TrunkDovetailSketch",
+            "curve": 0
+          }
+        },
+        {
+          "type": "adsk::fusion::EqualConstraint"
+        },
+        {
+          "type": "adsk::fusion::CollinearConstraint",
+          "lineOne": {
+            "type": "adsk::fusion::SketchLine",
+            "sketch": "TrunkDovetailSketch",
+            "curve": 0
+          },
+          "lineTwo": {
+            "type": "adsk::fusion::SketchLine",
+            "sketch": "TrunkDovetailSketch",
+            "curve": 5
+          }
+        },
+        {
+          "type": "adsk::fusion::MidPointConstraint",
+          "point": null
+        }
+      ],
+      "component": "AdapterBody"
+    }
+  ],
+  "sourceUserParameters": [
+    {
+      "name": "Gap",
+      "sourceExpression": "-0.2 mm",
+      "value": -0.20000000000000004,
+      "unit": "millimeter",
+      "sourceUnitLabel": "mm"
+    }
+  ],
+  "name": "Latch",
+  "sketches": [
+    {
+      "name": "SideSketch",
+      "index": 100,
+      "origin": [
+        0,
+        0,
+        0
+      ],
+      "xAxis": [
+        0,
+        1,
+        0
+      ],
+      "yAxis": [
+        0,
+        0,
+        1
+      ],
+      "referencePlane": {
+        "type": "adsk::fusion::ConstructionPlane",
+        "name": "YZ",
+        "plane": {
+          "origin": [
+            0,
+            0,
+            0
+          ],
+          "normal": [
+            1,
+            0,
+            0
+          ]
+        }
+      },
+      "isFullyConstrained": false,
+      "curves": [
+        {
+          "index": 0,
+          "type": "adsk::fusion::SketchLine",
+          "construction": false,
+          "reference": true,
+          "geometry": {
+            "type": "adsk::core::Line3D",
+            "start": [
+              -263.445982162752,
+              99.10684591063722,
+              0
+            ],
+            "end": [
+              -149.9532667443008,
+              31.702071992564846,
+              0
+            ]
+          }
+        },
+        {
+          "index": 1,
+          "type": "adsk::fusion::SketchLine",
+          "construction": false,
+          "reference": true,
+          "geometry": {
+            "type": "adsk::core::Line3D",
+            "start": [
+              -149.9532667443008,
+              31.702071992564846,
+              0
+            ],
+            "end": [
+              -163.8098766745101,
+              8.371019960772731,
+              0
+            ]
+          }
+        },
+        {
+          "index": 2,
+          "type": "adsk::fusion::SketchLine",
+          "construction": false,
+          "reference": true,
+          "geometry": {
+            "type": "adsk::core::Line3D",
+            "start": [
+              -186.53073858934357,
+              -29.88520679397267,
+              0
+            ],
+            "end": [
+              -163.8098766745101,
+              8.371019960772731,
+              0
+            ]
+          }
+        },
+        {
+          "index": 3,
+          "type": "adsk::fusion::SketchCircle",
+          "construction": false,
+          "reference": true,
+          "geometry": {
+            "type": "adsk::core::Circle3D",
+            "center": [
+              -230.4245484695093,
+              -15.815735303876433,
+              0
+            ],
+            "radius": 14.999999999999986,
+            "normal": [
+              0,
+              0,
+              1
+            ]
+          }
+        },
+        {
+          "index": 4,
+          "type": "adsk::fusion::SketchLine",
+          "construction": true,
+          "reference": false,
+          "geometry": {
+            "type": "adsk::core::Line3D",
+            "start": [
+              -175.681781456517,
+              46.982565643902646,
+              0
+            ],
+            "end": [
+              -222.4245484695098,
+              -31.720517922915956,
+              0
+            ]
+          }
+        },
+        {
+          "index": 5,
+          "type": "adsk::fusion::SketchLine",
+          "construction": false,
+          "reference": false,
+          "geometry": {
+            "type": "adsk::core::Line3D",
+            "start": [
+              -222.4245484695098,
+              -29.762199656609788,
+              0
+            ],
+            "end": [
+              -215.4245484695093,
+              -43.00018346988403,
+              0
+            ]
+          }
+        },
+        {
+          "index": 6,
+          "type": "adsk::fusion::SketchLine",
+          "construction": false,
+          "reference": false,
+          "geometry": {
+            "type": "adsk::core::Line3D",
+            "start": [
+              -206.5843661642096,
+              -38.32565923643848,
+              0
+            ],
+            "end": [
+              -210.96245028191936,
+              -30.046086853096877,
+              0
+            ]
+          }
+        },
+        {
+          "index": 7,
+          "type": "adsk::fusion::SketchLine",
+          "construction": false,
+          "reference": false,
+          "geometry": {
+            "type": "adsk::core::Line3D",
+            "start": [
+              -210.96245028191936,
+              -30.046086853096877,
+              0
+            ],
+            "end": [
+              -203.80034177304108,
+              -17.986894372426057,
+              0
+            ]
+          }
+        },
+        {
+          "index": 8,
+          "type": "adsk::fusion::SketchLine",
+          "construction": false,
+          "reference": false,
+          "geometry": {
+            "type": "adsk::core::Line3D",
+            "start": [
+              -203.80034177304108,
+              -17.986894372426057,
+              0
+            ],
+            "end": [
+              -179.46417880333487,
+              -17.98689437242586,
+              0
+            ]
+          }
+        },
+        {
+          "index": 9,
+          "type": "adsk::fusion::SketchLine",
+          "construction": true,
+          "reference": false,
+          "geometry": {
+            "type": "adsk::core::Line3D",
+            "start": [
+              -215.4245484695093,
+              -43.00018346988403,
+              0
+            ],
+            "end": [
+              -206.5843661642096,
+              -38.32565923643848,
+              0
+            ]
+          }
+        },
+        {
+          "index": 10,
+          "type": "adsk::fusion::SketchLine",
+          "construction": true,
+          "reference": false,
+          "geometry": {
+            "type": "adsk::core::Line3D",
+            "start": [
+              -222.42454846950926,
+              15.00000022351742,
+              0
+            ],
+            "end": [
+              -222.42454846951009,
+              -59.00000087916851,
+              0
+            ]
+          }
+        },
+        {
+          "index": 11,
+          "type": "adsk::fusion::SketchLine",
+          "construction": true,
+          "reference": false,
+          "geometry": {
+            "type": "adsk::core::Line3D",
+            "start": [
+              -215.4245484695093,
+              -59.04716952367743,
+              0
+            ],
+            "end": [
+              -215.4245484695093,
+              16.01375105322876,
+              0
+            ]
+          }
+        },
+        {
+          "index": 12,
+          "type": "adsk::fusion::SketchLine",
+          "construction": false,
+          "reference": false,
+          "geometry": {
+            "type": "adsk::core::Line3D",
+            "start": [
+              -230.4245484695093,
+              -15.815735303876433,
+              0
+            ],
+            "end": [
+              -249.92454846950926,
+              -15.815735303876433,
+              0
+            ]
+          }
+        },
+        {
+          "index": 13,
+          "type": "adsk::fusion::SketchArc",
+          "construction": false,
+          "reference": false,
+          "geometry": {
+            "type": "adsk::core::Arc3D",
+            "start": [
+              -215.4245484695093,
+              -43.00018346988403,
+              0
+            ],
+            "mid": [
+              -208.6671952001366,
+              -45.0830125058111,
+              0
+            ],
+            "end": [
+              -206.58436616420954,
+              -38.32565923643842,
+              0
+            ],
+            "center": [
+              -211.0044573168594,
+              -40.662921353161224,
+              0
+            ],
+            "radius": 5.000000000000125,
+            "normal": [
+              0,
+              0,
+              1.0000000000000002
+            ]
+          }
+        },
+        {
+          "index": 14,
+          "type": "adsk::fusion::SketchLine",
+          "construction": false,
+          "reference": false,
+          "geometry": {
+            "type": "adsk::core::Line3D",
+            "start": [
+              -176.54157475514165,
+              47.49320787055471,
+              0
+            ],
+            "end": [
+              -222.4245484695098,
+              -29.76219965660978,
+              0
+            ]
+          }
+        }
+      ],
+      "dimensions": [
+        {
+          "type": "adsk::fusion::SketchOffsetDimension",
+          "parameter": {
+            "name": "d514",
+            "sourceExpression": "d700",
+            "value": 10,
+            "unit": "millimeter",
+            "sourceUnitLabel": "mm"
+          },
+          "isDriving": true
+        },
+        {
+          "type": "adsk::fusion::SketchOffsetDimension",
+          "parameter": {
+            "name": "d697",
+            "sourceExpression": "7 mm",
+            "value": 7.000000000000001,
+            "unit": "millimeter",
+            "sourceUnitLabel": "mm"
+          },
+          "isDriving": true
+        },
+        {
+          "type": "adsk::fusion::SketchOffsetDimension",
+          "parameter": {
+            "name": "d698",
+            "sourceExpression": "1 mm",
+            "value": 1,
+            "unit": "millimeter",
+            "sourceUnitLabel": "mm"
+          },
+          "isDriving": true
+        },
+        {
+          "type": "adsk::fusion::SketchOffsetDimension",
+          "parameter": {
+            "name": "d699",
+            "sourceExpression": "30.9240698356 mm",
+            "value": 30.9240698356,
+            "unit": "millimeter",
+            "sourceUnitLabel": "mm"
+          },
+          "isDriving": false
+        },
+        {
+          "type": "adsk::fusion::SketchOffsetDimension",
+          "parameter": {
+            "name": "d700",
+            "sourceExpression": "10 mm",
+            "value": 10,
+            "unit": "millimeter",
+            "sourceUnitLabel": "mm"
+          },
+          "isDriving": true
+        }
+      ],
+      "constraints": [
+        {
+          "type": "adsk::fusion::ParallelConstraint",
+          "lineOne": {
+            "type": "adsk::fusion::SketchLine",
+            "sketch": "SideSketch",
+            "curve": 6
+          },
+          "lineTwo": {
+            "type": "adsk::fusion::SketchLine",
+            "sketch": "SideSketch",
+            "curve": 5
+          }
+        },
+        {
+          "type": "adsk::fusion::HorizontalConstraint",
+          "line": {
+            "type": "adsk::fusion::SketchLine",
+            "sketch": "SideSketch",
+            "curve": 8
+          }
+        },
+        {
+          "type": "adsk::fusion::CoincidentConstraint",
+          "point": null
+        },
+        {
+          "type": "adsk::fusion::PerpendicularConstraint",
+          "line": {
+            "type": "adsk::fusion::SketchLine",
+            "sketch": "SideSketch",
+            "curve": 5
+          },
+          "lineOne": {
+            "type": "adsk::fusion::SketchLine",
+            "sketch": "SideSketch",
+            "curve": 5
+          },
+          "lineTwo": {
+            "type": "adsk::fusion::SketchLine",
+            "sketch": "SideSketch",
+            "curve": 9
+          },
+          "curve": {
+            "type": "adsk::fusion::SketchLine",
+            "sketch": "SideSketch",
+            "curve": 9
+          }
+        },
+        {
+          "type": "adsk::fusion::VerticalConstraint",
+          "line": {
+            "type": "adsk::fusion::SketchLine",
+            "sketch": "SideSketch",
+            "curve": 10
+          }
+        },
+        {
+          "type": "adsk::fusion::CoincidentConstraint",
+          "point": null
+        },
+        {
+          "type": "adsk::fusion::HorizontalConstraint",
+          "line": {
+            "type": "adsk::fusion::SketchLine",
+            "sketch": "SideSketch",
+            "curve": 12
+          }
+        },
+        {
+          "type": "adsk::fusion::ParallelConstraint",
+          "lineOne": {
+            "type": "adsk::fusion::SketchLine",
+            "sketch": "SideSketch",
+            "curve": 4
+          },
+          "lineTwo": {
+            "type": "adsk::fusion::SketchLine",
+            "sketch": "SideSketch",
+            "curve": 7
+          }
+        },
+        {
+          "type": "adsk::fusion::CoincidentConstraint",
+          "point": null
+        },
+        {
+          "type": "adsk::fusion::CoincidentConstraint",
+          "point": null
+        },
+        {
+          "type": "adsk::fusion::TangentConstraint"
+        },
+        {
+          "type": "adsk::fusion::ParallelConstraint",
+          "lineOne": {
+            "type": "adsk::fusion::SketchLine",
+            "sketch": "SideSketch",
+            "curve": 4
+          },
+          "lineTwo": {
+            "type": "adsk::fusion::SketchLine",
+            "sketch": "SideSketch",
+            "curve": 2
+          }
+        },
+        {
+          "type": "adsk::fusion::CoincidentConstraint",
+          "point": null
+        },
+        {
+          "type": "adsk::fusion::TangentConstraint"
+        },
+        {
+          "type": "adsk::fusion::TangentConstraint"
+        },
+        {
+          "type": "adsk::fusion::VerticalConstraint",
+          "line": {
+            "type": "adsk::fusion::SketchLine",
+            "sketch": "SideSketch",
+            "curve": 11
+          }
+        },
+        {
+          "type": "adsk::fusion::CoincidentConstraint",
+          "point": null
+        },
+        {
+          "type": "adsk::fusion::PerpendicularConstraint",
+          "line": {
+            "type": "adsk::fusion::SketchLine",
+            "sketch": "SideSketch",
+            "curve": 14
+          },
+          "lineOne": {
+            "type": "adsk::fusion::SketchLine",
+            "sketch": "SideSketch",
+            "curve": 14
+          },
+          "lineTwo": {
+            "type": "adsk::fusion::SketchLine",
+            "sketch": "SideSketch",
+            "curve": 0
+          },
+          "curve": {
+            "type": "adsk::fusion::SketchLine",
+            "sketch": "SideSketch",
+            "curve": 0
+          }
+        },
+        {
+          "type": "adsk::fusion::CoincidentConstraint",
+          "point": null
+        },
+        {
+          "type": "adsk::fusion::CoincidentConstraint",
+          "point": null
+        }
+      ]
+    },
+    {
+      "name": "TopCutSketch",
+      "index": 101,
+      "origin": [
+        0,
+        0,
+        0
+      ],
+      "xAxis": [
+        1,
+        0,
+        0
+      ],
+      "yAxis": [
+        0,
+        1,
+        0
+      ],
+      "referencePlane": {
+        "type": "adsk::fusion::ConstructionPlane",
+        "name": "XY",
+        "plane": {
+          "origin": [
+            0,
+            0,
+            0
+          ],
+          "normal": [
+            0,
+            0,
+            1
+          ]
+        }
+      },
+      "isFullyConstrained": true,
+      "curves": [
+        {
+          "index": 0,
+          "type": "adsk::fusion::SketchLine",
+          "construction": false,
+          "reference": true,
+          "geometry": {
+            "type": "adsk::core::Line3D",
+            "start": [
+              26.761338176309756,
+              -263.445982162752,
+              0
+            ],
+            "end": [
+              60.94766386144667,
+              -149.9532667443008,
+              0
+            ]
+          }
+        },
+        {
+          "index": 1,
+          "type": "adsk::fusion::SketchLine",
+          "construction": false,
+          "reference": true,
+          "geometry": {
+            "type": "adsk::core::Line3D",
+            "start": [
+              -26.761338176309756,
+              -263.445982162752,
+              0
+            ],
+            "end": [
+              -60.94766386144667,
+              -149.9532667443008,
+              0
+            ]
+          }
+        },
+        {
+          "index": 2,
+          "type": "adsk::fusion::SketchLine",
+          "construction": false,
+          "reference": false,
+          "geometry": {
+            "type": "adsk::core::Line3D",
+            "start": [
+              -26.761338176309756,
+              -263.445982162752,
+              0
+            ],
+            "end": [
+              -9.325873406851315e-14,
+              -352.289017411238,
+              0
+            ]
+          }
+        },
+        {
+          "index": 3,
+          "type": "adsk::fusion::SketchLine",
+          "construction": false,
+          "reference": false,
+          "geometry": {
+            "type": "adsk::core::Line3D",
+            "start": [
+              -9.18709552877317e-14,
+              -352.289017411238,
+              0
+            ],
+            "end": [
+              26.761338176309756,
+              -263.445982162752,
+              0
+            ]
+          }
+        },
+        {
+          "index": 4,
+          "type": "adsk::fusion::SketchLine",
+          "construction": false,
+          "reference": false,
+          "geometry": {
+            "type": "adsk::core::Line3D",
+            "start": [
+              -60.94766386144667,
+              -149.9532667443008,
+              0
+            ],
+            "end": [
+              60.94766386144667,
+              -149.9532667443008,
+              0
+            ]
+          }
+        },
+        {
+          "index": 5,
+          "type": "adsk::fusion::SketchLine",
+          "construction": false,
+          "reference": false,
+          "geometry": {
+            "type": "adsk::core::Line3D",
+            "start": [
+              -26.761338176309756,
+              -263.445982162752,
+              0
+            ],
+            "end": [
+              26.761338176309756,
+              -263.445982162752,
+              0
+            ]
+          }
+        },
+        {
+          "index": 6,
+          "type": "adsk::fusion::SketchLine",
+          "construction": false,
+          "reference": false,
+          "geometry": {
+            "type": "adsk::core::Line3D",
+            "start": [
+              -17.122284093491245,
+              -263.445982162752,
+              0
+            ],
+            "end": [
+              -17.122284093491245,
+              -295.445982162752,
+              0
+            ]
+          }
+        }
+      ],
+      "dimensions": [
+        {
+          "type": "adsk::fusion::SketchLinearDimension",
+          "parameter": {
+            "name": "d552",
+            "sourceExpression": "32 mm",
+            "value": 32,
+            "unit": "millimeter",
+            "sourceUnitLabel": "mm"
+          },
+          "isDriving": true
+        }
+      ],
+      "constraints": [
+        {
+          "type": "adsk::fusion::CoincidentConstraint",
+          "point": null
+        },
+        {
+          "type": "adsk::fusion::ParallelConstraint",
+          "lineOne": {
+            "type": "adsk::fusion::SketchLine",
+            "sketch": "TopCutSketch",
+            "curve": 2
+          },
+          "lineTwo": {
+            "type": "adsk::fusion::SketchLine",
+            "sketch": "TopCutSketch",
+            "curve": 1
+          }
+        },
+        {
+          "type": "adsk::fusion::CoincidentConstraint",
+          "point": null
+        },
+        {
+          "type": "adsk::fusion::EqualConstraint"
+        },
+        {
+          "type": "adsk::fusion::CoincidentConstraint",
+          "point": null
+        },
+        {
+          "type": "adsk::fusion::CoincidentConstraint",
+          "point": null
+        },
+        {
+          "type": "adsk::fusion::CoincidentConstraint",
+          "point": null
+        },
+        {
+          "type": "adsk::fusion::CoincidentConstraint",
+          "point": null
+        },
+        {
+          "type": "adsk::fusion::CoincidentConstraint",
+          "point": null
+        },
+        {
+          "type": "adsk::fusion::CoincidentConstraint",
+          "point": null
+        },
+        {
+          "type": "adsk::fusion::PerpendicularConstraint",
+          "line": {
+            "type": "adsk::fusion::SketchLine",
+            "sketch": "TopCutSketch",
+            "curve": 6
+          },
+          "lineOne": {
+            "type": "adsk::fusion::SketchLine",
+            "sketch": "TopCutSketch",
+            "curve": 6
+          },
+          "lineTwo": {
+            "type": "adsk::fusion::SketchLine",
+            "sketch": "TopCutSketch",
+            "curve": 5
+          },
+          "curve": {
+            "type": "adsk::fusion::SketchLine",
+            "sketch": "TopCutSketch",
+            "curve": 5
+          }
+        }
+      ]
+    }
+  ],
+  "finalBodies": [
+    {
+      "name": "Body",
+      "isSolid": true,
+      "volumeMm3": 231178.30868472636,
+      "areaMm2": 30016.01865179789,
+      "boundingBox": [
+        [
+          -60.5734944183909,
+          -220.96245028191947,
+          -45.66292135316135
+        ],
+        [
+          60.40791803502369,
+          -150.59778937463284,
+          47.321249210829805
+        ]
+      ],
+      "faceCount": 45,
+      "edgeCount": 102
+    }
+  ],
+  "parameters": [
+    {
+      "name": "d514",
+      "sourceExpression": "d700",
+      "value": 10,
+      "unit": "millimeter",
+      "sourceUnitLabel": "mm"
+    },
+    {
+      "name": "d697",
+      "sourceExpression": "7 mm",
+      "value": 7.000000000000001,
+      "unit": "millimeter",
+      "sourceUnitLabel": "mm"
+    },
+    {
+      "name": "d698",
+      "sourceExpression": "1 mm",
+      "value": 1,
+      "unit": "millimeter",
+      "sourceUnitLabel": "mm"
+    },
+    {
+      "name": "d699",
+      "sourceExpression": "30.9240698356 mm",
+      "value": 30.9240698356,
+      "unit": "millimeter",
+      "sourceUnitLabel": "mm"
+    },
+    {
+      "name": "d700",
+      "sourceExpression": "10 mm",
+      "value": 10,
+      "unit": "millimeter",
+      "sourceUnitLabel": "mm"
+    },
+    {
+      "name": "d516",
+      "sourceExpression": "0.0 deg",
+      "value": 0,
+      "unit": "degree",
+      "sourceUnitLabel": "deg"
+    },
+    {
+      "name": "d547",
+      "sourceExpression": "0.00 mm",
+      "value": 0,
+      "unit": "millimeter",
+      "sourceUnitLabel": "mm"
+    },
+    {
+      "name": "d517",
+      "sourceExpression": "0.0 deg",
+      "value": 0,
+      "unit": "degree",
+      "sourceUnitLabel": "deg"
+    },
+    {
+      "name": "d545",
+      "sourceExpression": "0.0 deg",
+      "value": 0,
+      "unit": "degree",
+      "sourceUnitLabel": "deg"
+    },
+    {
+      "name": "d520",
+      "sourceExpression": "0.0 deg",
+      "value": 0,
+      "unit": "degree",
+      "sourceUnitLabel": "deg"
+    },
+    {
+      "name": "d546",
+      "sourceExpression": "0.00 mm",
+      "value": 0,
+      "unit": "millimeter",
+      "sourceUnitLabel": "mm"
+    },
+    {
+      "name": "d532",
+      "sourceExpression": "Gap",
+      "value": -0.20000000000000004,
+      "unit": "millimeter",
+      "sourceUnitLabel": "mm"
+    },
+    {
+      "name": "d552",
+      "sourceExpression": "32 mm",
+      "value": 32,
+      "unit": "millimeter",
+      "sourceUnitLabel": "mm"
+    },
+    {
+      "name": "d569",
+      "sourceExpression": "1",
+      "value": 10,
+      "unit": "millimeter",
+      "sourceUnitLabel": ""
+    },
+    {
+      "name": "d570",
+      "sourceExpression": "1 mm",
+      "value": 1,
+      "unit": "millimeter",
+      "sourceUnitLabel": "mm"
+    },
+    {
+      "name": "d571",
+      "sourceExpression": "1",
+      "value": 10,
+      "unit": "millimeter",
+      "sourceUnitLabel": ""
+    },
+    {
+      "name": "d572",
+      "sourceExpression": "10 mm",
+      "value": 10,
+      "unit": "millimeter",
+      "sourceUnitLabel": "mm"
+    }
+  ],
+  "features": [
+    {
+      "name": "Extrude1",
+      "index": 102,
+      "type": "adsk::fusion::ExtrudeFeature",
+      "healthState": 0,
+      "message": "",
+      "operation": 3,
+      "extentType": 0,
+      "extentOne": {
+        "type": "adsk::fusion::ToEntityExtentDefinition",
+        "offset": {
+          "name": "d547",
+          "sourceExpression": "0.00 mm",
+          "value": 0,
+          "unit": "millimeter",
+          "sourceUnitLabel": "mm"
+        },
+        "isChained": false,
+        "isMinimumSolution": false,
+        "entity": {
+          "type": "adsk::fusion::BRepFace",
+          "body": "Body1",
+          "component": "AdapterBody",
+          "point": [
+            72.85503121713383,
+            -163.47222471655553,
+            -10.757093416599979
+          ],
+          "areaMm2": 1110.0139343284764,
+          "geometry": {
+            "type": "adsk::core::Plane",
+            "origin": [
+              45.00000000000007,
+              -290,
+              0
+            ],
+            "normal": [
+              0.9766138111222712,
+              -0.21500107889318346,
+              0
+            ]
+          },
+          "isParamReversed": false
+        },
+        "directionHint": [
+          1,
+          0,
+          0
+        ]
+      },
+      "extentTwo": null,
+      "startExtent": {
+        "type": "adsk::fusion::ProfilePlaneStartDefinition",
+        "profilePlane": {
+          "origin": [
+            -185.01923988858837,
+            5.765504710633515,
+            0
+          ],
+          "normal": [
+            0,
+            0,
+            1
+          ]
+        }
+      },
+      "taperOne": {
+        "name": "d516",
+        "sourceExpression": "0.0 deg",
+        "value": 0,
+        "unit": "degree",
+        "sourceUnitLabel": "deg"
+      },
+      "taperTwo": null,
+      "profiles": [
+        {
+          "sketch": "SideSketch",
+          "areaMm2": 2363.48470492151,
+          "centroid": [
+            -185.01923988858837,
+            5.765504710633515,
+            0
+          ],
+          "loops": [
+            {
+              "outer": true,
+              "curves": [
+                {
+                  "type": "adsk::core::Arc3D",
+                  "start": [
+                    -221.13733483676805,
+                    -27.594855090168835,
+                    0
+                  ],
+                  "mid": [
+                    -217.52764899013985,
+                    -23.475368703657452,
+                    0
+                  ],
+                  "end": [
+                    -215.63754974076096,
+                    -18.334597863841907,
+                    0
+                  ],
+                  "center": [
+                    -230.4245484695093,
+                    -15.815735303876433,
+                    0
+                  ],
+                  "radius": 15.000000000000004,
+                  "normal": [
+                    0,
+                    0,
+                    0.9999999999999998
+                  ]
+                },
+                {
+                  "type": "adsk::core::Line3D",
+                  "start": [
+                    -221.13733483676805,
+                    -27.594855090168842,
+                    0
+                  ],
+                  "end": [
+                    -222.4245484695098,
+                    -29.76219965660978,
+                    0
+                  ]
+                },
+                {
+                  "type": "adsk::core::Line3D",
+                  "start": [
+                    -222.4245484695098,
+                    -29.76219965660978,
+                    0
+                  ],
+                  "end": [
+                    -215.4245484695093,
+                    -43.00018346988403,
+                    0
+                  ]
+                },
+                {
+                  "type": "adsk::core::Arc3D",
+                  "start": [
+                    -215.4245484695093,
+                    -43.00018346988403,
+                    0
+                  ],
+                  "mid": [
+                    -208.6671952001366,
+                    -45.0830125058111,
+                    0
+                  ],
+                  "end": [
+                    -206.58436616420954,
+                    -38.32565923643842,
+                    0
+                  ],
+                  "center": [
+                    -211.0044573168594,
+                    -40.662921353161224,
+                    0
+                  ],
+                  "radius": 5.000000000000125,
+                  "normal": [
+                    0,
+                    0,
+                    1.0000000000000002
+                  ]
+                },
+                {
+                  "type": "adsk::core::Line3D",
+                  "start": [
+                    -206.58436616420954,
+                    -38.32565923643842,
+                    0
+                  ],
+                  "end": [
+                    -210.96245028191936,
+                    -30.046086853096877,
+                    0
+                  ]
+                },
+                {
+                  "type": "adsk::core::Line3D",
+                  "start": [
+                    -210.96245028191936,
+                    -30.046086853096877,
+                    0
+                  ],
+                  "end": [
+                    -203.80034177304108,
+                    -17.986894372426057,
+                    0
+                  ]
+                },
+                {
+                  "type": "adsk::core::Line3D",
+                  "start": [
+                    -203.80034177304108,
+                    -17.986894372426057,
+                    0
+                  ],
+                  "end": [
+                    -179.46417880333487,
+                    -17.98689437242586,
+                    0
+                  ]
+                },
+                {
+                  "type": "adsk::core::Line3D",
+                  "start": [
+                    -179.46417880333487,
+                    -17.98689437242586,
+                    0
+                  ],
+                  "end": [
+                    -163.8098766745101,
+                    8.371019960772731,
+                    0
+                  ]
+                },
+                {
+                  "type": "adsk::core::Line3D",
+                  "start": [
+                    -149.9532667443008,
+                    31.702071992564846,
+                    0
+                  ],
+                  "end": [
+                    -163.8098766745101,
+                    8.371019960772731,
+                    0
+                  ]
+                },
+                {
+                  "type": "adsk::core::Line3D",
+                  "start": [
+                    -176.54157475514165,
+                    47.49320787055471,
+                    0
+                  ],
+                  "end": [
+                    -149.9532667443008,
+                    31.702071992564846,
+                    0
+                  ]
+                },
+                {
+                  "type": "adsk::core::Line3D",
+                  "start": [
+                    -176.54157475514165,
+                    47.49320787055471,
+                    0
+                  ],
+                  "end": [
+                    -215.63754974076102,
+                    -18.334597863841893,
+                    0
+                  ]
+                }
+              ]
+            }
+          ],
+          "sketchNormal": [
+            1,
+            0,
+            0
+          ],
+          "coordinateFrame": "SideSketch"
+        },
+        {
+          "sketch": "SideSketch",
+          "areaMm2": 7.229497325630469,
+          "centroid": [
+            -218.04252302257564,
+            -23.169578436637558,
+            0
+          ],
+          "loops": [
+            {
+              "outer": true,
+              "curves": [
+                {
+                  "type": "adsk::core::Line3D",
+                  "start": [
+                    -215.63754974076102,
+                    -18.334597863841893,
+                    0
+                  ],
+                  "end": [
+                    -221.13733483676805,
+                    -27.594855090168842,
+                    0
+                  ]
+                },
+                {
+                  "type": "adsk::core::Arc3D",
+                  "start": [
+                    -221.13733483676805,
+                    -27.594855090168835,
+                    0
+                  ],
+                  "mid": [
+                    -217.52764899013985,
+                    -23.475368703657452,
+                    0
+                  ],
+                  "end": [
+                    -215.63754974076096,
+                    -18.334597863841907,
+                    0
+                  ],
+                  "center": [
+                    -230.4245484695093,
+                    -15.815735303876433,
+                    0
+                  ],
+                  "radius": 15.000000000000004,
+                  "normal": [
+                    0,
+                    0,
+                    0.9999999999999998
+                  ]
+                }
+              ]
+            }
+          ],
+          "sketchNormal": [
+            1,
+            0,
+            0
+          ],
+          "coordinateFrame": "SideSketch"
+        }
+      ],
+      "participantBodies": [],
+      "bodiesBefore": [],
+      "bodiesAfter": [
+        {
+          "name": "Body",
+          "isSolid": true,
+          "volumeMm3": 161420.26040408312,
+          "areaMm2": 22072.034193158095,
+          "boundingBox": [
+            [
+              0,
+              -222.4245484695098,
+              -45.66292135316135
+            ],
+            [
+              75.83122356301746,
+              -149.9532667443008,
+              47.49320787055471
+            ]
+          ],
+          "faceCount": 10,
+          "edgeCount": 24
+        }
+      ],
+      "operationName": "newBody",
+      "rebuildDisposition": "recreate"
+    },
+    {
+      "name": "Mirror2",
+      "index": 103,
+      "type": "adsk::fusion::MirrorFeature",
+      "healthState": 0,
+      "message": "",
+      "inputEntities": [
+        {
+          "type": "adsk::fusion::BRepBody",
+          "name": "Body"
+        }
+      ],
+      "mirrorPlane": {
+        "type": "adsk::fusion::ConstructionPlane",
+        "name": "YZ",
+        "plane": {
+          "origin": [
+            0,
+            0,
+            0
+          ],
+          "normal": [
+            1,
+            0,
+            0
+          ]
+        }
+      },
+      "isCombine": true,
+      "computeOption": 2,
+      "bodiesBefore": [
+        {
+          "name": "Body",
+          "isSolid": true,
+          "volumeMm3": 161420.26040408312,
+          "areaMm2": 22072.034193158095,
+          "boundingBox": [
+            [
+              0,
+              -222.4245484695098,
+              -45.66292135316135
+            ],
+            [
+              75.83122356301746,
+              -149.9532667443008,
+              47.49320787055471
+            ]
+          ],
+          "faceCount": 10,
+          "edgeCount": 24
+        }
+      ],
+      "bodiesAfter": [
+        {
+          "name": "Body",
+          "isSolid": true,
+          "volumeMm3": 322840.5208081663,
+          "areaMm2": 39402.63998182191,
+          "boundingBox": [
+            [
+              -75.83122356301746,
+              -222.4245484695098,
+              -45.66292135316135
+            ],
+            [
+              75.83122356301746,
+              -149.9532667443008,
+              47.49320787055471
+            ]
+          ],
+          "faceCount": 10,
+          "edgeCount": 24
+        }
+      ],
+      "rebuildDisposition": "recreate"
+    },
+    {
+      "name": "Extrude2",
+      "index": 104,
+      "type": "adsk::fusion::ExtrudeFeature",
+      "healthState": 0,
+      "message": "",
+      "operation": 2,
+      "extentType": 1,
+      "extentOne": {
+        "type": "adsk::fusion::ThroughAllExtentDefinition",
+        "isPositiveDirection": true
+      },
+      "extentTwo": {
+        "type": "adsk::fusion::ThroughAllExtentDefinition",
+        "isPositiveDirection": true
+      },
+      "startExtent": {
+        "type": "adsk::fusion::ProfilePlaneStartDefinition",
+        "profilePlane": {
+          "origin": [
+            1.410588661409863,
+            -294.3746613122553,
+            0
+          ],
+          "normal": [
+            0,
+            0,
+            1
+          ]
+        }
+      },
+      "taperOne": {
+        "name": "d517",
+        "sourceExpression": "0.0 deg",
+        "value": 0,
+        "unit": "degree",
+        "sourceUnitLabel": "deg"
+      },
+      "taperTwo": {
+        "name": "d545",
+        "sourceExpression": "0.0 deg",
+        "value": 0,
+        "unit": "degree",
+        "sourceUnitLabel": "deg"
+      },
+      "profiles": [
+        {
+          "sketch": "TopCutSketch",
+          "areaMm2": 2223.3336455694453,
+          "centroid": [
+            1.410588661409863,
+            -294.3746613122553,
+            0
+          ],
+          "loops": [
+            {
+              "outer": true,
+              "curves": [
+                {
+                  "type": "adsk::core::Line3D",
+                  "start": [
+                    -17.122284093491245,
+                    -263.445982162752,
+                    0
+                  ],
+                  "end": [
+                    26.761338176309756,
+                    -263.445982162752,
+                    0
+                  ]
+                },
+                {
+                  "type": "adsk::core::Line3D",
+                  "start": [
+                    -17.122284093491245,
+                    -263.445982162752,
+                    0
+                  ],
+                  "end": [
+                    -17.122284093491245,
+                    -295.445982162752,
+                    0
+                  ]
+                },
+                {
+                  "type": "adsk::core::Line3D",
+                  "start": [
+                    -17.122284093491245,
+                    -295.445982162752,
+                    0
+                  ],
+                  "end": [
+                    -9.103828801926284e-14,
+                    -352.289017411238,
+                    0
+                  ]
+                },
+                {
+                  "type": "adsk::core::Line3D",
+                  "start": [
+                    -9.18709552877317e-14,
+                    -352.289017411238,
+                    0
+                  ],
+                  "end": [
+                    26.761338176309756,
+                    -263.445982162752,
+                    0
+                  ]
+                }
+              ]
+            }
+          ],
+          "sketchNormal": [
+            0,
+            0,
+            1
+          ],
+          "coordinateFrame": "TopCutSketch"
+        },
+        {
+          "sketch": "TopCutSketch",
+          "areaMm2": 154.22486532509626,
+          "centroid": [
+            -20.33530212109742,
+            -274.1126488294187,
+            0
+          ],
+          "loops": [
+            {
+              "outer": true,
+              "curves": [
+                {
+                  "type": "adsk::core::Line3D",
+                  "start": [
+                    -17.122284093491245,
+                    -263.445982162752,
+                    0
+                  ],
+                  "end": [
+                    -17.122284093491245,
+                    -295.445982162752,
+                    0
+                  ]
+                },
+                {
+                  "type": "adsk::core::Line3D",
+                  "start": [
+                    -26.761338176309756,
+                    -263.445982162752,
+                    0
+                  ],
+                  "end": [
+                    -17.122284093491245,
+                    -263.445982162752,
+                    0
+                  ]
+                },
+                {
+                  "type": "adsk::core::Line3D",
+                  "start": [
+                    -26.761338176309756,
+                    -263.445982162752,
+                    0
+                  ],
+                  "end": [
+                    -17.122284093491245,
+                    -295.445982162752,
+                    0
+                  ]
+                }
+              ]
+            }
+          ],
+          "sketchNormal": [
+            0,
+            0,
+            1
+          ],
+          "coordinateFrame": "TopCutSketch"
+        },
+        {
+          "sketch": "TopCutSketch",
+          "areaMm2": 9954.332807907449,
+          "centroid": [
+            0,
+            -199.32695110179236,
+            0
+          ],
+          "loops": [
+            {
+              "outer": true,
+              "curves": [
+                {
+                  "type": "adsk::core::Line3D",
+                  "start": [
+                    26.761338176309756,
+                    -263.445982162752,
+                    0
+                  ],
+                  "end": [
+                    60.94766386144667,
+                    -149.9532667443008,
+                    0
+                  ]
+                },
+                {
+                  "type": "adsk::core::Line3D",
+                  "start": [
+                    -60.94766386144667,
+                    -149.9532667443008,
+                    0
+                  ],
+                  "end": [
+                    60.94766386144667,
+                    -149.9532667443008,
+                    0
+                  ]
+                },
+                {
+                  "type": "adsk::core::Line3D",
+                  "start": [
+                    -26.761338176309756,
+                    -263.445982162752,
+                    0
+                  ],
+                  "end": [
+                    -60.94766386144667,
+                    -149.9532667443008,
+                    0
+                  ]
+                },
+                {
+                  "type": "adsk::core::Line3D",
+                  "start": [
+                    -26.761338176309756,
+                    -263.445982162752,
+                    0
+                  ],
+                  "end": [
+                    -17.122284093491245,
+                    -263.445982162752,
+                    0
+                  ]
+                },
+                {
+                  "type": "adsk::core::Line3D",
+                  "start": [
+                    -17.122284093491245,
+                    -263.445982162752,
+                    0
+                  ],
+                  "end": [
+                    26.761338176309756,
+                    -263.445982162752,
+                    0
+                  ]
+                }
+              ]
+            }
+          ],
+          "sketchNormal": [
+            0,
+            0,
+            1
+          ],
+          "coordinateFrame": "TopCutSketch"
+        }
+      ],
+      "participantBodies": [
+        "Body"
+      ],
+      "bodiesBefore": [
+        {
+          "name": "Body",
+          "isSolid": true,
+          "volumeMm3": 322840.5208081663,
+          "areaMm2": 39402.63998182191,
+          "boundingBox": [
+            [
+              -75.83122356301746,
+              -222.4245484695098,
+              -45.66292135316135
+            ],
+            [
+              75.83122356301746,
+              -149.9532667443008,
+              47.49320787055471
+            ]
+          ],
+          "faceCount": 10,
+          "edgeCount": 24
+        }
+      ],
+      "bodiesAfter": [
+        {
+          "name": "Body",
+          "isSolid": true,
+          "volumeMm3": 238753.4027211155,
+          "areaMm2": 30219.91204090208,
+          "boundingBox": [
+            [
+              -60.94766386144667,
+              -222.4245484695098,
+              -45.66292135316135
+            ],
+            [
+              60.94766386144667,
+              -149.9532667443008,
+              47.49320787055471
+            ]
+          ],
+          "faceCount": 10,
+          "edgeCount": 24
+        }
+      ],
+      "operationName": "intersect",
+      "rebuildDisposition": "recreate"
+    },
+    {
+      "name": "Extrude3",
+      "index": 105,
+      "type": "adsk::fusion::ExtrudeFeature",
+      "healthState": 0,
+      "message": "",
+      "operation": 1,
+      "extentType": 0,
+      "extentOne": {
+        "type": "adsk::fusion::ToEntityExtentDefinition",
+        "offset": {
+          "name": "d546",
+          "sourceExpression": "0.00 mm",
+          "value": 0,
+          "unit": "millimeter",
+          "sourceUnitLabel": "mm"
+        },
+        "isChained": false,
+        "isMinimumSolution": false,
+        "entity": {
+          "type": "adsk::fusion::BRepFace",
+          "body": "Body1",
+          "component": "AdapterBody",
+          "point": [
+            0,
+            -263.445982162752,
+            99.45456494217808
+          ],
+          "areaMm2": 713.5759738497401,
+          "geometry": {
+            "type": "adsk::core::Plane",
+            "origin": [
+              0,
+              -263.445982162752,
+              109.10684591063722
+            ],
+            "normal": [
+              0,
+              -1,
+              3.552713678800501e-15
+            ]
+          },
+          "isParamReversed": false
+        },
+        "directionHint": [
+          1.4843805096034247e-17,
+          -0.8597932986246308,
+          0.5106422266520628
+        ]
+      },
+      "extentTwo": null,
+      "startExtent": {
+        "type": "adsk::fusion::ProfilePlaneStartDefinition",
+        "profilePlane": {
+          "origin": [
+            9.885276496312983e-15,
+            -53.5653913587356,
+            1.1528461196731714e-16
+          ],
+          "normal": [
+            1.4843805096034244e-17,
+            2.7124831238036527e-17,
+            1
+          ]
+        }
+      },
+      "taperOne": {
+        "name": "d520",
+        "sourceExpression": "0.0 deg",
+        "value": 0,
+        "unit": "degree",
+        "sourceUnitLabel": "deg"
+      },
+      "taperTwo": null,
+      "profiles": [
+        {
+          "sketch": "TrunkDovetailSketch",
+          "areaMm2": 196.9504172281375,
+          "centroid": [
+            9.885276496312983e-15,
+            -53.5653913587356,
+            1.1528461196731714e-16
+          ],
+          "loops": [
+            {
+              "outer": true,
+              "curves": [
+                {
+                  "type": "adsk::core::Line3D",
+                  "start": [
+                    -14.618802153516901,
+                    -57.31524097233774,
+                    3.560620470044236e-16
+                  ],
+                  "end": [
+                    -10,
+                    -49.31524097233765,
+                    -1.7763568394002505e-14
+                  ]
+                },
+                {
+                  "type": "adsk::core::Line3D",
+                  "start": [
+                    14.618802153517008,
+                    -57.315240972337726,
+                    0
+                  ],
+                  "end": [
+                    -14.618802153516901,
+                    -57.31524097233774,
+                    3.560620470044236e-16
+                  ]
+                },
+                {
+                  "type": "adsk::core::Line3D",
+                  "start": [
+                    10,
+                    -49.31524097233765,
+                    -1.7763568394002505e-14
+                  ],
+                  "end": [
+                    14.618802153517008,
+                    -57.315240972337726,
+                    0
+                  ]
+                },
+                {
+                  "type": "adsk::core::Line3D",
+                  "start": [
+                    10,
+                    -49.31524097233765,
+                    -1.7763568394002505e-14
+                  ],
+                  "end": [
+                    0,
+                    -49.31524097233765,
+                    -1.7763568394002505e-14
+                  ]
+                },
+                {
+                  "type": "adsk::core::Line3D",
+                  "start": [
+                    0,
+                    -49.31524097233765,
+                    -1.7763568394002505e-14
+                  ],
+                  "end": [
+                    -10,
+                    -49.31524097233765,
+                    -1.7763568394002505e-14
+                  ]
+                }
+              ]
+            }
+          ],
+          "sketchNormal": [
+            0,
+            -0.8597932986246306,
+            0.5106422266520627
+          ],
+          "coordinateFrame": "TrunkDovetailSketch"
+        }
+      ],
+      "participantBodies": [
+        "Body"
+      ],
+      "bodiesBefore": [
+        {
+          "name": "Body",
+          "isSolid": true,
+          "volumeMm3": 238753.4027211155,
+          "areaMm2": 30219.91204090208,
+          "boundingBox": [
+            [
+              -60.94766386144667,
+              -222.4245484695098,
+              -45.66292135316135
+            ],
+            [
+              60.94766386144667,
+              -149.9532667443008,
+              47.49320787055471
+            ]
+          ],
+          "faceCount": 10,
+          "edgeCount": 24
+        }
+      ],
+      "bodiesAfter": [
+        {
+          "name": "Body",
+          "isSolid": true,
+          "volumeMm3": 232662.89426460396,
+          "areaMm2": 30683.00416855862,
+          "boundingBox": [
+            [
+              -60.94766386144667,
+              -222.4245484695098,
+              -45.66292135316135
+            ],
+            [
+              60.94766386144667,
+              -149.9532667443008,
+              47.49320787055471
+            ]
+          ],
+          "faceCount": 14,
+          "edgeCount": 36
+        }
+      ],
+      "operationName": "cut",
+      "rebuildDisposition": "recreate"
+    },
+    {
+      "name": "OffsetFaces2",
+      "index": 106,
+      "type": "adsk::fusion::OffsetFacesFeature",
+      "healthState": 0,
+      "message": "",
+      "distance": {
+        "name": "d532",
+        "sourceExpression": "Gap",
+        "value": -0.20000000000000004,
+        "unit": "millimeter",
+        "sourceUnitLabel": "mm"
+      },
+      "inputFaces": [
+        {
+          "type": "adsk::fusion::BRepFace",
+          "body": "Body",
+          "component": "Latch",
+          "point": [
+            1.199040866595169e-13,
+            -164.70872277381784,
+            6.857588810069498
+          ],
+          "areaMm2": 6333.867188025726,
+          "geometry": {
+            "type": "adsk::core::Plane",
+            "origin": [
+              0,
+              -179.46417880333487,
+              -17.986894372425855
+            ],
+            "normal": [
+              0,
+              0.8597932986246307,
+              -0.5106422266520627
+            ]
+          },
+          "isParamReversed": false
+        },
+        {
+          "type": "adsk::fusion::BRepFace",
+          "body": "Body",
+          "component": "Latch",
+          "point": [
+            -35.47383193072336,
+            -163.24742074972121,
+            39.59763993155978
+          ],
+          "areaMm2": 1451.6745768234562,
+          "geometry": {
+            "type": "adsk::core::Plane",
+            "origin": [
+              0,
+              -149.9532667443008,
+              31.702071992564846
+            ],
+            "normal": [
+              0,
+              0.5106422266520634,
+              0.8597932986246304
+            ]
+          },
+          "isParamReversed": false
+        },
+        {
+          "type": "adsk::fusion::BRepFace",
+          "body": "Body",
+          "component": "Latch",
+          "point": [
+            35.47383193072345,
+            -163.24742074972121,
+            39.59763993155978
+          ],
+          "areaMm2": 1451.6745768234618,
+          "geometry": {
+            "type": "adsk::core::Plane",
+            "origin": [
+              0,
+              -149.9532667443008,
+              31.702071992564846
+            ],
+            "normal": [
+              0,
+              0.5106422266520634,
+              0.8597932986246304
+            ]
+          },
+          "isParamReversed": false
+        }
+      ],
+      "bodiesBefore": [
+        {
+          "name": "Body",
+          "isSolid": true,
+          "volumeMm3": 232662.89426460396,
+          "areaMm2": 30683.00416855862,
+          "boundingBox": [
+            [
+              -60.94766386144667,
+              -222.4245484695098,
+              -45.66292135316135
+            ],
+            [
+              60.94766386144667,
+              -149.9532667443008,
+              47.49320787055471
+            ]
+          ],
+          "faceCount": 14,
+          "edgeCount": 36
+        }
+      ],
+      "bodiesAfter": [
+        {
+          "name": "Body",
+          "isSolid": true,
+          "volumeMm3": 230819.7862464548,
+          "areaMm2": 30537.601537816845,
+          "boundingBox": [
+            [
+              -60.8651032230395,
+              -222.4245484695098,
+              -45.66292135316135
+            ],
+            [
+              60.86510322303974,
+              -150.22735384935615,
+              47.321249210829805
+            ]
+          ],
+          "faceCount": 14,
+          "edgeCount": 36
+        }
+      ],
+      "rebuildDisposition": "recreate"
+    },
+    {
+      "name": "Fillet5",
+      "index": 128,
+      "type": "adsk::fusion::FilletFeature",
+      "healthState": 0,
+      "message": "",
+      "sourceOnlyDoNotBuild": true,
+      "edgeSets": [
+        {
+          "type": "adsk::fusion::ConstantRadiusFilletEdgeSet",
+          "radius": null,
+          "edges": [
+            {
+              "type": "adsk::fusion::BRepFace",
+              "body": "Body",
+              "component": "Latch",
+              "point": [
+                49.99146785473598,
+                -186.325951159433,
+                -0.04951270585206391
+              ],
+              "areaMm2": 2457.429957584888,
+              "geometry": {
+                "type": "adsk::core::Plane",
+                "origin": [
+                  -9.18709552877317e-14,
+                  -352.289017411238,
+                  0
+                ],
+                "normal": [
+                  0.9575040587154022,
+                  -0.2884197939523773,
+                  0
+                ]
+              },
+              "isParamReversed": false
+            },
+            {
+              "type": "adsk::fusion::BRepFace",
+              "body": "Body",
+              "component": "Latch",
+              "point": [
+                6.217248937900877e-14,
+                -208.7734082230645,
+                -34.18587304476765
+              ],
+              "areaMm2": 809.7673448426116,
+              "geometry": {
+                "type": "adsk::core::Plane",
+                "origin": [
+                  0,
+                  -206.5843661642096,
+                  -38.32565923643847
+                ],
+                "normal": [
+                  0,
+                  0.8840182305299805,
+                  0.4674524233444964
+                ]
+              },
+              "isParamReversed": false
+            },
+            {
+              "type": "adsk::fusion::BRepFace",
+              "body": "Body",
+              "component": "Latch",
+              "point": [
+                0.02908472247576732,
+                -209.94046472983302,
+                -45.548401859186626
+              ],
+              "areaMm2": 1351.0732581509587,
+              "geometry": {
+                "type": "adsk::core::Cylinder",
+                "origin": [
+                  0,
+                  -211.0044573168594,
+                  -40.662921353161224
+                ],
+                "axis": [
+                  1,
+                  0,
+                  0
+                ],
+                "radius": 5.000000000000125
+              },
+              "isParamReversed": false
+            },
+            {
+              "type": "adsk::fusion::BRepFace",
+              "body": "Body",
+              "component": "Latch",
+              "point": [
+                4.884981308350689e-14,
+                -218.92454846950955,
+                -36.38119156324691
+              ],
+              "areaMm2": 1203.1373211214025,
+              "geometry": {
+                "type": "adsk::core::Plane",
+                "origin": [
+                  0,
+                  -222.4245484695098,
+                  -29.762199656609788
+                ],
+                "normal": [
+                  0,
+                  -0.8840182305299784,
+                  -0.4674524233445003
+                ]
+              },
+              "isParamReversed": false
+            },
+            {
+              "type": "adsk::fusion::BRepFace",
+              "body": "Body",
+              "component": "Latch",
+              "point": [
+                1.2434497875801753e-13,
+                -164.962073350557,
+                6.822673702872225
+              ],
+              "areaMm2": 6319.90393308077,
+              "geometry": {
+                "type": "adsk::core::Plane",
+                "origin": [
+                  0,
+                  -179.6361374630598,
+                  -17.884765927095444
+                ],
+                "normal": [
+                  0,
+                  0.8597932986246307,
+                  -0.5106422266520627
+                ]
+              },
+              "isParamReversed": false
+            },
+            {
+              "type": "adsk::fusion::BRepFace",
+              "body": "Body",
+              "component": "Latch",
+              "point": [
+                7.105427357601002e-14,
+                -207.3813960274802,
+                -24.01649061276146
+              ],
+              "areaMm2": 1224.4183605359824,
+              "geometry": {
+                "type": "adsk::core::Plane",
+                "origin": [
+                  0,
+                  -210.96245028191936,
+                  -30.046086853096877
+                ],
+                "normal": [
+                  0,
+                  0.8597932986246145,
+                  -0.5106422266520901
+                ]
+              },
+              "isParamReversed": false
+            },
+            {
+              "type": "adsk::fusion::BRepFace",
+              "body": "Body",
+              "component": "Latch",
+              "point": [
+                9.769962616701378e-14,
+                -191.74856731239944,
+                -17.986894372425958
+              ],
+              "areaMm2": 2331.201972412658,
+              "geometry": {
+                "type": "adsk::core::Plane",
+                "origin": [
+                  0,
+                  -203.80034177304108,
+                  -17.986894372426057
+                ],
+                "normal": [
+                  0,
+                  8.211653771438432e-15,
+                  -1
+                ]
+              },
+              "isParamReversed": false
+            }
+          ]
+        },
+        {
+          "type": "adsk::fusion::ConstantRadiusFilletEdgeSet",
+          "radius": null,
+          "edges": [
+            {
+              "type": "adsk::fusion::BRepEdge",
+              "body": "Body",
+              "length": 85.1409014936619,
+              "geometry": {
+                "type": "adsk::core::Line3D",
+                "start": [
+                  -42.5704507468309,
+                  -210.96245028191936,
+                  -30.046086853096877
+                ],
+                "end": [
+                  42.570450746831,
+                  -210.96245028191936,
+                  -30.046086853096877
+                ]
+              }
+            },
+            {
+              "type": "adsk::fusion::BRepEdge",
+              "body": "Body",
+              "length": 89.45564844766771,
+              "geometry": {
+                "type": "adsk::core::Line3D",
+                "start": [
+                  -44.727824223833785,
+                  -203.80034177304108,
+                  -17.986894372426057
+                ],
+                "end": [
+                  44.72782422383393,
+                  -203.80034177304108,
+                  -17.986894372426057
+                ]
+              }
+            },
+            {
+              "type": "adsk::fusion::BRepEdge",
+              "body": "Body",
+              "length": 78.23566497286434,
+              "geometry": {
+                "type": "adsk::core::Line3D",
+                "start": [
+                  -39.11783248643212,
+                  -222.4245484695098,
+                  -29.76219965660978
+                ],
+                "end": [
+                  39.11783248643222,
+                  -222.4245484695098,
+                  -29.76219965660978
+                ]
+              }
+            }
+          ]
+        }
+      ],
+      "bodiesBefore": [
+        {
+          "name": "Body",
+          "isSolid": true,
+          "volumeMm3": 230819.7862464548,
+          "areaMm2": 30537.601537816845,
+          "boundingBox": [
+            [
+              -60.8651032230395,
+              -222.4245484695098,
+              -45.66292135316135
+            ],
+            [
+              60.86510322303974,
+              -150.22735384935615,
+              47.321249210829805
+            ]
+          ],
+          "faceCount": 14,
+          "edgeCount": 36
+        }
+      ],
+      "bodiesAfter": [
+        {
+          "name": "Body",
+          "isSolid": true,
+          "volumeMm3": 231178.30868472636,
+          "areaMm2": 30016.01865179789,
+          "boundingBox": [
+            [
+              -60.5734944183909,
+              -220.96245028191947,
+              -45.66292135316135
+            ],
+            [
+              60.40791803502369,
+              -150.59778937463284,
+              47.321249210829805
+            ]
+          ],
+          "faceCount": 45,
+          "edgeCount": 102
+        }
+      ],
+      "rebuildDisposition": "omitFillet"
+    }
+  ],
+  "occurrences": [
+    {
+      "name": "AdapterBody:1+Latch:1",
+      "transform": [
+        1,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        1
+      ]
+    }
+  ],
+  "validation": {
+    "noFilletBodies": [
+      {
+        "name": "Body",
+        "isSolid": true,
+        "volumeMm3": 230819.7862464548,
+        "areaMm2": 30537.601537816845,
+        "boundingBox": [
+          [
+            -60.8651032230395,
+            -222.4245484695098,
+            -45.66292135316135
+          ],
+          [
+            60.86510322303974,
+            -150.22735384935615,
+            47.321249210829805
+          ]
+        ],
+        "faceCount": 14,
+        "edgeCount": 36
+      }
+    ],
+    "sourceWithFilletBodies": [
+      {
+        "name": "Body",
+        "isSolid": true,
+        "volumeMm3": 231178.30868472636,
+        "areaMm2": 30016.01865179789,
+        "boundingBox": [
+          [
+            -60.5734944183909,
+            -220.96245028191947,
+            -45.66292135316135
+          ],
+          [
+            60.40791803502369,
+            -150.59778937463284,
+            47.321249210829805
+          ]
+        ],
+        "faceCount": 45,
+        "edgeCount": 102
+      }
+    ],
+    "comparison": "The no-fillet checkpoint is the correct rebuild target under the user decision. Source final filleted metrics are archival only."
+  }
+}

@@ -1,0 +1,35 @@
+{
+  "sourceDocument": "Surron Seat Adapter v3 v2",
+  "markerBefore": 200,
+  "markerAfter": 200,
+  "errors": [],
+  "parts": [
+    {
+      "name": "SaddleBagMount",
+      "sketches": 3,
+      "sketchCurves": 62,
+      "dimensions": 11,
+      "constraints": 45,
+      "features": 9,
+      "selectedProfiles": 28,
+      "offsetFaceSelections": 8,
+      "sourceFilletsRecorded": 1,
+      "noFilletVolumeMm3": 55620.934863481896
+    },
+    {
+      "name": "Latch",
+      "sketches": 2,
+      "sketchCurves": 22,
+      "dimensions": 6,
+      "constraints": 31,
+      "features": 6,
+      "selectedProfiles": 6,
+      "offsetFaceSelections": 3,
+      "sourceFilletsRecorded": 1,
+      "noFilletVolumeMm3": 230819.7862464548
+    }
+  ],
+  "onshapeApiCalls": 0,
+  "geometryModified": false,
+  "sourceSaved": false
+}

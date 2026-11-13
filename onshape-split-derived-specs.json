@@ -1,0 +1,1350 @@
+﻿[
+    {
+        "btType":  "BTFeatureSpec-129",
+        "namespace":  "",
+        "parameterLibraryDefinitionIds":  [
+
+                                          ],
+        "manipulatorChangeFunction":  "onManipulatorChange",
+        "tooltipTemplate":  "",
+        "descriptionImageUri":  "",
+        "featureTypeDescription":  "",
+        "languageVersion":  3112,
+        "editingLogic":  null,
+        "featureNameTemplate":  "",
+        "filterSelectors":  [
+
+                            ],
+        "iconUri":  "",
+        "groups":  [
+
+                   ],
+        "uiHints":  [
+
+                    ],
+        "featureType":  "importDerived",
+        "sourceLocation":  {
+                               "btType":  "BTLocationInfo-226",
+                               "document":  "onshape/std/importDerived.fs",
+                               "version":  "3112.0",
+                               "endLine":  299,
+                               "endColumn":  69,
+                               "languageVersion":  3112,
+                               "parseNodeId":  "PN41MxXXFtnM6H94G",
+                               "endCharacter":  14910,
+                               "moduleIds":  {
+                                                 "btType":  "BTDocumentVersionElementIds-1897",
+                                                 "elementId":  "347a20e00cc748938db716a6",
+                                                 "documentId":  "12312312345abcabcabcdeff",
+                                                 "versionId":  "c31f2dcea3a7abd54f9bf94c"
+                                             },
+                               "character":  2710,
+                               "column":  30,
+                               "line":  69,
+                               "elementMicroversion":  "b73f69bcc23451cb8525e92c",
+                               "topLevel":  "",
+                               "nodeId":  "0FefArF5bml+UQYq"
+                           },
+        "featureTypeName":  "Derived",
+        "linkedLocationName":  "",
+        "sourceMicroversionId":  "b73f69bcc23451cb8525e92c",
+        "parameters":  [
+                           {
+                               "btType":  "BTParameterSpecBoolean-170",
+                               "uiHints":  [
+                                               "ALWAYS_HIDDEN"
+                                           ],
+                               "iconUri":  "",
+                               "uiHint":  "AlwaysHidden",
+                               "parameterName":  "newUI",
+                               "visibilityCondition":  null,
+                               "parameterDescription":  "",
+                               "columnName":  "",
+                               "defaultValue":  {
+                                                    "btType":  "BTMParameterBoolean-144",
+                                                    "parameterName":  "",
+                                                    "libraryRelationType":  "DEFAULT",
+                                                    "value":  true,
+                                                    "nodeId":  "MaCkt5ygLE+6u/sYL",
+                                                    "parameterId":  "newUI"
+                                                },
+                               "parameterId":  "newUI"
+                           },
+                           {
+                               "btType":  "BTParameterSpecReferencePartStudio-1256",
+                               "computedConfigurationInputs":  [
+
+                                                               ],
+                               "uiHints":  [
+                                               "SHOW_INLINE_CONFIG_INPUTS"
+                                           ],
+                               "libraryDefinitionId":  "",
+                               "iconUri":  "",
+                               "uiHint":  "",
+                               "parameterName":  "Part Studio",
+                               "visibilityCondition":  {
+                                                           "btType":  "BTParameterVisibilityOnEqual-180",
+                                                           "inArray":  false,
+                                                           "value":  "true",
+                                                           "parameterId":  "newUI"
+                                                       },
+                               "parameterDescription":  "",
+                               "columnName":  "",
+                               "maxNumberOfPicks":  0,
+                               "allowedInsertableTypes":  [
+
+                                                          ],
+                               "defaultValue":  {
+                                                    "btType":  "BTMParameterReferencePartStudio-3302",
+                                                    "partQuery":  {
+                                                                      "btType":  "BTMParameterQueryList-148",
+                                                                      "queries":  [
+
+                                                                                  ],
+                                                                      "parameterName":  "",
+                                                                      "libraryRelationType":  "DEFAULT",
+                                                                      "filter":  null,
+                                                                      "nodeId":  "M7dWEJNCMcVQX5MFk",
+                                                                      "parameterId":  "partQuery"
+                                                                  },
+                                                    "namespace":  "",
+                                                    "standardContentParametersId":  "",
+                                                    "parameterName":  "",
+                                                    "libraryRelationType":  "DEFAULT",
+                                                    "elementLibraryData":  null,
+                                                    "nodeId":  "MNMhfmhDSBS/lqgeJ",
+                                                    "parameterId":  "partStudio",
+                                                    "partIdentity":  null,
+                                                    "configuration":  [
+
+                                                                      ]
+                                                },
+                               "parameterId":  "partStudio"
+                           },
+                           {
+                               "btType":  "BTParameterSpecBoolean-170",
+                               "uiHints":  [
+
+                                           ],
+                               "iconUri":  "",
+                               "uiHint":  "",
+                               "parameterName":  "Preserve active sheet metal models",
+                               "visibilityCondition":  {
+                                                           "btType":  "BTParameterVisibilityOnEqual-180",
+                                                           "inArray":  false,
+                                                           "value":  "true",
+                                                           "parameterId":  "newUI"
+                                                       },
+                               "parameterDescription":  "",
+                               "columnName":  "",
+                               "defaultValue":  {
+                                                    "btType":  "BTMParameterBoolean-144",
+                                                    "parameterName":  "",
+                                                    "libraryRelationType":  "DEFAULT",
+                                                    "value":  false,
+                                                    "nodeId":  "MmEtjbMg4QTQbIcfn",
+                                                    "parameterId":  "preserveActiveSheetMetal"
+                                                },
+                               "parameterId":  "preserveActiveSheetMetal"
+                           },
+                           {
+                               "btType":  "BTParameterSpecQuery-174",
+                               "uiHints":  [
+
+                                           ],
+                               "iconUri":  "",
+                               "uiHint":  "",
+                               "parameterName":  "Locations",
+                               "visibilityCondition":  {
+                                                           "btType":  "BTParameterVisibilityOnEqual-180",
+                                                           "inArray":  false,
+                                                           "value":  "true",
+                                                           "parameterId":  "newUI"
+                                                       },
+                               "parameterDescription":  "Select or create mate connectors in this Part Studio to position derived instances",
+                               "columnName":  "",
+                               "maxNumberOfPicks":  -1,
+                               "additionalBoxSelectFilter":  null,
+                               "filter":  {
+                                              "btType":  "BTBodyTypeFilter-112",
+                                              "bodyType":  "MATE_CONNECTOR"
+                                          },
+                               "defaultValue":  {
+                                                    "btType":  "BTMParameterQueryList-148",
+                                                    "queries":  [
+
+                                                                ],
+                                                    "parameterName":  "",
+                                                    "libraryRelationType":  "DEFAULT",
+                                                    "filter":  null,
+                                                    "nodeId":  "MRbIF1wre0GAsi8bd",
+                                                    "parameterId":  "location"
+                                                },
+                               "parameterId":  "location"
+                           },
+                           {
+                               "btType":  "BTParameterSpecEnum-171",
+                               "namespace":  "",
+                               "enumName":  "DerivedPlacementType",
+                               "enumOptionVisibilityConditions":  null,
+                               "optionIconUris":  [
+                                                      "",
+                                                      ""
+                                                  ],
+                               "enumValueToVisibilityCondition":  {
+
+                                                                  },
+                               "uiHints":  [
+                                               "SHOW_LABEL"
+                                           ],
+                               "iconUri":  "",
+                               "uiHint":  "",
+                               "parameterName":  "Placement",
+                               "visibilityCondition":  {
+                                                           "btType":  "BTParameterVisibilityOnEqual-180",
+                                                           "inArray":  false,
+                                                           "value":  "true",
+                                                           "parameterId":  "newUI"
+                                                       },
+                               "optionNames":  [
+                                                   "Base origin",
+                                                   "Base mate connector"
+                                               ],
+                               "parameterDescription":  "",
+                               "columnName":  "",
+                               "options":  [
+                                               "AT_ORIGIN",
+                                               "AT_MATE_CONNECTOR"
+                                           ],
+                               "defaultValue":  {
+                                                    "btType":  "BTMParameterEnum-145",
+                                                    "namespace":  "",
+                                                    "nodeId":  "M0tfmCvKFpvdUZfrU",
+                                                    "enumName":  "DerivedPlacementType",
+                                                    "parameterName":  "",
+                                                    "libraryRelationType":  "DEFAULT",
+                                                    "value":  "AT_ORIGIN",
+                                                    "parameterId":  "placement"
+                                                },
+                               "parameterId":  "placement"
+                           },
+                           {
+                               "btType":  "BTParameterSpecQuantity-173",
+                               "quantityType":  "INTEGER",
+                               "uiHints":  [
+                                               "ALWAYS_HIDDEN"
+                                           ],
+                               "iconUri":  "",
+                               "ranges":  [
+                                              {
+                                                  "btType":  "BTQuantityRange-181",
+                                                  "minValue":  -1,
+                                                  "maxValue":  50,
+                                                  "location":  {
+                                                                   "btType":  "BTLocationInfo-226",
+                                                                   "document":  "onshape/std/importDerived.fs",
+                                                                   "version":  "3112.0",
+                                                                   "endLine":  0,
+                                                                   "endColumn":  0,
+                                                                   "languageVersion":  3112,
+                                                                   "parseNodeId":  "PYU5HNgvFaeqMZedU",
+                                                                   "endCharacter":  0,
+                                                                   "moduleIds":  null,
+                                                                   "character":  0,
+                                                                   "column":  0,
+                                                                   "line":  0,
+                                                                   "elementMicroversion":  "b73f69bcc23451cb8525e92c",
+                                                                   "topLevel":  "",
+                                                                   "nodeId":  "YduxizzquPMuVN35"
+                                                               },
+                                                  "defaultValue":  -1,
+                                                  "units":  ""
+                                              }
+                                          ],
+                               "uiHint":  "AlwaysHidden",
+                               "parameterName":  "Mate connector index",
+                               "visibilityCondition":  {
+                                                           "btType":  "BTParameterVisibilityLogical-178",
+                                                           "operation":  "AND",
+                                                           "children":  [
+                                                                            {
+                                                                                "btType":  "BTParameterVisibilityOnEqual-180",
+                                                                                "inArray":  false,
+                                                                                "value":  "true",
+                                                                                "parameterId":  "newUI"
+                                                                            },
+                                                                            {
+                                                                                "btType":  "BTParameterVisibilityOnEqual-180",
+                                                                                "inArray":  false,
+                                                                                "value":  "AT_MATE_CONNECTOR",
+                                                                                "parameterId":  "placement"
+                                                                            }
+                                                                        ]
+                                                       },
+                               "parameterDescription":  "",
+                               "columnName":  "",
+                               "defaultValue":  {
+                                                    "btType":  "BTMParameterQuantity-147",
+                                                    "isInteger":  true,
+                                                    "parameterName":  "",
+                                                    "libraryRelationType":  "DEFAULT",
+                                                    "value":  -1,
+                                                    "units":  "",
+                                                    "expression":  "",
+                                                    "nodeId":  "MMxQEX7IhJ+GC4Pts",
+                                                    "parameterId":  "mateConnectorIndex"
+                                                },
+                               "parameterId":  "mateConnectorIndex"
+                           },
+                           {
+                               "btType":  "BTParameterSpecQuantity-173",
+                               "quantityType":  "ANYTHING",
+                               "uiHints":  [
+                                               "ALWAYS_HIDDEN"
+                                           ],
+                               "iconUri":  "",
+                               "ranges":  [
+
+                                          ],
+                               "uiHint":  "AlwaysHidden",
+                               "parameterName":  "Base mate connector id",
+                               "visibilityCondition":  {
+                                                           "btType":  "BTParameterVisibilityLogical-178",
+                                                           "operation":  "AND",
+                                                           "children":  [
+                                                                            {
+                                                                                "btType":  "BTParameterVisibilityOnEqual-180",
+                                                                                "inArray":  false,
+                                                                                "value":  "true",
+                                                                                "parameterId":  "newUI"
+                                                                            },
+                                                                            {
+                                                                                "btType":  "BTParameterVisibilityOnEqual-180",
+                                                                                "inArray":  false,
+                                                                                "value":  "AT_MATE_CONNECTOR",
+                                                                                "parameterId":  "placement"
+                                                                            }
+                                                                        ]
+                                                       },
+                               "parameterDescription":  "",
+                               "columnName":  "",
+                               "defaultValue":  {
+                                                    "btType":  "BTMParameterQuantity-147",
+                                                    "isInteger":  false,
+                                                    "parameterName":  "",
+                                                    "libraryRelationType":  "DEFAULT",
+                                                    "value":  0,
+                                                    "units":  "",
+                                                    "expression":  "0",
+                                                    "nodeId":  "MIXxLAWRCLjpHu/RR",
+                                                    "parameterId":  "mateConnectorId"
+                                                },
+                               "parameterId":  "mateConnectorId"
+                           },
+                           {
+                               "btType":  "BTParameterSpecQuantity-173",
+                               "quantityType":  "INTEGER",
+                               "uiHints":  [
+                                               "ALWAYS_HIDDEN"
+                                           ],
+                               "iconUri":  "",
+                               "ranges":  [
+                                              {
+                                                  "btType":  "BTQuantityRange-181",
+                                                  "minValue":  -1,
+                                                  "maxValue":  50,
+                                                  "location":  {
+                                                                   "btType":  "BTLocationInfo-226",
+                                                                   "document":  "onshape/std/importDerived.fs",
+                                                                   "version":  "3112.0",
+                                                                   "endLine":  0,
+                                                                   "endColumn":  0,
+                                                                   "languageVersion":  3112,
+                                                                   "parseNodeId":  "PYU5HNgvFaeqMZedU",
+                                                                   "endCharacter":  0,
+                                                                   "moduleIds":  null,
+                                                                   "character":  0,
+                                                                   "column":  0,
+                                                                   "line":  0,
+                                                                   "elementMicroversion":  "b73f69bcc23451cb8525e92c",
+                                                                   "topLevel":  "",
+                                                                   "nodeId":  "TQZVb8MowxEgQ++5"
+                                                               },
+                                                  "defaultValue":  -1,
+                                                  "units":  ""
+                                              }
+                                          ],
+                               "uiHint":  "AlwaysHidden",
+                               "parameterName":  "Base mate connector feature index",
+                               "visibilityCondition":  {
+                                                           "btType":  "BTParameterVisibilityLogical-178",
+                                                           "operation":  "AND",
+                                                           "children":  [
+                                                                            {
+                                                                                "btType":  "BTParameterVisibilityOnEqual-180",
+                                                                                "inArray":  false,
+                                                                                "value":  "true",
+                                                                                "parameterId":  "newUI"
+                                                                            },
+                                                                            {
+                                                                                "btType":  "BTParameterVisibilityOnEqual-180",
+                                                                                "inArray":  false,
+                                                                                "value":  "AT_MATE_CONNECTOR",
+                                                                                "parameterId":  "placement"
+                                                                            }
+                                                                        ]
+                                                       },
+                               "parameterDescription":  "",
+                               "columnName":  "",
+                               "defaultValue":  {
+                                                    "btType":  "BTMParameterQuantity-147",
+                                                    "isInteger":  true,
+                                                    "parameterName":  "",
+                                                    "libraryRelationType":  "DEFAULT",
+                                                    "value":  -1,
+                                                    "units":  "",
+                                                    "expression":  "",
+                                                    "nodeId":  "MQGsPCT7JvqwnVHqJ",
+                                                    "parameterId":  "mateConnectorIndexInFeature"
+                                                },
+                               "parameterId":  "mateConnectorIndexInFeature"
+                           },
+                           {
+                               "btType":  "BTParameterSpecBoolean-170",
+                               "uiHints":  [
+
+                                           ],
+                               "iconUri":  "",
+                               "uiHint":  "",
+                               "parameterName":  "Include mate connectors",
+                               "visibilityCondition":  {
+                                                           "btType":  "BTParameterVisibilityOnEqual-180",
+                                                           "inArray":  false,
+                                                           "value":  "true",
+                                                           "parameterId":  "newUI"
+                                                       },
+                               "parameterDescription":  "",
+                               "columnName":  "",
+                               "defaultValue":  {
+                                                    "btType":  "BTMParameterBoolean-144",
+                                                    "parameterName":  "",
+                                                    "libraryRelationType":  "DEFAULT",
+                                                    "value":  true,
+                                                    "nodeId":  "ME9yBKBRgoFhIiJ6G",
+                                                    "parameterId":  "includeMateConnectors"
+                                                },
+                               "parameterId":  "includeMateConnectors"
+                           },
+                           {
+                               "btType":  "BTParameterSpecBoolean-170",
+                               "uiHints":  [
+                                               "REMEMBER_PREVIOUS_VALUE"
+                                           ],
+                               "iconUri":  "",
+                               "uiHint":  "",
+                               "parameterName":  "Include properties",
+                               "visibilityCondition":  {
+                                                           "btType":  "BTParameterVisibilityOnEqual-180",
+                                                           "inArray":  false,
+                                                           "value":  "true",
+                                                           "parameterId":  "newUI"
+                                                       },
+                               "parameterDescription":  "",
+                               "columnName":  "",
+                               "defaultValue":  {
+                                                    "btType":  "BTMParameterBoolean-144",
+                                                    "parameterName":  "",
+                                                    "libraryRelationType":  "DEFAULT",
+                                                    "value":  true,
+                                                    "nodeId":  "Ms5UsaQv3iDV9TObw",
+                                                    "parameterId":  "includeProperties"
+                                                },
+                               "parameterId":  "includeProperties"
+                           },
+                           {
+                               "btType":  "BTParameterSpecQuery-174",
+                               "uiHints":  [
+                                               "ALWAYS_HIDDEN"
+                                           ],
+                               "iconUri":  "",
+                               "uiHint":  "AlwaysHidden",
+                               "parameterName":  "Parts to import",
+                               "visibilityCondition":  {
+                                                           "btType":  "BTParameterVisibilityLogical-178",
+                                                           "operation":  "NOT",
+                                                           "children":  [
+                                                                            {
+                                                                                "btType":  "BTParameterVisibilityOnEqual-180",
+                                                                                "inArray":  false,
+                                                                                "value":  "true",
+                                                                                "parameterId":  "newUI"
+                                                                            }
+                                                                        ]
+                                                       },
+                               "parameterDescription":  "",
+                               "columnName":  "",
+                               "maxNumberOfPicks":  -1,
+                               "additionalBoxSelectFilter":  null,
+                               "filter":  null,
+                               "defaultValue":  {
+                                                    "btType":  "BTMParameterQueryList-148",
+                                                    "queries":  [
+
+                                                                ],
+                                                    "parameterName":  "",
+                                                    "libraryRelationType":  "DEFAULT",
+                                                    "filter":  null,
+                                                    "nodeId":  "MS+ZBTWCZ8hjW9xEc",
+                                                    "parameterId":  "parts"
+                                                },
+                               "parameterId":  "parts"
+                           },
+                           {
+                               "btType":  "BTParameterSpecDerived-736",
+                               "uiHints":  [
+                                               "ALWAYS_HIDDEN"
+                                           ],
+                               "iconUri":  "",
+                               "uiHint":  "AlwaysHidden",
+                               "parameterName":  "buildFunction",
+                               "visibilityCondition":  {
+                                                           "btType":  "BTParameterVisibilityLogical-178",
+                                                           "operation":  "NOT",
+                                                           "children":  [
+                                                                            {
+                                                                                "btType":  "BTParameterVisibilityOnEqual-180",
+                                                                                "inArray":  false,
+                                                                                "value":  "true",
+                                                                                "parameterId":  "newUI"
+                                                                            }
+                                                                        ]
+                                                       },
+                               "parameterDescription":  "",
+                               "columnName":  "",
+                               "defaultValue":  {
+                                                    "btType":  "BTMParameterDerived-864",
+                                                    "configuration":  [
+
+                                                                      ],
+                                                    "parameterId":  "buildFunction",
+                                                    "namespace":  "",
+                                                    "nodeId":  "M3vNotQ6y8fEv3Axx",
+                                                    "imports":  [
+
+                                                                ],
+                                                    "parameterName":  "",
+                                                    "libraryRelationType":  "DEFAULT"
+                                                },
+                               "parameterId":  "buildFunction"
+                           }
+                       ]
+    },
+    {
+        "btType":  "BTFeatureSpec-129",
+        "namespace":  "",
+        "parameterLibraryDefinitionIds":  [
+
+                                          ],
+        "manipulatorChangeFunction":  "splitManipulatorChange",
+        "tooltipTemplate":  "",
+        "descriptionImageUri":  "",
+        "featureTypeDescription":  "",
+        "languageVersion":  3112,
+        "editingLogic":  {
+                             "btType":  "BTEditingLogic-2350",
+                             "functionName":  "splitEditLogic",
+                             "wantsIsCreating":  false,
+                             "wantsSpecifiedParameters":  true,
+                             "wantsHiddenBodies":  true,
+                             "wantsClickedButton":  false,
+                             "wantsLibraryInfo":  false
+                         },
+        "featureNameTemplate":  "",
+        "filterSelectors":  [
+                                "allparts"
+                            ],
+        "iconUri":  "",
+        "groups":  [
+                       {
+                           "btType":  "BTParameterGroupSpec-3469",
+                           "groupName":  "Edge projection options",
+                           "groupOrParameterIds":  [
+                                                       "projectionType",
+                                                       "useSketchPlaneDirection",
+                                                       "directionQuery"
+                                                   ],
+                           "drivingParameterId":  "",
+                           "collapsedByDefault":  false,
+                           "groupId":  "IFQdLGZOACWa"
+                       }
+                   ],
+        "uiHints":  [
+
+                    ],
+        "featureType":  "splitPart",
+        "sourceLocation":  {
+                               "btType":  "BTLocationInfo-226",
+                               "document":  "onshape/std/splitpart.fs",
+                               "version":  "3112.0",
+                               "endLine":  114,
+                               "endColumn":  82,
+                               "languageVersion":  3112,
+                               "parseNodeId":  "PlYDV10vkaczuUZ9a",
+                               "endCharacter":  5261,
+                               "moduleIds":  {
+                                                 "btType":  "BTDocumentVersionElementIds-1897",
+                                                 "elementId":  "748321f899c84fa2958d96c5",
+                                                 "documentId":  "12312312345abcabcabcdeff",
+                                                 "versionId":  "c31f2dcea3a7abd54f9bf94c"
+                                             },
+                               "character":  1585,
+                               "column":  26,
+                               "line":  40,
+                               "elementMicroversion":  "318ad9ccd2ce64c53216a316",
+                               "topLevel":  "",
+                               "nodeId":  "fTwBwWioMvcF6YAM"
+                           },
+        "featureTypeName":  "Split",
+        "linkedLocationName":  "",
+        "sourceMicroversionId":  "318ad9ccd2ce64c53216a316",
+        "parameters":  [
+                           {
+                               "btType":  "BTParameterSpecEnum-171",
+                               "namespace":  "",
+                               "enumName":  "SplitType",
+                               "enumOptionVisibilityConditions":  null,
+                               "optionIconUris":  [
+                                                      "",
+                                                      ""
+                                                  ],
+                               "enumValueToVisibilityCondition":  {
+
+                                                                  },
+                               "uiHints":  [
+                                               "HORIZONTAL_ENUM"
+                                           ],
+                               "iconUri":  "",
+                               "uiHint":  "",
+                               "parameterName":  "Split type",
+                               "visibilityCondition":  null,
+                               "optionNames":  [
+                                                   "Part",
+                                                   "Face"
+                                               ],
+                               "parameterDescription":  "",
+                               "columnName":  "",
+                               "options":  [
+                                               "PART",
+                                               "FACE"
+                                           ],
+                               "defaultValue":  {
+                                                    "btType":  "BTMParameterEnum-145",
+                                                    "namespace":  "",
+                                                    "nodeId":  "Maid0TWNIkad/24cG",
+                                                    "enumName":  "SplitType",
+                                                    "parameterName":  "",
+                                                    "libraryRelationType":  "DEFAULT",
+                                                    "value":  "PART",
+                                                    "parameterId":  "splitType"
+                                                },
+                               "parameterId":  "splitType"
+                           },
+                           {
+                               "btType":  "BTParameterSpecQuery-174",
+                               "uiHints":  [
+
+                                           ],
+                               "iconUri":  "",
+                               "uiHint":  "",
+                               "parameterName":  "Parts, surfaces, or curves to split",
+                               "visibilityCondition":  {
+                                                           "btType":  "BTParameterVisibilityOnEqual-180",
+                                                           "inArray":  false,
+                                                           "value":  "PART",
+                                                           "parameterId":  "splitType"
+                                                       },
+                               "parameterDescription":  "",
+                               "columnName":  "",
+                               "maxNumberOfPicks":  -1,
+                               "additionalBoxSelectFilter":  null,
+                               "filter":  {
+                                              "btType":  "BTAndFilter-110",
+                                              "operand1":  {
+                                                               "btType":  "BTAndFilter-110",
+                                                               "operand1":  {
+                                                                                "btType":  "BTAndFilter-110",
+                                                                                "operand1":  {
+                                                                                                 "btType":  "BTAndFilter-110",
+                                                                                                 "operand1":  {
+                                                                                                                  "btType":  "BTEntityTypeFilter-124",
+                                                                                                                  "entityType":  "BODY"
+                                                                                                              },
+                                                                                                 "operand2":  {
+                                                                                                                  "btType":  "BTOrFilter-167",
+                                                                                                                  "operand1":  {
+                                                                                                                                   "btType":  "BTOrFilter-167",
+                                                                                                                                   "operand1":  {
+                                                                                                                                                    "btType":  "BTBodyTypeFilter-112",
+                                                                                                                                                    "bodyType":  "SOLID"
+                                                                                                                                                },
+                                                                                                                                   "operand2":  {
+                                                                                                                                                    "btType":  "BTBodyTypeFilter-112",
+                                                                                                                                                    "bodyType":  "SHEET"
+                                                                                                                                                }
+                                                                                                                               },
+                                                                                                                  "operand2":  {
+                                                                                                                                   "btType":  "BTBodyTypeFilter-112",
+                                                                                                                                   "bodyType":  "WIRE"
+                                                                                                                               }
+                                                                                                              }
+                                                                                             },
+                                                                                "operand2":  {
+                                                                                                 "btType":  "BTModifiableEntityOnlyFilter-1593",
+                                                                                                 "modifiableOnly":  true
+                                                                                             }
+                                                                            },
+                                                               "operand2":  {
+                                                                                "btType":  "BTAllowMeshGeometryFilter-1026",
+                                                                                "allowsMeshGeometry":  true
+                                                                            }
+                                                           },
+                                              "operand2":  {
+                                                               "btType":  "BTSketchObjectFilter-184",
+                                                               "isSketchObject":  false,
+                                                               "objectType":  "NOT_SKETCH_OBJECT"
+                                                           }
+                                          },
+                               "defaultValue":  {
+                                                    "btType":  "BTMParameterQueryList-148",
+                                                    "queries":  [
+
+                                                                ],
+                                                    "parameterName":  "",
+                                                    "libraryRelationType":  "DEFAULT",
+                                                    "filter":  null,
+                                                    "nodeId":  "M3RlPo4Nii1lGkNHm",
+                                                    "parameterId":  "targets"
+                                                },
+                               "parameterId":  "targets"
+                           },
+                           {
+                               "btType":  "BTParameterSpecQuery-174",
+                               "uiHints":  [
+
+                                           ],
+                               "iconUri":  "",
+                               "uiHint":  "",
+                               "parameterName":  "Entity to split with",
+                               "visibilityCondition":  {
+                                                           "btType":  "BTParameterVisibilityOnEqual-180",
+                                                           "inArray":  false,
+                                                           "value":  "PART",
+                                                           "parameterId":  "splitType"
+                                                       },
+                               "parameterDescription":  "",
+                               "columnName":  "",
+                               "maxNumberOfPicks":  1,
+                               "additionalBoxSelectFilter":  null,
+                               "filter":  {
+                                              "btType":  "BTAndFilter-110",
+                                              "operand1":  {
+                                                               "btType":  "BTOrFilter-167",
+                                                               "operand1":  {
+                                                                                "btType":  "BTOrFilter-167",
+                                                                                "operand1":  {
+                                                                                                 "btType":  "BTAndFilter-110",
+                                                                                                 "operand1":  {
+                                                                                                                  "btType":  "BTAndFilter-110",
+                                                                                                                  "operand1":  {
+                                                                                                                                   "btType":  "BTEntityTypeFilter-124",
+                                                                                                                                   "entityType":  "BODY"
+                                                                                                                               },
+                                                                                                                  "operand2":  {
+                                                                                                                                   "btType":  "BTBodyTypeFilter-112",
+                                                                                                                                   "bodyType":  "SHEET"
+                                                                                                                               }
+                                                                                                              },
+                                                                                                 "operand2":  {
+                                                                                                                  "btType":  "BTSketchObjectFilter-184",
+                                                                                                                  "isSketchObject":  false,
+                                                                                                                  "objectType":  "NOT_SKETCH_OBJECT"
+                                                                                                              }
+                                                                                             },
+                                                                                "operand2":  {
+                                                                                                 "btType":  "BTEntityTypeFilter-124",
+                                                                                                 "entityType":  "FACE"
+                                                                                             }
+                                                                            },
+                                                               "operand2":  {
+                                                                                "btType":  "BTBodyTypeFilter-112",
+                                                                                "bodyType":  "MATE_CONNECTOR"
+                                                                            }
+                                                           },
+                                              "operand2":  {
+                                                               "btType":  "BTAllowMeshGeometryFilter-1026",
+                                                               "allowsMeshGeometry":  true
+                                                           }
+                                          },
+                               "defaultValue":  {
+                                                    "btType":  "BTMParameterQueryList-148",
+                                                    "queries":  [
+
+                                                                ],
+                                                    "parameterName":  "",
+                                                    "libraryRelationType":  "DEFAULT",
+                                                    "filter":  null,
+                                                    "nodeId":  "McIzA+wjlaazfiL0e",
+                                                    "parameterId":  "tool"
+                                                },
+                               "parameterId":  "tool"
+                           },
+                           {
+                               "btType":  "BTParameterSpecBoolean-170",
+                               "uiHints":  [
+
+                                           ],
+                               "iconUri":  "",
+                               "uiHint":  "",
+                               "parameterName":  "Keep tools",
+                               "visibilityCondition":  {
+                                                           "btType":  "BTParameterVisibilityOnEqual-180",
+                                                           "inArray":  false,
+                                                           "value":  "PART",
+                                                           "parameterId":  "splitType"
+                                                       },
+                               "parameterDescription":  "",
+                               "columnName":  "",
+                               "defaultValue":  {
+                                                    "btType":  "BTMParameterBoolean-144",
+                                                    "parameterName":  "",
+                                                    "libraryRelationType":  "DEFAULT",
+                                                    "value":  false,
+                                                    "nodeId":  "MSTyfF9epiJbrSovX",
+                                                    "parameterId":  "keepTools"
+                                                },
+                               "parameterId":  "keepTools"
+                           },
+                           {
+                               "btType":  "BTParameterSpecBoolean-170",
+                               "uiHints":  [
+
+                                           ],
+                               "iconUri":  "",
+                               "uiHint":  "",
+                               "parameterName":  "Trim to face boundaries",
+                               "visibilityCondition":  {
+                                                           "btType":  "BTParameterVisibilityOnEqual-180",
+                                                           "inArray":  false,
+                                                           "value":  "PART",
+                                                           "parameterId":  "splitType"
+                                                       },
+                               "parameterDescription":  "",
+                               "columnName":  "",
+                               "defaultValue":  {
+                                                    "btType":  "BTMParameterBoolean-144",
+                                                    "parameterName":  "",
+                                                    "libraryRelationType":  "DEFAULT",
+                                                    "value":  false,
+                                                    "nodeId":  "M2s0WtM+axm+zTwnM",
+                                                    "parameterId":  "useTrimmed"
+                                                },
+                               "parameterId":  "useTrimmed"
+                           },
+                           {
+                               "btType":  "BTParameterSpecBoolean-170",
+                               "uiHints":  [
+
+                                           ],
+                               "iconUri":  "",
+                               "uiHint":  "",
+                               "parameterName":  "Keep both sides",
+                               "visibilityCondition":  {
+                                                           "btType":  "BTParameterVisibilityOnEqual-180",
+                                                           "inArray":  false,
+                                                           "value":  "PART",
+                                                           "parameterId":  "splitType"
+                                                       },
+                               "parameterDescription":  "",
+                               "columnName":  "",
+                               "defaultValue":  {
+                                                    "btType":  "BTMParameterBoolean-144",
+                                                    "parameterName":  "",
+                                                    "libraryRelationType":  "DEFAULT",
+                                                    "value":  true,
+                                                    "nodeId":  "MBBzDRxXSNXSjHU3/",
+                                                    "parameterId":  "keepBothSides"
+                                                },
+                               "parameterId":  "keepBothSides"
+                           },
+                           {
+                               "btType":  "BTParameterSpecBoolean-170",
+                               "uiHints":  [
+                                               "OPPOSITE_DIRECTION"
+                                           ],
+                               "iconUri":  "",
+                               "uiHint":  "OppositeDirection",
+                               "parameterName":  "Opposite direction",
+                               "visibilityCondition":  {
+                                                           "btType":  "BTParameterVisibilityLogical-178",
+                                                           "operation":  "AND",
+                                                           "children":  [
+                                                                            {
+                                                                                "btType":  "BTParameterVisibilityOnEqual-180",
+                                                                                "inArray":  false,
+                                                                                "value":  "PART",
+                                                                                "parameterId":  "splitType"
+                                                                            },
+                                                                            {
+                                                                                "btType":  "BTParameterVisibilityLogical-178",
+                                                                                "operation":  "NOT",
+                                                                                "children":  [
+                                                                                                 {
+                                                                                                     "btType":  "BTParameterVisibilityOnEqual-180",
+                                                                                                     "inArray":  false,
+                                                                                                     "value":  "true",
+                                                                                                     "parameterId":  "keepBothSides"
+                                                                                                 }
+                                                                                             ]
+                                                                            }
+                                                                        ]
+                                                       },
+                               "parameterDescription":  "",
+                               "columnName":  "",
+                               "defaultValue":  {
+                                                    "btType":  "BTMParameterBoolean-144",
+                                                    "parameterName":  "",
+                                                    "libraryRelationType":  "DEFAULT",
+                                                    "value":  true,
+                                                    "nodeId":  "MddaL+UCjN5ncmX6t",
+                                                    "parameterId":  "keepFront"
+                                                },
+                               "parameterId":  "keepFront"
+                           },
+                           {
+                               "btType":  "BTParameterSpecQuery-174",
+                               "uiHints":  [
+
+                                           ],
+                               "iconUri":  "",
+                               "uiHint":  "",
+                               "parameterName":  "Faces to split",
+                               "visibilityCondition":  {
+                                                           "btType":  "BTParameterVisibilityLogical-178",
+                                                           "operation":  "NOT",
+                                                           "children":  [
+                                                                            {
+                                                                                "btType":  "BTParameterVisibilityOnEqual-180",
+                                                                                "inArray":  false,
+                                                                                "value":  "PART",
+                                                                                "parameterId":  "splitType"
+                                                                            }
+                                                                        ]
+                                                       },
+                               "parameterDescription":  "",
+                               "columnName":  "",
+                               "maxNumberOfPicks":  -1,
+                               "additionalBoxSelectFilter":  null,
+                               "filter":  {
+                                              "btType":  "BTAndFilter-110",
+                                              "operand1":  {
+                                                               "btType":  "BTAndFilter-110",
+                                                               "operand1":  {
+                                                                                "btType":  "BTAndFilter-110",
+                                                                                "operand1":  {
+                                                                                                 "btType":  "BTAndFilter-110",
+                                                                                                 "operand1":  {
+                                                                                                                  "btType":  "BTEntityTypeFilter-124",
+                                                                                                                  "entityType":  "FACE"
+                                                                                                              },
+                                                                                                 "operand2":  {
+                                                                                                                  "btType":  "BTSketchObjectFilter-184",
+                                                                                                                  "isSketchObject":  false,
+                                                                                                                  "objectType":  "NOT_SKETCH_OBJECT"
+                                                                                                              }
+                                                                                             },
+                                                                                "operand2":  {
+                                                                                                 "btType":  "BTConstructionObjectFilter-113",
+                                                                                                 "isConstruction":  false
+                                                                                             }
+                                                                            },
+                                                               "operand2":  {
+                                                                                "btType":  "BTModifiableEntityOnlyFilter-1593",
+                                                                                "modifiableOnly":  true
+                                                                            }
+                                                           },
+                                              "operand2":  {
+                                                               "btType":  "BTAllowMeshGeometryFilter-1026",
+                                                               "allowsMeshGeometry":  true
+                                                           }
+                                          },
+                               "defaultValue":  {
+                                                    "btType":  "BTMParameterQueryList-148",
+                                                    "queries":  [
+
+                                                                ],
+                                                    "parameterName":  "",
+                                                    "libraryRelationType":  "DEFAULT",
+                                                    "filter":  null,
+                                                    "nodeId":  "MJ3M5YbmZfSCXBQPK",
+                                                    "parameterId":  "faceTargets"
+                                                },
+                               "parameterId":  "faceTargets"
+                           },
+                           {
+                               "btType":  "BTParameterSpecQuery-174",
+                               "uiHints":  [
+
+                                           ],
+                               "iconUri":  "",
+                               "uiHint":  "",
+                               "parameterName":  "Entities to split with",
+                               "visibilityCondition":  {
+                                                           "btType":  "BTParameterVisibilityLogical-178",
+                                                           "operation":  "NOT",
+                                                           "children":  [
+                                                                            {
+                                                                                "btType":  "BTParameterVisibilityOnEqual-180",
+                                                                                "inArray":  false,
+                                                                                "value":  "PART",
+                                                                                "parameterId":  "splitType"
+                                                                            }
+                                                                        ]
+                                                       },
+                               "parameterDescription":  "",
+                               "columnName":  "",
+                               "maxNumberOfPicks":  -1,
+                               "additionalBoxSelectFilter":  null,
+                               "filter":  {
+                                              "btType":  "BTOrFilter-167",
+                                              "operand1":  {
+                                                               "btType":  "BTOrFilter-167",
+                                                               "operand1":  {
+                                                                                "btType":  "BTOrFilter-167",
+                                                                                "operand1":  {
+                                                                                                 "btType":  "BTAndFilter-110",
+                                                                                                 "operand1":  {
+                                                                                                                  "btType":  "BTEntityTypeFilter-124",
+                                                                                                                  "entityType":  "EDGE"
+                                                                                                              },
+                                                                                                 "operand2":  {
+                                                                                                                  "btType":  "BTConstructionObjectFilter-113",
+                                                                                                                  "isConstruction":  false
+                                                                                                              }
+                                                                                             },
+                                                                                "operand2":  {
+                                                                                                 "btType":  "BTAndFilter-110",
+                                                                                                 "operand1":  {
+                                                                                                                  "btType":  "BTAndFilter-110",
+                                                                                                                  "operand1":  {
+                                                                                                                                   "btType":  "BTAndFilter-110",
+                                                                                                                                   "operand1":  {
+                                                                                                                                                    "btType":  "BTEntityTypeFilter-124",
+                                                                                                                                                    "entityType":  "BODY"
+                                                                                                                                                },
+                                                                                                                                   "operand2":  {
+                                                                                                                                                    "btType":  "BTOrFilter-167",
+                                                                                                                                                    "operand1":  {
+                                                                                                                                                                     "btType":  "BTBodyTypeFilter-112",
+                                                                                                                                                                     "bodyType":  "SHEET"
+                                                                                                                                                                 },
+                                                                                                                                                    "operand2":  {
+                                                                                                                                                                     "btType":  "BTBodyTypeFilter-112",
+                                                                                                                                                                     "bodyType":  "WIRE"
+                                                                                                                                                                 }
+                                                                                                                                                }
+                                                                                                                               },
+                                                                                                                  "operand2":  {
+                                                                                                                                   "btType":  "BTModifiableEntityOnlyFilter-1593",
+                                                                                                                                   "modifiableOnly":  false
+                                                                                                                               }
+                                                                                                              },
+                                                                                                 "operand2":  {
+                                                                                                                  "btType":  "BTSketchObjectFilter-184",
+                                                                                                                  "isSketchObject":  false,
+                                                                                                                  "objectType":  "NOT_SKETCH_OBJECT"
+                                                                                                              }
+                                                                                             }
+                                                                            },
+                                                               "operand2":  {
+                                                                                "btType":  "BTEntityTypeFilter-124",
+                                                                                "entityType":  "FACE"
+                                                                            }
+                                                           },
+                                              "operand2":  {
+                                                               "btType":  "BTAndFilter-110",
+                                                               "operand1":  {
+                                                                                "btType":  "BTBodyTypeFilter-112",
+                                                                                "bodyType":  "MATE_CONNECTOR"
+                                                                            },
+                                                               "operand2":  {
+                                                                                "btType":  "BTAllowMeshGeometryFilter-1026",
+                                                                                "allowsMeshGeometry":  true
+                                                                            }
+                                                           }
+                                          },
+                               "defaultValue":  {
+                                                    "btType":  "BTMParameterQueryList-148",
+                                                    "queries":  [
+
+                                                                ],
+                                                    "parameterName":  "",
+                                                    "libraryRelationType":  "DEFAULT",
+                                                    "filter":  null,
+                                                    "nodeId":  "M2zRPZgThrxP9/3mx",
+                                                    "parameterId":  "faceTools"
+                                                },
+                               "parameterId":  "faceTools"
+                           },
+                           {
+                               "btType":  "BTParameterSpecEnum-171",
+                               "namespace":  "",
+                               "enumName":  "ProjectionType",
+                               "enumOptionVisibilityConditions":  null,
+                               "optionIconUris":  [
+                                                      "",
+                                                      ""
+                                                  ],
+                               "enumValueToVisibilityCondition":  {
+
+                                                                  },
+                               "uiHints":  [
+
+                                           ],
+                               "iconUri":  "",
+                               "uiHint":  "",
+                               "parameterName":  "Projection direction type",
+                               "visibilityCondition":  {
+                                                           "btType":  "BTParameterVisibilityLogical-178",
+                                                           "operation":  "NOT",
+                                                           "children":  [
+                                                                            {
+                                                                                "btType":  "BTParameterVisibilityOnEqual-180",
+                                                                                "inArray":  false,
+                                                                                "value":  "PART",
+                                                                                "parameterId":  "splitType"
+                                                                            }
+                                                                        ]
+                                                       },
+                               "optionNames":  [
+                                                   "Direction",
+                                                   "Normal to target"
+                                               ],
+                               "parameterDescription":  "",
+                               "columnName":  "",
+                               "options":  [
+                                               "DIRECTION",
+                                               "NORMAL_TO_TARGET"
+                                           ],
+                               "defaultValue":  {
+                                                    "btType":  "BTMParameterEnum-145",
+                                                    "namespace":  "",
+                                                    "nodeId":  "MJi838nAygysAyiJo",
+                                                    "enumName":  "ProjectionType",
+                                                    "parameterName":  "",
+                                                    "libraryRelationType":  "DEFAULT",
+                                                    "value":  "DIRECTION",
+                                                    "parameterId":  "projectionType"
+                                                },
+                               "parameterId":  "projectionType"
+                           },
+                           {
+                               "btType":  "BTParameterSpecBoolean-170",
+                               "uiHints":  [
+
+                                           ],
+                               "iconUri":  "",
+                               "uiHint":  "",
+                               "parameterName":  "Use sketch plane direction",
+                               "visibilityCondition":  {
+                                                           "btType":  "BTParameterVisibilityLogical-178",
+                                                           "operation":  "AND",
+                                                           "children":  [
+                                                                            {
+                                                                                "btType":  "BTParameterVisibilityLogical-178",
+                                                                                "operation":  "NOT",
+                                                                                "children":  [
+                                                                                                 {
+                                                                                                     "btType":  "BTParameterVisibilityOnEqual-180",
+                                                                                                     "inArray":  false,
+                                                                                                     "value":  "PART",
+                                                                                                     "parameterId":  "splitType"
+                                                                                                 }
+                                                                                             ]
+                                                                            },
+                                                                            {
+                                                                                "btType":  "BTParameterVisibilityOnEqual-180",
+                                                                                "inArray":  false,
+                                                                                "value":  "DIRECTION",
+                                                                                "parameterId":  "projectionType"
+                                                                            }
+                                                                        ]
+                                                       },
+                               "parameterDescription":  "",
+                               "columnName":  "",
+                               "defaultValue":  {
+                                                    "btType":  "BTMParameterBoolean-144",
+                                                    "parameterName":  "",
+                                                    "libraryRelationType":  "DEFAULT",
+                                                    "value":  true,
+                                                    "nodeId":  "MCYZBR2a8+jBLxNvn",
+                                                    "parameterId":  "useSketchPlaneDirection"
+                                                },
+                               "parameterId":  "useSketchPlaneDirection"
+                           },
+                           {
+                               "btType":  "BTParameterSpecQuery-174",
+                               "uiHints":  [
+                                               "PREVENT_CREATING_NEW_MATE_CONNECTORS"
+                                           ],
+                               "iconUri":  "",
+                               "uiHint":  "",
+                               "parameterName":  "Direction",
+                               "visibilityCondition":  {
+                                                           "btType":  "BTParameterVisibilityLogical-178",
+                                                           "operation":  "AND",
+                                                           "children":  [
+                                                                            {
+                                                                                "btType":  "BTParameterVisibilityLogical-178",
+                                                                                "operation":  "AND",
+                                                                                "children":  [
+                                                                                                 {
+                                                                                                     "btType":  "BTParameterVisibilityLogical-178",
+                                                                                                     "operation":  "NOT",
+                                                                                                     "children":  [
+                                                                                                                      {
+                                                                                                                          "btType":  "BTParameterVisibilityOnEqual-180",
+                                                                                                                          "inArray":  false,
+                                                                                                                          "value":  "PART",
+                                                                                                                          "parameterId":  "splitType"
+                                                                                                                      }
+                                                                                                                  ]
+                                                                                                 },
+                                                                                                 {
+                                                                                                     "btType":  "BTParameterVisibilityOnEqual-180",
+                                                                                                     "inArray":  false,
+                                                                                                     "value":  "DIRECTION",
+                                                                                                     "parameterId":  "projectionType"
+                                                                                                 }
+                                                                                             ]
+                                                                            },
+                                                                            {
+                                                                                "btType":  "BTParameterVisibilityLogical-178",
+                                                                                "operation":  "NOT",
+                                                                                "children":  [
+                                                                                                 {
+                                                                                                     "btType":  "BTParameterVisibilityOnEqual-180",
+                                                                                                     "inArray":  false,
+                                                                                                     "value":  "true",
+                                                                                                     "parameterId":  "useSketchPlaneDirection"
+                                                                                                 }
+                                                                                             ]
+                                                                            }
+                                                                        ]
+                                                       },
+                               "parameterDescription":  "",
+                               "columnName":  "",
+                               "maxNumberOfPicks":  1,
+                               "additionalBoxSelectFilter":  null,
+                               "filter":  {
+                                              "btType":  "BTOrFilter-167",
+                                              "operand1":  {
+                                                               "btType":  "BTOrFilter-167",
+                                                               "operand1":  {
+                                                                                "btType":  "BTOrFilter-167",
+                                                                                "operand1":  {
+                                                                                                 "btType":  "BTGeometryFilter-130",
+                                                                                                 "geometryType":  "LINE"
+                                                                                             },
+                                                                                "operand2":  {
+                                                                                                 "btType":  "BTOrFilter-167",
+                                                                                                 "operand1":  {
+                                                                                                                  "btType":  "BTGeometryFilter-130",
+                                                                                                                  "geometryType":  "CIRCLE"
+                                                                                                              },
+                                                                                                 "operand2":  {
+                                                                                                                  "btType":  "BTOrFilter-167",
+                                                                                                                  "operand1":  {
+                                                                                                                                   "btType":  "BTGeometryFilter-130",
+                                                                                                                                   "geometryType":  "ARC"
+                                                                                                                               },
+                                                                                                                  "operand2":  {
+                                                                                                                                   "btType":  "BTOrFilter-167",
+                                                                                                                                   "operand1":  {
+                                                                                                                                                    "btType":  "BTGeometryFilter-130",
+                                                                                                                                                    "geometryType":  "CYLINDER"
+                                                                                                                                                },
+                                                                                                                                   "operand2":  {
+                                                                                                                                                    "btType":  "BTOrFilter-167",
+                                                                                                                                                    "operand1":  {
+                                                                                                                                                                     "btType":  "BTGeometryFilter-130",
+                                                                                                                                                                     "geometryType":  "CONE"
+                                                                                                                                                                 },
+                                                                                                                                                    "operand2":  {
+                                                                                                                                                                     "btType":  "BTGeometryFilter-130",
+                                                                                                                                                                     "geometryType":  "REVOLVED"
+                                                                                                                                                                 }
+                                                                                                                                                }
+                                                                                                                               }
+                                                                                                              }
+                                                                                             }
+                                                                            },
+                                                               "operand2":  {
+                                                                                "btType":  "BTMateConnectorFilter-163",
+                                                                                "isMateConnectorInferenceEnabledByDefault":  false,
+                                                                                "requiresOccurrence":  false,
+                                                                                "allowImplicitMateConnector":  false
+                                                                            }
+                                                           },
+                                              "operand2":  {
+                                                               "btType":  "BTGeometryFilter-130",
+                                                               "geometryType":  "PLANE"
+                                                           }
+                                          },
+                               "defaultValue":  {
+                                                    "btType":  "BTMParameterQueryList-148",
+                                                    "queries":  [
+
+                                                                ],
+                                                    "parameterName":  "",
+                                                    "libraryRelationType":  "DEFAULT",
+                                                    "filter":  null,
+                                                    "nodeId":  "M+YTKGXtvkS2q1PD0",
+                                                    "parameterId":  "directionQuery"
+                                                },
+                               "parameterId":  "directionQuery"
+                           },
+                           {
+                               "btType":  "BTParameterSpecBoolean-170",
+                               "uiHints":  [
+
+                                           ],
+                               "iconUri":  "",
+                               "uiHint":  "",
+                               "parameterName":  "Keep tool surfaces and curves",
+                               "visibilityCondition":  {
+                                                           "btType":  "BTParameterVisibilityLogical-178",
+                                                           "operation":  "NOT",
+                                                           "children":  [
+                                                                            {
+                                                                                "btType":  "BTParameterVisibilityOnEqual-180",
+                                                                                "inArray":  false,
+                                                                                "value":  "PART",
+                                                                                "parameterId":  "splitType"
+                                                                            }
+                                                                        ]
+                                                       },
+                               "parameterDescription":  "",
+                               "columnName":  "",
+                               "defaultValue":  {
+                                                    "btType":  "BTMParameterBoolean-144",
+                                                    "parameterName":  "",
+                                                    "libraryRelationType":  "DEFAULT",
+                                                    "value":  true,
+                                                    "nodeId":  "MUScHt14PG6KkxGa+",
+                                                    "parameterId":  "keepToolSurfaces"
+                                                },
+                               "parameterId":  "keepToolSurfaces"
+                           }
+                       ]
+    }
+]

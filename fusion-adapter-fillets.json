@@ -1,0 +1,2240 @@
+[
+  {
+    "index": 127,
+    "name": "Fillet1",
+    "sets": [
+      {
+        "radius": 0.1,
+        "selections": [
+          {
+            "type": "adsk::fusion::BRepFace",
+            "component": "SaddleBagMount",
+            "point": [
+              2.6810398393946326,
+              -21.433348486127336,
+              6.023553235708184
+            ],
+            "surface": "adsk::core::Plane",
+            "normal": [
+              0,
+              0.8597932986246308,
+              -0.5106422266520625
+            ]
+          },
+          {
+            "type": "adsk::fusion::BRepFace",
+            "component": "SaddleBagMount",
+            "point": [
+              -2.6810398393946326,
+              -21.433348486127336,
+              6.023553235708184
+            ],
+            "surface": "adsk::core::Plane",
+            "normal": [
+              0,
+              0.8597932986246308,
+              -0.5106422266520625
+            ]
+          },
+          {
+            "type": "adsk::fusion::BRepFace",
+            "component": "SaddleBagMount",
+            "point": [
+              1.1102230246251565e-16,
+              -18.101122660542764,
+              3.8400781773124217
+            ],
+            "surface": "adsk::core::Plane",
+            "normal": [
+              0,
+              0.8597932986246308,
+              -0.5106422266520625
+            ]
+          },
+          {
+            "type": "adsk::fusion::BRepFace",
+            "component": "SaddleBagMount",
+            "point": [
+              3.5000000000000004,
+              -22.431151104408304,
+              6.8769654968799365
+            ],
+            "surface": "adsk::core::Plane",
+            "normal": [
+              1,
+              4.724389644791491e-16,
+              7.954685971262321e-16
+            ]
+          },
+          {
+            "type": "adsk::fusion::BRepFace",
+            "component": "SaddleBagMount",
+            "point": [
+              -3.4999999999999996,
+              -22.4311511044083,
+              6.876965496879934
+            ],
+            "surface": "adsk::core::Plane",
+            "normal": [
+              -1,
+              -4.724389644791487e-16,
+              -7.954685971262323e-16
+            ]
+          }
+        ]
+      },
+      {
+        "radius": 0.099,
+        "selections": [
+          {
+            "type": "adsk::fusion::BRepEdge",
+            "component": "SaddleBagMount",
+            "point": [
+              3.0499242953285868,
+              -26.456398974534995,
+              9.31590698881732
+            ],
+            "curve": "adsk::core::Line3D"
+          },
+          {
+            "type": "adsk::fusion::BRepEdge",
+            "component": "SaddleBagMount",
+            "point": [
+              2.7974921701717608,
+              -26.727817581215266,
+              8.858906202423787
+            ],
+            "curve": "adsk::core::Line3D"
+          },
+          {
+            "type": "adsk::fusion::BRepEdge",
+            "component": "SaddleBagMount",
+            "point": [
+              2.347416439423352,
+              -26.592108277875134,
+              9.087406595620555
+            ],
+            "curve": "adsk::core::Line3D"
+          },
+          {
+            "type": "adsk::fusion::BRepEdge",
+            "component": "SaddleBagMount",
+            "point": [
+              -3.049924295328587,
+              -26.456398974534995,
+              9.31590698881732
+            ],
+            "curve": "adsk::core::Line3D"
+          },
+          {
+            "type": "adsk::fusion::BRepEdge",
+            "component": "SaddleBagMount",
+            "point": [
+              -2.347416439423352,
+              -26.592108277875134,
+              9.087406595620555
+            ],
+            "curve": "adsk::core::Line3D"
+          },
+          {
+            "type": "adsk::fusion::BRepEdge",
+            "component": "SaddleBagMount",
+            "point": [
+              -2.797492144094785,
+              -26.72781758121526,
+              8.858906202423782
+            ],
+            "curve": "adsk::core::Line3D"
+          }
+        ]
+      },
+      {
+        "radius": 0.30000000000000004,
+        "selections": [
+          {
+            "type": "adsk::fusion::BRepEdge",
+            "component": "SaddleBagMount",
+            "point": [
+              -3.4999999999999996,
+              -26.965436438934663,
+              9.569935496997603
+            ],
+            "curve": "adsk::core::Line3D"
+          },
+          {
+            "type": "adsk::fusion::BRepEdge",
+            "component": "SaddleBagMount",
+            "point": [
+              3.5000000000000004,
+              -26.965436438934663,
+              9.569935496997605
+            ],
+            "curve": "adsk::core::Line3D"
+          },
+          {
+            "type": "adsk::fusion::BRepFace",
+            "component": "SaddleBagMount",
+            "point": [
+              2.500000000000003,
+              -27.36636463851368,
+              9.808051877862784
+            ],
+            "surface": "adsk::core::Plane",
+            "normal": [
+              0.4226182617407016,
+              -0.7792373617854297,
+              0.46279902640449805
+            ]
+          },
+          {
+            "type": "adsk::fusion::BRepFace",
+            "component": "SaddleBagMount",
+            "point": [
+              -2.5,
+              -27.36636463851368,
+              9.808051877862784
+            ],
+            "surface": "adsk::core::Plane",
+            "normal": [
+              -0.4226182617407016,
+              -0.7792373617854301,
+              0.4627990264044973
+            ]
+          },
+          {
+            "type": "adsk::fusion::BRepFace",
+            "component": "SaddleBagMount",
+            "point": [
+              3.3306690738754696e-16,
+              -27.767292838092693,
+              10.04616825872796
+            ],
+            "surface": "adsk::core::Plane",
+            "normal": [
+              7.395570986446986e-31,
+              -0.8597932986246308,
+              0.5106422266520625
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "index": 128,
+    "name": "Fillet5",
+    "sets": [
+      {
+        "radius": 0.1,
+        "selections": [
+          {
+            "type": "adsk::fusion::BRepFace",
+            "component": "Latch",
+            "point": [
+              4.999146785473598,
+              -18.6325951159433,
+              -0.004951270585206391
+            ],
+            "surface": "adsk::core::Plane",
+            "normal": [
+              0.9575040587154022,
+              -0.2884197939523773,
+              0
+            ]
+          },
+          {
+            "type": "adsk::fusion::BRepFace",
+            "component": "Latch",
+            "point": [
+              6.217248937900877e-15,
+              -20.87734082230645,
+              -3.4185873044767656
+            ],
+            "surface": "adsk::core::Plane",
+            "normal": [
+              0,
+              0.8840182305299805,
+              0.4674524233444964
+            ]
+          },
+          {
+            "type": "adsk::fusion::BRepFace",
+            "component": "Latch",
+            "point": [
+              0.002908472247576732,
+              -20.994046472983303,
+              -4.554840185918662
+            ],
+            "surface": "adsk::core::Cylinder"
+          },
+          {
+            "type": "adsk::fusion::BRepFace",
+            "component": "Latch",
+            "point": [
+              4.884981308350689e-15,
+              -21.892454846950955,
+              -3.6381191563246906
+            ],
+            "surface": "adsk::core::Plane",
+            "normal": [
+              0,
+              -0.8840182305299784,
+              -0.4674524233445003
+            ]
+          },
+          {
+            "type": "adsk::fusion::BRepFace",
+            "component": "Latch",
+            "point": [
+              1.2434497875801753e-14,
+              -16.4962073350557,
+              0.6822673702872225
+            ],
+            "surface": "adsk::core::Plane",
+            "normal": [
+              0,
+              0.8597932986246307,
+              -0.5106422266520627
+            ]
+          },
+          {
+            "type": "adsk::fusion::BRepFace",
+            "component": "Latch",
+            "point": [
+              7.105427357601002e-15,
+              -20.73813960274802,
+              -2.401649061276146
+            ],
+            "surface": "adsk::core::Plane",
+            "normal": [
+              0,
+              0.8597932986246145,
+              -0.5106422266520901
+            ]
+          },
+          {
+            "type": "adsk::fusion::BRepFace",
+            "component": "Latch",
+            "point": [
+              9.769962616701378e-15,
+              -19.174856731239945,
+              -1.7986894372425957
+            ],
+            "surface": "adsk::core::Plane",
+            "normal": [
+              0,
+              8.211653771438432e-15,
+              -1
+            ]
+          }
+        ]
+      },
+      {
+        "radius": 1,
+        "selections": [
+          {
+            "type": "adsk::fusion::BRepEdge",
+            "component": "Latch",
+            "point": [
+              5.329070518200751e-15,
+              -21.096245028191937,
+              -3.004608685309688
+            ],
+            "curve": "adsk::core::Line3D"
+          },
+          {
+            "type": "adsk::fusion::BRepEdge",
+            "component": "Latch",
+            "point": [
+              6.661338147750939e-15,
+              -20.380034177304108,
+              -1.7986894372426057
+            ],
+            "curve": "adsk::core::Line3D"
+          },
+          {
+            "type": "adsk::fusion::BRepEdge",
+            "component": "Latch",
+            "point": [
+              4.6629367034256575e-15,
+              -22.24245484695098,
+              -2.9762199656609782
+            ],
+            "curve": "adsk::core::Line3D"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "index": 129,
+    "name": "Fillet3",
+    "sets": [
+      {
+        "radius": 0.1,
+        "selections": [
+          {
+            "type": "adsk::fusion::BRepFace",
+            "component": "AdapterBody",
+            "point": [
+              0,
+              0.33143967490710585,
+              -0.7247544957545002
+            ],
+            "surface": "adsk::core::Plane",
+            "normal": [
+              0,
+              0.11840396830649746,
+              -0.9929655081065374
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "index": 130,
+    "name": "Fillet4",
+    "sets": [
+      {
+        "radius": 0.1,
+        "selections": [
+          {
+            "type": "adsk::fusion::BRepEdge",
+            "component": "AdapterBody",
+            "point": [
+              0,
+              -19.09079367941255,
+              8.30000240967807
+            ],
+            "curve": "adsk::core::Line3D"
+          },
+          {
+            "type": "adsk::fusion::BRepEdge",
+            "component": "AdapterBody",
+            "point": [
+              1.8380669088154877,
+              -26.3445982162752,
+              9.910684591063722
+            ],
+            "curve": "adsk::core::Line3D"
+          },
+          {
+            "type": "adsk::fusion::BRepEdge",
+            "component": "AdapterBody",
+            "point": [
+              -1.8380669088154877,
+              -26.3445982162752,
+              9.910684591063722
+            ],
+            "curve": "adsk::core::Line3D"
+          },
+          {
+            "type": "adsk::fusion::BRepEdge",
+            "component": "AdapterBody",
+            "point": [
+              5.551115123125783e-15,
+              -26.34459821627521,
+              8.980228397371892
+            ],
+            "curve": "adsk::core::Line3D"
+          },
+          {
+            "type": "adsk::fusion::BRepEdge",
+            "component": "AdapterBody",
+            "point": [
+              7.188762347755722,
+              -16.786654573262112,
+              0.15406078074814267
+            ],
+            "curve": "adsk::core::Line3D"
+          },
+          {
+            "type": "adsk::fusion::BRepEdge",
+            "component": "AdapterBody",
+            "point": [
+              -7.188762347755722,
+              -16.786654573262112,
+              0.15406078074814245
+            ],
+            "curve": "adsk::core::Line3D"
+          },
+          {
+            "type": "adsk::fusion::BRepEdge",
+            "component": "AdapterBody",
+            "point": [
+              4.602771413638932,
+              -18.51115490096033,
+              -2.953142515422237
+            ],
+            "curve": "adsk::core::EllipticalArc3D"
+          },
+          {
+            "type": "adsk::fusion::BRepEdge",
+            "component": "AdapterBody",
+            "point": [
+              4.6384737898641015,
+              -18.5634582076914,
+              -2.861383994318604
+            ],
+            "curve": "adsk::core::EllipticalArc3D"
+          },
+          {
+            "type": "adsk::fusion::BRepEdge",
+            "component": "AdapterBody",
+            "point": [
+              5.888224077207845,
+              -17.87091613059353,
+              -1.6715634475149785
+            ],
+            "curve": "adsk::core::Line3D"
+          },
+          {
+            "type": "adsk::fusion::BRepEdge",
+            "component": "AdapterBody",
+            "point": [
+              7.305881750334421,
+              -16.25465526099088,
+              -1.5082124593130901
+            ],
+            "curve": "adsk::core::Line3D"
+          },
+          {
+            "type": "adsk::fusion::BRepEdge",
+            "component": "AdapterBody",
+            "point": [
+              7.513508774477273,
+              -15.303764100265088,
+              -2.504239105206135
+            ],
+            "curve": "adsk::core::EllipticalArc3D"
+          },
+          {
+            "type": "adsk::fusion::BRepEdge",
+            "component": "AdapterBody",
+            "point": [
+              7.47644773583373,
+              -15.27338082584931,
+              -2.5670613314906063
+            ],
+            "curve": "adsk::core::EllipticalArc3D"
+          },
+          {
+            "type": "adsk::fusion::BRepEdge",
+            "component": "AdapterBody",
+            "point": [
+              -7.476447735833731,
+              -15.273380825849308,
+              -2.567061331490608
+            ],
+            "curve": "adsk::core::EllipticalArc3D"
+          },
+          {
+            "type": "adsk::fusion::BRepEdge",
+            "component": "AdapterBody",
+            "point": [
+              -7.513508774477274,
+              -15.303764100265086,
+              -2.5042391052061337
+            ],
+            "curve": "adsk::core::EllipticalArc3D"
+          },
+          {
+            "type": "adsk::fusion::BRepEdge",
+            "component": "AdapterBody",
+            "point": [
+              -7.30588175033442,
+              -16.254655260990887,
+              -1.5082124593130901
+            ],
+            "curve": "adsk::core::Line3D"
+          },
+          {
+            "type": "adsk::fusion::BRepEdge",
+            "component": "AdapterBody",
+            "point": [
+              -5.8882240772078465,
+              -17.870916130593532,
+              -1.6715634475149783
+            ],
+            "curve": "adsk::core::Line3D"
+          },
+          {
+            "type": "adsk::fusion::BRepEdge",
+            "component": "AdapterBody",
+            "point": [
+              -4.6384737898641,
+              -18.5634582076914,
+              -2.861383994318605
+            ],
+            "curve": "adsk::core::EllipticalArc3D"
+          },
+          {
+            "type": "adsk::fusion::BRepEdge",
+            "component": "AdapterBody",
+            "point": [
+              -4.602771413638928,
+              -18.51115490096033,
+              -2.953142515422238
+            ],
+            "curve": "adsk::core::EllipticalArc3D"
+          },
+          {
+            "type": "adsk::fusion::BRepEdge",
+            "component": "AdapterBody",
+            "point": [
+              -3.650000000000004,
+              -0.012636056512467284,
+              2.836753190105768
+            ],
+            "curve": "adsk::core::Line3D"
+          },
+          {
+            "type": "adsk::fusion::BRepEdge",
+            "component": "AdapterBody",
+            "point": [
+              -4.3923878411215895,
+              -3.3905117810692644,
+              4.281586594516767
+            ],
+            "curve": "adsk::core::Line3D"
+          },
+          {
+            "type": "adsk::fusion::BRepEdge",
+            "component": "AdapterBody",
+            "point": [
+              3.650000000000004,
+              -0.012636056512467284,
+              2.836753190105768
+            ],
+            "curve": "adsk::core::Line3D"
+          },
+          {
+            "type": "adsk::fusion::BRepEdge",
+            "component": "AdapterBody",
+            "point": [
+              4.3923878411215895,
+              -3.390511781069264,
+              4.281586594516768
+            ],
+            "curve": "adsk::core::Line3D"
+          },
+          {
+            "type": "adsk::fusion::BRepFace",
+            "component": "AdapterBody",
+            "point": [
+              0,
+              -22.717695947843872,
+              9.875049163975897
+            ],
+            "surface": "adsk::core::Plane",
+            "normal": [
+              0,
+              0.27456857573274973,
+              0.9615675208845655
+            ]
+          },
+          {
+            "type": "adsk::fusion::BRepFace",
+            "component": "AdapterBody",
+            "point": [
+              0,
+              -7.734123217704447,
+              5.989461690448701
+            ],
+            "surface": "adsk::core::Plane",
+            "normal": [
+              0,
+              0.19936793441700243,
+              0.9799247046208692
+            ]
+          },
+          {
+            "type": "adsk::fusion::BRepFace",
+            "component": "AdapterBody",
+            "point": [
+              0,
+              -19.090793679412545,
+              8.56970807328307
+            ],
+            "surface": "adsk::core::Plane",
+            "normal": [
+              0,
+              1,
+              -1.3172558674940015e-14
+            ]
+          },
+          {
+            "type": "adsk::fusion::BRepFace",
+            "component": "AdapterBody",
+            "point": [
+              -4.981044732334713,
+              -16.016548098615992,
+              5.366119008385468
+            ],
+            "surface": "adsk::core::Plane",
+            "normal": [
+              -0.891851271219381,
+              0,
+              0.452328763207
+            ]
+          },
+          {
+            "type": "adsk::fusion::BRepFace",
+            "component": "AdapterBody",
+            "point": [
+              4.981044732334713,
+              -16.016548098615992,
+              5.366119008385468
+            ],
+            "surface": "adsk::core::Plane",
+            "normal": [
+              0.891851271219381,
+              0,
+              0.452328763207
+            ]
+          },
+          {
+            "type": "adsk::fusion::BRepFace",
+            "component": "AdapterBody",
+            "point": [
+              -5.941105645468441,
+              18.31352618356251,
+              2.615673821552125
+            ],
+            "surface": "adsk::core::Plane",
+            "normal": [
+              0.6935989090788764,
+              -0.7203614046605998,
+              0
+            ]
+          },
+          {
+            "type": "adsk::fusion::BRepFace",
+            "component": "AdapterBody",
+            "point": [
+              -6.0023069251427525,
+              18.218104135730396,
+              1.4346696914780757
+            ],
+            "surface": "adsk::core::Cylinder"
+          },
+          {
+            "type": "adsk::fusion::BRepFace",
+            "component": "AdapterBody",
+            "point": [
+              -4.963732457689263,
+              19.216028038620347,
+              1.5295520479761577
+            ],
+            "surface": "adsk::core::NurbsSurface"
+          },
+          {
+            "type": "adsk::fusion::BRepFace",
+            "component": "AdapterBody",
+            "point": [
+              -4.929289321881345,
+              19.1603717744355,
+              1.4909629080370834
+            ],
+            "surface": "adsk::core::Cylinder"
+          },
+          {
+            "type": "adsk::fusion::BRepFace",
+            "component": "AdapterBody",
+            "point": [
+              -4.9,
+              22.38696556271949,
+              3.581179828910651
+            ],
+            "surface": "adsk::core::Plane",
+            "normal": [
+              1,
+              0,
+              0
+            ]
+          },
+          {
+            "type": "adsk::fusion::BRepFace",
+            "component": "AdapterBody",
+            "point": [
+              5.941105645468441,
+              18.31352618356251,
+              2.6156738215521247
+            ],
+            "surface": "adsk::core::Plane",
+            "normal": [
+              -0.6935989090788764,
+              -0.7203614046605998,
+              0
+            ]
+          },
+          {
+            "type": "adsk::fusion::BRepFace",
+            "component": "AdapterBody",
+            "point": [
+              4.963656589566029,
+              19.21598988497564,
+              1.5294534977001502
+            ],
+            "surface": "adsk::core::NurbsSurface"
+          },
+          {
+            "type": "adsk::fusion::BRepFace",
+            "component": "AdapterBody",
+            "point": [
+              6.002306925142754,
+              18.218104135730393,
+              1.4346696914780745
+            ],
+            "surface": "adsk::core::Cylinder"
+          },
+          {
+            "type": "adsk::fusion::BRepFace",
+            "component": "AdapterBody",
+            "point": [
+              0,
+              0.32049924507608196,
+              -0.7260590630293917
+            ],
+            "surface": "adsk::core::Plane",
+            "normal": [
+              0,
+              0.11840396830649746,
+              -0.9929655081065374
+            ]
+          },
+          {
+            "type": "adsk::fusion::BRepFace",
+            "component": "AdapterBody",
+            "point": [
+              4.929289321881345,
+              19.1641631121289,
+              1.4914149976861433
+            ],
+            "surface": "adsk::core::Cylinder"
+          },
+          {
+            "type": "adsk::fusion::BRepFace",
+            "component": "AdapterBody",
+            "point": [
+              4.9,
+              22.357347022156908,
+              3.4762010874378495
+            ],
+            "surface": "adsk::core::Plane",
+            "normal": [
+              1,
+              0,
+              0
+            ]
+          },
+          {
+            "type": "adsk::fusion::BRepFace",
+            "component": "AdapterBody",
+            "point": [
+              6.660812216532157,
+              13.108217973215767,
+              2.0541413319870907
+            ],
+            "surface": "adsk::core::Plane",
+            "normal": [
+              0.891851271219381,
+              0,
+              0.452328763207
+            ]
+          },
+          {
+            "type": "adsk::fusion::BRepFace",
+            "component": "AdapterBody",
+            "point": [
+              7.239006703377226,
+              12.832658707772612,
+              0.8179470569181124
+            ],
+            "surface": "adsk::core::Cylinder"
+          },
+          {
+            "type": "adsk::fusion::BRepFace",
+            "component": "AdapterBody",
+            "point": [
+              4.861583171172734,
+              6.0199900581227705,
+              2.335196770446993
+            ],
+            "surface": "adsk::core::Plane",
+            "normal": [
+              0.6549914762231982,
+              -0.7556362657224411,
+              0
+            ]
+          },
+          {
+            "type": "adsk::fusion::BRepFace",
+            "component": "AdapterBody",
+            "point": [
+              4.828300082042768,
+              6.034295120938573,
+              -0.01205642186787631
+            ],
+            "surface": "adsk::core::Cylinder"
+          },
+          {
+            "type": "adsk::fusion::BRepFace",
+            "component": "AdapterBody",
+            "point": [
+              2.2000000000000015,
+              0.9509734048559362,
+              1.6760648268576532
+            ],
+            "surface": "adsk::core::Plane",
+            "normal": [
+              1,
+              7.234816129176078e-16,
+              0
+            ]
+          },
+          {
+            "type": "adsk::fusion::BRepFace",
+            "component": "AdapterBody",
+            "point": [
+              2.170710678118656,
+              0.966329427595339,
+              -0.6195516592169446
+            ],
+            "surface": "adsk::core::Cylinder"
+          },
+          {
+            "type": "adsk::fusion::BRepFace",
+            "component": "AdapterBody",
+            "point": [
+              4.334261828438582,
+              -4.903647864489509,
+              1.974745672349552
+            ],
+            "surface": "adsk::core::Plane",
+            "normal": [
+              0.8229961558022109,
+              0.5680469413127609,
+              0
+            ]
+          },
+          {
+            "type": "adsk::fusion::BRepFace",
+            "component": "AdapterBody",
+            "point": [
+              4.299388712308438,
+              -4.900413536307652,
+              -1.3213866517247528
+            ],
+            "surface": "adsk::core::Cylinder"
+          },
+          {
+            "type": "adsk::fusion::BRepFace",
+            "component": "AdapterBody",
+            "point": [
+              6.468750101999127,
+              -8.998065550662359,
+              0.28841613634206875
+            ],
+            "surface": "adsk::core::Plane",
+            "normal": [
+              1,
+              0,
+              0
+            ]
+          },
+          {
+            "type": "adsk::fusion::BRepFace",
+            "component": "AdapterBody",
+            "point": [
+              6.439460780117783,
+              -9.012260772483899,
+              -1.809426501946065
+            ],
+            "surface": "adsk::core::Cylinder"
+          },
+          {
+            "type": "adsk::fusion::BRepFace",
+            "component": "AdapterBody",
+            "point": [
+              7.13074516743382,
+              -10.583948547502636,
+              0.21431329823524692
+            ],
+            "surface": "adsk::core::Plane",
+            "normal": [
+              0.6615166970050766,
+              0.749930436496275,
+              0
+            ]
+          },
+          {
+            "type": "adsk::fusion::BRepFace",
+            "component": "AdapterBody",
+            "point": [
+              7.0924812320424,
+              -10.585103266642735,
+              -2.000032175352062
+            ],
+            "surface": "adsk::core::Cylinder"
+          },
+          {
+            "type": "adsk::fusion::BRepFace",
+            "component": "AdapterBody",
+            "point": [
+              7.793135238304326,
+              -12.604808307644884,
+              -1.2581642922447953
+            ],
+            "surface": "adsk::core::Plane",
+            "normal": [
+              1,
+              0,
+              0
+            ]
+          },
+          {
+            "type": "adsk::fusion::BRepFace",
+            "component": "AdapterBody",
+            "point": [
+              7.763845916422982,
+              -12.596360515352316,
+              -2.236804521522135
+            ],
+            "surface": "adsk::core::Cylinder"
+          },
+          {
+            "type": "adsk::fusion::BRepFace",
+            "component": "AdapterBody",
+            "point": [
+              7.446295102171138,
+              -15.616846281725998,
+              -0.8251712439841522
+            ],
+            "surface": "adsk::core::Plane",
+            "normal": [
+              0.9766138111222712,
+              -0.21500107889318346,
+              0
+            ]
+          },
+          {
+            "type": "adsk::fusion::BRepFace",
+            "component": "AdapterBody",
+            "point": [
+              7.625013636747392,
+              -14.664597445245423,
+              -2.4825149609587758
+            ],
+            "surface": "adsk::core::Cylinder"
+          },
+          {
+            "type": "adsk::fusion::BRepFace",
+            "component": "AdapterBody",
+            "point": [
+              6.0675573046919355,
+              -17.25766378927124,
+              -2.234720615598815
+            ],
+            "surface": "adsk::core::Plane",
+            "normal": [
+              -0.7071067811865468,
+              0.5792279653395701,
+              0.40557978767263914
+            ]
+          },
+          {
+            "type": "adsk::fusion::BRepFace",
+            "component": "AdapterBody",
+            "point": [
+              6.037216145178022,
+              -16.894840378082613,
+              -2.7604643419820842
+            ],
+            "surface": "adsk::core::Cylinder"
+          },
+          {
+            "type": "adsk::fusion::BRepFace",
+            "component": "AdapterBody",
+            "point": [
+              0,
+              -16.772418728271738,
+              0.17803036940366201
+            ],
+            "surface": "adsk::core::Plane",
+            "normal": [
+              0,
+              -0.8597932986247211,
+              0.5106422266519105
+            ]
+          },
+          {
+            "type": "adsk::fusion::BRepFace",
+            "component": "AdapterBody",
+            "point": [
+              -8.881784197001252e-16,
+              -18.55096476479122,
+              -2.913743309853805
+            ],
+            "surface": "adsk::core::Cylinder"
+          },
+          {
+            "type": "adsk::fusion::BRepFace",
+            "component": "AdapterBody",
+            "point": [
+              -6.067557304691936,
+              -17.25766378927124,
+              -2.234720615598814
+            ],
+            "surface": "adsk::core::Plane",
+            "normal": [
+              0.7071067811865468,
+              0.5792279653395701,
+              0.40557978767263914
+            ]
+          },
+          {
+            "type": "adsk::fusion::BRepFace",
+            "component": "AdapterBody",
+            "point": [
+              -6.037216145178021,
+              -16.894840378082616,
+              -2.7604643419820856
+            ],
+            "surface": "adsk::core::Cylinder"
+          },
+          {
+            "type": "adsk::fusion::BRepFace",
+            "component": "AdapterBody",
+            "point": [
+              -7.446295102171138,
+              -15.616846281725998,
+              -0.8251712439841511
+            ],
+            "surface": "adsk::core::Plane",
+            "normal": [
+              -0.9766138111222712,
+              -0.21500107889318346,
+              0
+            ]
+          },
+          {
+            "type": "adsk::fusion::BRepFace",
+            "component": "AdapterBody",
+            "point": [
+              -7.625013636747391,
+              -14.664597445245422,
+              -2.4825149609587753
+            ],
+            "surface": "adsk::core::Cylinder"
+          },
+          {
+            "type": "adsk::fusion::BRepFace",
+            "component": "AdapterBody",
+            "point": [
+              -7.793135238304326,
+              -12.604808307644882,
+              -1.2581642922447949
+            ],
+            "surface": "adsk::core::Plane",
+            "normal": [
+              -1,
+              0,
+              0
+            ]
+          },
+          {
+            "type": "adsk::fusion::BRepFace",
+            "component": "AdapterBody",
+            "point": [
+              -7.763845916422981,
+              -12.596360515352316,
+              -2.2368045215221355
+            ],
+            "surface": "adsk::core::Cylinder"
+          },
+          {
+            "type": "adsk::fusion::BRepFace",
+            "component": "AdapterBody",
+            "point": [
+              -7.13074516743382,
+              -10.583948547502636,
+              0.2143132982352467
+            ],
+            "surface": "adsk::core::Plane",
+            "normal": [
+              -0.6615166970050766,
+              0.749930436496275,
+              0
+            ]
+          },
+          {
+            "type": "adsk::fusion::BRepFace",
+            "component": "AdapterBody",
+            "point": [
+              -7.0924812320424,
+              -10.585103266642735,
+              -2.000032175352062
+            ],
+            "surface": "adsk::core::Cylinder"
+          },
+          {
+            "type": "adsk::fusion::BRepFace",
+            "component": "AdapterBody",
+            "point": [
+              -6.468750101999127,
+              -8.998065550662359,
+              0.28841613634206875
+            ],
+            "surface": "adsk::core::Plane",
+            "normal": [
+              -1,
+              0,
+              0
+            ]
+          },
+          {
+            "type": "adsk::fusion::BRepFace",
+            "component": "AdapterBody",
+            "point": [
+              -6.439460780117783,
+              -9.0122607724839,
+              -1.8094265019460651
+            ],
+            "surface": "adsk::core::Cylinder"
+          },
+          {
+            "type": "adsk::fusion::BRepFace",
+            "component": "AdapterBody",
+            "point": [
+              -4.334261828438581,
+              -4.903647864489508,
+              1.974745672349552
+            ],
+            "surface": "adsk::core::Plane",
+            "normal": [
+              -0.8229961558022109,
+              0.5680469413127609,
+              0
+            ]
+          },
+          {
+            "type": "adsk::fusion::BRepFace",
+            "component": "AdapterBody",
+            "point": [
+              -4.299388712308439,
+              -4.900413536307652,
+              -1.3213866517247521
+            ],
+            "surface": "adsk::core::Cylinder"
+          },
+          {
+            "type": "adsk::fusion::BRepFace",
+            "component": "AdapterBody",
+            "point": [
+              -2.2000000000000015,
+              0.950973404855938,
+              1.6760648268576535
+            ],
+            "surface": "adsk::core::Plane",
+            "normal": [
+              -1,
+              7.234816129176078e-16,
+              0
+            ]
+          },
+          {
+            "type": "adsk::fusion::BRepFace",
+            "component": "AdapterBody",
+            "point": [
+              -2.170710678118656,
+              0.9663294275953426,
+              -0.6195516592169443
+            ],
+            "surface": "adsk::core::Cylinder"
+          },
+          {
+            "type": "adsk::fusion::BRepFace",
+            "component": "AdapterBody",
+            "point": [
+              -4.861583171172733,
+              6.01999005812277,
+              2.335196770446993
+            ],
+            "surface": "adsk::core::Plane",
+            "normal": [
+              -0.6549914762231982,
+              -0.7556362657224411,
+              0
+            ]
+          },
+          {
+            "type": "adsk::fusion::BRepFace",
+            "component": "AdapterBody",
+            "point": [
+              -4.828300082042767,
+              6.034295120938573,
+              -0.012056421867876296
+            ],
+            "surface": "adsk::core::Cylinder"
+          },
+          {
+            "type": "adsk::fusion::BRepFace",
+            "component": "AdapterBody",
+            "point": [
+              -6.660812216532156,
+              13.108217973215767,
+              2.054141331987091
+            ],
+            "surface": "adsk::core::Plane",
+            "normal": [
+              -0.891851271219381,
+              0,
+              0.452328763207
+            ]
+          },
+          {
+            "type": "adsk::fusion::BRepFace",
+            "component": "AdapterBody",
+            "point": [
+              -7.239006703377223,
+              12.832658707772612,
+              0.8179470569181142
+            ],
+            "surface": "adsk::core::Cylinder"
+          },
+          {
+            "type": "adsk::fusion::BRepFace",
+            "component": "AdapterBody",
+            "point": [
+              0,
+              19.084293179350055,
+              3.811387901810397
+            ],
+            "surface": "adsk::core::Plane",
+            "normal": [
+              0,
+              -0.11840396830650066,
+              0.992965508106537
+            ]
+          },
+          {
+            "type": "adsk::fusion::BRepFace",
+            "component": "AdapterBody",
+            "point": [
+              0,
+              23.82401675125123,
+              3.1610989919168055
+            ],
+            "surface": "adsk::core::Cylinder"
+          },
+          {
+            "type": "adsk::fusion::BRepFace",
+            "component": "AdapterBody",
+            "point": [
+              0,
+              23.76063619087226,
+              0.3603558689843597
+            ],
+            "surface": "adsk::core::Cylinder"
+          },
+          {
+            "type": "adsk::fusion::BRepFace",
+            "component": "AdapterBody",
+            "point": [
+              0,
+              21.79475160983344,
+              2.992160961817891
+            ],
+            "surface": "adsk::core::Cylinder"
+          },
+          {
+            "type": "adsk::fusion::BRepFace",
+            "component": "AdapterBody",
+            "point": [
+              0,
+              20.124478766226257,
+              -0.07682300605927173
+            ],
+            "surface": "adsk::core::Cylinder"
+          },
+          {
+            "type": "adsk::fusion::BRepFace",
+            "component": "AdapterBody",
+            "point": [
+              0,
+              19.255875442058468,
+              0.7815485669874453
+            ],
+            "surface": "adsk::core::Cylinder"
+          },
+          {
+            "type": "adsk::fusion::BRepFace",
+            "component": "AdapterBody",
+            "point": [
+              0,
+              19.127101002074983,
+              1.4839145285981197
+            ],
+            "surface": "adsk::core::Cylinder"
+          },
+          {
+            "type": "adsk::fusion::BRepFace",
+            "component": "AdapterBody",
+            "point": [
+              -4.300000000000001,
+              13.794550052204036,
+              2.1555942910774526
+            ],
+            "surface": "adsk::core::Plane",
+            "normal": [
+              1,
+              0,
+              0
+            ]
+          },
+          {
+            "type": "adsk::fusion::BRepFace",
+            "component": "AdapterBody",
+            "point": [
+              -4.329289321881346,
+              12.979395545019834,
+              0.8129197491240355
+            ],
+            "surface": "adsk::core::Cylinder"
+          },
+          {
+            "type": "adsk::fusion::BRepFace",
+            "component": "AdapterBody",
+            "point": [
+              4.440892098500626e-16,
+              9.915953208748558,
+              2.149632152043426
+            ],
+            "surface": "adsk::core::Plane",
+            "normal": [
+              0,
+              1,
+              0
+            ]
+          },
+          {
+            "type": "adsk::fusion::BRepFace",
+            "component": "AdapterBody",
+            "point": [
+              0,
+              9.89073301779841,
+              0.4405210828109299
+            ],
+            "surface": "adsk::core::Cylinder"
+          },
+          {
+            "type": "adsk::fusion::BRepFace",
+            "component": "AdapterBody",
+            "point": [
+              4.300000000000001,
+              13.794550052204036,
+              2.155594291077453
+            ],
+            "surface": "adsk::core::Plane",
+            "normal": [
+              -1,
+              0,
+              0
+            ]
+          },
+          {
+            "type": "adsk::fusion::BRepFace",
+            "component": "AdapterBody",
+            "point": [
+              4.329289321881346,
+              12.979395545019834,
+              0.8129197491240355
+            ],
+            "surface": "adsk::core::Cylinder"
+          },
+          {
+            "type": "adsk::fusion::BRepFace",
+            "component": "AdapterBody",
+            "point": [
+              0,
+              16.858662361369966,
+              2.479914430828214
+            ],
+            "surface": "adsk::core::Plane",
+            "normal": [
+              0,
+              -0.8191520442889919,
+              0.5735764363510462
+            ]
+          },
+          {
+            "type": "adsk::fusion::BRepFace",
+            "component": "AdapterBody",
+            "point": [
+              0,
+              16.036070895281924,
+              1.2158090687938632
+            ],
+            "surface": "adsk::core::Cylinder"
+          },
+          {
+            "type": "adsk::fusion::BRepFace",
+            "component": "AdapterBody",
+            "point": [
+              2.3000000000000016,
+              6.115321758974322,
+              2.19112109647745
+            ],
+            "surface": "adsk::core::Cylinder"
+          },
+          {
+            "type": "adsk::fusion::BRepFace",
+            "component": "AdapterBody",
+            "point": [
+              3.140726230134243,
+              6.693993592130415,
+              0.1303302074806551
+            ],
+            "surface": "adsk::core::NurbsSurface"
+          },
+          {
+            "type": "adsk::fusion::BRepFace",
+            "component": "AdapterBody",
+            "point": [
+              -3.2163536723806505,
+              -14.027335089530077,
+              1.2707479211443722
+            ],
+            "surface": "adsk::core::Plane",
+            "normal": [
+              -0.6546271884977434,
+              -0.6444057092548489,
+              0.39522718271811097
+            ]
+          },
+          {
+            "type": "adsk::fusion::BRepFace",
+            "component": "AdapterBody",
+            "point": [
+              -3.985511629396678,
+              -15.652167363399101,
+              -2.6162785067265517
+            ],
+            "surface": "adsk::core::Cylinder"
+          },
+          {
+            "type": "adsk::fusion::BRepFace",
+            "component": "AdapterBody",
+            "point": [
+              4.440892098500626e-16,
+              -15.339984369888626,
+              1.5330757566902111
+            ],
+            "surface": "adsk::core::Plane",
+            "normal": [
+              0,
+              -0.8949343616021138,
+              0.44619781310963086
+            ]
+          },
+          {
+            "type": "adsk::fusion::BRepFace",
+            "component": "AdapterBody",
+            "point": [
+              4.440892098500626e-16,
+              -17.535294214151357,
+              -2.8431548891185385
+            ],
+            "surface": "adsk::core::Cylinder"
+          },
+          {
+            "type": "adsk::fusion::BRepFace",
+            "component": "AdapterBody",
+            "point": [
+              3.2163536723806505,
+              -14.027335089530077,
+              1.270747921144374
+            ],
+            "surface": "adsk::core::Plane",
+            "normal": [
+              0.6546271884977434,
+              -0.6444057092548489,
+              0.39522718271811097
+            ]
+          },
+          {
+            "type": "adsk::fusion::BRepFace",
+            "component": "AdapterBody",
+            "point": [
+              3.985511629396679,
+              -15.652167363399101,
+              -2.6162785067265517
+            ],
+            "surface": "adsk::core::Cylinder"
+          },
+          {
+            "type": "adsk::fusion::BRepFace",
+            "component": "AdapterBody",
+            "point": [
+              4.561017186608975,
+              -9.625183988459447,
+              0.9897108398237133
+            ],
+            "surface": "adsk::core::Plane",
+            "normal": [
+              0.9659258262890683,
+              0.051600218409869884,
+              0.25362317632234327
+            ]
+          },
+          {
+            "type": "adsk::fusion::BRepFace",
+            "component": "AdapterBody",
+            "point": [
+              5.38902880745765,
+              -10.213606962549635,
+              -1.9609488020311667
+            ],
+            "surface": "adsk::core::Cylinder"
+          },
+          {
+            "type": "adsk::fusion::BRepFace",
+            "component": "AdapterBody",
+            "point": [
+              2.648738253600135,
+              -4.147650499392128,
+              1.0281156441359545
+            ],
+            "surface": "adsk::core::Plane",
+            "normal": [
+              0.7831864794758053,
+              0.6056101986599959,
+              0.14090857193689155
+            ]
+          },
+          {
+            "type": "adsk::fusion::BRepFace",
+            "component": "AdapterBody",
+            "point": [
+              3.142548451271214,
+              -4.21401198730038,
+              -1.2397378602893352
+            ],
+            "surface": "adsk::core::Cylinder"
+          },
+          {
+            "type": "adsk::fusion::BRepFace",
+            "component": "AdapterBody",
+            "point": [
+              4.4408920985006257e-16,
+              -1.9635211606561307,
+              1.3716405184300453
+            ],
+            "surface": "adsk::core::Plane",
+            "normal": [
+              -7.149287282841352e-16,
+              0.9981347984218548,
+              0.061048539535055436
+            ]
+          },
+          {
+            "type": "adsk::fusion::BRepFace",
+            "component": "AdapterBody",
+            "point": [
+              -3.598087225363042e-18,
+              -1.790092189534692,
+              -0.946394173008807
+            ],
+            "surface": "adsk::core::Cylinder"
+          },
+          {
+            "type": "adsk::fusion::BRepFace",
+            "component": "AdapterBody",
+            "point": [
+              -2.6487382536001345,
+              -4.147650499392129,
+              1.0281156441359551
+            ],
+            "surface": "adsk::core::Plane",
+            "normal": [
+              -0.7831864794758057,
+              0.6056101986599958,
+              0.14090857193689152
+            ]
+          },
+          {
+            "type": "adsk::fusion::BRepFace",
+            "component": "AdapterBody",
+            "point": [
+              -3.1425484512712116,
+              -4.214011987300381,
+              -1.2397378602893339
+            ],
+            "surface": "adsk::core::Cylinder"
+          },
+          {
+            "type": "adsk::fusion::BRepFace",
+            "component": "AdapterBody",
+            "point": [
+              -4.561017186608974,
+              -9.62518398845945,
+              0.9897108398237145
+            ],
+            "surface": "adsk::core::Plane",
+            "normal": [
+              -0.9659258262890683,
+              0.05160021840986988,
+              0.2536231763223432
+            ]
+          },
+          {
+            "type": "adsk::fusion::BRepFace",
+            "component": "AdapterBody",
+            "point": [
+              -5.389028807457649,
+              -10.213606962549637,
+              -1.9609488020311665
+            ],
+            "surface": "adsk::core::Cylinder"
+          },
+          {
+            "type": "adsk::fusion::BRepFace",
+            "component": "AdapterBody",
+            "point": [
+              -2.3000000000000016,
+              6.115321758974324,
+              2.191121096477456
+            ],
+            "surface": "adsk::core::Cylinder"
+          },
+          {
+            "type": "adsk::fusion::BRepFace",
+            "component": "AdapterBody",
+            "point": [
+              -1.459273769865841,
+              6.693993592130983,
+              0.1303302074807227
+            ],
+            "surface": "adsk::core::NurbsSurface"
+          },
+          {
+            "type": "adsk::fusion::BRepFace",
+            "component": "AdapterBody",
+            "point": [
+              0,
+              4.779877659757992,
+              4.280567190376814
+            ],
+            "surface": "adsk::core::Plane",
+            "normal": [
+              0,
+              -0.46125280049223777,
+              0.8872687608825569
+            ]
+          },
+          {
+            "type": "adsk::fusion::BRepFace",
+            "component": "AdapterBody",
+            "point": [
+              0,
+              9.292703923822046,
+              3.9630718183741083
+            ],
+            "surface": "adsk::core::Plane",
+            "normal": [
+              0,
+              0.26418906967888117,
+              0.964470909598733
+            ]
+          },
+          {
+            "type": "adsk::fusion::BRepFace",
+            "component": "AdapterBody",
+            "point": [
+              4,
+              19.923259331227506,
+              4.232722727620582
+            ],
+            "surface": "adsk::core::Plane",
+            "normal": [
+              1,
+              0,
+              0
+            ]
+          },
+          {
+            "type": "adsk::fusion::BRepFace",
+            "component": "AdapterBody",
+            "point": [
+              -4,
+              19.923259331227506,
+              4.232722727620582
+            ],
+            "surface": "adsk::core::Plane",
+            "normal": [
+              -1,
+              0,
+              0
+            ]
+          },
+          {
+            "type": "adsk::fusion::BRepFace",
+            "component": "AdapterBody",
+            "point": [
+              -5.513061079299118,
+              8.046282520388822,
+              3.1777767798957743
+            ],
+            "surface": "adsk::core::Cylinder"
+          },
+          {
+            "type": "adsk::fusion::BRepFace",
+            "component": "AdapterBody",
+            "point": [
+              5.505627217282974,
+              8.057955776856152,
+              3.1890833905700147
+            ],
+            "surface": "adsk::core::Cylinder"
+          },
+          {
+            "type": "adsk::fusion::BRepFace",
+            "component": "AdapterBody",
+            "point": [
+              0,
+              -2.877799706963999,
+              4.134017921531267
+            ],
+            "surface": "adsk::core::Plane",
+            "normal": [
+              0,
+              0.1993679344170023,
+              0.9799247046208692
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "index": 133,
+    "name": "Fillet9",
+    "sets": [
+      {
+        "radius": 0.1,
+        "selections": [
+          {
+            "type": "adsk::fusion::BRepFace",
+            "component": "AdapterBody",
+            "point": [
+              -0.0478903578408463,
+              8.234057002929053,
+              1.6906073443439924
+            ],
+            "surface": "adsk::core::Plane",
+            "normal": [
+              0.004000672176722732,
+              -0.09018417275658666,
+              0.9959170696430224
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "index": 191,
+    "name": "Fillet2",
+    "sets": [
+      {
+        "radius": 0.1,
+        "selections": [
+          {
+            "type": "adsk::fusion::BRepEdge",
+            "component": "AdapterBodySplit",
+            "point": [
+              4.605971701210997,
+              -10.119340613321668,
+              0.91903852528718
+            ],
+            "curve": "adsk::core::Line3D"
+          },
+          {
+            "type": "adsk::fusion::BRepEdge",
+            "component": "AdapterBodySplit",
+            "point": [
+              4.774204080527636,
+              -9.98992222083412,
+              0.2519937395078453
+            ],
+            "curve": "adsk::core::Line3D"
+          },
+          {
+            "type": "adsk::fusion::BRepEdge",
+            "component": "AdapterBodySplit",
+            "point": [
+              4.942436459844273,
+              -10.36968764114515,
+              -0.3114564287283945
+            ],
+            "curve": "adsk::core::Line3D"
+          },
+          {
+            "type": "adsk::fusion::BRepEdge",
+            "component": "AdapterBodySplit",
+            "point": [
+              4.774204080527633,
+              -11.008289846431277,
+              0.4591829745940377
+            ],
+            "curve": "adsk::core::Line3D"
+          },
+          {
+            "type": "adsk::fusion::BRepEdge",
+            "component": "AdapterBodySplit",
+            "point": [
+              4.605971701210995,
+              -10.628524426120249,
+              1.0226331428302755
+            ],
+            "curve": "adsk::core::Line3D"
+          },
+          {
+            "type": "adsk::fusion::BRepEdge",
+            "component": "AdapterBodySplit",
+            "point": [
+              4.942436459844272,
+              -10.878871453943729,
+              -0.20786181118529912
+            ],
+            "curve": "adsk::core::Line3D"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "index": 197,
+    "name": "Fillet4",
+    "sets": [
+      {
+        "radius": 0.1,
+        "selections": [
+          {
+            "type": "adsk::fusion::BRepEdge",
+            "component": "AdapterBodySplit",
+            "point": [
+              0,
+              -7.328690424653253,
+              5.9069754564407475
+            ],
+            "curve": "adsk::core::Line3D"
+          },
+          {
+            "type": "adsk::fusion::BRepEdge",
+            "component": "AdapterBodySplit",
+            "point": [
+              2.077350269189632,
+              -8.308615129274122,
+              6.10634339085775
+            ],
+            "curve": "adsk::core::Line3D"
+          },
+          {
+            "type": "adsk::fusion::BRepEdge",
+            "component": "AdapterBodySplit",
+            "point": [
+              -2.07735026918963,
+              -8.308615129274122,
+              6.10634339085775
+            ],
+            "curve": "adsk::core::Line3D"
+          },
+          {
+            "type": "adsk::fusion::BRepEdge",
+            "component": "AdapterBodySplit",
+            "point": [
+              -2.077350269189631,
+              -10.268464538515857,
+              6.505079259691754
+            ],
+            "curve": "adsk::core::Line3D"
+          },
+          {
+            "type": "adsk::fusion::BRepEdge",
+            "component": "AdapterBodySplit",
+            "point": [
+              0,
+              -11.248389243136728,
+              6.704447194108757
+            ],
+            "curve": "adsk::core::Line3D"
+          },
+          {
+            "type": "adsk::fusion::BRepEdge",
+            "component": "AdapterBodySplit",
+            "point": [
+              2.0773502691896306,
+              -10.268464538515857,
+              6.505079259691755
+            ],
+            "curve": "adsk::core::Line3D"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "index": 198,
+    "name": "Fillet3",
+    "sets": [
+      {
+        "radius": 0.1,
+        "selections": [
+          {
+            "type": "adsk::fusion::BRepFace",
+            "component": "AdapterBodySplit",
+            "point": [
+              4.440892098500626e-16,
+              -11.306544243466943,
+              6.318289200618276
+            ],
+            "surface": "adsk::core::Plane",
+            "normal": [
+              0,
+              -0.9799247046208691,
+              0.1993679344170033
+            ]
+          },
+          {
+            "type": "adsk::fusion::BRepFace",
+            "component": "AdapterBodySplit",
+            "point": [
+              -2.220446049250313e-16,
+              -9.28853983389499,
+              6.305711325274748
+            ],
+            "surface": "adsk::core::Plane",
+            "normal": [
+              0,
+              0.19936793441700318,
+              0.9799247046208691
+            ]
+          },
+          {
+            "type": "adsk::fusion::BRepFace",
+            "component": "AdapterBodySplit",
+            "point": [
+              -2.04848275573015,
+              -10.336418785892281,
+              6.120914945545442
+            ],
+            "surface": "adsk::core::Plane",
+            "normal": [
+              -0.8660254037844365,
+              0.48996235231043833,
+              -0.0996839672085024
+            ]
+          },
+          {
+            "type": "adsk::fusion::BRepFace",
+            "component": "AdapterBodySplit",
+            "point": [
+              -2.0484827557301513,
+              -8.39616787074296,
+              5.726166435399775
+            ],
+            "surface": "adsk::core::Plane",
+            "normal": [
+              -0.8660254037844364,
+              -0.4899623523104384,
+              0.09968396720850241
+            ]
+          },
+          {
+            "type": "adsk::fusion::BRepFace",
+            "component": "AdapterBodySplit",
+            "point": [
+              -4.440892098500626e-16,
+              -7.426042413168301,
+              5.528792180326944
+            ],
+            "surface": "adsk::core::Plane",
+            "normal": [
+              0,
+              0.9799247046208691,
+              -0.1993679344170033
+            ]
+          },
+          {
+            "type": "adsk::fusion::BRepFace",
+            "component": "AdapterBodySplit",
+            "point": [
+              2.048482755730151,
+              -10.336418785892283,
+              6.120914945545443
+            ],
+            "surface": "adsk::core::Plane",
+            "normal": [
+              0.8660254037844365,
+              0.48996235231043833,
+              -0.0996839672085024
+            ]
+          },
+          {
+            "type": "adsk::fusion::BRepFace",
+            "component": "AdapterBodySplit",
+            "point": [
+              2.0484827557301504,
+              -8.39616787074296,
+              5.726166435399777
+            ],
+            "surface": "adsk::core::Plane",
+            "normal": [
+              0.8660254037844364,
+              -0.4899623523104384,
+              0.09968396720850241
+            ]
+          },
+          {
+            "type": "adsk::fusion::BRepFace",
+            "component": "AdapterBodySplit",
+            "point": [
+              2.220446049250313e-16,
+              -9.444046822740251,
+              5.541370055670471
+            ],
+            "surface": "adsk::core::Plane",
+            "normal": [
+              0,
+              -0.1993679344170033,
+              -0.9799247046208691
+            ]
+          },
+          {
+            "type": "adsk::fusion::BRepFace",
+            "component": "AdapterBodySplit",
+            "point": [
+              5.546944741558889,
+              -10.457825858904805,
+              0.5584868981088156
+            ],
+            "surface": "adsk::core::Plane",
+            "normal": [
+              0.9659258262890682,
+              0.05160021840986852,
+              0.2536231763223436
+            ]
+          },
+          {
+            "type": "adsk::fusion::BRepFace",
+            "component": "AdapterBodySplit",
+            "point": [
+              5.170233669306151,
+              -10.967535262790813,
+              0.5591811181978572
+            ],
+            "surface": "adsk::core::Plane",
+            "normal": [
+              -4.093947403305265e-15,
+              -0.9799247046208679,
+              0.1993679344170095
+            ]
+          },
+          {
+            "type": "adsk::fusion::BRepFace",
+            "component": "AdapterBodySplit",
+            "point": [
+              5.3309945863547235,
+              -10.352771647723902,
+              -0.17815314736370205
+            ],
+            "surface": "adsk::core::Plane",
+            "normal": [
+              0.22414386804201203,
+              -0.6567368798927898,
+              -0.7200390246423095
+            ]
+          },
+          {
+            "type": "adsk::fusion::BRepFace",
+            "component": "AdapterBodySplit",
+            "point": [
+              5.330994586354722,
+              -10.842356966430062,
+              -0.07854588850894664
+            ],
+            "surface": "adsk::core::Plane",
+            "normal": [
+              0.2241438680420165,
+              0.32318782472806723,
+              -0.9194069590593185
+            ]
+          },
+          {
+            "type": "adsk::fusion::BRepFace",
+            "component": "AdapterBodySplit",
+            "point": [
+              5.170233669306153,
+              -9.988364625378493,
+              0.35996660048834733
+            ],
+            "surface": "adsk::core::Plane",
+            "normal": [
+              3.9621084191310274e-15,
+              0.979924704620868,
+              -0.19936793441700904
+            ]
+          },
+          {
+            "type": "adsk::fusion::BRepFace",
+            "component": "AdapterBodySplit",
+            "point": [
+              4.793522597053416,
+              -10.498074029264501,
+              0.3606608205773876
+            ],
+            "surface": "adsk::core::Plane",
+            "normal": [
+              -0.9659258262890684,
+              -0.05160021840986855,
+              -0.25362317632234355
+            ]
+          },
+          {
+            "type": "adsk::fusion::BRepFace",
+            "component": "AdapterBodySplit",
+            "point": [
+              5.009472752257581,
+              -10.603128240445404,
+              1.097300866049905
+            ],
+            "surface": "adsk::core::Plane",
+            "normal": [
+              -0.2241438680420119,
+              0.6567368798927908,
+              0.7200390246423088
+            ]
+          },
+          {
+            "type": "adsk::fusion::BRepFace",
+            "component": "AdapterBodySplit",
+            "point": [
+              5.009472752257581,
+              -10.113542921739242,
+              0.9976936071951515
+            ],
+            "surface": "adsk::core::Plane",
+            "normal": [
+              -0.22414386804201564,
+              -0.32318782472807345,
+              0.9194069590593165
+            ]
+          }
+        ]
+      }
+    ]
+  }
+]

@@ -1,0 +1,4 @@
+# Preserve exact bytes of extracted evidence and hashed CAD source files.
+* -text
+# Generated CAD scripts sometimes end with a blank line; retain source fidelity.
+* whitespace=cr-at-eol,-blank-at-eof

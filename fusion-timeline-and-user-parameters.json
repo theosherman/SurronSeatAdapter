@@ -1,0 +1,1815 @@
+{
+  "document": "Surron Seat Adapter v3 v2",
+  "timelineMarker": 200,
+  "timeline": [
+    {
+      "index": 0,
+      "name": "Component Insert Veteran Sherman L v2:1",
+      "entityType": "adsk::fusion::Occurrence",
+      "entityComponent": null,
+      "suppressed": false,
+      "healthState": 0,
+      "message": ""
+    },
+    {
+      "index": 1,
+      "name": " Seat:1",
+      "entityType": "adsk::fusion::Occurrence",
+      "entityComponent": null,
+      "suppressed": false,
+      "healthState": 0,
+      "message": ""
+    },
+    {
+      "index": 2,
+      "name": "Base Mesh Feature1",
+      "entityType": "adsk::fusion::Feature",
+      "entityComponent": "Seat",
+      "suppressed": false,
+      "healthState": 0,
+      "message": ""
+    },
+    {
+      "index": 3,
+      "name": "Convert Mesh1",
+      "entityType": "adsk::fusion::MeshConvertFeature",
+      "entityComponent": "Seat",
+      "suppressed": false,
+      "healthState": 0,
+      "message": ""
+    },
+    {
+      "index": 4,
+      "name": "Move1",
+      "entityType": "adsk::fusion::MoveFeature",
+      "entityComponent": "Seat",
+      "suppressed": false,
+      "healthState": 0,
+      "message": ""
+    },
+    {
+      "index": 5,
+      "name": "Move2",
+      "entityType": "adsk::fusion::MoveFeature",
+      "entityComponent": "Seat",
+      "suppressed": false,
+      "healthState": 0,
+      "message": ""
+    },
+    {
+      "index": 6,
+      "name": " AdapterBody:1",
+      "entityType": "adsk::fusion::Occurrence",
+      "entityComponent": null,
+      "suppressed": false,
+      "healthState": 0,
+      "message": ""
+    },
+    {
+      "index": 7,
+      "name": "Plane1",
+      "entityType": "adsk::fusion::ConstructionPlane",
+      "entityComponent": null,
+      "suppressed": false,
+      "healthState": 0,
+      "message": ""
+    },
+    {
+      "index": 8,
+      "name": "BottomSketch",
+      "entityType": "adsk::fusion::Sketch",
+      "entityComponent": "AdapterBody",
+      "suppressed": false,
+      "healthState": 0,
+      "message": ""
+    },
+    {
+      "index": 9,
+      "name": "BottomExtrusion",
+      "entityType": "adsk::fusion::ExtrudeFeature",
+      "entityComponent": "AdapterBody",
+      "suppressed": false,
+      "healthState": 0,
+      "message": ""
+    },
+    {
+      "index": 10,
+      "name": "Mirror1",
+      "entityType": "adsk::fusion::MirrorFeature",
+      "entityComponent": "AdapterBody",
+      "suppressed": false,
+      "healthState": 0,
+      "message": ""
+    },
+    {
+      "index": 11,
+      "name": "SideSketch",
+      "entityType": "adsk::fusion::Sketch",
+      "entityComponent": "AdapterBody",
+      "suppressed": false,
+      "healthState": 0,
+      "message": ""
+    },
+    {
+      "index": 12,
+      "name": "SideIntersection",
+      "entityType": "adsk::fusion::ExtrudeFeature",
+      "entityComponent": "Seat",
+      "suppressed": false,
+      "healthState": 4,
+      "message": ""
+    },
+    {
+      "index": 13,
+      "name": "RearSketch",
+      "entityType": "adsk::fusion::Sketch",
+      "entityComponent": "AdapterBody",
+      "suppressed": false,
+      "healthState": 0,
+      "message": ""
+    },
+    {
+      "index": 14,
+      "name": "RearIntersection",
+      "entityType": "adsk::fusion::ExtrudeFeature",
+      "entityComponent": "AdapterBody",
+      "suppressed": false,
+      "healthState": 0,
+      "message": ""
+    },
+    {
+      "index": 15,
+      "name": "Mirror2",
+      "entityType": "adsk::fusion::MirrorFeature",
+      "entityComponent": "AdapterBody",
+      "suppressed": false,
+      "healthState": 0,
+      "message": ""
+    },
+    {
+      "index": 16,
+      "name": "Position1",
+      "entityType": "adsk::fusion::Snapshot",
+      "entityComponent": null,
+      "suppressed": false,
+      "healthState": 0,
+      "message": ""
+    },
+    {
+      "index": 17,
+      "name": "TrunkDovetailSketch",
+      "entityType": "adsk::fusion::Sketch",
+      "entityComponent": "AdapterBody",
+      "suppressed": false,
+      "healthState": 0,
+      "message": ""
+    },
+    {
+      "index": 18,
+      "name": "Extrude4",
+      "entityType": "adsk::fusion::ExtrudeFeature",
+      "entityComponent": "AdapterBody",
+      "suppressed": false,
+      "healthState": 0,
+      "message": ""
+    },
+    {
+      "index": 19,
+      "name": " Trunk-V4SC:1",
+      "entityType": "adsk::fusion::Occurrence",
+      "entityComponent": null,
+      "suppressed": true,
+      "healthState": 3,
+      "message": ""
+    },
+    {
+      "index": 20,
+      "name": "TrunkSketch",
+      "entityType": "adsk::fusion::Sketch",
+      "entityComponent": "Trunk-V4SC",
+      "suppressed": true,
+      "healthState": 3,
+      "message": ""
+    },
+    {
+      "index": 21,
+      "name": "Extrude1",
+      "entityType": "adsk::fusion::ExtrudeFeature",
+      "entityComponent": "Trunk-V4SC",
+      "suppressed": true,
+      "healthState": 3,
+      "message": ""
+    },
+    {
+      "index": 22,
+      "name": "Extrude2",
+      "entityType": "adsk::fusion::ExtrudeFeature",
+      "entityComponent": "Trunk-V4SC",
+      "suppressed": true,
+      "healthState": 3,
+      "message": ""
+    },
+    {
+      "index": 23,
+      "name": "OffsetFaces1",
+      "entityType": "adsk::fusion::OffsetFacesFeature",
+      "entityComponent": "Trunk-V4SC",
+      "suppressed": true,
+      "healthState": 3,
+      "message": ""
+    },
+    {
+      "index": 24,
+      "name": "OffsetFaces5",
+      "entityType": "adsk::fusion::OffsetFacesFeature",
+      "entityComponent": "Trunk-V4SC",
+      "suppressed": true,
+      "healthState": 3,
+      "message": ""
+    },
+    {
+      "index": 25,
+      "name": "InteriorCutSketch",
+      "entityType": "adsk::fusion::Sketch",
+      "entityComponent": "Trunk-V4SC",
+      "suppressed": true,
+      "healthState": 3,
+      "message": ""
+    },
+    {
+      "index": 26,
+      "name": "Extrude3",
+      "entityType": "adsk::fusion::ExtrudeFeature",
+      "entityComponent": "Trunk-V4SC",
+      "suppressed": true,
+      "healthState": 3,
+      "message": ""
+    },
+    {
+      "index": 27,
+      "name": "Rigid Group 3",
+      "entityType": "adsk::fusion::RigidGroup",
+      "entityComponent": "Surron Seat Adapter v3 v2",
+      "suppressed": false,
+      "healthState": 0,
+      "message": ""
+    },
+    {
+      "index": 28,
+      "name": "TopCutSketch",
+      "entityType": "adsk::fusion::Sketch",
+      "entityComponent": "Trunk-V4SC",
+      "suppressed": true,
+      "healthState": 3,
+      "message": ""
+    },
+    {
+      "index": 29,
+      "name": "Extrude15",
+      "entityType": "adsk::fusion::ExtrudeFeature",
+      "entityComponent": "Trunk-V4SC",
+      "suppressed": true,
+      "healthState": 3,
+      "message": ""
+    },
+    {
+      "index": 30,
+      "name": "Draft1",
+      "entityType": "adsk::fusion::DraftFeature",
+      "entityComponent": "Trunk-V4SC",
+      "suppressed": true,
+      "healthState": 3,
+      "message": ""
+    },
+    {
+      "index": 31,
+      "name": "FrontChargerPic",
+      "entityType": "adsk::fusion::Canvas",
+      "entityComponent": null,
+      "suppressed": true,
+      "healthState": 3,
+      "message": ""
+    },
+    {
+      "index": 32,
+      "name": "RearChargerPic",
+      "entityType": "adsk::fusion::Canvas",
+      "entityComponent": null,
+      "suppressed": true,
+      "healthState": 3,
+      "message": ""
+    },
+    {
+      "index": 33,
+      "name": "FrontCoverSketch",
+      "entityType": "adsk::fusion::Sketch",
+      "entityComponent": "Trunk-V4SC",
+      "suppressed": true,
+      "healthState": 3,
+      "message": ""
+    },
+    {
+      "index": 34,
+      "name": "Extrude16",
+      "entityType": "adsk::fusion::ExtrudeFeature",
+      "entityComponent": "Trunk-V4SC",
+      "suppressed": true,
+      "healthState": 3,
+      "message": ""
+    },
+    {
+      "index": 35,
+      "name": "Extrude17",
+      "entityType": "adsk::fusion::ExtrudeFeature",
+      "entityComponent": "Trunk-V4SC",
+      "suppressed": true,
+      "healthState": 3,
+      "message": ""
+    },
+    {
+      "index": 36,
+      "name": "Mirror1",
+      "entityType": "adsk::fusion::MirrorFeature",
+      "entityComponent": "Trunk-V4SC",
+      "suppressed": true,
+      "healthState": 3,
+      "message": ""
+    },
+    {
+      "index": 37,
+      "name": "RearCoverSketch",
+      "entityType": "adsk::fusion::Sketch",
+      "entityComponent": "Trunk-V4SC",
+      "suppressed": true,
+      "healthState": 3,
+      "message": ""
+    },
+    {
+      "index": 38,
+      "name": "Extrude18",
+      "entityType": "adsk::fusion::ExtrudeFeature",
+      "entityComponent": "Trunk-V4SC",
+      "suppressed": true,
+      "healthState": 3,
+      "message": ""
+    },
+    {
+      "index": 39,
+      "name": "Extrude19",
+      "entityType": "adsk::fusion::ExtrudeFeature",
+      "entityComponent": "Trunk-V4SC",
+      "suppressed": true,
+      "healthState": 3,
+      "message": ""
+    },
+    {
+      "index": 40,
+      "name": " TabJoint:1",
+      "entityType": "adsk::fusion::Occurrence",
+      "entityComponent": null,
+      "suppressed": true,
+      "healthState": 3,
+      "message": ""
+    },
+    {
+      "index": 41,
+      "name": "TopSketch",
+      "entityType": "adsk::fusion::Sketch",
+      "entityComponent": "TabJoint",
+      "suppressed": true,
+      "healthState": 3,
+      "message": ""
+    },
+    {
+      "index": 42,
+      "name": "Extrude1",
+      "entityType": "adsk::fusion::ExtrudeFeature",
+      "entityComponent": "TabJoint",
+      "suppressed": true,
+      "healthState": 3,
+      "message": ""
+    },
+    {
+      "index": 43,
+      "name": "SideSketch",
+      "entityType": "adsk::fusion::Sketch",
+      "entityComponent": "TabJoint",
+      "suppressed": true,
+      "healthState": 3,
+      "message": ""
+    },
+    {
+      "index": 44,
+      "name": "Extrude3",
+      "entityType": "adsk::fusion::ExtrudeFeature",
+      "entityComponent": "TabJoint",
+      "suppressed": true,
+      "healthState": 3,
+      "message": ""
+    },
+    {
+      "index": 45,
+      "name": "Plane1",
+      "entityType": "adsk::fusion::ConstructionPlane",
+      "entityComponent": null,
+      "suppressed": true,
+      "healthState": 3,
+      "message": ""
+    },
+    {
+      "index": 46,
+      "name": "Mirror1",
+      "entityType": "adsk::fusion::MirrorFeature",
+      "entityComponent": "TabJoint",
+      "suppressed": true,
+      "healthState": 3,
+      "message": ""
+    },
+    {
+      "index": 47,
+      "name": "Mirror2",
+      "entityType": "adsk::fusion::MirrorFeature",
+      "entityComponent": "TabJoint",
+      "suppressed": true,
+      "healthState": 3,
+      "message": ""
+    },
+    {
+      "index": 48,
+      "name": "Combine1",
+      "entityType": "adsk::fusion::CombineFeature",
+      "entityComponent": "Trunk-V4SC",
+      "suppressed": true,
+      "healthState": 3,
+      "message": ""
+    },
+    {
+      "index": 49,
+      "name": "Combine2",
+      "entityType": "adsk::fusion::CombineFeature",
+      "entityComponent": "Trunk-V4SC",
+      "suppressed": true,
+      "healthState": 3,
+      "message": ""
+    },
+    {
+      "index": 50,
+      "name": "Split1",
+      "entityType": "adsk::fusion::SplitBodyFeature",
+      "entityComponent": "Trunk-V4SC",
+      "suppressed": true,
+      "healthState": 3,
+      "message": ""
+    },
+    {
+      "index": 51,
+      "name": "RemoveBody-Trunk (5)",
+      "entityType": "adsk::fusion::RemoveFeature",
+      "entityComponent": "Trunk-V4SC",
+      "suppressed": true,
+      "healthState": 3,
+      "message": ""
+    },
+    {
+      "index": 52,
+      "name": "RemoveBody-Trunk (4)",
+      "entityType": "adsk::fusion::RemoveFeature",
+      "entityComponent": "Trunk-V4SC",
+      "suppressed": true,
+      "healthState": 3,
+      "message": ""
+    },
+    {
+      "index": 53,
+      "name": "RemoveBody-Trunk (3)",
+      "entityType": "adsk::fusion::RemoveFeature",
+      "entityComponent": "Trunk-V4SC",
+      "suppressed": true,
+      "healthState": 3,
+      "message": ""
+    },
+    {
+      "index": 54,
+      "name": "RemoveBody-Trunk (2)",
+      "entityType": "adsk::fusion::RemoveFeature",
+      "entityComponent": "Trunk-V4SC",
+      "suppressed": true,
+      "healthState": 3,
+      "message": ""
+    },
+    {
+      "index": 55,
+      "name": "RemoveBody-Trunk (1)",
+      "entityType": "adsk::fusion::RemoveFeature",
+      "entityComponent": "Trunk-V4SC",
+      "suppressed": true,
+      "healthState": 3,
+      "message": ""
+    },
+    {
+      "index": 56,
+      "name": "RemoveBody-Trunk",
+      "entityType": "adsk::fusion::RemoveFeature",
+      "entityComponent": "Trunk-V4SC",
+      "suppressed": true,
+      "healthState": 3,
+      "message": ""
+    },
+    {
+      "index": 57,
+      "name": "HandleSketch",
+      "entityType": "adsk::fusion::Sketch",
+      "entityComponent": "Trunk-V4SC",
+      "suppressed": true,
+      "healthState": 3,
+      "message": ""
+    },
+    {
+      "index": 58,
+      "name": "Extrude21",
+      "entityType": "adsk::fusion::ExtrudeFeature",
+      "entityComponent": "Trunk-V4SC",
+      "suppressed": true,
+      "healthState": 3,
+      "message": ""
+    },
+    {
+      "index": 59,
+      "name": "OffsetFaces3",
+      "entityType": "adsk::fusion::OffsetFacesFeature",
+      "entityComponent": "Trunk-V4SC",
+      "suppressed": true,
+      "healthState": 3,
+      "message": ""
+    },
+    {
+      "index": 60,
+      "name": "OffsetFaces4",
+      "entityType": "adsk::fusion::OffsetFacesFeature",
+      "entityComponent": "Trunk-V4SC",
+      "suppressed": true,
+      "healthState": 3,
+      "message": ""
+    },
+    {
+      "index": 61,
+      "name": "Fillet3",
+      "entityType": "adsk::fusion::FilletFeature",
+      "entityComponent": "Trunk-V4SC",
+      "suppressed": true,
+      "healthState": 3,
+      "message": ""
+    },
+    {
+      "index": 62,
+      "name": "Fillet4",
+      "entityType": "adsk::fusion::FilletFeature",
+      "entityComponent": "Trunk-V4SC",
+      "suppressed": true,
+      "healthState": 3,
+      "message": ""
+    },
+    {
+      "index": 63,
+      "name": "Split1",
+      "entityType": "adsk::fusion::SplitBodyFeature",
+      "entityComponent": "Seat",
+      "suppressed": false,
+      "healthState": 0,
+      "message": ""
+    },
+    {
+      "index": 64,
+      "name": "Plane2",
+      "entityType": "adsk::fusion::ConstructionPlane",
+      "entityComponent": null,
+      "suppressed": false,
+      "healthState": 0,
+      "message": ""
+    },
+    {
+      "index": 65,
+      "name": "RemoveBody-Surron Seat JFG Reoriented",
+      "entityType": "adsk::fusion::RemoveFeature",
+      "entityComponent": "Seat",
+      "suppressed": false,
+      "healthState": 0,
+      "message": ""
+    },
+    {
+      "index": 66,
+      "name": "RemoveBody-Surron Seat JFG Reoriented (1)",
+      "entityType": "adsk::fusion::RemoveFeature",
+      "entityComponent": "Seat",
+      "suppressed": false,
+      "healthState": 0,
+      "message": ""
+    },
+    {
+      "index": 67,
+      "name": "Combine1",
+      "entityType": "adsk::fusion::CombineFeature",
+      "entityComponent": "Seat",
+      "suppressed": false,
+      "healthState": 0,
+      "message": ""
+    },
+    {
+      "index": 68,
+      "name": "Split2",
+      "entityType": "adsk::fusion::SplitBodyFeature",
+      "entityComponent": "Seat",
+      "suppressed": false,
+      "healthState": 0,
+      "message": ""
+    },
+    {
+      "index": 69,
+      "name": "Plane3",
+      "entityType": "adsk::fusion::ConstructionPlane",
+      "entityComponent": null,
+      "suppressed": false,
+      "healthState": 0,
+      "message": ""
+    },
+    {
+      "index": 70,
+      "name": "Sketch3",
+      "entityType": "adsk::fusion::Sketch",
+      "entityComponent": "Seat",
+      "suppressed": false,
+      "healthState": 0,
+      "message": ""
+    },
+    {
+      "index": 71,
+      "name": "Extrude2",
+      "entityType": "adsk::fusion::ExtrudeFeature",
+      "entityComponent": "Seat",
+      "suppressed": false,
+      "healthState": 0,
+      "message": ""
+    },
+    {
+      "index": 72,
+      "name": "RemoveBody-Surron Seat JFG Reoriented (3)",
+      "entityType": "adsk::fusion::RemoveFeature",
+      "entityComponent": "Seat",
+      "suppressed": false,
+      "healthState": 0,
+      "message": ""
+    },
+    {
+      "index": 73,
+      "name": "Combine2",
+      "entityType": "adsk::fusion::CombineFeature",
+      "entityComponent": "Seat",
+      "suppressed": false,
+      "healthState": 0,
+      "message": ""
+    },
+    {
+      "index": 74,
+      "name": "BoltHolesSketch",
+      "entityType": "adsk::fusion::Sketch",
+      "entityComponent": "AdapterBody",
+      "suppressed": false,
+      "healthState": 0,
+      "message": ""
+    },
+    {
+      "index": 75,
+      "name": "ScrewHoleExtrude",
+      "entityType": "adsk::fusion::ExtrudeFeature",
+      "entityComponent": "AdapterBody",
+      "suppressed": false,
+      "healthState": 1,
+      "message": "Cannot extend extrusion to object. The extrusion profile falls outside the boundary of the selected body. Select a face or plane instead, or adjust the profile so that it falls inside the boundary of the selected body.Cannot extend extrusion to object. The extrusion profile falls outside the boundary of the selected body. Select a face or plane instead, or adjust the profile so that it falls inside the boundary of the selected body.<b>2 Reference Failures</b><br/>Cannot extend extrusion to object. The extrusion profile falls outside the boundary of the selected body. Select a face or plane instead, or adjust the profile so that it falls inside the boundary of the selected body.Cannot extend extrusion to object. The extrusion profile falls outside the boundary of the selected body. Select a face or plane instead, or adjust the profile so that it falls inside the boundary of the selected body.Cannot extend extrusion to object. The extrusion profile falls outside the boundary of the selected body. Select a face or plane instead, or adjust the profile so that it falls inside the boundary of the selected body.Some profiles failed to create tool bodies<b>1 Reference Failures</b><br/>Some profiles failed to create tool bodiesScrewHoleExtrude"
+    },
+    {
+      "index": 76,
+      "name": "Extrude6",
+      "entityType": "adsk::fusion::ExtrudeFeature",
+      "entityComponent": "AdapterBody",
+      "suppressed": false,
+      "healthState": 0,
+      "message": ""
+    },
+    {
+      "index": 77,
+      "name": "Extrude7",
+      "entityType": "adsk::fusion::ExtrudeFeature",
+      "entityComponent": "AdapterBody",
+      "suppressed": false,
+      "healthState": 0,
+      "message": ""
+    },
+    {
+      "index": 78,
+      "name": "SeatHangerSketch",
+      "entityType": "adsk::fusion::Sketch",
+      "entityComponent": "AdapterBody",
+      "suppressed": false,
+      "healthState": 0,
+      "message": ""
+    },
+    {
+      "index": 79,
+      "name": "Extrude8",
+      "entityType": "adsk::fusion::ExtrudeFeature",
+      "entityComponent": "AdapterBody",
+      "suppressed": false,
+      "healthState": 0,
+      "message": ""
+    },
+    {
+      "index": 80,
+      "name": "Draft1",
+      "entityType": "adsk::fusion::DraftFeature",
+      "entityComponent": "AdapterBody",
+      "suppressed": false,
+      "healthState": 0,
+      "message": ""
+    },
+    {
+      "index": 81,
+      "name": "Mirror3",
+      "entityType": "adsk::fusion::MirrorFeature",
+      "entityComponent": "AdapterBody",
+      "suppressed": false,
+      "healthState": 0,
+      "message": ""
+    },
+    {
+      "index": 82,
+      "name": "Combine1",
+      "entityType": "adsk::fusion::CombineFeature",
+      "entityComponent": "AdapterBody",
+      "suppressed": false,
+      "healthState": 0,
+      "message": ""
+    },
+    {
+      "index": 83,
+      "name": "HandleMountSketch",
+      "entityType": "adsk::fusion::Sketch",
+      "entityComponent": "AdapterBody",
+      "suppressed": false,
+      "healthState": 1,
+      "message": "Edge 1 missing<b>1 Reference Failures</b><br/>The project source is lost, Cache is used!Project1Curve 1 missing<b>1 Reference Failures</b><br/>The project source is lost, Cache is used!Project4HandleMountSketch"
+    },
+    {
+      "index": 84,
+      "name": "Extrude9",
+      "entityType": "adsk::fusion::ExtrudeFeature",
+      "entityComponent": "AdapterBody",
+      "suppressed": false,
+      "healthState": 0,
+      "message": ""
+    },
+    {
+      "index": 85,
+      "name": "FrontCutSketch",
+      "entityType": "adsk::fusion::Sketch",
+      "entityComponent": "AdapterBody",
+      "suppressed": false,
+      "healthState": 1,
+      "message": "Face 1 missing<b>1 Reference Failures</b><br/>The project source is lost, Cache is used!Project1FrontCutSketch"
+    },
+    {
+      "index": 86,
+      "name": "Extrude12",
+      "entityType": "adsk::fusion::ExtrudeFeature",
+      "entityComponent": "AdapterBody",
+      "suppressed": false,
+      "healthState": 0,
+      "message": ""
+    },
+    {
+      "index": 87,
+      "name": "Draft4",
+      "entityType": "adsk::fusion::DraftFeature",
+      "entityComponent": "AdapterBody",
+      "suppressed": false,
+      "healthState": 0,
+      "message": ""
+    },
+    {
+      "index": 88,
+      "name": "RearSeatNotchSketch",
+      "entityType": "adsk::fusion::Sketch",
+      "entityComponent": "AdapterBody",
+      "suppressed": false,
+      "healthState": 0,
+      "message": ""
+    },
+    {
+      "index": 89,
+      "name": "Extrude10",
+      "entityType": "adsk::fusion::ExtrudeFeature",
+      "entityComponent": "AdapterBody",
+      "suppressed": false,
+      "healthState": 0,
+      "message": ""
+    },
+    {
+      "index": 90,
+      "name": "FrontDovetailSketch",
+      "entityType": "adsk::fusion::Sketch",
+      "entityComponent": "AdapterBody",
+      "suppressed": false,
+      "healthState": 1,
+      "message": "Edge 1 missing<b>1 Reference Failures</b><br/>The project source is lost, Cache is used!Project1FrontDovetailSketch"
+    },
+    {
+      "index": 91,
+      "name": "Extrude11",
+      "entityType": "adsk::fusion::ExtrudeFeature",
+      "entityComponent": "AdapterBody",
+      "suppressed": false,
+      "healthState": 0,
+      "message": ""
+    },
+    {
+      "index": 92,
+      "name": "Plane1",
+      "entityType": "adsk::fusion::ConstructionPlane",
+      "entityComponent": null,
+      "suppressed": false,
+      "healthState": 1,
+      "message": "Failed to get target occurrence transform<b>1 Reference Failures</b><br/>Failed to get target occurrence transformPlane1"
+    },
+    {
+      "index": 93,
+      "name": "Extrude13",
+      "entityType": "adsk::fusion::ExtrudeFeature",
+      "entityComponent": "AdapterBody",
+      "suppressed": false,
+      "healthState": 4,
+      "message": ""
+    },
+    {
+      "index": 94,
+      "name": "HingeTrajectorySketch",
+      "entityType": "adsk::fusion::Sketch",
+      "entityComponent": "AdapterBody",
+      "suppressed": false,
+      "healthState": 0,
+      "message": ""
+    },
+    {
+      "index": 95,
+      "name": "SeatCutoutPlane",
+      "entityType": "adsk::fusion::ConstructionPlane",
+      "entityComponent": null,
+      "suppressed": false,
+      "healthState": 0,
+      "message": ""
+    },
+    {
+      "index": 96,
+      "name": "SeatCutoutSketch",
+      "entityType": "adsk::fusion::Sketch",
+      "entityComponent": "AdapterBody",
+      "suppressed": false,
+      "healthState": 0,
+      "message": ""
+    },
+    {
+      "index": 97,
+      "name": "Extrude15",
+      "entityType": "adsk::fusion::ExtrudeFeature",
+      "entityComponent": "AdapterBody",
+      "suppressed": false,
+      "healthState": 0,
+      "message": ""
+    },
+    {
+      "index": 98,
+      "name": "Mirror4",
+      "entityType": "adsk::fusion::MirrorFeature",
+      "entityComponent": "AdapterBody",
+      "suppressed": false,
+      "healthState": 0,
+      "message": ""
+    },
+    {
+      "index": 99,
+      "name": " Latch:1",
+      "entityType": "adsk::fusion::Occurrence",
+      "entityComponent": null,
+      "suppressed": false,
+      "healthState": 0,
+      "message": ""
+    },
+    {
+      "index": 100,
+      "name": "SideSketch",
+      "entityType": "adsk::fusion::Sketch",
+      "entityComponent": "Latch",
+      "suppressed": false,
+      "healthState": 1,
+      "message": "Curve 1 missing<b>1 Reference Failures</b><br/>The project source is lost, Cache is used!Failed to get target occurrence transform<b>1 Reference Failures</b><br/>Failed to get target occurrence transformProject4SideSketch"
+    },
+    {
+      "index": 101,
+      "name": "TopCutSketch",
+      "entityType": "adsk::fusion::Sketch",
+      "entityComponent": "Latch",
+      "suppressed": false,
+      "healthState": 0,
+      "message": ""
+    },
+    {
+      "index": 102,
+      "name": "Extrude1",
+      "entityType": "adsk::fusion::ExtrudeFeature",
+      "entityComponent": "Latch",
+      "suppressed": false,
+      "healthState": 0,
+      "message": ""
+    },
+    {
+      "index": 103,
+      "name": "Mirror2",
+      "entityType": "adsk::fusion::MirrorFeature",
+      "entityComponent": "Latch",
+      "suppressed": false,
+      "healthState": 0,
+      "message": ""
+    },
+    {
+      "index": 104,
+      "name": "Extrude2",
+      "entityType": "adsk::fusion::ExtrudeFeature",
+      "entityComponent": "Latch",
+      "suppressed": false,
+      "healthState": 0,
+      "message": ""
+    },
+    {
+      "index": 105,
+      "name": "Extrude3",
+      "entityType": "adsk::fusion::ExtrudeFeature",
+      "entityComponent": "Latch",
+      "suppressed": false,
+      "healthState": 0,
+      "message": ""
+    },
+    {
+      "index": 106,
+      "name": "OffsetFaces2",
+      "entityType": "adsk::fusion::OffsetFacesFeature",
+      "entityComponent": "Latch",
+      "suppressed": false,
+      "healthState": 0,
+      "message": ""
+    },
+    {
+      "index": 107,
+      "name": " SaddleBagMount:1",
+      "entityType": "adsk::fusion::Occurrence",
+      "entityComponent": null,
+      "suppressed": false,
+      "healthState": 0,
+      "message": ""
+    },
+    {
+      "index": 108,
+      "name": "BaseSketch",
+      "entityType": "adsk::fusion::Sketch",
+      "entityComponent": "SaddleBagMount",
+      "suppressed": false,
+      "healthState": 1,
+      "message": "Edge 1 missing<b>1 Reference Failures</b><br/>The project source is lost, Cache is used!Project2BaseSketch"
+    },
+    {
+      "index": 109,
+      "name": "Extrude1",
+      "entityType": "adsk::fusion::ExtrudeFeature",
+      "entityComponent": "SaddleBagMount",
+      "suppressed": false,
+      "healthState": 0,
+      "message": ""
+    },
+    {
+      "index": 110,
+      "name": "Extrude2",
+      "entityType": "adsk::fusion::ExtrudeFeature",
+      "entityComponent": "SaddleBagMount",
+      "suppressed": false,
+      "healthState": 0,
+      "message": ""
+    },
+    {
+      "index": 111,
+      "name": "ArmCutSketch",
+      "entityType": "adsk::fusion::Sketch",
+      "entityComponent": "SaddleBagMount",
+      "suppressed": false,
+      "healthState": 0,
+      "message": ""
+    },
+    {
+      "index": 112,
+      "name": "Extrude3",
+      "entityType": "adsk::fusion::ExtrudeFeature",
+      "entityComponent": "SaddleBagMount",
+      "suppressed": false,
+      "healthState": 0,
+      "message": ""
+    },
+    {
+      "index": 113,
+      "name": "OffsetFaces1",
+      "entityType": "adsk::fusion::OffsetFacesFeature",
+      "entityComponent": "SaddleBagMount",
+      "suppressed": false,
+      "healthState": 0,
+      "message": ""
+    },
+    {
+      "index": 114,
+      "name": "Extrude4",
+      "entityType": "adsk::fusion::ExtrudeFeature",
+      "entityComponent": "SaddleBagMount",
+      "suppressed": false,
+      "healthState": 0,
+      "message": ""
+    },
+    {
+      "index": 115,
+      "name": "IndentionSketch",
+      "entityType": "adsk::fusion::Sketch",
+      "entityComponent": "SaddleBagMount",
+      "suppressed": false,
+      "healthState": 0,
+      "message": ""
+    },
+    {
+      "index": 116,
+      "name": "Extrude5",
+      "entityType": "adsk::fusion::ExtrudeFeature",
+      "entityComponent": "SaddleBagMount",
+      "suppressed": false,
+      "healthState": 0,
+      "message": ""
+    },
+    {
+      "index": 117,
+      "name": "OffsetFaces2",
+      "entityType": "adsk::fusion::OffsetFacesFeature",
+      "entityComponent": "SaddleBagMount",
+      "suppressed": false,
+      "healthState": 0,
+      "message": ""
+    },
+    {
+      "index": 118,
+      "name": "OffsetFaces3",
+      "entityType": "adsk::fusion::OffsetFacesFeature",
+      "entityComponent": "SaddleBagMount",
+      "suppressed": false,
+      "healthState": 0,
+      "message": ""
+    },
+    {
+      "index": 119,
+      "name": "RearCutoutPlane",
+      "entityType": "adsk::fusion::ConstructionPlane",
+      "entityComponent": null,
+      "suppressed": false,
+      "healthState": 0,
+      "message": ""
+    },
+    {
+      "index": 120,
+      "name": "RearCutSketch",
+      "entityType": "adsk::fusion::Sketch",
+      "entityComponent": "AdapterBody",
+      "suppressed": false,
+      "healthState": 0,
+      "message": ""
+    },
+    {
+      "index": 121,
+      "name": "Extrude16",
+      "entityType": "adsk::fusion::ExtrudeFeature",
+      "entityComponent": "AdapterBody",
+      "suppressed": false,
+      "healthState": 0,
+      "message": ""
+    },
+    {
+      "index": 122,
+      "name": "Mirror5",
+      "entityType": "adsk::fusion::MirrorFeature",
+      "entityComponent": "AdapterBody",
+      "suppressed": false,
+      "healthState": 0,
+      "message": ""
+    },
+    {
+      "index": 123,
+      "name": "BodyCutSketch",
+      "entityType": "adsk::fusion::Sketch",
+      "entityComponent": "AdapterBody",
+      "suppressed": false,
+      "healthState": 0,
+      "message": ""
+    },
+    {
+      "index": 124,
+      "name": "Extrude18",
+      "entityType": "adsk::fusion::ExtrudeFeature",
+      "entityComponent": "AdapterBody",
+      "suppressed": false,
+      "healthState": 0,
+      "message": ""
+    },
+    {
+      "index": 125,
+      "name": "AirtagCutSketch",
+      "entityType": "adsk::fusion::Sketch",
+      "entityComponent": "AdapterBody",
+      "suppressed": false,
+      "healthState": 0,
+      "message": ""
+    },
+    {
+      "index": 126,
+      "name": "Extrude19",
+      "entityType": "adsk::fusion::ExtrudeFeature",
+      "entityComponent": "AdapterBody",
+      "suppressed": false,
+      "healthState": 0,
+      "message": ""
+    },
+    {
+      "index": 127,
+      "name": "Fillet1",
+      "entityType": "adsk::fusion::FilletFeature",
+      "entityComponent": "SaddleBagMount",
+      "suppressed": false,
+      "healthState": 0,
+      "message": ""
+    },
+    {
+      "index": 128,
+      "name": "Fillet5",
+      "entityType": "adsk::fusion::FilletFeature",
+      "entityComponent": "Latch",
+      "suppressed": false,
+      "healthState": 0,
+      "message": ""
+    },
+    {
+      "index": 129,
+      "name": "Fillet3",
+      "entityType": "adsk::fusion::FilletFeature",
+      "entityComponent": "AdapterBody",
+      "suppressed": false,
+      "healthState": 0,
+      "message": ""
+    },
+    {
+      "index": 130,
+      "name": "Fillet4",
+      "entityType": "adsk::fusion::FilletFeature",
+      "entityComponent": "AdapterBody",
+      "suppressed": false,
+      "healthState": 0,
+      "message": ""
+    },
+    {
+      "index": 131,
+      "name": "Split2",
+      "entityType": "adsk::fusion::SplitBodyFeature",
+      "entityComponent": "AdapterBody",
+      "suppressed": false,
+      "healthState": 0,
+      "message": ""
+    },
+    {
+      "index": 132,
+      "name": "RemoveBody-Body1",
+      "entityType": "adsk::fusion::RemoveFeature",
+      "entityComponent": "AdapterBody",
+      "suppressed": false,
+      "healthState": 0,
+      "message": ""
+    },
+    {
+      "index": 133,
+      "name": "Fillet9",
+      "entityType": "adsk::fusion::FilletFeature",
+      "entityComponent": "AdapterBody",
+      "suppressed": false,
+      "healthState": 0,
+      "message": ""
+    },
+    {
+      "index": 134,
+      "name": " HandleLatch:1",
+      "entityType": "adsk::fusion::Occurrence",
+      "entityComponent": null,
+      "suppressed": true,
+      "healthState": 3,
+      "message": ""
+    },
+    {
+      "index": 135,
+      "name": "LatchSketch",
+      "entityType": "adsk::fusion::Sketch",
+      "entityComponent": "HandleLatch",
+      "suppressed": true,
+      "healthState": 3,
+      "message": ""
+    },
+    {
+      "index": 136,
+      "name": "Extrude1",
+      "entityType": "adsk::fusion::ExtrudeFeature",
+      "entityComponent": "HandleLatch",
+      "suppressed": true,
+      "healthState": 3,
+      "message": ""
+    },
+    {
+      "index": 137,
+      "name": "Extrude2",
+      "entityType": "adsk::fusion::ExtrudeFeature",
+      "entityComponent": "HandleLatch",
+      "suppressed": true,
+      "healthState": 3,
+      "message": ""
+    },
+    {
+      "index": 138,
+      "name": "Extrude3",
+      "entityType": "adsk::fusion::ExtrudeFeature",
+      "entityComponent": "HandleLatch",
+      "suppressed": true,
+      "healthState": 3,
+      "message": ""
+    },
+    {
+      "index": 139,
+      "name": "Split1",
+      "entityType": "adsk::fusion::SplitBodyFeature",
+      "entityComponent": "HandleLatch",
+      "suppressed": true,
+      "healthState": 3,
+      "message": ""
+    },
+    {
+      "index": 140,
+      "name": "RemoveBody-Body2",
+      "entityType": "adsk::fusion::RemoveFeature",
+      "entityComponent": "HandleLatch",
+      "suppressed": true,
+      "healthState": 3,
+      "message": ""
+    },
+    {
+      "index": 141,
+      "name": "OffsetFaces1",
+      "entityType": "adsk::fusion::OffsetFacesFeature",
+      "entityComponent": "HandleLatch",
+      "suppressed": true,
+      "healthState": 3,
+      "message": ""
+    },
+    {
+      "index": 142,
+      "name": "Fillet1",
+      "entityType": "adsk::fusion::FilletFeature",
+      "entityComponent": "HandleLatch",
+      "suppressed": true,
+      "healthState": 3,
+      "message": ""
+    },
+    {
+      "index": 143,
+      "name": "Combine3",
+      "entityType": "adsk::fusion::CombineFeature",
+      "entityComponent": "Trunk-V4SC",
+      "suppressed": true,
+      "healthState": 3,
+      "message": ""
+    },
+    {
+      "index": 144,
+      "name": "VentilationSketch",
+      "entityType": "adsk::fusion::Sketch",
+      "entityComponent": "Trunk-V4SC",
+      "suppressed": true,
+      "healthState": 3,
+      "message": ""
+    },
+    {
+      "index": 145,
+      "name": "Extrude22",
+      "entityType": "adsk::fusion::ExtrudeFeature",
+      "entityComponent": "Trunk-V4SC",
+      "suppressed": true,
+      "healthState": 3,
+      "message": ""
+    },
+    {
+      "index": 146,
+      "name": "Extrude23",
+      "entityType": "adsk::fusion::ExtrudeFeature",
+      "entityComponent": "Trunk-V4SC",
+      "suppressed": true,
+      "healthState": 3,
+      "message": ""
+    },
+    {
+      "index": 147,
+      "name": "Fillet5",
+      "entityType": "adsk::fusion::FilletFeature",
+      "entityComponent": "Trunk-V4SC",
+      "suppressed": true,
+      "healthState": 3,
+      "message": ""
+    },
+    {
+      "index": 148,
+      "name": "VentCoverSketch",
+      "entityType": "adsk::fusion::Sketch",
+      "entityComponent": "Trunk-V4SC",
+      "suppressed": true,
+      "healthState": 3,
+      "message": ""
+    },
+    {
+      "index": 149,
+      "name": "Extrude24",
+      "entityType": "adsk::fusion::ExtrudeFeature",
+      "entityComponent": "Trunk-V4SC",
+      "suppressed": true,
+      "healthState": 3,
+      "message": ""
+    },
+    {
+      "index": 150,
+      "name": "Extrude25",
+      "entityType": "adsk::fusion::ExtrudeFeature",
+      "entityComponent": "Trunk-V4SC",
+      "suppressed": true,
+      "healthState": 3,
+      "message": ""
+    },
+    {
+      "index": 151,
+      "name": "OffsetFaces6",
+      "entityType": "adsk::fusion::OffsetFacesFeature",
+      "entityComponent": "Trunk-V4SC",
+      "suppressed": true,
+      "healthState": 3,
+      "message": ""
+    },
+    {
+      "index": 152,
+      "name": "Rigid Group 2",
+      "entityType": "adsk::fusion::RigidGroup",
+      "entityComponent": "Surron Seat Adapter v3 v2",
+      "suppressed": true,
+      "healthState": 3,
+      "message": ""
+    },
+    {
+      "index": 153,
+      "name": " Trunk:1",
+      "entityType": "adsk::fusion::Occurrence",
+      "entityComponent": null,
+      "suppressed": true,
+      "healthState": 3,
+      "message": ""
+    },
+    {
+      "index": 154,
+      "name": "SideSketch",
+      "entityType": "adsk::fusion::Sketch",
+      "entityComponent": "Trunk",
+      "suppressed": true,
+      "healthState": 3,
+      "message": ""
+    },
+    {
+      "index": 155,
+      "name": "Extrude1",
+      "entityType": "adsk::fusion::ExtrudeFeature",
+      "entityComponent": "Trunk",
+      "suppressed": true,
+      "healthState": 3,
+      "message": ""
+    },
+    {
+      "index": 156,
+      "name": "Extrude14",
+      "entityType": "adsk::fusion::ExtrudeFeature",
+      "entityComponent": "AdapterBody",
+      "suppressed": true,
+      "healthState": 3,
+      "message": ""
+    },
+    {
+      "index": 157,
+      "name": "Extrude3",
+      "entityType": "adsk::fusion::ExtrudeFeature",
+      "entityComponent": "Trunk",
+      "suppressed": true,
+      "healthState": 3,
+      "message": ""
+    },
+    {
+      "index": 158,
+      "name": "Mirror1",
+      "entityType": "adsk::fusion::MirrorFeature",
+      "entityComponent": "Trunk",
+      "suppressed": true,
+      "healthState": 3,
+      "message": ""
+    },
+    {
+      "index": 159,
+      "name": "Extrude4",
+      "entityType": "adsk::fusion::ExtrudeFeature",
+      "entityComponent": "Trunk",
+      "suppressed": true,
+      "healthState": 3,
+      "message": ""
+    },
+    {
+      "index": 160,
+      "name": "Extrude6",
+      "entityType": "adsk::fusion::ExtrudeFeature",
+      "entityComponent": "Trunk",
+      "suppressed": true,
+      "healthState": 3,
+      "message": ""
+    },
+    {
+      "index": 161,
+      "name": "Extrude7",
+      "entityType": "adsk::fusion::ExtrudeFeature",
+      "entityComponent": "Trunk",
+      "suppressed": true,
+      "healthState": 3,
+      "message": ""
+    },
+    {
+      "index": 162,
+      "name": "OffsetFaces1",
+      "entityType": "adsk::fusion::OffsetFacesFeature",
+      "entityComponent": "Trunk",
+      "suppressed": true,
+      "healthState": 3,
+      "message": ""
+    },
+    {
+      "index": 163,
+      "name": "Shell2",
+      "entityType": "adsk::fusion::ShellFeature",
+      "entityComponent": "Trunk",
+      "suppressed": true,
+      "healthState": 3,
+      "message": ""
+    },
+    {
+      "index": 164,
+      "name": "Extrude10",
+      "entityType": "adsk::fusion::ExtrudeFeature",
+      "entityComponent": "Trunk",
+      "suppressed": true,
+      "healthState": 3,
+      "message": ""
+    },
+    {
+      "index": 165,
+      "name": "Extrude11",
+      "entityType": "adsk::fusion::ExtrudeFeature",
+      "entityComponent": "Trunk",
+      "suppressed": true,
+      "healthState": 3,
+      "message": ""
+    },
+    {
+      "index": 166,
+      "name": "Extrude12",
+      "entityType": "adsk::fusion::ExtrudeFeature",
+      "entityComponent": "Trunk",
+      "suppressed": true,
+      "healthState": 3,
+      "message": ""
+    },
+    {
+      "index": 167,
+      "name": "Extrude13",
+      "entityType": "adsk::fusion::ExtrudeFeature",
+      "entityComponent": "Trunk",
+      "suppressed": true,
+      "healthState": 3,
+      "message": ""
+    },
+    {
+      "index": 168,
+      "name": "Extrude14",
+      "entityType": "adsk::fusion::ExtrudeFeature",
+      "entityComponent": "Trunk",
+      "suppressed": true,
+      "healthState": 3,
+      "message": ""
+    },
+    {
+      "index": 169,
+      "name": "Extrude15",
+      "entityType": "adsk::fusion::ExtrudeFeature",
+      "entityComponent": "Trunk",
+      "suppressed": true,
+      "healthState": 3,
+      "message": ""
+    },
+    {
+      "index": 170,
+      "name": "Mirror2",
+      "entityType": "adsk::fusion::MirrorFeature",
+      "entityComponent": "Trunk",
+      "suppressed": true,
+      "healthState": 3,
+      "message": ""
+    },
+    {
+      "index": 171,
+      "name": "Combine1",
+      "entityType": "adsk::fusion::CombineFeature",
+      "entityComponent": "Trunk",
+      "suppressed": true,
+      "healthState": 3,
+      "message": ""
+    },
+    {
+      "index": 172,
+      "name": "LidTabSketch",
+      "entityType": "adsk::fusion::Sketch",
+      "entityComponent": "Trunk",
+      "suppressed": true,
+      "healthState": 3,
+      "message": ""
+    },
+    {
+      "index": 173,
+      "name": "Extrude16",
+      "entityType": "adsk::fusion::ExtrudeFeature",
+      "entityComponent": "Trunk",
+      "suppressed": true,
+      "healthState": 3,
+      "message": ""
+    },
+    {
+      "index": 174,
+      "name": "CopyPasteBodies1",
+      "entityType": "adsk::fusion::CopyPasteBody",
+      "entityComponent": "Trunk",
+      "suppressed": true,
+      "healthState": 3,
+      "message": ""
+    },
+    {
+      "index": 175,
+      "name": "Move2",
+      "entityType": "adsk::fusion::MoveFeature",
+      "entityComponent": "Trunk",
+      "suppressed": true,
+      "healthState": 3,
+      "message": ""
+    },
+    {
+      "index": 176,
+      "name": "InteriorFillet",
+      "entityType": "adsk::fusion::FilletFeature",
+      "entityComponent": "Trunk",
+      "suppressed": true,
+      "healthState": 3,
+      "message": ""
+    },
+    {
+      "index": 177,
+      "name": "ExteriorFillet",
+      "entityType": "adsk::fusion::FilletFeature",
+      "entityComponent": "AdapterBody",
+      "suppressed": true,
+      "healthState": 3,
+      "message": ""
+    },
+    {
+      "index": 178,
+      "name": "Fillet3",
+      "entityType": "adsk::fusion::FilletFeature",
+      "entityComponent": "Trunk",
+      "suppressed": true,
+      "healthState": 3,
+      "message": ""
+    },
+    {
+      "index": 179,
+      "name": "Move3",
+      "entityType": "adsk::fusion::MoveFeature",
+      "entityComponent": "Seat",
+      "suppressed": false,
+      "healthState": 0,
+      "message": ""
+    },
+    {
+      "index": 180,
+      "name": "CopyPasteBodies1",
+      "entityType": "adsk::fusion::CopyPasteBody",
+      "entityComponent": "AdapterBody",
+      "suppressed": false,
+      "healthState": 0,
+      "message": ""
+    },
+    {
+      "index": 181,
+      "name": " AdapterBodySplit:1",
+      "entityType": "adsk::fusion::Occurrence",
+      "entityComponent": null,
+      "suppressed": false,
+      "healthState": 0,
+      "message": ""
+    },
+    {
+      "index": 182,
+      "name": "CutPasteBodies1",
+      "entityType": "adsk::fusion::CutPasteBody",
+      "entityComponent": "AdapterBodySplit",
+      "suppressed": false,
+      "healthState": 0,
+      "message": ""
+    },
+    {
+      "index": 183,
+      "name": "SplitBodySketch",
+      "entityType": "adsk::fusion::Sketch",
+      "entityComponent": "AdapterBodySplit",
+      "suppressed": false,
+      "healthState": 0,
+      "message": ""
+    },
+    {
+      "index": 184,
+      "name": "Split1",
+      "entityType": "adsk::fusion::SplitBodyFeature",
+      "entityComponent": "AdapterBodySplit",
+      "suppressed": false,
+      "healthState": 0,
+      "message": ""
+    },
+    {
+      "index": 185,
+      "name": "TopJointSketch",
+      "entityType": "adsk::fusion::Sketch",
+      "entityComponent": "AdapterBodySplit",
+      "suppressed": false,
+      "healthState": 0,
+      "message": ""
+    },
+    {
+      "index": 186,
+      "name": "Extrude20",
+      "entityType": "adsk::fusion::ExtrudeFeature",
+      "entityComponent": "AdapterBody",
+      "suppressed": false,
+      "healthState": 4,
+      "message": ""
+    },
+    {
+      "index": 187,
+      "name": "SideJointSketch",
+      "entityType": "adsk::fusion::Sketch",
+      "entityComponent": "AdapterBodySplit",
+      "suppressed": false,
+      "healthState": 1,
+      "message": "Edge 1 missing<b>1 Reference Failures</b><br/>The project source is lost, Cache is used!Project2SideJointSketch"
+    },
+    {
+      "index": 188,
+      "name": "Extrude2",
+      "entityType": "adsk::fusion::ExtrudeFeature",
+      "entityComponent": "AdapterBodySplit",
+      "suppressed": false,
+      "healthState": 0,
+      "message": ""
+    },
+    {
+      "index": 189,
+      "name": "Plane3",
+      "entityType": "adsk::fusion::ConstructionPlane",
+      "entityComponent": null,
+      "suppressed": false,
+      "healthState": 0,
+      "message": ""
+    },
+    {
+      "index": 190,
+      "name": "Plane4",
+      "entityType": "adsk::fusion::ConstructionPlane",
+      "entityComponent": null,
+      "suppressed": false,
+      "healthState": 0,
+      "message": ""
+    },
+    {
+      "index": 191,
+      "name": "Fillet2",
+      "entityType": "adsk::fusion::FilletFeature",
+      "entityComponent": "AdapterBodySplit",
+      "suppressed": false,
+      "healthState": 0,
+      "message": ""
+    },
+    {
+      "index": 192,
+      "name": "Mirror3",
+      "entityType": "adsk::fusion::MirrorFeature",
+      "entityComponent": "AdapterBodySplit",
+      "suppressed": false,
+      "healthState": 0,
+      "message": ""
+    },
+    {
+      "index": 193,
+      "name": "Mirror1",
+      "entityType": "adsk::fusion::MirrorFeature",
+      "entityComponent": "AdapterBodySplit",
+      "suppressed": false,
+      "healthState": 0,
+      "message": ""
+    },
+    {
+      "index": 194,
+      "name": "Extrude3",
+      "entityType": "adsk::fusion::ExtrudeFeature",
+      "entityComponent": "AdapterBodySplit",
+      "suppressed": false,
+      "healthState": 0,
+      "message": ""
+    },
+    {
+      "index": 195,
+      "name": "Extrude4",
+      "entityType": "adsk::fusion::ExtrudeFeature",
+      "entityComponent": "AdapterBodySplit",
+      "suppressed": false,
+      "healthState": 0,
+      "message": ""
+    },
+    {
+      "index": 196,
+      "name": "OffsetFaces1",
+      "entityType": "adsk::fusion::OffsetFacesFeature",
+      "entityComponent": "AdapterBodySplit",
+      "suppressed": false,
+      "healthState": 0,
+      "message": ""
+    },
+    {
+      "index": 197,
+      "name": "Fillet4",
+      "entityType": "adsk::fusion::FilletFeature",
+      "entityComponent": "AdapterBodySplit",
+      "suppressed": false,
+      "healthState": 0,
+      "message": ""
+    },
+    {
+      "index": 198,
+      "name": "Fillet3",
+      "entityType": "adsk::fusion::FilletFeature",
+      "entityComponent": "AdapterBodySplit",
+      "suppressed": false,
+      "healthState": 0,
+      "message": ""
+    },
+    {
+      "index": 199,
+      "name": "Component Insert Sherman P Body Top Refined v4:1",
+      "entityType": "adsk::fusion::Occurrence",
+      "entityComponent": null,
+      "suppressed": false,
+      "healthState": 0,
+      "message": ""
+    }
+  ],
+  "userParameters": [
+    {
+      "name": "Gap",
+      "expression": "-0.2 mm",
+      "unit": "mm",
+      "value": -0.020000000000000004,
+      "comment": "Gap for dovetails"
+    }
+  ]
+}

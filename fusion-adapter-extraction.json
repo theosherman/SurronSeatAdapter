@@ -1,0 +1,5000 @@
+{
+  "units": "cm",
+  "components": [
+    {
+      "name": "AdapterBody",
+      "sketches": [
+        {
+          "name": "BottomSketch",
+          "index": 8,
+          "origin": [
+            0,
+            0,
+            0
+          ],
+          "x": [
+            1,
+            0,
+            0
+          ],
+          "y": [
+            0,
+            1,
+            0
+          ],
+          "curves": [
+            {
+              "type": "adsk::fusion::SketchLine",
+              "construction": false,
+              "start": [
+                0,
+                0,
+                0
+              ],
+              "end": [
+                1.1791359379130305e-16,
+                9.915953208748558,
+                0
+              ]
+            },
+            {
+              "type": "adsk::fusion::SketchLine",
+              "construction": false,
+              "start": [
+                1.1791359379130305e-16,
+                9.915953208748558,
+                0
+              ],
+              "end": [
+                4.300000000000001,
+                9.915953208748558,
+                0
+              ]
+            },
+            {
+              "type": "adsk::fusion::SketchLine",
+              "construction": false,
+              "start": [
+                4.300000000000001,
+                9.915953208748558,
+                0
+              ],
+              "end": [
+                4.300000000000001,
+                15.915953208748558,
+                0
+              ]
+            },
+            {
+              "type": "adsk::fusion::SketchLine",
+              "construction": false,
+              "start": [
+                4.300000000000001,
+                15.915953208748558,
+                0
+              ],
+              "end": [
+                1.0184981308754118e-15,
+                15.915953208748558,
+                0
+              ]
+            },
+            {
+              "type": "adsk::fusion::SketchLine",
+              "construction": false,
+              "start": [
+                1.0184981308754118e-15,
+                15.915953208748558,
+                0
+              ],
+              "end": [
+                -2.1824959947330244e-16,
+                19.31595320874856,
+                0
+              ]
+            },
+            {
+              "type": "adsk::fusion::SketchLine",
+              "construction": false,
+              "start": [
+                -2.1824959947330244e-16,
+                19.31595320874856,
+                0
+              ],
+              "end": [
+                8,
+                19.31595320874856,
+                0
+              ]
+            },
+            {
+              "type": "adsk::fusion::SketchLine",
+              "construction": false,
+              "start": [
+                8,
+                19.31595320874856,
+                0
+              ],
+              "end": [
+                7.999999999999999,
+                8.740394523824223,
+                0
+              ]
+            },
+            {
+              "type": "adsk::fusion::SketchLine",
+              "construction": false,
+              "start": [
+                7.999999999999999,
+                8.740394523824223,
+                0
+              ],
+              "end": [
+                2.1999999999999997,
+                3.712908768541572,
+                0
+              ]
+            },
+            {
+              "type": "adsk::fusion::SketchLine",
+              "construction": false,
+              "start": [
+                2.1999999999999997,
+                3.712908768541572,
+                0
+              ],
+              "end": [
+                2.2000000000000037,
+                -1.8114927052326224,
+                0
+              ]
+            },
+            {
+              "type": "adsk::fusion::SketchLine",
+              "construction": false,
+              "start": [
+                2.2000000000000037,
+                -1.8114927052326224,
+                0
+              ],
+              "end": [
+                6.468750101999127,
+                -7.996131101324718,
+                0
+              ]
+            },
+            {
+              "type": "adsk::fusion::SketchLine",
+              "construction": false,
+              "start": [
+                7.102951435054648e-15,
+                -29,
+                0
+              ],
+              "end": [
+                0,
+                0,
+                0
+              ]
+            },
+            {
+              "type": "adsk::fusion::SketchLine",
+              "construction": false,
+              "start": [
+                4.500000000000007,
+                -29,
+                0
+              ],
+              "end": [
+                7.102951435054648e-15,
+                -29,
+                0
+              ]
+            },
+            {
+              "type": "adsk::fusion::SketchLine",
+              "construction": false,
+              "start": [
+                6.468750101999127,
+                -7.996131101324718,
+                0
+              ],
+              "end": [
+                6.468750101999127,
+                -10,
+                0
+              ]
+            },
+            {
+              "type": "adsk::fusion::SketchLine",
+              "construction": false,
+              "start": [
+                6.468750101999127,
+                -10,
+                0
+              ],
+              "end": [
+                7.793135238304326,
+                -11.168245530911433,
+                0
+              ]
+            },
+            {
+              "type": "adsk::fusion::SketchLine",
+              "construction": false,
+              "start": [
+                7.793135238304326,
+                -11.168245530911433,
+                0
+              ],
+              "end": [
+                7.793135238304326,
+                -14.041371084378332,
+                0
+              ]
+            },
+            {
+              "type": "adsk::fusion::SketchLine",
+              "construction": false,
+              "start": [
+                7.793135238304326,
+                -14.041371084378332,
+                0
+              ],
+              "end": [
+                4.500000000000007,
+                -29,
+                0
+              ]
+            },
+            {
+              "type": "adsk::fusion::SketchLine",
+              "construction": false,
+              "start": [
+                0.175,
+                0,
+                0
+              ],
+              "end": [
+                2.25,
+                0,
+                0
+              ]
+            }
+          ],
+          "dimensions": [
+            {
+              "name": "d2",
+              "expression": "( 86 / 2 ) * 1 mm",
+              "value": 4.3
+            },
+            {
+              "name": "d3",
+              "expression": "60 mm",
+              "value": 6
+            },
+            {
+              "name": "d4",
+              "expression": "34 mm",
+              "value": 3.4000000000000004
+            },
+            {
+              "name": "d73",
+              "expression": "22 mm",
+              "value": 2.2
+            },
+            {
+              "name": "d117",
+              "expression": "389.1595320875 mm",
+              "value": 38.915953208750004
+            },
+            {
+              "name": "d119",
+              "expression": "76.7565065773 mm",
+              "value": 7.67565065773
+            },
+            {
+              "name": "d120",
+              "expression": "55.2440147377 mm",
+              "value": 5.52440147377
+            },
+            {
+              "name": "d121",
+              "expression": "75.1478406368 mm",
+              "value": 7.5147840636800005
+            },
+            {
+              "name": "d434",
+              "expression": "99.1595320875 mm",
+              "value": 9.91595320875
+            },
+            {
+              "name": "d435",
+              "expression": "45 mm",
+              "value": 4.5
+            },
+            {
+              "name": "d436",
+              "expression": "28.7312555347 mm",
+              "value": 2.8731255534700004
+            },
+            {
+              "name": "d437",
+              "expression": "17.6601064826 mm",
+              "value": 1.76601064826
+            },
+            {
+              "name": "d438",
+              "expression": "20.0386889868 mm",
+              "value": 2.00386889868
+            },
+            {
+              "name": "d439",
+              "expression": "105.7555868492 mm",
+              "value": 10.57555868492
+            }
+          ]
+        },
+        {
+          "name": "SideSketch",
+          "index": 11,
+          "origin": [
+            0,
+            0,
+            0
+          ],
+          "x": [
+            0,
+            1,
+            0
+          ],
+          "y": [
+            0,
+            0,
+            1
+          ],
+          "curves": [
+            {
+              "type": "adsk::fusion::SketchLine",
+              "construction": false,
+              "start": [
+                19.460716317890004,
+                1.5562736435622535,
+                0
+              ],
+              "end": [
+                -18.653073858932768,
+                -2.9885206793970776,
+                0
+              ]
+            },
+            {
+              "type": "adsk::fusion::SketchLine",
+              "construction": false,
+              "start": [
+                -14.99532667443008,
+                3.170207199256484,
+                0
+              ],
+              "end": [
+                -26.3445982162752,
+                9.910684591063722,
+                0
+              ]
+            },
+            {
+              "type": "adsk::fusion::SketchLine",
+              "construction": false,
+              "start": [
+                -26.3445982162752,
+                9.910684591063722,
+                0
+              ],
+              "end": [
+                -26.344598216275198,
+                10.910684591063722,
+                0
+              ]
+            },
+            {
+              "type": "adsk::fusion::SketchLine",
+              "construction": false,
+              "start": [
+                -26.344598216275198,
+                10.910684591063722,
+                0
+              ],
+              "end": [
+                -19.090793679412542,
+                8.839413736888071,
+                0
+              ]
+            },
+            {
+              "type": "adsk::fusion::SketchLine",
+              "construction": false,
+              "start": [
+                5.937208075512329,
+                4.8822134095342955,
+                0
+              ],
+              "end": [
+                9.409303350067768,
+                3.931132758690323,
+                0
+              ]
+            },
+            {
+              "type": "adsk::fusion::SketchLine",
+              "construction": false,
+              "start": [
+                19.460716317888767,
+                3.8562736435622536,
+                0
+              ],
+              "end": [
+                19.460716317890004,
+                1.5562736435622535,
+                0
+              ]
+            },
+            {
+              "type": "adsk::fusion::SketchLine",
+              "construction": false,
+              "start": [
+                -14.99532667443008,
+                3.170207199256484,
+                0
+              ],
+              "end": [
+                -18.653073858932768,
+                -2.9885206793970776,
+                0
+              ]
+            },
+            {
+              "type": "adsk::fusion::SketchLine",
+              "construction": false,
+              "start": [
+                2,
+                0,
+                0
+              ],
+              "end": [
+                0.25,
+                0,
+                0
+              ]
+            },
+            {
+              "type": "adsk::fusion::SketchLine",
+              "construction": false,
+              "start": [
+                -19.090793679412542,
+                8.839413736888071,
+                0
+              ],
+              "end": [
+                -19.09079367941255,
+                8.30000240967807,
+                0
+              ]
+            },
+            {
+              "type": "adsk::fusion::SketchLine",
+              "construction": false,
+              "start": [
+                -19.09079367941255,
+                8.30000240967807,
+                0
+              ],
+              "end": [
+                3.622547244003656,
+                3.678920971219333,
+                0
+              ]
+            },
+            {
+              "type": "adsk::fusion::SketchLine",
+              "construction": false,
+              "start": [
+                3.622547244003656,
+                3.678920971219333,
+                0
+              ],
+              "end": [
+                5.937208075512329,
+                4.8822134095342955,
+                0
+              ]
+            },
+            {
+              "type": "adsk::fusion::SketchLine",
+              "construction": false,
+              "start": [
+                3.712908768541572,
+                0,
+                0
+              ],
+              "end": [
+                -1.8114927052326224,
+                0,
+                0
+              ]
+            },
+            {
+              "type": "adsk::fusion::SketchLine",
+              "construction": false,
+              "start": [
+                0.175,
+                0,
+                0
+              ],
+              "end": [
+                2.25,
+                0,
+                0
+              ]
+            },
+            {
+              "type": "adsk::fusion::SketchLine",
+              "construction": false,
+              "start": [
+                0,
+                0.25,
+                0
+              ],
+              "end": [
+                0,
+                2,
+                0
+              ]
+            },
+            {
+              "type": "adsk::fusion::SketchLine",
+              "construction": false,
+              "start": [
+                15.915953208748558,
+                15,
+                0
+              ],
+              "end": [
+                9.915953208748558,
+                15,
+                0
+              ]
+            },
+            {
+              "type": "adsk::fusion::SketchLine",
+              "construction": true,
+              "start": [
+                9.915953208748558,
+                15,
+                0
+              ],
+              "end": [
+                9.915953208748558,
+                -3,
+                0
+              ]
+            },
+            {
+              "type": "adsk::fusion::SketchLine",
+              "construction": false,
+              "start": [
+                9.409303350067768,
+                3.931132758690323,
+                0
+              ],
+              "end": [
+                9.915953208748556,
+                2.718129549491224,
+                0
+              ]
+            },
+            {
+              "type": "adsk::fusion::SketchLine",
+              "construction": false,
+              "start": [
+                9.915953208748556,
+                2.718129549491224,
+                0
+              ],
+              "end": [
+                19.460716317888767,
+                3.8562736435622536,
+                0
+              ]
+            },
+            {
+              "type": "adsk::fusion::SketchLine",
+              "construction": false,
+              "start": [
+                9.409303350067768,
+                3.931132758690323,
+                0
+              ],
+              "end": [
+                12.648199772131766,
+                3.04393022721392,
+                0
+              ]
+            }
+          ],
+          "dimensions": [
+            {
+              "name": "d11",
+              "expression": "10.00 mm",
+              "value": 1
+            },
+            {
+              "name": "d29",
+              "expression": "132.00 mm",
+              "value": 13.200000000000001
+            },
+            {
+              "name": "d43",
+              "expression": "6.8 deg",
+              "value": 0.11868238913561441
+            },
+            {
+              "name": "d72",
+              "expression": "23 mm",
+              "value": 2.3000000000000003
+            },
+            {
+              "name": "d97",
+              "expression": "30.7066176098 deg",
+              "value": 0.5359315794418814
+            },
+            {
+              "name": "d137",
+              "expression": "75.4372873388 mm",
+              "value": 7.543728733880001
+            },
+            {
+              "name": "d140",
+              "expression": "231.7865935649 mm",
+              "value": 23.17865935649
+            },
+            {
+              "name": "d141",
+              "expression": "5.3941132721 mm",
+              "value": 0.5394113272100001
+            },
+            {
+              "name": "d142",
+              "expression": "4.4363057507 deg",
+              "value": 0.07742814197487373
+            },
+            {
+              "name": "d143",
+              "expression": "26.0874825482 mm",
+              "value": 2.60874825482
+            },
+            {
+              "name": "d145",
+              "expression": "383.8380071177 mm",
+              "value": 38.38380071177
+            },
+            {
+              "name": "d146",
+              "expression": "137.2132492216 deg",
+              "value": 2.3948229762764663
+            },
+            {
+              "name": "d147",
+              "expression": "141.0320219845 deg",
+              "value": 2.461473134374552
+            },
+            {
+              "name": "d686",
+              "expression": "11.5 deg",
+              "value": 0.2007128639793479
+            },
+            {
+              "name": "d688",
+              "expression": "194.6071631789 mm",
+              "value": 19.460716317890004
+            },
+            {
+              "name": "d689",
+              "expression": "15.5627364356 mm",
+              "value": 1.55627364356
+            },
+            {
+              "name": "d690",
+              "expression": "36 mm",
+              "value": 3.6
+            },
+            {
+              "name": "d691",
+              "expression": "13.1456109209 mm",
+              "value": 1.31456109209
+            },
+            {
+              "name": "d692",
+              "expression": "71.6303312494 mm",
+              "value": 7.16303312494
+            }
+          ]
+        },
+        {
+          "name": "RearSketch",
+          "index": 13,
+          "origin": [
+            0,
+            0,
+            0
+          ],
+          "x": [
+            1,
+            0,
+            0
+          ],
+          "y": [
+            0,
+            0,
+            -1
+          ],
+          "curves": [
+            {
+              "type": "adsk::fusion::SketchLine",
+              "construction": false,
+              "start": [
+                2.1076188391963524,
+                -10.910684591063722,
+                -26.344598216275198
+              ],
+              "end": [
+                4.20623788813555e-15,
+                -10.910684591063722,
+                -26.344598216275198
+              ]
+            },
+            {
+              "type": "adsk::fusion::SketchLine",
+              "construction": false,
+              "start": [
+                4.20623788813555e-15,
+                -10.910684591063722,
+                -26.344598216275198
+              ],
+              "end": [
+                3.3462118687047244e-15,
+                2.8846061822369413,
+                -26.344598216275198
+              ]
+            },
+            {
+              "type": "adsk::fusion::SketchLine",
+              "construction": false,
+              "start": [
+                -5.084585474722766,
+                -10.910684591063722,
+                -26.344598216275198
+              ],
+              "end": [
+                5.084585474722766,
+                -10.910684591063722,
+                -26.344598216275198
+              ]
+            },
+            {
+              "type": "adsk::fusion::SketchLine",
+              "construction": false,
+              "start": [
+                -5.084585474722766,
+                -10.910684591063722,
+                -26.344598216275198
+              ],
+              "end": [
+                5.084585474722766,
+                -10.910684591063722,
+                -26.344598216275198
+              ]
+            },
+            {
+              "type": "adsk::fusion::SketchLine",
+              "construction": false,
+              "start": [
+                0,
+                -10.910684591063722,
+                -26.344598216275198
+              ],
+              "end": [
+                0,
+                5.558007547326888,
+                -26.344598216275205
+              ]
+            },
+            {
+              "type": "adsk::fusion::SketchLine",
+              "construction": false,
+              "start": [
+                0,
+                5.558007547326888,
+                -26.344598216275205
+              ],
+              "end": [
+                9,
+                5.558007547326888,
+                -26.344598216275205
+              ]
+            },
+            {
+              "type": "adsk::fusion::SketchLine",
+              "construction": false,
+              "start": [
+                9,
+                5.558007547326888,
+                -26.344598216275205
+              ],
+              "end": [
+                9,
+                2.5580075473268877,
+                -26.344598216275205
+              ]
+            },
+            {
+              "type": "adsk::fusion::SketchLine",
+              "construction": false,
+              "start": [
+                9,
+                2.5580075473268877,
+                -26.344598216275205
+              ],
+              "end": [
+                2.168954226365097,
+                -10.910684591063722,
+                -26.344598216275198
+              ]
+            }
+          ],
+          "dimensions": [
+            {
+              "name": "d74",
+              "expression": "90 mm",
+              "value": 9
+            },
+            {
+              "name": "d75",
+              "expression": "30 mm",
+              "value": 3
+            }
+          ]
+        },
+        {
+          "name": "TrunkDovetailSketch",
+          "index": 17,
+          "origin": [
+            0,
+            -12.477082228630328,
+            7.410298570063958
+          ],
+          "x": [
+            1,
+            0,
+            0
+          ],
+          "y": [
+            0,
+            0.5106422266520627,
+            0.8597932986246306
+          ],
+          "curves": [
+            {
+              "type": "adsk::fusion::SketchLine",
+              "construction": false,
+              "start": [
+                0,
+                -4.931524097233773,
+                0
+              ],
+              "end": [
+                1,
+                -4.931524097233773,
+                -1.4843805096034244e-17
+              ]
+            },
+            {
+              "type": "adsk::fusion::SketchLine",
+              "construction": false,
+              "start": [
+                1,
+                -4.931524097233773,
+                -1.4843805096034244e-17
+              ],
+              "end": [
+                1.4618802153517008,
+                -5.731524097233772,
+                0
+              ]
+            },
+            {
+              "type": "adsk::fusion::SketchLine",
+              "construction": false,
+              "start": [
+                1.4618802153517008,
+                -5.731524097233772,
+                0
+              ],
+              "end": [
+                -1.46188021535169,
+                -5.731524097233774,
+                3.560620470044236e-17
+              ]
+            },
+            {
+              "type": "adsk::fusion::SketchLine",
+              "construction": false,
+              "start": [
+                -1.46188021535169,
+                -5.731524097233774,
+                3.560620470044236e-17
+              ],
+              "end": [
+                -1.0000000000000002,
+                -4.931524097233769,
+                -1.0170912527220497e-16
+              ]
+            },
+            {
+              "type": "adsk::fusion::SketchLine",
+              "construction": false,
+              "start": [
+                -1.0000000000000002,
+                -4.931524097233769,
+                -1.0170912527220497e-16
+              ],
+              "end": [
+                0,
+                -4.931524097233773,
+                0
+              ]
+            },
+            {
+              "type": "adsk::fusion::SketchLine",
+              "construction": false,
+              "start": [
+                6.094766386144667,
+                -4.931524097233765,
+                -1.7763568394002505e-15
+              ],
+              "end": [
+                -6.094766386144667,
+                -4.931524097233765,
+                -1.7763568394002505e-15
+              ]
+            },
+            {
+              "type": "adsk::fusion::SketchLine",
+              "construction": false,
+              "start": [
+                -6.777871005122091,
+                -12.094557222178524,
+                0
+              ],
+              "end": [
+                6.777871005122091,
+                -12.094557222178524,
+                0
+              ]
+            },
+            {
+              "type": "adsk::fusion::SketchLine",
+              "construction": false,
+              "start": [
+                7.278069729473393,
+                -7.645089330774622,
+                0
+              ],
+              "end": [
+                6.094766386144667,
+                -4.931524097233763,
+                0
+              ]
+            },
+            {
+              "type": "adsk::fusion::SketchLine",
+              "construction": false,
+              "start": [
+                -6.094766386144667,
+                -4.931524097233765,
+                0
+              ],
+              "end": [
+                -7.278069729473393,
+                -7.645089330774624,
+                0
+              ]
+            },
+            {
+              "type": "adsk::fusion::SketchLine",
+              "construction": false,
+              "start": [
+                6.777871005122091,
+                -12.094557222178524,
+                0
+              ],
+              "end": [
+                7.278069729473393,
+                -7.645089330774622,
+                -2.220446049250313e-16
+              ]
+            },
+            {
+              "type": "adsk::fusion::SketchLine",
+              "construction": false,
+              "start": [
+                -7.278069729473393,
+                -7.645089330774622,
+                0
+              ],
+              "end": [
+                -6.777871005122091,
+                -12.094557222178524,
+                0
+              ]
+            }
+          ],
+          "dimensions": [
+            {
+              "name": "d35",
+              "expression": "10 mm",
+              "value": 1
+            },
+            {
+              "name": "d36",
+              "expression": "8 mm",
+              "value": 0.8
+            },
+            {
+              "name": "d37",
+              "expression": "60 deg",
+              "value": 1.0471975511965976
+            }
+          ]
+        },
+        {
+          "name": "BoltHolesSketch",
+          "index": 74,
+          "origin": [
+            0,
+            0.8627219333715026,
+            4.240413776674599
+          ],
+          "x": [
+            -1,
+            0,
+            0
+          ],
+          "y": [
+            0,
+            -0.9799247046208692,
+            0.1993679344170023
+          ],
+          "curves": [
+            {
+              "type": "adsk::fusion::SketchLine",
+              "construction": false,
+              "start": [
+                3.4930389480453843,
+                20.36229469334996,
+                0
+              ],
+              "end": [
+                -3.4930389480453843,
+                20.36229469334996,
+                0
+              ]
+            },
+            {
+              "type": "adsk::fusion::SketchLine",
+              "construction": false,
+              "start": [
+                -3.4930389480453843,
+                20.36229469334996,
+                0
+              ],
+              "end": [
+                -4.875979678400628,
+                6.685431935163779,
+                0
+              ]
+            },
+            {
+              "type": "adsk::fusion::SketchLine",
+              "construction": false,
+              "start": [
+                -4.875979678400628,
+                6.685431935163779,
+                0
+              ],
+              "end": [
+                -2.2000000000000037,
+                2.7290001221458877,
+                8.881784197001252e-16
+              ]
+            },
+            {
+              "type": "adsk::fusion::SketchLine",
+              "construction": false,
+              "start": [
+                -2.2000000000000037,
+                2.7290001221458877,
+                8.881784197001252e-16
+              ],
+              "end": [
+                -2.1999999999999997,
+                -2.816364663140035,
+                8.881784197001252e-16
+              ]
+            },
+            {
+              "type": "adsk::fusion::SketchLine",
+              "construction": false,
+              "start": [
+                -2.1999999999999997,
+                -2.8163646631400354,
+                8.881784197001252e-16
+              ],
+              "end": [
+                2.1999999999999997,
+                -2.8163646631400354,
+                8.881784197001252e-16
+              ]
+            },
+            {
+              "type": "adsk::fusion::SketchLine",
+              "construction": false,
+              "start": [
+                2.1999999999999997,
+                -2.8163646631400354,
+                8.881784197001252e-16
+              ],
+              "end": [
+                2.2000000000000037,
+                2.7290001221458873,
+                8.881784197001252e-16
+              ]
+            },
+            {
+              "type": "adsk::fusion::SketchLine",
+              "construction": false,
+              "start": [
+                2.2000000000000037,
+                2.7290001221458873,
+                8.881784197001252e-16
+              ],
+              "end": [
+                4.875979678400628,
+                6.685431935163779,
+                8.881784197001252e-16
+              ]
+            },
+            {
+              "type": "adsk::fusion::SketchLine",
+              "construction": false,
+              "start": [
+                4.875979678400628,
+                6.685431935163779,
+                8.881784197001252e-16
+              ],
+              "end": [
+                3.4930389480453843,
+                20.36229469334996,
+                8.881784197001252e-16
+              ]
+            },
+            {
+              "type": "adsk::fusion::SketchCircle",
+              "construction": false,
+              "center": [
+                -2.3000000000000016,
+                -6.405715581262261,
+                0
+              ],
+              "radius": 0.35000000000000003
+            },
+            {
+              "type": "adsk::fusion::SketchLine",
+              "construction": false,
+              "start": [
+                0,
+                -0.1714868233086514,
+                0
+              ],
+              "end": [
+                0,
+                -2.204830585396955,
+                5.551115123125783e-17
+              ]
+            },
+            {
+              "type": "adsk::fusion::SketchCircle",
+              "construction": false,
+              "center": [
+                -1.4500000000000002,
+                19.39428441873774,
+                0
+              ],
+              "radius": 0.35000000000000003
+            },
+            {
+              "type": "adsk::fusion::SketchCircle",
+              "construction": false,
+              "center": [
+                -2.3000000000000016,
+                -6.405715581262261,
+                0
+              ],
+              "radius": 0.8500000000000001
+            },
+            {
+              "type": "adsk::fusion::SketchCircle",
+              "construction": false,
+              "center": [
+                -1.4500000000000002,
+                19.39428441873774,
+                0
+              ],
+              "radius": 0.8500000000000002
+            },
+            {
+              "type": "adsk::fusion::SketchCircle",
+              "construction": false,
+              "center": [
+                1.4500000000000002,
+                19.39428441873774,
+                0
+              ],
+              "radius": 0.8500000000000002
+            },
+            {
+              "type": "adsk::fusion::SketchCircle",
+              "construction": false,
+              "center": [
+                1.4500000000000002,
+                19.39428441873774,
+                0
+              ],
+              "radius": 0.35000000000000003
+            },
+            {
+              "type": "adsk::fusion::SketchCircle",
+              "construction": false,
+              "center": [
+                2.3000000000000016,
+                -6.405715581262261,
+                0
+              ],
+              "radius": 0.8500000000000001
+            },
+            {
+              "type": "adsk::fusion::SketchCircle",
+              "construction": false,
+              "center": [
+                2.3000000000000016,
+                -6.405715581262261,
+                0
+              ],
+              "radius": 0.35000000000000003
+            }
+          ],
+          "dimensions": [
+            {
+              "name": "d58",
+              "expression": "7 mm",
+              "value": 0.7000000000000001
+            },
+            {
+              "name": "d59",
+              "expression": "( 46 / 2 ) * 1 mm",
+              "value": 2.3000000000000003
+            },
+            {
+              "name": "d60",
+              "expression": "7 mm",
+              "value": 0.7000000000000001
+            },
+            {
+              "name": "d61",
+              "expression": "( 29 / 2 ) * 1 mm",
+              "value": 1.4500000000000002
+            },
+            {
+              "name": "d62",
+              "expression": "5 mm",
+              "value": 0.5
+            },
+            {
+              "name": "d63",
+              "expression": "5 mm",
+              "value": 0.5
+            },
+            {
+              "name": "d64",
+              "expression": "258 mm",
+              "value": 25.8
+            }
+          ]
+        },
+        {
+          "name": "SeatHangerSketch",
+          "index": 78,
+          "origin": [
+            0,
+            0.8627219333715026,
+            4.240413776674599
+          ],
+          "x": [
+            -1,
+            0,
+            0
+          ],
+          "y": [
+            0,
+            -0.9799247046208692,
+            0.1993679344170023
+          ],
+          "curves": [
+            {
+              "type": "adsk::fusion::SketchCircle",
+              "construction": false,
+              "center": [
+                -1.4500000000000002,
+                19.39428441873774,
+                3.1086244689504383e-15
+              ],
+              "radius": 0.35
+            },
+            {
+              "type": "adsk::fusion::SketchCircle",
+              "construction": false,
+              "center": [
+                1.4500000000000002,
+                19.39428441873774,
+                3.1086244689504383e-15
+              ],
+              "radius": 0.35
+            },
+            {
+              "type": "adsk::fusion::SketchLine",
+              "construction": false,
+              "start": [
+                3.4930389480453843,
+                20.36229469334996,
+                0
+              ],
+              "end": [
+                -3.4930389480453843,
+                20.36229469334996,
+                0
+              ]
+            },
+            {
+              "type": "adsk::fusion::SketchLine",
+              "construction": false,
+              "start": [
+                -3.4930389480453843,
+                20.36229469334996,
+                0
+              ],
+              "end": [
+                -4.875979678400628,
+                6.685431935163779,
+                0
+              ]
+            },
+            {
+              "type": "adsk::fusion::SketchLine",
+              "construction": false,
+              "start": [
+                -4.875979678400628,
+                6.685431935163779,
+                0
+              ],
+              "end": [
+                -2.2000000000000037,
+                2.7290001221458877,
+                8.881784197001252e-16
+              ]
+            },
+            {
+              "type": "adsk::fusion::SketchLine",
+              "construction": false,
+              "start": [
+                -2.2000000000000037,
+                2.7290001221458877,
+                8.881784197001252e-16
+              ],
+              "end": [
+                -2.1999999999999997,
+                -2.816364663140035,
+                8.881784197001252e-16
+              ]
+            },
+            {
+              "type": "adsk::fusion::SketchLine",
+              "construction": false,
+              "start": [
+                -2.1999999999999997,
+                -2.816364663140035,
+                8.881784197001252e-16
+              ],
+              "end": [
+                2.1999999999999997,
+                -2.8163646631400354,
+                8.881784197001252e-16
+              ]
+            },
+            {
+              "type": "adsk::fusion::SketchLine",
+              "construction": false,
+              "start": [
+                2.1999999999999997,
+                -2.8163646631400354,
+                8.881784197001252e-16
+              ],
+              "end": [
+                2.2000000000000037,
+                2.7290001221458873,
+                8.881784197001252e-16
+              ]
+            },
+            {
+              "type": "adsk::fusion::SketchLine",
+              "construction": false,
+              "start": [
+                2.2000000000000037,
+                2.7290001221458873,
+                8.881784197001252e-16
+              ],
+              "end": [
+                4.875979678400628,
+                6.685431935163779,
+                8.881784197001252e-16
+              ]
+            },
+            {
+              "type": "adsk::fusion::SketchLine",
+              "construction": false,
+              "start": [
+                4.875979678400628,
+                6.685431935163779,
+                8.881784197001252e-16
+              ],
+              "end": [
+                3.4930389480453843,
+                20.36229469334996,
+                8.881784197001252e-16
+              ]
+            },
+            {
+              "type": "adsk::fusion::SketchLine",
+              "construction": false,
+              "start": [
+                -4.875979678400628,
+                6.685431935163779,
+                8.881784197001252e-16
+              ],
+              "end": [
+                -2.2000000000000037,
+                2.729000122145888,
+                1.2212453270876722e-15
+              ]
+            },
+            {
+              "type": "adsk::fusion::SketchLine",
+              "construction": false,
+              "start": [
+                -2.2000000000000037,
+                2.729000122145888,
+                1.2212453270876722e-15
+              ],
+              "end": [
+                -2.1999999999999997,
+                -2.816364663140035,
+                2.220446049250313e-16
+              ]
+            },
+            {
+              "type": "adsk::fusion::SketchLine",
+              "construction": false,
+              "start": [
+                -3.537989839200316,
+                4.707216028654833,
+                2.1094237467877974e-15
+              ],
+              "end": [
+                -5.100000000000004,
+                3.73615186307881,
+                0
+              ]
+            },
+            {
+              "type": "adsk::fusion::SketchLine",
+              "construction": false,
+              "start": [
+                -5.100000000000004,
+                3.73615186307881,
+                0
+              ],
+              "end": [
+                -5.100000000000004,
+                1.1995622863126325,
+                0
+              ]
+            },
+            {
+              "type": "adsk::fusion::SketchLine",
+              "construction": false,
+              "start": [
+                -5.100000000000004,
+                1.1995622863126325,
+                0
+              ],
+              "end": [
+                -2.200000000000002,
+                -0.04368227049707318,
+                -1.9984014443252818e-15
+              ]
+            }
+          ],
+          "dimensions": [
+            {
+              "name": "d696",
+              "expression": "29 mm",
+              "value": 2.9000000000000004
+            }
+          ]
+        },
+        {
+          "name": "SeatCutoutSketch",
+          "index": 96,
+          "origin": [
+            2.0734457960456676,
+            3.255893705824783,
+            3.153629206339344
+          ],
+          "x": [
+            -0.734548958762177,
+            0.6515051038369168,
+            -0.18968111887019787
+          ],
+          "y": [
+            -0.5360976178983136,
+            -0.38583517061057654,
+            0.7508199286138196
+          ],
+          "curves": [
+            {
+              "type": "adsk::fusion::SketchCircle",
+              "construction": false,
+              "center": [
+                9.80000014603138,
+                3.9000000581145287,
+                0
+              ],
+              "radius": 2
+            }
+          ],
+          "dimensions": [
+            {
+              "name": "d448",
+              "expression": "40 mm",
+              "value": 4
+            }
+          ]
+        },
+        {
+          "name": "HandleMountSketch",
+          "index": 83,
+          "origin": [
+            0,
+            0,
+            0
+          ],
+          "x": [
+            0,
+            1,
+            0
+          ],
+          "y": [
+            0,
+            0,
+            1
+          ],
+          "curves": [
+            {
+              "type": "adsk::fusion::SketchLine",
+              "construction": false,
+              "start": [
+                15.915953208748558,
+                3.423280387125462,
+                0
+              ],
+              "end": [
+                9.915953208748558,
+                2.7078237030421435,
+                0
+              ]
+            },
+            {
+              "type": "adsk::fusion::SketchLine",
+              "construction": false,
+              "start": [
+                19.315953208748557,
+                1.539011687888401,
+                0
+              ],
+              "end": [
+                19.31595320874856,
+                3.839011687888413,
+                0
+              ]
+            },
+            {
+              "type": "adsk::fusion::SketchLine",
+              "construction": false,
+              "start": [
+                19.31595320874856,
+                3.839011687888413,
+                0
+              ],
+              "end": [
+                21.605234709148537,
+                4.111991979756655,
+                0
+              ]
+            },
+            {
+              "type": "adsk::fusion::SketchLine",
+              "construction": false,
+              "start": [
+                9.483235126754387,
+                2.6562251956944025,
+                0
+              ],
+              "end": [
+                19.460716317887634,
+                3.845967797113048,
+                0
+              ]
+            },
+            {
+              "type": "adsk::fusion::SketchLine",
+              "construction": true,
+              "start": [
+                21.79475160983344,
+                1.4821609618178901,
+                0
+              ],
+              "end": [
+                19.497920809939497,
+                0.1932396299499098,
+                0
+              ]
+            },
+            {
+              "type": "adsk::fusion::SketchLine",
+              "construction": true,
+              "start": [
+                21.79475160983344,
+                1.4821609618178901,
+                0
+              ],
+              "end": [
+                24.330261257856424,
+                0.769461342154633,
+                0
+              ]
+            },
+            {
+              "type": "adsk::fusion::SketchLine",
+              "construction": false,
+              "start": [
+                0.175,
+                0,
+                0
+              ],
+              "end": [
+                2.25,
+                0,
+                0
+              ]
+            },
+            {
+              "type": "adsk::fusion::SketchLine",
+              "construction": false,
+              "start": [
+                0,
+                0.175,
+                0
+              ],
+              "end": [
+                0,
+                2.25,
+                0
+              ]
+            },
+            {
+              "type": "adsk::fusion::SketchArc",
+              "construction": false,
+              "start": [
+                24.330261257856424,
+                0.769461342154633,
+                0
+              ],
+              "end": [
+                19.497920809939497,
+                0.1932396299499098,
+                0
+              ],
+              "mid": [
+                21.48290266636868,
+                4.0974047668092535,
+                0
+              ],
+              "center": [
+                21.79475160983344,
+                1.4821609618178901,
+                0
+              ],
+              "radius": 2.6337710460641386
+            },
+            {
+              "type": "adsk::fusion::SketchArc",
+              "construction": false,
+              "start": [
+                23.248416146937426,
+                1.0735542883943445,
+                0
+              ],
+              "end": [
+                20.47792700846094,
+                0.7431934596771372,
+                0
+              ],
+              "mid": [
+                21.61596161769062,
+                2.9815388790587614,
+                0
+              ],
+              "center": [
+                21.79475160983344,
+                1.4821609618178901,
+                0
+              ],
+              "radius": 1.5100000000000007
+            },
+            {
+              "type": "adsk::fusion::SketchArc",
+              "construction": false,
+              "start": [
+                19.497920809939497,
+                0.1932396299499098,
+                0
+              ],
+              "end": [
+                20.47792700846094,
+                0.7431934596771372,
+                0
+              ],
+              "mid": [
+                20.262900824063827,
+                -0.021786554447195905,
+                0
+              ],
+              "center": [
+                19.987923909200216,
+                0.4682165448135226,
+                0
+              ],
+              "radius": 0.5618855230320675
+            },
+            {
+              "type": "adsk::fusion::SketchArc",
+              "construction": false,
+              "start": [
+                23.248416146937426,
+                1.0735542883943445,
+                0
+              ],
+              "end": [
+                24.330261257856424,
+                0.769461342154633,
+                0
+              ],
+              "mid": [
+                23.637292229277076,
+                0.3805852598149875,
+                0
+              ],
+              "center": [
+                23.78933870239693,
+                0.92150781527449,
+                0
+              ],
+              "radius": 0.5618855230320721
+            },
+            {
+              "type": "adsk::fusion::SketchLine",
+              "construction": true,
+              "start": [
+                25.49299011643609,
+                0.558789843644595,
+                0
+              ],
+              "end": [
+                16.496842976568225,
+                -0.5139357567246524,
+                0
+              ]
+            }
+          ],
+          "dimensions": [
+            {
+              "name": "d84",
+              "expression": "30.2 mm",
+              "value": 3.02
+            },
+            {
+              "name": "d454",
+              "expression": "135 deg",
+              "value": 2.356194490192345
+            },
+            {
+              "name": "d566",
+              "expression": "11.2377104606 mm",
+              "value": 1.1237710460600001
+            }
+          ]
+        },
+        {
+          "name": "FrontCutSketch",
+          "index": 85,
+          "origin": [
+            0,
+            0,
+            0
+          ],
+          "x": [
+            1,
+            0,
+            0
+          ],
+          "y": [
+            0,
+            1,
+            0
+          ],
+          "curves": [
+            {
+              "type": "adsk::fusion::SketchLine",
+              "construction": false,
+              "start": [
+                -5,
+                24.130633003465633,
+                0
+              ],
+              "end": [
+                -5,
+                19.576743936929752,
+                0
+              ]
+            },
+            {
+              "type": "adsk::fusion::SketchLine",
+              "construction": false,
+              "start": [
+                5,
+                19.576743936929752,
+                0
+              ],
+              "end": [
+                5,
+                24.130633003465633,
+                0
+              ]
+            },
+            {
+              "type": "adsk::fusion::SketchLine",
+              "construction": false,
+              "start": [
+                0,
+                0.25,
+                0
+              ],
+              "end": [
+                0,
+                2,
+                0
+              ]
+            },
+            {
+              "type": "adsk::fusion::SketchLine",
+              "construction": false,
+              "start": [
+                4.9,
+                19.31595320874856,
+                0
+              ],
+              "end": [
+                8,
+                16.331122810793566,
+                0
+              ]
+            },
+            {
+              "type": "adsk::fusion::SketchLine",
+              "construction": false,
+              "start": [
+                8,
+                16.331122810793566,
+                0
+              ],
+              "end": [
+                8,
+                19.31595320874856,
+                0
+              ]
+            },
+            {
+              "type": "adsk::fusion::SketchLine",
+              "construction": false,
+              "start": [
+                8,
+                19.31595320874856,
+                0
+              ],
+              "end": [
+                4.9,
+                19.31595320874856,
+                0
+              ]
+            },
+            {
+              "type": "adsk::fusion::SketchLine",
+              "construction": false,
+              "start": [
+                -4.9,
+                19.31595320874856,
+                0
+              ],
+              "end": [
+                -8,
+                16.331122810793566,
+                0
+              ]
+            },
+            {
+              "type": "adsk::fusion::SketchLine",
+              "construction": false,
+              "start": [
+                -8,
+                16.331122810793566,
+                0
+              ],
+              "end": [
+                -8,
+                19.31595320874856,
+                0
+              ]
+            },
+            {
+              "type": "adsk::fusion::SketchLine",
+              "construction": false,
+              "start": [
+                -8,
+                19.31595320874856,
+                0
+              ],
+              "end": [
+                -4.9,
+                19.31595320874856,
+                0
+              ]
+            },
+            {
+              "type": "adsk::fusion::SketchLine",
+              "construction": false,
+              "start": [
+                -5,
+                21.80477990634873,
+                0
+              ],
+              "end": [
+                5,
+                21.80477990634873,
+                0
+              ]
+            }
+          ],
+          "dimensions": []
+        },
+        {
+          "name": "RearSeatNotchSketch",
+          "index": 88,
+          "origin": [
+            0,
+            0.8945337453041248,
+            3.132749600074048
+          ],
+          "x": [
+            -0.9999999999999999,
+            0,
+            0
+          ],
+          "y": [
+            0,
+            -0.9615675208845653,
+            0.27456857573275
+          ],
+          "curves": [
+            {
+              "type": "adsk::fusion::SketchLine",
+              "construction": false,
+              "start": [
+                2.168954226365097,
+                28.327841123961317,
+                0
+              ],
+              "end": [
+                -2.168954226365097,
+                28.327841123961317,
+                0
+              ]
+            },
+            {
+              "type": "adsk::fusion::SketchLine",
+              "construction": false,
+              "start": [
+                -2.168954226365097,
+                28.327841123961317,
+                0
+              ],
+              "end": [
+                -3.219460531586832,
+                20.78411239008131,
+                2.220446049250313e-16
+              ]
+            },
+            {
+              "type": "adsk::fusion::SketchLine",
+              "construction": false,
+              "start": [
+                -3.219460531586832,
+                20.78411239008131,
+                2.220446049250313e-16
+              ],
+              "end": [
+                3.219460531586832,
+                20.784112390081315,
+                -8.881784197001252e-16
+              ]
+            },
+            {
+              "type": "adsk::fusion::SketchLine",
+              "construction": false,
+              "start": [
+                3.219460531586832,
+                20.784112390081315,
+                -8.881784197001252e-16
+              ],
+              "end": [
+                2.168954226365097,
+                28.327841123961317,
+                0
+              ]
+            },
+            {
+              "type": "adsk::fusion::SketchLine",
+              "construction": false,
+              "start": [
+                -1.35,
+                24.470896933768437,
+                0
+              ],
+              "end": [
+                -3.6356296061053093,
+                24.470896933768437,
+                0
+              ]
+            },
+            {
+              "type": "adsk::fusion::SketchLine",
+              "construction": false,
+              "start": [
+                -3.6356296061053093,
+                24.470896933768437,
+                0
+              ],
+              "end": [
+                -3.635629606105308,
+                26.470896933768437,
+                0
+              ]
+            },
+            {
+              "type": "adsk::fusion::SketchLine",
+              "construction": false,
+              "start": [
+                -3.635629606105308,
+                26.470896933768437,
+                0
+              ],
+              "end": [
+                -1.35,
+                26.470896933768437,
+                0
+              ]
+            },
+            {
+              "type": "adsk::fusion::SketchLine",
+              "construction": false,
+              "start": [
+                -1.35,
+                26.470896933768437,
+                0
+              ],
+              "end": [
+                -1.35,
+                24.470896933768437,
+                0
+              ]
+            },
+            {
+              "type": "adsk::fusion::SketchLine",
+              "construction": false,
+              "start": [
+                0,
+                0.3087452712443577,
+                0
+              ],
+              "end": [
+                0,
+                -1.8544928978359443,
+                1.1102230246251565e-16
+              ]
+            },
+            {
+              "type": "adsk::fusion::SketchLine",
+              "construction": false,
+              "start": [
+                3.635629606105308,
+                26.470896933768437,
+                0
+              ],
+              "end": [
+                1.35,
+                26.470896933768437,
+                0
+              ]
+            },
+            {
+              "type": "adsk::fusion::SketchLine",
+              "construction": false,
+              "start": [
+                1.35,
+                26.470896933768437,
+                0
+              ],
+              "end": [
+                1.35,
+                24.470896933768437,
+                0
+              ]
+            },
+            {
+              "type": "adsk::fusion::SketchLine",
+              "construction": false,
+              "start": [
+                3.6356296061053093,
+                24.470896933768437,
+                0
+              ],
+              "end": [
+                3.635629606105308,
+                26.470896933768437,
+                0
+              ]
+            },
+            {
+              "type": "adsk::fusion::SketchLine",
+              "construction": false,
+              "start": [
+                1.35,
+                24.470896933768437,
+                0
+              ],
+              "end": [
+                3.6356296061053093,
+                24.470896933768437,
+                0
+              ]
+            },
+            {
+              "type": "adsk::fusion::SketchLine",
+              "construction": false,
+              "start": [
+                0,
+                0.04804950075323022,
+                4.440892098500626e-16
+              ],
+              "end": [
+                0,
+                0.6177792953986866,
+                3.608224830031759e-16
+              ]
+            },
+            {
+              "type": "adsk::fusion::SketchEllipse",
+              "construction": false,
+              "points": [
+                [
+                  -1.1000000000000003,
+                  19.670896933768436,
+                  8.881784197001252e-16
+                ],
+                [
+                  -1.1003964312859476,
+                  19.687500708888535,
+                  8.835699463416174e-16
+                ],
+                [
+                  -1.1015848270994208,
+                  19.704066871117647,
+                  8.789719126575083e-16
+                ],
+                [
+                  -1.1035624953416738,
+                  19.720557892770085,
+                  8.743947346729763e-16
+                ],
+                [
+                  -1.106324955958053,
+                  19.73693641637773,
+                  8.698487811683322e-16
+                ],
+                [
+                  -1.1098659510867608,
+                  19.753165339316727,
+                  8.653443501903974e-16
+                ],
+                [
+                  -1.1141774592349263,
+                  19.769207897856838,
+                  8.608916457241148e-16
+                ],
+                [
+                  -1.1192497134498665,
+                  19.785027750443145,
+                  8.565007545772418e-16
+                ],
+                [
+                  -1.125071223444375,
+                  19.80058906002133,
+                  8.521816235304857e-16
+                ],
+                [
+                  -1.1316288016259188,
+                  19.815856575220163,
+                  8.479440368048468e-16
+                ],
+                [
+                  -1.138907592970777,
+                  19.830795710207155,
+                  8.437975938972106e-16
+                ],
+                [
+                  -1.1468911086754467,
+                  19.84537262303664,
+                  8.397516878343997e-16
+                ],
+                [
+                  -1.155561263509087,
+                  19.859554292312616,
+                  8.358154838949475e-16
+                ],
+                [
+                  -1.1648984167823828,
+                  19.87330859199287,
+                  8.319978988467936e-16
+                ],
+                [
+                  -1.1748814168400248,
+                  19.886604364164782,
+                  8.283075807479374e-16
+                ],
+                [
+                  -1.18548764897601,
+                  19.899411489628005,
+                  8.247528893558042e-16
+                ],
+                [
+                  -1.1966930866632257,
+                  19.911700956124157,
+                  8.21341877189707e-16
+                ],
+                [
+                  -1.2084723459812612,
+                  19.92344492405892,
+                  8.180822712892992e-16
+                ],
+                [
+                  -1.2207987431191505,
+                  19.934616789567656,
+                  8.149814557103456e-16
+                ],
+                [
+                  -1.2336443548227884,
+                  19.94519124478174,
+                  8.120464547974599e-16
+                ],
+                [
+                  -1.2469800816500811,
+                  19.955144335159005,
+                  8.092839172717059e-16
+                ],
+                [
+                  -1.2607757138905413,
+                  19.964453513748495,
+                  8.067001011691054e-16
+                ],
+                [
+                  -1.2750000000000004,
+                  19.97309769226656,
+                  8.043008596641739e-16
+                ],
+                [
+                  -1.2896207173954068,
+                  19.981057288868595,
+                  8.020916278105977e-16
+                ],
+                [
+                  -1.3046047454493401,
+                  19.988314272508216,
+                  8.00077410229089e-16
+                ],
+                [
+                  -1.3199181405188858,
+                  19.994852203783385,
+                  7.982627697703109e-16
+                ],
+                [
+                  -1.3355262128389027,
+                  20.00065627217695,
+                  7.966518171785526e-16
+                ],
+                [
+                  -1.3513936051055,
+                  20.005713329607207,
+                  7.952482017795715e-16
+                ],
+                [
+                  -1.3674843725717007,
+                  20.01001192021256,
+                  7.940551032136966e-16
+                ],
+                [
+                  -1.3837620644738569,
+                  20.013542306302714,
+                  7.930752242329208e-16
+                ],
+                [
+                  -1.4001898066043506,
+                  20.016296490417677,
+                  7.923107845782978e-16
+                ],
+                [
+                  -1.4167303848435364,
+                  20.018268233444598,
+                  7.917635159515152e-16
+                ],
+                [
+                  -1.4333463294616906,
+                  20.019453068751336,
+                  7.914346580920329e-16
+                ],
+                [
+                  -1.4500000000000004,
+                  20.01984831230484,
+                  7.913249559686743e-16
+                ],
+                [
+                  -1.4666536705383102,
+                  20.019453068751336,
+                  7.914346580920329e-16
+                ],
+                [
+                  -1.4832696151564644,
+                  20.018268233444598,
+                  7.917635159515153e-16
+                ],
+                [
+                  -1.4998101933956502,
+                  20.016296490417677,
+                  7.923107845782978e-16
+                ],
+                [
+                  -1.516237935526144,
+                  20.013542306302714,
+                  7.930752242329209e-16
+                ],
+                [
+                  -1.5325156274282998,
+                  20.01001192021256,
+                  7.940551032136967e-16
+                ],
+                [
+                  -1.5486063948945008,
+                  20.005713329607207,
+                  7.952482017795715e-16
+                ],
+                [
+                  -1.5644737871610979,
+                  20.00065627217695,
+                  7.966518171785527e-16
+                ],
+                [
+                  -1.580081859481115,
+                  19.994852203783385,
+                  7.98262769770311e-16
+                ],
+                [
+                  -1.5953952545506604,
+                  19.988314272508216,
+                  8.00077410229089e-16
+                ],
+                [
+                  -1.610379282604594,
+                  19.981057288868595,
+                  8.020916278105977e-16
+                ],
+                [
+                  -1.6250000000000002,
+                  19.97309769226656,
+                  8.043008596641739e-16
+                ],
+                [
+                  -1.6392242861094595,
+                  19.964453513748495,
+                  8.067001011691054e-16
+                ],
+                [
+                  -1.6530199183499197,
+                  19.955144335159005,
+                  8.092839172717059e-16
+                ],
+                [
+                  -1.6663556451772121,
+                  19.94519124478174,
+                  8.120464547974599e-16
+                ],
+                [
+                  -1.67920125688085,
+                  19.934616789567656,
+                  8.149814557103456e-16
+                ],
+                [
+                  -1.6915276540187394,
+                  19.923444924058916,
+                  8.180822712892993e-16
+                ],
+                [
+                  -1.7033069133367749,
+                  19.911700956124157,
+                  8.21341877189707e-16
+                ],
+                [
+                  -1.7145123510239906,
+                  19.899411489628005,
+                  8.247528893558043e-16
+                ],
+                [
+                  -1.7251185831599758,
+                  19.886604364164782,
+                  8.283075807479374e-16
+                ],
+                [
+                  -1.7351015832176178,
+                  19.87330859199287,
+                  8.319978988467937e-16
+                ],
+                [
+                  -1.7444387364909137,
+                  19.859554292312616,
+                  8.358154838949475e-16
+                ],
+                [
+                  -1.7531088913245538,
+                  19.84537262303664,
+                  8.397516878343998e-16
+                ],
+                [
+                  -1.7610924070292233,
+                  19.830795710207155,
+                  8.437975938972106e-16
+                ],
+                [
+                  -1.7683711983740817,
+                  19.815856575220163,
+                  8.479440368048468e-16
+                ],
+                [
+                  -1.7749287765556256,
+                  19.80058906002133,
+                  8.521816235304857e-16
+                ],
+                [
+                  -1.7807502865501341,
+                  19.785027750443145,
+                  8.565007545772418e-16
+                ],
+                [
+                  -1.7858225407650743,
+                  19.769207897856838,
+                  8.608916457241149e-16
+                ],
+                [
+                  -1.7901340489132398,
+                  19.753165339316727,
+                  8.653443501903975e-16
+                ],
+                [
+                  -1.7936750440419476,
+                  19.73693641637773,
+                  8.698487811683323e-16
+                ],
+                [
+                  -1.7964375046583267,
+                  19.720557892770085,
+                  8.743947346729763e-16
+                ],
+                [
+                  -1.7984151729005797,
+                  19.704066871117647,
+                  8.789719126575083e-16
+                ],
+                [
+                  -1.799603568714053,
+                  19.687500708888535,
+                  8.835699463416174e-16
+                ],
+                [
+                  -1.8000000000000003,
+                  19.670896933768436,
+                  8.881784197001252e-16
+                ],
+                [
+                  -1.799603568714053,
+                  19.654293158648336,
+                  8.92786893058633e-16
+                ],
+                [
+                  -1.79841517290058,
+                  19.637726996419225,
+                  8.973849267427421e-16
+                ],
+                [
+                  -1.7964375046583267,
+                  19.621235974766787,
+                  9.019621047272742e-16
+                ],
+                [
+                  -1.7936750440419476,
+                  19.60485745115914,
+                  9.065080582319181e-16
+                ],
+                [
+                  -1.7901340489132398,
+                  19.588628528220145,
+                  9.11012489209853e-16
+                ],
+                [
+                  -1.7858225407650743,
+                  19.572585969680034,
+                  9.154651936761355e-16
+                ],
+                [
+                  -1.7807502865501341,
+                  19.556766117093726,
+                  9.198560848230086e-16
+                ],
+                [
+                  -1.7749287765556256,
+                  19.54120480751554,
+                  9.241752158697647e-16
+                ],
+                [
+                  -1.7683711983740817,
+                  19.52593729231671,
+                  9.284128025954036e-16
+                ],
+                [
+                  -1.7610924070292235,
+                  19.510998157329716,
+                  9.325592455030399e-16
+                ],
+                [
+                  -1.7531088913245538,
+                  19.496421244500233,
+                  9.366051515658506e-16
+                ],
+                [
+                  -1.7444387364909137,
+                  19.482239575224256,
+                  9.40541355505303e-16
+                ],
+                [
+                  -1.7351015832176178,
+                  19.468485275544,
+                  9.443589405534567e-16
+                ],
+                [
+                  -1.725118583159976,
+                  19.45518950337209,
+                  9.48049258652313e-16
+                ],
+                [
+                  -1.7145123510239908,
+                  19.442382377908867,
+                  9.516039500444462e-16
+                ],
+                [
+                  -1.7033069133367749,
+                  19.430092911412714,
+                  9.550149622105435e-16
+                ],
+                [
+                  -1.6915276540187394,
+                  19.418348943477955,
+                  9.582745681109511e-16
+                ],
+                [
+                  -1.67920125688085,
+                  19.407177077969216,
+                  9.613753836899049e-16
+                ],
+                [
+                  -1.6663556451772121,
+                  19.396602622755132,
+                  9.643103846027904e-16
+                ],
+                [
+                  -1.6530199183499197,
+                  19.386649532377866,
+                  9.670729221285444e-16
+                ],
+                [
+                  -1.6392242861094595,
+                  19.377340353788377,
+                  9.69656738231145e-16
+                ],
+                [
+                  -1.6250000000000002,
+                  19.368696175270312,
+                  9.720559797360765e-16
+                ],
+                [
+                  -1.610379282604594,
+                  19.360736578668277,
+                  9.742652115896528e-16
+                ],
+                [
+                  -1.5953952545506607,
+                  19.353479595028656,
+                  9.762794291711613e-16
+                ],
+                [
+                  -1.580081859481115,
+                  19.346941663753487,
+                  9.780940696299394e-16
+                ],
+                [
+                  -1.564473787161098,
+                  19.34113759535992,
+                  9.797050222216978e-16
+                ],
+                [
+                  -1.5486063948945008,
+                  19.336080537929664,
+                  9.811086376206789e-16
+                ],
+                [
+                  -1.5325156274283,
+                  19.331781947324313,
+                  9.823017361865538e-16
+                ],
+                [
+                  -1.516237935526144,
+                  19.32825156123416,
+                  9.832816151673296e-16
+                ],
+                [
+                  -1.4998101933956502,
+                  19.325497377119195,
+                  9.840460548219525e-16
+                ],
+                [
+                  -1.4832696151564644,
+                  19.323525634092274,
+                  9.84593323448735e-16
+                ],
+                [
+                  -1.4666536705383102,
+                  19.322340798785536,
+                  9.849221813082176e-16
+                ],
+                [
+                  -1.4500000000000006,
+                  19.321945555232034,
+                  9.850318834315761e-16
+                ],
+                [
+                  -1.4333463294616908,
+                  19.322340798785536,
+                  9.849221813082174e-16
+                ],
+                [
+                  -1.4167303848435366,
+                  19.323525634092274,
+                  9.84593323448735e-16
+                ],
+                [
+                  -1.4001898066043508,
+                  19.325497377119195,
+                  9.840460548219525e-16
+                ],
+                [
+                  -1.383762064473857,
+                  19.32825156123416,
+                  9.832816151673296e-16
+                ],
+                [
+                  -1.3674843725717012,
+                  19.331781947324313,
+                  9.823017361865536e-16
+                ],
+                [
+                  -1.3513936051055002,
+                  19.336080537929664,
+                  9.811086376206789e-16
+                ],
+                [
+                  -1.3355262128389032,
+                  19.34113759535992,
+                  9.797050222216978e-16
+                ],
+                [
+                  -1.319918140518886,
+                  19.346941663753487,
+                  9.780940696299394e-16
+                ],
+                [
+                  -1.3046047454493404,
+                  19.35347959502866,
+                  9.762794291711613e-16
+                ],
+                [
+                  -1.289620717395407,
+                  19.360736578668277,
+                  9.742652115896526e-16
+                ],
+                [
+                  -1.2750000000000008,
+                  19.368696175270312,
+                  9.720559797360763e-16
+                ],
+                [
+                  -1.2607757138905415,
+                  19.377340353788377,
+                  9.69656738231145e-16
+                ],
+                [
+                  -1.2469800816500813,
+                  19.386649532377866,
+                  9.670729221285444e-16
+                ],
+                [
+                  -1.233644354822789,
+                  19.396602622755132,
+                  9.643103846027904e-16
+                ],
+                [
+                  -1.220798743119151,
+                  19.407177077969216,
+                  9.613753836899047e-16
+                ],
+                [
+                  -1.2084723459812616,
+                  19.418348943477955,
+                  9.582745681109511e-16
+                ],
+                [
+                  -1.1966930866632262,
+                  19.430092911412714,
+                  9.550149622105433e-16
+                ],
+                [
+                  -1.1854876489760104,
+                  19.442382377908867,
+                  9.516039500444462e-16
+                ],
+                [
+                  -1.1748814168400252,
+                  19.45518950337209,
+                  9.48049258652313e-16
+                ],
+                [
+                  -1.1648984167823833,
+                  19.468485275544,
+                  9.443589405534567e-16
+                ],
+                [
+                  -1.1555612635090875,
+                  19.482239575224256,
+                  9.40541355505303e-16
+                ],
+                [
+                  -1.1468911086754474,
+                  19.496421244500233,
+                  9.366051515658506e-16
+                ],
+                [
+                  -1.1389075929707777,
+                  19.510998157329716,
+                  9.325592455030399e-16
+                ],
+                [
+                  -1.1316288016259195,
+                  19.52593729231671,
+                  9.284128025954036e-16
+                ],
+                [
+                  -1.1250712234443756,
+                  19.54120480751554,
+                  9.241752158697647e-16
+                ],
+                [
+                  -1.119249713449867,
+                  19.556766117093726,
+                  9.198560848230086e-16
+                ],
+                [
+                  -1.1141774592349267,
+                  19.572585969680034,
+                  9.154651936761355e-16
+                ],
+                [
+                  -1.1098659510867614,
+                  19.588628528220145,
+                  9.11012489209853e-16
+                ],
+                [
+                  -1.1063249559580535,
+                  19.60485745115914,
+                  9.065080582319181e-16
+                ],
+                [
+                  -1.1035624953416745,
+                  19.621235974766787,
+                  9.019621047272742e-16
+                ],
+                [
+                  -1.1015848270994213,
+                  19.637726996419225,
+                  8.973849267427421e-16
+                ],
+                [
+                  -1.1003964312859482,
+                  19.654293158648336,
+                  8.92786893058633e-16
+                ],
+                [
+                  -1.100000000000001,
+                  19.670896933768436,
+                  8.881784197001252e-16
+                ]
+              ]
+            },
+            {
+              "type": "adsk::fusion::SketchLine",
+              "construction": false,
+              "start": [
+                -2.676133817630976,
+                28.053272548228573,
+                -1.7763568394002505e-15
+              ],
+              "end": [
+                -6.094766386144668,
+                15.289458370663496,
+                -1.3322676295501878e-15
+              ]
+            }
+          ],
+          "dimensions": [
+            {
+              "name": "d440",
+              "expression": "13.5 mm",
+              "value": 1.35
+            },
+            {
+              "name": "d441",
+              "expression": "22.8562960611 mm",
+              "value": 2.28562960611
+            },
+            {
+              "name": "d442",
+              "expression": "20 mm",
+              "value": 2
+            },
+            {
+              "name": "d443",
+              "expression": "48 mm",
+              "value": 4.800000000000001
+            }
+          ]
+        },
+        {
+          "name": "FrontDovetailSketch",
+          "index": 90,
+          "origin": [
+            0,
+            0,
+            0
+          ],
+          "x": [
+            0,
+            1,
+            0
+          ],
+          "y": [
+            0,
+            0,
+            1
+          ],
+          "curves": [
+            {
+              "type": "adsk::fusion::SketchLine",
+              "construction": false,
+              "start": [
+                21.484114456222173,
+                4.0872434175519174,
+                0
+              ],
+              "end": [
+                19.31595320874856,
+                3.8287058414393424,
+                0
+              ]
+            },
+            {
+              "type": "adsk::fusion::SketchLine",
+              "construction": false,
+              "start": [
+                20.490784466264675,
+                3.9687959874159953,
+                0
+              ],
+              "end": [
+                19.49781895815814,
+                3.850392019109494,
+                0
+              ]
+            },
+            {
+              "type": "adsk::fusion::SketchLine",
+              "construction": false,
+              "start": [
+                19.49781895815814,
+                3.850392019109494,
+                0
+              ],
+              "end": [
+                19.082803235133447,
+                4.405154986188491,
+                0
+              ]
+            },
+            {
+              "type": "adsk::fusion::SketchLine",
+              "construction": false,
+              "start": [
+                19.082803235133447,
+                4.405154986188491,
+                0
+              ],
+              "end": [
+                20.763715427321568,
+                4.605591630064844,
+                0
+              ]
+            },
+            {
+              "type": "adsk::fusion::SketchLine",
+              "construction": false,
+              "start": [
+                20.763715427321568,
+                4.605591630064844,
+                0
+              ],
+              "end": [
+                20.490784466264675,
+                3.9687959874159953,
+                0
+              ]
+            },
+            {
+              "type": "adsk::fusion::SketchLine",
+              "construction": false,
+              "start": [
+                20.763715427321568,
+                4.605591630064844,
+                0
+              ],
+              "end": [
+                20.83475780830547,
+                4.009812325200922,
+                0
+              ]
+            },
+            {
+              "type": "adsk::fusion::SketchLine",
+              "construction": false,
+              "start": [
+                19.082803235133447,
+                4.405154986188491,
+                0
+              ],
+              "end": [
+                19.153845616117348,
+                3.809375681324568,
+                0
+              ]
+            }
+          ],
+          "dimensions": [
+            {
+              "name": "d108",
+              "expression": "10 mm",
+              "value": 1
+            },
+            {
+              "name": "d109",
+              "expression": "60 deg",
+              "value": 1.0471975511965976
+            },
+            {
+              "name": "d136",
+              "expression": "6.00 mm",
+              "value": 0.6000000000000001
+            }
+          ]
+        },
+        {
+          "name": "HingeTrajectorySketch",
+          "index": 94,
+          "origin": [
+            0,
+            0,
+            0
+          ],
+          "x": [
+            0,
+            1,
+            0
+          ],
+          "y": [
+            0,
+            0,
+            1
+          ],
+          "curves": [
+            {
+              "type": "adsk::fusion::SketchCircle",
+              "construction": true,
+              "center": [
+                21.79475160983344,
+                1.4821609618178901,
+                0
+              ],
+              "radius": 45.00659192424363
+            }
+          ],
+          "dimensions": []
+        },
+        {
+          "name": "RearCutSketch",
+          "index": 120,
+          "origin": [
+            0,
+            -4.732528017370813,
+            6.758750454859343
+          ],
+          "x": [
+            1,
+            0,
+            0
+          ],
+          "y": [
+            0,
+            -0.819152044288992,
+            -0.5735764363510457
+          ],
+          "curves": [
+            {
+              "type": "adsk::fusion::SketchLine",
+              "construction": false,
+              "start": [
+                6.777871005122091,
+                16.993848625069724,
+                0
+              ],
+              "end": [
+                7.278069729473393,
+                12.938377555492911,
+                0
+              ]
+            },
+            {
+              "type": "adsk::fusion::SketchLine",
+              "construction": false,
+              "start": [
+                -6.777871005122091,
+                16.993848625069724,
+                0
+              ],
+              "end": [
+                6.777871005122091,
+                16.993848625069724,
+                0
+              ]
+            },
+            {
+              "type": "adsk::fusion::SketchLine",
+              "construction": false,
+              "start": [
+                7.67412285453071,
+                13.811868109730264,
+                0
+              ],
+              "end": [
+                4.492142339191243,
+                16.993848625069724,
+                0
+              ]
+            },
+            {
+              "type": "adsk::fusion::SketchLine",
+              "construction": false,
+              "start": [
+                7.281659792317427,
+                16.993848625069724,
+                0
+              ],
+              "end": [
+                7.67412285453071,
+                13.811868109730264,
+                0
+              ]
+            },
+            {
+              "type": "adsk::fusion::SketchLine",
+              "construction": false,
+              "start": [
+                0,
+                -0.14335160775057387,
+                0
+              ],
+              "end": [
+                0,
+                -1.8430920996502322,
+                1.1102230246251565e-16
+              ]
+            },
+            {
+              "type": "adsk::fusion::SketchLine",
+              "construction": false,
+              "start": [
+                6.777871005122091,
+                16.993848625069724,
+                0
+              ],
+              "end": [
+                7.281659792317427,
+                16.993848625069724,
+                0
+              ]
+            }
+          ],
+          "dimensions": [
+            {
+              "name": "d611",
+              "expression": "5 mm",
+              "value": 0.5
+            },
+            {
+              "name": "d613",
+              "expression": "45 deg",
+              "value": 0.7853981633974483
+            },
+            {
+              "name": "d616",
+              "expression": "45 mm",
+              "value": 4.5
+            }
+          ]
+        },
+        {
+          "name": "BodyCutSketch",
+          "index": 123,
+          "origin": [
+            0,
+            0.8627219333715026,
+            4.240413776674599
+          ],
+          "x": [
+            1,
+            0,
+            0
+          ],
+          "y": [
+            0,
+            0.9799247046208692,
+            -0.1993679344170023
+          ],
+          "curves": [
+            {
+              "type": "adsk::fusion::SketchLine",
+              "construction": false,
+              "start": [
+                1.2757336829221728,
+                -14.082792696673577,
+                0
+              ],
+              "end": [
+                3.4687501019991274,
+                -12.061562907218724,
+                0
+              ]
+            },
+            {
+              "type": "adsk::fusion::SketchLine",
+              "construction": false,
+              "start": [
+                3.4687501019991274,
+                -12.061562907218724,
+                0
+              ],
+              "end": [
+                3.468750101999131,
+                -6.7543053165769775,
+                0
+              ]
+            },
+            {
+              "type": "adsk::fusion::SketchLine",
+              "construction": false,
+              "start": [
+                3.468750101999131,
+                -6.7543053165769775,
+                0
+              ],
+              "end": [
+                0.6000000000000001,
+                -2.780258143439239,
+                0
+              ]
+            },
+            {
+              "type": "adsk::fusion::SketchLine",
+              "construction": false,
+              "start": [
+                0.6000000000000001,
+                -2.780258143439239,
+                0
+              ],
+              "end": [
+                1.881032752564287e-17,
+                -2.7802581434392395,
+                0
+              ]
+            },
+            {
+              "type": "adsk::fusion::SketchLine",
+              "construction": false,
+              "start": [
+                0,
+                0.175,
+                0
+              ],
+              "end": [
+                0,
+                2.25,
+                0
+              ]
+            },
+            {
+              "type": "adsk::fusion::SketchLine",
+              "construction": false,
+              "start": [
+                -0.6000000000000001,
+                -2.780258143439239,
+                0
+              ],
+              "end": [
+                -1.881032752564287e-17,
+                -2.7802581434392395,
+                0
+              ]
+            },
+            {
+              "type": "adsk::fusion::SketchLine",
+              "construction": false,
+              "start": [
+                -3.468750101999131,
+                -6.7543053165769775,
+                0
+              ],
+              "end": [
+                -0.6000000000000001,
+                -2.780258143439239,
+                0
+              ]
+            },
+            {
+              "type": "adsk::fusion::SketchLine",
+              "construction": false,
+              "start": [
+                -1.2757336829221728,
+                -14.082792696673577,
+                0
+              ],
+              "end": [
+                -3.4687501019991274,
+                -12.061562907218724,
+                0
+              ]
+            },
+            {
+              "type": "adsk::fusion::SketchLine",
+              "construction": false,
+              "start": [
+                -3.4687501019991274,
+                -12.061562907218724,
+                0
+              ],
+              "end": [
+                -3.468750101999131,
+                -6.7543053165769775,
+                0
+              ]
+            },
+            {
+              "type": "adsk::fusion::SketchLine",
+              "construction": false,
+              "start": [
+                1.2757336829221728,
+                -14.082792696673577,
+                0
+              ],
+              "end": [
+                -1.2757336829221728,
+                -14.082792696673577,
+                0
+              ]
+            },
+            {
+              "type": "adsk::fusion::SketchCircle",
+              "construction": false,
+              "center": [
+                1.4500000000000004,
+                -19.39428441873774,
+                -4.440892098500626e-16
+              ],
+              "radius": 0.35000000000000014
+            },
+            {
+              "type": "adsk::fusion::SketchCircle",
+              "construction": false,
+              "center": [
+                -1.4500000000000004,
+                -19.39428441873774,
+                -4.440892098500626e-16
+              ],
+              "radius": 0.35000000000000014
+            },
+            {
+              "type": "adsk::fusion::SketchLine",
+              "construction": false,
+              "start": [
+                -3.4930389480453843,
+                -20.36229469334996,
+                0
+              ],
+              "end": [
+                3.4930389480453843,
+                -20.36229469334996,
+                0
+              ]
+            },
+            {
+              "type": "adsk::fusion::SketchLine",
+              "construction": false,
+              "start": [
+                3.4930389480453843,
+                -20.36229469334996,
+                0
+              ],
+              "end": [
+                4.875979678400628,
+                -6.685431935163779,
+                0
+              ]
+            },
+            {
+              "type": "adsk::fusion::SketchLine",
+              "construction": false,
+              "start": [
+                4.875979678400628,
+                -6.685431935163779,
+                0
+              ],
+              "end": [
+                3.537989839200316,
+                -4.707216028654833,
+                8.881784197001252e-16
+              ]
+            },
+            {
+              "type": "adsk::fusion::SketchLine",
+              "construction": false,
+              "start": [
+                3.537989839200316,
+                -4.707216028654833,
+                8.881784197001252e-16
+              ],
+              "end": [
+                5.100000000000004,
+                -3.7361518630788098,
+                2.7755575615628914e-17
+              ]
+            },
+            {
+              "type": "adsk::fusion::SketchLine",
+              "construction": false,
+              "start": [
+                5.100000000000004,
+                -3.7361518630788098,
+                2.7755575615628914e-17
+              ],
+              "end": [
+                5.100000000000004,
+                -1.1995622863126325,
+                5.551115123125783e-17
+              ]
+            },
+            {
+              "type": "adsk::fusion::SketchLine",
+              "construction": false,
+              "start": [
+                5.100000000000004,
+                -1.1995622863126325,
+                5.551115123125783e-17
+              ],
+              "end": [
+                2.200000000000002,
+                0.04368227049707318,
+                8.326672684688674e-16
+              ]
+            },
+            {
+              "type": "adsk::fusion::SketchLine",
+              "construction": false,
+              "start": [
+                2.200000000000002,
+                0.04368227049707318,
+                8.326672684688674e-16
+              ],
+              "end": [
+                2.1999999999999997,
+                2.8163646631400354,
+                1.1102230246251565e-16
+              ]
+            },
+            {
+              "type": "adsk::fusion::SketchLine",
+              "construction": false,
+              "start": [
+                2.1999999999999997,
+                2.8163646631400354,
+                1.1102230246251565e-16
+              ],
+              "end": [
+                -2.1999999999999997,
+                2.8163646631400354,
+                8.881784197001252e-16
+              ]
+            },
+            {
+              "type": "adsk::fusion::SketchLine",
+              "construction": false,
+              "start": [
+                -2.1999999999999997,
+                2.8163646631400354,
+                8.881784197001252e-16
+              ],
+              "end": [
+                -2.200000000000002,
+                0.04368227049707318,
+                7.771561172376096e-16
+              ]
+            },
+            {
+              "type": "adsk::fusion::SketchLine",
+              "construction": false,
+              "start": [
+                -2.200000000000002,
+                0.04368227049707318,
+                7.771561172376096e-16
+              ],
+              "end": [
+                -5.100000000000004,
+                -1.1995622863126325,
+                0
+              ]
+            },
+            {
+              "type": "adsk::fusion::SketchLine",
+              "construction": false,
+              "start": [
+                -5.100000000000004,
+                -1.1995622863126325,
+                0
+              ],
+              "end": [
+                -5.100000000000004,
+                -3.7361518630788098,
+                8.326672684688674e-16
+              ]
+            },
+            {
+              "type": "adsk::fusion::SketchLine",
+              "construction": false,
+              "start": [
+                -5.100000000000004,
+                -3.7361518630788098,
+                8.326672684688674e-16
+              ],
+              "end": [
+                -3.537989839200316,
+                -4.707216028654833,
+                8.604228440844963e-16
+              ]
+            },
+            {
+              "type": "adsk::fusion::SketchLine",
+              "construction": false,
+              "start": [
+                -3.537989839200316,
+                -4.707216028654833,
+                8.604228440844963e-16
+              ],
+              "end": [
+                -4.875979678400628,
+                -6.685431935163779,
+                0
+              ]
+            },
+            {
+              "type": "adsk::fusion::SketchLine",
+              "construction": false,
+              "start": [
+                -4.875979678400628,
+                -6.685431935163779,
+                0
+              ],
+              "end": [
+                -3.4930389480453843,
+                -20.36229469334996,
+                0
+              ]
+            },
+            {
+              "type": "adsk::fusion::SketchLine",
+              "construction": false,
+              "start": [
+                2.2000000000000037,
+                -1.579689315379046,
+                8.881784197001252e-16
+              ],
+              "end": [
+                6.468750101999127,
+                -7.493140704490726,
+                6.661338147750939e-16
+              ]
+            },
+            {
+              "type": "adsk::fusion::SketchLine",
+              "construction": false,
+              "start": [
+                7.793135238304326,
+                -10.526162730792786,
+                0
+              ],
+              "end": [
+                7.793135238304326,
+                -13.273306089404773,
+                -1.1102230246251565e-16
+              ]
+            },
+            {
+              "type": "adsk::fusion::SketchLine",
+              "construction": false,
+              "start": [
+                6.468750101999127,
+                -7.493140704490726,
+                6.661338147750939e-16
+              ],
+              "end": [
+                6.468750101999127,
+                -9.409142993315987,
+                0
+              ]
+            },
+            {
+              "type": "adsk::fusion::SketchLine",
+              "construction": false,
+              "start": [
+                -4.492142339191243,
+                -17.682792696673577,
+                -1.7763568394002505e-15
+              ],
+              "end": [
+                4.492142339191243,
+                -17.682792696673577,
+                -1.7763568394002505e-15
+              ]
+            },
+            {
+              "type": "adsk::fusion::SketchLine",
+              "construction": false,
+              "start": [
+                0,
+                0.1714868233086514,
+                0
+              ],
+              "end": [
+                0,
+                2.204830585396955,
+                5.551115123125783e-17
+              ]
+            }
+          ],
+          "dimensions": [
+            {
+              "name": "d626",
+              "expression": "20 mm",
+              "value": 2
+            },
+            {
+              "name": "d627",
+              "expression": "30 mm",
+              "value": 3
+            },
+            {
+              "name": "d628",
+              "expression": "36 mm",
+              "value": 3.6
+            },
+            {
+              "name": "d629",
+              "expression": "6 mm",
+              "value": 0.6000000000000001
+            }
+          ]
+        },
+        {
+          "name": "AirtagCutSketch",
+          "index": 125,
+          "origin": [
+            0,
+            0.8627219333715026,
+            4.240413776674599
+          ],
+          "x": [
+            -1,
+            0,
+            0
+          ],
+          "y": [
+            0,
+            -0.9799247046208692,
+            0.1993679344170023
+          ],
+          "curves": [
+            {
+              "type": "adsk::fusion::SketchCircle",
+              "construction": false,
+              "center": [
+                -1.4500000000000002,
+                19.39428441873774,
+                -1.7763568394002505e-15
+              ],
+              "radius": 0.3500000000000001
+            },
+            {
+              "type": "adsk::fusion::SketchCircle",
+              "construction": false,
+              "center": [
+                1.4500000000000002,
+                19.39428441873774,
+                -1.7763568394002505e-15
+              ],
+              "radius": 0.3500000000000001
+            },
+            {
+              "type": "adsk::fusion::SketchLine",
+              "construction": false,
+              "start": [
+                3.4930389480453843,
+                20.36229469334996,
+                0
+              ],
+              "end": [
+                -3.4930389480453843,
+                20.36229469334996,
+                0
+              ]
+            },
+            {
+              "type": "adsk::fusion::SketchLine",
+              "construction": false,
+              "start": [
+                -3.4930389480453843,
+                20.36229469334996,
+                0
+              ],
+              "end": [
+                -4.875979678400628,
+                6.685431935163779,
+                0
+              ]
+            },
+            {
+              "type": "adsk::fusion::SketchLine",
+              "construction": false,
+              "start": [
+                -4.875979678400628,
+                6.685431935163779,
+                0
+              ],
+              "end": [
+                -3.537989839200316,
+                4.707216028654833,
+                8.881784197001252e-16
+              ]
+            },
+            {
+              "type": "adsk::fusion::SketchLine",
+              "construction": false,
+              "start": [
+                -3.537989839200316,
+                4.707216028654833,
+                8.881784197001252e-16
+              ],
+              "end": [
+                -5.100000000000004,
+                3.7361518630788106,
+                1.6653345369377348e-15
+              ]
+            },
+            {
+              "type": "adsk::fusion::SketchLine",
+              "construction": false,
+              "start": [
+                -5.100000000000004,
+                3.7361518630788106,
+                1.6653345369377348e-15
+              ],
+              "end": [
+                -5.100000000000004,
+                1.199562286312633,
+                6.106226635438361e-16
+              ]
+            },
+            {
+              "type": "adsk::fusion::SketchLine",
+              "construction": false,
+              "start": [
+                -5.100000000000004,
+                1.199562286312633,
+                6.106226635438361e-16
+              ],
+              "end": [
+                -2.200000000000002,
+                -0.04368227049707318,
+                8.326672684688674e-16
+              ]
+            },
+            {
+              "type": "adsk::fusion::SketchLine",
+              "construction": false,
+              "start": [
+                -2.200000000000002,
+                -0.04368227049707318,
+                8.326672684688674e-16
+              ],
+              "end": [
+                -2.1999999999999997,
+                -2.8163646631400354,
+                1.1102230246251565e-16
+              ]
+            },
+            {
+              "type": "adsk::fusion::SketchLine",
+              "construction": false,
+              "start": [
+                -2.1999999999999997,
+                -2.8163646631400354,
+                1.1102230246251565e-16
+              ],
+              "end": [
+                2.1999999999999997,
+                -2.8163646631400354,
+                8.881784197001252e-16
+              ]
+            },
+            {
+              "type": "adsk::fusion::SketchLine",
+              "construction": false,
+              "start": [
+                2.1999999999999997,
+                -2.8163646631400354,
+                8.881784197001252e-16
+              ],
+              "end": [
+                2.200000000000002,
+                -0.04368227049707318,
+                7.771561172376096e-16
+              ]
+            },
+            {
+              "type": "adsk::fusion::SketchLine",
+              "construction": false,
+              "start": [
+                2.200000000000002,
+                -0.04368227049707318,
+                7.771561172376096e-16
+              ],
+              "end": [
+                5.100000000000004,
+                1.1995622863126325,
+                1.6653345369377348e-16
+              ]
+            },
+            {
+              "type": "adsk::fusion::SketchLine",
+              "construction": false,
+              "start": [
+                5.100000000000004,
+                1.1995622863126325,
+                1.6653345369377348e-16
+              ],
+              "end": [
+                5.100000000000004,
+                3.7361518630788098,
+                1.1657341758564144e-15
+              ]
+            },
+            {
+              "type": "adsk::fusion::SketchLine",
+              "construction": false,
+              "start": [
+                5.100000000000004,
+                3.7361518630788098,
+                1.1657341758564144e-15
+              ],
+              "end": [
+                3.537989839200316,
+                4.707216028654833,
+                8.604228440844963e-16
+              ]
+            },
+            {
+              "type": "adsk::fusion::SketchLine",
+              "construction": false,
+              "start": [
+                3.537989839200316,
+                4.707216028654833,
+                8.604228440844963e-16
+              ],
+              "end": [
+                4.875979678400628,
+                6.685431935163779,
+                0
+              ]
+            },
+            {
+              "type": "adsk::fusion::SketchLine",
+              "construction": false,
+              "start": [
+                4.875979678400628,
+                6.685431935163779,
+                0
+              ],
+              "end": [
+                3.4930389480453843,
+                20.36229469334996,
+                0
+              ]
+            },
+            {
+              "type": "adsk::fusion::SketchLine",
+              "construction": false,
+              "start": [
+                -0.49999999999999667,
+                4.229799946466719,
+                0
+              ],
+              "end": [
+                -0.5000000000000054,
+                6.229799946466719,
+                0
+              ]
+            },
+            {
+              "type": "adsk::fusion::SketchLine",
+              "construction": false,
+              "start": [
+                -0.5000000000000054,
+                6.229799946466719,
+                0
+              ],
+              "end": [
+                0.4999999999999945,
+                6.229799946466719,
+                0
+              ]
+            },
+            {
+              "type": "adsk::fusion::SketchLine",
+              "construction": false,
+              "start": [
+                0.4999999999999945,
+                6.229799946466719,
+                0
+              ],
+              "end": [
+                0.49999999999999606,
+                4.229799946466719,
+                0
+              ]
+            },
+            {
+              "type": "adsk::fusion::SketchArc",
+              "construction": false,
+              "start": [
+                -0.49999999999999667,
+                4.229799946466719,
+                0
+              ],
+              "end": [
+                0.49999999999999606,
+                4.229799946466719,
+                0
+              ],
+              "mid": [
+                -1.1102230246251565e-16,
+                1.0586353368598402,
+                0
+              ],
+              "center": [
+                0,
+                2.6836353368599646,
+                0
+              ],
+              "radius": 1.6250000000001243
+            },
+            {
+              "type": "adsk::fusion::SketchLine",
+              "construction": false,
+              "start": [
+                0,
+                2.6836353368599646,
+                0
+              ],
+              "end": [
+                -9.242606680004427e-15,
+                9.775964556073472,
+                0
+              ]
+            },
+            {
+              "type": "adsk::fusion::SketchLine",
+              "construction": false,
+              "start": [
+                0,
+                -0.1714868233086514,
+                0
+              ],
+              "end": [
+                0,
+                -2.204830585396955,
+                5.551115123125783e-17
+              ]
+            }
+          ],
+          "dimensions": [
+            {
+              "name": "d630",
+              "expression": "32.5 mm",
+              "value": 3.25
+            },
+            {
+              "name": "d631",
+              "expression": "10 mm",
+              "value": 1
+            },
+            {
+              "name": "d632",
+              "expression": "20 mm",
+              "value": 2
+            },
+            {
+              "name": "d639",
+              "expression": "55 mm",
+              "value": 5.5
+            }
+          ]
+        }
+      ],
+      "features": [
+        {
+          "name": "BottomExtrusion",
+          "index": 9,
+          "type": "adsk::fusion::ExtrudeFeature",
+          "suppressed": false
+        },
+        {
+          "name": "Mirror1",
+          "index": 10,
+          "type": "adsk::fusion::MirrorFeature",
+          "suppressed": false
+        },
+        {
+          "name": "Extrude2",
+          "index": 12,
+          "type": "adsk::fusion::ExtrudeFeature",
+          "suppressed": false
+        },
+        {
+          "name": "RearIntersection",
+          "index": 14,
+          "type": "adsk::fusion::ExtrudeFeature",
+          "suppressed": false
+        },
+        {
+          "name": "Mirror2",
+          "index": 15,
+          "type": "adsk::fusion::MirrorFeature",
+          "suppressed": false
+        },
+        {
+          "name": "Extrude4",
+          "index": 18,
+          "type": "adsk::fusion::ExtrudeFeature",
+          "suppressed": false
+        },
+        {
+          "name": "ScrewHoleExtrude",
+          "index": 75,
+          "type": "adsk::fusion::ExtrudeFeature",
+          "suppressed": false
+        },
+        {
+          "name": "Extrude6",
+          "index": 76,
+          "type": "adsk::fusion::ExtrudeFeature",
+          "suppressed": false
+        },
+        {
+          "name": "Extrude7",
+          "index": 77,
+          "type": "adsk::fusion::ExtrudeFeature",
+          "suppressed": false
+        },
+        {
+          "name": "Extrude8",
+          "index": 79,
+          "type": "adsk::fusion::ExtrudeFeature",
+          "suppressed": false
+        },
+        {
+          "name": "Draft1",
+          "index": 80,
+          "type": "adsk::fusion::DraftFeature",
+          "suppressed": false
+        },
+        {
+          "name": "Mirror3",
+          "index": 81,
+          "type": "adsk::fusion::MirrorFeature",
+          "suppressed": false
+        },
+        {
+          "name": "Combine1",
+          "index": 82,
+          "type": "adsk::fusion::CombineFeature",
+          "suppressed": false
+        },
+        {
+          "name": "Extrude9",
+          "index": 84,
+          "type": "adsk::fusion::ExtrudeFeature",
+          "suppressed": false
+        },
+        {
+          "name": "Draft4",
+          "index": 87,
+          "type": "adsk::fusion::DraftFeature",
+          "suppressed": false
+        },
+        {
+          "name": "Split2",
+          "index": 131,
+          "type": "adsk::fusion::SplitBodyFeature",
+          "suppressed": false
+        },
+        {
+          "name": "Extrude10",
+          "index": 89,
+          "type": "adsk::fusion::ExtrudeFeature",
+          "suppressed": false
+        },
+        {
+          "name": "Extrude11",
+          "index": 91,
+          "type": "adsk::fusion::ExtrudeFeature",
+          "suppressed": false
+        },
+        {
+          "name": "Extrude12",
+          "index": 86,
+          "type": "adsk::fusion::ExtrudeFeature",
+          "suppressed": false
+        },
+        {
+          "name": "Extrude13",
+          "index": 93,
+          "type": "adsk::fusion::ExtrudeFeature",
+          "suppressed": false
+        },
+        {
+          "name": "RemoveBody-Body1",
+          "index": 132,
+          "type": "adsk::fusion::RemoveFeature",
+          "suppressed": false
+        },
+        {
+          "name": "Fillet3",
+          "index": 129,
+          "type": "adsk::fusion::FilletFeature",
+          "suppressed": false
+        },
+        {
+          "name": "Fillet4",
+          "index": 130,
+          "type": "adsk::fusion::FilletFeature",
+          "suppressed": false
+        },
+        {
+          "name": "Extrude14",
+          "index": 156,
+          "type": "adsk::fusion::ExtrudeFeature",
+          "suppressed": false
+        },
+        {
+          "name": "ExteriorFillet",
+          "index": 177,
+          "type": "adsk::fusion::FilletFeature",
+          "suppressed": false
+        },
+        {
+          "name": "Extrude15",
+          "index": 97,
+          "type": "adsk::fusion::ExtrudeFeature",
+          "suppressed": false
+        },
+        {
+          "name": "Mirror4",
+          "index": 98,
+          "type": "adsk::fusion::MirrorFeature",
+          "suppressed": false
+        },
+        {
+          "name": "Extrude16",
+          "index": 121,
+          "type": "adsk::fusion::ExtrudeFeature",
+          "suppressed": false
+        },
+        {
+          "name": "Mirror5",
+          "index": 122,
+          "type": "adsk::fusion::MirrorFeature",
+          "suppressed": false
+        },
+        {
+          "name": "Extrude18",
+          "index": 124,
+          "type": "adsk::fusion::ExtrudeFeature",
+          "suppressed": false
+        },
+        {
+          "name": "Extrude19",
+          "index": 126,
+          "type": "adsk::fusion::ExtrudeFeature",
+          "suppressed": false
+        },
+        {
+          "name": "CopyPasteBodies1",
+          "index": 180,
+          "type": "adsk::fusion::CopyPasteBody",
+          "suppressed": false
+        },
+        {
+          "name": "RemoveBody-AdapterBody (1)",
+          "index": 182,
+          "type": "adsk::fusion::RemoveFeature",
+          "suppressed": false
+        },
+        {
+          "name": "Extrude20",
+          "index": 186,
+          "type": "adsk::fusion::ExtrudeFeature",
+          "suppressed": false
+        },
+        {
+          "name": "Fillet9",
+          "index": 133,
+          "type": "adsk::fusion::FilletFeature",
+          "suppressed": false
+        }
+      ]
+    },
+    {
+      "name": "AdapterBodySplit",
+      "sketches": [
+        {
+          "name": "SplitBodySketch",
+          "index": 183,
+          "origin": [
+            0,
+            0,
+            0
+          ],
+          "x": [
+            0,
+            1,
+            0
+          ],
+          "y": [
+            0,
+            0,
+            1
+          ],
+          "curves": [
+            {
+              "type": "adsk::fusion::SketchLine",
+              "construction": false,
+              "start": [
+                -9.288539833894989,
+                6.305711325274752,
+                0
+              ],
+              "end": [
+                -10.993653499568712,
+                -2.0751900973452995,
+                0
+              ]
+            },
+            {
+              "type": "adsk::fusion::SketchLine",
+              "construction": false,
+              "start": [
+                -15.046390897095263,
+                3.0842278693940273,
+                0
+              ],
+              "end": [
+                -16.383558419328295,
+                0.8327734953753145,
+                0
+              ]
+            },
+            {
+              "type": "adsk::fusion::SketchLine",
+              "construction": false,
+              "start": [
+                -5.745618834012811,
+                5.584895901172944,
+                0
+              ],
+              "end": [
+                -19.01073047285425,
+                8.283713366204566,
+                0
+              ]
+            },
+            {
+              "type": "adsk::fusion::SketchLine",
+              "construction": false,
+              "start": [
+                -14.018653444978423,
+                -2.435899502394461,
+                0
+              ],
+              "end": [
+                -11.201540427505643,
+                -2.099979112699636,
+                0
+              ]
+            }
+          ],
+          "dimensions": [
+            {
+              "name": "d640",
+              "expression": "50 mm",
+              "value": 5
+            }
+          ]
+        },
+        {
+          "name": "TopJointSketch",
+          "index": 185,
+          "origin": [
+            0,
+            0.8627219333715026,
+            4.240413776674599
+          ],
+          "x": [
+            -1,
+            0,
+            0
+          ],
+          "y": [
+            0,
+            -0.9799247046208692,
+            0.1993679344170023
+          ],
+          "curves": [
+            {
+              "type": "adsk::fusion::SketchLine",
+              "construction": false,
+              "start": [
+                -4.44207614736829,
+                10.359226295038653,
+                2.6645352591003757e-15
+              ],
+              "end": [
+                4.44207614736829,
+                10.359226295038653,
+                2.6645352591003757e-15
+              ]
+            },
+            {
+              "type": "adsk::fusion::SketchLine",
+              "construction": false,
+              "start": [
+                0,
+                -0.1714868233086514,
+                8.881784197001252e-16
+              ],
+              "end": [
+                0,
+                -2.2048305853969548,
+                8.881784197001252e-16
+              ]
+            },
+            {
+              "type": "adsk::fusion::SketchLine",
+              "construction": false,
+              "start": [
+                -1.5,
+                10.359226295038653,
+                -1.7763568394002505e-15
+              ],
+              "end": [
+                -2.654700538379263,
+                12.359226295038653,
+                0
+              ]
+            },
+            {
+              "type": "adsk::fusion::SketchLine",
+              "construction": false,
+              "start": [
+                -2.654700538379263,
+                12.359226295038653,
+                0
+              ],
+              "end": [
+                0,
+                12.359226295038653,
+                0
+              ]
+            },
+            {
+              "type": "adsk::fusion::SketchLine",
+              "construction": false,
+              "start": [
+                -2.654700538379263,
+                8.359226295038653,
+                0
+              ],
+              "end": [
+                0,
+                8.359226295038653,
+                0
+              ]
+            },
+            {
+              "type": "adsk::fusion::SketchLine",
+              "construction": false,
+              "start": [
+                -1.5,
+                10.359226295038653,
+                -1.7763568394002505e-15
+              ],
+              "end": [
+                -2.654700538379263,
+                8.359226295038653,
+                0
+              ]
+            },
+            {
+              "type": "adsk::fusion::SketchLine",
+              "construction": false,
+              "start": [
+                1.5,
+                10.359226295038653,
+                -1.7763568394002505e-15
+              ],
+              "end": [
+                2.654700538379263,
+                12.359226295038653,
+                0
+              ]
+            },
+            {
+              "type": "adsk::fusion::SketchLine",
+              "construction": false,
+              "start": [
+                1.5,
+                10.359226295038653,
+                -1.7763568394002505e-15
+              ],
+              "end": [
+                2.654700538379263,
+                8.359226295038653,
+                0
+              ]
+            },
+            {
+              "type": "adsk::fusion::SketchLine",
+              "construction": false,
+              "start": [
+                2.654700538379263,
+                8.359226295038653,
+                0
+              ],
+              "end": [
+                0,
+                8.359226295038653,
+                0
+              ]
+            },
+            {
+              "type": "adsk::fusion::SketchLine",
+              "construction": false,
+              "start": [
+                2.654700538379263,
+                12.359226295038653,
+                0
+              ],
+              "end": [
+                0,
+                12.359226295038653,
+                0
+              ]
+            },
+            {
+              "type": "adsk::fusion::SketchLine",
+              "construction": false,
+              "start": [
+                4.44207614736829,
+                10.359226295038653,
+                2.6645352591003757e-15
+              ],
+              "end": [
+                3.438873880726433,
+                20.280591266361377,
+                3.9968028886505635e-15
+              ]
+            },
+            {
+              "type": "adsk::fusion::SketchLine",
+              "construction": false,
+              "start": [
+                3.438873880726433,
+                20.280591266361377,
+                3.9968028886505635e-15
+              ],
+              "end": [
+                -3.438873880726433,
+                20.280591266361377,
+                2.6645352591003757e-15
+              ]
+            },
+            {
+              "type": "adsk::fusion::SketchLine",
+              "construction": false,
+              "start": [
+                -3.438873880726433,
+                20.280591266361377,
+                2.6645352591003757e-15
+              ],
+              "end": [
+                -4.44207614736829,
+                10.359226295038653,
+                2.6645352591003757e-15
+              ]
+            },
+            {
+              "type": "adsk::fusion::SketchCircle",
+              "construction": false,
+              "center": [
+                -1.4500000000000002,
+                19.39428441873774,
+                2.6645352591003757e-15
+              ],
+              "radius": 0.45000000000000007
+            },
+            {
+              "type": "adsk::fusion::SketchCircle",
+              "construction": false,
+              "center": [
+                1.4500000000000002,
+                19.39428441873774,
+                2.6645352591003757e-15
+              ],
+              "radius": 0.45000000000000007
+            }
+          ],
+          "dimensions": [
+            {
+              "name": "d653",
+              "expression": "60 deg",
+              "value": 1.0471975511965976
+            },
+            {
+              "name": "d655",
+              "expression": "20 mm",
+              "value": 2
+            },
+            {
+              "name": "d656",
+              "expression": "15 mm",
+              "value": 1.5
+            }
+          ]
+        },
+        {
+          "name": "SideJointSketch",
+          "index": 187,
+          "origin": [
+            4.018209231707784,
+            0.2146546539388494,
+            1.0550613315607793
+          ],
+          "x": [
+            0.05334441550751669,
+            -0.998576173025454,
+            0
+          ],
+          "y": [
+            -0.2532620608025254,
+            -0.013529380100075242,
+            0.967303098533322
+          ],
+          "curves": [
+            {
+              "type": "adsk::fusion::SketchLine",
+              "construction": false,
+              "start": [
+                9.715069035756803,
+                4.137390029461598,
+                -8.881784197001252e-16
+              ],
+              "end": [
+                11.024229722506632,
+                -2.07808220495021,
+                -8.881784197001252e-16
+              ]
+            },
+            {
+              "type": "adsk::fusion::SketchLine",
+              "construction": false,
+              "start": [
+                10.635780752188728,
+                -0.2338519176117937,
+                -7.073590349475085e-16
+              ],
+              "end": [
+                11.082407476987234,
+                0.16680325669119436,
+                0
+              ]
+            },
+            {
+              "type": "adsk::fusion::SketchLine",
+              "construction": false,
+              "start": [
+                11.082407476987234,
+                0.16680325669119436,
+                0
+              ],
+              "end": [
+                11.247293072593656,
+                -0.6160203124235297,
+                0
+              ]
+            },
+            {
+              "type": "adsk::fusion::SketchLine",
+              "construction": false,
+              "start": [
+                10.065489830685404,
+                -0.04738941507874406,
+                0
+              ],
+              "end": [
+                10.230375426291829,
+                -0.8302129841934643,
+                0
+              ]
+            },
+            {
+              "type": "adsk::fusion::SketchLine",
+              "construction": false,
+              "start": [
+                10.635780752188726,
+                -0.23385191761179414,
+                -7.073590349475085e-16
+              ],
+              "end": [
+                10.065489830685404,
+                -0.04738941507874406,
+                0
+              ]
+            },
+            {
+              "type": "adsk::fusion::SketchLine",
+              "construction": true,
+              "start": [
+                10.230375426291829,
+                -0.8302129841934643,
+                0
+              ],
+              "end": [
+                11.247293072593656,
+                -0.6160203124235297,
+                0
+              ]
+            },
+            {
+              "type": "adsk::fusion::SketchLine",
+              "construction": false,
+              "start": [
+                10.39526102189825,
+                -1.6130365533081852,
+                0
+              ],
+              "end": [
+                10.230375426291829,
+                -0.8302129841934651,
+                0
+              ]
+            },
+            {
+              "type": "adsk::fusion::SketchLine",
+              "construction": false,
+              "start": [
+                10.841887746696754,
+                -1.2123813790051998,
+                -7.073590349475085e-16
+              ],
+              "end": [
+                10.39526102189825,
+                -1.6130365533081852,
+                0
+              ]
+            },
+            {
+              "type": "adsk::fusion::SketchLine",
+              "construction": false,
+              "start": [
+                10.841887746696758,
+                -1.2123813790051992,
+                -7.073590349475085e-16
+              ],
+              "end": [
+                11.41217866820008,
+                -1.3988438815382451,
+                0
+              ]
+            },
+            {
+              "type": "adsk::fusion::SketchLine",
+              "construction": false,
+              "start": [
+                11.41217866820008,
+                -1.3988438815382451,
+                0
+              ],
+              "end": [
+                11.247293072593655,
+                -0.6160203124235268,
+                0
+              ]
+            },
+            {
+              "type": "adsk::fusion::SketchLine",
+              "construction": false,
+              "start": [
+                8.609649689113317,
+                -1.8364543579510433,
+                0
+              ],
+              "end": [
+                10.960548348106958,
+                -2.071565886442288,
+                -6.938893903907228e-18
+              ]
+            },
+            {
+              "type": "adsk::fusion::SketchLine",
+              "construction": false,
+              "start": [
+                13.609370092942472,
+                -2.330227035707507,
+                -8.881784197001252e-16
+              ],
+              "end": [
+                11.34794681540788,
+                4.481321964922778,
+                0
+              ]
+            },
+            {
+              "type": "adsk::fusion::SketchLine",
+              "construction": false,
+              "start": [
+                11.34794681540788,
+                4.481321964922778,
+                0
+              ],
+              "end": [
+                9.715069035756803,
+                4.137390029461598,
+                -8.881784197001252e-16
+              ]
+            },
+            {
+              "type": "adsk::fusion::SketchLine",
+              "construction": false,
+              "start": [
+                11.867147246894971,
+                -2.1643353537963543,
+                -8.881784197001252e-16
+              ],
+              "end": [
+                12.448138960748599,
+                -2.2302636943139853,
+                -8.89913143176102e-16
+              ]
+            },
+            {
+              "type": "adsk::fusion::SketchLine",
+              "construction": false,
+              "start": [
+                12.448138960748599,
+                -2.2302636943139853,
+                -8.89913143176102e-16
+              ],
+              "end": [
+                12.475610191067577,
+                -2.236368675756077,
+                -8.881784197001252e-16
+              ]
+            },
+            {
+              "type": "adsk::fusion::SketchLine",
+              "construction": false,
+              "start": [
+                12.475610191067577,
+                -2.236368675756077,
+                -8.881784197001252e-16
+              ],
+              "end": [
+                12.620222756800244,
+                -2.2461227257487866,
+                8.890457814381136e-16
+              ]
+            },
+            {
+              "type": "adsk::fusion::SketchLine",
+              "construction": false,
+              "start": [
+                12.620222756800244,
+                -2.2461227257487866,
+                8.890457814381136e-16
+              ],
+              "end": [
+                12.75630146271844,
+                -2.254863306726008,
+                -8.868773770931426e-16
+              ]
+            },
+            {
+              "type": "adsk::fusion::SketchLine",
+              "construction": false,
+              "start": [
+                12.75630146271844,
+                -2.254863306726008,
+                -8.868773770931426e-16
+              ],
+              "end": [
+                12.820216308440452,
+                -2.256528767767758,
+                1.0842021724855044e-19
+              ]
+            },
+            {
+              "type": "adsk::fusion::SketchLine",
+              "construction": false,
+              "start": [
+                12.820216308440452,
+                -2.256528767767758,
+                1.0842021724855044e-19
+              ],
+              "end": [
+                13.609370092942472,
+                -2.330227035707507,
+                -8.881784197001252e-16
+              ]
+            },
+            {
+              "type": "adsk::fusion::SketchLine",
+              "construction": false,
+              "start": [
+                11.024229722506632,
+                -2.07808220495021,
+                -8.881784197001252e-16
+              ],
+              "end": [
+                11.867147246894971,
+                -2.1643353537963543,
+                -8.881784197001252e-16
+              ]
+            }
+          ],
+          "dimensions": [
+            {
+              "name": "d657",
+              "expression": "60 deg",
+              "value": 1.0471975511965976
+            },
+            {
+              "name": "d658",
+              "expression": "4 mm",
+              "value": 0.4
+            },
+            {
+              "name": "d660",
+              "expression": "5 mm",
+              "value": 0.5
+            },
+            {
+              "name": "d661",
+              "expression": "5.1961524227 mm",
+              "value": 0.51961524227
+            },
+            {
+              "name": "d662",
+              "expression": "8 mm",
+              "value": 0.8
+            }
+          ]
+        }
+      ],
+      "features": [
+        {
+          "name": "CutPasteBodies1",
+          "index": 182,
+          "type": "adsk::fusion::CutPasteBody",
+          "suppressed": false
+        },
+        {
+          "name": "Split1",
+          "index": 184,
+          "type": "adsk::fusion::SplitBodyFeature",
+          "suppressed": false
+        },
+        {
+          "name": "Extrude1",
+          "index": 186,
+          "type": "adsk::fusion::ExtrudeFeature",
+          "suppressed": false
+        },
+        {
+          "name": "Extrude2",
+          "index": 188,
+          "type": "adsk::fusion::ExtrudeFeature",
+          "suppressed": false
+        },
+        {
+          "name": "Mirror1",
+          "index": 193,
+          "type": "adsk::fusion::MirrorFeature",
+          "suppressed": false
+        },
+        {
+          "name": "Extrude3",
+          "index": 194,
+          "type": "adsk::fusion::ExtrudeFeature",
+          "suppressed": false
+        },
+        {
+          "name": "Extrude4",
+          "index": 195,
+          "type": "adsk::fusion::ExtrudeFeature",
+          "suppressed": false
+        },
+        {
+          "name": "OffsetFaces1",
+          "index": 196,
+          "type": "adsk::fusion::OffsetFacesFeature",
+          "suppressed": false
+        },
+        {
+          "name": "Mirror3",
+          "index": 192,
+          "type": "adsk::fusion::MirrorFeature",
+          "suppressed": false
+        },
+        {
+          "name": "Fillet2",
+          "index": 191,
+          "type": "adsk::fusion::FilletFeature",
+          "suppressed": false
+        },
+        {
+          "name": "Fillet3",
+          "index": 198,
+          "type": "adsk::fusion::FilletFeature",
+          "suppressed": false
+        },
+        {
+          "name": "Fillet4",
+          "index": 197,
+          "type": "adsk::fusion::FilletFeature",
+          "suppressed": false
+        }
+      ]
+    }
+  ]
+}

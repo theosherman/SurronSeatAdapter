@@ -1,0 +1,1343 @@
+[
+  {
+    "component": "AdapterBody",
+    "name": "d2",
+    "expression": "( 86 / 2 ) * 1 mm",
+    "value": 4.3,
+    "role": "Linear Dimension-3",
+    "createdBy": "BottomSketch",
+    "createdByType": "adsk::fusion::Sketch"
+  },
+  {
+    "component": "AdapterBody",
+    "name": "d3",
+    "expression": "60 mm",
+    "value": 6,
+    "role": "Linear Dimension-4",
+    "createdBy": "BottomSketch",
+    "createdByType": "adsk::fusion::Sketch"
+  },
+  {
+    "component": "AdapterBody",
+    "name": "d4",
+    "expression": "34 mm",
+    "value": 3.4000000000000004,
+    "role": "Linear Dimension-5",
+    "createdBy": "BottomSketch",
+    "createdByType": "adsk::fusion::Sketch"
+  },
+  {
+    "component": "AdapterBody",
+    "name": "d73",
+    "expression": "22 mm",
+    "value": 2.2,
+    "role": "Linear Dimension-5",
+    "createdBy": "BottomSketch",
+    "createdByType": "adsk::fusion::Sketch"
+  },
+  {
+    "component": "AdapterBody",
+    "name": "d117",
+    "expression": "389.1595320875 mm",
+    "value": 38.915953208750004,
+    "role": "Linear Dimension-6",
+    "createdBy": "BottomSketch",
+    "createdByType": "adsk::fusion::Sketch"
+  },
+  {
+    "component": "AdapterBody",
+    "name": "d119",
+    "expression": "76.7565065773 mm",
+    "value": 7.67565065773,
+    "role": "Linear Dimension-8",
+    "createdBy": "BottomSketch",
+    "createdByType": "adsk::fusion::Sketch"
+  },
+  {
+    "component": "AdapterBody",
+    "name": "d120",
+    "expression": "55.2440147377 mm",
+    "value": 5.52440147377,
+    "role": "Linear Dimension-9",
+    "createdBy": "BottomSketch",
+    "createdByType": "adsk::fusion::Sketch"
+  },
+  {
+    "component": "AdapterBody",
+    "name": "d121",
+    "expression": "75.1478406368 mm",
+    "value": 7.5147840636800005,
+    "role": "Linear Dimension-10",
+    "createdBy": "BottomSketch",
+    "createdByType": "adsk::fusion::Sketch"
+  },
+  {
+    "component": "AdapterBody",
+    "name": "d434",
+    "expression": "99.1595320875 mm",
+    "value": 9.91595320875,
+    "role": "Linear Dimension-10",
+    "createdBy": "BottomSketch",
+    "createdByType": "adsk::fusion::Sketch"
+  },
+  {
+    "component": "AdapterBody",
+    "name": "d435",
+    "expression": "45 mm",
+    "value": 4.5,
+    "role": "Linear Dimension-11",
+    "createdBy": "BottomSketch",
+    "createdByType": "adsk::fusion::Sketch"
+  },
+  {
+    "component": "AdapterBody",
+    "name": "d436",
+    "expression": "28.7312555347 mm",
+    "value": 2.8731255534700004,
+    "role": "Linear Dimension-12",
+    "createdBy": "BottomSketch",
+    "createdByType": "adsk::fusion::Sketch"
+  },
+  {
+    "component": "AdapterBody",
+    "name": "d437",
+    "expression": "17.6601064826 mm",
+    "value": 1.76601064826,
+    "role": "Linear Dimension-13",
+    "createdBy": "BottomSketch",
+    "createdByType": "adsk::fusion::Sketch"
+  },
+  {
+    "component": "AdapterBody",
+    "name": "d438",
+    "expression": "20.0386889868 mm",
+    "value": 2.00386889868,
+    "role": "Linear Dimension-14",
+    "createdBy": "BottomSketch",
+    "createdByType": "adsk::fusion::Sketch"
+  },
+  {
+    "component": "AdapterBody",
+    "name": "d439",
+    "expression": "105.7555868492 mm",
+    "value": 10.57555868492,
+    "role": "Linear Dimension-15",
+    "createdBy": "BottomSketch",
+    "createdByType": "adsk::fusion::Sketch"
+  },
+  {
+    "component": "AdapterBody",
+    "name": "d5",
+    "expression": "150.00 mm",
+    "value": 15,
+    "role": "AlongDistance",
+    "createdBy": "BottomExtrusion",
+    "createdByType": "adsk::fusion::ExtrudeFeature"
+  },
+  {
+    "component": "AdapterBody",
+    "name": "d6",
+    "expression": "0.0 deg",
+    "value": 0,
+    "role": "TaperAngle",
+    "createdBy": "BottomExtrusion",
+    "createdByType": "adsk::fusion::ExtrudeFeature"
+  },
+  {
+    "component": "AdapterBody",
+    "name": "d7",
+    "expression": "50.00 mm",
+    "value": 5,
+    "role": "AgainstDistance",
+    "createdBy": "BottomExtrusion",
+    "createdByType": "adsk::fusion::ExtrudeFeature"
+  },
+  {
+    "component": "AdapterBody",
+    "name": "d8",
+    "expression": "0.0 deg",
+    "value": 0,
+    "role": "Side2TaperAngle",
+    "createdBy": "BottomExtrusion",
+    "createdByType": "adsk::fusion::ExtrudeFeature"
+  },
+  {
+    "component": "AdapterBody",
+    "name": "d11",
+    "expression": "10.00 mm",
+    "value": 1,
+    "role": "Linear Dimension-2",
+    "createdBy": "SideSketch",
+    "createdByType": "adsk::fusion::Sketch"
+  },
+  {
+    "component": "AdapterBody",
+    "name": "d29",
+    "expression": "132.00 mm",
+    "value": 13.200000000000001,
+    "role": "Linear Dimension-4",
+    "createdBy": "SideSketch",
+    "createdByType": "adsk::fusion::Sketch"
+  },
+  {
+    "component": "AdapterBody",
+    "name": "d43",
+    "expression": "6.8 deg",
+    "value": 0.11868238913561441,
+    "role": "Angular Dimension-2",
+    "createdBy": "SideSketch",
+    "createdByType": "adsk::fusion::Sketch"
+  },
+  {
+    "component": "AdapterBody",
+    "name": "d72",
+    "expression": "23 mm",
+    "value": 2.3000000000000003,
+    "role": "Linear Dimension-4",
+    "createdBy": "SideSketch",
+    "createdByType": "adsk::fusion::Sketch"
+  },
+  {
+    "component": "AdapterBody",
+    "name": "d97",
+    "expression": "30.7066176098 deg",
+    "value": 0.5359315794418814,
+    "role": "Angular Dimension-3",
+    "createdBy": "SideSketch",
+    "createdByType": "adsk::fusion::Sketch"
+  },
+  {
+    "component": "AdapterBody",
+    "name": "d137",
+    "expression": "75.4372873388 mm",
+    "value": 7.543728733880001,
+    "role": "Linear Dimension-5",
+    "createdBy": "SideSketch",
+    "createdByType": "adsk::fusion::Sketch"
+  },
+  {
+    "component": "AdapterBody",
+    "name": "d140",
+    "expression": "231.7865935649 mm",
+    "value": 23.17865935649,
+    "role": "Linear Dimension-6",
+    "createdBy": "SideSketch",
+    "createdByType": "adsk::fusion::Sketch"
+  },
+  {
+    "component": "AdapterBody",
+    "name": "d141",
+    "expression": "5.3941132721 mm",
+    "value": 0.5394113272100001,
+    "role": "Linear Dimension-7",
+    "createdBy": "SideSketch",
+    "createdByType": "adsk::fusion::Sketch"
+  },
+  {
+    "component": "AdapterBody",
+    "name": "d142",
+    "expression": "4.4363057507 deg",
+    "value": 0.07742814197487373,
+    "role": "Angular Dimension-4",
+    "createdBy": "SideSketch",
+    "createdByType": "adsk::fusion::Sketch"
+  },
+  {
+    "component": "AdapterBody",
+    "name": "d143",
+    "expression": "26.0874825482 mm",
+    "value": 2.60874825482,
+    "role": "Linear Dimension-8",
+    "createdBy": "SideSketch",
+    "createdByType": "adsk::fusion::Sketch"
+  },
+  {
+    "component": "AdapterBody",
+    "name": "d145",
+    "expression": "383.8380071177 mm",
+    "value": 38.38380071177,
+    "role": "Linear Dimension-10",
+    "createdBy": "SideSketch",
+    "createdByType": "adsk::fusion::Sketch"
+  },
+  {
+    "component": "AdapterBody",
+    "name": "d146",
+    "expression": "137.2132492216 deg",
+    "value": 2.3948229762764663,
+    "role": "Angular Dimension-5",
+    "createdBy": "SideSketch",
+    "createdByType": "adsk::fusion::Sketch"
+  },
+  {
+    "component": "AdapterBody",
+    "name": "d147",
+    "expression": "141.0320219845 deg",
+    "value": 2.461473134374552,
+    "role": "Angular Dimension-6",
+    "createdBy": "SideSketch",
+    "createdByType": "adsk::fusion::Sketch"
+  },
+  {
+    "component": "AdapterBody",
+    "name": "d686",
+    "expression": "11.5 deg",
+    "value": 0.2007128639793479,
+    "role": "Angular Dimension-7",
+    "createdBy": "SideSketch",
+    "createdByType": "adsk::fusion::Sketch"
+  },
+  {
+    "component": "AdapterBody",
+    "name": "d688",
+    "expression": "194.6071631789 mm",
+    "value": 19.460716317890004,
+    "role": "Linear Dimension-12",
+    "createdBy": "SideSketch",
+    "createdByType": "adsk::fusion::Sketch"
+  },
+  {
+    "component": "AdapterBody",
+    "name": "d689",
+    "expression": "15.5627364356 mm",
+    "value": 1.55627364356,
+    "role": "Linear Dimension-13",
+    "createdBy": "SideSketch",
+    "createdByType": "adsk::fusion::Sketch"
+  },
+  {
+    "component": "AdapterBody",
+    "name": "d690",
+    "expression": "36 mm",
+    "value": 3.6,
+    "role": "Linear Dimension-12",
+    "createdBy": "SideSketch",
+    "createdByType": "adsk::fusion::Sketch"
+  },
+  {
+    "component": "AdapterBody",
+    "name": "d691",
+    "expression": "13.1456109209 mm",
+    "value": 1.31456109209,
+    "role": "Linear Dimension-13",
+    "createdBy": "SideSketch",
+    "createdByType": "adsk::fusion::Sketch"
+  },
+  {
+    "component": "AdapterBody",
+    "name": "d692",
+    "expression": "71.6303312494 mm",
+    "value": 7.16303312494,
+    "role": "Linear Dimension-14",
+    "createdBy": "SideSketch",
+    "createdByType": "adsk::fusion::Sketch"
+  },
+  {
+    "component": "AdapterBody",
+    "name": "d16",
+    "expression": "120.00 mm",
+    "value": 12,
+    "role": "AlongDistance",
+    "createdBy": "Extrude2",
+    "createdByType": "adsk::fusion::ExtrudeFeature"
+  },
+  {
+    "component": "AdapterBody",
+    "name": "d17",
+    "expression": "0.0 deg",
+    "value": 0,
+    "role": "TaperAngle",
+    "createdBy": "Extrude2",
+    "createdByType": "adsk::fusion::ExtrudeFeature"
+  },
+  {
+    "component": "AdapterBody",
+    "name": "d74",
+    "expression": "90 mm",
+    "value": 9,
+    "role": "Linear Dimension-2",
+    "createdBy": "RearSketch",
+    "createdByType": "adsk::fusion::Sketch"
+  },
+  {
+    "component": "AdapterBody",
+    "name": "d75",
+    "expression": "30 mm",
+    "value": 3,
+    "role": "Linear Dimension-3",
+    "createdBy": "RearSketch",
+    "createdByType": "adsk::fusion::Sketch"
+  },
+  {
+    "component": "AdapterBody",
+    "name": "d18",
+    "expression": "490.00 mm",
+    "value": 49,
+    "role": "AlongDistance",
+    "createdBy": "RearIntersection",
+    "createdByType": "adsk::fusion::ExtrudeFeature"
+  },
+  {
+    "component": "AdapterBody",
+    "name": "d19",
+    "expression": "0.0 deg",
+    "value": 0,
+    "role": "TaperAngle",
+    "createdBy": "RearIntersection",
+    "createdByType": "adsk::fusion::ExtrudeFeature"
+  },
+  {
+    "component": "AdapterBody",
+    "name": "d35",
+    "expression": "10 mm",
+    "value": 1,
+    "role": "Linear Dimension-2",
+    "createdBy": "TrunkDovetailSketch",
+    "createdByType": "adsk::fusion::Sketch"
+  },
+  {
+    "component": "AdapterBody",
+    "name": "d36",
+    "expression": "8 mm",
+    "value": 0.8,
+    "role": "Linear Dimension-3",
+    "createdBy": "TrunkDovetailSketch",
+    "createdByType": "adsk::fusion::Sketch"
+  },
+  {
+    "component": "AdapterBody",
+    "name": "d37",
+    "expression": "60 deg",
+    "value": 1.0471975511965976,
+    "role": "Angular Dimension-2",
+    "createdBy": "TrunkDovetailSketch",
+    "createdByType": "adsk::fusion::Sketch"
+  },
+  {
+    "component": "AdapterBody",
+    "name": "d38",
+    "expression": "0.00 mm",
+    "value": 0,
+    "role": "Side1Offset",
+    "createdBy": "Extrude4",
+    "createdByType": "adsk::fusion::ExtrudeFeature"
+  },
+  {
+    "component": "AdapterBody",
+    "name": "d39",
+    "expression": "0.0 deg",
+    "value": 0,
+    "role": "TaperAngle",
+    "createdBy": "Extrude4",
+    "createdByType": "adsk::fusion::ExtrudeFeature"
+  },
+  {
+    "component": "AdapterBody",
+    "name": "d58",
+    "expression": "7 mm",
+    "value": 0.7000000000000001,
+    "role": "Diameter Dimension-2",
+    "createdBy": "BoltHolesSketch",
+    "createdByType": "adsk::fusion::Sketch"
+  },
+  {
+    "component": "AdapterBody",
+    "name": "d59",
+    "expression": "( 46 / 2 ) * 1 mm",
+    "value": 2.3000000000000003,
+    "role": "Linear Dimension-2",
+    "createdBy": "BoltHolesSketch",
+    "createdByType": "adsk::fusion::Sketch"
+  },
+  {
+    "component": "AdapterBody",
+    "name": "d60",
+    "expression": "7 mm",
+    "value": 0.7000000000000001,
+    "role": "Diameter Dimension-3",
+    "createdBy": "BoltHolesSketch",
+    "createdByType": "adsk::fusion::Sketch"
+  },
+  {
+    "component": "AdapterBody",
+    "name": "d61",
+    "expression": "( 29 / 2 ) * 1 mm",
+    "value": 1.4500000000000002,
+    "role": "Linear Dimension-3",
+    "createdBy": "BoltHolesSketch",
+    "createdByType": "adsk::fusion::Sketch"
+  },
+  {
+    "component": "AdapterBody",
+    "name": "d62",
+    "expression": "5 mm",
+    "value": 0.5,
+    "role": "Linear Dimension-4",
+    "createdBy": "BoltHolesSketch",
+    "createdByType": "adsk::fusion::Sketch"
+  },
+  {
+    "component": "AdapterBody",
+    "name": "d63",
+    "expression": "5 mm",
+    "value": 0.5,
+    "role": "Linear Dimension-5",
+    "createdBy": "BoltHolesSketch",
+    "createdByType": "adsk::fusion::Sketch"
+  },
+  {
+    "component": "AdapterBody",
+    "name": "d64",
+    "expression": "258 mm",
+    "value": 25.8,
+    "role": "Linear Dimension-6",
+    "createdBy": "BoltHolesSketch",
+    "createdByType": "adsk::fusion::Sketch"
+  },
+  {
+    "component": "AdapterBody",
+    "name": "d65",
+    "expression": "0.0 deg",
+    "value": 0,
+    "role": "TaperAngle",
+    "createdBy": "ScrewHoleExtrude",
+    "createdByType": "adsk::fusion::ExtrudeFeature"
+  },
+  {
+    "component": "AdapterBody",
+    "name": "d66",
+    "expression": "-3.00 mm",
+    "value": -0.30000000000000004,
+    "role": "AlongDistance",
+    "createdBy": "Extrude6",
+    "createdByType": "adsk::fusion::ExtrudeFeature"
+  },
+  {
+    "component": "AdapterBody",
+    "name": "d67",
+    "expression": "0.0 deg",
+    "value": 0,
+    "role": "TaperAngle",
+    "createdBy": "Extrude6",
+    "createdByType": "adsk::fusion::ExtrudeFeature"
+  },
+  {
+    "component": "AdapterBody",
+    "name": "d68",
+    "expression": "0.0 deg",
+    "value": 0,
+    "role": "Side2TaperAngle",
+    "createdBy": "Extrude6",
+    "createdByType": "adsk::fusion::ExtrudeFeature"
+  },
+  {
+    "component": "AdapterBody",
+    "name": "d69",
+    "expression": "-3 mm",
+    "value": -0.30000000000000004,
+    "role": "Side1Offset",
+    "createdBy": "Extrude7",
+    "createdByType": "adsk::fusion::ExtrudeFeature"
+  },
+  {
+    "component": "AdapterBody",
+    "name": "d70",
+    "expression": "0.0 deg",
+    "value": 0,
+    "role": "TaperAngle",
+    "createdBy": "Extrude7",
+    "createdByType": "adsk::fusion::ExtrudeFeature"
+  },
+  {
+    "component": "AdapterBody",
+    "name": "d71",
+    "expression": "0.0 deg",
+    "value": 0,
+    "role": "Side2TaperAngle",
+    "createdBy": "Extrude7",
+    "createdByType": "adsk::fusion::ExtrudeFeature"
+  },
+  {
+    "component": "AdapterBody",
+    "name": "d696",
+    "expression": "29 mm",
+    "value": 2.9000000000000004,
+    "role": "Linear Dimension-2",
+    "createdBy": "SeatHangerSketch",
+    "createdByType": "adsk::fusion::Sketch"
+  },
+  {
+    "component": "AdapterBody",
+    "name": "d76",
+    "expression": "-1.00 mm",
+    "value": -0.1,
+    "role": "AlongDistance",
+    "createdBy": "Extrude8",
+    "createdByType": "adsk::fusion::ExtrudeFeature"
+  },
+  {
+    "component": "AdapterBody",
+    "name": "d77",
+    "expression": "0.0 deg",
+    "value": 0,
+    "role": "TaperAngle",
+    "createdBy": "Extrude8",
+    "createdByType": "adsk::fusion::ExtrudeFeature"
+  },
+  {
+    "component": "AdapterBody",
+    "name": "d78",
+    "expression": "45 deg",
+    "value": 0.7853981633974483,
+    "role": "Angle1",
+    "createdBy": "Draft1",
+    "createdByType": "adsk::fusion::DraftFeature"
+  },
+  {
+    "component": "AdapterBody",
+    "name": "d79",
+    "expression": "0.0 deg",
+    "value": 0,
+    "role": "Angle2",
+    "createdBy": "Draft1",
+    "createdByType": "adsk::fusion::DraftFeature"
+  },
+  {
+    "component": "AdapterBody",
+    "name": "d84",
+    "expression": "30.2 mm",
+    "value": 3.02,
+    "role": "Diameter Dimension-2",
+    "createdBy": "HandleMountSketch",
+    "createdByType": "adsk::fusion::Sketch"
+  },
+  {
+    "component": "AdapterBody",
+    "name": "d454",
+    "expression": "135 deg",
+    "value": 2.356194490192345,
+    "role": "Angular Dimension-3",
+    "createdBy": "HandleMountSketch",
+    "createdByType": "adsk::fusion::Sketch"
+  },
+  {
+    "component": "AdapterBody",
+    "name": "d566",
+    "expression": "11.2377104606 mm",
+    "value": 1.1237710460600001,
+    "role": "Linear Dimension-2",
+    "createdBy": "HandleMountSketch",
+    "createdByType": "adsk::fusion::Sketch"
+  },
+  {
+    "component": "AdapterBody",
+    "name": "d85",
+    "expression": "49 mm",
+    "value": 4.9,
+    "role": "AlongDistance",
+    "createdBy": "Extrude9",
+    "createdByType": "adsk::fusion::ExtrudeFeature"
+  },
+  {
+    "component": "AdapterBody",
+    "name": "d86",
+    "expression": "0.0 deg",
+    "value": 0,
+    "role": "TaperAngle",
+    "createdBy": "Extrude9",
+    "createdByType": "adsk::fusion::ExtrudeFeature"
+  },
+  {
+    "component": "AdapterBody",
+    "name": "d91",
+    "expression": "-35.00 deg",
+    "value": -0.6108652381980153,
+    "role": "Angle1",
+    "createdBy": "Draft4",
+    "createdByType": "adsk::fusion::DraftFeature"
+  },
+  {
+    "component": "AdapterBody",
+    "name": "d92",
+    "expression": "0.0 deg",
+    "value": 0,
+    "role": "Angle2",
+    "createdBy": "Draft4",
+    "createdByType": "adsk::fusion::DraftFeature"
+  },
+  {
+    "component": "AdapterBody",
+    "name": "d440",
+    "expression": "13.5 mm",
+    "value": 1.35,
+    "role": "Linear Dimension-2",
+    "createdBy": "RearSeatNotchSketch",
+    "createdByType": "adsk::fusion::Sketch"
+  },
+  {
+    "component": "AdapterBody",
+    "name": "d441",
+    "expression": "22.8562960611 mm",
+    "value": 2.28562960611,
+    "role": "Linear Dimension-3",
+    "createdBy": "RearSeatNotchSketch",
+    "createdByType": "adsk::fusion::Sketch"
+  },
+  {
+    "component": "AdapterBody",
+    "name": "d442",
+    "expression": "20 mm",
+    "value": 2,
+    "role": "Linear Dimension-4",
+    "createdBy": "RearSeatNotchSketch",
+    "createdByType": "adsk::fusion::Sketch"
+  },
+  {
+    "component": "AdapterBody",
+    "name": "d443",
+    "expression": "48 mm",
+    "value": 4.800000000000001,
+    "role": "Linear Dimension-5",
+    "createdBy": "RearSeatNotchSketch",
+    "createdByType": "adsk::fusion::Sketch"
+  },
+  {
+    "component": "AdapterBody",
+    "name": "d106",
+    "expression": "-8 mm",
+    "value": -0.8,
+    "role": "AlongDistance",
+    "createdBy": "Extrude10",
+    "createdByType": "adsk::fusion::ExtrudeFeature"
+  },
+  {
+    "component": "AdapterBody",
+    "name": "d107",
+    "expression": "0.0 deg",
+    "value": 0,
+    "role": "TaperAngle",
+    "createdBy": "Extrude10",
+    "createdByType": "adsk::fusion::ExtrudeFeature"
+  },
+  {
+    "component": "AdapterBody",
+    "name": "d108",
+    "expression": "10 mm",
+    "value": 1,
+    "role": "Linear Dimension-2",
+    "createdBy": "FrontDovetailSketch",
+    "createdByType": "adsk::fusion::Sketch"
+  },
+  {
+    "component": "AdapterBody",
+    "name": "d109",
+    "expression": "60 deg",
+    "value": 1.0471975511965976,
+    "role": "Angular Dimension-2",
+    "createdBy": "FrontDovetailSketch",
+    "createdByType": "adsk::fusion::Sketch"
+  },
+  {
+    "component": "AdapterBody",
+    "name": "d136",
+    "expression": "6.00 mm",
+    "value": 0.6000000000000001,
+    "role": "Linear Dimension-3",
+    "createdBy": "FrontDovetailSketch",
+    "createdByType": "adsk::fusion::Sketch"
+  },
+  {
+    "component": "AdapterBody",
+    "name": "d111",
+    "expression": "40 mm",
+    "value": 4,
+    "role": "AlongDistance",
+    "createdBy": "Extrude11",
+    "createdByType": "adsk::fusion::ExtrudeFeature"
+  },
+  {
+    "component": "AdapterBody",
+    "name": "d112",
+    "expression": "0.0 deg",
+    "value": 0,
+    "role": "TaperAngle",
+    "createdBy": "Extrude11",
+    "createdByType": "adsk::fusion::ExtrudeFeature"
+  },
+  {
+    "component": "AdapterBody",
+    "name": "d125",
+    "expression": "0.0 deg",
+    "value": 0,
+    "role": "TaperAngle",
+    "createdBy": "Extrude12",
+    "createdByType": "adsk::fusion::ExtrudeFeature"
+  },
+  {
+    "component": "AdapterBody",
+    "name": "d130",
+    "expression": "-1.00 mm",
+    "value": -0.1,
+    "role": "AlongDistance",
+    "createdBy": "Extrude13",
+    "createdByType": "adsk::fusion::ExtrudeFeature"
+  },
+  {
+    "component": "AdapterBody",
+    "name": "d131",
+    "expression": "0.0 deg",
+    "value": 0,
+    "role": "TaperAngle",
+    "createdBy": "Extrude13",
+    "createdByType": "adsk::fusion::ExtrudeFeature"
+  },
+  {
+    "component": "AdapterBody",
+    "name": "d132",
+    "expression": "-8.00 mm",
+    "value": -0.8,
+    "role": "AgainstDistance",
+    "createdBy": "Extrude13",
+    "createdByType": "adsk::fusion::ExtrudeFeature"
+  },
+  {
+    "component": "AdapterBody",
+    "name": "d133",
+    "expression": "0.0 deg",
+    "value": 0,
+    "role": "Side2TaperAngle",
+    "createdBy": "Extrude13",
+    "createdByType": "adsk::fusion::ExtrudeFeature"
+  },
+  {
+    "component": "AdapterBody",
+    "name": "d151",
+    "expression": "1",
+    "value": 1,
+    "role": "TangencyWeight",
+    "createdBy": "Fillet3",
+    "createdByType": "adsk::fusion::FilletFeature"
+  },
+  {
+    "component": "AdapterBody",
+    "name": "d152",
+    "expression": "1 mm",
+    "value": 0.1,
+    "role": "Radius",
+    "createdBy": "Fillet3",
+    "createdByType": "adsk::fusion::FilletFeature"
+  },
+  {
+    "component": "AdapterBody",
+    "name": "d153",
+    "expression": "1",
+    "value": 1,
+    "role": "TangencyWeight",
+    "createdBy": "Fillet4",
+    "createdByType": "adsk::fusion::FilletFeature"
+  },
+  {
+    "component": "AdapterBody",
+    "name": "d154",
+    "expression": "1 mm",
+    "value": 0.1,
+    "role": "Radius",
+    "createdBy": "Fillet4",
+    "createdByType": "adsk::fusion::FilletFeature"
+  },
+  {
+    "component": "AdapterBody",
+    "name": "d400",
+    "expression": "130.00 mm",
+    "value": 13,
+    "role": "AlongDistance",
+    "createdBy": "Extrude14",
+    "createdByType": "adsk::fusion::ExtrudeFeature"
+  },
+  {
+    "component": "AdapterBody",
+    "name": "d401",
+    "expression": "0.0 deg",
+    "value": 0,
+    "role": "TaperAngle",
+    "createdBy": "Extrude14",
+    "createdByType": "adsk::fusion::ExtrudeFeature"
+  },
+  {
+    "component": "AdapterBody",
+    "name": "d421",
+    "expression": "1",
+    "value": 1,
+    "role": "TangencyWeight",
+    "createdBy": "ExteriorFillet",
+    "createdByType": "adsk::fusion::FilletFeature"
+  },
+  {
+    "component": "AdapterBody",
+    "name": "d422",
+    "expression": "1 mm",
+    "value": 0.1,
+    "role": "Radius",
+    "createdBy": "ExteriorFillet",
+    "createdByType": "adsk::fusion::FilletFeature"
+  },
+  {
+    "component": "AdapterBody",
+    "name": "d444",
+    "expression": "50.0 deg",
+    "value": 0.8726646259971648,
+    "role": "RotateAngle",
+    "createdBy": "SeatCutoutPlane",
+    "createdByType": "adsk::fusion::ConstructionPlane"
+  },
+  {
+    "component": "AdapterBody",
+    "name": "d448",
+    "expression": "40 mm",
+    "value": 4,
+    "role": "Diameter Dimension-2",
+    "createdBy": "SeatCutoutSketch",
+    "createdByType": "adsk::fusion::Sketch"
+  },
+  {
+    "component": "AdapterBody",
+    "name": "d445",
+    "expression": "0.0 deg",
+    "value": 0,
+    "role": "TaperAngle",
+    "createdBy": "Extrude15",
+    "createdByType": "adsk::fusion::ExtrudeFeature"
+  },
+  {
+    "component": "AdapterBody",
+    "name": "d693",
+    "expression": "0.00 mm",
+    "value": 0,
+    "role": "ProfileOffset",
+    "createdBy": "Extrude15",
+    "createdByType": "adsk::fusion::ExtrudeFeature"
+  },
+  {
+    "component": "AdapterBody",
+    "name": "d608",
+    "expression": "-145.00 deg",
+    "value": -2.530727415391778,
+    "role": "RotateAngle",
+    "createdBy": "RearCutoutPlane",
+    "createdByType": "adsk::fusion::ConstructionPlane"
+  },
+  {
+    "component": "AdapterBody",
+    "name": "d611",
+    "expression": "5 mm",
+    "value": 0.5,
+    "role": "Linear Dimension-2",
+    "createdBy": "RearCutSketch",
+    "createdByType": "adsk::fusion::Sketch"
+  },
+  {
+    "component": "AdapterBody",
+    "name": "d613",
+    "expression": "45 deg",
+    "value": 0.7853981633974483,
+    "role": "Angular Dimension-2",
+    "createdBy": "RearCutSketch",
+    "createdByType": "adsk::fusion::Sketch"
+  },
+  {
+    "component": "AdapterBody",
+    "name": "d616",
+    "expression": "45 mm",
+    "value": 4.5,
+    "role": "Linear Dimension-3",
+    "createdBy": "RearCutSketch",
+    "createdByType": "adsk::fusion::Sketch"
+  },
+  {
+    "component": "AdapterBody",
+    "name": "d609",
+    "expression": "0.0 deg",
+    "value": 0,
+    "role": "TaperAngle",
+    "createdBy": "Extrude16",
+    "createdByType": "adsk::fusion::ExtrudeFeature"
+  },
+  {
+    "component": "AdapterBody",
+    "name": "d610",
+    "expression": "0.0 deg",
+    "value": 0,
+    "role": "Side2TaperAngle",
+    "createdBy": "Extrude16",
+    "createdByType": "adsk::fusion::ExtrudeFeature"
+  },
+  {
+    "component": "AdapterBody",
+    "name": "d626",
+    "expression": "20 mm",
+    "value": 2,
+    "role": "Linear Dimension-2",
+    "createdBy": "BodyCutSketch",
+    "createdByType": "adsk::fusion::Sketch"
+  },
+  {
+    "component": "AdapterBody",
+    "name": "d627",
+    "expression": "30 mm",
+    "value": 3,
+    "role": "Linear Dimension-3",
+    "createdBy": "BodyCutSketch",
+    "createdByType": "adsk::fusion::Sketch"
+  },
+  {
+    "component": "AdapterBody",
+    "name": "d628",
+    "expression": "36 mm",
+    "value": 3.6,
+    "role": "Linear Dimension-4",
+    "createdBy": "BodyCutSketch",
+    "createdByType": "adsk::fusion::Sketch"
+  },
+  {
+    "component": "AdapterBody",
+    "name": "d629",
+    "expression": "6 mm",
+    "value": 0.6000000000000001,
+    "role": "Linear Dimension-5",
+    "createdBy": "BodyCutSketch",
+    "createdByType": "adsk::fusion::Sketch"
+  },
+  {
+    "component": "AdapterBody",
+    "name": "d621",
+    "expression": "-12 mm",
+    "value": -1.2000000000000002,
+    "role": "ProfileOffset",
+    "createdBy": "Extrude18",
+    "createdByType": "adsk::fusion::ExtrudeFeature"
+  },
+  {
+    "component": "AdapterBody",
+    "name": "d622",
+    "expression": "15 deg",
+    "value": 0.2617993877991494,
+    "role": "TaperAngle",
+    "createdBy": "Extrude18",
+    "createdByType": "adsk::fusion::ExtrudeFeature"
+  },
+  {
+    "component": "AdapterBody",
+    "name": "d630",
+    "expression": "32.5 mm",
+    "value": 3.25,
+    "role": "Diameter Dimension-2",
+    "createdBy": "AirtagCutSketch",
+    "createdByType": "adsk::fusion::Sketch"
+  },
+  {
+    "component": "AdapterBody",
+    "name": "d631",
+    "expression": "10 mm",
+    "value": 1,
+    "role": "Linear Dimension-2",
+    "createdBy": "AirtagCutSketch",
+    "createdByType": "adsk::fusion::Sketch"
+  },
+  {
+    "component": "AdapterBody",
+    "name": "d632",
+    "expression": "20 mm",
+    "value": 2,
+    "role": "Linear Dimension-3",
+    "createdBy": "AirtagCutSketch",
+    "createdByType": "adsk::fusion::Sketch"
+  },
+  {
+    "component": "AdapterBody",
+    "name": "d639",
+    "expression": "55 mm",
+    "value": 5.5,
+    "role": "Linear Dimension-4",
+    "createdBy": "AirtagCutSketch",
+    "createdByType": "adsk::fusion::Sketch"
+  },
+  {
+    "component": "AdapterBody",
+    "name": "d633",
+    "expression": "-8.5 mm",
+    "value": -0.8500000000000001,
+    "role": "AlongDistance",
+    "createdBy": "Extrude19",
+    "createdByType": "adsk::fusion::ExtrudeFeature"
+  },
+  {
+    "component": "AdapterBody",
+    "name": "d634",
+    "expression": "0.0 deg",
+    "value": 0,
+    "role": "TaperAngle",
+    "createdBy": "Extrude19",
+    "createdByType": "adsk::fusion::ExtrudeFeature"
+  },
+  {
+    "component": "AdapterBody",
+    "name": "d641",
+    "expression": "-8 mm",
+    "value": -0.8,
+    "role": "AlongDistance",
+    "createdBy": "Extrude20",
+    "createdByType": "adsk::fusion::ExtrudeFeature"
+  },
+  {
+    "component": "AdapterBody",
+    "name": "d642",
+    "expression": "0.0 deg",
+    "value": 0,
+    "role": "TaperAngle",
+    "createdBy": "Extrude20",
+    "createdByType": "adsk::fusion::ExtrudeFeature"
+  },
+  {
+    "component": "AdapterBody",
+    "name": "d694",
+    "expression": "1",
+    "value": 1,
+    "role": "TangencyWeight",
+    "createdBy": "Fillet9",
+    "createdByType": "adsk::fusion::FilletFeature"
+  },
+  {
+    "component": "AdapterBody",
+    "name": "d695",
+    "expression": "1 mm",
+    "value": 0.1,
+    "role": "Radius",
+    "createdBy": "Fillet9",
+    "createdByType": "adsk::fusion::FilletFeature"
+  },
+  {
+    "component": "AdapterBodySplit",
+    "name": "d640",
+    "expression": "50 mm",
+    "value": 5,
+    "role": "Linear Dimension-2",
+    "createdBy": "SplitBodySketch",
+    "createdByType": "adsk::fusion::Sketch"
+  },
+  {
+    "component": "AdapterBodySplit",
+    "name": "d653",
+    "expression": "60 deg",
+    "value": 1.0471975511965976,
+    "role": "Angular Dimension-2",
+    "createdBy": "TopJointSketch",
+    "createdByType": "adsk::fusion::Sketch"
+  },
+  {
+    "component": "AdapterBodySplit",
+    "name": "d655",
+    "expression": "20 mm",
+    "value": 2,
+    "role": "Linear Dimension-3",
+    "createdBy": "TopJointSketch",
+    "createdByType": "adsk::fusion::Sketch"
+  },
+  {
+    "component": "AdapterBodySplit",
+    "name": "d656",
+    "expression": "15 mm",
+    "value": 1.5,
+    "role": "Linear Dimension-3",
+    "createdBy": "TopJointSketch",
+    "createdByType": "adsk::fusion::Sketch"
+  },
+  {
+    "component": "AdapterBodySplit",
+    "name": "d643",
+    "expression": "-8 mm",
+    "value": -0.8,
+    "role": "AlongDistance",
+    "createdBy": "Extrude1",
+    "createdByType": "adsk::fusion::ExtrudeFeature"
+  },
+  {
+    "component": "AdapterBodySplit",
+    "name": "d644",
+    "expression": "0.0 deg",
+    "value": 0,
+    "role": "TaperAngle",
+    "createdBy": "Extrude1",
+    "createdByType": "adsk::fusion::ExtrudeFeature"
+  },
+  {
+    "component": "AdapterBodySplit",
+    "name": "d657",
+    "expression": "60 deg",
+    "value": 1.0471975511965976,
+    "role": "Angular Dimension-2",
+    "createdBy": "SideJointSketch",
+    "createdByType": "adsk::fusion::Sketch"
+  },
+  {
+    "component": "AdapterBodySplit",
+    "name": "d658",
+    "expression": "4 mm",
+    "value": 0.4,
+    "role": "Linear Dimension-2",
+    "createdBy": "SideJointSketch",
+    "createdByType": "adsk::fusion::Sketch"
+  },
+  {
+    "component": "AdapterBodySplit",
+    "name": "d660",
+    "expression": "5 mm",
+    "value": 0.5,
+    "role": "Linear Dimension-4",
+    "createdBy": "SideJointSketch",
+    "createdByType": "adsk::fusion::Sketch"
+  },
+  {
+    "component": "AdapterBodySplit",
+    "name": "d661",
+    "expression": "5.1961524227 mm",
+    "value": 0.51961524227,
+    "role": "Linear Dimension-4",
+    "createdBy": "SideJointSketch",
+    "createdByType": "adsk::fusion::Sketch"
+  },
+  {
+    "component": "AdapterBodySplit",
+    "name": "d662",
+    "expression": "8 mm",
+    "value": 0.8,
+    "role": "Linear Dimension-5",
+    "createdBy": "SideJointSketch",
+    "createdByType": "adsk::fusion::Sketch"
+  },
+  {
+    "component": "AdapterBodySplit",
+    "name": "d663",
+    "expression": "-8 mm",
+    "value": -0.8,
+    "role": "AlongDistance",
+    "createdBy": "Extrude2",
+    "createdByType": "adsk::fusion::ExtrudeFeature"
+  },
+  {
+    "component": "AdapterBodySplit",
+    "name": "d664",
+    "expression": "0.0 deg",
+    "value": 0,
+    "role": "TaperAngle",
+    "createdBy": "Extrude2",
+    "createdByType": "adsk::fusion::ExtrudeFeature"
+  },
+  {
+    "component": "AdapterBodySplit",
+    "name": "d667",
+    "expression": "-8 mm - Gap",
+    "value": -0.78,
+    "role": "AlongDistance",
+    "createdBy": "Extrude3",
+    "createdByType": "adsk::fusion::ExtrudeFeature"
+  },
+  {
+    "component": "AdapterBodySplit",
+    "name": "d668",
+    "expression": "0.0 deg",
+    "value": 0,
+    "role": "TaperAngle",
+    "createdBy": "Extrude3",
+    "createdByType": "adsk::fusion::ExtrudeFeature"
+  },
+  {
+    "component": "AdapterBodySplit",
+    "name": "d669",
+    "expression": "-8.00 mm",
+    "value": -0.8,
+    "role": "AlongDistance",
+    "createdBy": "Extrude4",
+    "createdByType": "adsk::fusion::ExtrudeFeature"
+  },
+  {
+    "component": "AdapterBodySplit",
+    "name": "d670",
+    "expression": "0.0 deg",
+    "value": 0,
+    "role": "TaperAngle",
+    "createdBy": "Extrude4",
+    "createdByType": "adsk::fusion::ExtrudeFeature"
+  },
+  {
+    "component": "AdapterBodySplit",
+    "name": "d671",
+    "expression": "Gap",
+    "value": -0.020000000000000004,
+    "role": "distance",
+    "createdBy": "OffsetFaces1",
+    "createdByType": "adsk::fusion::OffsetFacesFeature"
+  },
+  {
+    "component": "AdapterBodySplit",
+    "name": "d677",
+    "expression": "-10 mm",
+    "value": -1,
+    "role": "AlongDistance",
+    "createdBy": "Plane4",
+    "createdByType": "adsk::fusion::ConstructionPlane"
+  },
+  {
+    "component": "AdapterBodySplit",
+    "name": "d680",
+    "expression": "1",
+    "value": 1,
+    "role": "TangencyWeight",
+    "createdBy": "Fillet2",
+    "createdByType": "adsk::fusion::FilletFeature"
+  },
+  {
+    "component": "AdapterBodySplit",
+    "name": "d681",
+    "expression": "1 mm",
+    "value": 0.1,
+    "role": "Radius",
+    "createdBy": "Fillet2",
+    "createdByType": "adsk::fusion::FilletFeature"
+  },
+  {
+    "component": "AdapterBodySplit",
+    "name": "d682",
+    "expression": "1",
+    "value": 1,
+    "role": "TangencyWeight",
+    "createdBy": "Fillet3",
+    "createdByType": "adsk::fusion::FilletFeature"
+  },
+  {
+    "component": "AdapterBodySplit",
+    "name": "d683",
+    "expression": "1 mm",
+    "value": 0.1,
+    "role": "Radius",
+    "createdBy": "Fillet3",
+    "createdByType": "adsk::fusion::FilletFeature"
+  },
+  {
+    "component": "AdapterBodySplit",
+    "name": "d684",
+    "expression": "1",
+    "value": 1,
+    "role": "TangencyWeight",
+    "createdBy": "Fillet4",
+    "createdByType": "adsk::fusion::FilletFeature"
+  },
+  {
+    "component": "AdapterBodySplit",
+    "name": "d685",
+    "expression": "1 mm",
+    "value": 0.1,
+    "role": "Radius",
+    "createdBy": "Fillet4",
+    "createdByType": "adsk::fusion::FilletFeature"
+  }
+]

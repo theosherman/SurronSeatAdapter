@@ -1,0 +1,46 @@
+{
+  "destination": {
+    "doc": "b1a1f737761c2581236d5ec3",
+    "ws": "eb902961c90530f7f212e211",
+    "elem": "69186d95d4c9dc45ec42f803"
+  },
+  "sketches": {
+    "BottomSketch": "FRgQRk7VmFUyqoa_0",
+    "SideSketch": "FFzsVmMiJv08USg_1",
+    "RearSketch": "FObAB007mRnQtat_1",
+    "TrunkDovetailSketch": "FC5wfBeBMoDlgac_1",
+    "BoltHolesSketch": "FoqeM5Obpcq8Kt3_1",
+    "SeatHangerSketch": "FzRdZpNYAcRPBto_1",
+    "SeatCutoutSketch": "FF2HVmEDX0PjHrB_1",
+    "HandleMountSketch": "FBFgwwURXG85bxr_1",
+    "FrontCutSketch": "FfUtoC2c3yTcRwX_1",
+    "RearSeatNotchSketch": "FHwBn9diCqwSsbi_1",
+    "FrontDovetailSketch": "FZOwZRIwzIDtTc4_1",
+    "HingeTrajectorySketch": "F6vRGlmUx7tZx8t_1",
+    "RearCutSketch": "FjNqBa4WLqtd6FT_1",
+    "BodyCutSketch": "FPOKJiau8f2Dt4I_1",
+    "AirtagCutSketch": "FQJdURvsTgBcT0u_1",
+    "SplitBodySketch": "FhRrPbrHbeHBQJb_1",
+    "TopJointSketch": "FuqglHAAXnURZPB_1",
+    "SideJointSketch": "FySKcbLesT3M3sa_1"
+  },
+  "planes": {
+    "BoltHolesSketch": "FMSkS5NaExKI4Pn_1",
+    "SeatHangerSketch": "FRMu1dDodvFi12c_1",
+    "SeatCutoutSketch": "FH4n5vhm5Z9YOWL_1",
+    "RearSeatNotchSketch": "FtNyLTOxAwGIlDc_1",
+    "RearCutSketch": "Fz7BZtGqqE2ZDqd_1",
+    "BodyCutSketch": "FCf2qxP5C2LexGS_1",
+    "AirtagCutSketch": "Fhui3cqs9kC6l28_1",
+    "TopJointSketch": "FMnaP3kdckcDcEw_1",
+    "SideJointSketch": "FmK8rUdpHQutBfp_1"
+  },
+  "namespace": "ebdc6d098199e5f1ae44b93dd::mb61e214fbc6b7f4f451cbdb5",
+  "features": {
+    "BottomExtrusion": "Fs1TYnsa2bPoBg9_0",
+    "Mirror1": "FgvB7CR6pGCJ6vi_1",
+    "SideIntersection": "FsYb5cgv3kCo3Wn_1",
+    "RearIntersection": "FMWLqHay8i5LrHH_1",
+    "Mirror2": "FBPpfdgSlC3ZHBk_1"
+  }
+}

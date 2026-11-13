@@ -1,0 +1,34 @@
+{
+  "input": "Sherman_P_Flush_Screen_Fusion_Default.stl",
+  "output": "Sherman_P_Scan_Aligned_To_Adapter_mm.stl",
+  "units": "millimeter",
+  "triangles": 16000,
+  "uniqueVertices": 7988,
+  "badEdges": 0,
+  "rotationDiagonal": [
+    -1,
+    -1,
+    1
+  ],
+  "translationMillimeters": [
+    215.596105105428,
+    305.1260529610669,
+    -372.6817016601563
+  ],
+  "boundsMillimeters": {
+    "min": [
+      -105.88955163285326,
+      -249.61491383580812,
+      -71.76989746093756
+    ],
+    "max": [
+      103.88104010298659,
+      243.80113230677,
+      34.50946044921869
+    ]
+  },
+  "volumeMillimetersCubed": 4221287.871964945,
+  "fusionReferenceVolumeMillimetersCubed": 4221287.871964949,
+  "sampleMatchErrorMillimeters": 5.684341886080802e-14,
+  "alignmentSource": "Existing Sherman P Body Top Refined v4 component geometry and occurrence transform in Fusion"
+}

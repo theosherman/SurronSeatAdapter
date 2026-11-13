@@ -1,0 +1,1016 @@
+[
+  {
+    "component": "AdapterBody",
+    "name": "BottomExtrusion",
+    "index": 9,
+    "operation": 3,
+    "extentType": 1,
+    "extentOne": {
+      "type": "adsk::fusion::DistanceExtentDefinition",
+      "distance": {
+        "name": "d5",
+        "expression": "150.00 mm",
+        "value": 15
+      },
+      "isSymmetric": false
+    },
+    "extentTwo": {
+      "type": "adsk::fusion::DistanceExtentDefinition",
+      "distance": {
+        "name": "d7",
+        "expression": "50.00 mm",
+        "value": 5
+      },
+      "isSymmetric": false
+    },
+    "startExtent": {
+      "type": "adsk::fusion::ProfilePlaneStartDefinition"
+    },
+    "taperOne": {
+      "name": "d6",
+      "expression": "0.0 deg",
+      "value": 0
+    },
+    "profiles": [
+      {
+        "type": "adsk::fusion::Profile",
+        "sketch": "BottomSketch",
+        "bbox": [
+          [
+            0,
+            -29,
+            0
+          ],
+          [
+            8,
+            19.31595320874856,
+            0
+          ]
+        ]
+      }
+    ]
+  },
+  {
+    "component": "AdapterBody",
+    "name": "RearIntersection",
+    "index": 14,
+    "operation": 2,
+    "extentType": 0,
+    "extentOne": {
+      "type": "adsk::fusion::DistanceExtentDefinition",
+      "distance": {
+        "name": "d18",
+        "expression": "490.00 mm",
+        "value": 49
+      },
+      "isSymmetric": false
+    },
+    "extentTwo": null,
+    "startExtent": {
+      "type": "adsk::fusion::ProfilePlaneStartDefinition"
+    },
+    "taperOne": {
+      "name": "d19",
+      "expression": "0.0 deg",
+      "value": 0
+    },
+    "profiles": [
+      {
+        "type": "adsk::fusion::Profile",
+        "sketch": "RearSketch",
+        "bbox": [
+          [
+            0,
+            -10.910684591063722,
+            -26.344598216275198
+          ],
+          [
+            9,
+            5.558007547326886,
+            -26.344598216275198
+          ]
+        ]
+      }
+    ]
+  },
+  {
+    "component": "AdapterBody",
+    "name": "Extrude4",
+    "index": 18,
+    "operation": 0,
+    "extentType": 0,
+    "extentOne": {
+      "type": "adsk::fusion::ToEntityExtentDefinition",
+      "offset": {
+        "name": "d38",
+        "expression": "0.00 mm",
+        "value": 0
+      }
+    },
+    "extentTwo": null,
+    "startExtent": {
+      "type": "adsk::fusion::ProfilePlaneStartDefinition"
+    },
+    "taperOne": {
+      "name": "d39",
+      "expression": "0.0 deg",
+      "value": 0
+    },
+    "profiles": [
+      {
+        "type": "adsk::fusion::Profile",
+        "sketch": "TrunkDovetailSketch",
+        "bbox": [
+          [
+            -1.46188021535169,
+            -5.731524097233774,
+            -2.1699864990429502e-17
+          ],
+          [
+            1.4618802153517008,
+            -4.931524097233765,
+            4.339972998085825e-17
+          ]
+        ]
+      }
+    ]
+  },
+  {
+    "component": "AdapterBody",
+    "name": "ScrewHoleExtrude",
+    "index": 75,
+    "operation": 1,
+    "extentType": 2,
+    "extentOne": {
+      "type": "adsk::fusion::ThroughAllExtentDefinition",
+      "isPositiveDirection": true
+    },
+    "extentTwo": null,
+    "startExtent": {
+      "type": "adsk::fusion::ProfilePlaneStartDefinition"
+    },
+    "taperOne": {
+      "name": "d65",
+      "expression": "0.0 deg",
+      "value": 0
+    },
+    "profiles": [
+      {
+        "type": "adsk::fusion::Profile",
+        "sketch": "BoltHolesSketch",
+        "bbox": [
+          [
+            1.1,
+            19.04428441873774,
+            0
+          ],
+          [
+            1.8000000000000003,
+            19.74428441873774,
+            0
+          ]
+        ]
+      },
+      {
+        "type": "adsk::fusion::Profile",
+        "sketch": "BoltHolesSketch",
+        "bbox": [
+          [
+            -1.8000000000000003,
+            19.04428441873774,
+            0
+          ],
+          [
+            -1.1,
+            19.74428441873774,
+            0
+          ]
+        ]
+      },
+      {
+        "type": "adsk::fusion::Profile",
+        "sketch": "BoltHolesSketch",
+        "bbox": [
+          [
+            -2.6500000000000017,
+            -6.755715581262262,
+            0
+          ],
+          [
+            -1.9500000000000015,
+            -6.055715581262261,
+            0
+          ]
+        ]
+      },
+      {
+        "type": "adsk::fusion::Profile",
+        "sketch": "BoltHolesSketch",
+        "bbox": [
+          [
+            1.9500000000000015,
+            -6.755715581262262,
+            0
+          ],
+          [
+            2.6500000000000017,
+            -6.055715581262261,
+            0
+          ]
+        ]
+      }
+    ]
+  },
+  {
+    "component": "AdapterBody",
+    "name": "Extrude6",
+    "index": 76,
+    "operation": 1,
+    "extentType": 1,
+    "extentOne": {
+      "type": "adsk::fusion::DistanceExtentDefinition",
+      "distance": {
+        "name": "d66",
+        "expression": "-3.00 mm",
+        "value": -0.30000000000000004
+      },
+      "isSymmetric": false
+    },
+    "extentTwo": {
+      "type": "adsk::fusion::ThroughAllExtentDefinition",
+      "isPositiveDirection": true
+    },
+    "startExtent": {
+      "type": "adsk::fusion::ProfilePlaneStartDefinition"
+    },
+    "taperOne": {
+      "name": "d67",
+      "expression": "0.0 deg",
+      "value": 0
+    },
+    "profiles": [
+      {
+        "type": "adsk::fusion::Profile",
+        "sketch": "BoltHolesSketch",
+        "bbox": [
+          [
+            0.6000000000000001,
+            18.54428441873774,
+            0
+          ],
+          [
+            2.3000000000000003,
+            20.24428441873774,
+            0
+          ]
+        ]
+      },
+      {
+        "type": "adsk::fusion::Profile",
+        "sketch": "BoltHolesSketch",
+        "bbox": [
+          [
+            -2.3000000000000003,
+            18.54428441873774,
+            0
+          ],
+          [
+            -0.6000000000000001,
+            20.24428441873774,
+            0
+          ]
+        ]
+      }
+    ]
+  },
+  {
+    "component": "AdapterBody",
+    "name": "Extrude7",
+    "index": 77,
+    "operation": 1,
+    "extentType": 1,
+    "extentOne": {
+      "type": "adsk::fusion::ToEntityExtentDefinition",
+      "offset": {
+        "name": "d69",
+        "expression": "-3 mm",
+        "value": -0.30000000000000004
+      }
+    },
+    "extentTwo": {
+      "type": "adsk::fusion::ThroughAllExtentDefinition",
+      "isPositiveDirection": true
+    },
+    "startExtent": {
+      "type": "adsk::fusion::ProfilePlaneStartDefinition"
+    },
+    "taperOne": {
+      "name": "d70",
+      "expression": "0.0 deg",
+      "value": 0
+    },
+    "profiles": [
+      {
+        "type": "adsk::fusion::Profile",
+        "sketch": "BoltHolesSketch",
+        "bbox": [
+          [
+            -3.1500000000000017,
+            -7.255715581262262,
+            0
+          ],
+          [
+            -1.4500000000000015,
+            -5.555715581262261,
+            0
+          ]
+        ]
+      },
+      {
+        "type": "adsk::fusion::Profile",
+        "sketch": "BoltHolesSketch",
+        "bbox": [
+          [
+            1.4500000000000015,
+            -7.255715581262262,
+            0
+          ],
+          [
+            3.1500000000000017,
+            -5.555715581262261,
+            0
+          ]
+        ]
+      }
+    ]
+  },
+  {
+    "component": "AdapterBody",
+    "name": "Extrude8",
+    "index": 79,
+    "operation": 3,
+    "extentType": 0,
+    "extentOne": {
+      "type": "adsk::fusion::DistanceExtentDefinition",
+      "distance": {
+        "name": "d76",
+        "expression": "-1.00 mm",
+        "value": -0.1
+      },
+      "isSymmetric": false
+    },
+    "extentTwo": null,
+    "startExtent": {
+      "type": "adsk::fusion::ProfilePlaneStartDefinition"
+    },
+    "taperOne": {
+      "name": "d77",
+      "expression": "0.0 deg",
+      "value": 0
+    },
+    "profiles": [
+      {
+        "type": "adsk::fusion::Profile",
+        "sketch": "SeatHangerSketch",
+        "bbox": [
+          [
+            -5.100000000000004,
+            -0.043682270497072295,
+            -1.7469831193637573e-15
+          ],
+          [
+            -2.200000000000002,
+            4.707216028654833,
+            -5.60207866505296e-16
+          ]
+        ]
+      }
+    ]
+  },
+  {
+    "component": "AdapterBody",
+    "name": "Extrude9",
+    "index": 84,
+    "operation": 0,
+    "extentType": 2,
+    "extentOne": {
+      "type": "adsk::fusion::SymmetricExtentDefinition",
+      "distance": {
+        "name": "d85",
+        "expression": "49 mm",
+        "value": 4.9
+      },
+      "isFullLength": false
+    },
+    "extentTwo": null,
+    "startExtent": {
+      "type": "adsk::fusion::ProfilePlaneStartDefinition"
+    },
+    "taperOne": {
+      "name": "d86",
+      "expression": "0.0 deg",
+      "value": 0
+    },
+    "profiles": [
+      {
+        "type": "adsk::fusion::Profile",
+        "sketch": "HandleMountSketch",
+        "bbox": [
+          [
+            18.90980792066394,
+            -0.2967634693108079,
+            0
+          ],
+          [
+            24.711207143304467,
+            4.264091510959908,
+            0
+          ]
+        ]
+      },
+      {
+        "type": "adsk::fusion::Profile",
+        "sketch": "HandleMountSketch",
+        "bbox": [
+          [
+            19.315953208748557,
+            2.372278038311092,
+            0
+          ],
+          [
+            21.482902641822054,
+            4.097404763882245,
+            0
+          ]
+        ]
+      }
+    ]
+  },
+  {
+    "component": "AdapterBody",
+    "name": "Extrude12",
+    "index": 86,
+    "operation": 1,
+    "extentType": 0,
+    "extentOne": {
+      "type": "adsk::fusion::ThroughAllExtentDefinition",
+      "isPositiveDirection": true
+    },
+    "extentTwo": null,
+    "startExtent": {
+      "type": "adsk::fusion::ProfilePlaneStartDefinition"
+    },
+    "taperOne": {
+      "name": "d125",
+      "expression": "0.0 deg",
+      "value": 0
+    },
+    "profiles": [
+      {
+        "type": "adsk::fusion::Profile",
+        "sketch": "FrontCutSketch",
+        "bbox": [
+          [
+            4.9,
+            16.331122810793566,
+            0
+          ],
+          [
+            8,
+            19.31595320874856,
+            0
+          ]
+        ]
+      },
+      {
+        "type": "adsk::fusion::Profile",
+        "sketch": "FrontCutSketch",
+        "bbox": [
+          [
+            -8,
+            16.331122810793566,
+            0
+          ],
+          [
+            -4.9,
+            19.31595320874856,
+            0
+          ]
+        ]
+      }
+    ]
+  },
+  {
+    "component": "AdapterBody",
+    "name": "Extrude10",
+    "index": 89,
+    "operation": 1,
+    "extentType": 0,
+    "extentOne": {
+      "type": "adsk::fusion::DistanceExtentDefinition",
+      "distance": {
+        "name": "d106",
+        "expression": "-8 mm",
+        "value": -0.8
+      },
+      "isSymmetric": false
+    },
+    "extentTwo": null,
+    "startExtent": {
+      "type": "adsk::fusion::ProfilePlaneStartDefinition"
+    },
+    "taperOne": {
+      "name": "d107",
+      "expression": "0.0 deg",
+      "value": 0
+    },
+    "profiles": [
+      {
+        "type": "adsk::fusion::Profile",
+        "sketch": "RearSeatNotchSketch",
+        "bbox": [
+          [
+            -3.6356296061053093,
+            24.470896933768437,
+            5.465790905595534e-17
+          ],
+          [
+            -2.4275440629112426,
+            26.470896933768437,
+            1.1352657010093593e-16
+          ]
+        ]
+      },
+      {
+        "type": "adsk::fusion::Profile",
+        "sketch": "RearSeatNotchSketch",
+        "bbox": [
+          [
+            -3.6356296061053093,
+            24.470896933768437,
+            5.465790905595534e-17
+          ],
+          [
+            -3.09995390275284,
+            26.470896933768437,
+            1.1352657010093593e-16
+          ]
+        ]
+      },
+      {
+        "type": "adsk::fusion::Profile",
+        "sketch": "RearSeatNotchSketch",
+        "bbox": [
+          [
+            -2.7060552189404232,
+            24.470896933768437,
+            5.465790905595534e-17
+          ],
+          [
+            -1.35,
+            26.470896933768437,
+            1.1352657010093593e-16
+          ]
+        ]
+      },
+      {
+        "type": "adsk::fusion::Profile",
+        "sketch": "RearSeatNotchSketch",
+        "bbox": [
+          [
+            2.4275440629112426,
+            24.470896933768437,
+            5.465790905595534e-17
+          ],
+          [
+            3.6356296061053093,
+            26.470896933768437,
+            1.1352657010093593e-16
+          ]
+        ]
+      },
+      {
+        "type": "adsk::fusion::Profile",
+        "sketch": "RearSeatNotchSketch",
+        "bbox": [
+          [
+            1.35,
+            24.470896933768437,
+            5.465790905595534e-17
+          ],
+          [
+            2.7060552189404237,
+            26.470896933768437,
+            1.1352657010093593e-16
+          ]
+        ]
+      }
+    ]
+  },
+  {
+    "component": "AdapterBody",
+    "name": "Extrude11",
+    "index": 91,
+    "operation": 0,
+    "extentType": 2,
+    "extentOne": {
+      "type": "adsk::fusion::SymmetricExtentDefinition",
+      "distance": {
+        "name": "d111",
+        "expression": "40 mm",
+        "value": 4
+      },
+      "isFullLength": false
+    },
+    "extentTwo": null,
+    "startExtent": {
+      "type": "adsk::fusion::ProfilePlaneStartDefinition"
+    },
+    "taperOne": {
+      "name": "d112",
+      "expression": "0.0 deg",
+      "value": 0
+    },
+    "profiles": [
+      {
+        "type": "adsk::fusion::Profile",
+        "sketch": "FrontDovetailSketch",
+        "bbox": [
+          [
+            19.082803235133447,
+            3.850392019109494,
+            0
+          ],
+          [
+            20.763715427321568,
+            4.605591630064844,
+            0
+          ]
+        ]
+      }
+    ]
+  },
+  {
+    "component": "AdapterBody",
+    "name": "Extrude15",
+    "index": 97,
+    "operation": 1,
+    "extentType": 0,
+    "extentOne": {
+      "type": "adsk::fusion::ThroughAllExtentDefinition",
+      "isPositiveDirection": true
+    },
+    "extentTwo": null,
+    "startExtent": {
+      "type": "adsk::fusion::FromEntityStartDefinition",
+      "offset": {
+        "name": "d693",
+        "expression": "0.00 mm",
+        "value": 0
+      }
+    },
+    "taperOne": {
+      "name": "d445",
+      "expression": "0.0 deg",
+      "value": 0
+    },
+    "profiles": [
+      {
+        "type": "adsk::fusion::Profile",
+        "sketch": "SeatCutoutSketch",
+        "bbox": [
+          [
+            7.80000014603138,
+            1.9000000581145287,
+            0
+          ],
+          [
+            11.80000014603138,
+            5.900000058114529,
+            0
+          ]
+        ]
+      }
+    ]
+  },
+  {
+    "component": "AdapterBody",
+    "name": "Extrude16",
+    "index": 121,
+    "operation": 1,
+    "extentType": 1,
+    "extentOne": {
+      "type": "adsk::fusion::ThroughAllExtentDefinition",
+      "isPositiveDirection": true
+    },
+    "extentTwo": {
+      "type": "adsk::fusion::ThroughAllExtentDefinition",
+      "isPositiveDirection": true
+    },
+    "startExtent": {
+      "type": "adsk::fusion::ProfilePlaneStartDefinition"
+    },
+    "taperOne": {
+      "name": "d609",
+      "expression": "0.0 deg",
+      "value": 0
+    },
+    "profiles": [
+      {
+        "type": "adsk::fusion::Profile",
+        "sketch": "RearCutSketch",
+        "bbox": [
+          [
+            4.4921423391912425,
+            14.386535998223142,
+            0
+          ],
+          [
+            7.099454966037831,
+            16.993848625069724,
+            0
+          ]
+        ]
+      },
+      {
+        "type": "adsk::fusion::Profile",
+        "sketch": "RearCutSketch",
+        "bbox": [
+          [
+            6.777871005122091,
+            13.811868109730264,
+            0
+          ],
+          [
+            7.67412285453071,
+            16.993848625069724,
+            0
+          ]
+        ]
+      }
+    ]
+  },
+  {
+    "component": "AdapterBody",
+    "name": "Extrude18",
+    "index": 124,
+    "operation": 1,
+    "extentType": 0,
+    "extentOne": {
+      "type": "adsk::fusion::ThroughAllExtentDefinition",
+      "isPositiveDirection": false
+    },
+    "extentTwo": null,
+    "startExtent": {
+      "type": "adsk::fusion::OffsetStartDefinition",
+      "offset": {
+        "name": "d621",
+        "expression": "-12 mm",
+        "value": -1.2000000000000002
+      }
+    },
+    "taperOne": {
+      "name": "d622",
+      "expression": "15 deg",
+      "value": 0.2617993877991494
+    },
+    "profiles": [
+      {
+        "type": "adsk::fusion::Profile",
+        "sketch": "BodyCutSketch",
+        "bbox": [
+          [
+            -3.468750101999131,
+            -14.082792696673577,
+            0
+          ],
+          [
+            3.468750101999131,
+            -2.780258143439239,
+            0
+          ]
+        ]
+      }
+    ]
+  },
+  {
+    "component": "AdapterBody",
+    "name": "Extrude19",
+    "index": 126,
+    "operation": 1,
+    "extentType": 0,
+    "extentOne": {
+      "type": "adsk::fusion::DistanceExtentDefinition",
+      "distance": {
+        "name": "d633",
+        "expression": "-8.5 mm",
+        "value": -0.8500000000000001
+      },
+      "isSymmetric": false
+    },
+    "extentTwo": null,
+    "startExtent": {
+      "type": "adsk::fusion::ProfilePlaneStartDefinition"
+    },
+    "taperOne": {
+      "name": "d634",
+      "expression": "0.0 deg",
+      "value": 0
+    },
+    "profiles": [
+      {
+        "type": "adsk::fusion::Profile",
+        "sketch": "AirtagCutSketch",
+        "bbox": [
+          [
+            -1.8214805288660065,
+            1.0586353368598402,
+            4.1597022586509568e-16
+          ],
+          [
+            1.821480528866006,
+            6.229799946466719,
+            1.277142127921943e-15
+          ]
+        ]
+      }
+    ]
+  },
+  {
+    "component": "AdapterBodySplit",
+    "name": "Extrude2",
+    "index": 188,
+    "operation": 1,
+    "extentType": 0,
+    "extentOne": {
+      "type": "adsk::fusion::DistanceExtentDefinition",
+      "distance": {
+        "name": "d663",
+        "expression": "-8 mm",
+        "value": -0.8
+      },
+      "isSymmetric": false
+    },
+    "extentTwo": null,
+    "startExtent": {
+      "type": "adsk::fusion::ProfilePlaneStartDefinition"
+    },
+    "taperOne": {
+      "name": "d664",
+      "expression": "0.0 deg",
+      "value": 0
+    },
+    "profiles": [
+      {
+        "type": "adsk::fusion::Profile",
+        "sketch": "SideJointSketch",
+        "bbox": [
+          [
+            10.065489830685404,
+            -1.6130365533081852,
+            -2.0348207026786116e-15
+          ],
+          [
+            10.841887746696758,
+            -0.04738941507874417,
+            -5.613094583948717e-16
+          ]
+        ]
+      },
+      {
+        "type": "adsk::fusion::Profile",
+        "sketch": "SideJointSketch",
+        "bbox": [
+          [
+            10.635780752188728,
+            -1.3988438815382453,
+            -1.215047381005378e-15
+          ],
+          [
+            11.41217866820008,
+            0.16680325669119433,
+            2.5846386327835955e-16
+          ]
+        ]
+      }
+    ]
+  },
+  {
+    "component": "AdapterBodySplit",
+    "name": "Extrude3",
+    "index": 194,
+    "operation": 3,
+    "extentType": 0,
+    "extentOne": {
+      "type": "adsk::fusion::DistanceExtentDefinition",
+      "distance": {
+        "name": "d667",
+        "expression": "-8 mm - Gap",
+        "value": -0.78
+      },
+      "isSymmetric": false
+    },
+    "extentTwo": null,
+    "startExtent": {
+      "type": "adsk::fusion::ProfilePlaneStartDefinition"
+    },
+    "taperOne": {
+      "name": "d668",
+      "expression": "0.0 deg",
+      "value": 0
+    },
+    "profiles": [
+      {
+        "type": "adsk::fusion::Profile",
+        "sketch": "TopJointSketch",
+        "bbox": [
+          [
+            -2.654700538379263,
+            8.359226295038653,
+            2.6645352591003757e-15
+          ],
+          [
+            2.654700538379263,
+            10.359226295038653,
+            2.6645352591003757e-15
+          ]
+        ]
+      },
+      {
+        "type": "adsk::fusion::Profile",
+        "sketch": "TopJointSketch",
+        "bbox": [
+          [
+            -2.654700538379263,
+            10.359226295038653,
+            2.6645352591003757e-15
+          ],
+          [
+            2.654700538379263,
+            12.359226295038653,
+            2.6645352591003757e-15
+          ]
+        ]
+      }
+    ]
+  },
+  {
+    "component": "AdapterBodySplit",
+    "name": "Extrude4",
+    "index": 195,
+    "operation": 3,
+    "extentType": 0,
+    "extentOne": {
+      "type": "adsk::fusion::DistanceExtentDefinition",
+      "distance": {
+        "name": "d669",
+        "expression": "-8.00 mm",
+        "value": -0.8
+      },
+      "isSymmetric": false
+    },
+    "extentTwo": null,
+    "startExtent": {
+      "type": "adsk::fusion::ProfilePlaneStartDefinition"
+    },
+    "taperOne": {
+      "name": "d670",
+      "expression": "0.0 deg",
+      "value": 0
+    },
+    "profiles": [
+      {
+        "type": "adsk::fusion::Profile",
+        "sketch": "SideJointSketch",
+        "bbox": [
+          [
+            10.065489830685404,
+            -1.6130365533081852,
+            -2.0348207026786116e-15
+          ],
+          [
+            10.841887746696758,
+            -0.04738941507874417,
+            -5.613094583948717e-16
+          ]
+        ]
+      },
+      {
+        "type": "adsk::fusion::Profile",
+        "sketch": "SideJointSketch",
+        "bbox": [
+          [
+            10.635780752188728,
+            -1.3988438815382453,
+            -1.215047381005378e-15
+          ],
+          [
+            11.41217866820008,
+            0.16680325669119433,
+            2.5846386327835955e-16
+          ]
+        ]
+      }
+    ]
+  }
+]

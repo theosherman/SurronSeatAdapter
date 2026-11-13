@@ -1,0 +1,20 @@
+# Large transient Onshape schema responses; portable source evidence is retained.
+onshape-response-*.json
+
+# Local editor and CAD backups.
+*.bak
+*.tmp
+.DS_Store
+Thumbs.db
+
+# Superseded SolidCraft experiments and command-discovery transcripts.
+SolidCraft/models/experiments/
+SolidCraft/scripts/*-test.json
+SolidCraft/scripts/diagnose-*.json
+SolidCraft/logs/*-request.json
+SolidCraft/logs/*contracts*.json
+SolidCraft/logs/references.json
+SolidCraft/logs/diagnose-*.json
+SolidCraft/logs/*-result.json
+!SolidCraft/logs/child-result.json
+SolidCraft/logs/*-replay.json
