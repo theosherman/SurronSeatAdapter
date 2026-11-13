@@ -1,6 +1,6 @@
 # Modular latch implementation attempt — 2026-11-12
 
-Implementation stopped at the master-extraction gate in Task 1. Tasks 2 and 3 have not started. No modular assembly or latch is claimed to exist.
+Initial implementation stopped at the master-extraction gate in Task 1. The user subsequently authorized a full-native-history alternative. Standalone master rebuild and independent script replay now pass an isolated feasibility check; reconnection to the printing split remains unresolved. The latch build and final integration have not started. No authoritative modular assembly or latch is claimed to exist.
 
 Recovery checkpoint: `e56b2ce`, branch `feat/modular-latch`. The authoritative model remains `models/seat-adapter.sc`. No original native geometry, printing history, wheel imprint, Fusion document or Onshape model was modified.
 
@@ -22,4 +22,8 @@ The approved plan explicitly requires recovery if extraction cannot preserve the
 - `scripts/migrate-modular-master.mjs`: guarded extraction stage with checkpoint recovery. This is a diagnostic scaffold, **not a completed modular migration**; do not advertise it as the final build/refresh workflow.
 - `scripts/validate-modular-latch.mjs`: initial migration/latch acceptance assertions. Both stages intentionally reject absent acceptance reports. Geometry and integration acceptance have not passed.
 
-To continue, the extraction refusal needs a SolidCraft fix or a revised approved migration strategy that preserves all native editable features. Physical latch fit remains untested.
+## Revised route and feasibility evidence
+
+See [the replacement migration plan](../../../docs/superpowers/plans/2026-11-12-modular-latch-native-history.md). The standalone native-history copy rebuilt all 58 master features with caches removed, and the exported 59-step script independently replayed to exactly matching master measurements. `history-feasibility.json` records the comparisons and a signed-zero serialization audit.
+
+An isolated printing reconnection trial still failed at the recorded split: `SmCone::Test #5 Bad Cone GenCurve LineScale`, reporting offset `2.2415403e-12` against tolerance `2e-12`. The cause remains unknown; numerical thresholds were not relaxed. `printing-feasibility-failure.json` records the command and observed failure. The revised plan addresses that case before promoting any files. Physical latch fit remains untested.

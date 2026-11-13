@@ -1,6 +1,6 @@
 # SeatAdapter: separate Adapter Body and Latch parts
 
-Status: design approved, including component order; root naming updated to SeatAdapter. Implementation has not started.
+Status: design approved, including component order and root SeatAdapter. Initial extraction failed and recovery was verified. The user authorized the revised native-history migration approach described below; modular migration and latch acceptance remain incomplete.
 
 ## Intent and chosen approach
 
@@ -37,6 +37,14 @@ Alternatives considered: keep the latch in the current document with linked sket
 Extraction and baseline parameterization must leave the manufactured master and both printing halves unchanged within numerical tolerance. The implementation may rewire the assembly-root `C01_DependentMasterCopy` source to the new linked master while retaining the existing printing sketches, split, connector cuts, names and placement. This reference change is part of migration, not a printing-geometry redesign.
 
 If direct extraction refuses that boundary-crossing dependency, work on a saved temporary copy of the current native document: remove only its assembly-local print branch and shared copy, then extract the self-contained master history into `adapter-body.sc`. In the original assembly, insert that master link and rewire the existing shared copy to it before replacing the old master component. Do not derive the source from stale build scripts. If neither route preserves the master history and printing feature definitions, restore the checkpoint and report the limitation; do not use a body-only master import.
+
+## Migration amendment after extraction refusal (2026-11-12)
+
+The user authorized testing a standalone copy of the current full native master history as the replacement migration route. This supersedes the instruction to stop solely because both `component.extract` routes refuse. All geometry, editability, placement and recovery requirements above remain binding.
+
+Copy the freshly saved native container into an isolated destination, retain every master feature, parameter and embedded scan asset, and remap only the master's component ownership to the standalone root. Remove model caches and force a rebuild before comparing with the current source. Reconnect the captured current printing branch to a native link only in an isolated assembly until geometric and changed/restored dependency checks pass. No body-only or historical-generator substitute is authorized.
+
+A throwaway standalone rebuild preserved all 58 master features and matched the baseline master measurements exactly. Printing reconnection still needs validation: an initial trial encountered an unsupported recorded-transfer replay and then a kernel check failure at the split. Their causes are not yet established. Do not relax tolerances or bypass checks. The detailed replacement sequence is [the native-history migration plan](../plans/2026-11-12-modular-latch-native-history.md).
 
 ## Latch file
 

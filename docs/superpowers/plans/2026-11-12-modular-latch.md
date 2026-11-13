@@ -1,5 +1,7 @@
 # Modular Latch Implementation Plan
 
+**Migration update:** Direct and temporary-copy extraction both refused. The user authorized a full-native-history alternative; [the replacement migration plan](2026-11-12-modular-latch-native-history.md) supersedes Task 1's extraction method. Tasks 2/3 and all geometry acceptance criteria below remain in force.
+
 > **For agentic workers:** REQUIRED SUB-SKILL: Use superpowers:executing-plans to implement this plan task-by-task. Only the main session edits the live CAD model.
 
 **Goal:** Rebuild the Fusion latch in its own editable SolidCraft file, linked to an independent Adapter Body source and placed in the SeatAdapter assembly.

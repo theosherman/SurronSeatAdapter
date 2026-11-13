@@ -1,0 +1,51 @@
+{
+  "name": "batch",
+  "arguments": {
+    "commands": [
+      {
+        "command": "engine.describe",
+        "params": {
+          "command": "component.create"
+        }
+      },
+      {
+        "command": "engine.describe",
+        "params": {
+          "command": "doc.new"
+        }
+      },
+      {
+        "command": "engine.describe",
+        "params": {
+          "command": "component.insert_design"
+        }
+      },
+      {
+        "command": "engine.describe",
+        "params": {
+          "command": "component.update_links"
+        }
+      },
+      {
+        "command": "engine.describe",
+        "params": {
+          "command": "sketch.edit"
+        }
+      },
+      {
+        "command": "engine.describe",
+        "params": {
+          "command": "sketch.project"
+        }
+      },
+      {
+        "command": "engine.describe",
+        "params": {
+          "command": "solid.extrude"
+        }
+      }
+    ],
+    "verbose": false,
+    "rollback": true
+  }
+}
