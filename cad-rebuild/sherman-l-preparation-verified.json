@@ -1,0 +1,434 @@
+{
+  "recipe": {
+    "sourceAsset": "Veteran Sherman L",
+    "sourceVersion": 1,
+    "currentlyLinkedVersion": 2,
+    "verifiedFrom": "Actual Scale1 and Split1/Split2 feature definitions in earlier saved Fusion version",
+    "lengthUnit": "millimeter",
+    "frontSplit": {
+      "timelineIndex": 11,
+      "origin": [
+        0,
+        190,
+        0
+      ],
+      "normal": [
+        0,
+        1,
+        0
+      ]
+    },
+    "rearSplit": {
+      "timelineIndex": 13,
+      "origin": [
+        0,
+        -180,
+        0
+      ],
+      "normal": [
+        0,
+        1,
+        0
+      ]
+    },
+    "fitScale": {
+      "timelineIndex": 14,
+      "factor": 1.003,
+      "uniform": true,
+      "body": "Body",
+      "point": [
+        -0.061664581298828125,
+        -26.73046112060547,
+        -2.6051712036132812
+      ],
+      "increasePercent": 0.29999999999998916,
+      "handlesScaled": false
+    },
+    "order": [
+      "Split front handle",
+      "Split rear handle",
+      "Uniformly scale Body only"
+    ],
+    "fusionPolicy": "Reference only; no feature edits or saves",
+    "cursorRestored": true
+  },
+  "raw": {
+    "asset": "Veteran Sherman L v1",
+    "version": 1,
+    "markerBefore": 61,
+    "timeline": [
+      {
+        "index": 0,
+        "name": "Base Feature1",
+        "type": "adsk::fusion::BaseFeature"
+      },
+      {
+        "index": 1,
+        "name": "SideSketch",
+        "type": "adsk::fusion::Sketch"
+      },
+      {
+        "index": 2,
+        "name": "Base Mesh Feature1",
+        "type": "adsk::fusion::Feature"
+      },
+      {
+        "index": 3,
+        "name": "Convert Mesh1",
+        "type": "adsk::fusion::MeshConvertFeature"
+      },
+      {
+        "index": 4,
+        "name": "HandleDiameter",
+        "type": "adsk::fusion::Sketch"
+      },
+      {
+        "index": 5,
+        "name": "SideIntersection",
+        "type": "adsk::fusion::ExtrudeFeature"
+      },
+      {
+        "index": 6,
+        "name": "Plane2",
+        "type": "adsk::fusion::ConstructionPlane"
+      },
+      {
+        "index": 7,
+        "name": "Sketch1",
+        "type": "adsk::fusion::Sketch"
+      },
+      {
+        "index": 8,
+        "name": "Plane1",
+        "type": "adsk::fusion::ConstructionPlane"
+      },
+      {
+        "index": 9,
+        "name": "ScreenLevelSketch",
+        "type": "adsk::fusion::Sketch"
+      },
+      {
+        "index": 10,
+        "name": "Extrude4",
+        "type": "adsk::fusion::ExtrudeFeature"
+      },
+      {
+        "index": 11,
+        "name": "Split1",
+        "type": "adsk::fusion::SplitBodyFeature"
+      },
+      {
+        "index": 12,
+        "name": "Plane2",
+        "type": "adsk::fusion::ConstructionPlane"
+      },
+      {
+        "index": 13,
+        "name": "Split2",
+        "type": "adsk::fusion::SplitBodyFeature"
+      },
+      {
+        "index": 14,
+        "name": "Scale1",
+        "type": "adsk::fusion::ScaleFeature"
+      },
+      {
+        "index": 15,
+        "name": "DeleteFace1",
+        "type": "adsk::fusion::DeleteFaceFeature"
+      },
+      {
+        "index": 16,
+        "name": "DeleteFace2",
+        "type": "adsk::fusion::DeleteFaceFeature"
+      },
+      {
+        "index": 17,
+        "name": "DeleteFace3",
+        "type": "adsk::fusion::DeleteFaceFeature"
+      },
+      {
+        "index": 18,
+        "name": "DeleteFace4",
+        "type": "adsk::fusion::DeleteFaceFeature"
+      },
+      {
+        "index": 19,
+        "name": "DeleteFace5",
+        "type": "adsk::fusion::DeleteFaceFeature"
+      },
+      {
+        "index": 20,
+        "name": "DeleteFace6",
+        "type": "adsk::fusion::DeleteFaceFeature"
+      },
+      {
+        "index": 21,
+        "name": "DeleteFace7",
+        "type": "adsk::fusion::DeleteFaceFeature"
+      },
+      {
+        "index": 22,
+        "name": "DeleteFace8",
+        "type": "adsk::fusion::DeleteFaceFeature"
+      },
+      {
+        "index": 23,
+        "name": "DeleteFace9",
+        "type": "adsk::fusion::DeleteFaceFeature"
+      },
+      {
+        "index": 24,
+        "name": "DeleteFace10",
+        "type": "adsk::fusion::DeleteFaceFeature"
+      },
+      {
+        "index": 25,
+        "name": "DeleteFace11",
+        "type": "adsk::fusion::DeleteFaceFeature"
+      },
+      {
+        "index": 26,
+        "name": "DeleteFace12",
+        "type": "adsk::fusion::DeleteFaceFeature"
+      },
+      {
+        "index": 27,
+        "name": "DeleteFace13",
+        "type": "adsk::fusion::DeleteFaceFeature"
+      },
+      {
+        "index": 28,
+        "name": "DeleteFace14",
+        "type": "adsk::fusion::DeleteFaceFeature"
+      },
+      {
+        "index": 29,
+        "name": "DeleteFace15",
+        "type": "adsk::fusion::DeleteFaceFeature"
+      },
+      {
+        "index": 30,
+        "name": "DeleteFace16",
+        "type": "adsk::fusion::DeleteFaceFeature"
+      },
+      {
+        "index": 31,
+        "name": "DeleteFace17",
+        "type": "adsk::fusion::DeleteFaceFeature"
+      },
+      {
+        "index": 32,
+        "name": "DeleteFace18",
+        "type": "adsk::fusion::DeleteFaceFeature"
+      },
+      {
+        "index": 33,
+        "name": "DeleteFace19",
+        "type": "adsk::fusion::DeleteFaceFeature"
+      },
+      {
+        "index": 34,
+        "name": "DeleteFace20",
+        "type": "adsk::fusion::DeleteFaceFeature"
+      },
+      {
+        "index": 35,
+        "name": "DeleteFace21",
+        "type": "adsk::fusion::DeleteFaceFeature"
+      },
+      {
+        "index": 36,
+        "name": "DeleteFace22",
+        "type": "adsk::fusion::DeleteFaceFeature"
+      },
+      {
+        "index": 37,
+        "name": "DeleteFace23",
+        "type": "adsk::fusion::DeleteFaceFeature"
+      },
+      {
+        "index": 38,
+        "name": "DeleteFace24",
+        "type": "adsk::fusion::DeleteFaceFeature"
+      },
+      {
+        "index": 39,
+        "name": "DeleteFace25",
+        "type": "adsk::fusion::DeleteFaceFeature"
+      },
+      {
+        "index": 40,
+        "name": "DeleteFace26",
+        "type": "adsk::fusion::DeleteFaceFeature"
+      },
+      {
+        "index": 41,
+        "name": "DeleteFace27",
+        "type": "adsk::fusion::DeleteFaceFeature"
+      },
+      {
+        "index": 42,
+        "name": "DeleteFace28",
+        "type": "adsk::fusion::DeleteFaceFeature"
+      },
+      {
+        "index": 43,
+        "name": "DeleteFace29",
+        "type": "adsk::fusion::DeleteFaceFeature"
+      },
+      {
+        "index": 44,
+        "name": "DeleteFace30",
+        "type": "adsk::fusion::DeleteFaceFeature"
+      },
+      {
+        "index": 45,
+        "name": "DeleteFace31",
+        "type": "adsk::fusion::DeleteFaceFeature"
+      },
+      {
+        "index": 46,
+        "name": "DeleteFace32",
+        "type": "adsk::fusion::DeleteFaceFeature"
+      },
+      {
+        "index": 47,
+        "name": "DeleteFace33",
+        "type": "adsk::fusion::DeleteFaceFeature"
+      },
+      {
+        "index": 48,
+        "name": "DeleteFace34",
+        "type": "adsk::fusion::DeleteFaceFeature"
+      },
+      {
+        "index": 49,
+        "name": "DeleteFace35",
+        "type": "adsk::fusion::DeleteFaceFeature"
+      },
+      {
+        "index": 50,
+        "name": "DeleteFace36",
+        "type": "adsk::fusion::DeleteFaceFeature"
+      },
+      {
+        "index": 51,
+        "name": "DeleteFace37",
+        "type": "adsk::fusion::DeleteFaceFeature"
+      },
+      {
+        "index": 52,
+        "name": "DeleteFace38",
+        "type": "adsk::fusion::DeleteFaceFeature"
+      },
+      {
+        "index": 53,
+        "name": "DeleteFace39",
+        "type": "adsk::fusion::DeleteFaceFeature"
+      },
+      {
+        "index": 54,
+        "name": "DeleteFace40",
+        "type": "adsk::fusion::DeleteFaceFeature"
+      },
+      {
+        "index": 55,
+        "name": "DeleteFace41",
+        "type": "adsk::fusion::DeleteFaceFeature"
+      },
+      {
+        "index": 56,
+        "name": "DeleteFace42",
+        "type": "adsk::fusion::DeleteFaceFeature"
+      },
+      {
+        "index": 57,
+        "name": "DeleteFace43",
+        "type": "adsk::fusion::DeleteFaceFeature"
+      },
+      {
+        "index": 58,
+        "name": "DeleteFace44",
+        "type": "adsk::fusion::DeleteFaceFeature"
+      },
+      {
+        "index": 59,
+        "name": "DeleteFace45",
+        "type": "adsk::fusion::DeleteFaceFeature"
+      },
+      {
+        "index": 60,
+        "name": "Sketch3",
+        "type": "adsk::fusion::Sketch"
+      }
+    ],
+    "features": [
+      {
+        "name": "Split1",
+        "index": 11,
+        "type": "adsk::fusion::SplitBodyFeature",
+        "toolType": "adsk::fusion::ConstructionPlane",
+        "originCm": [
+          0,
+          19,
+          0
+        ],
+        "normal": [
+          0,
+          1,
+          0
+        ]
+      },
+      {
+        "name": "Scale1",
+        "index": 14,
+        "type": "adsk::fusion::ScaleFeature",
+        "uniform": true,
+        "factor": 1.003,
+        "expression": "1.003",
+        "scalePointType": "adsk::fusion::BRepVertex",
+        "scalePointCm": [
+          -0.0061664581298828125,
+          -2.673046112060547,
+          -0.2605171203613281
+        ],
+        "entities": [
+          {
+            "name": "Body",
+            "type": "adsk::fusion::BRepBody",
+            "boundsCm": [
+              [
+                -12.415769577026367,
+                -18,
+                -6.3508453369140625
+              ],
+              [
+                13.304342269897461,
+                19,
+                2.4888725457430336
+              ]
+            ]
+          }
+        ]
+      },
+      {
+        "name": "Split2",
+        "index": 13,
+        "type": "adsk::fusion::SplitBodyFeature",
+        "toolType": "adsk::fusion::ConstructionPlane",
+        "originCm": [
+          0,
+          -18,
+          0
+        ],
+        "normal": [
+          0,
+          1,
+          0
+        ]
+      }
+    ],
+    "markerAfter": 61
+  }
+}
