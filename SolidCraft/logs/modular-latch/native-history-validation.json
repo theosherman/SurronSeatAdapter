@@ -1,0 +1,490 @@
+{
+  "ok": true,
+  "stage": "standalone",
+  "features": 58,
+  "sourceHash": "c9eb0e2d3b6190242b69fe20cf3e27eedd510cd75363d3b0438ef1114bfd1ed0",
+  "sourcePath": "C:/Projects/Sherman P Seat Adapter/SolidCraft/models/seat-adapter.sc",
+  "runDir": "C:\\Projects\\Sherman P Seat Adapter\\SolidCraft\\models\\experiments\\modular-native-B8DGEJ",
+  "reportDir": "C:\\Projects\\Sherman P Seat Adapter\\SolidCraft\\logs\\modular-latch\\modular-native-B8DGEJ",
+  "master": "C:\\Projects\\Sherman P Seat Adapter\\SolidCraft\\models\\experiments\\modular-native-B8DGEJ\\adapter-body.sc",
+  "script": "C:\\Projects\\Sherman P Seat Adapter\\SolidCraft\\models\\experiments\\modular-native-B8DGEJ\\adapter-body-build.json",
+  "replayed": {
+    "bodies": [
+      {
+        "area_mm2": 205806.64904950222,
+        "bbox": {
+          "max": [
+            77.93135238304326,
+            244.2852265589759,
+            109.10684591159225
+          ],
+          "min": [
+            -77.93135238438845,
+            -263.4459822177887,
+            -29.88520679397079
+          ]
+        },
+        "center_of_mass": [
+          0.009099543794897899,
+          -35.12969958405253,
+          30.081692305939026
+        ],
+        "closed": true,
+        "density_g_cm3": 1.29,
+        "edges": 1872,
+        "face_types": {
+          "cylinder": 16,
+          "plane": 932
+        },
+        "faces": 948,
+        "kernel": {
+          "edges": 1885,
+          "faces": 949,
+          "shells": 1,
+          "vertices": 941
+        },
+        "mass_g": 1944.6441241125121,
+        "material": "Default",
+        "measured_by": "smlib",
+        "name": "AdapterBodyMaster",
+        "notes": [],
+        "vertices": 929,
+        "volume_mm3": 1507476.065203498
+      }
+    ],
+    "body_count": 1,
+    "total": {
+      "area_mm2": 205806.64904950222,
+      "edges": 1872,
+      "faces": 948,
+      "mass_g": 1944.6441241125121,
+      "open_bodies_skipped": 0,
+      "vertices": 929,
+      "volume_mm3": 1507476.065203498
+    }
+  },
+  "analyticR20": 2,
+  "ceilingChecks": [
+    {
+      "name": "front -23 mounting ledge",
+      "pointMm": [
+        -17,
+        73.99550086131543,
+        42.231280197025576
+      ],
+      "expectedMaterial": true,
+      "material": true,
+      "rayAgreement": true,
+      "ok": true
+    },
+    {
+      "name": "front -23 access below ledge",
+      "pointMm": [
+        -17,
+        73.73131179163656,
+        41.266809287426845
+      ],
+      "expectedMaterial": false,
+      "material": false,
+      "rayAgreement": true,
+      "ok": true
+    },
+    {
+      "name": "front -23 small through hole",
+      "pointMm": [
+        -23,
+        73.99550086131543,
+        42.231280197025576
+      ],
+      "expectedMaterial": false,
+      "material": false,
+      "rayAgreement": true,
+      "ok": true
+    },
+    {
+      "name": "front 23 mounting ledge",
+      "pointMm": [
+        29,
+        73.99550086131543,
+        42.231280197025576
+      ],
+      "expectedMaterial": true,
+      "material": true,
+      "rayAgreement": true,
+      "ok": true
+    },
+    {
+      "name": "front 23 access below ledge",
+      "pointMm": [
+        29,
+        73.73131179163656,
+        41.266809287426845
+      ],
+      "expectedMaterial": false,
+      "material": false,
+      "rayAgreement": true,
+      "ok": true
+    },
+    {
+      "name": "front 23 small through hole",
+      "pointMm": [
+        23,
+        73.99550086131543,
+        42.231280197025576
+      ],
+      "expectedMaterial": false,
+      "material": false,
+      "rayAgreement": true,
+      "ok": true
+    },
+    {
+      "name": "rear -14.5 mounting ledge",
+      "pointMm": [
+        20.5,
+        -181.92058480597453,
+        78.62031024578977
+      ],
+      "expectedMaterial": true,
+      "material": true,
+      "rayAgreement": true,
+      "ok": true
+    },
+    {
+      "name": "rear -14.5 access below ledge",
+      "pointMm": [
+        20.5,
+        -182.11995274039154,
+        77.64038554116891
+      ],
+      "expectedMaterial": false,
+      "material": false,
+      "rayAgreement": true,
+      "ok": true
+    },
+    {
+      "name": "rear -14.5 small through hole",
+      "pointMm": [
+        14.5,
+        -181.92058480597453,
+        78.62031024578977
+      ],
+      "expectedMaterial": false,
+      "material": false,
+      "rayAgreement": true,
+      "ok": true
+    },
+    {
+      "name": "rear 14.5 mounting ledge",
+      "pointMm": [
+        -8.5,
+        -181.92058480597453,
+        78.62031024578977
+      ],
+      "expectedMaterial": true,
+      "material": true,
+      "rayAgreement": true,
+      "ok": true
+    },
+    {
+      "name": "rear 14.5 access below ledge",
+      "pointMm": [
+        -8.5,
+        -182.11995274039154,
+        77.64038554116891
+      ],
+      "expectedMaterial": false,
+      "material": false,
+      "rayAgreement": true,
+      "ok": true
+    },
+    {
+      "name": "rear 14.5 small through hole",
+      "pointMm": [
+        -14.5,
+        -181.92058480597453,
+        78.62031024578977
+      ],
+      "expectedMaterial": false,
+      "material": false,
+      "rayAgreement": true,
+      "ok": true
+    }
+  ],
+  "assetInventory": [
+    {
+      "sha256": "1681f1d9f87d042718128d297681bb7bb41782461bc2cfce17927d63deccf532",
+      "name": "blobs/1681f1d9f87d042718128d297681bb7bb41782461bc2cfce17927d63deccf532.mesh",
+      "bytes": 1344024
+    }
+  ],
+  "printingFeatures": [
+    {
+      "id": 59,
+      "name": "C01_DependentMasterCopy"
+    },
+    {
+      "id": 62,
+      "name": "BodyTransfer1"
+    },
+    {
+      "id": 63,
+      "name": "C02_PrintSplit"
+    },
+    {
+      "id": 64,
+      "name": "C03_top_Profile"
+    },
+    {
+      "id": 65,
+      "name": "C03_top"
+    },
+    {
+      "id": 66,
+      "name": "C03_side_original_Profile"
+    },
+    {
+      "id": 67,
+      "name": "C03_side_original"
+    },
+    {
+      "id": 68,
+      "name": "C03_side_mirrored_192_Profile"
+    },
+    {
+      "id": 69,
+      "name": "C03_side_mirrored_192"
+    },
+    {
+      "id": 70,
+      "name": "C03_side_mirrored_193_Profile"
+    },
+    {
+      "id": 71,
+      "name": "C03_side_mirrored_193"
+    },
+    {
+      "id": 72,
+      "name": "C03_side_mirrored_192_193_Profile"
+    },
+    {
+      "id": 73,
+      "name": "C03_side_mirrored_192_193"
+    }
+  ],
+  "baseline": {
+    "bodies": [
+      {
+        "area_mm2": 205806.64904950222,
+        "bbox": {
+          "max": [
+            77.93135238304326,
+            244.2852265589759,
+            109.10684591159225
+          ],
+          "min": [
+            -77.93135238438845,
+            -263.4459822177887,
+            -29.88520679397079
+          ]
+        },
+        "center_of_mass": [
+          0.009099543794897899,
+          -35.12969958405253,
+          30.081692305939026
+        ],
+        "closed": true,
+        "edges": 1872,
+        "face_types": {
+          "cylinder": 16,
+          "plane": 932
+        },
+        "faces": 948,
+        "kernel": {
+          "edges": 1885,
+          "faces": 949,
+          "shells": 1,
+          "vertices": 941
+        },
+        "measured_by": "smlib",
+        "name": "AdapterBodyMaster",
+        "notes": [],
+        "vertices": 929,
+        "visible": true,
+        "volume_mm3": 1507476.065203498
+      },
+      {
+        "area_mm2": 130682.11699818156,
+        "bbox": {
+          "max": [
+            75.95208445426103,
+            244.2852265589759,
+            63.057113252747556
+          ],
+          "min": [
+            -75.95208445420188,
+            -109.93653499568728,
+            -20.751900973453004
+          ]
+        },
+        "center_of_mass": [
+          0.003018908760695192,
+          58.47509450628757,
+          23.625846602936406
+        ],
+        "closed": true,
+        "edges": 1588,
+        "face_types": {
+          "cylinder": 12,
+          "plane": 792
+        },
+        "faces": 804,
+        "kernel": {
+          "edges": 1597,
+          "faces": 805,
+          "shells": 1,
+          "vertices": 797
+        },
+        "measured_by": "smlib",
+        "name": "AdapterBodyFront",
+        "notes": [],
+        "vertices": 789,
+        "visible": false,
+        "volume_mm3": 853718.2229182002
+      },
+      {
+        "area_mm2": 85710.3516713961,
+        "bbox": {
+          "max": [
+            77.93135238304326,
+            -92.88539833894981,
+            109.10684591159225
+          ],
+          "min": [
+            -77.93135238438845,
+            -263.4459822177887,
+            -29.88520679397078
+          ]
+        },
+        "center_of_mass": [
+          0.01751195248620712,
+          -159.07655828672887,
+          38.19596396724243
+        ],
+        "closed": true,
+        "edges": 518,
+        "face_types": {
+          "cylinder": 4,
+          "plane": 220
+        },
+        "faces": 224,
+        "kernel": {
+          "edges": 522,
+          "faces": 224,
+          "shells": 1,
+          "vertices": 300
+        },
+        "measured_by": "smlib",
+        "name": "AdapterBodyRear",
+        "notes": [],
+        "vertices": 296,
+        "visible": false,
+        "volume_mm3": 636139.6010199692
+      },
+      {
+        "area_mm2": 285216.42890056834,
+        "bbox": {
+          "max": [
+            103.88104248046875,
+            243.80113220214844,
+            34.50946044921875
+          ],
+          "min": [
+            -105.8895492553711,
+            -249.6149139404297,
+            -71.7698974609375
+          ]
+        },
+        "center_of_mass": [
+          -0.3110989540535477,
+          21.930979925058242,
+          -39.83507914743368
+        ],
+        "closed": true,
+        "edges": 24000,
+        "face_types": {
+          "mesh": 16000
+        },
+        "faces": 16000,
+        "kernel": {
+          "edges": 24000,
+          "faces": 16000,
+          "shells": 1,
+          "vertices": 7988
+        },
+        "measured_by": "mesh",
+        "name": "wheel_scan_mm",
+        "notes": [],
+        "vertices": 7988,
+        "visible": false,
+        "volume_mm3": 4221287.9062298
+      }
+    ]
+  },
+  "rebuilt": {
+    "bodies": [
+      {
+        "area_mm2": 205806.64904950222,
+        "bbox": {
+          "max": [
+            77.93135238304326,
+            244.2852265589759,
+            109.10684591159225
+          ],
+          "min": [
+            -77.93135238438845,
+            -263.4459822177887,
+            -29.88520679397079
+          ]
+        },
+        "center_of_mass": [
+          0.009099543794897899,
+          -35.12969958405253,
+          30.081692305939026
+        ],
+        "closed": true,
+        "density_g_cm3": 1.29,
+        "edges": 1872,
+        "face_types": {
+          "cylinder": 16,
+          "plane": 932
+        },
+        "faces": 948,
+        "kernel": {
+          "edges": 1885,
+          "faces": 949,
+          "shells": 1,
+          "vertices": 941
+        },
+        "mass_g": 1944.6441241125121,
+        "material": "Default",
+        "measured_by": "smlib",
+        "name": "AdapterBodyMaster",
+        "notes": [],
+        "vertices": 929,
+        "volume_mm3": 1507476.065203498
+      }
+    ],
+    "body_count": 1,
+    "total": {
+      "area_mm2": 205806.64904950222,
+      "edges": 1872,
+      "faces": 948,
+      "mass_g": 1944.6441241125121,
+      "open_bodies_skipped": 0,
+      "vertices": 929,
+      "volume_mm3": 1507476.065203498
+    }
+  },
+  "healthy": true,
+  "assetsMatch": true
+}

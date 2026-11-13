@@ -1,0 +1,125 @@
+{
+  "ok": false,
+  "stageDiagnosticsOnly": true,
+  "printingAcceptancePassed": false,
+  "runDir": "C:\\Projects\\Sherman P Seat Adapter\\SolidCraft\\models\\experiments\\printing-stages-4Mhrr8",
+  "reportDir": "C:\\Projects\\Sherman P Seat Adapter\\SolidCraft\\logs\\modular-latch\\printing-stages-4Mhrr8",
+  "master": "C:\\Projects\\Sherman P Seat Adapter\\SolidCraft\\models\\experiments\\modular-native-B8DGEJ\\adapter-body.sc",
+  "results": [
+    {
+      "name": "link",
+      "commandOk": true,
+      "geometryAccepted": false,
+      "geometry": {
+        "ok": false,
+        "volumeDeltaMm3": -0.545830799266696,
+        "toleranceMm3": 0.15074760652034977,
+        "bboxDeltaMm": {
+          "min": [
+            0,
+            -2.9802322387695312e-8,
+            1.7763568394002505e-14
+          ],
+          "max": [
+            0,
+            0,
+            0
+          ]
+        },
+        "comDeltaMm": [
+          -0.000014734805469915346,
+          -0.00006206975970712847,
+          -0.00001936136282765233
+        ],
+        "errors": [
+          "volume"
+        ]
+      },
+      "status": 0,
+      "error": "",
+      "report": "C:\\Projects\\Sherman P Seat Adapter\\SolidCraft\\logs\\modular-latch\\printing-stages-4Mhrr8\\link.json"
+    },
+    {
+      "name": "copy",
+      "input": "C:\\Projects\\Sherman P Seat Adapter\\SolidCraft\\models\\experiments\\printing-stages-4Mhrr8\\copy.sc",
+      "output": "C:\\Projects\\Sherman P Seat Adapter\\SolidCraft\\models\\experiments\\printing-stages-4Mhrr8\\copy-built.sc",
+      "commandOk": true,
+      "geometryAccepted": false,
+      "geometry": {
+        "ok": false,
+        "volumeDeltaMm3": -0.545830799266696,
+        "toleranceMm3": 0.15074760652034977,
+        "bboxDeltaMm": {
+          "min": [
+            0,
+            -2.9802322387695312e-8,
+            1.7763568394002505e-14
+          ],
+          "max": [
+            0,
+            0,
+            0
+          ]
+        },
+        "comDeltaMm": [
+          -0.000014734805469915346,
+          -0.00006206975970712847,
+          -0.00001936136282765233
+        ],
+        "errors": [
+          "volume"
+        ]
+      },
+      "status": 0,
+      "error": "",
+      "report": "C:\\Projects\\Sherman P Seat Adapter\\SolidCraft\\logs\\modular-latch\\printing-stages-4Mhrr8\\copy.json"
+    },
+    {
+      "name": "transfer",
+      "input": "C:\\Projects\\Sherman P Seat Adapter\\SolidCraft\\models\\experiments\\printing-stages-4Mhrr8\\transfer.sc",
+      "output": "C:\\Projects\\Sherman P Seat Adapter\\SolidCraft\\models\\experiments\\printing-stages-4Mhrr8\\transfer-built.sc",
+      "commandOk": true,
+      "geometryAccepted": false,
+      "geometry": {
+        "ok": false,
+        "volumeDeltaMm3": -0.545830799266696,
+        "toleranceMm3": 0.15074760652034977,
+        "bboxDeltaMm": {
+          "min": [
+            0,
+            -2.9802322387695312e-8,
+            1.7763568394002505e-14
+          ],
+          "max": [
+            0,
+            0,
+            0
+          ]
+        },
+        "comDeltaMm": [
+          -0.000014734805469915346,
+          -0.00006206975970712847,
+          -0.00001936136282765233
+        ],
+        "errors": [
+          "volume"
+        ]
+      },
+      "status": 0,
+      "error": "",
+      "report": "C:\\Projects\\Sherman P Seat Adapter\\SolidCraft\\logs\\modular-latch\\printing-stages-4Mhrr8\\transfer.json"
+    },
+    {
+      "name": "split",
+      "input": "C:\\Projects\\Sherman P Seat Adapter\\SolidCraft\\models\\experiments\\printing-stages-4Mhrr8\\split.sc",
+      "output": "C:\\Projects\\Sherman P Seat Adapter\\SolidCraft\\models\\experiments\\printing-stages-4Mhrr8\\split-built.sc",
+      "commandOk": false,
+      "geometryAccepted": false,
+      "geometry": null,
+      "status": 1,
+      "error": "error: 1 timeline feature(s) failed, so nothing was written (--allow-errors writes the bodies anyway):\n  C02_PrintSplit: body `AdapterBodyFront`: the operation failed: SMLib boolean: SMLib's check refuses the result: 1 failed tests:\nSmCone::Test #5 Bad Cone GenCurve LineScale: GenCurve Line Scale != 1/Cos(m_dSemiAngleRad). It must, to parameterize GenCurve to the cone's height. (offset=2.2415403e-12, tolerance= 2e-12) [owner SmCylinder]\n\n",
+      "report": "C:\\Projects\\Sherman P Seat Adapter\\SolidCraft\\logs\\modular-latch\\printing-stages-4Mhrr8\\split.json"
+    }
+  ],
+  "firstGeometryMismatch": "link"
+}

@@ -1,6 +1,7 @@
 import fs from 'node:fs';
 const root=new URL('../',import.meta.url);
-const mesh=fs.readFileSync(new URL('exports/adapter-body.stl',root));
+const meshPath=process.argv[2]??new URL('exports/adapter-body.stl',root);
+const mesh=fs.readFileSync(meshPath);
 const count=mesh.readUInt32LE(80);
 if(mesh.length!==84+count*50)throw new Error('Expected binary STL');
 const triangles=Array.from({length:count},(_,i)=>Array.from({length:3},(_,v)=>Array.from({length:3},(_,d)=>mesh.readFloatLE(84+i*50+12+v*12+d*4))));
@@ -37,7 +38,7 @@ for(const u of [-14.5,14.5]){
  const center=bolt.originMm.map((v,i)=>v+u*bolt.xAxis[i]+193.9428441873774*bolt.yAxis[i]-3*bolt.normal[i]);
  capTests('rear '+u,center,bolt.normal);
 }
-const report={ok:checks.every(c=>c.ok),source:'exports/adapter-body.stl',triangles:count,checks,method:'Two independent triangle ray parity tests at 0.5 mm above/below each saved cap plane; annular sample 6 mm off bore axis.'};
-fs.writeFileSync(new URL('logs/mounting-ceiling-validation.json',root),JSON.stringify(report,null,2));
+const report={ok:checks.every(c=>c.ok),source:String(meshPath),triangles:count,checks,method:'Two independent triangle ray parity tests at 0.5 mm above/below each saved cap plane; annular sample 6 mm off bore axis.'};
+fs.writeFileSync(process.argv[3]??new URL('logs/mounting-ceiling-validation.json',root),JSON.stringify(report,null,2));
 console.log(JSON.stringify({ok:report.ok,checks:checks.length,failed:checks.filter(c=>!c.ok)}));
 if(!report.ok)process.exitCode=1;

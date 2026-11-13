@@ -1,0 +1,8 @@
+{
+  "runDir": "C:\\Projects\\Sherman P Seat Adapter\\SolidCraft\\models\\experiments\\printing-stages-4Mhrr8",
+  "reportDir": "C:\\Projects\\Sherman P Seat Adapter\\SolidCraft\\logs\\modular-latch\\printing-stages-4Mhrr8",
+  "status": "failed",
+  "startedAt": "2026-11-13T03:49:45.345Z",
+  "reason": "Full printing acceptance additionally requires the separate inheritance/health validator",
+  "finishedAt": "2026-11-13T03:49:52.256Z"
+}

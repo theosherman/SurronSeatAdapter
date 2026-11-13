@@ -1,0 +1,177 @@
+{
+  "bodies": [
+    {
+      "area_mm2": 285216.42890056834,
+      "bbox": {
+        "max": [
+          103.88104248046875,
+          243.80113220214844,
+          34.50946044921875
+        ],
+        "min": [
+          -105.8895492553711,
+          -249.6149139404297,
+          -71.7698974609375
+        ]
+      },
+      "center_of_mass": [
+        -0.3110989540535477,
+        21.930979925058242,
+        -39.83507914743368
+      ],
+      "closed": true,
+      "density_g_cm3": 1.29,
+      "edges": 24000,
+      "face_types": {
+        "mesh": 16000
+      },
+      "faces": 16000,
+      "kernel": {
+        "edges": 24000,
+        "faces": 16000,
+        "shells": 1,
+        "vertices": 7988
+      },
+      "mass_g": 5445.461399036442,
+      "material": "Default",
+      "measured_by": "mesh",
+      "name": "wheel_scan_mm",
+      "notes": [],
+      "vertices": 7988,
+      "volume_mm3": 4221287.9062298
+    },
+    {
+      "area_mm2": 130682.11699818156,
+      "bbox": {
+        "max": [
+          75.95208445426103,
+          244.2852265589759,
+          63.057113252747556
+        ],
+        "min": [
+          -75.95208445420188,
+          -109.93653499568728,
+          -20.751900973453004
+        ]
+      },
+      "center_of_mass": [
+        0.003018908760695192,
+        58.47509450628757,
+        23.625846602936406
+      ],
+      "closed": true,
+      "density_g_cm3": 1.29,
+      "edges": 1588,
+      "face_types": {
+        "cylinder": 12,
+        "plane": 792
+      },
+      "faces": 804,
+      "kernel": {
+        "edges": 1597,
+        "faces": 805,
+        "shells": 1,
+        "vertices": 797
+      },
+      "mass_g": 1101.2965075644784,
+      "material": "Default",
+      "measured_by": "smlib",
+      "name": "AdapterBodyFront",
+      "notes": [],
+      "vertices": 789,
+      "volume_mm3": 853718.2229182002
+    },
+    {
+      "area_mm2": 85710.3516713961,
+      "bbox": {
+        "max": [
+          77.93135238304326,
+          -92.88539833894981,
+          109.10684591159225
+        ],
+        "min": [
+          -77.93135238438845,
+          -263.4459822177887,
+          -29.88520679397078
+        ]
+      },
+      "center_of_mass": [
+        0.01751195248620712,
+        -159.07655828672887,
+        38.19596396724243
+      ],
+      "closed": true,
+      "density_g_cm3": 1.29,
+      "edges": 518,
+      "face_types": {
+        "cylinder": 4,
+        "plane": 220
+      },
+      "faces": 224,
+      "kernel": {
+        "edges": 522,
+        "faces": 224,
+        "shells": 1,
+        "vertices": 300
+      },
+      "mass_g": 820.6200853157603,
+      "material": "Default",
+      "measured_by": "smlib",
+      "name": "AdapterBodyRear",
+      "notes": [],
+      "vertices": 296,
+      "volume_mm3": 636139.6010199692
+    },
+    {
+      "area_mm2": 205806.64904950222,
+      "bbox": {
+        "max": [
+          77.93135238304326,
+          244.2852265589759,
+          109.10684591159225
+        ],
+        "min": [
+          -77.93135238438845,
+          -263.4459822177887,
+          -29.88520679397079
+        ]
+      },
+      "center_of_mass": [
+        0.009099543794897899,
+        -35.12969958405253,
+        30.081692305939026
+      ],
+      "closed": true,
+      "density_g_cm3": 1.29,
+      "edges": 1872,
+      "face_types": {
+        "cylinder": 16,
+        "plane": 932
+      },
+      "faces": 948,
+      "kernel": {
+        "edges": 1885,
+        "faces": 949,
+        "shells": 1,
+        "vertices": 941
+      },
+      "mass_g": 1944.6441241125121,
+      "material": "Default",
+      "measured_by": "smlib",
+      "name": "AdapterBodyMaster",
+      "notes": [],
+      "vertices": 929,
+      "volume_mm3": 1507476.065203498
+    }
+  ],
+  "body_count": 4,
+  "total": {
+    "area_mm2": 707415.5466196482,
+    "edges": 27978,
+    "faces": 17976,
+    "mass_g": 9312.022116029193,
+    "open_bodies_skipped": 0,
+    "vertices": 10002,
+    "volume_mm3": 7218621.795371467
+  }
+}

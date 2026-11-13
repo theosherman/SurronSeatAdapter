@@ -1,6 +1,7 @@
 import fs from 'node:fs';
 import assert from 'node:assert/strict';
 import {pathToFileURL} from 'node:url';
+import {validateStandalone,assertEvidenceCurrent,assertSourceHash} from './modular-native-history.mjs';
 
 export function validateMigration(r) {
   assert(r?.baseline && r?.after, 'Missing migration report: baseline and after CAD measurements required');
@@ -48,11 +49,41 @@ export function validateRecovery(r) {
   return {ok:true,stage:'recovery',manufacturedSolids:3,features:72};
 }
 
+export function validatePrinting(r) {
+  assert(r?.baseline&&r?.after,'Missing printing integration report');
+  const manufactured=['AdapterBodyMaster','AdapterBodyFront','AdapterBodyRear'];
+  assert.equal(r.manufacturedBodies,3,'Manufactured body count');
+  const allowed=new Set([...manufactured,...(r.referenceBodies??[])]);
+  assert(r.after.bodies.every(b=>allowed.has(b.name)),'Unexpected body outside explicit roles');
+  assert(manufactured.every(n=>r.after.bodies.filter(b=>b.name===n).length===1),'Manufactured body count/roles');
+  for(const name of ['AdapterBodyMaster','AdapterBodyFront','AdapterBodyRear']){
+    const a=r.baseline.bodies.find(b=>b.name===name),b=r.after.bodies.find(b=>b.name===name);
+    assert(a?.closed&&b?.closed,`Missing/open printing solid ${name}`);
+    assert(Math.abs(b.volume_mm3-a.volume_mm3)<=Math.max(.001,a.volume_mm3*1e-7),`Changed printing volume ${name}`);
+    for(const [x,y] of [[a.bbox.min,b.bbox.min],[a.bbox.max,b.bbox.max],[a.center_of_mass,b.center_of_mass]])assert(x.every((v,i)=>Math.abs(v-y[i])<=.001),`Changed printing placement ${name}`);
+  }
+  const expected=['C01_DependentMasterCopy','BodyTransfer1','C02_PrintSplit','C03_top','C03_side_original','C03_side_mirrored_192','C03_side_mirrored_193','C03_side_mirrored_192_193'];
+  assert(r.health?.length>0&&expected.every(name=>r.health.some(f=>f.name===name&&!f.suppressed&&!f.rolled_back)),'Missing expected printing history features');
+  assert(r.health.every(f=>!f.error&&!f.warning),'Printing feature health');
+  assert(r.definitionsPreserved&&r.placementsPreserved,'Printing definitions/placements must be preserved');
+  assert(r.inheritance?.restored&&r.inheritance.masterDelta<0&&Math.abs(r.inheritance.masterDelta-r.inheritance.childDelta)<1e-5,'Printing inheritance/restoration');
+  return {ok:true,stage:'printing'};
+}
+
 if(process.argv[1] && import.meta.url===pathToFileURL(process.argv[1]).href){
   const stage=process.argv[2]??'migration';
-  const path=process.argv[3]??new URL(`../logs/modular-latch/${stage==='recovery'?'migration-attempt':stage}.json`,import.meta.url);
+  const file={recovery:'migration-attempt',standalone:'native-history-validation'}[stage]??stage;
+  const path=process.argv[3]??new URL(`../logs/modular-latch/${file}.json`,import.meta.url);
   assert(fs.existsSync(path),`Missing ${stage} report: ${path}`);
-  const validate={migration:validateMigration,geometry:validateGeometry,recovery:validateRecovery}[stage];
+  const validate={migration:validateMigration,geometry:validateGeometry,recovery:validateRecovery,printing:validatePrinting,standalone:r=>{
+    assertEvidenceCurrent(JSON.parse(fs.readFileSync(new URL('../logs/modular-latch/native-attempt.json',import.meta.url))),r);
+    assertSourceHash(r.sourcePath,r.sourceHash);
+    const result=validateStandalone(r);
+    assert.equal(r.analyticR20,2,'Fresh analytic R20 checks required');
+    assert.equal(r.ceilingChecks?.length,12,'Fresh ceiling checks required');
+    assert(r.ceilingChecks.every(x=>x.ok),'Fresh ceiling material checks failed');
+    return result;
+  }}[stage];
   assert(validate,`Unknown stage ${stage}`);
   console.log(JSON.stringify(validate(JSON.parse(fs.readFileSync(path,'utf8')))));
 }

@@ -1,0 +1,55 @@
+{
+  "bodies": [
+    {
+      "area_mm2": 205806.66591777097,
+      "bbox": {
+        "max": [
+          77.93135238304326,
+          244.2852265589759,
+          109.10684591159225
+        ],
+        "min": [
+          -77.93135238438845,
+          -263.445982247591,
+          -29.885206793970774
+        ]
+      },
+      "center_of_mass": [
+        0.009084808989427984,
+        -35.12976165381224,
+        30.081672944576198
+      ],
+      "closed": true,
+      "density_g_cm3": 1.29,
+      "edges": 1872,
+      "face_types": {
+        "cylinder": 16,
+        "plane": 932
+      },
+      "faces": 948,
+      "kernel": {
+        "edges": 1885,
+        "faces": 949,
+        "shells": 1,
+        "vertices": 941
+      },
+      "mass_g": 1944.6434199907812,
+      "material": "Default",
+      "measured_by": "smlib",
+      "name": "AdapterBodyMaster",
+      "notes": [],
+      "vertices": 929,
+      "volume_mm3": 1507475.5193726986
+    }
+  ],
+  "body_count": 1,
+  "total": {
+    "area_mm2": 205806.66591777097,
+    "edges": 1872,
+    "faces": 948,
+    "mass_g": 1944.6434199907812,
+    "open_bodies_skipped": 0,
+    "vertices": 929,
+    "volume_mm3": 1507475.5193726986
+  }
+}

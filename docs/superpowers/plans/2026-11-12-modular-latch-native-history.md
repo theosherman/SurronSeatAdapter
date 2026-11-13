@@ -54,15 +54,17 @@
 
 **Interfaces:** `partitionCurrentDocument(document, {masterComponentId})` returns `{masterDocument, printingFeatures, printingComponents, printingOccurrences, inventory}`. It consumes the freshly saved current native document, not `source-document.json` from a prior run. It preserves native IDs and geometry definitions; changes only master ownership, root name, assembly membership and inapplicable occurrence visibility.
 
-- [ ] Add failing tests: all 58 current master definitions survive unchanged after removing only their `component` ownership field, including `Object.is(value,-0)` for signed-zero coordinates; every source asset survives byte-for-byte; original input bytes remain unchanged; nonidentity/multiple master occurrences and an occupied destination are refused; absent replay measurements fail acceptance.
-- [ ] Run `node --test SolidCraft/scripts/modular-native-history.test.mjs`. Expected: failures for the missing transformation/guards before implementation.
-- [ ] Implement bounded native-container IO and the pure partition function. Discover component IDs from current names. Require identity placement for this migration; do not silently transform a differently placed future model. Preserve unrelated top-level metadata unless explicitly excluded as assembly-only; refuse unsupported dependent data rather than dropping it.
-- [ ] Capture fresh desktop inspection, file hash and current native definitions. Compare the file hash again before consuming or promoting output. Expected: saved, unchanged source and unambiguous AdapterBody ownership.
-- [ ] Rebuild the root-only copy with caches removed using CLI, export its command script, inspect `omitted`, and independently replay the script to another isolated native file.
-- [ ] Measure both rebuilt sources. Expected: one closed master and all 58 master entries present/healthy; volume within `max(0.001 mm³, baselineVolume*1e-7)`; bounds and COM within 0.001 mm. Reject omitted model history or missing mesh data. Confirm analytic R20 cuts and all twelve mounting ceilings from fresh output.
-- [ ] Run the tests and standalone report validator; commit verified transformation/tooling and evidence. Keep authoritative targets unchanged.
+- [x] Add failing tests: all 58 current master definitions survive unchanged after removing only their `component` ownership field, including `Object.is(value,-0)` for signed-zero coordinates; every source asset survives byte-for-byte; original input bytes remain unchanged; nonidentity/multiple master occurrences and an occupied destination are refused; absent replay measurements fail acceptance.
+- [x] Run `node --test SolidCraft/scripts/modular-native-history.test.mjs`. Expected: failures for the missing transformation/guards before implementation.
+- [x] Implement bounded native-container IO and the pure partition function. Discover component IDs from current names. Require identity placement for this migration; do not silently transform a differently placed future model. Preserve unrelated top-level metadata unless explicitly excluded as assembly-only; refuse unsupported dependent data rather than dropping it.
+- [x] Capture fresh desktop inspection, file hash and current native definitions. Compare the file hash again before consuming or promoting output. Expected: saved, unchanged source and unambiguous AdapterBody ownership.
+- [x] Rebuild the root-only copy with caches removed using CLI, export its command script, inspect `omitted`, and independently replay the script to another isolated native file.
+- [x] Measure both rebuilt sources. Expected: one closed master and all 58 master entries present/healthy; volume within `max(0.001 mm³, baselineVolume*1e-7)`; bounds and COM within 0.001 mm. Reject omitted model history or missing mesh data. Confirm analytic R20 cuts and all twelve mounting ceilings from fresh output.
+- [x] Run the tests and standalone report validator; commit verified transformation/tooling and evidence. Keep authoritative targets unchanged.
 
 ### Task 2: Preserve the existing printing history behind a native link
+
+**Execution status:** Blocked at native link fidelity and split validation. The fresh link loses 0.545830799266696 mm³, exceeding the 0.15074760652034977 mm³ limit; its split also fails the kernel check. Native transfer replay itself is resolved. Task 1 is verified; Tasks 3/4 have not started. See SolidCraft/logs/modular-latch/IMPLEMENTATION-STATUS.md.
 
 **Interfaces:** consumes Task 1's verified master and captured printing definitions; produces an isolated linked assembly plus `{baseline, after, stageReports, inheritance, adaptation}`. The final printing replay must consume the linked master, keep the existing split/connector features and retain editable definitions.
 
