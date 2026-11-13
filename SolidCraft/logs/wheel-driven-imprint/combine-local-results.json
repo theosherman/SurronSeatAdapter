@@ -1,0 +1,405 @@
+[
+  {
+    "component": 1,
+    "grounded": true,
+    "name": "Tool",
+    "occurrence": 2,
+    "parent": 0
+  },
+  {
+    "bodies": [
+      "ToolBody"
+    ],
+    "changed_bodies": [],
+    "created_bodies": [
+      "ToolBody"
+    ],
+    "feature": 3,
+    "ms": 2.6479,
+    "name": "Box1",
+    "removed_bodies": [],
+    "warning": null
+  },
+  {
+    "component": 4,
+    "grounded": false,
+    "name": "Target",
+    "occurrence": 5,
+    "parent": 0
+  },
+  {
+    "bodies": [
+      "ToolBody",
+      "TargetBody"
+    ],
+    "changed_bodies": [],
+    "created_bodies": [
+      "TargetBody"
+    ],
+    "feature": 6,
+    "ms": 1.1819,
+    "name": "Box2",
+    "removed_bodies": [],
+    "warning": null
+  },
+  {
+    "active": 1
+  },
+  {
+    "bodies": [
+      "ToolBody",
+      "TargetBody"
+    ],
+    "changed_bodies": [
+      "TargetBody"
+    ],
+    "created_bodies": [],
+    "feature": 7,
+    "ms": 5.2311,
+    "name": "TestCut",
+    "removed_bodies": [],
+    "warning": null
+  },
+  {
+    "definition": {
+      "component": 1,
+      "keep_tools": true,
+      "operation": "cut",
+      "target": "TargetBody",
+      "tools": [
+        "ToolBody"
+      ]
+    },
+    "error": null,
+    "id": 7,
+    "inputs": [],
+    "name": "TestCut",
+    "omitted": [],
+    "rolled_back": false,
+    "suppressed": false,
+    "type": "combine",
+    "type_name": "CombineFeature",
+    "warning": null
+  },
+  {
+    "bodies": [
+      {
+        "area_mm2": 2400.0,
+        "bbox": {
+          "max": [
+            20.0,
+            20.0,
+            20.0
+          ],
+          "min": [
+            0.0,
+            0.0,
+            0.0
+          ]
+        },
+        "center_of_mass": [
+          10.714285714285714,
+          10.714285714285714,
+          10.714285714285714
+        ],
+        "closed": true,
+        "density_g_cm3": 1.29,
+        "edges": 21,
+        "face_types": {
+          "plane": 9
+        },
+        "faces": 9,
+        "kernel": {
+          "edges": 21,
+          "faces": 9,
+          "shells": 1,
+          "vertices": 14
+        },
+        "mass_g": 9.03,
+        "material": "Default",
+        "measured_by": "smlib",
+        "name": "TargetBody",
+        "notes": [],
+        "vertices": 14,
+        "volume_mm3": 7000.0
+      }
+    ],
+    "body_count": 1,
+    "total": {
+      "area_mm2": 2400.0,
+      "edges": 21,
+      "faces": 9,
+      "mass_g": 9.03,
+      "open_bodies_skipped": 0,
+      "vertices": 14,
+      "volume_mm3": 7000.0
+    }
+  },
+  {
+    "occurrence": 2,
+    "pending": false,
+    "transform": [
+      [
+        1.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        1.0,
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.0,
+        1.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.0,
+        2.0,
+        1.0
+      ]
+    ]
+  },
+  {
+    "bodies": [
+      {
+        "area_mm2": 2600.0,
+        "bbox": {
+          "max": [
+            20.0,
+            20.0,
+            20.0
+          ],
+          "min": [
+            0.0,
+            0.0,
+            0.0
+          ]
+        },
+        "center_of_mass": [
+          10.714285714285714,
+          10.714285714285715,
+          10.428571428571429
+        ],
+        "closed": true,
+        "density_g_cm3": 1.29,
+        "edges": 24,
+        "face_types": {
+          "plane": 10
+        },
+        "faces": 10,
+        "kernel": {
+          "edges": 24,
+          "faces": 10,
+          "shells": 1,
+          "vertices": 16
+        },
+        "mass_g": 9.03,
+        "material": "Default",
+        "measured_by": "smlib",
+        "name": "TargetBody",
+        "notes": [],
+        "vertices": 16,
+        "volume_mm3": 7000.0
+      }
+    ],
+    "body_count": 1,
+    "total": {
+      "area_mm2": 2600.0,
+      "edges": 24,
+      "faces": 10,
+      "mass_g": 9.03,
+      "open_bodies_skipped": 0,
+      "vertices": 16,
+      "volume_mm3": 7000.0
+    }
+  },
+  {
+    "active": 1,
+    "components": [
+      {
+        "bodies": [],
+        "children": [
+          {
+            "component": 1,
+            "grounded": true,
+            "id": 2,
+            "name": "Tool:1",
+            "parent": 0,
+            "transform": [
+              [
+                1.0,
+                0.0,
+                0.0,
+                0.0
+              ],
+              [
+                0.0,
+                1.0,
+                0.0,
+                0.0
+              ],
+              [
+                0.0,
+                0.0,
+                1.0,
+                0.0
+              ],
+              [
+                0.0,
+                0.0,
+                2.0,
+                1.0
+              ]
+            ]
+          },
+          {
+            "component": 4,
+            "grounded": false,
+            "id": 5,
+            "name": "Target:1",
+            "parent": 0,
+            "transform": [
+              [
+                1.0,
+                0.0,
+                0.0,
+                0.0
+              ],
+              [
+                0.0,
+                1.0,
+                0.0,
+                0.0
+              ],
+              [
+                0.0,
+                0.0,
+                1.0,
+                0.0
+              ],
+              [
+                0.0,
+                0.0,
+                0.0,
+                1.0
+              ]
+            ]
+          }
+        ],
+        "construction": [],
+        "features": [],
+        "id": 0,
+        "name": "Untitled",
+        "occurrences": [],
+        "parent": null,
+        "sketches": []
+      },
+      {
+        "bodies": [
+          "ToolBody"
+        ],
+        "children": [],
+        "construction": [],
+        "features": [
+          "Box1",
+          "TestCut"
+        ],
+        "id": 1,
+        "name": "Tool",
+        "occurrences": [
+          {
+            "component": 1,
+            "grounded": true,
+            "id": 2,
+            "name": "Tool:1",
+            "parent": 0,
+            "transform": [
+              [
+                1.0,
+                0.0,
+                0.0,
+                0.0
+              ],
+              [
+                0.0,
+                1.0,
+                0.0,
+                0.0
+              ],
+              [
+                0.0,
+                0.0,
+                1.0,
+                0.0
+              ],
+              [
+                0.0,
+                0.0,
+                2.0,
+                1.0
+              ]
+            ]
+          }
+        ],
+        "parent": 0,
+        "sketches": []
+      },
+      {
+        "bodies": [
+          "TargetBody"
+        ],
+        "children": [],
+        "construction": [],
+        "features": [
+          "Box2"
+        ],
+        "id": 4,
+        "name": "Target",
+        "occurrences": [
+          {
+            "component": 4,
+            "grounded": false,
+            "id": 5,
+            "name": "Target:1",
+            "parent": 0,
+            "transform": [
+              [
+                1.0,
+                0.0,
+                0.0,
+                0.0
+              ],
+              [
+                0.0,
+                1.0,
+                0.0,
+                0.0
+              ],
+              [
+                0.0,
+                0.0,
+                1.0,
+                0.0
+              ],
+              [
+                0.0,
+                0.0,
+                0.0,
+                1.0
+              ]
+            ]
+          }
+        ],
+        "parent": 0,
+        "sketches": []
+      }
+    ],
+    "pending_moves": []
+  }
+]
