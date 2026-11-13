@@ -83,5 +83,5 @@ Open `models/seat-adapter.sc`: the adapter, dependent printing halves and new na
 
 Print exports: `exports/latch.stl` and `exports/latch.step`. Both contain only the latch. The native latch has editable analytic sketches/features, a direct reference to `M06_RearDovetailProfile`, and positive `latchClearance=0.2 mm` driving three negative face offsets. No fillets were added. Physical print fit is untested.
 
-Fresh rebuild, restored dependency, mating-plane and export checks are recorded in `logs/single-file-latch/integration.json`; construction details are in `logs/single-file-latch/BUILD-NOTES.md`. Run `node scripts/validate-single-file-latch.mjs` **from the repository root with the script path prefixed by `SolidCraft/`** to check saved acceptance evidence. Older modular-file plans are superseded. The older adapter build JSON does not include the appended latch.
+Fresh rebuild, restored dependency, mating-plane and export checks are recorded in `logs/single-file-latch/integration.json`; construction details are in `logs/single-file-latch/BUILD-NOTES.md`. From the repository root, run `node SolidCraft/scripts/validate-single-file-latch.mjs` to check saved acceptance evidence. Older modular-file plans are superseded. The older adapter build JSON does not include the appended latch.
 
