@@ -13,10 +13,12 @@ Assembly hierarchy (what the user sees):
 ```text
 Seat Adapter — seat-adapter.sc  (whole project / assembly)
 ├── Adapter Body — adapter-body.sc  (linked part; its own history)
-├── Latch — latch.sc                (linked part; its own history)
 ├── Adapter Body Split             (existing printing variant)
+├── Latch — latch.sc                (linked part; its own history)
 └── Wheel Scan Reference           (reference geometry)
 ```
+
+Required default browser order: **Adapter Body, Adapter Body Split, Latch, Wheel Scan Reference**. Keep the printing variant immediately after the main body, whether or not manual reordering is available in the app. Apply presentation ordering without changing manufacturing-feature chronology or dependency direction.
 
 The dependency is separate from this containment hierarchy: the Latch reads the Adapter Body's dovetail reference so its slot can update. This does **not** make Adapter Body the project root. `adapter-body.sc` is authoritative only for that one part, while `seat-adapter.sc` represents the complete Seat Adapter design.
 
