@@ -1,0 +1,11 @@
+[
+  {
+    "content": [
+      {
+        "text": "{\"applied\":[],\"completed\":0,\"failed\":{\"command\":\"component.extract\",\"error\":\"invalid parameters for `component.extract`: body AdapterBodyMaster would look different without the history of AdapterBody\",\"index\":0},\"not_run\":[],\"ok\":false,\"results\":[],\"rolled_back\":true,\"undone\":0}",
+        "type": "text"
+      }
+    ],
+    "isError": true
+  }
+]

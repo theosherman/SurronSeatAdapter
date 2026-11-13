@@ -1,0 +1,15 @@
+{
+  "name": "batch",
+  "arguments": {
+    "commands": [
+      {
+        "command": "timeline.inspect",
+        "params": {
+          "feature": "M21_WheelImprint"
+        }
+      }
+    ],
+    "verbose": false,
+    "rollback": true
+  }
+}

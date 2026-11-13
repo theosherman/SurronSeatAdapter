@@ -1,0 +1,22 @@
+{
+  "name": "batch",
+  "arguments": {
+    "commands": [
+      {
+        "command": "timeline.delete",
+        "params": {
+          "feature": "WheelScanDisplay"
+        }
+      },
+      {
+        "command": "component.extract",
+        "params": {
+          "component": "AdapterBody",
+          "path": "C:/Projects/Sherman P Seat Adapter/SolidCraft/models/experiments/master-extraction-diagnostic.sc"
+        }
+      }
+    ],
+    "verbose": false,
+    "rollback": true
+  }
+}

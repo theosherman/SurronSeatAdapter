@@ -1,0 +1,16 @@
+{
+  "name": "batch",
+  "arguments": {
+    "commands": [
+      {
+        "command": "component.extract",
+        "params": {
+          "component": "AdapterBody",
+          "path": "C:/Projects/Sherman P Seat Adapter/SolidCraft/models/adapter-body.sc"
+        }
+      }
+    ],
+    "verbose": false,
+    "rollback": true
+  }
+}
