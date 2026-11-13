@@ -28,6 +28,6 @@ add('component.activate',{component:'root'});
 add('browser.visibility',{items:['AdapterBodyFront','AdapterBodyRear'],visible:false});
 add('browser.visibility',{items:['AdapterBodyMaster'],visible:true});
 fs.writeFileSync(new URL('../scripts/adapter-child.json',import.meta.url),JSON.stringify({commands},null,2));
-const full=['adapter-master-pre-imprint','adapter-imprint','adapter-child'];
+const full=['adapter-master-pre-imprint','adapter-imprint','adapter-child',...(fs.existsSync(new URL('../scripts/reorganize-components.json',import.meta.url))?['reorganize-components']:[])];
 if(full.every(n=>fs.existsSync(new URL('../scripts/'+n+'.json',import.meta.url))))fs.writeFileSync(new URL('../scripts/seat-adapter-build.json',import.meta.url),JSON.stringify({commands:full.flatMap(n=>JSON.parse(fs.readFileSync(new URL('../scripts/'+n+'.json',import.meta.url))).commands)},null,2));
 console.log(JSON.stringify({commands:commands.length,connectorCutouts:5}));

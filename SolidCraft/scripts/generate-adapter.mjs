@@ -112,5 +112,5 @@ add('solid.extrude',{sketch:'M20_AirTagProfile',distance:'airtagPocketDepth',dir
 fs.writeFileSync(new URL('../scripts/adapter-stage3c.json',import.meta.url),JSON.stringify({commands},null,2));
 const stages=['stage1','stage2a','stage2b','stage3a','stage3b','stage3c'];
 fs.writeFileSync(new URL('../scripts/adapter-master-pre-imprint.json',import.meta.url),JSON.stringify({commands:stages.flatMap(s=>JSON.parse(fs.readFileSync(new URL('../scripts/adapter-'+s+'.json',import.meta.url))).commands)},null,2));
-const full=['adapter-master-pre-imprint','adapter-imprint','adapter-child'];
+const full=['adapter-master-pre-imprint','adapter-imprint','adapter-child',...(fs.existsSync(new URL('../scripts/reorganize-components.json',import.meta.url))?['reorganize-components']:[])];
 if(full.every(n=>fs.existsSync(new URL('../scripts/'+n+'.json',import.meta.url))))fs.writeFileSync(new URL('../scripts/seat-adapter-build.json',import.meta.url),JSON.stringify({commands:full.flatMap(n=>JSON.parse(fs.readFileSync(new URL('../scripts/'+n+'.json',import.meta.url))).commands)},null,2));

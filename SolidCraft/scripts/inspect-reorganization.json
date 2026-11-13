@@ -1,0 +1,1 @@
+{"commands":[{"command":"component.list","params":{"compact":true,"bodies":true}},{"command":"inspect.measure","params":{"bodies":["AdapterBodyMaster","AdapterBodyFront","AdapterBodyRear"]}}]}

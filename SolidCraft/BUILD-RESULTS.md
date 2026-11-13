@@ -9,7 +9,7 @@ Built with SolidCraft 0.40.1 on 2026-11-12 (Chicago). The native document is `mo
 - No fillets, loose connector inserts, or extra fit clearance.
 - Latch and saddle bag mount: extracted separately from Fusion, not yet built in SolidCraft. See `../docs/ACCESSORY-PARTS.md`.
 
-The document has 69 timeline entries and 25 sketches, each fixed at zero degrees of freedom. This preserves source coordinates; it does not reproduce Fusion's entire dimensional constraint graph. `airtagPocketDepth` is a named driving parameter. Other editable feature dimensions remain in their native feature definitions.
+The original build had 69 timeline entries and 25 sketches, each fixed at zero degrees of freedom. The later component reorganization adds a hidden reference-mesh feature, making 70 entries; see `REORGANIZATION.md`. This preserves source coordinates; it does not reproduce Fusion's entire dimensional constraint graph. `airtagPocketDepth` is a named driving parameter. Other editable feature dimensions remain in their native feature definitions.
 
 ## Verification
 

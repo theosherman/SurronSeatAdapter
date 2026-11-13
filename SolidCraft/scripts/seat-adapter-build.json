@@ -5647,6 +5647,111 @@
         ],
         "visible": true
       }
+    },
+    {
+      "command": "component.create",
+      "params": {
+        "name": "AdapterBody",
+        "parent": "root",
+        "activate": false
+      }
+    },
+    {
+      "command": "component.move_features",
+      "params": {
+        "features": [
+          "M01_BottomProfile",
+          "M01_BottomExtrusion",
+          "M02_BaseMirror",
+          "M03_SideProfiles",
+          "M03_SideIntersection",
+          "M04_RearProfile",
+          "M04_RearIntersection",
+          "M05_ShellMirror",
+          "M06_RearDovetailProfile",
+          "M06_RearDovetail",
+          "M06_RearDovetailEndPlane",
+          "Remove1",
+          "M07_BoltProfiles",
+          "M07_BoltThroughHoles",
+          "M08_RearAccessProfiles",
+          "M08_RearAccessCavities",
+          "M09_FrontAccessProfile0",
+          "M09_AccessTool0",
+          "M09_CeilingPlane0",
+          "Remove2",
+          "M09_FrontAccessCavity0",
+          "M09_FrontAccessProfile1",
+          "M09_AccessTool1",
+          "M09_CeilingPlane1",
+          "Remove3",
+          "M09_FrontAccessCavity1",
+          "M10_HangerProfile",
+          "M10_SeatHanger",
+          "M11_HangerDraft",
+          "M11_HangerMirror",
+          "M11_JoinHangers",
+          "M12_HandleProfile",
+          "M12_HandleMount",
+          "M13_FrontCutProfile",
+          "M13_FrontCut",
+          "M14_FrontDraftWedgeProfile",
+          "M14_FrontDraftEquivalent",
+          "M15_SeatNotches",
+          "M15_RearSeatNotches",
+          "M16_FrontDovetailProfile",
+          "M16_FrontDovetail",
+          "M17_SeatSideProfile",
+          "M17_SeatSideCut",
+          "M17_SeatSideReflectedProfile",
+          "M17_SeatSideCutMirrored",
+          "M18_RearCutProfiles",
+          "M18_RearCut",
+          "M18_RearCutReflectedProfiles",
+          "M18_RearCutMirrored",
+          "M19_BodyCavityProfile",
+          "M19_DraftedUndersideCavity",
+          "M20_AirTagProfile",
+          "M20_AirTagPocket",
+          "WheelScanReference",
+          "WheelScanSolid",
+          "M21_WheelImprint"
+        ],
+        "component": "AdapterBody"
+      }
+    },
+    {
+      "command": "file.insert_mesh",
+      "params": {
+        "path": "C:/Projects/Sherman P Seat Adapter/SolidCraft/inputs/wheel_scan_mm.stl",
+        "name": "WheelScanDisplay",
+        "units": "mm",
+        "origin": false
+      }
+    },
+    {
+      "command": "component.move_features",
+      "params": {
+        "features": [
+          "WheelScanDisplay"
+        ],
+        "component": "WheelScanReference"
+      }
+    },
+    {
+      "command": "component.delete",
+      "params": {
+        "component": "WheelScanDisplay"
+      }
+    },
+    {
+      "command": "browser.visibility",
+      "params": {
+        "features": [
+          "WheelScanDisplay"
+        ],
+        "visible": false
+      }
     }
   ]
 }

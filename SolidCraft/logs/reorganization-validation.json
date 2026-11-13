@@ -1,0 +1,272 @@
+{
+  "checkedAt": "2026-11-13T01:21:37.504Z",
+  "checkpointCommit": "68993b6",
+  "model": "models/seat-adapter.sc",
+  "geometryUnchanged": true,
+  "comparisons": [
+    {
+      "name": "AdapterBodyMaster",
+      "volumeDeltaMm3": 0,
+      "areaDeltaMm2": 0,
+      "identicalBounds": true,
+      "identicalCenterOfMass": true,
+      "identicalFaceEdgeCounts": true,
+      "closed": true
+    },
+    {
+      "name": "AdapterBodyFront",
+      "volumeDeltaMm3": 0,
+      "areaDeltaMm2": 0,
+      "identicalBounds": true,
+      "identicalCenterOfMass": true,
+      "identicalFaceEdgeCounts": true,
+      "closed": true
+    },
+    {
+      "name": "AdapterBodyRear",
+      "volumeDeltaMm3": 0,
+      "areaDeltaMm2": 0,
+      "identicalBounds": true,
+      "identicalCenterOfMass": true,
+      "identicalFaceEdgeCounts": true,
+      "closed": true
+    }
+  ],
+  "inheritance": {
+    "passed": true,
+    "masterDeltaMm3": -102.42950781830586,
+    "childDeltaMm3": -102.42950781492982,
+    "restored": true,
+    "errors": [],
+    "parameterErrors": []
+  },
+  "hierarchy": {
+    "rootBodies": [],
+    "rootSketches": [],
+    "rootSharedFeatures": [
+      "C01_DependentMasterCopy"
+    ],
+    "master": {
+      "bodies": [
+        "AdapterBodyMaster"
+      ],
+      "children": [],
+      "construction": [],
+      "features": [
+        "M01_BottomExtrusion",
+        "M02_BaseMirror",
+        "M03_SideIntersection",
+        "M04_RearIntersection",
+        "M05_ShellMirror",
+        "M06_RearDovetail",
+        "M06_RearDovetailEndPlane",
+        "Remove1",
+        "M07_BoltThroughHoles",
+        "M08_RearAccessCavities",
+        "M09_AccessTool0",
+        "M09_CeilingPlane0",
+        "Remove2",
+        "M09_FrontAccessCavity0",
+        "M09_AccessTool1",
+        "M09_CeilingPlane1",
+        "Remove3",
+        "M09_FrontAccessCavity1",
+        "M10_SeatHanger",
+        "M11_HangerDraft",
+        "M11_HangerMirror",
+        "M11_JoinHangers",
+        "M12_HandleMount",
+        "M13_FrontCut",
+        "M14_FrontDraftEquivalent",
+        "M15_RearSeatNotches",
+        "M16_FrontDovetail",
+        "M17_SeatSideCut",
+        "M17_SeatSideCutMirrored",
+        "M18_RearCut",
+        "M18_RearCutMirrored",
+        "M19_DraftedUndersideCavity",
+        "M20_AirTagPocket",
+        "WheelScanReference",
+        "WheelScanSolid",
+        "M21_WheelImprint"
+      ],
+      "id": 74,
+      "name": "AdapterBody",
+      "occurrences": [
+        {
+          "component": 74,
+          "grounded": false,
+          "id": 75,
+          "name": "AdapterBody:1",
+          "parent": 0,
+          "transform": [
+            [
+              1,
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              1,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              1,
+              0
+            ],
+            [
+              0,
+              0,
+              0,
+              1
+            ]
+          ]
+        }
+      ],
+      "parent": 0,
+      "sketches": [
+        "M01_BottomProfile",
+        "M03_SideProfiles",
+        "M04_RearProfile",
+        "M06_RearDovetailProfile",
+        "M07_BoltProfiles",
+        "M08_RearAccessProfiles",
+        "M09_FrontAccessProfile0",
+        "M09_FrontAccessProfile1",
+        "M10_HangerProfile",
+        "M12_HandleProfile",
+        "M13_FrontCutProfile",
+        "M14_FrontDraftWedgeProfile",
+        "M15_SeatNotches",
+        "M16_FrontDovetailProfile",
+        "M17_SeatSideProfile",
+        "M17_SeatSideReflectedProfile",
+        "M18_RearCutProfiles",
+        "M18_RearCutReflectedProfiles",
+        "M19_BodyCavityProfile",
+        "M20_AirTagProfile"
+      ]
+    },
+    "child": {
+      "bodies": [
+        "AdapterBodyFront",
+        "AdapterBodyRear"
+      ],
+      "children": [],
+      "construction": [],
+      "features": [
+        "BodyTransfer1",
+        "C02_PrintSplit",
+        "C03_top",
+        "C03_side_original",
+        "C03_side_mirrored_192",
+        "C03_side_mirrored_193",
+        "C03_side_mirrored_192_193"
+      ],
+      "id": 60,
+      "name": "AdapterBodySplit",
+      "occurrences": [
+        {
+          "component": 60,
+          "grounded": false,
+          "id": 61,
+          "name": "AdapterBodySplit:1",
+          "parent": 0,
+          "transform": [
+            [
+              1,
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              1,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              1,
+              0
+            ],
+            [
+              0,
+              0,
+              0,
+              1
+            ]
+          ]
+        }
+      ],
+      "parent": 0,
+      "sketches": [
+        "C03_top_Profile",
+        "C03_side_original_Profile",
+        "C03_side_mirrored_192_Profile",
+        "C03_side_mirrored_193_Profile",
+        "C03_side_mirrored_192_193_Profile"
+      ]
+    },
+    "reference": {
+      "bodies": [
+        "wheel_scan_mm"
+      ],
+      "children": [],
+      "construction": [],
+      "features": [
+        "WheelScanDisplay"
+      ],
+      "id": 54,
+      "name": "WheelScanReference",
+      "occurrences": [
+        {
+          "component": 54,
+          "grounded": true,
+          "id": 55,
+          "name": "WheelScanReference:1",
+          "parent": 0,
+          "transform": [
+            [
+              1,
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              1,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              1,
+              0
+            ],
+            [
+              0,
+              0,
+              0,
+              1
+            ]
+          ]
+        }
+      ],
+      "parent": 0,
+      "sketches": []
+    },
+    "siblings": true
+  },
+  "featureCount": 70,
+  "fixedSketches": true,
+  "errors": [],
+  "warnings": [],
+  "ok": true
+}

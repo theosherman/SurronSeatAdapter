@@ -4,7 +4,9 @@ SolidCraft-specific files stay in this folder. The installed version checked dur
 
 The native adapter is now built and open in SolidCraft. Open [models/seat-adapter.sc](models/seat-adapter.sc) for the unsplit master and the dependent `AdapterBodySplit` component. The two printing halves are hidden initially, so they do not overlap the visible master. Show the child bodies and hide the master to inspect the split.
 
-Verification: 3 closed solids (one master plus two child halves), 69 timeline entries, 25 fixed sketches, no feature errors or warnings, all 12 mounting-ceiling material checks passed, and a temporary parameter change verified parent-to-child propagation. See [build results and limitations](BUILD-RESULTS.md) and [validation record](logs/build-validation.json).
+The root `seat-adapter` is a container. Its sibling components are `AdapterBody` (master, 20 sketches and its manufacturing features), `AdapterBodySplit` (two printing halves and five connector sketches), and `WheelScanReference` (a hidden display mesh). The shared copy relationship remains a root-level feature. Older checkpoint documents retain their original organization. See [the reorganization record](REORGANIZATION.md).
+
+Verification: 3 closed manufactured solids (one master plus two child halves), a separate hidden reference mesh, 70 timeline entries, 25 fixed sketches, no feature errors or warnings, all 12 mounting-ceiling material checks passed, and a temporary parameter change verified parent-to-child propagation. See [build results and limitations](BUILD-RESULTS.md), [original validation record](logs/build-validation.json), and [reorganization verification](logs/reorganization-validation.json).
 
 This is not an exact Onshape geometry match. One left circular cut uses a 256-sided cutter, retaining its exact circle as construction geometry; maximum radial deviation is 0.001506 mm. Other source-to-target adaptations and the measured volume difference are documented in the build results.
 
