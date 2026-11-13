@@ -18,15 +18,8 @@ function profileSketch(index,name,mirrorX=false){
   if(c.type==='Line3D'){add('sketch.line',{points:[xy(c.startMm),xy(c.endMm)],infer:false});ids.push('l'+ ++lines);}
   else if(c.type==='Arc3D'){add('sketch.arc.three_point',{start:xy(c.startMm),end:xy(c.endMm),through:xy(c.midMm)});ids.push('a'+ ++arcs);}
   else if(c.type==='Circle3D'){
-   const faceted=index===97&&!mirrorX;
-   add('sketch.circle.center',{center:xy(c.centerMm),radius:c.radiusMm,...(faceted?{construction:true}:{})});ids.push('c'+ ++circles);
-   if(faceted){
-    // SolidCraft 0.40.1 silently misses this analytic left-hand cutter.
-    // Inscribed 256-gon: max radial deviation 0.001506 mm at R20.
-    const center=xy(c.centerMm);
-    add('sketch.line',{points:Array.from({length:256},(_,i)=>[center[0]+c.radiusMm*Math.cos(2*Math.PI*i/256),center[1]+c.radiusMm*Math.sin(2*Math.PI*i/256)]),closed:true,infer:false,connect:false});
-    for(let i=0;i<256;i++)ids.push('l'+ ++lines);
-   }
+   const referenceOnly=index===97&&!mirrorX;
+   add('sketch.circle.center',{center:xy(c.centerMm),radius:c.radiusMm,...(referenceOnly?{construction:true}:{})});ids.push('c'+ ++circles);
   }
   else throw new Error('Unsupported exact curve '+c.type);
  }
@@ -96,9 +89,14 @@ add('solid.extrude',{sketch:'M15_SeatNotches',distance:8,direction:'negative',op
 profileSketch(91,'M16_FrontDovetailProfile');
 add('solid.extrude',{sketch:'M16_FrontDovetailProfile',distance:80,direction:'symmetric',operation:'join',targets:['AdapterBodyMaster'],name:'M16_FrontDovetail'});
 profileSketch(97,'M17_SeatSideProfile');
-add('solid.extrude',{sketch:'M17_SeatSideProfile',distance:1000,direction:'symmetric',operation:'cut',targets:['AdapterBodyMaster'],name:'M17_SeatSideCut'});
 profileSketch(97,'M17_SeatSideReflectedProfile',true);
 add('solid.extrude',{sketch:'M17_SeatSideReflectedProfile',distance:1000,direction:'symmetric',operation:'cut',targets:['AdapterBodyMaster'],name:'M17_SeatSideCutMirrored'});
+// Cut the positive-X half analytically, then mirror that half to avoid the
+// kernel's ineffective negative-X cylinder Boolean. All upstream geometry
+// is symmetric here; the asymmetric wheel imprint is applied afterwards.
+add('solid.split_body',{body:'AdapterBodyMaster',plane:'YZ',name:'M17_KeepSmoothHalf'});
+add('solid.remove',{bodies:['AdapterBodyMaster (1)'],name:'M17_RemoveOppositeHalf'});
+add('solid.mirror',{bodies:['AdapterBodyMaster'],plane:'YZ',combine:true,name:'M17_MirrorSmoothHalf'});
 profileSketch(121,'M18_RearCutProfiles');
 add('solid.extrude',{sketch:'M18_RearCutProfiles',distance:1000,direction:'symmetric',operation:'cut',targets:['AdapterBodyMaster'],name:'M18_RearCut'});
 profileSketch(121,'M18_RearCutReflectedProfiles',true);

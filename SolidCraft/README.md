@@ -6,9 +6,9 @@ The native adapter is now built and open in SolidCraft. Open [models/seat-adapte
 
 The root `seat-adapter` is a container. Its sibling components are `AdapterBody` (master, 20 sketches and its manufacturing features), `AdapterBodySplit` (two printing halves and five connector sketches), and `WheelScanReference` (a hidden display mesh). The shared copy relationship remains a root-level feature. Older checkpoint documents retain their original organization. See [the reorganization record](REORGANIZATION.md).
 
-Verification: 3 closed manufactured solids (one master plus two child halves), a separate hidden reference mesh, 70 timeline entries, 25 fixed sketches, no feature errors or warnings, all 12 mounting-ceiling material checks passed, and a temporary parameter change verified parent-to-child propagation. See [build results and limitations](BUILD-RESULTS.md), [original validation record](logs/build-validation.json), and [reorganization verification](logs/reorganization-validation.json).
+Verification: 3 closed manufactured solids, a hidden reference mesh, 72 timeline entries, 25 fixed sketches, no feature errors or warnings, 12 passing mounting-ceiling checks, and tested parent-to-child propagation. Both side cuts are now smooth analytic R20 cylinders. See [smooth-cut revision](SMOOTH-CUTS.md) and [current validation](logs/smooth-cut-validation.json).
 
-This is not an exact Onshape geometry match. One left circular cut uses a 256-sided cutter, retaining its exact circle as construction geometry; maximum radial deviation is 0.001506 mm. Other source-to-target adaptations and the measured volume difference are documented in the build results.
+This is not an exact Onshape geometry match. The former 256-sided cutter has been removed and replaced by mirroring the smooth half before the wheel imprint. Other source-to-target adaptations are documented in the build results.
 
 ## Connect Codex to the desktop app
 

@@ -1,0 +1,4359 @@
+[
+  {
+    "display_value": 8.5,
+    "name": "airtagPocketDepth",
+    "unit": "mm",
+    "value": 8.5
+  },
+  {
+    "attachment": "fixed",
+    "created": {
+      "constraints": [],
+      "curves": [],
+      "dimensions": [],
+      "points": []
+    },
+    "frame": "world",
+    "name": "M01_BottomProfile",
+    "projected": null,
+    "sketch": 1
+  },
+  {
+    "constraints": [],
+    "created": {
+      "constraints": [],
+      "curves": [
+        "l1"
+      ],
+      "dimensions": [],
+      "points": [
+        "l1.start",
+        "l1.end"
+      ]
+    },
+    "curves": [
+      "l1"
+    ],
+    "sketch": {
+      "dof": 4,
+      "solved": true
+    }
+  },
+  {
+    "constraints": [
+      "k1"
+    ],
+    "created": {
+      "constraints": [
+        "k1"
+      ],
+      "curves": [
+        "l2"
+      ],
+      "dimensions": [],
+      "points": [
+        "l2.start",
+        "l2.end"
+      ]
+    },
+    "curves": [
+      "l2"
+    ],
+    "sketch": {
+      "dof": 6,
+      "solved": true
+    }
+  },
+  {
+    "constraints": [
+      "k2"
+    ],
+    "created": {
+      "constraints": [
+        "k2"
+      ],
+      "curves": [
+        "l3"
+      ],
+      "dimensions": [],
+      "points": [
+        "l3.start",
+        "l3.end"
+      ]
+    },
+    "curves": [
+      "l3"
+    ],
+    "sketch": {
+      "dof": 8,
+      "solved": true
+    }
+  },
+  {
+    "constraints": [
+      "k3"
+    ],
+    "created": {
+      "constraints": [
+        "k3"
+      ],
+      "curves": [
+        "l4"
+      ],
+      "dimensions": [],
+      "points": [
+        "l4.start",
+        "l4.end"
+      ]
+    },
+    "curves": [
+      "l4"
+    ],
+    "sketch": {
+      "dof": 10,
+      "solved": true
+    }
+  },
+  {
+    "constraints": [
+      "k4"
+    ],
+    "created": {
+      "constraints": [
+        "k4"
+      ],
+      "curves": [
+        "l5"
+      ],
+      "dimensions": [],
+      "points": [
+        "l5.start",
+        "l5.end"
+      ]
+    },
+    "curves": [
+      "l5"
+    ],
+    "sketch": {
+      "dof": 12,
+      "solved": true
+    }
+  },
+  {
+    "constraints": [
+      "k5"
+    ],
+    "created": {
+      "constraints": [
+        "k5"
+      ],
+      "curves": [
+        "l6"
+      ],
+      "dimensions": [],
+      "points": [
+        "l6.start",
+        "l6.end"
+      ]
+    },
+    "curves": [
+      "l6"
+    ],
+    "sketch": {
+      "dof": 14,
+      "solved": true
+    }
+  },
+  {
+    "constraints": [
+      "k6"
+    ],
+    "created": {
+      "constraints": [
+        "k6"
+      ],
+      "curves": [
+        "l7"
+      ],
+      "dimensions": [],
+      "points": [
+        "l7.start",
+        "l7.end"
+      ]
+    },
+    "curves": [
+      "l7"
+    ],
+    "sketch": {
+      "dof": 16,
+      "solved": true
+    }
+  },
+  {
+    "constraints": [
+      "k7",
+      "k8"
+    ],
+    "created": {
+      "constraints": [
+        "k7",
+        "k8"
+      ],
+      "curves": [
+        "l8"
+      ],
+      "dimensions": [],
+      "points": [
+        "l8.start",
+        "l8.end"
+      ]
+    },
+    "curves": [
+      "l8"
+    ],
+    "sketch": {
+      "dof": 16,
+      "solved": true
+    }
+  },
+  {
+    "constraints": [
+      "k9"
+    ],
+    "created": {
+      "constraints": [
+        "k9"
+      ],
+      "curves": [
+        "l9"
+      ],
+      "dimensions": [],
+      "points": [
+        "l9.start",
+        "l9.end"
+      ]
+    },
+    "curves": [
+      "l9"
+    ],
+    "sketch": {
+      "dof": 18,
+      "solved": true
+    }
+  },
+  {
+    "constraints": [
+      "k10"
+    ],
+    "created": {
+      "constraints": [
+        "k10"
+      ],
+      "curves": [
+        "l10"
+      ],
+      "dimensions": [],
+      "points": [
+        "l10.start",
+        "l10.end"
+      ]
+    },
+    "curves": [
+      "l10"
+    ],
+    "sketch": {
+      "dof": 20,
+      "solved": true
+    }
+  },
+  {
+    "constraints": [
+      "k11"
+    ],
+    "created": {
+      "constraints": [
+        "k11"
+      ],
+      "curves": [
+        "l11"
+      ],
+      "dimensions": [],
+      "points": [
+        "l11.start",
+        "l11.end"
+      ]
+    },
+    "curves": [
+      "l11"
+    ],
+    "sketch": {
+      "dof": 22,
+      "solved": true
+    }
+  },
+  {
+    "constraints": [
+      "k12"
+    ],
+    "created": {
+      "constraints": [
+        "k12"
+      ],
+      "curves": [
+        "l12"
+      ],
+      "dimensions": [],
+      "points": [
+        "l12.start",
+        "l12.end"
+      ]
+    },
+    "curves": [
+      "l12"
+    ],
+    "sketch": {
+      "dof": 24,
+      "solved": true
+    }
+  },
+  {
+    "constraints": [
+      "k13"
+    ],
+    "created": {
+      "constraints": [
+        "k13"
+      ],
+      "curves": [
+        "l13"
+      ],
+      "dimensions": [],
+      "points": [
+        "l13.start",
+        "l13.end"
+      ]
+    },
+    "curves": [
+      "l13"
+    ],
+    "sketch": {
+      "dof": 26,
+      "solved": true
+    }
+  },
+  {
+    "constraints": [
+      "k14"
+    ],
+    "created": {
+      "constraints": [
+        "k14"
+      ],
+      "curves": [
+        "l14"
+      ],
+      "dimensions": [],
+      "points": [
+        "l14.start",
+        "l14.end"
+      ]
+    },
+    "curves": [
+      "l14"
+    ],
+    "sketch": {
+      "dof": 28,
+      "solved": true
+    }
+  },
+  {
+    "constraints": [
+      "k15"
+    ],
+    "created": {
+      "constraints": [
+        "k15"
+      ],
+      "curves": [
+        "l15"
+      ],
+      "dimensions": [],
+      "points": [
+        "l15.start",
+        "l15.end"
+      ]
+    },
+    "curves": [
+      "l15"
+    ],
+    "sketch": {
+      "dof": 30,
+      "solved": true
+    }
+  },
+  {
+    "constraints": [
+      "k16"
+    ],
+    "created": {
+      "constraints": [
+        "k16"
+      ],
+      "curves": [
+        "l16"
+      ],
+      "dimensions": [],
+      "points": [
+        "l16.start",
+        "l16.end"
+      ]
+    },
+    "curves": [
+      "l16"
+    ],
+    "sketch": {
+      "dof": 32,
+      "solved": true
+    }
+  },
+  {
+    "constraints": [
+      "k17",
+      "k18"
+    ],
+    "created": {
+      "constraints": [
+        "k17",
+        "k18"
+      ],
+      "curves": [
+        "l17"
+      ],
+      "dimensions": [],
+      "points": [
+        "l17.start",
+        "l17.end"
+      ]
+    },
+    "curves": [
+      "l17"
+    ],
+    "sketch": {
+      "dof": 32,
+      "solved": true
+    }
+  },
+  {
+    "created": {
+      "constraints": [],
+      "curves": [],
+      "dimensions": [],
+      "points": []
+    },
+    "result": {
+      "changed": 17,
+      "fixed": true
+    },
+    "sketch": {
+      "dof": 0,
+      "solved": true
+    }
+  },
+  {
+    "profiles": 1,
+    "sketch": 1
+  },
+  {
+    "bodies": [
+      "AdapterBody"
+    ],
+    "changed_bodies": [],
+    "created_bodies": [
+      "AdapterBody"
+    ],
+    "feature": 2,
+    "ms": 4.6641,
+    "name": "M01_BottomExtrusion",
+    "removed_bodies": [],
+    "warning": null
+  },
+  {
+    "bodies": [
+      "AdapterBody"
+    ],
+    "changed_bodies": [
+      "AdapterBody"
+    ],
+    "created_bodies": [],
+    "feature": 3,
+    "ms": 23.2008,
+    "name": "M02_BaseMirror",
+    "removed_bodies": [],
+    "warning": null
+  },
+  {
+    "attachment": "fixed",
+    "created": {
+      "constraints": [],
+      "curves": [],
+      "dimensions": [],
+      "points": []
+    },
+    "frame": "world",
+    "name": "M03_SideProfiles",
+    "projected": null,
+    "sketch": 4
+  },
+  {
+    "constraints": [],
+    "created": {
+      "constraints": [],
+      "curves": [
+        "l1"
+      ],
+      "dimensions": [],
+      "points": [
+        "l1.start",
+        "l1.end"
+      ]
+    },
+    "curves": [
+      "l1"
+    ],
+    "sketch": {
+      "dof": 4,
+      "solved": true
+    }
+  },
+  {
+    "constraints": [
+      "k1"
+    ],
+    "created": {
+      "constraints": [
+        "k1"
+      ],
+      "curves": [
+        "l2"
+      ],
+      "dimensions": [],
+      "points": [
+        "l2.start",
+        "l2.end"
+      ]
+    },
+    "curves": [
+      "l2"
+    ],
+    "sketch": {
+      "dof": 6,
+      "solved": true
+    }
+  },
+  {
+    "constraints": [
+      "k2"
+    ],
+    "created": {
+      "constraints": [
+        "k2"
+      ],
+      "curves": [
+        "l3"
+      ],
+      "dimensions": [],
+      "points": [
+        "l3.start",
+        "l3.end"
+      ]
+    },
+    "curves": [
+      "l3"
+    ],
+    "sketch": {
+      "dof": 8,
+      "solved": true
+    }
+  },
+  {
+    "constraints": [
+      "k3"
+    ],
+    "created": {
+      "constraints": [
+        "k3"
+      ],
+      "curves": [
+        "l4"
+      ],
+      "dimensions": [],
+      "points": [
+        "l4.start",
+        "l4.end"
+      ]
+    },
+    "curves": [
+      "l4"
+    ],
+    "sketch": {
+      "dof": 10,
+      "solved": true
+    }
+  },
+  {
+    "constraints": [
+      "k4"
+    ],
+    "created": {
+      "constraints": [
+        "k4"
+      ],
+      "curves": [
+        "l5"
+      ],
+      "dimensions": [],
+      "points": [
+        "l5.start",
+        "l5.end"
+      ]
+    },
+    "curves": [
+      "l5"
+    ],
+    "sketch": {
+      "dof": 12,
+      "solved": true
+    }
+  },
+  {
+    "constraints": [
+      "k5"
+    ],
+    "created": {
+      "constraints": [
+        "k5"
+      ],
+      "curves": [
+        "l6"
+      ],
+      "dimensions": [],
+      "points": [
+        "l6.start",
+        "l6.end"
+      ]
+    },
+    "curves": [
+      "l6"
+    ],
+    "sketch": {
+      "dof": 14,
+      "solved": true
+    }
+  },
+  {
+    "constraints": [
+      "k6"
+    ],
+    "created": {
+      "constraints": [
+        "k6"
+      ],
+      "curves": [
+        "l7"
+      ],
+      "dimensions": [],
+      "points": [
+        "l7.start",
+        "l7.end"
+      ]
+    },
+    "curves": [
+      "l7"
+    ],
+    "sketch": {
+      "dof": 16,
+      "solved": true
+    }
+  },
+  {
+    "constraints": [
+      "k7"
+    ],
+    "created": {
+      "constraints": [
+        "k7"
+      ],
+      "curves": [
+        "l8"
+      ],
+      "dimensions": [],
+      "points": [
+        "l8.start",
+        "l8.end"
+      ]
+    },
+    "curves": [
+      "l8"
+    ],
+    "sketch": {
+      "dof": 18,
+      "solved": true
+    }
+  },
+  {
+    "constraints": [
+      "k8"
+    ],
+    "created": {
+      "constraints": [
+        "k8"
+      ],
+      "curves": [
+        "l9"
+      ],
+      "dimensions": [],
+      "points": [
+        "l9.start",
+        "l9.end"
+      ]
+    },
+    "curves": [
+      "l9"
+    ],
+    "sketch": {
+      "dof": 20,
+      "solved": true
+    }
+  },
+  {
+    "constraints": [
+      "k9"
+    ],
+    "created": {
+      "constraints": [
+        "k9"
+      ],
+      "curves": [
+        "l10"
+      ],
+      "dimensions": [],
+      "points": [
+        "l10.start",
+        "l10.end"
+      ]
+    },
+    "curves": [
+      "l10"
+    ],
+    "sketch": {
+      "dof": 22,
+      "solved": true
+    }
+  },
+  {
+    "constraints": [
+      "k10"
+    ],
+    "created": {
+      "constraints": [
+        "k10"
+      ],
+      "curves": [
+        "l11"
+      ],
+      "dimensions": [],
+      "points": [
+        "l11.start",
+        "l11.end"
+      ]
+    },
+    "curves": [
+      "l11"
+    ],
+    "sketch": {
+      "dof": 24,
+      "solved": true
+    }
+  },
+  {
+    "constraints": [
+      "k11"
+    ],
+    "created": {
+      "constraints": [
+        "k11"
+      ],
+      "curves": [
+        "l12"
+      ],
+      "dimensions": [],
+      "points": [
+        "l12.start",
+        "l12.end"
+      ]
+    },
+    "curves": [
+      "l12"
+    ],
+    "sketch": {
+      "dof": 26,
+      "solved": true
+    }
+  },
+  {
+    "constraints": [
+      "k12",
+      "k13"
+    ],
+    "created": {
+      "constraints": [
+        "k12",
+        "k13"
+      ],
+      "curves": [
+        "l13"
+      ],
+      "dimensions": [],
+      "points": [
+        "l13.start",
+        "l13.end"
+      ]
+    },
+    "curves": [
+      "l13"
+    ],
+    "sketch": {
+      "dof": 26,
+      "solved": true
+    }
+  },
+  {
+    "constraints": [
+      "k14",
+      "k15"
+    ],
+    "created": {
+      "constraints": [
+        "k14",
+        "k15"
+      ],
+      "curves": [
+        "l14"
+      ],
+      "dimensions": [],
+      "points": [
+        "l14.start",
+        "l14.end"
+      ]
+    },
+    "curves": [
+      "l14"
+    ],
+    "sketch": {
+      "dof": 26,
+      "solved": true
+    }
+  },
+  {
+    "created": {
+      "constraints": [],
+      "curves": [],
+      "dimensions": [],
+      "points": []
+    },
+    "result": {
+      "changed": 14,
+      "fixed": true
+    },
+    "sketch": {
+      "dof": 0,
+      "solved": true
+    }
+  },
+  {
+    "profiles": 2,
+    "sketch": 4
+  },
+  {
+    "bodies": [
+      "AdapterBody"
+    ],
+    "changed_bodies": [
+      "AdapterBody"
+    ],
+    "created_bodies": [],
+    "feature": 5,
+    "ms": 19.4406,
+    "name": "M03_SideIntersection",
+    "removed_bodies": [],
+    "warning": null
+  },
+  {
+    "attachment": "fixed",
+    "created": {
+      "constraints": [],
+      "curves": [],
+      "dimensions": [],
+      "points": []
+    },
+    "frame": "world",
+    "name": "M04_RearProfile",
+    "projected": null,
+    "sketch": 6
+  },
+  {
+    "constraints": [],
+    "created": {
+      "constraints": [],
+      "curves": [
+        "l1"
+      ],
+      "dimensions": [],
+      "points": [
+        "l1.start",
+        "l1.end"
+      ]
+    },
+    "curves": [
+      "l1"
+    ],
+    "sketch": {
+      "dof": 4,
+      "solved": true
+    }
+  },
+  {
+    "constraints": [
+      "k1"
+    ],
+    "created": {
+      "constraints": [
+        "k1"
+      ],
+      "curves": [
+        "l2"
+      ],
+      "dimensions": [],
+      "points": [
+        "l2.start",
+        "l2.end"
+      ]
+    },
+    "curves": [
+      "l2"
+    ],
+    "sketch": {
+      "dof": 6,
+      "solved": true
+    }
+  },
+  {
+    "constraints": [
+      "k2"
+    ],
+    "created": {
+      "constraints": [
+        "k2"
+      ],
+      "curves": [
+        "l3"
+      ],
+      "dimensions": [],
+      "points": [
+        "l3.start",
+        "l3.end"
+      ]
+    },
+    "curves": [
+      "l3"
+    ],
+    "sketch": {
+      "dof": 8,
+      "solved": true
+    }
+  },
+  {
+    "constraints": [
+      "k3"
+    ],
+    "created": {
+      "constraints": [
+        "k3"
+      ],
+      "curves": [
+        "l4"
+      ],
+      "dimensions": [],
+      "points": [
+        "l4.start",
+        "l4.end"
+      ]
+    },
+    "curves": [
+      "l4"
+    ],
+    "sketch": {
+      "dof": 10,
+      "solved": true
+    }
+  },
+  {
+    "constraints": [
+      "k4"
+    ],
+    "created": {
+      "constraints": [
+        "k4"
+      ],
+      "curves": [
+        "l5"
+      ],
+      "dimensions": [],
+      "points": [
+        "l5.start",
+        "l5.end"
+      ]
+    },
+    "curves": [
+      "l5"
+    ],
+    "sketch": {
+      "dof": 12,
+      "solved": true
+    }
+  },
+  {
+    "constraints": [
+      "k5"
+    ],
+    "created": {
+      "constraints": [
+        "k5"
+      ],
+      "curves": [
+        "l6"
+      ],
+      "dimensions": [],
+      "points": [
+        "l6.start",
+        "l6.end"
+      ]
+    },
+    "curves": [
+      "l6"
+    ],
+    "sketch": {
+      "dof": 14,
+      "solved": true
+    }
+  },
+  {
+    "constraints": [
+      "k6",
+      "k7"
+    ],
+    "created": {
+      "constraints": [
+        "k6",
+        "k7"
+      ],
+      "curves": [
+        "l7"
+      ],
+      "dimensions": [],
+      "points": [
+        "l7.start",
+        "l7.end"
+      ]
+    },
+    "curves": [
+      "l7"
+    ],
+    "sketch": {
+      "dof": 14,
+      "solved": true
+    }
+  },
+  {
+    "created": {
+      "constraints": [],
+      "curves": [],
+      "dimensions": [],
+      "points": []
+    },
+    "result": {
+      "changed": 7,
+      "fixed": true
+    },
+    "sketch": {
+      "dof": 0,
+      "solved": true
+    }
+  },
+  {
+    "profiles": 1,
+    "sketch": 6
+  },
+  {
+    "bodies": [
+      "AdapterBody"
+    ],
+    "changed_bodies": [
+      "AdapterBody"
+    ],
+    "created_bodies": [],
+    "feature": 7,
+    "ms": 14.7455,
+    "name": "M04_RearIntersection",
+    "removed_bodies": [],
+    "warning": null
+  },
+  {
+    "bodies": [
+      "AdapterBody"
+    ],
+    "changed_bodies": [
+      "AdapterBody"
+    ],
+    "created_bodies": [],
+    "feature": 8,
+    "ms": 34.1751,
+    "name": "M05_ShellMirror",
+    "removed_bodies": [],
+    "warning": null
+  },
+  {
+    "created": {
+      "constraints": [],
+      "curves": [],
+      "dimensions": [],
+      "points": []
+    },
+    "name": "M01_BottomProfile",
+    "sketch": 1
+  },
+  {
+    "created": {
+      "constraints": [],
+      "curves": [],
+      "dimensions": [],
+      "points": []
+    },
+    "result": {
+      "changed": 17,
+      "fixed": true
+    },
+    "sketch": {
+      "dof": 0,
+      "solved": true
+    }
+  },
+  {
+    "created": {
+      "constraints": [],
+      "curves": [],
+      "dimensions": [],
+      "points": []
+    },
+    "profiles": 1,
+    "sketch": 1
+  },
+  {
+    "created": {
+      "constraints": [],
+      "curves": [],
+      "dimensions": [],
+      "points": []
+    },
+    "name": "M03_SideProfiles",
+    "sketch": 4
+  },
+  {
+    "created": {
+      "constraints": [],
+      "curves": [],
+      "dimensions": [],
+      "points": []
+    },
+    "result": {
+      "changed": 14,
+      "fixed": true
+    },
+    "sketch": {
+      "dof": 0,
+      "solved": true
+    }
+  },
+  {
+    "created": {
+      "constraints": [],
+      "curves": [],
+      "dimensions": [],
+      "points": []
+    },
+    "profiles": 2,
+    "sketch": 4
+  },
+  {
+    "created": {
+      "constraints": [],
+      "curves": [],
+      "dimensions": [],
+      "points": []
+    },
+    "name": "M04_RearProfile",
+    "sketch": 6
+  },
+  {
+    "created": {
+      "constraints": [],
+      "curves": [],
+      "dimensions": [],
+      "points": []
+    },
+    "result": {
+      "changed": 7,
+      "fixed": true
+    },
+    "sketch": {
+      "dof": 0,
+      "solved": true
+    }
+  },
+  {
+    "created": {
+      "constraints": [],
+      "curves": [],
+      "dimensions": [],
+      "points": []
+    },
+    "profiles": 1,
+    "sketch": 6
+  },
+  {
+    "attachment": "fixed",
+    "created": {
+      "constraints": [],
+      "curves": [],
+      "dimensions": [],
+      "points": []
+    },
+    "frame": "world",
+    "name": "M06_RearDovetailProfile",
+    "projected": null,
+    "sketch": 9
+  },
+  {
+    "constraints": [],
+    "created": {
+      "constraints": [],
+      "curves": [
+        "l1"
+      ],
+      "dimensions": [],
+      "points": [
+        "l1.start",
+        "l1.end"
+      ]
+    },
+    "curves": [
+      "l1"
+    ],
+    "sketch": {
+      "dof": 4,
+      "solved": true
+    }
+  },
+  {
+    "constraints": [
+      "k1"
+    ],
+    "created": {
+      "constraints": [
+        "k1"
+      ],
+      "curves": [
+        "l2"
+      ],
+      "dimensions": [],
+      "points": [
+        "l2.start",
+        "l2.end"
+      ]
+    },
+    "curves": [
+      "l2"
+    ],
+    "sketch": {
+      "dof": 6,
+      "solved": true
+    }
+  },
+  {
+    "constraints": [
+      "k2"
+    ],
+    "created": {
+      "constraints": [
+        "k2"
+      ],
+      "curves": [
+        "l3"
+      ],
+      "dimensions": [],
+      "points": [
+        "l3.start",
+        "l3.end"
+      ]
+    },
+    "curves": [
+      "l3"
+    ],
+    "sketch": {
+      "dof": 8,
+      "solved": true
+    }
+  },
+  {
+    "constraints": [
+      "k3"
+    ],
+    "created": {
+      "constraints": [
+        "k3"
+      ],
+      "curves": [
+        "l4"
+      ],
+      "dimensions": [],
+      "points": [
+        "l4.start",
+        "l4.end"
+      ]
+    },
+    "curves": [
+      "l4"
+    ],
+    "sketch": {
+      "dof": 10,
+      "solved": true
+    }
+  },
+  {
+    "constraints": [
+      "k4",
+      "k5"
+    ],
+    "created": {
+      "constraints": [
+        "k4",
+        "k5"
+      ],
+      "curves": [
+        "l5"
+      ],
+      "dimensions": [],
+      "points": [
+        "l5.start",
+        "l5.end"
+      ]
+    },
+    "curves": [
+      "l5"
+    ],
+    "sketch": {
+      "dof": 10,
+      "solved": true
+    }
+  },
+  {
+    "created": {
+      "constraints": [],
+      "curves": [],
+      "dimensions": [],
+      "points": []
+    },
+    "result": {
+      "changed": 5,
+      "fixed": true
+    },
+    "sketch": {
+      "dof": 0,
+      "solved": true
+    }
+  },
+  {
+    "profiles": 1,
+    "sketch": 9
+  },
+  {
+    "bodies": [
+      "AdapterBody"
+    ],
+    "changed_bodies": [
+      "AdapterBody"
+    ],
+    "created_bodies": [],
+    "feature": 10,
+    "ms": 17.081300000000002,
+    "name": "M06_RearDovetail",
+    "removed_bodies": [],
+    "warning": null
+  },
+  {
+    "bodies": [
+      "AdapterBody",
+      "AdapterBody (1)"
+    ],
+    "changed_bodies": [
+      "AdapterBody"
+    ],
+    "created_bodies": [
+      "AdapterBody (1)"
+    ],
+    "feature": 11,
+    "ms": 30.079700000000003,
+    "name": "M06_RearDovetailEndPlane",
+    "removed_bodies": [],
+    "warning": null
+  },
+  {
+    "bodies": [
+      "AdapterBody (1)"
+    ],
+    "changed_bodies": [],
+    "created_bodies": [],
+    "feature": 12,
+    "ms": 0.0086,
+    "name": "Remove1",
+    "removed_bodies": [
+      "AdapterBody"
+    ],
+    "warning": null
+  },
+  {
+    "body": "AdapterBody (1)",
+    "name": "AdapterBodyMaster"
+  },
+  {
+    "attachment": "fixed",
+    "created": {
+      "constraints": [],
+      "curves": [],
+      "dimensions": [],
+      "points": []
+    },
+    "frame": "world",
+    "name": "M07_BoltProfiles",
+    "projected": null,
+    "sketch": 13
+  },
+  {
+    "constraints": [],
+    "created": {
+      "constraints": [],
+      "curves": [
+        "c1"
+      ],
+      "dimensions": [],
+      "points": [
+        "c1.center"
+      ]
+    },
+    "curves": [
+      "c1"
+    ],
+    "sketch": {
+      "dof": 3,
+      "solved": true
+    }
+  },
+  {
+    "constraints": [],
+    "created": {
+      "constraints": [],
+      "curves": [
+        "c2"
+      ],
+      "dimensions": [],
+      "points": [
+        "c2.center"
+      ]
+    },
+    "curves": [
+      "c2"
+    ],
+    "sketch": {
+      "dof": 6,
+      "solved": true
+    }
+  },
+  {
+    "constraints": [],
+    "created": {
+      "constraints": [],
+      "curves": [
+        "c3"
+      ],
+      "dimensions": [],
+      "points": [
+        "c3.center"
+      ]
+    },
+    "curves": [
+      "c3"
+    ],
+    "sketch": {
+      "dof": 9,
+      "solved": true
+    }
+  },
+  {
+    "constraints": [],
+    "created": {
+      "constraints": [],
+      "curves": [
+        "c4"
+      ],
+      "dimensions": [],
+      "points": [
+        "c4.center"
+      ]
+    },
+    "curves": [
+      "c4"
+    ],
+    "sketch": {
+      "dof": 12,
+      "solved": true
+    }
+  },
+  {
+    "created": {
+      "constraints": [],
+      "curves": [],
+      "dimensions": [],
+      "points": []
+    },
+    "result": {
+      "changed": 4,
+      "fixed": true
+    },
+    "sketch": {
+      "dof": 0,
+      "solved": true
+    }
+  },
+  {
+    "profiles": 4,
+    "sketch": 13
+  },
+  {
+    "bodies": [
+      "AdapterBodyMaster"
+    ],
+    "changed_bodies": [
+      "AdapterBodyMaster"
+    ],
+    "created_bodies": [],
+    "feature": 14,
+    "ms": 60.2554,
+    "name": "M07_BoltThroughHoles",
+    "removed_bodies": [],
+    "warning": null
+  },
+  {
+    "attachment": "fixed",
+    "created": {
+      "constraints": [],
+      "curves": [],
+      "dimensions": [],
+      "points": []
+    },
+    "frame": "world",
+    "name": "M08_RearAccessProfiles",
+    "projected": null,
+    "sketch": 15
+  },
+  {
+    "constraints": [],
+    "created": {
+      "constraints": [],
+      "curves": [
+        "c1"
+      ],
+      "dimensions": [],
+      "points": [
+        "c1.center"
+      ]
+    },
+    "curves": [
+      "c1"
+    ],
+    "sketch": {
+      "dof": 3,
+      "solved": true
+    }
+  },
+  {
+    "constraints": [],
+    "created": {
+      "constraints": [],
+      "curves": [
+        "c2"
+      ],
+      "dimensions": [],
+      "points": [
+        "c2.center"
+      ]
+    },
+    "curves": [
+      "c2"
+    ],
+    "sketch": {
+      "dof": 6,
+      "solved": true
+    }
+  },
+  {
+    "created": {
+      "constraints": [],
+      "curves": [],
+      "dimensions": [],
+      "points": []
+    },
+    "result": {
+      "changed": 2,
+      "fixed": true
+    },
+    "sketch": {
+      "dof": 0,
+      "solved": true
+    }
+  },
+  {
+    "profiles": 2,
+    "sketch": 15
+  },
+  {
+    "bodies": [
+      "AdapterBodyMaster"
+    ],
+    "changed_bodies": [
+      "AdapterBodyMaster"
+    ],
+    "created_bodies": [],
+    "feature": 16,
+    "ms": 44.2002,
+    "name": "M08_RearAccessCavities",
+    "removed_bodies": [],
+    "warning": null
+  },
+  {
+    "attachment": "fixed",
+    "created": {
+      "constraints": [],
+      "curves": [],
+      "dimensions": [],
+      "points": []
+    },
+    "frame": "world",
+    "name": "M09_FrontAccessProfile0",
+    "projected": null,
+    "sketch": 17
+  },
+  {
+    "constraints": [],
+    "created": {
+      "constraints": [],
+      "curves": [
+        "c1"
+      ],
+      "dimensions": [],
+      "points": [
+        "c1.center"
+      ]
+    },
+    "curves": [
+      "c1"
+    ],
+    "sketch": {
+      "dof": 3,
+      "solved": true
+    }
+  },
+  {
+    "created": {
+      "constraints": [],
+      "curves": [],
+      "dimensions": [],
+      "points": []
+    },
+    "result": {
+      "changed": 1,
+      "fixed": true
+    },
+    "sketch": {
+      "dof": 0,
+      "solved": true
+    }
+  },
+  {
+    "profiles": 1,
+    "sketch": 17
+  },
+  {
+    "bodies": [
+      "AdapterBodyMaster",
+      "FrontAccessTool0"
+    ],
+    "changed_bodies": [],
+    "created_bodies": [
+      "FrontAccessTool0"
+    ],
+    "feature": 18,
+    "ms": 3.914,
+    "name": "M09_AccessTool0",
+    "removed_bodies": [],
+    "warning": null
+  },
+  {
+    "bodies": [
+      "AdapterBodyMaster",
+      "FrontAccessTool0",
+      "FrontAccessTool0 (1)"
+    ],
+    "changed_bodies": [
+      "FrontAccessTool0"
+    ],
+    "created_bodies": [
+      "FrontAccessTool0 (1)"
+    ],
+    "feature": 19,
+    "ms": 11.018,
+    "name": "M09_CeilingPlane0",
+    "removed_bodies": [],
+    "warning": null
+  },
+  {
+    "bodies": [
+      "AdapterBodyMaster",
+      "FrontAccessTool0 (1)"
+    ],
+    "changed_bodies": [],
+    "created_bodies": [],
+    "feature": 20,
+    "ms": 0.0048,
+    "name": "Remove2",
+    "removed_bodies": [
+      "FrontAccessTool0"
+    ],
+    "warning": null
+  },
+  {
+    "bodies": [
+      "AdapterBodyMaster"
+    ],
+    "changed_bodies": [
+      "AdapterBodyMaster"
+    ],
+    "created_bodies": [],
+    "feature": 21,
+    "ms": 31.486,
+    "name": "M09_FrontAccessCavity0",
+    "removed_bodies": [
+      "FrontAccessTool0 (1)"
+    ],
+    "warning": null
+  },
+  {
+    "attachment": "fixed",
+    "created": {
+      "constraints": [],
+      "curves": [],
+      "dimensions": [],
+      "points": []
+    },
+    "frame": "world",
+    "name": "M09_FrontAccessProfile1",
+    "projected": null,
+    "sketch": 22
+  },
+  {
+    "constraints": [],
+    "created": {
+      "constraints": [],
+      "curves": [
+        "c1"
+      ],
+      "dimensions": [],
+      "points": [
+        "c1.center"
+      ]
+    },
+    "curves": [
+      "c1"
+    ],
+    "sketch": {
+      "dof": 3,
+      "solved": true
+    }
+  },
+  {
+    "created": {
+      "constraints": [],
+      "curves": [],
+      "dimensions": [],
+      "points": []
+    },
+    "result": {
+      "changed": 1,
+      "fixed": true
+    },
+    "sketch": {
+      "dof": 0,
+      "solved": true
+    }
+  },
+  {
+    "profiles": 1,
+    "sketch": 22
+  },
+  {
+    "bodies": [
+      "AdapterBodyMaster",
+      "FrontAccessTool1"
+    ],
+    "changed_bodies": [],
+    "created_bodies": [
+      "FrontAccessTool1"
+    ],
+    "feature": 23,
+    "ms": 3.6727000000000003,
+    "name": "M09_AccessTool1",
+    "removed_bodies": [],
+    "warning": null
+  },
+  {
+    "bodies": [
+      "AdapterBodyMaster",
+      "FrontAccessTool1",
+      "FrontAccessTool1 (1)"
+    ],
+    "changed_bodies": [
+      "FrontAccessTool1"
+    ],
+    "created_bodies": [
+      "FrontAccessTool1 (1)"
+    ],
+    "feature": 24,
+    "ms": 11.2562,
+    "name": "M09_CeilingPlane1",
+    "removed_bodies": [],
+    "warning": null
+  },
+  {
+    "bodies": [
+      "AdapterBodyMaster",
+      "FrontAccessTool1 (1)"
+    ],
+    "changed_bodies": [],
+    "created_bodies": [],
+    "feature": 25,
+    "ms": 0.0052,
+    "name": "Remove3",
+    "removed_bodies": [
+      "FrontAccessTool1"
+    ],
+    "warning": null
+  },
+  {
+    "bodies": [
+      "AdapterBodyMaster"
+    ],
+    "changed_bodies": [
+      "AdapterBodyMaster"
+    ],
+    "created_bodies": [],
+    "feature": 26,
+    "ms": 33.073,
+    "name": "M09_FrontAccessCavity1",
+    "removed_bodies": [
+      "FrontAccessTool1 (1)"
+    ],
+    "warning": null
+  },
+  {
+    "attachment": "fixed",
+    "created": {
+      "constraints": [],
+      "curves": [],
+      "dimensions": [],
+      "points": []
+    },
+    "frame": "world",
+    "name": "M10_HangerProfile",
+    "projected": null,
+    "sketch": 27
+  },
+  {
+    "constraints": [],
+    "created": {
+      "constraints": [],
+      "curves": [
+        "l1"
+      ],
+      "dimensions": [],
+      "points": [
+        "l1.start",
+        "l1.end"
+      ]
+    },
+    "curves": [
+      "l1"
+    ],
+    "sketch": {
+      "dof": 4,
+      "solved": true
+    }
+  },
+  {
+    "constraints": [
+      "k1"
+    ],
+    "created": {
+      "constraints": [
+        "k1"
+      ],
+      "curves": [
+        "l2"
+      ],
+      "dimensions": [],
+      "points": [
+        "l2.start",
+        "l2.end"
+      ]
+    },
+    "curves": [
+      "l2"
+    ],
+    "sketch": {
+      "dof": 6,
+      "solved": true
+    }
+  },
+  {
+    "constraints": [
+      "k2"
+    ],
+    "created": {
+      "constraints": [
+        "k2"
+      ],
+      "curves": [
+        "l3"
+      ],
+      "dimensions": [],
+      "points": [
+        "l3.start",
+        "l3.end"
+      ]
+    },
+    "curves": [
+      "l3"
+    ],
+    "sketch": {
+      "dof": 8,
+      "solved": true
+    }
+  },
+  {
+    "constraints": [
+      "k3"
+    ],
+    "created": {
+      "constraints": [
+        "k3"
+      ],
+      "curves": [
+        "l4"
+      ],
+      "dimensions": [],
+      "points": [
+        "l4.start",
+        "l4.end"
+      ]
+    },
+    "curves": [
+      "l4"
+    ],
+    "sketch": {
+      "dof": 10,
+      "solved": true
+    }
+  },
+  {
+    "constraints": [
+      "k4",
+      "k5"
+    ],
+    "created": {
+      "constraints": [
+        "k4",
+        "k5"
+      ],
+      "curves": [
+        "l5"
+      ],
+      "dimensions": [],
+      "points": [
+        "l5.start",
+        "l5.end"
+      ]
+    },
+    "curves": [
+      "l5"
+    ],
+    "sketch": {
+      "dof": 10,
+      "solved": true
+    }
+  },
+  {
+    "created": {
+      "constraints": [],
+      "curves": [],
+      "dimensions": [],
+      "points": []
+    },
+    "result": {
+      "changed": 5,
+      "fixed": true
+    },
+    "sketch": {
+      "dof": 0,
+      "solved": true
+    }
+  },
+  {
+    "profiles": 1,
+    "sketch": 27
+  },
+  {
+    "bodies": [
+      "AdapterBodyMaster",
+      "SeatHanger"
+    ],
+    "changed_bodies": [],
+    "created_bodies": [
+      "SeatHanger"
+    ],
+    "feature": 28,
+    "ms": 2.1778,
+    "name": "M10_SeatHanger",
+    "removed_bodies": [],
+    "warning": null
+  },
+  {
+    "bodies": [
+      "AdapterBodyMaster",
+      "SeatHanger"
+    ],
+    "changed_bodies": [
+      "SeatHanger"
+    ],
+    "created_bodies": [],
+    "feature": 29,
+    "ms": 29.9371,
+    "name": "M11_HangerDraft",
+    "removed_bodies": [],
+    "warning": null
+  },
+  {
+    "bodies": [
+      "AdapterBodyMaster",
+      "SeatHanger",
+      "SeatHanger (2)"
+    ],
+    "changed_bodies": [],
+    "created_bodies": [
+      "SeatHanger (2)"
+    ],
+    "feature": 30,
+    "ms": 1.9379,
+    "name": "M11_HangerMirror",
+    "removed_bodies": [],
+    "warning": null
+  },
+  {
+    "bodies": [
+      "AdapterBodyMaster"
+    ],
+    "changed_bodies": [
+      "AdapterBodyMaster"
+    ],
+    "created_bodies": [],
+    "feature": 31,
+    "ms": 28.4393,
+    "name": "M11_JoinHangers",
+    "removed_bodies": [
+      "SeatHanger",
+      "SeatHanger (2)"
+    ],
+    "warning": null
+  },
+  {
+    "attachment": "fixed",
+    "created": {
+      "constraints": [],
+      "curves": [],
+      "dimensions": [],
+      "points": []
+    },
+    "frame": "world",
+    "name": "M12_HandleProfile",
+    "projected": null,
+    "sketch": 32
+  },
+  {
+    "constraints": [],
+    "created": {
+      "constraints": [],
+      "curves": [
+        "a1"
+      ],
+      "dimensions": [],
+      "points": [
+        "a1.center",
+        "a1.start",
+        "a1.end"
+      ]
+    },
+    "curves": [
+      "a1"
+    ],
+    "sketch": {
+      "dof": 5,
+      "solved": true
+    }
+  },
+  {
+    "constraints": [
+      "k1"
+    ],
+    "created": {
+      "constraints": [
+        "k1"
+      ],
+      "curves": [
+        "a2"
+      ],
+      "dimensions": [],
+      "points": [
+        "a2.center",
+        "a2.start",
+        "a2.end"
+      ]
+    },
+    "curves": [
+      "a2"
+    ],
+    "sketch": {
+      "dof": 8,
+      "solved": true
+    }
+  },
+  {
+    "constraints": [
+      "k2"
+    ],
+    "created": {
+      "constraints": [
+        "k2"
+      ],
+      "curves": [
+        "a3"
+      ],
+      "dimensions": [],
+      "points": [
+        "a3.center",
+        "a3.start",
+        "a3.end"
+      ]
+    },
+    "curves": [
+      "a3"
+    ],
+    "sketch": {
+      "dof": 11,
+      "solved": true
+    }
+  },
+  {
+    "constraints": [
+      "k3",
+      "k4"
+    ],
+    "created": {
+      "constraints": [
+        "k3",
+        "k4"
+      ],
+      "curves": [
+        "a4"
+      ],
+      "dimensions": [],
+      "points": [
+        "a4.center",
+        "a4.start",
+        "a4.end"
+      ]
+    },
+    "curves": [
+      "a4"
+    ],
+    "sketch": {
+      "dof": 12,
+      "solved": true
+    }
+  },
+  {
+    "constraints": [
+      "k5",
+      "k6"
+    ],
+    "created": {
+      "constraints": [
+        "k5",
+        "k6"
+      ],
+      "curves": [
+        "a5"
+      ],
+      "dimensions": [],
+      "points": [
+        "a5.center",
+        "a5.start",
+        "a5.end"
+      ]
+    },
+    "curves": [
+      "a5"
+    ],
+    "sketch": {
+      "dof": 13,
+      "solved": true
+    }
+  },
+  {
+    "constraints": [
+      "k7",
+      "k8",
+      "k9"
+    ],
+    "created": {
+      "constraints": [
+        "k7",
+        "k8",
+        "k9"
+      ],
+      "curves": [
+        "a6"
+      ],
+      "dimensions": [],
+      "points": [
+        "a6.center",
+        "a6.start",
+        "a6.end"
+      ]
+    },
+    "curves": [
+      "a6"
+    ],
+    "sketch": {
+      "dof": 12,
+      "solved": true
+    }
+  },
+  {
+    "constraints": [
+      "k10"
+    ],
+    "created": {
+      "constraints": [
+        "k10"
+      ],
+      "curves": [
+        "l1"
+      ],
+      "dimensions": [],
+      "points": [
+        "l1.start",
+        "l1.end"
+      ]
+    },
+    "curves": [
+      "l1"
+    ],
+    "sketch": {
+      "dof": 14,
+      "solved": true
+    }
+  },
+  {
+    "constraints": [
+      "k11"
+    ],
+    "created": {
+      "constraints": [
+        "k11"
+      ],
+      "curves": [
+        "l2"
+      ],
+      "dimensions": [],
+      "points": [
+        "l2.start",
+        "l2.end"
+      ]
+    },
+    "curves": [
+      "l2"
+    ],
+    "sketch": {
+      "dof": 16,
+      "solved": true
+    }
+  },
+  {
+    "constraints": [
+      "k12",
+      "k13"
+    ],
+    "created": {
+      "constraints": [
+        "k12",
+        "k13"
+      ],
+      "curves": [
+        "l3"
+      ],
+      "dimensions": [],
+      "points": [
+        "l3.start",
+        "l3.end"
+      ]
+    },
+    "curves": [
+      "l3"
+    ],
+    "sketch": {
+      "dof": 16,
+      "solved": true
+    }
+  },
+  {
+    "created": {
+      "constraints": [],
+      "curves": [],
+      "dimensions": [],
+      "points": []
+    },
+    "result": {
+      "changed": 9,
+      "fixed": true
+    },
+    "sketch": {
+      "dof": 0,
+      "solved": true
+    }
+  },
+  {
+    "profiles": 2,
+    "sketch": 32
+  },
+  {
+    "bodies": [
+      "AdapterBodyMaster"
+    ],
+    "changed_bodies": [
+      "AdapterBodyMaster"
+    ],
+    "created_bodies": [],
+    "feature": 33,
+    "ms": 53.1045,
+    "name": "M12_HandleMount",
+    "removed_bodies": [],
+    "warning": null
+  },
+  {
+    "attachment": "fixed",
+    "created": {
+      "constraints": [],
+      "curves": [],
+      "dimensions": [],
+      "points": []
+    },
+    "frame": "world",
+    "name": "M13_FrontCutProfile",
+    "projected": null,
+    "sketch": 34
+  },
+  {
+    "constraints": [],
+    "created": {
+      "constraints": [],
+      "curves": [
+        "l1"
+      ],
+      "dimensions": [],
+      "points": [
+        "l1.start",
+        "l1.end"
+      ]
+    },
+    "curves": [
+      "l1"
+    ],
+    "sketch": {
+      "dof": 4,
+      "solved": true
+    }
+  },
+  {
+    "constraints": [
+      "k1"
+    ],
+    "created": {
+      "constraints": [
+        "k1"
+      ],
+      "curves": [
+        "l2"
+      ],
+      "dimensions": [],
+      "points": [
+        "l2.start",
+        "l2.end"
+      ]
+    },
+    "curves": [
+      "l2"
+    ],
+    "sketch": {
+      "dof": 6,
+      "solved": true
+    }
+  },
+  {
+    "constraints": [
+      "k2",
+      "k3"
+    ],
+    "created": {
+      "constraints": [
+        "k2",
+        "k3"
+      ],
+      "curves": [
+        "l3"
+      ],
+      "dimensions": [],
+      "points": [
+        "l3.start",
+        "l3.end"
+      ]
+    },
+    "curves": [
+      "l3"
+    ],
+    "sketch": {
+      "dof": 6,
+      "solved": true
+    }
+  },
+  {
+    "constraints": [],
+    "created": {
+      "constraints": [],
+      "curves": [
+        "l4"
+      ],
+      "dimensions": [],
+      "points": [
+        "l4.start",
+        "l4.end"
+      ]
+    },
+    "curves": [
+      "l4"
+    ],
+    "sketch": {
+      "dof": 10,
+      "solved": true
+    }
+  },
+  {
+    "constraints": [
+      "k4"
+    ],
+    "created": {
+      "constraints": [
+        "k4"
+      ],
+      "curves": [
+        "l5"
+      ],
+      "dimensions": [],
+      "points": [
+        "l5.start",
+        "l5.end"
+      ]
+    },
+    "curves": [
+      "l5"
+    ],
+    "sketch": {
+      "dof": 12,
+      "solved": true
+    }
+  },
+  {
+    "constraints": [
+      "k5",
+      "k6"
+    ],
+    "created": {
+      "constraints": [
+        "k5",
+        "k6"
+      ],
+      "curves": [
+        "l6"
+      ],
+      "dimensions": [],
+      "points": [
+        "l6.start",
+        "l6.end"
+      ]
+    },
+    "curves": [
+      "l6"
+    ],
+    "sketch": {
+      "dof": 12,
+      "solved": true
+    }
+  },
+  {
+    "created": {
+      "constraints": [],
+      "curves": [],
+      "dimensions": [],
+      "points": []
+    },
+    "result": {
+      "changed": 6,
+      "fixed": true
+    },
+    "sketch": {
+      "dof": 0,
+      "solved": true
+    }
+  },
+  {
+    "profiles": 2,
+    "sketch": 34
+  },
+  {
+    "bodies": [
+      "AdapterBodyMaster"
+    ],
+    "changed_bodies": [
+      "AdapterBodyMaster"
+    ],
+    "created_bodies": [],
+    "feature": 35,
+    "ms": 94.64150000000001,
+    "name": "M13_FrontCut",
+    "removed_bodies": [],
+    "warning": null
+  },
+  {
+    "attachment": "fixed",
+    "created": {
+      "constraints": [],
+      "curves": [],
+      "dimensions": [],
+      "points": []
+    },
+    "frame": "world",
+    "name": "M14_FrontDraftWedgeProfile",
+    "projected": null,
+    "sketch": 36
+  },
+  {
+    "constraints": [],
+    "created": {
+      "constraints": [],
+      "curves": [
+        "l1",
+        "l2",
+        "l3"
+      ],
+      "dimensions": [],
+      "points": [
+        "l1.start",
+        "l1.end",
+        "l2.end"
+      ]
+    },
+    "curves": [
+      "l1",
+      "l2",
+      "l3"
+    ],
+    "sketch": {
+      "dof": 6,
+      "solved": true
+    }
+  },
+  {
+    "created": {
+      "constraints": [],
+      "curves": [],
+      "dimensions": [],
+      "points": []
+    },
+    "result": {
+      "changed": 3,
+      "fixed": true
+    },
+    "sketch": {
+      "dof": 0,
+      "solved": true
+    }
+  },
+  {
+    "profiles": 1,
+    "sketch": 36
+  },
+  {
+    "bodies": [
+      "AdapterBodyMaster"
+    ],
+    "changed_bodies": [
+      "AdapterBodyMaster"
+    ],
+    "created_bodies": [],
+    "feature": 37,
+    "ms": 78.3964,
+    "name": "M14_FrontDraftEquivalent",
+    "removed_bodies": [],
+    "warning": null
+  },
+  {
+    "attachment": "fixed",
+    "created": {
+      "constraints": [],
+      "curves": [],
+      "dimensions": [],
+      "points": []
+    },
+    "frame": "world",
+    "name": "M15_SeatNotches",
+    "projected": null,
+    "sketch": 38
+  },
+  {
+    "constraints": [],
+    "created": {
+      "constraints": [],
+      "curves": [
+        "l1"
+      ],
+      "dimensions": [],
+      "points": [
+        "l1.start",
+        "l1.end"
+      ]
+    },
+    "curves": [
+      "l1"
+    ],
+    "sketch": {
+      "dof": 4,
+      "solved": true
+    }
+  },
+  {
+    "constraints": [
+      "k1"
+    ],
+    "created": {
+      "constraints": [
+        "k1"
+      ],
+      "curves": [
+        "l2"
+      ],
+      "dimensions": [],
+      "points": [
+        "l2.start",
+        "l2.end"
+      ]
+    },
+    "curves": [
+      "l2"
+    ],
+    "sketch": {
+      "dof": 6,
+      "solved": true
+    }
+  },
+  {
+    "constraints": [
+      "k2"
+    ],
+    "created": {
+      "constraints": [
+        "k2"
+      ],
+      "curves": [
+        "l3"
+      ],
+      "dimensions": [],
+      "points": [
+        "l3.start",
+        "l3.end"
+      ]
+    },
+    "curves": [
+      "l3"
+    ],
+    "sketch": {
+      "dof": 8,
+      "solved": true
+    }
+  },
+  {
+    "constraints": [
+      "k3",
+      "k4"
+    ],
+    "created": {
+      "constraints": [
+        "k3",
+        "k4"
+      ],
+      "curves": [
+        "l4"
+      ],
+      "dimensions": [],
+      "points": [
+        "l4.start",
+        "l4.end"
+      ]
+    },
+    "curves": [
+      "l4"
+    ],
+    "sketch": {
+      "dof": 8,
+      "solved": true
+    }
+  },
+  {
+    "constraints": [
+      "k5"
+    ],
+    "created": {
+      "constraints": [
+        "k5"
+      ],
+      "curves": [
+        "l5"
+      ],
+      "dimensions": [],
+      "points": [
+        "l5.start",
+        "l5.end"
+      ]
+    },
+    "curves": [
+      "l5"
+    ],
+    "sketch": {
+      "dof": 10,
+      "solved": true
+    }
+  },
+  {
+    "constraints": [
+      "k6",
+      "k7"
+    ],
+    "created": {
+      "constraints": [
+        "k6",
+        "k7"
+      ],
+      "curves": [
+        "l6"
+      ],
+      "dimensions": [],
+      "points": [
+        "l6.start",
+        "l6.end"
+      ]
+    },
+    "curves": [
+      "l6"
+    ],
+    "sketch": {
+      "dof": 10,
+      "solved": true
+    }
+  },
+  {
+    "constraints": [
+      "k8"
+    ],
+    "created": {
+      "constraints": [
+        "k8"
+      ],
+      "curves": [
+        "l7"
+      ],
+      "dimensions": [],
+      "points": [
+        "l7.start",
+        "l7.end"
+      ]
+    },
+    "curves": [
+      "l7"
+    ],
+    "sketch": {
+      "dof": 12,
+      "solved": true
+    }
+  },
+  {
+    "constraints": [
+      "k9"
+    ],
+    "created": {
+      "constraints": [
+        "k9"
+      ],
+      "curves": [
+        "l8"
+      ],
+      "dimensions": [],
+      "points": [
+        "l8.start",
+        "l8.end"
+      ]
+    },
+    "curves": [
+      "l8"
+    ],
+    "sketch": {
+      "dof": 14,
+      "solved": true
+    }
+  },
+  {
+    "constraints": [
+      "k10",
+      "k11"
+    ],
+    "created": {
+      "constraints": [
+        "k10",
+        "k11"
+      ],
+      "curves": [
+        "l9"
+      ],
+      "dimensions": [],
+      "points": [
+        "l9.start",
+        "l9.end"
+      ]
+    },
+    "curves": [
+      "l9"
+    ],
+    "sketch": {
+      "dof": 14,
+      "solved": true
+    }
+  },
+  {
+    "constraints": [],
+    "created": {
+      "constraints": [],
+      "curves": [
+        "l10"
+      ],
+      "dimensions": [],
+      "points": [
+        "l10.start",
+        "l10.end"
+      ]
+    },
+    "curves": [
+      "l10"
+    ],
+    "sketch": {
+      "dof": 18,
+      "solved": true
+    }
+  },
+  {
+    "constraints": [
+      "k12"
+    ],
+    "created": {
+      "constraints": [
+        "k12"
+      ],
+      "curves": [
+        "l11"
+      ],
+      "dimensions": [],
+      "points": [
+        "l11.start",
+        "l11.end"
+      ]
+    },
+    "curves": [
+      "l11"
+    ],
+    "sketch": {
+      "dof": 20,
+      "solved": true
+    }
+  },
+  {
+    "constraints": [
+      "k13"
+    ],
+    "created": {
+      "constraints": [
+        "k13"
+      ],
+      "curves": [
+        "l12"
+      ],
+      "dimensions": [],
+      "points": [
+        "l12.start",
+        "l12.end"
+      ]
+    },
+    "curves": [
+      "l12"
+    ],
+    "sketch": {
+      "dof": 22,
+      "solved": true
+    }
+  },
+  {
+    "constraints": [
+      "k14",
+      "k15"
+    ],
+    "created": {
+      "constraints": [
+        "k14",
+        "k15"
+      ],
+      "curves": [
+        "l13"
+      ],
+      "dimensions": [],
+      "points": [
+        "l13.start",
+        "l13.end"
+      ]
+    },
+    "curves": [
+      "l13"
+    ],
+    "sketch": {
+      "dof": 22,
+      "solved": true
+    }
+  },
+  {
+    "constraints": [],
+    "created": {
+      "constraints": [],
+      "curves": [
+        "l14"
+      ],
+      "dimensions": [],
+      "points": [
+        "l14.start",
+        "l14.end"
+      ]
+    },
+    "curves": [
+      "l14"
+    ],
+    "sketch": {
+      "dof": 26,
+      "solved": true
+    }
+  },
+  {
+    "constraints": [
+      "k16",
+      "k17"
+    ],
+    "created": {
+      "constraints": [
+        "k16",
+        "k17"
+      ],
+      "curves": [
+        "l15"
+      ],
+      "dimensions": [],
+      "points": [
+        "l15.start",
+        "l15.end"
+      ]
+    },
+    "curves": [
+      "l15"
+    ],
+    "sketch": {
+      "dof": 26,
+      "solved": true
+    }
+  },
+  {
+    "constraints": [
+      "k18",
+      "k19"
+    ],
+    "created": {
+      "constraints": [
+        "k18",
+        "k19"
+      ],
+      "curves": [
+        "l16"
+      ],
+      "dimensions": [],
+      "points": [
+        "l16.start",
+        "l16.end"
+      ]
+    },
+    "curves": [
+      "l16"
+    ],
+    "sketch": {
+      "dof": 26,
+      "solved": true
+    }
+  },
+  {
+    "created": {
+      "constraints": [],
+      "curves": [],
+      "dimensions": [],
+      "points": []
+    },
+    "result": {
+      "changed": 16,
+      "fixed": true
+    },
+    "sketch": {
+      "dof": 0,
+      "solved": true
+    }
+  },
+  {
+    "profiles": 5,
+    "sketch": 38
+  },
+  {
+    "bodies": [
+      "AdapterBodyMaster"
+    ],
+    "changed_bodies": [
+      "AdapterBodyMaster"
+    ],
+    "created_bodies": [],
+    "feature": 39,
+    "ms": 90.3491,
+    "name": "M15_RearSeatNotches",
+    "removed_bodies": [],
+    "warning": null
+  },
+  {
+    "attachment": "fixed",
+    "created": {
+      "constraints": [],
+      "curves": [],
+      "dimensions": [],
+      "points": []
+    },
+    "frame": "world",
+    "name": "M16_FrontDovetailProfile",
+    "projected": null,
+    "sketch": 40
+  },
+  {
+    "constraints": [],
+    "created": {
+      "constraints": [],
+      "curves": [
+        "l1"
+      ],
+      "dimensions": [],
+      "points": [
+        "l1.start",
+        "l1.end"
+      ]
+    },
+    "curves": [
+      "l1"
+    ],
+    "sketch": {
+      "dof": 4,
+      "solved": true
+    }
+  },
+  {
+    "constraints": [
+      "k1"
+    ],
+    "created": {
+      "constraints": [
+        "k1"
+      ],
+      "curves": [
+        "l2"
+      ],
+      "dimensions": [],
+      "points": [
+        "l2.start",
+        "l2.end"
+      ]
+    },
+    "curves": [
+      "l2"
+    ],
+    "sketch": {
+      "dof": 6,
+      "solved": true
+    }
+  },
+  {
+    "constraints": [
+      "k2"
+    ],
+    "created": {
+      "constraints": [
+        "k2"
+      ],
+      "curves": [
+        "l3"
+      ],
+      "dimensions": [],
+      "points": [
+        "l3.start",
+        "l3.end"
+      ]
+    },
+    "curves": [
+      "l3"
+    ],
+    "sketch": {
+      "dof": 8,
+      "solved": true
+    }
+  },
+  {
+    "constraints": [
+      "k3",
+      "k4"
+    ],
+    "created": {
+      "constraints": [
+        "k3",
+        "k4"
+      ],
+      "curves": [
+        "l4"
+      ],
+      "dimensions": [],
+      "points": [
+        "l4.start",
+        "l4.end"
+      ]
+    },
+    "curves": [
+      "l4"
+    ],
+    "sketch": {
+      "dof": 8,
+      "solved": true
+    }
+  },
+  {
+    "created": {
+      "constraints": [],
+      "curves": [],
+      "dimensions": [],
+      "points": []
+    },
+    "result": {
+      "changed": 4,
+      "fixed": true
+    },
+    "sketch": {
+      "dof": 0,
+      "solved": true
+    }
+  },
+  {
+    "profiles": 1,
+    "sketch": 40
+  },
+  {
+    "bodies": [
+      "AdapterBodyMaster"
+    ],
+    "changed_bodies": [
+      "AdapterBodyMaster"
+    ],
+    "created_bodies": [],
+    "feature": 41,
+    "ms": 79.3151,
+    "name": "M16_FrontDovetail",
+    "removed_bodies": [],
+    "warning": null
+  },
+  {
+    "bodies": [
+      {
+        "area_mm2": 188125.88042736324,
+        "bbox": {
+          "max": [
+            77.93135238304326,
+            244.2852265589759,
+            109.10684591159225
+          ],
+          "min": [
+            -77.93135238438845,
+            -263.445982162752,
+            -29.88520679436624
+          ]
+        },
+        "center_of_mass": [
+          -2.2677778408407188e-10,
+          -52.737594693300814,
+          23.889760678411623
+        ],
+        "closed": true,
+        "density_g_cm3": 1.29,
+        "edges": 228,
+        "face_types": {
+          "cylinder": 13,
+          "plane": 67
+        },
+        "faces": 80,
+        "kernel": {
+          "edges": 240,
+          "faces": 80,
+          "shells": 1,
+          "vertices": 164
+        },
+        "mass_g": 2844.574674714412,
+        "material": "Default",
+        "measured_by": "smlib",
+        "name": "AdapterBodyMaster",
+        "notes": [],
+        "vertices": 152,
+        "volume_mm3": 2205096.6470654355
+      }
+    ],
+    "body_count": 1,
+    "total": {
+      "area_mm2": 188125.88042736324,
+      "edges": 228,
+      "faces": 80,
+      "mass_g": 2844.574674714412,
+      "open_bodies_skipped": 0,
+      "vertices": 152,
+      "volume_mm3": 2205096.6470654355
+    }
+  },
+  {
+    "attachment": "fixed",
+    "created": {
+      "constraints": [],
+      "curves": [],
+      "dimensions": [],
+      "points": []
+    },
+    "frame": "world",
+    "name": "M17_SeatSideReflectedProfile",
+    "projected": null,
+    "sketch": 42
+  },
+  {
+    "constraints": [],
+    "created": {
+      "constraints": [],
+      "curves": [
+        "c1"
+      ],
+      "dimensions": [],
+      "points": [
+        "c1.center"
+      ]
+    },
+    "curves": [
+      "c1"
+    ],
+    "sketch": {
+      "dof": 3,
+      "solved": true
+    }
+  },
+  {
+    "created": {
+      "constraints": [],
+      "curves": [],
+      "dimensions": [],
+      "points": []
+    },
+    "result": {
+      "changed": 1,
+      "fixed": true
+    },
+    "sketch": {
+      "dof": 0,
+      "solved": true
+    }
+  },
+  {
+    "profiles": 1,
+    "sketch": 42
+  },
+  {
+    "bodies": [
+      "AdapterBodyMaster"
+    ],
+    "changed_bodies": [
+      "AdapterBodyMaster"
+    ],
+    "created_bodies": [],
+    "feature": 43,
+    "ms": 267.11249999999995,
+    "name": "M17_SeatSideCutMirrored",
+    "removed_bodies": [],
+    "warning": null
+  },
+  {
+    "bodies": [
+      {
+        "area_mm2": 188065.81302462824,
+        "bbox": {
+          "max": [
+            77.93135238304326,
+            244.2852265589759,
+            109.10684591159225
+          ],
+          "min": [
+            -77.93135238438845,
+            -263.445982162752,
+            -29.88520679436624
+          ]
+        },
+        "center_of_mass": [
+          -0.059252173005899696,
+          -52.876001687970884,
+          23.88022116029783
+        ],
+        "closed": true,
+        "density_g_cm3": 1.29,
+        "edges": 234,
+        "face_types": {
+          "cylinder": 14,
+          "plane": 68
+        },
+        "faces": 82,
+        "kernel": {
+          "edges": 246,
+          "faces": 82,
+          "shells": 1,
+          "vertices": 168
+        },
+        "mass_g": 2841.656558220127,
+        "material": "Default",
+        "measured_by": "smlib",
+        "name": "AdapterBodyMaster",
+        "notes": [],
+        "vertices": 156,
+        "volume_mm3": 2202834.5412559123
+      }
+    ],
+    "body_count": 1,
+    "total": {
+      "area_mm2": 188065.81302462824,
+      "edges": 234,
+      "faces": 82,
+      "mass_g": 2841.656558220127,
+      "open_bodies_skipped": 0,
+      "vertices": 156,
+      "volume_mm3": 2202834.5412559123
+    }
+  },
+  {
+    "bodies": [
+      "AdapterBodyMaster",
+      "AdapterBodyMaster (1)"
+    ],
+    "changed_bodies": [
+      "AdapterBodyMaster"
+    ],
+    "created_bodies": [
+      "AdapterBodyMaster (1)"
+    ],
+    "feature": 44,
+    "ms": 163.2912,
+    "name": "M17_KeepSmoothHalf",
+    "removed_bodies": [],
+    "warning": null
+  },
+  {
+    "bodies": [
+      "AdapterBodyMaster"
+    ],
+    "changed_bodies": [],
+    "created_bodies": [],
+    "feature": 45,
+    "ms": 0.0089,
+    "name": "M17_RemoveOppositeHalf",
+    "removed_bodies": [
+      "AdapterBodyMaster (1)"
+    ],
+    "warning": null
+  },
+  {
+    "bodies": [
+      "AdapterBodyMaster"
+    ],
+    "changed_bodies": [
+      "AdapterBodyMaster"
+    ],
+    "created_bodies": [],
+    "feature": 46,
+    "ms": 256.0555,
+    "name": "M17_MirrorSmoothHalf",
+    "removed_bodies": [],
+    "warning": null
+  },
+  {
+    "bodies": [
+      {
+        "area_mm2": 188005.74561666182,
+        "bbox": {
+          "max": [
+            77.93135238304326,
+            244.2852265589759,
+            109.10684591159225
+          ],
+          "min": [
+            -77.93135238438845,
+            -263.4459822177887,
+            -29.88520679436624
+          ]
+        },
+        "center_of_mass": [
+          -1.6306922937622912e-11,
+          -53.01469331371929,
+          23.870662034187344
+        ],
+        "closed": true,
+        "density_g_cm3": 1.29,
+        "edges": 240,
+        "face_types": {
+          "cylinder": 15,
+          "plane": 69
+        },
+        "faces": 84,
+        "kernel": {
+          "edges": 252,
+          "faces": 84,
+          "shells": 1,
+          "vertices": 172
+        },
+        "mass_g": 2838.7384409383176,
+        "material": "Default",
+        "measured_by": "smlib",
+        "name": "AdapterBodyMaster",
+        "notes": [],
+        "vertices": 160,
+        "volume_mm3": 2200572.434835905
+      }
+    ],
+    "body_count": 1,
+    "total": {
+      "area_mm2": 188005.74561666182,
+      "edges": 240,
+      "faces": 84,
+      "mass_g": 2838.7384409383176,
+      "open_bodies_skipped": 0,
+      "vertices": 160,
+      "volume_mm3": 2200572.434835905
+    }
+  },
+  {
+    "attachment": "fixed",
+    "created": {
+      "constraints": [],
+      "curves": [],
+      "dimensions": [],
+      "points": []
+    },
+    "frame": "world",
+    "name": "M18_RearCutProfiles",
+    "projected": null,
+    "sketch": 47
+  },
+  {
+    "constraints": [],
+    "created": {
+      "constraints": [],
+      "curves": [
+        "l1"
+      ],
+      "dimensions": [],
+      "points": [
+        "l1.start",
+        "l1.end"
+      ]
+    },
+    "curves": [
+      "l1"
+    ],
+    "sketch": {
+      "dof": 4,
+      "solved": true
+    }
+  },
+  {
+    "constraints": [
+      "k1"
+    ],
+    "created": {
+      "constraints": [
+        "k1"
+      ],
+      "curves": [
+        "l2"
+      ],
+      "dimensions": [],
+      "points": [
+        "l2.start",
+        "l2.end"
+      ]
+    },
+    "curves": [
+      "l2"
+    ],
+    "sketch": {
+      "dof": 6,
+      "solved": true
+    }
+  },
+  {
+    "constraints": [
+      "k2",
+      "k3"
+    ],
+    "created": {
+      "constraints": [
+        "k2",
+        "k3"
+      ],
+      "curves": [
+        "l3"
+      ],
+      "dimensions": [],
+      "points": [
+        "l3.start",
+        "l3.end"
+      ]
+    },
+    "curves": [
+      "l3"
+    ],
+    "sketch": {
+      "dof": 6,
+      "solved": true
+    }
+  },
+  {
+    "constraints": [
+      "k4"
+    ],
+    "created": {
+      "constraints": [
+        "k4"
+      ],
+      "curves": [
+        "l4"
+      ],
+      "dimensions": [],
+      "points": [
+        "l4.start",
+        "l4.end"
+      ]
+    },
+    "curves": [
+      "l4"
+    ],
+    "sketch": {
+      "dof": 8,
+      "solved": true
+    }
+  },
+  {
+    "constraints": [
+      "k5"
+    ],
+    "created": {
+      "constraints": [
+        "k5"
+      ],
+      "curves": [
+        "l5"
+      ],
+      "dimensions": [],
+      "points": [
+        "l5.start",
+        "l5.end"
+      ]
+    },
+    "curves": [
+      "l5"
+    ],
+    "sketch": {
+      "dof": 10,
+      "solved": true
+    }
+  },
+  {
+    "constraints": [
+      "k6",
+      "k7"
+    ],
+    "created": {
+      "constraints": [
+        "k6",
+        "k7"
+      ],
+      "curves": [
+        "l6"
+      ],
+      "dimensions": [],
+      "points": [
+        "l6.start",
+        "l6.end"
+      ]
+    },
+    "curves": [
+      "l6"
+    ],
+    "sketch": {
+      "dof": 10,
+      "solved": true
+    }
+  },
+  {
+    "created": {
+      "constraints": [],
+      "curves": [],
+      "dimensions": [],
+      "points": []
+    },
+    "result": {
+      "changed": 6,
+      "fixed": true
+    },
+    "sketch": {
+      "dof": 0,
+      "solved": true
+    }
+  },
+  {
+    "profiles": 2,
+    "sketch": 47
+  },
+  {
+    "bodies": [
+      "AdapterBodyMaster"
+    ],
+    "changed_bodies": [
+      "AdapterBodyMaster"
+    ],
+    "created_bodies": [],
+    "feature": 48,
+    "ms": 64.83120000000001,
+    "name": "M18_RearCut",
+    "removed_bodies": [],
+    "warning": null
+  },
+  {
+    "attachment": "fixed",
+    "created": {
+      "constraints": [],
+      "curves": [],
+      "dimensions": [],
+      "points": []
+    },
+    "frame": "world",
+    "name": "M18_RearCutReflectedProfiles",
+    "projected": null,
+    "sketch": 49
+  },
+  {
+    "constraints": [],
+    "created": {
+      "constraints": [],
+      "curves": [
+        "l1"
+      ],
+      "dimensions": [],
+      "points": [
+        "l1.start",
+        "l1.end"
+      ]
+    },
+    "curves": [
+      "l1"
+    ],
+    "sketch": {
+      "dof": 4,
+      "solved": true
+    }
+  },
+  {
+    "constraints": [
+      "k1"
+    ],
+    "created": {
+      "constraints": [
+        "k1"
+      ],
+      "curves": [
+        "l2"
+      ],
+      "dimensions": [],
+      "points": [
+        "l2.start",
+        "l2.end"
+      ]
+    },
+    "curves": [
+      "l2"
+    ],
+    "sketch": {
+      "dof": 6,
+      "solved": true
+    }
+  },
+  {
+    "constraints": [
+      "k2",
+      "k3"
+    ],
+    "created": {
+      "constraints": [
+        "k2",
+        "k3"
+      ],
+      "curves": [
+        "l3"
+      ],
+      "dimensions": [],
+      "points": [
+        "l3.start",
+        "l3.end"
+      ]
+    },
+    "curves": [
+      "l3"
+    ],
+    "sketch": {
+      "dof": 6,
+      "solved": true
+    }
+  },
+  {
+    "constraints": [
+      "k4"
+    ],
+    "created": {
+      "constraints": [
+        "k4"
+      ],
+      "curves": [
+        "l4"
+      ],
+      "dimensions": [],
+      "points": [
+        "l4.start",
+        "l4.end"
+      ]
+    },
+    "curves": [
+      "l4"
+    ],
+    "sketch": {
+      "dof": 8,
+      "solved": true
+    }
+  },
+  {
+    "constraints": [
+      "k5"
+    ],
+    "created": {
+      "constraints": [
+        "k5"
+      ],
+      "curves": [
+        "l5"
+      ],
+      "dimensions": [],
+      "points": [
+        "l5.start",
+        "l5.end"
+      ]
+    },
+    "curves": [
+      "l5"
+    ],
+    "sketch": {
+      "dof": 10,
+      "solved": true
+    }
+  },
+  {
+    "constraints": [
+      "k6",
+      "k7"
+    ],
+    "created": {
+      "constraints": [
+        "k6",
+        "k7"
+      ],
+      "curves": [
+        "l6"
+      ],
+      "dimensions": [],
+      "points": [
+        "l6.start",
+        "l6.end"
+      ]
+    },
+    "curves": [
+      "l6"
+    ],
+    "sketch": {
+      "dof": 10,
+      "solved": true
+    }
+  },
+  {
+    "created": {
+      "constraints": [],
+      "curves": [],
+      "dimensions": [],
+      "points": []
+    },
+    "result": {
+      "changed": 6,
+      "fixed": true
+    },
+    "sketch": {
+      "dof": 0,
+      "solved": true
+    }
+  },
+  {
+    "profiles": 2,
+    "sketch": 49
+  },
+  {
+    "bodies": [
+      "AdapterBodyMaster"
+    ],
+    "changed_bodies": [
+      "AdapterBodyMaster"
+    ],
+    "created_bodies": [],
+    "feature": 50,
+    "ms": 101.2545,
+    "name": "M18_RearCutMirrored",
+    "removed_bodies": [],
+    "warning": null
+  },
+  {
+    "attachment": "fixed",
+    "created": {
+      "constraints": [],
+      "curves": [],
+      "dimensions": [],
+      "points": []
+    },
+    "frame": "world",
+    "name": "M19_BodyCavityProfile",
+    "projected": null,
+    "sketch": 51
+  },
+  {
+    "constraints": [],
+    "created": {
+      "constraints": [],
+      "curves": [
+        "l1"
+      ],
+      "dimensions": [],
+      "points": [
+        "l1.start",
+        "l1.end"
+      ]
+    },
+    "curves": [
+      "l1"
+    ],
+    "sketch": {
+      "dof": 4,
+      "solved": true
+    }
+  },
+  {
+    "constraints": [
+      "k1"
+    ],
+    "created": {
+      "constraints": [
+        "k1"
+      ],
+      "curves": [
+        "l2"
+      ],
+      "dimensions": [],
+      "points": [
+        "l2.start",
+        "l2.end"
+      ]
+    },
+    "curves": [
+      "l2"
+    ],
+    "sketch": {
+      "dof": 6,
+      "solved": true
+    }
+  },
+  {
+    "constraints": [
+      "k2"
+    ],
+    "created": {
+      "constraints": [
+        "k2"
+      ],
+      "curves": [
+        "l3"
+      ],
+      "dimensions": [],
+      "points": [
+        "l3.start",
+        "l3.end"
+      ]
+    },
+    "curves": [
+      "l3"
+    ],
+    "sketch": {
+      "dof": 8,
+      "solved": true
+    }
+  },
+  {
+    "constraints": [
+      "k3"
+    ],
+    "created": {
+      "constraints": [
+        "k3"
+      ],
+      "curves": [
+        "l4"
+      ],
+      "dimensions": [],
+      "points": [
+        "l4.start",
+        "l4.end"
+      ]
+    },
+    "curves": [
+      "l4"
+    ],
+    "sketch": {
+      "dof": 10,
+      "solved": true
+    }
+  },
+  {
+    "constraints": [
+      "k4"
+    ],
+    "created": {
+      "constraints": [
+        "k4"
+      ],
+      "curves": [
+        "l5"
+      ],
+      "dimensions": [],
+      "points": [
+        "l5.start",
+        "l5.end"
+      ]
+    },
+    "curves": [
+      "l5"
+    ],
+    "sketch": {
+      "dof": 12,
+      "solved": true
+    }
+  },
+  {
+    "constraints": [
+      "k5"
+    ],
+    "created": {
+      "constraints": [
+        "k5"
+      ],
+      "curves": [
+        "l6"
+      ],
+      "dimensions": [],
+      "points": [
+        "l6.start",
+        "l6.end"
+      ]
+    },
+    "curves": [
+      "l6"
+    ],
+    "sketch": {
+      "dof": 14,
+      "solved": true
+    }
+  },
+  {
+    "constraints": [
+      "k6"
+    ],
+    "created": {
+      "constraints": [
+        "k6"
+      ],
+      "curves": [
+        "l7"
+      ],
+      "dimensions": [],
+      "points": [
+        "l7.start",
+        "l7.end"
+      ]
+    },
+    "curves": [
+      "l7"
+    ],
+    "sketch": {
+      "dof": 16,
+      "solved": true
+    }
+  },
+  {
+    "constraints": [
+      "k7"
+    ],
+    "created": {
+      "constraints": [
+        "k7"
+      ],
+      "curves": [
+        "l8"
+      ],
+      "dimensions": [],
+      "points": [
+        "l8.start",
+        "l8.end"
+      ]
+    },
+    "curves": [
+      "l8"
+    ],
+    "sketch": {
+      "dof": 18,
+      "solved": true
+    }
+  },
+  {
+    "constraints": [
+      "k8",
+      "k9"
+    ],
+    "created": {
+      "constraints": [
+        "k8",
+        "k9"
+      ],
+      "curves": [
+        "l9"
+      ],
+      "dimensions": [],
+      "points": [
+        "l9.start",
+        "l9.end"
+      ]
+    },
+    "curves": [
+      "l9"
+    ],
+    "sketch": {
+      "dof": 18,
+      "solved": true
+    }
+  },
+  {
+    "created": {
+      "constraints": [],
+      "curves": [],
+      "dimensions": [],
+      "points": []
+    },
+    "result": {
+      "changed": 9,
+      "fixed": true
+    },
+    "sketch": {
+      "dof": 0,
+      "solved": true
+    }
+  },
+  {
+    "profiles": 1,
+    "sketch": 51
+  },
+  {
+    "bodies": [
+      "AdapterBodyMaster"
+    ],
+    "changed_bodies": [
+      "AdapterBodyMaster"
+    ],
+    "created_bodies": [],
+    "feature": 52,
+    "ms": 115.1451,
+    "name": "M19_DraftedUndersideCavity",
+    "removed_bodies": [],
+    "warning": null
+  },
+  {
+    "attachment": "fixed",
+    "created": {
+      "constraints": [],
+      "curves": [],
+      "dimensions": [],
+      "points": []
+    },
+    "frame": "world",
+    "name": "M20_AirTagProfile",
+    "projected": null,
+    "sketch": 53
+  },
+  {
+    "constraints": [],
+    "created": {
+      "constraints": [],
+      "curves": [
+        "a1"
+      ],
+      "dimensions": [],
+      "points": [
+        "a1.center",
+        "a1.start",
+        "a1.end"
+      ]
+    },
+    "curves": [
+      "a1"
+    ],
+    "sketch": {
+      "dof": 5,
+      "solved": true
+    }
+  },
+  {
+    "constraints": [
+      "k1"
+    ],
+    "created": {
+      "constraints": [
+        "k1"
+      ],
+      "curves": [
+        "l1"
+      ],
+      "dimensions": [],
+      "points": [
+        "l1.start",
+        "l1.end"
+      ]
+    },
+    "curves": [
+      "l1"
+    ],
+    "sketch": {
+      "dof": 7,
+      "solved": true
+    }
+  },
+  {
+    "constraints": [
+      "k2"
+    ],
+    "created": {
+      "constraints": [
+        "k2"
+      ],
+      "curves": [
+        "l2"
+      ],
+      "dimensions": [],
+      "points": [
+        "l2.start",
+        "l2.end"
+      ]
+    },
+    "curves": [
+      "l2"
+    ],
+    "sketch": {
+      "dof": 9,
+      "solved": true
+    }
+  },
+  {
+    "constraints": [
+      "k3"
+    ],
+    "created": {
+      "constraints": [
+        "k3"
+      ],
+      "curves": [
+        "l3"
+      ],
+      "dimensions": [],
+      "points": [
+        "l3.start",
+        "l3.end"
+      ]
+    },
+    "curves": [
+      "l3"
+    ],
+    "sketch": {
+      "dof": 11,
+      "solved": true
+    }
+  },
+  {
+    "constraints": [
+      "k4",
+      "k5"
+    ],
+    "created": {
+      "constraints": [
+        "k4",
+        "k5"
+      ],
+      "curves": [
+        "l4"
+      ],
+      "dimensions": [],
+      "points": [
+        "l4.start",
+        "l4.end"
+      ]
+    },
+    "curves": [
+      "l4"
+    ],
+    "sketch": {
+      "dof": 11,
+      "solved": true
+    }
+  },
+  {
+    "created": {
+      "constraints": [],
+      "curves": [],
+      "dimensions": [],
+      "points": []
+    },
+    "result": {
+      "changed": 5,
+      "fixed": true
+    },
+    "sketch": {
+      "dof": 0,
+      "solved": true
+    }
+  },
+  {
+    "profiles": 1,
+    "sketch": 53
+  },
+  {
+    "bodies": [
+      "AdapterBodyMaster"
+    ],
+    "changed_bodies": [
+      "AdapterBodyMaster"
+    ],
+    "created_bodies": [],
+    "feature": 54,
+    "ms": 102.566,
+    "name": "M20_AirTagPocket",
+    "removed_bodies": [],
+    "warning": null
+  }
+]

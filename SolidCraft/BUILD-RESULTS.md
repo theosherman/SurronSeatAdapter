@@ -1,5 +1,7 @@
 # SolidCraft rebuild results
 
+**Historical original-build record.** The later [smooth-cut revision](SMOOTH-CUTS.md) removes the polygon workaround, changes the feature count to 72, and slightly changes the volumes below. Use `logs/smooth-cut-validation.json` for the current native model. The approximation described below is no longer present.
+
 Built with SolidCraft 0.40.1 on 2026-11-12 (Chicago). The native document is `models/seat-adapter.sc`; its full replay script is `scripts/seat-adapter-build.json`. The app is connected on port 7878 and displays the master. No Onshape API calls were made for this port.
 
 ## Parts and feature history
