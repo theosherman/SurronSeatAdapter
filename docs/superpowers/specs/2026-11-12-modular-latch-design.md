@@ -1,17 +1,17 @@
-# Seat Adapter: separate Adapter Body and Latch parts
+# SeatAdapter: separate Adapter Body and Latch parts
 
-Status: proposed design for review; implementation has not started.
+Status: design approved, including component order; root naming updated to SeatAdapter. Implementation has not started.
 
 ## Intent and chosen approach
 
 Recreate Fusion's Latch as an editable SolidCraft part that mates with the rear adapter dovetail. The user chose separate native files to keep modeling timelines short, and accepts explicit refreshes between files. Preserve a dependable relationship between the master dovetail and the latch's mating slot.
 
-Project name: **Seat Adapter**. The word **Body** belongs only to the specific **Adapter Body** part, never to the project/assembly root. Keep `adapter-body.sc` as that part's file name; do not shorten its display name to simply Body.
+Project/root name exactly **SeatAdapter**, with authoritative assembly file `SeatAdapter.sc`. The word **Body** belongs only to the specific **Adapter Body** part, never to the project/assembly root. Keep `adapter-body.sc` as that part's file name; do not shorten its display name to simply Body. The existing `seat-adapter.sc` file is the migration input/checkpoint and is preserved until the new assembly is verified.
 
 Assembly hierarchy (what the user sees):
 
 ```text
-Seat Adapter — seat-adapter.sc  (whole project / assembly)
+Seat Adapter — SeatAdapter.sc  (whole project / assembly)
 ├── Adapter Body — adapter-body.sc  (linked part; its own history)
 ├── Adapter Body Split             (existing printing variant)
 ├── Latch — latch.sc                (linked part; its own history)
@@ -20,9 +20,9 @@ Seat Adapter — seat-adapter.sc  (whole project / assembly)
 
 Required default browser order: **Adapter Body, Adapter Body Split, Latch, Wheel Scan Reference**. Keep the printing variant immediately after the main body, whether or not manual reordering is available in the app. Apply presentation ordering without changing manufacturing-feature chronology or dependency direction.
 
-The dependency is separate from this containment hierarchy: the Latch reads the Adapter Body's dovetail reference so its slot can update. This does **not** make Adapter Body the project root. `adapter-body.sc` is authoritative only for that one part, while `seat-adapter.sc` represents the complete Seat Adapter design.
+The dependency is separate from this containment hierarchy: the Latch reads the Adapter Body's dovetail reference so its slot can update. This does **not** make Adapter Body the project root. `adapter-body.sc` is authoritative only for that one part, while `SeatAdapter.sc` represents the complete SeatAdapter design.
 
-`seat-adapter.sc` must never be an input to `latch.sc`: that would create a circular file dependency. The existing split component stays assembly-local in this iteration, dependent on the linked master. Moving its short timeline into a fourth file is outside this change.
+`SeatAdapter.sc` must never be an input to `latch.sc`: that would create a circular file dependency. The existing split component stays assembly-local in this iteration, dependent on the linked master. Moving its short timeline into a fourth file is outside this change.
 
 Alternatives considered: keep the latch in the current document with linked sketch projections (simpler live updates but a growing timeline); import a static latch (short timeline but loses editable history/dependency). The user selected separate files with explicit refreshes.
 
@@ -64,9 +64,9 @@ Expected nofillet result: one closed manufactured solid, nominal volume 230819.7
 
 ## Assembly, references and refresh
 
-Insert the saved latch into `seat-adapter.sc` as a linked `Latch` component at its existing Fusion world placement (identity transform). Master, latch and print variant remain separate physical parts. Imported reference geometry, including any master solids nested inside the latch link, must remain hidden and excluded from manufactured-part exports. Do not accidentally publish duplicated masters or the interface helper as printable parts.
+Insert the saved latch into `SeatAdapter.sc` as a linked `Latch` component at its existing Fusion world placement (identity transform). Master, latch and print variant remain separate physical parts. Imported reference geometry, including any master solids nested inside the latch link, must remain hidden and excluded from manufactured-part exports. Do not accidentally publish duplicated masters or the interface helper as printable parts.
 
-Refresh order after changing the master: save `adapter-body.sc`; run `component.update_links` in `latch.sc`, rebuild and save it; run `component.update_links` in `seat-adapter.sc`, which also updates the print child. Refresh order after editing only the latch: save latch, refresh assembly. The helper can orchestrate these steps, but saving alone is not advertised as an automatic refresh.
+Refresh order after changing the master: save `adapter-body.sc`; run `component.update_links` in `latch.sc`, rebuild and save it; run `component.update_links` in `SeatAdapter.sc`, which also updates the print child. Refresh order after editing only the latch: save latch, refresh assembly. The helper can orchestrate these steps, but saving alone is not advertised as an automatic refresh.
 
 Never replace unsaved open work to run a refresh. Inspect/save the user's state first. A missing source file or lost mating-face reference must produce a clear failure and retain the last good model, not silently switch to static geometry or report an update as successful.
 
