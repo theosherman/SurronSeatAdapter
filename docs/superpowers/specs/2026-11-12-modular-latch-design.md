@@ -1,4 +1,4 @@
-# Modular adapter master and linked latch
+# Seat Adapter: separate Adapter Body and Latch parts
 
 Status: proposed design for review; implementation has not started.
 
@@ -6,15 +6,19 @@ Status: proposed design for review; implementation has not started.
 
 Recreate Fusion's Latch as an editable SolidCraft part that mates with the rear adapter dovetail. The user chose separate native files to keep modeling timelines short, and accepts explicit refreshes between files. Preserve a dependable relationship between the master dovetail and the latch's mating slot.
 
-Chosen architecture:
+Project name: **Seat Adapter**. The word **Body** belongs only to the specific **Adapter Body** part, never to the project/assembly root. Keep `adapter-body.sc` as that part's file name; do not shorten its display name to simply Body.
+
+Assembly hierarchy (what the user sees):
 
 ```text
-SolidCraft/models/adapter-body.sc  (authoritative master history)
-               │
-               ├──► latch.sc      (latch history; linked master reference)
-               │       │
-               └───────┴──► seat-adapter.sc  (assembly and existing print split)
+Seat Adapter — seat-adapter.sc  (whole project / assembly)
+├── Adapter Body — adapter-body.sc  (linked part; its own history)
+├── Latch — latch.sc                (linked part; its own history)
+├── Adapter Body Split             (existing printing variant)
+└── Wheel Scan Reference           (reference geometry)
 ```
+
+The dependency is separate from this containment hierarchy: the Latch reads the Adapter Body's dovetail reference so its slot can update. This does **not** make Adapter Body the project root. `adapter-body.sc` is authoritative only for that one part, while `seat-adapter.sc` represents the complete Seat Adapter design.
 
 `seat-adapter.sc` must never be an input to `latch.sc`: that would create a circular file dependency. The existing split component stays assembly-local in this iteration, dependent on the linked master. Moving its short timeline into a fourth file is outside this change.
 
