@@ -1,0 +1,13 @@
+# Single-file latch design
+
+This replaces the separate-file architecture in `2026-11-12-modular-latch-design.md` and its native-history migration amendment. The user requested one file after linked master import changed geometry and the imported printing split failed. Those failures do not establish a defect in the latch geometry.
+
+Use the existing authoritative `SolidCraft/models/seat-adapter.sc`. Preserve its native master and dependent printing histories in place. Add a sibling `Latch` component at identity placement, containing editable native sketches and features and one separate closed manufactured solid. Keep the existing component names; present components in Adapter Body, Adapter Body Split, Latch, Wheel Scan Reference order where supported. No file extraction, linked-design insertion, root rename, hidden interface solid or master migration is needed. Recovery checkpoints and exports are artifacts, not additional design sources.
+
+Build source operations 102–106 from `cad-rebuild/accessories/latch-recipe.json`, preserving exact selected loops, analytic arcs, sketch frames including nonzero local Z, extrusion directions and limiting planes. Omit operation 107 (fillet). First produce a visible mirrored latch blank in the desktop UI; then intersect the top profile, cut the slot, and apply the three mating-face offsets. Positive `latchClearance=0.2 mm` drives signed face offsets of `-latchClearance`.
+
+The slot must depend on the existing `M06_RearDovetailProfile` in the same document. Prefer directly consuming that sketch; if cross-component consumption is unsupported, use a linked sketch projection in Latch. Do not use an independent traced outline. Prove propagation with a temporary symmetric width edit and restoration on a disposable copy after the nominal latch works. Exposing a new master width parameter is unnecessary for this delivery.
+
+Preserve the unsplit master, two printing halves, five child-only 8 mm cutouts, analytic R20 cuts, mounting ceilings, zero-clearance wheel imprint and original placements. SaddleBagMount, Fusion edits, Onshape calls, fillets, inserts and wheel preparation remain out of scope.
+
+Acceptance: one closed Latch, no feature errors, expected source-stage material changes, final volume 230819.7862464548 mm³ within 0.01%, bounds min [-60.865103223,-222.424548470,-45.662921353] and max [60.865103223,-150.227353849,47.321249211] within 0.05 mm. Existing manufactured geometry must retain baseline volume within max(0.001 mm³, volume*1e-7), bounds and COM within 0.001 mm. Verify three-face clearance, changed/restored dependency, save/reopen rebuild, and Latch-only STEP/STL exports. Physical fit remains untested until a print is tried.
