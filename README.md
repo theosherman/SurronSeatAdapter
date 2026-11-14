@@ -1,4 +1,4 @@
-# Sherman P seat adapter CAD rebuild
+# Suron Seat Adapter
 
 This folder records the reconstruction of the Fusion design **Surron Seat Adapter v3 v2** in Onshape, including the later wheel-scan imprint and a linked printing variant. It is intended to let a future agent rebuild the accepted geometry in another CAD system, including SolidCraft or Zoo Design Studio.
 

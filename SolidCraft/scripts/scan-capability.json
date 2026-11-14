@@ -1,1 +1,1 @@
-{"commands":[{"command":"file.insert_mesh","params":{"path":"C:/Projects/Sherman P Seat Adapter/SolidCraft/inputs/wheel_scan_mm.stl","name":"WheelScanReference","units":"mm","origin":false}},{"command":"mesh.convert","params":{"body":"wheel_scan_mm","name":"WheelScanSolid"}}]}
+{"commands":[{"command":"file.insert_mesh","params":{"path":"C:/Projects/Suron Seat Adapter/SolidCraft/inputs/wheel_scan_mm.stl","name":"WheelScanReference","units":"mm","origin":false}},{"command":"mesh.convert","params":{"body":"wheel_scan_mm","name":"WheelScanSolid"}}]}

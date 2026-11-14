@@ -17,7 +17,7 @@ The `solidcraft` MCP server is configured in Codex using:
 ```toml
 [mcp_servers.solidcraft]
 command = 'C:\Program Files\SolidCraft\solidcraft-cli.exe'
-args = ["mcp", "--connect", "127.0.0.1:7878", "--allow-path", 'C:\Projects\Sherman P Seat Adapter\SolidCraft', "--compact"]
+args = ["mcp", "--connect", "127.0.0.1:7878", "--allow-path", 'C:\Projects\Suron Seat Adapter\SolidCraft', "--compact"]
 ```
 
 1. Start SolidCraft with its local control channel enabled. Run `Start-SolidCraft.ps1` from this folder, or use PowerShell:
