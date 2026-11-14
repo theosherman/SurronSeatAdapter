@@ -6,6 +6,7 @@ import time
 from build123d import Edge, Wire, Face, Solid, Plane, Vector, Keep, Compound, ShapeList, Mesher, export_step, export_stl
 
 from coordinates import model_recipe, source_to_model, prepare_scan
+from prepare_sherman_p import prepare_parts
 
 ROOT = Path(__file__).resolve().parents[1]
 RECIPE = model_recipe(json.loads((ROOT / 'cad-rebuild/recipe.json').read_text()))
@@ -107,12 +108,13 @@ def build_master(stop=None, imprint=True, airtag_depth=8.5):
     body = stage('M19',body.cut(tool(124,500,direction=-Vector(SKETCHES['BodyCutSketch']['normal']),offset=12,taper=-15)))
     body = stage('M20',body.cut(tool(126,airtag_depth,direction=-Vector(SKETCHES['AirtagCutSketch']['normal']))))
     if stop=='M20' or not imprint: return body
-    print('Converting aligned wheel scan to faceted BREP (zero clearance)', flush=True)
+    print('Preparing Sherman P: fixed handles excluded; body scale 1.003', flush=True)
     scan_path = prepare_scan(ROOT/'Sherman_P_Scan_Aligned_To_Adapter_mm.stl', ROOT/'Build123d/inputs/wheel-scan-model-frame.stl')
     scan = Mesher().read(scan_path)
     assert len(scan)==1 and scan[0].is_valid and len(scan[0].solids())==1
     assert abs(scan[0].volume-4221287.872)<0.1
-    return stage('M21',body.cut(scan[0]))
+    parts = prepare_parts(scan[0], reunite=False)
+    return stage('M21',body.cut(parts['body-scaled']))
 
 
 def main():
