@@ -1,5 +1,6 @@
 {
-  "elapsedSeconds": 10.063499459000013,
+  "coordinateFrame": "source (x,y,z) -> model (-x,-y,z); physical front is negative Y; Z up",
+  "elapsedSeconds": 11.807260155000222,
   "stages": [
     {
       "step": "M01",
@@ -15,7 +16,7 @@
     },
     {
       "step": "M03",
-      "volumeMm3": 1238380.9658562636,
+      "volumeMm3": 1238380.9658562634,
       "solids": 1,
       "valid": true
     },
@@ -81,7 +82,7 @@
     },
     {
       "step": "M15",
-      "volumeMm3": 2198716.2279604413,
+      "volumeMm3": 2198716.227960441,
       "solids": 1,
       "valid": true
     },
@@ -99,7 +100,7 @@
     },
     {
       "step": "M18",
-      "volumeMm3": 2194608.985857882,
+      "volumeMm3": 2194608.9858578816,
       "solids": 1,
       "valid": true
     },
@@ -111,13 +112,13 @@
     },
     {
       "step": "M20",
-      "volumeMm3": 1527474.496302434,
+      "volumeMm3": 1527474.4963024335,
       "solids": 1,
       "valid": true
     },
     {
       "step": "M21",
-      "volumeMm3": 1507476.0366093672,
+      "volumeMm3": 1507476.0354142203,
       "solids": 1,
       "valid": true
     }

@@ -5,8 +5,10 @@ import json
 import time
 from build123d import Edge, Wire, Face, Solid, Plane, Vector, Keep, Compound, ShapeList, Mesher, export_step, export_stl
 
+from coordinates import model_recipe, source_to_model, prepare_scan
+
 ROOT = Path(__file__).resolve().parents[1]
-RECIPE = json.loads((ROOT / 'cad-rebuild/recipe.json').read_text())
+RECIPE = model_recipe(json.loads((ROOT / 'cad-rebuild/recipe.json').read_text()))
 SKETCHES = {s['name']: s for s in RECIPE['sketches']}
 HISTORY = []
 
@@ -72,11 +74,11 @@ def build_master(stop=None, imprint=True, airtag_depth=8.5):
     body = stage('M01',tool(9,200,offset=-50))
     if stop=='M01': return body
     body = stage('M02',body.fuse(body.mirror(Plane.YZ)))
-    body = stage('M03',body.intersect(tool(12,120,[1,0,0])))
-    body = stage('M04',body.intersect(tool(14,490,[0,1,0])))
+    body = stage('M03',body.intersect(tool(12,120,source_to_model([1,0,0]))))
+    body = stage('M04',body.intersect(tool(14,490,source_to_model([0,1,0]))))
     body = stage('M05',body.fuse(body.mirror(Plane.YZ)))
     if stop=='M05': return body
-    rear = tool(18,300).split(Plane((0,-263.445982162752,0),z_dir=(0,1,0)),Keep.TOP)
+    rear = tool(18,300).split(Plane(source_to_model((0,-263.445982162752,0)),z_dir=source_to_model((0,1,0))),Keep.TOP)
     body = stage('M06',body.fuse(rear))
     if stop=='M06': return body
     body = stage('M07',body.cut(tool(75,1000,symmetric=True)))
@@ -90,14 +92,14 @@ def build_master(stop=None, imprint=True, airtag_depth=8.5):
     face = min(hanger.faces(),key=lambda f:(f.center()-Vector(d['selectedFaces'][0]['pointMm'])).length)
     hanger = hanger.draft([face],Plane(d['neutralPlane']['originMm'],z_dir=d['neutralPlane']['normal']),45)
     body = stage('M11',body.fuse(hanger,hanger.mirror(Plane.YZ)))
-    body = stage('M12',body.fuse(tool(84,98,[1,0,0],symmetric=True)))
-    body = stage('M13',body.cut(tool(86,1000,[0,0,1],symmetric=True)))
+    body = stage('M12',body.fuse(tool(84,98,source_to_model([1,0,0]),symmetric=True)))
+    body = stage('M13',body.cut(tool(86,1000,source_to_model([0,0,1]),symmetric=True)))
     # Exact planar wedge from saved source draft datums (same construction as SolidCraft).
     points = [(-43,159.1595320874856,11.33586233574399),(-43,159.1595320874856,34.33586233574536),(-43,176.73146895659514,36.4311889499611)]
-    wedge = Solid.extrude(Face(Wire.make_polygon(points,close=True)),(86,0,0))
+    wedge = Solid.extrude(Face(Wire.make_polygon([source_to_model(p) for p in points],close=True)),source_to_model((86,0,0)))
     body = stage('M14',body.cut(wedge))
     body = stage('M15',body.cut(tool(89,8,direction=-Vector(SKETCHES['RearSeatNotchSketch']['normal']))))
-    body = stage('M16',body.fuse(tool(91,80,[1,0,0],symmetric=True)))
+    body = stage('M16',body.fuse(tool(91,80,source_to_model([1,0,0]),symmetric=True)))
     side = tool(97,1000,symmetric=True)
     body = stage('M17',body.cut(side,side.mirror(Plane.YZ)))
     rearcut = tool(121,1000,symmetric=True)
@@ -106,7 +108,8 @@ def build_master(stop=None, imprint=True, airtag_depth=8.5):
     body = stage('M20',body.cut(tool(126,airtag_depth,direction=-Vector(SKETCHES['AirtagCutSketch']['normal']))))
     if stop=='M20' or not imprint: return body
     print('Converting aligned wheel scan to faceted BREP (zero clearance)', flush=True)
-    scan = Mesher().read(ROOT/'Sherman_P_Scan_Aligned_To_Adapter_mm.stl')
+    scan_path = prepare_scan(ROOT/'Sherman_P_Scan_Aligned_To_Adapter_mm.stl', ROOT/'Build123d/inputs/wheel-scan-model-frame.stl')
+    scan = Mesher().read(scan_path)
     assert len(scan)==1 and scan[0].is_valid and len(scan[0].solids())==1
     assert abs(scan[0].volume-4221287.872)<0.1
     return stage('M21',body.cut(scan[0]))
@@ -124,7 +127,7 @@ def main():
     stem = 'adapter-body' if not args.stop and not args.no_imprint else 'adapter-body-'+(args.stop or 'pre-imprint')
     export_step(body,output/(stem+'.step'))
     export_stl(body,output/(stem+'.stl'),tolerance=0.005,angular_tolerance=0.05)
-    (Path(__file__).parent/'logs/build-validation.json').write_text(json.dumps(dict(elapsedSeconds=time.monotonic()-start,stages=HISTORY),indent=2)+'\n')
+    (Path(__file__).parent/'logs/build-validation.json').write_text(json.dumps(dict(coordinateFrame="source (x,y,z) -> model (-x,-y,z); physical front is negative Y; Z up",elapsedSeconds=time.monotonic()-start,stages=HISTORY),indent=2)+'\n')
 
 if __name__=='__main__':
     main()

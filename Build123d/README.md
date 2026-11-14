@@ -18,7 +18,7 @@ Build123d/run.sh
 
 Set `BUILD123D_PYTHON` to use a different environment. Installed here with Python 3.14.7, build123d 0.13.0, and OCCT bindings 8.0.1.1.0. No system Python packages were modified. `requirements.txt` pins the main library; `requirements.lock.txt` records the complete environment.
 
-`adapter.py` is the editable CAD source. It reads `../cad-rebuild/recipe.json` and `../Sherman_P_Scan_Aligned_To_Adapter_mm.stl` directly, so it needs the parent repository. All coordinates are millimeters. It does not load a finished SolidCraft or Onshape model to construct the adapter.
+`adapter.py` is the editable CAD source. It reads `../cad-rebuild/recipe.json` and `../Sherman_P_Scan_Aligned_To_Adapter_mm.stl` directly, so it needs the parent repository. All coordinates are millimeters. Build123d uses a permanent corrected frame: physical front is negative Y and Z is up. `coordinates.py` maps source global points and vectors to `(-x,-y,z)` before making any geometry; sketch-local coordinates and dimensions stay unchanged. Explicit extrusion directions, stopping/draft planes, and wedge vertices use this same frame. The scan vertices and normals are converted into `inputs/wheel-scan-model-frame.stl` before BREP import. No completed body is rotated. The authoritative shared recipe and original aligned scan retain their historical coordinates. It does not load a finished SolidCraft or Onshape model to construct the adapter.
 
 ```bash
 Build123d/run.sh --no-imprint  # analytic body before scan subtraction
@@ -50,13 +50,12 @@ PYTHONPATH=Build123d XDG_CACHE_HOME=/tmp/surron-build123d-cache \
   ~/.local/share/venvs/surron-build123d/bin/python -m unittest discover -s Build123d/tests
 XDG_CACHE_HOME=/tmp/surron-build123d-cache \
   ~/.local/share/venvs/surron-build123d/bin/python Build123d/validate_exports.py
-node SolidCraft/scripts/validate-mounting-ceilings.mjs \
-  Build123d/exports/adapter-body.stl Build123d/logs/mounting-ceiling-validation.json
+node Build123d/validate-mounting-ceilings.mjs
 ```
 
-Tests compare 16 selected-profile sets against their saved areas, the M05 base against Fusion's volume, the finished body against the latest SolidCraft regression volume, and all twelve mounting ledge/cavity/bore samples against native solid classification. The additional mesh check uses two independent ray directions. The export check reopens STEP and STL and rebuilds with an AirTag depth of 8.6 mm to check the expected 102.4295 mm³ change; it does not overwrite nominal exports.
+Orientation tests check the initial profile, sketch frames and first extrusion, so an end-of-build rotation cannot pass. Material probes use the corrected frame. Tests compare 16 selected-profile sets against their saved areas, the M05 base against Fusion's volume, the finished body against the latest SolidCraft regression volume, and all twelve mounting ledge/cavity/bore samples against native solid classification. The additional mesh check uses two independent ray directions. The export check reopens STEP and STL and rebuilds with an AirTag depth of 8.6 mm to check the expected 102.4295 mm³ change; it does not overwrite nominal exports.
 
-The nominal in-memory master volume is approximately **1,507,476.037 mm³**, within 0.03 mm³ of the saved smooth SolidCraft master. Matching volume is useful regression evidence, not proof of whole-model equality or physical fit.
+The nominal in-memory master volume is approximately **1,507,476.035 mm³**, within 0.03 mm³ of the saved smooth SolidCraft master. Matching volume is useful regression evidence, not proof of whole-model equality or physical fit.
 
 ## Construction choices and limitations
 
@@ -65,9 +64,9 @@ The nominal in-memory master volume is approximately **1,507,476.037 mm³**, wit
 - Hanger draft uses native OCCT draft. The front draft uses the saved exact planar wedge equivalent, whose removed volume matches the earlier Fusion reconstruction.
 - Both side-cut tools are analytic cylinders. No polygon cutter or smoothing is used.
 - The underside cavity uses a negative 15 degree tapered extrusion toward the underside, starting 12 mm below its sketch plane.
-- The wheel mesh becomes a closed faceted BREP using build123d's `Mesher`, then a native solid Boolean. Its imported volume differs from the original saved mesh measurement by about 0.034 mm³ due to float representation. No mesh repair, decimation, fit allowance, extra scale or second alignment is applied.
+- The wheel mesh becomes a closed faceted BREP using build123d's `Mesher`, then a native solid Boolean. Its imported volume differs from the original saved mesh measurement by about 0.034 mm³ due to float representation. No mesh repair, decimation, fit allowance or extra scale is applied. The scan uses the same permanent coordinate-frame correction as all manufacturing geometry; its fit relative to the adapter is preserved.
 - The separately documented Sherman L body-only 1.003 preparation is not applied to this existing Sherman P imprint.
 - Like the earlier ports, the side bores use through cylinders instead of Fusion's nonparallel from-face start. Original constraint graphs are not recovered.
-- Exact Onshape parity, full-model XOR comparison, and physical print-fit testing have not been established.
+- Exact Onshape parity, full-model source-to-port XOR comparison, and physical print-fit testing have not been established. The orientation revision was separately checked against the previous Build123d STEP after aligning it for comparison: symmetric-difference volume was 0.0012 mm³. See `logs/orientation-validation.json`; this verifies preservation during reorientation, not source-to-port equality.
 
 The existing SolidCraft and Onshape files remain unchanged. Accessories remain separate; this source does not merge the latch or saddlebag mount into the master.

@@ -1,6 +1,7 @@
 """Acceptance checks against saved source dimensions, not implementation details."""
 import unittest
 from adapter import profiles, build_master
+from coordinates import source_to_model
 
 class GeometryTests(unittest.TestCase):
     def test_selected_profile_areas(self):
@@ -23,7 +24,7 @@ class GeometryTests(unittest.TestCase):
         from pathlib import Path
         saved = json.loads((Path(__file__).resolve().parents[2] / 'SolidCraft/logs/mounting-ceiling-validation.json').read_text())
         for check in saved['checks']:
-            self.assertEqual(body.solids()[0].is_inside(check['pointMm']), check['expectedMaterial'], check['name'])
+            self.assertEqual(body.solids()[0].is_inside(source_to_model(check['pointMm'])), check['expectedMaterial'], check['name'])
 
 if __name__ == '__main__':
     unittest.main()

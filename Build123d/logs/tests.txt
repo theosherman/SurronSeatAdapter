@@ -1,11 +1,11 @@
 {"step": "M01", "volumeMm3": 5180659.4319974575, "solids": 1, "valid": true}
 {"step": "M02", "volumeMm3": 10361318.863994919, "solids": 1, "valid": true}
-{"step": "M03", "volumeMm3": 1238380.9658562636, "solids": 1, "valid": true}
+{"step": "M03", "volumeMm3": 1238380.9658562634, "solids": 1, "valid": true}
 {"step": "M04", "volumeMm3": 1048078.4586991741, "solids": 1, "valid": true}
 {"step": "M05", "volumeMm3": 2096156.9173983496, "solids": 1, "valid": true}
 .{"step": "M01", "volumeMm3": 5180659.4319974575, "solids": 1, "valid": true}
 {"step": "M02", "volumeMm3": 10361318.863994919, "solids": 1, "valid": true}
-{"step": "M03", "volumeMm3": 1238380.9658562636, "solids": 1, "valid": true}
+{"step": "M03", "volumeMm3": 1238380.9658562634, "solids": 1, "valid": true}
 {"step": "M04", "volumeMm3": 1048078.4586991741, "solids": 1, "valid": true}
 {"step": "M05", "volumeMm3": 2096156.9173983496, "solids": 1, "valid": true}
 {"step": "M06", "volumeMm3": 2121657.2265613517, "solids": 1, "valid": true}
@@ -16,16 +16,17 @@
 {"step": "M12", "volumeMm3": 2225747.554180876, "solids": 1, "valid": true}
 {"step": "M13", "volumeMm3": 2220612.8722657864, "solids": 1, "valid": true}
 {"step": "M14", "volumeMm3": 2203234.2267021323, "solids": 1, "valid": true}
-{"step": "M15", "volumeMm3": 2198716.2279604413, "solids": 1, "valid": true}
+{"step": "M15", "volumeMm3": 2198716.227960441, "solids": 1, "valid": true}
 {"step": "M16", "volumeMm3": 2205096.6462426535, "solids": 1, "valid": true}
 {"step": "M17", "volumeMm3": 2200572.434564904, "solids": 1, "valid": true}
-{"step": "M18", "volumeMm3": 2194608.985857882, "solids": 1, "valid": true}
+{"step": "M18", "volumeMm3": 2194608.9858578816, "solids": 1, "valid": true}
 {"step": "M19", "volumeMm3": 1536181.0044656738, "solids": 1, "valid": true}
-{"step": "M20", "volumeMm3": 1527474.496302434, "solids": 1, "valid": true}
+{"step": "M20", "volumeMm3": 1527474.4963024335, "solids": 1, "valid": true}
 Converting aligned wheel scan to faceted BREP (zero clearance)
-{"step": "M21", "volumeMm3": 1507476.0366093672, "solids": 1, "valid": true}
-..
+{"step": "M21", "volumeMm3": 1507476.0354142203, "solids": 1, "valid": true}
+..{"step": "M01", "volumeMm3": 5180659.4319974575, "solids": 1, "valid": true}
+...
 ----------------------------------------------------------------------
-Ran 3 tests in 10.194s
+Ran 6 tests in 10.316s
 
 OK

@@ -1,0 +1,91 @@
+{
+  "transform": "source (x,y,z) -> model (-x,-y,z)",
+  "front": "negative Y",
+  "up": "positive Z",
+  "originalVolumeMm3": 1507476.0383891463,
+  "newVolumeMm3": 1507476.0371940825,
+  "sharedVolumeMm3": 1507476.037194083,
+  "symmetricDifferenceMm3": 0.0011950628831982613,
+  "stages": [
+    {
+      "step": "M01",
+      "deltaMm3": 0.0
+    },
+    {
+      "step": "M02",
+      "deltaMm3": 0.0
+    },
+    {
+      "step": "M03",
+      "deltaMm3": -2.3283064365386963e-10
+    },
+    {
+      "step": "M04",
+      "deltaMm3": 0.0
+    },
+    {
+      "step": "M05",
+      "deltaMm3": 0.0
+    },
+    {
+      "step": "M06",
+      "deltaMm3": 0.0
+    },
+    {
+      "step": "M07",
+      "deltaMm3": 0.0
+    },
+    {
+      "step": "M08",
+      "deltaMm3": 0.0
+    },
+    {
+      "step": "M09",
+      "deltaMm3": 0.0
+    },
+    {
+      "step": "M11",
+      "deltaMm3": 0.0
+    },
+    {
+      "step": "M12",
+      "deltaMm3": 0.0
+    },
+    {
+      "step": "M13",
+      "deltaMm3": 0.0
+    },
+    {
+      "step": "M14",
+      "deltaMm3": 0.0
+    },
+    {
+      "step": "M15",
+      "deltaMm3": -4.656612873077393e-10
+    },
+    {
+      "step": "M16",
+      "deltaMm3": 0.0
+    },
+    {
+      "step": "M17",
+      "deltaMm3": 0.0
+    },
+    {
+      "step": "M18",
+      "deltaMm3": -4.656612873077393e-10
+    },
+    {
+      "step": "M19",
+      "deltaMm3": 0.0
+    },
+    {
+      "step": "M20",
+      "deltaMm3": -4.656612873077393e-10
+    },
+    {
+      "step": "M21",
+      "deltaMm3": -0.0011951469350606203
+    }
+  ]
+}
