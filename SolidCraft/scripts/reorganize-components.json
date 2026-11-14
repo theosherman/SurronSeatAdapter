@@ -77,7 +77,7 @@
     {
       "command": "file.insert_mesh",
       "params": {
-        "path": "C:/Projects/Suron Seat Adapter/SolidCraft/inputs/wheel_scan_mm.stl",
+        "path": "C:/Projects/SurronSeatAdapter/SolidCraft/inputs/wheel_scan_mm.stl",
         "name": "WheelScanDisplay",
         "units": "mm",
         "origin": false

@@ -1,6 +1,6 @@
 import fs from 'node:fs';
 import {spawn} from 'node:child_process';
-const child=spawn('C:/Program Files/SolidCraft/solidcraft-cli.exe',['mcp','--connect','127.0.0.1:7878','--allow-path','C:/Projects/Suron Seat Adapter/SolidCraft','--compact'],{windowsHide:true});
+const child=spawn('C:/Program Files/SolidCraft/solidcraft-cli.exe',['mcp','--connect','127.0.0.1:7878','--allow-path','C:/Projects/SurronSeatAdapter/SolidCraft','--compact'],{windowsHide:true});
 let buffer='',id=0;const pending=new Map();
 child.stdout.on('data',chunk=>{buffer+=chunk;while(buffer.includes('\n')){const n=buffer.indexOf('\n'),line=buffer.slice(0,n);buffer=buffer.slice(n+1);let m;try{m=JSON.parse(line);}catch{continue;}const p=pending.get(m.id);if(p){pending.delete(m.id);clearTimeout(p.timer);m.error?p.reject(m.error):p.resolve(m.result);}}});
 child.stderr.on('data',c=>process.stderr.write(c));
