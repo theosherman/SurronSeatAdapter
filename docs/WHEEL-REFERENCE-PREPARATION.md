@@ -1,4 +1,6 @@
-# Sherman P body-only subtraction preparation
+# Wheel reference preparation: verified Veteran Sherman L procedure
+
+Current documentation scope: the original **Veteran Sherman L** asset and its preparation. The later Sherman P import was an unfinished replacement experiment and is excluded from this source-history task. Existing destination-model records describe separate later work; this documentation update changes no CAD geometry.
 
 ## Verified correction from Sherman L version 1
 
@@ -8,7 +10,23 @@ The user clarified that Fusion is reference-only and the Sherman L supplies the 
 
 The earlier version was opened for inspection, its cursor was restored to 61, and it was closed without saving. The original seat-adapter project remained active afterward. No Fusion features were edited or saved. This source inspection does not itself alter the existing SolidCraft subtraction.
 
-The notes below are the **superseded initial inspection** of flattened version 2. The scale uncertainty is now resolved; **do not use the earlier proposed 1.01 factor**.
+## Procedure to preserve in other CAD tools
+
+The splits isolate the central wheel body so it can be subtracted from the adapter without subtracting either handle or cutting away the adapter's front clip. Keep the original asset and both handle pieces as separate reference geometry.
+
+1. In the Sherman L asset coordinate frame, split the front handle at Y=190 mm and the rear handle at Y=-180 mm. Both cutting planes have normal (0, 1, 0).
+2. Select only the isolated central `Body`. Uniformly scale it by **1.003**, meaning **100.3% of its original size**, about the recorded point **(-0.061664581298828125, -26.73046112060547, -2.6051712036132812) mm**. A factor of 0.003 would shrink it to 0.3% of its size and is not the source operation. Neither handle is scaled.
+3. For a body-only imprint, use only that prepared central body as the subtraction tool. Exclude both handles from the Boolean selection. Preserve the adapter master and its dependent split child.
+
+For each point p in the body, the scale transform is `p_new = pivot + 1.003 * (p - pivot)`. Convert the pivot and split planes consistently with import units; apply the asset-to-assembly placement afterward, or transform all these references consistently. This is a proportional enlargement, not a constant 0.003 mm offset.
+
+The dimensions and pivot above belong to the **Sherman L** source asset. When preparing another wheel scan, preserve the body-only split/scale/subtract intent and verify its own handle boundaries, coordinate frame, units and scale pivot. Do not substitute the L scan for the accepted Sherman P reference.
+
+This documents the verified source preparation; it does not apply it to the current SolidCraft model. The existing Sherman P imprint remains at zero added clearance until deliberately rebuilt. Fusion remains reference-only.
+
+## Historical inspection notes (superseded)
+
+The notes below describe the **superseded initial inspection** of flattened version 2. The scale uncertainty is now resolved; **do not use the earlier proposed 1.01 factor**. Any pending questions or proposed changes below are historical, not current instructions.
 
 User intent: separate the wheel scan into rear handle, front handle and middle body; enlarge the middle subtraction body slightly for printing fit; subtract only that body so the adapter's front clip is not cut away by the handle.
 

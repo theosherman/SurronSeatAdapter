@@ -120,6 +120,8 @@ The exact cap origins/normals are in [front-screw-ceiling-correction.json](../fr
 
 ## Cross-kernel comparison
 
+For the verified Veteran Sherman L reference preparation, see [wheel reference preparation](WHEEL-REFERENCE-PREPARATION.md): split off both handles first, then uniformly scale only the central body by 1.003 about its saved pivot, and exclude both handles from subtraction. This source procedure has not yet been applied to the existing SolidCraft Sherman P imprint.
+
 Use body count, silhouette, dimensions, selected-profile areas and material tests together. Choose and record the target tolerance. A single matching volume does not prove identical topology. Investigate substantial discrepancies before spending remote calls on finishing details.
 
 Save the target's editable code/project, dependency versions, key views, measurements, import units and any deviations. A comparison STEP/STL should accompany rather than replace the editable source where supported. No physical print/fit test was recorded in this session.
