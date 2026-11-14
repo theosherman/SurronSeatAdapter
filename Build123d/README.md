@@ -27,6 +27,12 @@ Build123d/run.sh --stop M05   # base checkpoint (also M01, M06, M09, M20)
 
 Python callers can use `build_master(airtag_depth=8.5)` to regenerate the part with an editable AirTag pocket depth. Other dimensions remain in the recipe and named operations. Checkpoint builds update the validation log; rerun the full build to restore the final log.
 
+## View and edit in VS Code
+
+Open this repository folder in VS Code with the Python and OCP CAD Viewer extensions installed. The supplied launch configuration selects the external Python environment. Open `Build123d/view_adapter.py`, then press **Ctrl+F5** (Run Without Debugging), choosing **View adapter in OCP CAD Viewer** if prompted. If the viewer panel does not open automatically, run **OCP CAD Viewer: Open viewer** from **Ctrl+Shift+P**, then rerun.
+
+The script rebuilds the native Python geometry and sends it to the interactive viewer; it does not overwrite the STEP/STL exports. Edit `AIR_TAG_POCKET_DEPTH` in the viewer script or operations in `adapter.py`, save, and rerun to see changes. Select **Python: Select Interpreter** and the environment under `~/.local/share/venvs/surron-build123d/bin/python` if running with the editor's Python button. The extension and Python package are both version 4.2.0.
+
 ## Outputs
 
 - `exports/adapter-body.step`: final single solid, analytic manufacturing faces plus faceted scan imprint.
