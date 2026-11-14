@@ -70,3 +70,17 @@ The nominal in-memory master volume is approximately **1,507,476.035 mm³**, wit
 - Exact Onshape parity, full-model source-to-port XOR comparison, and physical print-fit testing have not been established. The orientation revision was separately checked against the previous Build123d STEP after aligning it for comparison: symmetric-difference volume was 0.0012 mm³. See `logs/orientation-validation.json`; this verifies preservation during reorientation, not source-to-port equality.
 
 The existing SolidCraft and Onshape files remain unchanged. Accessories remain separate; this source does not merge the latch or saddlebag mount into the master.
+
+## Sherman P body-only fit preparation
+
+The separately prepared Sherman P uses approved vertical planes at **Y=-191 mm** (front) and **Y=+170 mm** (rear), in the corrected build123d frame. Run:
+
+```bash
+~/.local/share/venvs/surron-build123d/bin/python Build123d/prepare_sherman_p.py
+```
+
+The scan is split into three regions first. Only the middle body is uniformly scaled by **1.003** (0.3%) about the model origin `(0,0,0)`; both handles retain their original geometry and coordinates. The scaled body is then fused with the unchanged handles, accepting their small overlaps. This is a proportional fit allowance, not a constant-distance surface offset. It is specific to the Sherman P; the older Sherman L pivot is not reused.
+
+`exports/sherman-p-prepared/` contains the original three regions, scaled body, and merged scan as separate STEP/STL files. `logs/sherman-p-preparation.json` records source hash, planes, pivot, measured volumes, bounds, partition conservation and reopened-export checks. `exports/sherman-p-proposed-handle-cuts.png` records the accepted cut preview.
+
+This standalone preparation does **not** change the adapter build, adapter exports, original scan, or viewer. They still use the original zero-clearance scan pending a separate integration step. The prepared merged scan includes the fixed handles, as requested in the revised preparation instructions.
