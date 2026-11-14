@@ -1,6 +1,6 @@
 {
   "coordinateFrame": "source (x,y,z) -> model (-x,-y,z); physical front is negative Y; Z up",
-  "elapsedSeconds": 11.807260155000222,
+  "elapsedSeconds": 16.743884321999758,
   "stages": [
     {
       "step": "M01",
@@ -118,7 +118,7 @@
     },
     {
       "step": "M21",
-      "volumeMm3": 1507476.0354142203,
+      "volumeMm3": 1517837.5544428716,
       "solids": 1,
       "valid": true
     }

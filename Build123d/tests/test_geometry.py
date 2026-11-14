@@ -19,7 +19,16 @@ class GeometryTests(unittest.TestCase):
         body = build_master()
         self.assertEqual(len(body.solids()), 1)
         self.assertTrue(body.is_valid)
-        self.assertAlmostEqual(body.volume, 1507476.065203498, delta=5)
+        # Independent accepted tool/checkpoint regression: handles must not cut the adapter.
+        from build123d import import_step
+        from pathlib import Path
+        exports = Path(__file__).resolve().parents[1] / 'exports'
+        pre = import_step(exports/'adapter-body-pre-imprint.step')
+        tool = import_step(exports/'sherman-p-prepared/body-scaled.step')
+        expected = pre.cut(tool)
+        self.assertAlmostEqual(body.volume, expected.volume, delta=0.1)
+        # Front clip material formerly removed by the full scan's fixed handle.
+        self.assertTrue(body.solids()[0].is_inside((-40, -235, 15)))
         import json
         from pathlib import Path
         saved = json.loads((Path(__file__).resolve().parents[2] / 'SolidCraft/logs/mounting-ceiling-validation.json').read_text())

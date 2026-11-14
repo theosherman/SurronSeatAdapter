@@ -13,8 +13,8 @@ BODY_SCALE = 1.003
 SCALE_ORIGIN = (0, 0, 0)
 
 
-def prepare_parts(scan):
-    """Return original three regions, scaled body, and reunited solid in model mm."""
+def prepare_parts(scan, reunite=True):
+    """Return the three regions and scaled body; optionally add a reunited solid."""
     front_plane = Plane(origin=(0, FRONT_Y, 0), z_dir=(0, 1, 0))
     rear_plane = Plane(origin=(0, REAR_Y, 0), z_dir=(0, 1, 0))
     front = scan.split(front_plane, keep=Keep.BOTTOM)
@@ -22,9 +22,11 @@ def prepare_parts(scan):
     body = remainder.split(rear_plane, keep=Keep.BOTTOM)
     rear = remainder.split(rear_plane, keep=Keep.TOP)
     scaled = body.scale(BODY_SCALE, about=SCALE_ORIGIN)
-    merged = scaled.fuse(front, rear)
-    return {'front-handle': front, 'body-original': body, 'rear-handle': rear,
-            'body-scaled': scaled, 'merged': merged}
+    parts = {'front-handle': front, 'body-original': body, 'rear-handle': rear,
+            'body-scaled': scaled}
+    if reunite:
+        parts['merged'] = scaled.fuse(front, rear)
+    return parts
 
 
 def measurements(shape):

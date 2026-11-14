@@ -22,11 +22,11 @@
 {"step": "M18", "volumeMm3": 2194608.9858578816, "solids": 1, "valid": true}
 {"step": "M19", "volumeMm3": 1536181.0044656738, "solids": 1, "valid": true}
 {"step": "M20", "volumeMm3": 1527474.4963024335, "solids": 1, "valid": true}
-Converting aligned wheel scan to faceted BREP (zero clearance)
-{"step": "M21", "volumeMm3": 1507476.0354142203, "solids": 1, "valid": true}
+Preparing Sherman P: fixed handles excluded; body scale 1.003
+{"step": "M21", "volumeMm3": 1517837.5544428716, "solids": 1, "valid": true}
 ..{"step": "M01", "volumeMm3": 5180659.4319974575, "solids": 1, "valid": true}
-...
+....
 ----------------------------------------------------------------------
-Ran 6 tests in 10.316s
+Ran 7 tests in 19.932s
 
 OK
