@@ -4,6 +4,8 @@ This folder records the reconstruction of the Fusion design **Surron Seat Adapte
 
 ## Start here
 
+The [build123d project](Build123d/README.md) reconstructs the unsplit adapter locally from editable Python source, with STEP/STL exports, a zero-clearance wheel imprint, and mounting-ceiling validation. Dependencies are installed in an external Python environment.
+
 The [SolidCraft project](SolidCraft/README.md) now contains a native reconstruction: unsplit imprinted master, dependent two-piece printing variant, and five connector recesses. Read its [build results](SolidCraft/BUILD-RESULTS.md) for verification and the small cutter approximation. Exact Onshape parity has not been established.
 
 The separate **Latch** and **SaddleBagMount** are now extracted too: see [accessory build sequences](docs/ACCESSORY-PARTS.md) and the independent millimeter recipes under `cad-rebuild/accessories/`. They remain separate parts and have not been built in the destination CAD systems.

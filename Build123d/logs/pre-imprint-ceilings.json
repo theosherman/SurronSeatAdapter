@@ -1,0 +1,152 @@
+{
+  "ok": true,
+  "source": "Build123d/exports/adapter-body-pre-imprint.stl",
+  "triangles": 6746,
+  "checks": [
+    {
+      "name": "front -23 mounting ledge",
+      "pointMm": [
+        -17,
+        73.99550086131543,
+        42.231280197025576
+      ],
+      "expectedMaterial": true,
+      "material": true,
+      "rayAgreement": true,
+      "ok": true
+    },
+    {
+      "name": "front -23 access below ledge",
+      "pointMm": [
+        -17,
+        73.73131179163656,
+        41.266809287426845
+      ],
+      "expectedMaterial": false,
+      "material": false,
+      "rayAgreement": true,
+      "ok": true
+    },
+    {
+      "name": "front -23 small through hole",
+      "pointMm": [
+        -23,
+        73.99550086131543,
+        42.231280197025576
+      ],
+      "expectedMaterial": false,
+      "material": false,
+      "rayAgreement": true,
+      "ok": true
+    },
+    {
+      "name": "front 23 mounting ledge",
+      "pointMm": [
+        29,
+        73.99550086131543,
+        42.231280197025576
+      ],
+      "expectedMaterial": true,
+      "material": true,
+      "rayAgreement": true,
+      "ok": true
+    },
+    {
+      "name": "front 23 access below ledge",
+      "pointMm": [
+        29,
+        73.73131179163656,
+        41.266809287426845
+      ],
+      "expectedMaterial": false,
+      "material": false,
+      "rayAgreement": true,
+      "ok": true
+    },
+    {
+      "name": "front 23 small through hole",
+      "pointMm": [
+        23,
+        73.99550086131543,
+        42.231280197025576
+      ],
+      "expectedMaterial": false,
+      "material": false,
+      "rayAgreement": true,
+      "ok": true
+    },
+    {
+      "name": "rear -14.5 mounting ledge",
+      "pointMm": [
+        20.5,
+        -181.92058480597453,
+        78.62031024578977
+      ],
+      "expectedMaterial": true,
+      "material": true,
+      "rayAgreement": true,
+      "ok": true
+    },
+    {
+      "name": "rear -14.5 access below ledge",
+      "pointMm": [
+        20.5,
+        -182.11995274039154,
+        77.64038554116891
+      ],
+      "expectedMaterial": false,
+      "material": false,
+      "rayAgreement": true,
+      "ok": true
+    },
+    {
+      "name": "rear -14.5 small through hole",
+      "pointMm": [
+        14.5,
+        -181.92058480597453,
+        78.62031024578977
+      ],
+      "expectedMaterial": false,
+      "material": false,
+      "rayAgreement": true,
+      "ok": true
+    },
+    {
+      "name": "rear 14.5 mounting ledge",
+      "pointMm": [
+        -8.5,
+        -181.92058480597453,
+        78.62031024578977
+      ],
+      "expectedMaterial": true,
+      "material": true,
+      "rayAgreement": true,
+      "ok": true
+    },
+    {
+      "name": "rear 14.5 access below ledge",
+      "pointMm": [
+        -8.5,
+        -182.11995274039154,
+        77.64038554116891
+      ],
+      "expectedMaterial": false,
+      "material": false,
+      "rayAgreement": true,
+      "ok": true
+    },
+    {
+      "name": "rear 14.5 small through hole",
+      "pointMm": [
+        -14.5,
+        -181.92058480597453,
+        78.62031024578977
+      ],
+      "expectedMaterial": false,
+      "material": false,
+      "rayAgreement": true,
+      "ok": true
+    }
+  ],
+  "method": "Two independent triangle ray parity tests at 0.5 mm above/below each saved cap plane; annular sample 6 mm off bore axis."
+}
