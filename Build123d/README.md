@@ -171,3 +171,37 @@ target. The existing latch already crosses this estimate by about **2.44 mm**
 normal to its back face, with the projected contact inside the actual face.
 The user must review the circle before the latch geometry is revised; this is
 an estimate from partial scan evidence, not a physical fit validation.
+
+## Raised front clip and continuous screen ramp
+
+The user-approved front redesign is implemented by `front_clip.py` after the
+permanent adapter placement and before the stationary middle-body subtraction.
+The existing 55° front wall of the screen opening continues upwards into a thicker
+front bridge. Its intersection with the raised original top plane is computed
+from the native face planes (approximately Y=-192.95 mm). The original underside
+is retained behind that join; a short local root gusset meets the raised clip at
+Y=-199 mm. The clip's original analytic circular bore and jaws move vertically
+18.0526320637 mm to center Z=32.8742416819 mm, retaining center
+Y=-220.3743032668 mm and diameter 30.2 mm. This center remains an estimate from
+the trusted crown of the handle scan, not a physical measurement.
+
+Only the M16 front dovetail addition is omitted. The rear dovetail and separate
+latch remain unchanged. No fillets are added. Source recipes remain unchanged;
+M20 source-stage volume now excludes the omitted dovetail, and the new
+`M20-front-redesign` stage records the finished, placed front before imprint.
+`--stop M20` and `--no-imprint` return that redesigned pre-imprint body.
+
+`preview_front_clip.py` renders `exports/front-clip-implemented.png` directly from
+the current manufacturing STL and reference handle. Earlier files under `concepts/`
+and the three concept image sheets are appearance studies, not manufacturing
+geometry. The native implementation replaces those mesh-deformation studies.
+The general `preview.py` still renders the full adapter upper/underside sheet.
+Physical snap fit, material stiffness and printed strength are not established by
+the CAD checks.
+
+Verified redesign results: all **21 tests** pass; all **12 mesh ceiling checks**
+pass. Reopened STEP volume is **1,485,971.986 mm³**, with one valid solid; STL is
+also one valid solid and differs by about **0.987 mm³** at export tessellation.
+The AirTag depth-edit validator passes. Independent review additionally checked
+that a full cylinder at the retained 30.2 mm bore axis intersects no adapter
+material. See `logs/export-and-parameter-validation.json`.
