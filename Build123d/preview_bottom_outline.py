@@ -78,19 +78,19 @@ def main():
         for i in (14, 15, 5, 6):
             del proposed[i]
         # Preview assumption: parallel frontward translation, not a new angle.
-        proposed[17][:, 1] -= 5
+        proposed[17][:, 1] -= 10
         proposed[16][1] = proposed[17][0]
         proposed[18][0] = proposed[17][1]
         for left, right in ((13, 7), (16, 4), (17, 3), (18, 2)):
             proposed[right] = proposed[left][::-1]*[-1, 1]
-        proposed[19][:, 1] -= 5
+        proposed[19][:, 1] -= 10
         proposed[20][0] = proposed[19][1]
         proposed[22][1] = proposed[19][0]
         outer = [proposed[i] for i in range(1, 19) if i in proposed]
         assert all(np.allclose(a[1], b[0]) for a, b in zip(outer, outer[1:]+outer[:1]))
         assert np.allclose(proposed[13][1], proposed[16][0])
         assert np.allclose(np.diff(proposed[17], axis=0), np.diff(original[17], axis=0))
-        assert np.allclose(proposed[19][:, 1], original[19][:, 1]-5)
+        assert np.allclose(proposed[19][:, 1], original[19][:, 1]-10)
     scan = np.concatenate([load(ROOT/'exports/sherman-p-prepared'/f'{part}.stl')
                            for part in ('body-original', 'front-handle', 'rear-handle')])
     # Degenerate triangles set identical framing; the renderer skips their pixels.
@@ -148,8 +148,8 @@ def main():
         result.paste(panel, (x, 155))
         d.text((x+15, 115), title, font=font(23), fill='#183044')
         d.text((x+285, 162), 'FRONT', font=font(18), fill='#405b70')
-    d.text((30, 1420), '13 extended to vertical 16; 14/15 removed. Mirrored on right. 19 moved 5 mm toward front.' if proposal else 'Pink: exact selected base profile, mirrored and placed. Later cuts, clip changes and imprint are not this sketch.', font=font(22), fill='#405b70')
-    d.text((30, 1460), '17: trial shift 5 mm toward screen, original angle retained. Original line IDs kept; manufactured CAD unchanged.' if proposal else 'Scan: aligned, unscaled body + handles. Suspension-cover boundaries have not been inferred or marked.', font=font(22), fill='#405b70')
+    d.text((30, 1420), '13 extended to vertical 16; 14/15 removed. Mirrored on right. 19 moved 10 mm toward front.' if proposal else 'Pink: exact selected base profile, mirrored and placed. Later cuts, clip changes and imprint are not this sketch.', font=font(22), fill='#405b70')
+    d.text((30, 1460), '17: shift 10 mm toward screen, original angle retained. Original line IDs kept; manufactured CAD unchanged.' if proposal else 'Scan: aligned, unscaled body + handles. Suspension-cover boundaries have not been inferred or marked.', font=font(22), fill='#405b70')
     path = ROOT/('exports/bottom-outline-sherman-p-proposed.png' if proposal else 'exports/bottom-outline-sherman-p-numbered.png')
     result.save(path)
     print(path)
