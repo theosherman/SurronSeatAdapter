@@ -1,0 +1,45 @@
+{
+  "wallMoveTowardWheelCenterMm": 10,
+  "additionalCavitySideWallMm": 10,
+  "innerBoundaryTotalYShiftMm": 20,
+  "dimensionDirection": "negative model Y; not face-normal thickness",
+  "adapterVolumeMm3": 1347951.2579592802,
+  "latchVolumeMm3": 291282.60120106826,
+  "adapterValid": true,
+  "latchValid": true,
+  "adapterSolids": 1,
+  "latchSolids": 1,
+  "overlapMm3": 0,
+  "minimumSeparationMm": 0.0,
+  "planarInteriorChecks": [
+    {
+      "pointMm": [
+        0,
+        168.7767,
+        40.9574
+      ],
+      "separationMm": 0.3425385184420051
+    },
+    {
+      "pointMm": [
+        12.2614,
+        153.7798,
+        36.7995
+      ],
+      "separationMm": 0.20001879732122005
+    },
+    {
+      "pointMm": [
+        -12.2614,
+        153.7798,
+        36.7995
+      ],
+      "separationMm": 0.20001879731576594
+    }
+  ],
+  "planarClearanceMm": 0.2,
+  "clearanceScope": "Planar mating interiors; cylindrical and spline junctions retain exact contacts, as in the source clearance approach. This is not a uniform global offset.",
+  "physicalFitTested": false,
+  "completeCavitySealingVerified": false,
+  "review": "No remaining blocker; curved-transition exact contacts and physical-fit limitation explicitly recorded."
+}

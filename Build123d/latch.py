@@ -10,6 +10,7 @@ import math
 from build123d import Edge, Wire, Face, Solid, Plane, Vector, Keep, Compound, ShapeList, export_step, export_stl, import_step, Mesher
 from coordinates import source_to_model, ADAPTER_TRANSLATION_MM
 from adapter import profiles as adapter_profiles
+from rear_cavity import REAR_WALL_MOVE_MM,dimension,extend_latch
 
 ROOT = Path(__file__).resolve().parents[1]
 RECIPE = json.loads((ROOT/'cad-rebuild/accessories/latch-recipe.json').read_text())
@@ -66,10 +67,11 @@ def source_plane(geometry):
     return Plane(source_to_model(geometry['origin']), z_dir=source_to_model(geometry['normal']))
 
 
-def build_latch(clearance=0.2, with_stages=False):
-    """Return one latch solid; positive clearance moves three mating faces inward."""
+def build_latch(clearance=0.2, with_stages=False, rear_wall_move=REAR_WALL_MOVE_MM, adapter_body=None):
+    """Return the separate extended latch; move=0 retains historical source geometry."""
     if not math.isfinite(clearance) or clearance < 0:
         raise ValueError('Latch clearance must be finite and nonnegative')
+    dimension(rear_wall_move,'Rear wall movement')
     stages = []
     def stage(index, shape):
         if isinstance(shape, (list, ShapeList)):
@@ -111,6 +113,11 @@ def build_latch(clearance=0.2, with_stages=False):
     body = stage(106, body)
     # Follow the adapter assembly placement while retaining a separate solid.
     body = body.translate(ADAPTER_TRANSLATION_MM)
+    if rear_wall_move:
+        if adapter_body is None:
+            from adapter import build_master
+            adapter_body=build_master(imprint=False,rear_wall_move=rear_wall_move)
+        body=stage('rear-cavity',extend_latch(body,adapter_body,rear_wall_move,clearance))
     body.label = 'Latch'
     return (body, stages) if with_stages else body
 
@@ -132,7 +139,7 @@ def main():
                               boundsMm=[tuple(bounds.min), tuple(bounds.max)])
         if not shape.is_valid or len(shape.solids()) != 1 or abs(shape.volume-body.volume)>body.volume*1e-4:
             raise ValueError(f'Latch export failed validation: {reopened[name]}')
-    report = dict(clearanceMm=args.clearance, fillets=False, coordinateFrame='source (x,y,z) -> model (-x,-y,z)',
+    report = dict(clearanceMm=args.clearance, rearWallMoveMm=REAR_WALL_MOVE_MM, fillets=False, coordinateFrame='source (x,y,z) -> model (-x,-y,z)',
                   placementTranslationMm=ADAPTER_TRANSLATION_MM, stages=stages, reopened=reopened, physicalFitTested=False)
     (Path(__file__).parent/'logs/latch-validation.json').write_text(json.dumps(report, indent=2)+'\n')
     print(json.dumps(report, indent=2))

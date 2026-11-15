@@ -365,7 +365,7 @@ The two former 3.418 mm² extrusion ribbons near `(±55.84,-103.407,38)` in the
 green circle disappear after lowering. The original rounded cutout is retained;
 no replacement circular cut or fillet is added.
 
-Current native pre-imprint volume is **1,413,939.801 mm³**; imprinted volume is
+At the shoulder/screen milestone, native pre-imprint volume was **1,413,939.801 mm³**; imprinted volume was
 **1,375,342.181 mm³**. STEP reopens as one valid solid of **1,375,342.180 mm³**;
 STL is one valid solid of **1,375,343.706 mm³**. These values supersede the
 previous milestone volumes. All **33 tests**, all **12 mesh mounting-ceiling
@@ -378,3 +378,63 @@ See the [before/after implemented comparison](exports/shoulders-and-lowered-scre
 and [native measurements](logs/shoulder-screen-validation.json).
 `preview_shoulders_screen.py` takes a historical STL path and compares it with
 the current manufacturing export; extract the prior STL from commit `4e3cb4d`.
+
+## Approved hybrid rear cavity: 10 mm move plus 10 mm added wall
+
+The approved hybrid preview is now implemented in the editable manufacturing
+build on `design/rear-cavity-coverage`. `rear_cavity.py` moves the lower rear web
+and its native dovetail interface **10 mm toward negative Y**, then adds a
+further **10 mm into the cavity** at its rear face. Both dimensions are measured
+along the adapter's front-to-back Y direction, not normal to its drafted walls.
+The inner cavity boundary therefore moves **20 mm total**. The upper seat
+structure above Z=60 mm and front through Y=100 mm remain unchanged.
+
+The normal build calls `revise_rear_wall` after its front, screen and printing
+plane operations, then reapplies the original stationary small bores and rear
+screwdriver cuts. This last operation is essential: the moved native web would
+otherwise leave an obstruction about 19 mm below a rear mounting ceiling.
+Regression probes now inspect both complete rear access paths, in addition to
+all twelve ceiling checks. The approved body-only wheel cutter is subtracted
+last with the existing alignment and **1.003** fit preparation; neither handle
+is scaled or used as a cutter.
+
+The separate latch extends **10 mm toward the adapter**, retaining its original
+wheel-contact face and hook below Z=0. Its top/dovetail transition is trimmed
+against the fresh native adapter, with **0.2 mm** clearance on nearby planar
+mating faces. Curved and spline junctions retain exact contacts, as in the
+source clearance approach; this is not a uniform 0.2 mm global gap. Physical
+sliding fit needs checking. This clearance changes the latch interface only, not wheel fit.
+The manufacturing latch remains a separate valid solid. The nominal source
+stages are retained before the derived `rear-cavity` stage in the latch log.
+
+`build_master(rear_wall_move=0, rear_wall_extra=0)` and
+`build_latch(rear_wall_move=0)` expose the historical source configuration for
+comparison; the normal defaults use the new approved geometry. The shared
+portable recipe and separate SolidCraft/Onshape histories are unchanged.
+`view_adapter.py` passes its newly built adapter into the latch builder, so the
+normal VS Code/OCP viewer displays both updated manufacturing parts together.
+
+See [implemented 3D cutaway](exports/rear-cavity-implemented.png),
+[before/after cutaway](exports/rear-cavity-implemented-cut.png), and
+[assembled comparison](exports/rear-cavity-implemented-full.png).
+These render actual exported STEP solids rather than conceptual overlays.
+Earlier files under `exports/concepts/rear-cavity/` are historical previews.
+
+Native validity, unchanged front/upper regions, shifted plane dimensions,
+noninterference, hook/contact preservation and planar clearance are covered by
+`tests/test_rear_cavity.py`. Manufacturing STEP/STL and the editable AirTag depth
+parameter are validated separately. Physical fit, latch installation/removal,
+printed strength, and complete cavity sealing have not been established; the
+specified 10+10 mm dimensions have not been silently increased to claim a seal.
+
+Current rebuilt pre-imprint volume is **1,386,548.875 mm³**; imprinted adapter
+volume is **1,347,951.258 mm³**. The separate latch is **291,282.601 mm³**.
+The adapter and latch have zero volumetric overlap. See
+[rear-cavity measurements](logs/rear-cavity-validation.json),
+[export/parameter validation](logs/export-and-parameter-validation.json), and
+[latch validation](logs/latch-validation.json).
+
+Final verification: **40 tests pass**, all **12 mounting-ceiling mesh checks pass**,
+and STEP/STL reopening plus the 8.6 mm AirTag parameter edit pass. Source-profile
+checks remain active in the explicit historical latch mode. Independent review
+found no remaining blocker after clarifying the source planar-clearance scope.

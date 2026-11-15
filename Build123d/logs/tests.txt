@@ -19,6 +19,8 @@
 {"step": "M20-front-redesign", "volumeMm3": 1411137.8038767094, "solids": 1, "valid": true}
 {"step": "M20-screen-surround", "volumeMm3": 1414319.7926382467, "solids": 1, "valid": true}
 {"step": "M20-print-planes", "volumeMm3": 1413939.801151544, "solids": 1, "valid": true}
+{"step": "M20-rear-cavity", "volumeMm3": 1387667.7931225386, "solids": 1, "valid": true}
+{"step": "M20-rear-access", "volumeMm3": 1386548.8746888463, "solids": 1, "valid": true}
 ..{"step": "M01", "volumeMm3": 4704311.374319016, "solids": 1, "valid": true}
 {"step": "M02", "volumeMm3": 9408622.748638038, "solids": 1, "valid": true}
 {"step": "M03", "volumeMm3": 1104550.6397153926, "solids": 1, "valid": true}
@@ -40,8 +42,10 @@
 {"step": "M20-front-redesign", "volumeMm3": 1411137.8038767094, "solids": 1, "valid": true}
 {"step": "M20-screen-surround", "volumeMm3": 1414319.7926382467, "solids": 1, "valid": true}
 {"step": "M20-print-planes", "volumeMm3": 1413939.801151544, "solids": 1, "valid": true}
+{"step": "M20-rear-cavity", "volumeMm3": 1387667.7931225386, "solids": 1, "valid": true}
+{"step": "M20-rear-access", "volumeMm3": 1386548.8746888463, "solids": 1, "valid": true}
 Preparing Sherman P: align whole scan before slices; handles excluded; body scale 1.003
-{"step": "M21", "volumeMm3": 1375342.180567419, "solids": 1, "valid": true}
+{"step": "M21", "volumeMm3": 1347951.2579091012, "solids": 1, "valid": true}
 .{"step": "M01", "volumeMm3": 4704311.374319016, "solids": 1, "valid": true}
 {"step": "M02", "volumeMm3": 9408622.748638038, "solids": 1, "valid": true}
 {"step": "M03", "volumeMm3": 1104550.6397153926, "solids": 1, "valid": true}
@@ -63,6 +67,8 @@ Preparing Sherman P: align whole scan before slices; handles excluded; body scal
 {"step": "M20-front-redesign", "volumeMm3": 1411137.8038767094, "solids": 1, "valid": true}
 {"step": "M20-screen-surround", "volumeMm3": 1414319.7926382467, "solids": 1, "valid": true}
 {"step": "M20-print-planes", "volumeMm3": 1413939.801151544, "solids": 1, "valid": true}
+{"step": "M20-rear-cavity", "volumeMm3": 1387667.7931225386, "solids": 1, "valid": true}
+{"step": "M20-rear-access", "volumeMm3": 1386548.8746888463, "solids": 1, "valid": true}
 ......{"step": "M01", "volumeMm3": 4704311.374319016, "solids": 1, "valid": true}
 ...{"step": "M01", "volumeMm3": 4704311.374319016, "solids": 1, "valid": true}
 {"step": "M02", "volumeMm3": 9408622.748638038, "solids": 1, "valid": true}
@@ -85,6 +91,8 @@ Preparing Sherman P: align whole scan before slices; handles excluded; body scal
 {"step": "M20-front-redesign", "volumeMm3": 1411137.8038767094, "solids": 1, "valid": true}
 {"step": "M20-screen-surround", "volumeMm3": 1414319.7926382467, "solids": 1, "valid": true}
 {"step": "M20-print-planes", "volumeMm3": 1413939.801151544, "solids": 1, "valid": true}
+{"step": "M20-rear-cavity", "volumeMm3": 1387667.7931225386, "solids": 1, "valid": true}
+{"step": "M20-rear-access", "volumeMm3": 1386548.8746888463, "solids": 1, "valid": true}
 ..{"step": "M01", "volumeMm3": 4704311.374319016, "solids": 1, "valid": true}
 {"step": "M02", "volumeMm3": 9408622.748638038, "solids": 1, "valid": true}
 {"step": "M03", "volumeMm3": 1104550.6397153926, "solids": 1, "valid": true}
@@ -106,6 +114,8 @@ Preparing Sherman P: align whole scan before slices; handles excluded; body scal
 {"step": "M20-front-redesign", "volumeMm3": 1411137.8038767094, "solids": 1, "valid": true}
 {"step": "M20-screen-surround", "volumeMm3": 1414319.7926382467, "solids": 1, "valid": true}
 {"step": "M20-print-planes", "volumeMm3": 1413939.801151544, "solids": 1, "valid": true}
+{"step": "M20-rear-cavity", "volumeMm3": 1387667.7931225386, "solids": 1, "valid": true}
+{"step": "M20-rear-access", "volumeMm3": 1386548.8746888463, "solids": 1, "valid": true}
 {"step": "M01", "volumeMm3": 4704311.374319016, "solids": 1, "valid": true}
 {"step": "M02", "volumeMm3": 9408622.748638038, "solids": 1, "valid": true}
 {"step": "M03", "volumeMm3": 1104550.6397153926, "solids": 1, "valid": true}
@@ -127,6 +137,53 @@ Preparing Sherman P: align whole scan before slices; handles excluded; body scal
 {"step": "M20-front-redesign", "volumeMm3": 1411898.5788411032, "solids": 1, "valid": true}
 {"step": "M20-screen-surround", "volumeMm3": 1411898.5788411032, "solids": 1, "valid": true}
 {"step": "M20-print-planes", "volumeMm3": 1411898.5788411032, "solids": 1, "valid": true}
+{"step": "M20-rear-cavity", "volumeMm3": 1385626.5703350243, "solids": 1, "valid": true}
+{"step": "M20-rear-access", "volumeMm3": 1384507.6518950565, "solids": 1, "valid": true}
+.......{"step": "M01", "volumeMm3": 4704311.374319016, "solids": 1, "valid": true}
+{"step": "M02", "volumeMm3": 9408622.748638038, "solids": 1, "valid": true}
+{"step": "M03", "volumeMm3": 1104550.6397153926, "solids": 1, "valid": true}
+{"step": "M04", "volumeMm3": 927741.1044533794, "solids": 1, "valid": true}
+{"step": "M05", "volumeMm3": 1855482.2089067597, "solids": 1, "valid": true}
+{"step": "M06", "volumeMm3": 1880982.5180697613, "solids": 1, "valid": true}
+{"step": "M07", "volumeMm3": 1875221.3447061838, "solids": 1, "valid": true}
+{"step": "M08", "volumeMm3": 1864628.633536343, "solids": 1, "valid": true}
+{"step": "M09", "volumeMm3": 1848627.135759546, "solids": 1, "valid": true}
+{"step": "M11", "volumeMm3": 1889392.9409229294, "solids": 1, "valid": true}
+{"step": "M12", "volumeMm3": 1996222.5275405184, "solids": 1, "valid": true}
+{"step": "M13", "volumeMm3": 1991087.8456254397, "solids": 1, "valid": true}
+{"step": "M14", "volumeMm3": 1973709.2000617795, "solids": 1, "valid": true}
+{"step": "M15", "volumeMm3": 1969191.2013207842, "solids": 1, "valid": true}
+{"step": "M17", "volumeMm3": 1966284.2687282322, "solids": 1, "valid": true}
+{"step": "M18", "volumeMm3": 1960320.820021316, "solids": 1, "valid": true}
+{"step": "M19", "volumeMm3": 1420605.0870041053, "solids": 1, "valid": true}
+{"step": "M20", "volumeMm3": 1411898.578841103, "solids": 1, "valid": true}
+{"step": "M20-front-redesign", "volumeMm3": 1411137.8038767094, "solids": 1, "valid": true}
+{"step": "M20-screen-surround", "volumeMm3": 1414319.7926382467, "solids": 1, "valid": true}
+{"step": "M20-print-planes", "volumeMm3": 1413939.801151544, "solids": 1, "valid": true}
+{"step": "M20-rear-cavity", "volumeMm3": 1387667.7931225386, "solids": 1, "valid": true}
+{"step": "M20-rear-access", "volumeMm3": 1386548.8746888463, "solids": 1, "valid": true}
+{"step": "M01", "volumeMm3": 4704311.374319016, "solids": 1, "valid": true}
+{"step": "M02", "volumeMm3": 9408622.748638038, "solids": 1, "valid": true}
+{"step": "M03", "volumeMm3": 1104550.6397153926, "solids": 1, "valid": true}
+{"step": "M04", "volumeMm3": 927741.1044533794, "solids": 1, "valid": true}
+{"step": "M05", "volumeMm3": 1855482.2089067597, "solids": 1, "valid": true}
+{"step": "M06", "volumeMm3": 1880982.5180697613, "solids": 1, "valid": true}
+{"step": "M07", "volumeMm3": 1875221.3447061838, "solids": 1, "valid": true}
+{"step": "M08", "volumeMm3": 1864628.633536343, "solids": 1, "valid": true}
+{"step": "M09", "volumeMm3": 1848627.135759546, "solids": 1, "valid": true}
+{"step": "M11", "volumeMm3": 1889392.9409229294, "solids": 1, "valid": true}
+{"step": "M12", "volumeMm3": 1996222.5275405184, "solids": 1, "valid": true}
+{"step": "M13", "volumeMm3": 1991087.8456254397, "solids": 1, "valid": true}
+{"step": "M14", "volumeMm3": 1973709.2000617795, "solids": 1, "valid": true}
+{"step": "M15", "volumeMm3": 1969191.2013207842, "solids": 1, "valid": true}
+{"step": "M17", "volumeMm3": 1966284.2687282322, "solids": 1, "valid": true}
+{"step": "M18", "volumeMm3": 1960320.820021316, "solids": 1, "valid": true}
+{"step": "M19", "volumeMm3": 1420605.0870041053, "solids": 1, "valid": true}
+{"step": "M20", "volumeMm3": 1411898.578841103, "solids": 1, "valid": true}
+{"step": "M20-front-redesign", "volumeMm3": 1411137.8038767094, "solids": 1, "valid": true}
+{"step": "M20-screen-surround", "volumeMm3": 1414319.7926382467, "solids": 1, "valid": true}
+{"step": "M20-print-planes", "volumeMm3": 1413939.801151544, "solids": 1, "valid": true}
+{"step": "M20-rear-cavity", "volumeMm3": 1413939.801151544, "solids": 1, "valid": true}
 ...........{"step": "M01", "volumeMm3": 4704311.374319016, "solids": 1, "valid": true}
 {"step": "M02", "volumeMm3": 9408622.748638038, "solids": 1, "valid": true}
 {"step": "M03", "volumeMm3": 1104550.6397153926, "solids": 1, "valid": true}
@@ -148,6 +205,8 @@ Preparing Sherman P: align whole scan before slices; handles excluded; body scal
 {"step": "M20-front-redesign", "volumeMm3": 1411137.8038767094, "solids": 1, "valid": true}
 {"step": "M20-screen-surround", "volumeMm3": 1414319.7926382467, "solids": 1, "valid": true}
 {"step": "M20-print-planes", "volumeMm3": 1413939.801151544, "solids": 1, "valid": true}
+{"step": "M20-rear-cavity", "volumeMm3": 1387667.7931225386, "solids": 1, "valid": true}
+{"step": "M20-rear-access", "volumeMm3": 1386548.8746888463, "solids": 1, "valid": true}
 ....{"step": "M01", "volumeMm3": 4704311.374319016, "solids": 1, "valid": true}
 {"step": "M02", "volumeMm3": 9408622.748638038, "solids": 1, "valid": true}
 {"step": "M03", "volumeMm3": 1104550.6397153926, "solids": 1, "valid": true}
@@ -169,6 +228,8 @@ Preparing Sherman P: align whole scan before slices; handles excluded; body scal
 {"step": "M20-front-redesign", "volumeMm3": 1411137.8038767094, "solids": 1, "valid": true}
 {"step": "M20-screen-surround", "volumeMm3": 1414319.7926382467, "solids": 1, "valid": true}
 {"step": "M20-print-planes", "volumeMm3": 1413939.801151544, "solids": 1, "valid": true}
+{"step": "M20-rear-cavity", "volumeMm3": 1387667.7931225386, "solids": 1, "valid": true}
+{"step": "M20-rear-access", "volumeMm3": 1386548.8746888463, "solids": 1, "valid": true}
 ...{"step": "M01", "volumeMm3": 4704311.374319016, "solids": 1, "valid": true}
 {"step": "M01", "volumeMm3": 4704311.374319016, "solids": 1, "valid": true}
 {"step": "M02", "volumeMm3": 9408622.748638038, "solids": 1, "valid": true}
@@ -177,6 +238,6 @@ Preparing Sherman P: align whole scan before slices; handles excluded; body scal
 {"step": "M05", "volumeMm3": 1855482.2089067597, "solids": 1, "valid": true}
 .
 ----------------------------------------------------------------------
-Ran 33 tests in 33.545s
+Ran 40 tests in 56.688s
 
 OK
