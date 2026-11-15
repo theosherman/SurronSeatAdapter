@@ -8,7 +8,6 @@ from build123d import Edge, Wire, Face, Solid, Plane, Vector, Keep, Compound, Sh
 from coordinates import model_recipe, source_to_model, prepare_scan, ADAPTER_TRANSLATION_MM
 from prepare_sherman_p import prepare_parts
 from scan_patch import PATCH
-from rear_cavity import revise_rear_wall,REAR_WALL_MOVE_MM,REAR_WALL_EXTRA_MM
 
 ROOT = Path(__file__).resolve().parents[1]
 RECIPE = model_recipe(json.loads((ROOT / 'cad-rebuild/recipe.json').read_text()))
@@ -81,7 +80,7 @@ def checked(name, shape):
     return shape
 
 
-def build_master(stop=None, imprint=True, airtag_depth=8.5, rear_wall_move=REAR_WALL_MOVE_MM, rear_wall_extra=REAR_WALL_EXTRA_MM):
+def build_master(stop=None, imprint=True, airtag_depth=8.5):
     HISTORY.clear()
     def stage(name, shape):
         return checked(name, shape)
@@ -122,9 +121,8 @@ def build_master(stop=None, imprint=True, airtag_depth=8.5, rear_wall_move=REAR_
     body = stage('M17',body.cut(side,side.mirror(Plane.YZ)))
     rearcut = tool(121,1000,symmetric=True)
     body = stage('M18',body.cut(rearcut,rearcut.mirror(Plane.YZ)))
-    from trunk_cavity import bound_trunk_cavity
-    cavity = tool(124,500,direction=-Vector(SKETCHES['BodyCutSketch']['normal']),offset=12,taper=-15)
-    cavity = bound_trunk_cavity(cavity, profiles(9,sherman_p_bottom=True)[0])
+    from trunk_cavity import rear_cavity_tool
+    cavity = rear_cavity_tool(SKETCHES['BodyCutSketch'])
     body = stage('M19',body.cut(cavity))
     body = stage('M20',body.cut(tool(126,airtag_depth,direction=-Vector(SKETCHES['AirtagCutSketch']['normal']))))
     # Place the finished geometry before the stationary wheel-body subtraction.
@@ -135,12 +133,6 @@ def build_master(stop=None, imprint=True, airtag_depth=8.5, rear_wall_move=REAR_
     body = stage('M20-screen-surround', reinforce_screen(body))
     from print_planes import trim_to_rear_print_planes
     body = stage('M20-print-planes', trim_to_rear_print_planes(body))
-    body = stage('M20-rear-cavity',revise_rear_wall(body,rear_wall_move,rear_wall_extra))
-    if rear_wall_move or rear_wall_extra:
-        # Moving native material must not move or close the stationary screw paths.
-        small=tool(75,1000,symmetric=True).translate(ADAPTER_TRANSLATION_MM)
-        access=tool(76,500,direction=-Vector(SKETCHES['BoltHolesSketch']['normal']),offset=3).translate(ADAPTER_TRANSLATION_MM)
-        body=stage('M20-rear-access',body.cut(small,access))
     if stop=='M20' or not imprint: return body
     print('Preparing Sherman P: align whole scan before slices; handles excluded; body scale 1.003', flush=True)
     scan_path = prepare_scan(ROOT/'Sherman_P_Scan_Aligned_To_Adapter_mm.stl', ROOT/'Build123d/inputs/wheel-scan-model-frame.stl')

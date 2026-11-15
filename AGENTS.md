@@ -8,7 +8,7 @@ The user explicitly prioritizes simplicity in every part of this project, in eve
 - Do not treat the user's selection of a proposed design as acceptance of hidden implementation complexity. If a proposal or requested change starts becoming more complex, point that out **before proceeding**, explain the practical maintenance/failure tradeoff, and present a simpler alternative so the user can steer.
 - Replace or remove superseded workarounds rather than accumulating more layers. Preserve requested function and established geometry; simplicity does not authorize silently dropping requirements.
 
-Current cavity direction: redraw a simple hexagonal or octagonal cavity confined to the wider rear section, leave the narrow middle as solid CAD material for slicer infill, and leave a continuous thicker rear wall. Keep only the original top dovetail. The face-extrusion/region-patching implementation in commit `484bf2e` was rejected by the user; it is not an accepted geometry reference.
+Current cavity direction: redraw a simple hexagonal or octagonal cavity confined to the wider rear section, leave the narrow middle as solid CAD material for slicer infill, and leave a continuous thicker rear wall. Keep the original outer wall/latch interface and only the original top dovetail. The user explicitly cancelled retaining the 10 mm outer-wall shift and latch extension. The face-extrusion/region-patching implementation in commit `484bf2e` was rejected by the user; it is not an accepted geometry reference.
 
 ## CAD context
 

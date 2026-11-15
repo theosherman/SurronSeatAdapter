@@ -23,13 +23,13 @@ class CavityAndClipTests(unittest.TestCase):
         new_grip=Compound(new_grip) if isinstance(new_grip,list) else new_grip
         self.assertLess(old_grip.cut(new_grip).volume,.001)
 
-    def test_trunk_has_both_side_walls_and_remains_hollow(self):
+    def test_trunk_has_both_side_walls_and_filled_middle(self):
         for y in (45,50,55,60):
             for z in (0,10,20,30):
                 for side in (-1,1):
                     self.assertTrue(self.body.is_inside(Vector(side*20,y,z)),(side,y,z))
-                self.assertFalse(self.body.is_inside(Vector(0,y,z)),(y,z))
-        # Follow the extended rear diagonal too; center void and roof stay intact.
+                self.assertTrue(self.body.is_inside(Vector(0,y,z)),(y,z))
+        # Follow the extended rear diagonal too; rear diagonal and roof stay intact.
         lines=json.loads((Path(__file__).resolve().parents[1]/
             'exports/bottom-outline-proposed-lines.json').read_text())
         a,b=lines['13']
