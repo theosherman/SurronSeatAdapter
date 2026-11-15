@@ -1,6 +1,6 @@
 # Latch and saddle bag mount: Fusion extraction
 
-These are **separate parts**, extracted from `Surron Seat Adapter v3 v2` for later native recreation in SolidCraft or Zoo. They have not yet been built in either target. Read the [adapter guide](CAD-REBUILD.md) for the shared assembly coordinate convention. This accessory scope was added after that guide was written.
+These are **separate parts**, extracted from `Surron Seat Adapter v3 v2` for later native recreation in SolidCraft or Zoo. This section records extraction status; the latch has since been rebuilt in SolidCraft and, separately, [Build123d](../Build123d/README.md#separate-latch). The saddlebag mount remains extracted only. Read the [adapter guide](CAD-REBUILD.md) for the shared assembly coordinate convention. This accessory scope was added after that guide was written.
 
 The source API uses centimeters and radians; both accessory recipes use **millimeters and degrees**. All timeline indices are zero-based. Extraction temporarily rolled the source timeline and restored marker **200**; no source geometry was edited or document saved. No Onshape API calls were made.
 
@@ -75,6 +75,6 @@ Expected no-fillet result: **1 solid**, volume **230819.7862 mm^3**, bounding bo
 
 ## Verification and limits
 
-The saved extraction has zero property-read errors. The timeline marker before/after is 200/200. Both source parts are single solids; all eight extrusions have their selected profile loops, end definitions and start definitions saved. All four offset features have explicit face selectors; the latch mirror includes its global YZ plane and combine flag. No target CAD rebuild, dimensional fit check or physical print test has been performed yet. Transient Fusion body names such as Body1 are ambiguous across components; always use the recorded component plus geometry. Use the no-fillet checkpoints, not the source final filleted metrics, when checking the requested rebuild.
+The saved extraction has zero property-read errors. The timeline marker before/after is 200/200. Both source parts are single solids; all eight extrusions have their selected profile loops, end definitions and start definitions saved. All four offset features have explicit face selectors; the latch mirror includes its global YZ plane and combine flag. The later latch rebuilds are documented in their target project notes. No physical print test has been performed; saddlebag target reconstruction remains outstanding. Transient Fusion body names such as Body1 are ambiguous across components; always use the recorded component plus geometry. Use the no-fillet checkpoints, not the source final filleted metrics, when checking the requested rebuild.
 
 Run the local-only generator with `node cad-rebuild/accessories/generate-accessory-recipes.mjs`. The Python extractor requires the original Fusion design open and temporarily changes the timeline marker; do not label that invocation read-only, and do not run it during an unfinished interactive command. It restores the marker in a finally block and never saves the document.
