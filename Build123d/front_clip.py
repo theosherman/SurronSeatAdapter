@@ -16,9 +16,10 @@ def prism_yz(points, width=200):
 
 def redesign_front(body):
     planes=[f for f in body.faces() if f.geom_type==GeomType.PLANE]
-    ramp=next(f for f in planes if f.area>1500 and -176<f.center().Y<-170
-              and f.normal_at().Y>.8)
-    top=next(f for f in planes if f.area>4000 and -185<f.center().Y<-175
+    from bottom_outline import SCREEN_EXTENSION_MM
+    ramp=next(f for f in planes if f.area>1500 and -176-SCREEN_EXTENSION_MM<f.center().Y<-170-SCREEN_EXTENSION_MM
+              and .81<f.normal_at().Y<.83 and .57<f.normal_at().Z<.58)
+    top=next(f for f in planes if f.area>4000 and -200<f.center().Y<-175
              and f.normal_at().Z>.99)
     bottom=next(f for f in planes if f.area>10000
                 and f.normal_at().Z<-.99 and abs(f.normal_at().Y+.118)<.002)
@@ -40,7 +41,11 @@ def redesign_front(body):
     # Small local root gusset joins the retained lower line to the raised jaw.
     # Its front end is safely forward of the bridge but behind the bore's rear
     # tangent (Y=-205.2743), so it cannot close or resize the circular bore.
-    root_end=-199.0
+    # Stay between the ramp join and the bore's rear tangent after screen edits.
+    bore_rear=-205.27430326680117
+    root_end=min(-199.0,(join+bore_rear)/2)
+    if not bore_rear < root_end < join:
+        raise ValueError('Screen extension leaves no room for the clip root gusset')
     clip_section=clip.intersect(Plane((0,root_end,0),z_dir=(0,1,0)))
     lower=min(v.center().Z for v in clip_section.vertices())
     gusset=prism_yz([(join,sb*join+bb),(root_end,lower),

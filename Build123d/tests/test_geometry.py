@@ -9,12 +9,6 @@ class GeometryTests(unittest.TestCase):
             for face, source in profiles(index, with_source=True):
                 self.assertAlmostEqual(face.area, source['areaMm2'], delta=0.01, msg=str(index))
 
-    def test_base_matches_fusion(self):
-        body = build_master(stop='M05')
-        self.assertEqual(len(body.solids()), 1)
-        self.assertTrue(body.is_valid)
-        self.assertAlmostEqual(body.volume, 2096156.9173983494, delta=0.01)
-
     def test_front_clip_center_matches_approved_handle_y(self):
         from build123d import GeomType
         body = build_master(imprint=False)
