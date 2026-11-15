@@ -19,3 +19,8 @@ source/exports remain unchanged pending approval.
 Preview: `Build123d/exports/continuous-screen-ramp-preview.png`.
 Native prototype and report: `Build123d/exports/concepts/continuous-screen-ramp-*`.
 Source: `Build123d/concepts/preview_continuous_screen_ramp.py`.
+
+User subsequently approved this preview and requested implementation. The native
+manufacturing operation and verification are documented in
+`docs/superpowers/plans/2026-11-15-reinforced-screen.md`. This file's earlier
+unchanged-manufacturing statement describes the preview stage only.

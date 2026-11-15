@@ -230,3 +230,31 @@ approved trim preview within 0.001 mm³. Independent review found zero Boolean
 difference from that preview in either direction and zero material intrusion
 into the clip bore. `logs/print-plane-validation.json` records both original
 plane datums and the resulting negligible signed protrusion residuals.
+
+## Reinforced screen-side walls and uninterrupted front incline
+
+`screen_surround.py` adds material above the screen-side walls, starting at the
+rear edge of the screen opening (Y=-101.586319 mm, Z=37.923506 mm). The new
+side tops use the exact native underside slope, **6.8°**, instead of aiming at
+the clip height. The central original **55°** screen-front incline remains one
+continuous planar face into the clip: no added upright ledge and no fillets.
+
+This native operation runs as `M20-screen-surround`, after front reconstruction
+and before restoring both rear printing planes. Additions exclude the screen
+aperture and all central space above the original ramp. The original body is
+never subtracted during reinforcement; underside, clip bore/axis and rear/latch
+geometry remain unchanged. The resulting addition after the print-plane cuts
+is approximately **21,067.349 mm³**. Native construction uses the recipe-built
+faces, not the approved preview STEP/STL as an input.
+
+The earlier rear/screen retained-region regression now compares the original
+body behind the rear screen edge, since changing the side walls beside the
+screen is explicitly authorized. Original underside material probes remain.
+Historical concept images and prototypes are retained as approval evidence.
+
+Verified current reinforced model: **26 tests** and **12 mesh ceiling checks**
+pass. Reopened STEP is one valid solid of **1,506,519.136 mm³**, matching the
+approved continuous-ramp prototype within 0.001 mm³. Independent Boolean review
+confirms zero missing original material and zero difference from the approved
+prototype. `preview_screen_surround.py` renders the implemented join directly
+from manufacturing STEP to `exports/screen-surround-implemented.png`.

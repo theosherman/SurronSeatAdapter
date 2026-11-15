@@ -112,6 +112,8 @@ def build_master(stop=None, imprint=True, airtag_depth=8.5):
     body = body.translate(ADAPTER_TRANSLATION_MM)
     from front_clip import redesign_front
     body = stage('M20-front-redesign', redesign_front(body))
+    from screen_surround import reinforce_screen
+    body = stage('M20-screen-surround', reinforce_screen(body))
     from print_planes import trim_to_rear_print_planes
     body = stage('M20-print-planes', trim_to_rear_print_planes(body))
     if stop=='M20' or not imprint: return body
