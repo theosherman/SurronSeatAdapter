@@ -101,7 +101,7 @@ def build_master(stop=None, imprint=True, airtag_depth=8.5):
     wedge = Solid.extrude(Face(Wire.make_polygon([source_to_model(p) for p in points],close=True)),source_to_model((86,0,0)))
     body = stage('M14',body.cut(wedge))
     body = stage('M15',body.cut(tool(89,8,direction=-Vector(SKETCHES['RearSeatNotchSketch']['normal']))))
-    body = stage('M16',body.fuse(tool(91,80,source_to_model([1,0,0]),symmetric=True)))
+    # M16 front dovetail omitted by explicit user request; rear dovetail retained.
     side = tool(97,1000,symmetric=True)
     body = stage('M17',body.cut(side,side.mirror(Plane.YZ)))
     rearcut = tool(121,1000,symmetric=True)
@@ -110,6 +110,8 @@ def build_master(stop=None, imprint=True, airtag_depth=8.5):
     body = stage('M20',body.cut(tool(126,airtag_depth,direction=-Vector(SKETCHES['AirtagCutSketch']['normal']))))
     # Place the finished geometry before the stationary wheel-body subtraction.
     body = body.translate(ADAPTER_TRANSLATION_MM)
+    from front_clip import redesign_front
+    body = stage('M20-front-redesign', redesign_front(body))
     if stop=='M20' or not imprint: return body
     print('Preparing Sherman P: align whole scan before slices; handles excluded; body scale 1.003', flush=True)
     scan_path = prepare_scan(ROOT/'Sherman_P_Scan_Aligned_To_Adapter_mm.stl', ROOT/'Build123d/inputs/wheel-scan-model-frame.stl')
