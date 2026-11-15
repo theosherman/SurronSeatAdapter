@@ -1,3 +1,4 @@
 {
-  "python.defaultInterpreterPath": "${userHome}/.local/share/venvs/surron-build123d/bin/python"
+  "python.defaultInterpreterPath": "/home/theo/.local/share/venvs/surron-build123d/bin/python",
+  "python.useEnvironmentsExtension": false
 }
