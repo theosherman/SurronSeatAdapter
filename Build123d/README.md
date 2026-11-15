@@ -155,3 +155,19 @@ retains the nominal volume and STL differs by about **0.256 mm³** due to
 0.005 mm tessellation. These checks establish agreement with the extracted
 source metrics; physical fit and a full source-to-port Boolean comparison
 remain untested.
+
+
+## Rear-handle / TPU latch preview
+
+`preview_rear_handle.py` generates `exports/rear-handle-circle-preview.png` and
+`logs/rear-handle-circle-preview.json` without changing geometry or creating a
+cylinder. The user confirmed equal front/rear handle size matching the clip bore:
+**30.2 mm diameter**, extracted from the adapter's analytic clip arcs. Only the
+uppermost **3 mm** of each scan section is used to locate that fixed-size circle;
+sides and underside are explicitly excluded. Sections at X=-40/-20/0/+20/+40 mm
+are recorded; the central section drives the drawing. Cyan points identify the
+trusted crown, magenta is the inferred circle, and orange is the 1 mm interference
+target. The existing latch already crosses this estimate by about **2.44 mm**
+normal to its back face, with the projected contact inside the actual face.
+The user must review the circle before the latch geometry is revised; this is
+an estimate from partial scan evidence, not a physical fit validation.

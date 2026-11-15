@@ -1,0 +1,76 @@
+{
+  "previewOnly": true,
+  "frame": "Build123d; Y rearward, Z up",
+  "source": "exports/sherman-p-prepared/rear-handle.stl",
+  "sectionFits": {
+    "-40": {
+      "centerYZmm": [
+        230.6463510254222,
+        -22.658418683260294
+      ],
+      "radiusMm": 15.1,
+      "trustedTopBandMm": 3.0,
+      "topZmm": -7.493800779769841,
+      "rmsResidualMm": 0.03323970883156009,
+      "points": 15
+    },
+    "-20": {
+      "centerYZmm": [
+        230.5046107365456,
+        -22.641120119410864
+      ],
+      "radiusMm": 15.1,
+      "trustedTopBandMm": 3.0,
+      "topZmm": -7.420792463776285,
+      "rmsResidualMm": 0.11759575723958457,
+      "points": 17
+    },
+    "0": {
+      "centerYZmm": [
+        230.48897990286136,
+        -22.626127181628448
+      ],
+      "radiusMm": 15.1,
+      "trustedTopBandMm": 3.0,
+      "topZmm": -7.41787378862212,
+      "rmsResidualMm": 0.10374388209279896,
+      "points": 18
+    },
+    "20": {
+      "centerYZmm": [
+        230.4634130083731,
+        -22.620018226571545
+      ],
+      "radiusMm": 15.1,
+      "trustedTopBandMm": 3.0,
+      "topZmm": -7.416782668037528,
+      "rmsResidualMm": 0.13114021534293147,
+      "points": 20
+    },
+    "40": {
+      "centerYZmm": [
+        230.60752724092472,
+        -22.687404497117363
+      ],
+      "radiusMm": 15.1,
+      "trustedTopBandMm": 3.0,
+      "topZmm": -7.5695338224937565,
+      "rmsResidualMm": 0.04252237627997498,
+      "points": 17
+    }
+  },
+  "selectedSectionXmm": 0,
+  "fixedDiameterFromClipMm": 30.2,
+  "diameterSource": "Front clip analytic inner arcs from adapter-body.step; same front/rear handle size per user",
+  "existingLatchPlaneNormalYZ": [
+    0.8597932986247546,
+    0.5106422266518543
+  ],
+  "existingPlaneDistanceToCircleCenterMm": 12.664259386447505,
+  "existingNormalInterferenceMm": 2.435740613552495,
+  "contactOnActualFace": true,
+  "requestedNormalInterferenceMm": 1.0,
+  "requiredPlaneOffsetMm": -1.435740613552495,
+  "caveat": "Fixed clip diameter positioned using only the uppermost 3 mm of the rear scan; sides/underside excluded. Plane interference assumes contact is within the face.",
+  "cadGeometryChanged": false
+}
