@@ -8,7 +8,7 @@ The [build123d project](Build123d/README.md) reconstructs the unsplit adapter lo
 
 The [SolidCraft project](SolidCraft/README.md) now contains a native reconstruction: unsplit imprinted master, dependent two-piece printing variant, and five connector recesses. Read its [build results](SolidCraft/BUILD-RESULTS.md) for verification and the small cutter approximation. Exact Onshape parity has not been established.
 
-The separate **Latch** and **SaddleBagMount** are now extracted too: see [accessory build sequences](docs/ACCESSORY-PARTS.md) and the independent millimeter recipes under `cad-rebuild/accessories/`. They remain separate parts and have not been built in the destination CAD systems.
+The separate **Latch** and **SaddleBagMount** are now extracted too: see [accessory build sequences](docs/ACCESSORY-PARTS.md) and the independent millimeter recipes under `cad-rebuild/accessories/`. The latch is now rebuilt as a separate editable solid in [Build123d](Build123d/README.md#separate-latch); the saddlebag mount remains extracted only. SolidCraft has its separately documented latch implementation.
 
 1. Read [CAD rebuild guide](docs/CAD-REBUILD.md) for the final scope, feature sequence, coordinate rules, and corrections.
 2. Use [portable recipe](cad-rebuild/recipe.json) for millimeter geometry, exact selected profile loops, draft datums, and all five connector instances.

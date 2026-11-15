@@ -1,6 +1,6 @@
 # build123d adapter reconstruction
 
-The full, unsplit adapter is reconstructed as editable Python solid geometry from the repository's millimeter recipe. The final wheel imprint subtracts only the prepared Sherman P middle body, with the source screen patch reconnected before preparation and uniformly scaled by **1.003** about model origin after cuts at Y=-191/+170 mm. Both handles move with the complete scan during alignment, remain unscaled after slicing, and are excluded from subtraction. The master has no fillets or connector recesses. No split variant or accessories are built by this project.
+The full, unsplit adapter is reconstructed as editable Python solid geometry from the repository's millimeter recipe. The final wheel imprint subtracts only the prepared Sherman P middle body, with the source screen patch reconnected before preparation and uniformly scaled by **1.003** about model origin after cuts at Y=-191/+170 mm. Both handles move with the complete scan during alignment, remain unscaled after slicing, and are excluded from subtraction. The master has no fillets or connector recesses. The latch is a separate editable accessory; no split variant or saddlebag mount is built by this project.
 
 ## Run
 
@@ -69,7 +69,7 @@ The prior nominal in-memory master volume, before the approved alignment, was ap
 - Like the earlier ports, the side bores use through cylinders instead of Fusion's nonparallel from-face start. Original constraint graphs are not recovered.
 - Exact Onshape parity, full-model source-to-port XOR comparison, and physical print-fit testing have not been established. The orientation revision was separately checked against the previous Build123d STEP after aligning it for comparison: symmetric-difference volume was 0.0012 mm³. See `logs/orientation-validation.json`; this verifies preservation during reorientation, not source-to-port equality.
 
-The existing SolidCraft and Onshape files remain unchanged. Accessories remain separate; this source does not merge the latch or saddlebag mount into the master.
+The existing SolidCraft and Onshape files remain unchanged. The latch remains separate; this source does not merge accessories into the master.
 
 ## Sherman P body-only fit preparation
 
@@ -100,3 +100,37 @@ mesh has zero self-intersection reports; its signed volume changes by about
 -38.209 mm³ out of 4.22 million mm³. This resolves the folded surface ambiguity;
 it does not reproduce every original facet interior. The source points and patch
 boundary remain exact. The export validator checks the reopened cutter again.
+
+## Separate latch
+
+`latch.py` builds the Latch as one separate solid in the same corrected model
+frame. `view_adapter.py` displays it in green alongside the adapter and scan
+references. Change `LATCH_CLEARANCE` there to adjust its three mating faces;
+the default is **0.2 mm inward**, preserving the source functional clearance.
+The latch is never fused into the adapter. No fillets or saddlebag mount are added.
+
+```bash
+XDG_CACHE_HOME=/tmp/surron-build123d-cache \
+  ~/.local/share/venvs/surron-build123d/bin/python Build123d/latch.py
+```
+
+This produces `exports/latch.step`, `exports/latch.stl` and
+`logs/latch-validation.json`. Python callers can use
+`build_latch(clearance=0.2)`; `with_stages=True` also returns checkpoint measurements.
+The dovetail cutter directly consumes the master recipe's selected rear-dovetail
+profile through `adapter.profiles(18)` so profile edits propagate into both parts.
+Side and top regions use the accessory recipe's exact selected loops, including
+analytic R5/R15 arcs. The source oblique extrusion limit is reproduced by a long
+extrusion trimmed to its saved plane. The three face offsets are reproduced by
+two inward-shifted limiting planes (the two shoulder faces are coplanar).
+
+All five source checkpoint volumes match within **0.01 mm³**. The final nominal
+solid measures **230819.786248 mm³**; corrected-frame bounds are approximately
+`(-60.865103,150.227354,-45.662921)` to
+`(60.865103,222.424548,47.321249)` mm. Tests check the frame, analytic cylinder
+retention, all three inward offsets, clearance changes, and temporary shared
+profile edits with restoration. Both exports reopen as one valid solid; STEP
+retains the nominal volume and STL differs by about **0.256 mm³** due to
+0.005 mm tessellation. These checks establish agreement with the extracted
+source metrics; physical fit and a full source-to-port Boolean comparison
+remain untested.
