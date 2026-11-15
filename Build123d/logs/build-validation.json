@@ -5,7 +5,7 @@
     -2.426787168466774,
     0.0
   ],
-  "elapsedSeconds": 17.842198301997996,
+  "elapsedSeconds": 18.019455746001768,
   "stages": [
     {
       "step": "M01",
@@ -105,37 +105,37 @@
     },
     {
       "step": "M19",
-      "volumeMm3": 1347047.902135641,
+      "volumeMm3": 1411002.6279845457,
       "solids": 1,
       "valid": true
     },
     {
       "step": "M20",
-      "volumeMm3": 1338341.3939710786,
+      "volumeMm3": 1402296.119821498,
       "solids": 1,
       "valid": true
     },
     {
       "step": "M20-front-redesign",
-      "volumeMm3": 1350709.9181410682,
+      "volumeMm3": 1402406.8406375998,
       "solids": 1,
       "valid": true
     },
     {
       "step": "M20-screen-surround",
-      "volumeMm3": 1378303.119620912,
+      "volumeMm3": 1429813.5709965173,
       "solids": 1,
       "valid": true
     },
     {
       "step": "M20-print-planes",
-      "volumeMm3": 1374123.4306081282,
+      "volumeMm3": 1425603.4132920625,
       "solids": 1,
       "valid": true
     },
     {
       "step": "M21",
-      "volumeMm3": 1337167.6671980321,
+      "volumeMm3": 1387005.7927714763,
       "solids": 1,
       "valid": true
     }

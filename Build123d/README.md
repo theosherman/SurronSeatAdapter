@@ -276,18 +276,20 @@ mirrored, and the saved proposal coordinates are in the placed model frame.
 
 The existing 55-degree screen ramp follows the extended opening: its datum
 moves forward 10 mm along the original sloped top/bottom planes. Its top join
-is now Y=-202.950417 mm. The clip-root gusset ends at Y=-204.112360 mm, between
-that join and the unchanged bore rear tangent at Y=-205.274303 mm. The original
-30.2 mm clip bore and its axis remain fixed. The side reinforcement and both
-printing planes rebuild from native faces. The separate latch, adapter placement,
-scan preparation and body-only 1.003 fit scale are unchanged; no fillets are added.
+is Y=-202.950417 mm. The complete original clip is lifted using the original
+Y=-192.950417 mm separation boundary; the root gusset retains Y=-199 mm.
+The upper connector is trimmed to the moved screen-ramp plane. The original
+30.2 mm clip bore and its axis remain fixed. Side reinforcement uses the native
+ramp/top plane intersection, and both printing planes rebuild from native faces.
+The separate latch, placement, scan preparation and body-only 1.003 fit scale
+remain unchanged; no fillets are added.
 
-Current native pre-imprint volume is **1,374,123.431 mm³**; imprinted volume is
-**1,337,167.667 mm³**. STEP reopens as one valid solid of **1,337,167.678 mm³**;
-STL is one valid solid of **1,337,167.470 mm³**. These current values supersede
-the earlier section volumes. Export validation measures the AirTag edit using
-two native builds separately from STEP serialization: removed volume is
-102.429507785 mm³ and STEP round-trip volume error is +0.010984917 mm³.
+Current repaired pre-imprint volume is **1,425,603.413 mm³**; imprinted native
+volume is **1,387,005.793 mm³**. STEP reopens as one valid solid of
+**1,387,005.792 mm³**; STL is one valid solid of **1,387,007.322 mm³**.
+These values supersede the initial outline implementation and earlier volumes.
+Export validation separately measures the native AirTag edit (102.429507809 mm³)
+and STEP round-trip volume error (-0.000375059 mm³).
 
 `preview_suspension_outline.py` renders the [implemented top and oblique views](exports/suspension-outline-implemented.png)
 from the actual manufacturing STL. The old numbered sketch image is historical
@@ -295,8 +297,44 @@ reference geometry; its line IDs remain stable. Existing seat-hanger features
 remain, including their protrusions outside the narrow base outline. Physical
 cover removal, print fit and printed strength have not been tested.
 
-Verification for this outline: all **27 tests** pass, all **12 mesh mounting-ceiling
+Verification for this repaired outline: all **29 tests** pass, all **12 mesh mounting-ceiling
 checks** pass, portable reference validation passes, and export/parameter validation
 passes. Native blank and M05 geometry agree with the independently constructed
 approved proposal within 0.001 mm³ in both Boolean directions. Full-cylinder
 intersection confirms the 30.2 mm clip bore contains no adapter material.
+
+
+### Trunk walls and complete clip repair
+
+The initial outline implementation left the original M19 pocket unchanged, which
+cut completely through the narrowed side walls. Its clip-lifting split also
+followed the relocated ramp and stranded part of the original jaw below the
+raised clip. Earlier tests verified validity and bore clearance but missed both
+functional defects; the initial green suite was insufficient.
+
+`trunk_cavity.py` now intersects the original tapered pocket tool with an envelope
+formed from the revised outer footprint, offset inward **8 mm in the XY plane**.
+Prior-model lower-wall samples were approximately 8–15 mm thick. The constraint
+restores the straight narrowed walls and routes the pocket around the changed
+rear diagonal, while retaining a hollow cavity, its original roof plane, and
+15-degree taper wherever the old cutter fits. This wall allowance is unrelated
+to scan fit clearance. It does not assert an 8 mm minimum through every later
+cut or scan imprint; final-material probes check the affected neck after imprint.
+
+Independent STEP sections confirm 8 mm straight cavity walls and approximately
+12.09 mm horizontal walls beside the diagonal. The original roof is unchanged,
+including its pre-existing local source notch. The M19 pocket still removes
+approximately **539,715.733 mm³** before later cuts.
+
+The clip repair lifts the entire original jaw independently of the larger screen
+opening, retaining its original lower envelope and grip geometry. A historical
+native clip fixture checks for added hanging material and preserved grip volume.
+New material probes verify the hollow pocket, side walls, roof, and final imprinted
+walls. All 29 tests and existing exported checks pass.
+
+[Original / defective / repaired underside comparison](exports/cavity-and-clip-repair.png)
+is rendered from actual manufacturing STL exports using `preview_cavity_repair.py`.
+Extract the prior exports with `git show cf2f335:Build123d/exports/adapter-body.stl`
+and `git show c836713:Build123d/exports/adapter-body.stl` into temporary files, then
+pass their paths to that script. The current manufacturing export is the repaired
+right-hand panel. Rerun `view_adapter.py` to refresh an already-open viewer.

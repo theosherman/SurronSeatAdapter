@@ -11,7 +11,7 @@ def reinforce_screen(body):
     planes=[f for f in body.faces() if f.geom_type==GeomType.PLANE]
     rear=next(f for f in planes if f.area>2000 and -103<f.center().Y<-100
               and f.normal_at().Y<-.99)
-    cliptop=next(f for f in planes if f.area>1000 and f.bounding_box().max.Y<-200
+    cliptop=next(f for f in planes if f.area>1000 and f.center().Y<-200
                  and f.normal_at().Z>.99)
     bottom=next(f for f in planes if f.area>4000 and abs(f.normal_at().X)<1e-6
                 and f.normal_at().Z<-.99 and f.normal_at().Y<-.1)
@@ -22,7 +22,14 @@ def reinforce_screen(body):
     if len(rails)!=2:
         raise ValueError('Expected both original screen-side top faces')
     y0,z0=rear.center().Y,rear.bounding_box().max.Z
-    y1=cliptop.bounding_box().max.Y
+    # Side wings may extend behind the central ramp join; use plane intersection,
+    # not the face's bounding box, as the front limit of side reinforcement.
+    def yz_line(face):
+        p,n=face.center(),face.normal_at()
+        m=-n.Y/n.Z
+        return m,p.Z-m*p.Y
+    mr,br=yz_line(ramp);mc,bc=yz_line(cliptop)
+    y1=(bc-br)/(mr-mc)
     slope=-bottom.normal_at().Y/bottom.normal_at().Z
     target=Plane((0,y0,z0),x_dir=(1,0,0),z_dir=(0,-slope,1))
     slab=Solid.make_box(200,y0-y1,200,Plane((-100,y1,-50)))
