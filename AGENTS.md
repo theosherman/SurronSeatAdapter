@@ -1,5 +1,17 @@
 # Project context for future CAD work
 
+## Project-wide priority: simplicity
+
+The user explicitly prioritizes simplicity in every part of this project, in every session. Prefer the simplest understandable, editable design that meets the requested function. Apply this to CAD geometry, sketches, feature history, code, instructions, and workflows.
+
+- Prefer redrawing the controlling sketch or changing the original feature over stacking corrective face extrusions, Boolean patches, duplicate interfaces, or special-case instructions.
+- Do not treat the user's selection of a proposed design as acceptance of hidden implementation complexity. If a proposal or requested change starts becoming more complex, point that out **before proceeding**, explain the practical maintenance/failure tradeoff, and present a simpler alternative so the user can steer.
+- Replace or remove superseded workarounds rather than accumulating more layers. Preserve requested function and established geometry; simplicity does not authorize silently dropping requirements.
+
+Current cavity direction: redraw a simple hexagonal or octagonal cavity confined to the wider rear section, leave the narrow middle as solid CAD material for slicer infill, and leave a continuous thicker rear wall. Keep only the original top dovetail. The face-extrusion/region-patching implementation in commit `484bf2e` was rejected by the user; it is not an accepted geometry reference.
+
+## CAD context
+
 Read `README.md`, `docs/CAD-REBUILD.md`, and `cad-rebuild/recipe.json` before changing CAD geometry. `docs/PORTING-AND-VALIDATION.md` describes validation for another CAD engine.
 
 Additional user-requested parts: `Latch` and `SaddleBagMount` must remain separate from the adapter and from each other. Their extracted features and build sequences are in `docs/ACCESSORY-PARTS.md` and `cad-rebuild/accessories/`. Extraction does not mean they have been rebuilt in SolidCraft or Onshape.

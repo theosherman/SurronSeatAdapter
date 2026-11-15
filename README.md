@@ -1,5 +1,11 @@
 # SurronSeatAdapter
 
+## Project priority: simplicity
+
+**Simplicity is a priority in every part of this project and in every session.** Prefer clear sketches, direct features, readable code, and short workflows over layered corrections and special cases. When a change or proposed option adds complexity, explain that tradeoff before proceeding and offer a simpler alternative so the user can weigh it. Selecting an option does not imply acceptance of hidden complexity. Remove superseded workarounds instead of adding more patches, while preserving the requested function.
+
+For the current cavity redesign, the user wants a simple hexagonal or octagonal cavity only in the wider rear section, a solid narrow middle suitable for slicer infill, a continuous thicker rear wall, and only the original top dovetail. The face-based implementation at `484bf2e` was rejected and must be replaced by a controlling-sketch redesign. Its passing solid-validity checks do not make its shape accepted. See [AGENTS.md](AGENTS.md) for the persistent session instructions.
+
 This folder records the reconstruction of the Fusion design **Surron Seat Adapter v3 v2** in Onshape, including the later wheel-scan imprint and a linked printing variant. It is intended to let a future agent rebuild the accepted geometry in another CAD system, including SolidCraft or Zoo Design Studio.
 
 ## Start here
