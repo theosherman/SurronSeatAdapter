@@ -58,10 +58,10 @@ def redesign_front(body):
     wedge=Compound(wedge) if isinstance(wedge,ShapeList) else wedge
     gusset=Compound(gusset) if isinstance(gusset,ShapeList) else gusset
     result=rear.fuse(clip,wedge,gusset).clean()
-    # Remove only the upper central connector above the moved screen ramp;
+    # Trim the connector and both side wings above the moved screen ramp;
     # leave the original complete clip and its lower support envelope intact.
     ramp_air=prism_yz([(join,sr*join+br),(start,sr*start+br),
-                      (start,200),(join,200)],width=86)
+                      (start,200),(join,200)],width=200)
     result=result.cut(ramp_air).clean()
     if len(result.solids())!=1 or not result.is_valid:
         raise ValueError('Raised front reconstruction is not one valid solid')

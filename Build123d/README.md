@@ -284,7 +284,7 @@ ramp/top plane intersection, and both printing planes rebuild from native faces.
 The separate latch, placement, scan preparation and body-only 1.003 fit scale
 remain unchanged; no fillets are added.
 
-Current repaired pre-imprint volume is **1,425,603.413 mm³**; imprinted native
+At the trunk/clip repair milestone, pre-imprint volume was **1,425,603.413 mm³**; imprinted native
 volume is **1,387,005.793 mm³**. STEP reopens as one valid solid of
 **1,387,005.792 mm³**; STL is one valid solid of **1,387,007.322 mm³**.
 These values supersede the initial outline implementation and earlier volumes.
@@ -297,7 +297,7 @@ reference geometry; its line IDs remain stable. Existing seat-hanger features
 remain, including their protrusions outside the narrow base outline. Physical
 cover removal, print fit and printed strength have not been tested.
 
-Verification for this repaired outline: all **29 tests** pass, all **12 mesh mounting-ceiling
+Verification at the trunk/clip repair milestone: all **29 tests** passed, all **12 mesh mounting-ceiling
 checks** pass, portable reference validation passes, and export/parameter validation
 passes. Native blank and M05 geometry agree with the independently constructed
 approved proposal within 0.001 mm³ in both Boolean directions. Full-cylinder
@@ -338,3 +338,43 @@ Extract the prior exports with `git show cf2f335:Build123d/exports/adapter-body.
 and `git show c836713:Build123d/exports/adapter-body.stl` into temporary files, then
 pass their paths to that script. The current manufacturing export is the repaired
 right-hand panel. Rerun `view_adapter.py` to refresh an already-open viewer.
+
+
+## Seat-support continuations and screen walls lowered 8 mm
+
+The two later user reference images are preserved as [shoulder marks](../docs/images/seat-shoulder-support-request.png)
+and [screen-junction circles](../docs/images/screen-wall-lowering-request.png).
+`seat_shoulders.py` extends the existing rear shoulder edge of each seat-support
+tab into the narrow body, replacing the forward-folding return shown in image one.
+The original shoulder plane, outer seat-contact edge, and 45-degree underside
+draft are retained. Each rear shoulder face now spans X=22–51 mm (29 mm total)
+and has approximately **529.281 mm²** area, compared with the prior 15.620 mm span
+and **162.039 mm²**. This adds material continuity along the marked load path;
+printed load capacity has not been established.
+
+The manufacturing profile uses `profiles(79, seat_shoulders=True)`; default
+source-profile inspection and the shared portable recipe remain original.
+The change flows through the normal mirrored M11 operation and subsequent cuts.
+
+`SCREEN_WALL_LOWERING_MM = 8.0` in `screen_surround.py` lowers the parallel side-top
+plane from Z=37.923506 to **29.923506 mm** at Y=-101.586319 mm. A scoped native cut
+caps both original rail material and added reinforcement, retaining the higher
+55-degree front incline. `front_clip.py` trims the raised connector across the
+full width, removing the two side-wing upright steps seen in the black circle.
+The two former 3.418 mm² extrusion ribbons near `(±55.84,-103.407,38)` in the
+green circle disappear after lowering. The original rounded cutout is retained;
+no replacement circular cut or fillet is added.
+
+Current native pre-imprint volume is **1,413,939.801 mm³**; imprinted volume is
+**1,375,342.181 mm³**. STEP reopens as one valid solid of **1,375,342.180 mm³**;
+STL is one valid solid of **1,375,343.706 mm³**. These values supersede the
+previous milestone volumes. All **33 tests**, all **12 mesh mounting-ceiling
+checks**, source reference validation, export reopening and AirTag depth-edit
+validation pass. Native shoulder material is checked after the wheel imprint,
+not just on the pre-imprint blank. Clip, trunk-wall and printing-plane regressions
+remain active. The separate accessories and wheel fit preparation are unchanged.
+
+See the [before/after implemented comparison](exports/shoulders-and-lowered-screen.png)
+and [native measurements](logs/shoulder-screen-validation.json).
+`preview_shoulders_screen.py` takes a historical STL path and compares it with
+the current manufacturing export; extract the prior STL from commit `4e3cb4d`.
