@@ -1,5 +1,6 @@
 import fs from 'node:fs';
 const root=new URL('./',import.meta.url);
+const placement=JSON.parse(fs.readFileSync(new URL('adapter-placement.json',root))).translationMm;
 const meshPath=process.argv[2]??new URL('exports/adapter-body.stl',root);
 const mesh=fs.readFileSync(meshPath);
 const count=mesh.readUInt32LE(80);
@@ -26,7 +27,7 @@ const roof=recipe.masterSteps.find(s=>s.id==='M09');
 const checks=[];
 function check(name,point,expected){
  // Saved source datums become model coordinates before classification.
- point=point.map((v,i)=>i<2?-v:v);
+ point=point.map((v,i)=>(i<2?-v:v)+placement[i]);
  const votes=[[1,.371,.193],[.217,1,.413]].map(dir=>inside(point,dir));
  checks.push({name,pointMm:point,expectedMaterial:expected,material:votes[0],rayAgreement:votes[0]===votes[1],ok:votes.every(v=>v===expected)});
 }
@@ -40,7 +41,7 @@ for(const u of [-14.5,14.5]){
  const center=bolt.originMm.map((v,i)=>v+u*bolt.xAxis[i]+193.9428441873774*bolt.yAxis[i]-3*bolt.normal[i]);
  capTests('rear '+u,center,bolt.normal);
 }
-const report={ok:checks.every(c=>c.ok),source:String(meshPath),triangles:count,checks,method:'Two independent triangle ray parity tests at 0.5 mm above/below each saved cap plane; annular sample 6 mm off bore axis.'};
+const report={adapterTranslationMm:placement,ok:checks.every(c=>c.ok),source:String(meshPath),triangles:count,checks,method:'Two independent triangle ray parity tests at 0.5 mm above/below each saved cap plane; annular sample 6 mm off bore axis.'};
 fs.writeFileSync(process.argv[3]??new URL('logs/mounting-ceiling-validation.json',root),JSON.stringify(report,null,2));
 console.log(JSON.stringify({ok:report.ok,checks:checks.length,failed:checks.filter(c=>!c.ok)}));
 if(!report.ok)process.exitCode=1;

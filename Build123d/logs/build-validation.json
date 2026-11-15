@@ -1,6 +1,11 @@
 {
   "coordinateFrame": "source (x,y,z) -> model (-x,-y,z); physical front is negative Y; Z up",
-  "elapsedSeconds": 35.23126159000094,
+  "adapterTranslationMm": [
+    0.0,
+    -2.426787168466774,
+    0.0
+  ],
+  "elapsedSeconds": 17.804541677996895,
   "stages": [
     {
       "step": "M01",
@@ -87,38 +92,50 @@
       "valid": true
     },
     {
-      "step": "M16",
-      "volumeMm3": 2205096.6462426535,
-      "solids": 1,
-      "valid": true
-    },
-    {
       "step": "M17",
-      "volumeMm3": 2200572.434564904,
+      "volumeMm3": 2194192.016281722,
       "solids": 1,
       "valid": true
     },
     {
       "step": "M18",
-      "volumeMm3": 2194608.9858578816,
+      "volumeMm3": 2188228.567574638,
       "solids": 1,
       "valid": true
     },
     {
       "step": "M19",
-      "volumeMm3": 1536181.0044656738,
+      "volumeMm3": 1529800.5861820425,
       "solids": 1,
       "valid": true
     },
     {
       "step": "M20",
-      "volumeMm3": 1527474.4963024335,
+      "volumeMm3": 1521094.0780186588,
+      "solids": 1,
+      "valid": true
+    },
+    {
+      "step": "M20-front-redesign",
+      "volumeMm3": 1539711.882364244,
+      "solids": 1,
+      "valid": true
+    },
+    {
+      "step": "M20-screen-surround",
+      "volumeMm3": 1564572.4933118608,
+      "solids": 1,
+      "valid": true
+    },
+    {
+      "step": "M20-print-planes",
+      "volumeMm3": 1560259.0324663164,
       "solids": 1,
       "valid": true
     },
     {
       "step": "M21",
-      "volumeMm3": 1476826.4784675327,
+      "volumeMm3": 1506519.135783302,
       "solids": 1,
       "valid": true
     }
