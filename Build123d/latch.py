@@ -8,7 +8,7 @@ import argparse
 import json
 import math
 from build123d import Edge, Wire, Face, Solid, Plane, Vector, Keep, Compound, ShapeList, export_step, export_stl, import_step, Mesher
-from coordinates import source_to_model
+from coordinates import source_to_model, ADAPTER_TRANSLATION_MM
 from adapter import profiles as adapter_profiles
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -109,6 +109,8 @@ def build_latch(clearance=0.2, with_stages=False):
             planes.append((origin, normal))
             body = body.split(Plane(origin, z_dir=normal), Keep.BOTTOM)
     body = stage(106, body)
+    # Follow the adapter assembly placement while retaining a separate solid.
+    body = body.translate(ADAPTER_TRANSLATION_MM)
     body.label = 'Latch'
     return (body, stages) if with_stages else body
 
@@ -131,7 +133,7 @@ def main():
         if not shape.is_valid or len(shape.solids()) != 1 or abs(shape.volume-body.volume)>body.volume*1e-4:
             raise ValueError(f'Latch export failed validation: {reopened[name]}')
     report = dict(clearanceMm=args.clearance, fillets=False, coordinateFrame='source (x,y,z) -> model (-x,-y,z)',
-                  stages=stages, reopened=reopened, physicalFitTested=False)
+                  placementTranslationMm=ADAPTER_TRANSLATION_MM, stages=stages, reopened=reopened, physicalFitTested=False)
     (Path(__file__).parent/'logs/latch-validation.json').write_text(json.dumps(report, indent=2)+'\n')
     print(json.dumps(report, indent=2))
 

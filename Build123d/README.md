@@ -53,9 +53,9 @@ XDG_CACHE_HOME=/tmp/surron-build123d-cache \
 node Build123d/validate-mounting-ceilings.mjs
 ```
 
-Orientation tests check the initial profile, sketch frames and first extrusion, so an end-of-build rotation cannot pass. Material probes use the corrected frame. Tests compare 16 selected-profile sets against their saved areas, the M05 base against Fusion's volume, the finished body against an independent subtraction of the accepted prepared body STEP from the saved pre-imprint adapter, and all twelve mounting ledge/cavity/bore samples against native solid classification. The additional mesh check uses two independent ray directions. The export check reopens STEP and STL and rebuilds with an AirTag depth of 8.6 mm to check the expected 102.4295 mm³ change; it does not overwrite nominal exports.
+Orientation tests check the initial profile, sketch frames and first extrusion, so an end-of-build rotation cannot pass. Material probes use the corrected frame. Tests compare 16 selected-profile sets against their saved areas, the M05 base against Fusion's volume, the finished body against an independent subtraction of the accepted prepared body STEP from the saved pre-imprint adapter, and all twelve mounting ledge/cavity/bore samples against native solid classification. The mesh ceiling check uses two independent ray directions at placed probe points. The export check reopens STEP and STL and rebuilds with an AirTag depth of 8.6 mm to check the expected 102.4295 mm³ change; it does not overwrite nominal exports.
 
-The prior nominal in-memory master volume, before the approved alignment, was approximately **1,517,837.554 mm³**. The current aligned master measures approximately **1,476,826.478 mm³**; see `logs/build-validation.json`. The earlier full-scan imprint measured **1,507,476.035 mm³**. Matching volume is useful regression evidence, not proof of whole-model equality or physical fit.
+The prior nominal in-memory master volume, before the approved alignment, was approximately **1,517,837.554 mm³**. After the scan alignment the master measured approximately **1,476,826.478 mm³**. After the approved front-clip placement the current master measures approximately **1,473,734.600 mm³**; see `logs/build-validation.json`. The earlier full-scan imprint measured **1,507,476.035 mm³**. Matching volume is useful regression evidence, not proof of whole-model equality or physical fit.
 
 ## Construction choices and limitations
 
@@ -70,6 +70,27 @@ The prior nominal in-memory master volume, before the approved alignment, was ap
 - Exact Onshape parity, full-model source-to-port XOR comparison, and physical print-fit testing have not been established. The orientation revision was separately checked against the previous Build123d STEP after aligning it for comparison: symmetric-difference volume was 0.0012 mm³. See `logs/orientation-validation.json`; this verifies preservation during reorientation, not source-to-port equality.
 
 The existing SolidCraft and Onshape files remain unchanged. The latch remains separate; this source does not merge accessories into the master.
+
+## Approved front-clip placement
+
+The adapter and separate latch now translate **-2.426787168466774 mm along Y**
+(about 2.43 mm toward the front), with X and Z unchanged. This implements the
+approved [side-view preview](exports/front-clip-alignment-proposal.png).
+The clip's circular center is now Y=-220.37430326680117 mm, Z=14.8216096181789 mm,
+vertically aligned with the front-handle center estimated from its scan silhouette
+(Y approximately -220.3743 mm, Z approximately 32.6991 mm).
+
+`adapter-placement.json` controls this assembly placement through
+`coordinates.ADAPTER_TRANSLATION_MM`, shared with the mesh ceiling validator. Manufacturing
+profiles and early checkpoints remain in their original corrected model frame.
+The completed M20 body is placed before the stationary wheel-body subtraction;
+`--no-imprint` and `--stop M20` return that placed geometry. The latch is placed
+after its source checkpoints, remains separate, and keeps its existing clearance.
+Scan alignment, slicing, scale and reference exports are unchanged. The final
+imprint is regenerated at the new position rather than translated from an old cut.
+This supersedes the earlier statement that the drawn scan line exactly coincides
+with the adapter lower plane: the scan retains that approved orientation, while
+its position relative to the translated sloped adapter has changed slightly.
 
 ## Sherman P body-only fit preparation
 
@@ -126,11 +147,114 @@ two inward-shifted limiting planes (the two shoulder faces are coplanar).
 
 All five source checkpoint volumes match within **0.01 mm³**. The final nominal
 solid measures **230819.786248 mm³**; corrected-frame bounds are approximately
-`(-60.865103,150.227354,-45.662921)` to
-`(60.865103,222.424548,47.321249)` mm. Tests check the frame, analytic cylinder
+`(-60.865103,147.800567,-45.662921)` to
+`(60.865103,219.997761,47.321249)` mm. Tests check the frame, analytic cylinder
 retention, all three inward offsets, clearance changes, and temporary shared
 profile edits with restoration. Both exports reopen as one valid solid; STEP
 retains the nominal volume and STL differs by about **0.256 mm³** due to
 0.005 mm tessellation. These checks establish agreement with the extracted
 source metrics; physical fit and a full source-to-port Boolean comparison
 remain untested.
+
+
+## Rear-handle / TPU latch preview
+
+`preview_rear_handle.py` generates `exports/rear-handle-circle-preview.png` and
+`logs/rear-handle-circle-preview.json` without changing geometry or creating a
+cylinder. The user confirmed equal front/rear handle size matching the clip bore:
+**30.2 mm diameter**, extracted from the adapter's analytic clip arcs. Only the
+uppermost **3 mm** of each scan section is used to locate that fixed-size circle;
+sides and underside are explicitly excluded. Sections at X=-40/-20/0/+20/+40 mm
+are recorded; the central section drives the drawing. Cyan points identify the
+trusted crown, magenta is the inferred circle, and orange is the 1 mm interference
+target. The existing latch already crosses this estimate by about **2.44 mm**
+normal to its back face, with the projected contact inside the actual face.
+The user must review the circle before the latch geometry is revised; this is
+an estimate from partial scan evidence, not a physical fit validation.
+
+## Raised front clip and continuous screen ramp
+
+The user-approved front redesign is implemented by `front_clip.py` after the
+permanent adapter placement and before the stationary middle-body subtraction.
+The existing 55° front wall of the screen opening continues upwards into a thicker
+front bridge. Its intersection with the raised original top plane is computed
+from the native face planes (approximately Y=-192.95 mm). The original underside
+is retained behind that join; a short local root gusset meets the raised clip at
+Y=-199 mm. The clip's original analytic circular bore and jaws move vertically
+18.0526320637 mm to center Z=32.8742416819 mm, retaining center
+Y=-220.3743032668 mm and diameter 30.2 mm. This center remains an estimate from
+the trusted crown of the handle scan, not a physical measurement.
+
+Only the M16 front dovetail addition is omitted. The rear dovetail and separate
+latch remain unchanged. No fillets are added. Source recipes remain unchanged;
+M20 source-stage volume now excludes the omitted dovetail, and the new
+`M20-front-redesign` stage records the finished, placed front before imprint.
+`--stop M20` and `--no-imprint` return that redesigned pre-imprint body.
+
+`preview_front_clip.py` renders `exports/front-clip-implemented.png` directly from
+the current manufacturing STL and reference handle. Earlier files under `concepts/`
+and the three concept image sheets are appearance studies, not manufacturing
+geometry. The native implementation replaces those mesh-deformation studies.
+The general `preview.py` still renders the full adapter upper/underside sheet.
+Physical snap fit, material stiffness and printed strength are not established by
+the CAD checks.
+
+Verified redesign results: all **21 tests** pass; all **12 mesh ceiling checks**
+pass. Reopened STEP volume is **1,485,971.986 mm³**, with one valid solid; STL is
+also one valid solid and differs by about **0.987 mm³** at export tessellation.
+The AirTag depth-edit validator passes. Independent review additionally checked
+that a full cylinder at the retained 30.2 mm bore axis intersects no adapter
+material. See `logs/export-and-parameter-validation.json`.
+
+## Restored side printing planes
+
+`print_planes.py` extends both existing large rear sloped side planes through the
+raised front, retaining each inward half-space without an offset. It runs after
+`M20-front-redesign` and before scan subtraction as `M20-print-planes`, and is
+included in pre-imprint/`--stop M20` results. Plane datums come from the native
+rear faces rather than copied coordinates or guessed angles. The front protruded
+4.547544 mm beyond each plane; the approved cut removes approximately
+520.1988 mm³ total. This restores coplanar front/rear printing contact on either
+side. Adapter placement, screen ramp, clip bore, rear latch, separate accessories,
+scan preparation and imprint clearance remain unchanged.
+
+`exports/print-plane-trim-preview.png` and `exports/concepts/print-plane-trim-*`
+retain the approved **historical proposal**. The concept script refuses to
+regenerate that comparison from already-trimmed manufacturing exports. The current
+manufacturing result is `exports/front-clip-implemented.png`, regenerated using
+`preview_front_clip.py`, with new contact faces highlighted green.
+
+Current trimmed model verification: **23 tests** and **12 mesh ceiling checks**
+pass. Reopened STEP is one valid solid of **1,485,451.787 mm³**, matching the
+approved trim preview within 0.001 mm³. Independent review found zero Boolean
+difference from that preview in either direction and zero material intrusion
+into the clip bore. `logs/print-plane-validation.json` records both original
+plane datums and the resulting negligible signed protrusion residuals.
+
+## Reinforced screen-side walls and uninterrupted front incline
+
+`screen_surround.py` adds material above the screen-side walls, starting at the
+rear edge of the screen opening (Y=-101.586319 mm, Z=37.923506 mm). The new
+side tops use the exact native underside slope, **6.8°**, instead of aiming at
+the clip height. The central original **55°** screen-front incline remains one
+continuous planar face into the clip: no added upright ledge and no fillets.
+
+This native operation runs as `M20-screen-surround`, after front reconstruction
+and before restoring both rear printing planes. Additions exclude the screen
+aperture and all central space above the original ramp. The original body is
+never subtracted during reinforcement; underside, clip bore/axis and rear/latch
+geometry remain unchanged. The resulting addition after the print-plane cuts
+is approximately **21,067.349 mm³**. Native construction uses the recipe-built
+faces, not the approved preview STEP/STL as an input.
+
+The earlier rear/screen retained-region regression now compares the original
+body behind the rear screen edge, since changing the side walls beside the
+screen is explicitly authorized. Original underside material probes remain.
+Historical concept images and prototypes are retained as approval evidence.
+
+Verified current reinforced model: **26 tests** and **12 mesh ceiling checks**
+pass. Reopened STEP is one valid solid of **1,506,519.136 mm³**, matching the
+approved continuous-ramp prototype within 0.001 mm³. Independent Boolean review
+confirms zero missing original material and zero difference from the approved
+prototype. `preview_screen_surround.py` renders the implemented join directly
+from manufacturing STEP to `exports/screen-surround-implemented.png`.

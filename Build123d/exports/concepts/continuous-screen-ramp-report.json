@@ -1,0 +1,20 @@
+{
+  "previewOnly": true,
+  "authoritativeExportsChanged": false,
+  "valid": true,
+  "solids": 1,
+  "addedVolumeMm3": 21067.348904476035,
+  "removedFromPriorProposalMm3": 3790.945845214417,
+  "originalMaterialRemovedMm3": 0,
+  "addedFrontUprightFaces": 0,
+  "continuousRampNormal": [
+    -0.0,
+    0.8191520442890162,
+    0.5735764363510113
+  ],
+  "rampYBoundsMm": [
+    -192.9504174705,
+    -167.73139300018784
+  ],
+  "interpretation": "Retain the parallel reinforced sidewalls; remove only added material above the original central screen-front ramp so its incline is uninterrupted into the clip. No fillets."
+}

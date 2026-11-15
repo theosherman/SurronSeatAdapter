@@ -1,13 +1,18 @@
 {
+  "adapterTranslationMm": [
+    0,
+    -2.426787168466774,
+    0
+  ],
   "ok": true,
   "source": "file:///home/theo/Projects/SurronSeatAdapter/Build123d/exports/adapter-body.stl",
-  "triangles": 15020,
+  "triangles": 14884,
   "checks": [
     {
       "name": "front -23 mounting ledge",
       "pointMm": [
         17,
-        -73.99550086131543,
+        -76.42228802978221,
         42.231280197025576
       ],
       "expectedMaterial": true,
@@ -19,7 +24,7 @@
       "name": "front -23 access below ledge",
       "pointMm": [
         17,
-        -73.73131179163656,
+        -76.15809896010333,
         41.266809287426845
       ],
       "expectedMaterial": false,
@@ -31,7 +36,7 @@
       "name": "front -23 small through hole",
       "pointMm": [
         23,
-        -73.99550086131543,
+        -76.42228802978221,
         42.231280197025576
       ],
       "expectedMaterial": false,
@@ -43,7 +48,7 @@
       "name": "front 23 mounting ledge",
       "pointMm": [
         -29,
-        -73.99550086131543,
+        -76.42228802978221,
         42.231280197025576
       ],
       "expectedMaterial": true,
@@ -55,7 +60,7 @@
       "name": "front 23 access below ledge",
       "pointMm": [
         -29,
-        -73.73131179163656,
+        -76.15809896010333,
         41.266809287426845
       ],
       "expectedMaterial": false,
@@ -67,7 +72,7 @@
       "name": "front 23 small through hole",
       "pointMm": [
         -23,
-        -73.99550086131543,
+        -76.42228802978221,
         42.231280197025576
       ],
       "expectedMaterial": false,
@@ -79,7 +84,7 @@
       "name": "rear -14.5 mounting ledge",
       "pointMm": [
         -20.5,
-        181.92058480597453,
+        179.49379763750775,
         78.62031024578977
       ],
       "expectedMaterial": true,
@@ -91,7 +96,7 @@
       "name": "rear -14.5 access below ledge",
       "pointMm": [
         -20.5,
-        182.11995274039154,
+        179.69316557192477,
         77.64038554116891
       ],
       "expectedMaterial": false,
@@ -103,7 +108,7 @@
       "name": "rear -14.5 small through hole",
       "pointMm": [
         -14.5,
-        181.92058480597453,
+        179.49379763750775,
         78.62031024578977
       ],
       "expectedMaterial": false,
@@ -115,7 +120,7 @@
       "name": "rear 14.5 mounting ledge",
       "pointMm": [
         8.5,
-        181.92058480597453,
+        179.49379763750775,
         78.62031024578977
       ],
       "expectedMaterial": true,
@@ -127,7 +132,7 @@
       "name": "rear 14.5 access below ledge",
       "pointMm": [
         8.5,
-        182.11995274039154,
+        179.69316557192477,
         77.64038554116891
       ],
       "expectedMaterial": false,
@@ -139,7 +144,7 @@
       "name": "rear 14.5 small through hole",
       "pointMm": [
         14.5,
-        181.92058480597453,
+        179.49379763750775,
         78.62031024578977
       ],
       "expectedMaterial": false,

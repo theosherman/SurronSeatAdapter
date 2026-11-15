@@ -1,0 +1,29 @@
+{
+  "previewOnly": true,
+  "authoritativeExportsChanged": false,
+  "startYZmm": [
+    -101.5863192559,
+    37.923506000107
+  ],
+  "endYZmm": [
+    -192.95041747049206,
+    48.81801512553486
+  ],
+  "topRiseAngleDegrees": 6.799999999968359,
+  "addedVolumeMm3": 24858.29466869747,
+  "originalMaterialRemovedMm3": 0,
+  "valid": true,
+  "solids": 1,
+  "screenPlanAperture": {
+    "widthMm": 86,
+    "rearYmm": -101.5863192559,
+    "frontYmm": -179.158256125
+  },
+  "bottomPlaneNormal": [
+    0.0,
+    -0.1184039683059526,
+    -0.9929655081066024
+  ],
+  "remainingRiseToClipMm": 7.310421558625663,
+  "interpretation": "At the same rear screen edge, run the new top parallel to the existing underside plane. Keep the remaining original uphill wall into the taller clip. Preserve all existing material and the aperture, underside, bore and printing planes."
+}

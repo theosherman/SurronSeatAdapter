@@ -5,7 +5,7 @@ import json
 import time
 from build123d import Edge, Wire, Face, Solid, Plane, Vector, Keep, Compound, ShapeList, Mesher, export_step, export_stl
 
-from coordinates import model_recipe, source_to_model, prepare_scan
+from coordinates import model_recipe, source_to_model, prepare_scan, ADAPTER_TRANSLATION_MM
 from prepare_sherman_p import prepare_parts
 from scan_patch import PATCH
 
@@ -101,13 +101,21 @@ def build_master(stop=None, imprint=True, airtag_depth=8.5):
     wedge = Solid.extrude(Face(Wire.make_polygon([source_to_model(p) for p in points],close=True)),source_to_model((86,0,0)))
     body = stage('M14',body.cut(wedge))
     body = stage('M15',body.cut(tool(89,8,direction=-Vector(SKETCHES['RearSeatNotchSketch']['normal']))))
-    body = stage('M16',body.fuse(tool(91,80,source_to_model([1,0,0]),symmetric=True)))
+    # M16 front dovetail omitted by explicit user request; rear dovetail retained.
     side = tool(97,1000,symmetric=True)
     body = stage('M17',body.cut(side,side.mirror(Plane.YZ)))
     rearcut = tool(121,1000,symmetric=True)
     body = stage('M18',body.cut(rearcut,rearcut.mirror(Plane.YZ)))
     body = stage('M19',body.cut(tool(124,500,direction=-Vector(SKETCHES['BodyCutSketch']['normal']),offset=12,taper=-15)))
     body = stage('M20',body.cut(tool(126,airtag_depth,direction=-Vector(SKETCHES['AirtagCutSketch']['normal']))))
+    # Place the finished geometry before the stationary wheel-body subtraction.
+    body = body.translate(ADAPTER_TRANSLATION_MM)
+    from front_clip import redesign_front
+    body = stage('M20-front-redesign', redesign_front(body))
+    from screen_surround import reinforce_screen
+    body = stage('M20-screen-surround', reinforce_screen(body))
+    from print_planes import trim_to_rear_print_planes
+    body = stage('M20-print-planes', trim_to_rear_print_planes(body))
     if stop=='M20' or not imprint: return body
     print('Preparing Sherman P: align whole scan before slices; handles excluded; body scale 1.003', flush=True)
     scan_path = prepare_scan(ROOT/'Sherman_P_Scan_Aligned_To_Adapter_mm.stl', ROOT/'Build123d/inputs/wheel-scan-model-frame.stl')
@@ -130,7 +138,7 @@ def main():
     stem = 'adapter-body' if not args.stop and not args.no_imprint else 'adapter-body-'+(args.stop or 'pre-imprint')
     export_step(body,output/(stem+'.step'))
     export_stl(body,output/(stem+'.stl'),tolerance=0.005,angular_tolerance=0.05)
-    (Path(__file__).parent/'logs/build-validation.json').write_text(json.dumps(dict(coordinateFrame="source (x,y,z) -> model (-x,-y,z); physical front is negative Y; Z up",elapsedSeconds=time.monotonic()-start,stages=HISTORY),indent=2)+'\n')
+    (Path(__file__).parent/'logs/build-validation.json').write_text(json.dumps(dict(coordinateFrame="source (x,y,z) -> model (-x,-y,z); physical front is negative Y; Z up",adapterTranslationMm=ADAPTER_TRANSLATION_MM,elapsedSeconds=time.monotonic()-start,stages=HISTORY),indent=2)+'\n')
 
 if __name__=='__main__':
     main()
