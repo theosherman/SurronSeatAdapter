@@ -1,0 +1,23 @@
+{
+  "previewOnly": true,
+  "authoritativeExportsChanged": false,
+  "startYZmm": [
+    -101.5863192559,
+    37.923506000107
+  ],
+  "endYZmm": [
+    -192.95041747049206,
+    56.128436684160526
+  ],
+  "topRiseAngleDegrees": 11.268989926755731,
+  "addedVolumeMm3": 37379.75779756731,
+  "originalMaterialRemovedMm3": 0,
+  "valid": true,
+  "solids": 1,
+  "screenPlanAperture": {
+    "widthMm": 86,
+    "rearYmm": -101.5863192559,
+    "frontYmm": -179.158256125
+  },
+  "interpretation": "Replace the dip with one straight rising top from the rear screen edge to the front clip bridge. Add above existing surfaces only; retain aperture, underside, clip bore and both printing planes."
+}
