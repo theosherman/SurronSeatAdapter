@@ -14,7 +14,7 @@ set_port(3939)  # Default port of the first OCP CAD Viewer panel.
 
 adapter = build_master(airtag_depth=AIR_TAG_POCKET_DEPTH)
 if SHOW_WHEEL_SCAN:
-    # build_master regenerated this scan in the same corrected frame as the body.
+    # prepare_parts applies the same approved whole-scan alignment as the cutter.
     scan_path = Path(__file__).parent/'inputs/wheel-scan-model-frame.stl'
     scan = Mesher().read(scan_path)[0]
     parts = prepare_parts(scan, reunite=False)

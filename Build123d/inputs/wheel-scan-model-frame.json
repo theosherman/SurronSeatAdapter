@@ -4,6 +4,12 @@
   "triangles": 16000,
   "transform": "(x, y, z) -> (-x, -y, z)",
   "clearanceMm": 0,
+  "screenPatch": {
+    "recipe": "scan-screen-patch.json",
+    "changedTriangles": 31,
+    "verticesMoved": 0,
+    "triangles": 16000
+  },
   "sourceSha256": "7a60764e47cbb2526d325f35df4b9a6deca6ac46d4f3962e63deb468a661777a",
-  "outputSha256": "24122ba8bb55358cf7445339494daef7815cb197d167fbf45c338bf8294ae0c5"
+  "outputSha256": "0f3efc137e471b980ec9f2922e8362366673e18457da88338e4ae7dc43f52b76"
 }

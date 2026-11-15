@@ -26,3 +26,6 @@ SolidCraft/logs/*-measure.json
 SolidCraft/logs/frame-check.json
 SolidCraft/logs/inspect-dovetail.json
 SolidCraft/logs/check-stage1.json
+
+# Temporary review images and scratch files.
+/tmp/
