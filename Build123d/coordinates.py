@@ -9,6 +9,7 @@ from pathlib import Path
 import hashlib
 import json
 import struct
+from scan_patch import repair_screen_patch, PATCH
 
 
 def source_to_model(xyz):
@@ -49,10 +50,13 @@ def prepare_scan(source, destination):
         for j in range(4):  # normal followed by three vertices
             offset = 84+i*50+j*12
             struct.pack_into('<3f',data,offset,*source_to_model(struct.unpack_from('<3f',raw,offset)))
+    data = repair_screen_patch(data)
     destination.parent.mkdir(parents=True,exist_ok=True)
-    destination.write_bytes(data)
+    if not destination.exists() or destination.read_bytes() != data:
+        destination.write_bytes(data)
     report = dict(source=source.name, output=destination.name, triangles=count,
                   transform='(x, y, z) -> (-x, -y, z)', clearanceMm=0,
+                  screenPatch=dict(recipe='scan-screen-patch.json', changedTriangles=PATCH['changedTriangles'], verticesMoved=0, triangles=PATCH['triangles']),
                   sourceSha256=hashlib.sha256(raw).hexdigest(), outputSha256=hashlib.sha256(data).hexdigest())
     destination.with_suffix('.json').write_text(json.dumps(report,indent=2)+'\n')
     return destination
