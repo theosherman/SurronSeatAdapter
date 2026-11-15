@@ -205,3 +205,28 @@ also one valid solid and differs by about **0.987 mm³** at export tessellation.
 The AirTag depth-edit validator passes. Independent review additionally checked
 that a full cylinder at the retained 30.2 mm bore axis intersects no adapter
 material. See `logs/export-and-parameter-validation.json`.
+
+## Restored side printing planes
+
+`print_planes.py` extends both existing large rear sloped side planes through the
+raised front, retaining each inward half-space without an offset. It runs after
+`M20-front-redesign` and before scan subtraction as `M20-print-planes`, and is
+included in pre-imprint/`--stop M20` results. Plane datums come from the native
+rear faces rather than copied coordinates or guessed angles. The front protruded
+4.547544 mm beyond each plane; the approved cut removes approximately
+520.1988 mm³ total. This restores coplanar front/rear printing contact on either
+side. Adapter placement, screen ramp, clip bore, rear latch, separate accessories,
+scan preparation and imprint clearance remain unchanged.
+
+`exports/print-plane-trim-preview.png` and `exports/concepts/print-plane-trim-*`
+retain the approved **historical proposal**. The concept script refuses to
+regenerate that comparison from already-trimmed manufacturing exports. The current
+manufacturing result is `exports/front-clip-implemented.png`, regenerated using
+`preview_front_clip.py`, with new contact faces highlighted green.
+
+Current trimmed model verification: **23 tests** and **12 mesh ceiling checks**
+pass. Reopened STEP is one valid solid of **1,485,451.787 mm³**, matching the
+approved trim preview within 0.001 mm³. Independent review found zero Boolean
+difference from that preview in either direction and zero material intrusion
+into the clip bore. `logs/print-plane-validation.json` records both original
+plane datums and the resulting negligible signed protrusion residuals.

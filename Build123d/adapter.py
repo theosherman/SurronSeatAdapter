@@ -112,6 +112,8 @@ def build_master(stop=None, imprint=True, airtag_depth=8.5):
     body = body.translate(ADAPTER_TRANSLATION_MM)
     from front_clip import redesign_front
     body = stage('M20-front-redesign', redesign_front(body))
+    from print_planes import trim_to_rear_print_planes
+    body = stage('M20-print-planes', trim_to_rear_print_planes(body))
     if stop=='M20' or not imprint: return body
     print('Preparing Sherman P: align whole scan before slices; handles excluded; body scale 1.003', flush=True)
     scan_path = prepare_scan(ROOT/'Sherman_P_Scan_Aligned_To_Adapter_mm.stl', ROOT/'Build123d/inputs/wheel-scan-model-frame.stl')
