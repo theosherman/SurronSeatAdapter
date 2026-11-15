@@ -14,13 +14,34 @@
 {"step": "M15", "volumeMm3": 1959588.7423000836, "solids": 1, "valid": true}
 {"step": "M17", "volumeMm3": 1956681.8097075473, "solids": 1, "valid": true}
 {"step": "M18", "volumeMm3": 1950718.361000618, "solids": 1, "valid": true}
-{"step": "M19", "volumeMm3": 1347047.902135641, "solids": 1, "valid": true}
-{"step": "M20", "volumeMm3": 1338341.3939710786, "solids": 1, "valid": true}
-{"step": "M20-front-redesign", "volumeMm3": 1350709.9181410682, "solids": 1, "valid": true}
-{"step": "M20-screen-surround", "volumeMm3": 1378303.119620912, "solids": 1, "valid": true}
-{"step": "M20-print-planes", "volumeMm3": 1374123.4306081282, "solids": 1, "valid": true}
+{"step": "M19", "volumeMm3": 1411002.6279845457, "solids": 1, "valid": true}
+{"step": "M20", "volumeMm3": 1402296.119821498, "solids": 1, "valid": true}
+{"step": "M20-front-redesign", "volumeMm3": 1402406.8406375998, "solids": 1, "valid": true}
+{"step": "M20-screen-surround", "volumeMm3": 1429813.5709965173, "solids": 1, "valid": true}
+{"step": "M20-print-planes", "volumeMm3": 1425603.4132920625, "solids": 1, "valid": true}
+..{"step": "M01", "volumeMm3": 4704311.374319016, "solids": 1, "valid": true}
+{"step": "M02", "volumeMm3": 9408622.748638038, "solids": 1, "valid": true}
+{"step": "M03", "volumeMm3": 1104550.6397153926, "solids": 1, "valid": true}
+{"step": "M04", "volumeMm3": 927741.1044533794, "solids": 1, "valid": true}
+{"step": "M05", "volumeMm3": 1855482.2089067597, "solids": 1, "valid": true}
+{"step": "M06", "volumeMm3": 1880982.5180697613, "solids": 1, "valid": true}
+{"step": "M07", "volumeMm3": 1875221.3447061838, "solids": 1, "valid": true}
+{"step": "M08", "volumeMm3": 1864628.633536343, "solids": 1, "valid": true}
+{"step": "M09", "volumeMm3": 1848627.135759546, "solids": 1, "valid": true}
+{"step": "M11", "volumeMm3": 1879790.4819020042, "solids": 1, "valid": true}
+{"step": "M12", "volumeMm3": 1986620.0685201085, "solids": 1, "valid": true}
+{"step": "M13", "volumeMm3": 1981485.3866050225, "solids": 1, "valid": true}
+{"step": "M14", "volumeMm3": 1964106.7410413665, "solids": 1, "valid": true}
+{"step": "M15", "volumeMm3": 1959588.7423000836, "solids": 1, "valid": true}
+{"step": "M17", "volumeMm3": 1956681.8097075473, "solids": 1, "valid": true}
+{"step": "M18", "volumeMm3": 1950718.361000618, "solids": 1, "valid": true}
+{"step": "M19", "volumeMm3": 1411002.6279845457, "solids": 1, "valid": true}
+{"step": "M20", "volumeMm3": 1402296.119821498, "solids": 1, "valid": true}
+{"step": "M20-front-redesign", "volumeMm3": 1402406.8406375998, "solids": 1, "valid": true}
+{"step": "M20-screen-surround", "volumeMm3": 1429813.5709965173, "solids": 1, "valid": true}
+{"step": "M20-print-planes", "volumeMm3": 1425603.4132920625, "solids": 1, "valid": true}
 Preparing Sherman P: align whole scan before slices; handles excluded; body scale 1.003
-{"step": "M21", "volumeMm3": 1337167.6671980321, "solids": 1, "valid": true}
+{"step": "M21", "volumeMm3": 1387005.7927714763, "solids": 1, "valid": true}
 .{"step": "M01", "volumeMm3": 4704311.374319016, "solids": 1, "valid": true}
 {"step": "M02", "volumeMm3": 9408622.748638038, "solids": 1, "valid": true}
 {"step": "M03", "volumeMm3": 1104550.6397153926, "solids": 1, "valid": true}
@@ -37,11 +58,11 @@ Preparing Sherman P: align whole scan before slices; handles excluded; body scal
 {"step": "M15", "volumeMm3": 1959588.7423000836, "solids": 1, "valid": true}
 {"step": "M17", "volumeMm3": 1956681.8097075473, "solids": 1, "valid": true}
 {"step": "M18", "volumeMm3": 1950718.361000618, "solids": 1, "valid": true}
-{"step": "M19", "volumeMm3": 1347047.902135641, "solids": 1, "valid": true}
-{"step": "M20", "volumeMm3": 1338341.3939710786, "solids": 1, "valid": true}
-{"step": "M20-front-redesign", "volumeMm3": 1350709.9181410682, "solids": 1, "valid": true}
-{"step": "M20-screen-surround", "volumeMm3": 1378303.119620912, "solids": 1, "valid": true}
-{"step": "M20-print-planes", "volumeMm3": 1374123.4306081282, "solids": 1, "valid": true}
+{"step": "M19", "volumeMm3": 1411002.6279845457, "solids": 1, "valid": true}
+{"step": "M20", "volumeMm3": 1402296.119821498, "solids": 1, "valid": true}
+{"step": "M20-front-redesign", "volumeMm3": 1402406.8406375998, "solids": 1, "valid": true}
+{"step": "M20-screen-surround", "volumeMm3": 1429813.5709965173, "solids": 1, "valid": true}
+{"step": "M20-print-planes", "volumeMm3": 1425603.4132920625, "solids": 1, "valid": true}
 ......{"step": "M01", "volumeMm3": 4704311.374319016, "solids": 1, "valid": true}
 ...{"step": "M01", "volumeMm3": 4704311.374319016, "solids": 1, "valid": true}
 {"step": "M02", "volumeMm3": 9408622.748638038, "solids": 1, "valid": true}
@@ -59,11 +80,11 @@ Preparing Sherman P: align whole scan before slices; handles excluded; body scal
 {"step": "M15", "volumeMm3": 1959588.7423000836, "solids": 1, "valid": true}
 {"step": "M17", "volumeMm3": 1956681.8097075473, "solids": 1, "valid": true}
 {"step": "M18", "volumeMm3": 1950718.361000618, "solids": 1, "valid": true}
-{"step": "M19", "volumeMm3": 1347047.902135641, "solids": 1, "valid": true}
-{"step": "M20", "volumeMm3": 1338341.3939710786, "solids": 1, "valid": true}
-{"step": "M20-front-redesign", "volumeMm3": 1350709.9181410682, "solids": 1, "valid": true}
-{"step": "M20-screen-surround", "volumeMm3": 1378303.119620912, "solids": 1, "valid": true}
-{"step": "M20-print-planes", "volumeMm3": 1374123.4306081282, "solids": 1, "valid": true}
+{"step": "M19", "volumeMm3": 1411002.6279845457, "solids": 1, "valid": true}
+{"step": "M20", "volumeMm3": 1402296.119821498, "solids": 1, "valid": true}
+{"step": "M20-front-redesign", "volumeMm3": 1402406.8406375998, "solids": 1, "valid": true}
+{"step": "M20-screen-surround", "volumeMm3": 1429813.5709965173, "solids": 1, "valid": true}
+{"step": "M20-print-planes", "volumeMm3": 1425603.4132920625, "solids": 1, "valid": true}
 ..{"step": "M01", "volumeMm3": 4704311.374319016, "solids": 1, "valid": true}
 {"step": "M02", "volumeMm3": 9408622.748638038, "solids": 1, "valid": true}
 {"step": "M03", "volumeMm3": 1104550.6397153926, "solids": 1, "valid": true}
@@ -80,11 +101,11 @@ Preparing Sherman P: align whole scan before slices; handles excluded; body scal
 {"step": "M15", "volumeMm3": 1959588.7423000836, "solids": 1, "valid": true}
 {"step": "M17", "volumeMm3": 1956681.8097075473, "solids": 1, "valid": true}
 {"step": "M18", "volumeMm3": 1950718.361000618, "solids": 1, "valid": true}
-{"step": "M19", "volumeMm3": 1347047.902135641, "solids": 1, "valid": true}
-{"step": "M20", "volumeMm3": 1338341.3939710786, "solids": 1, "valid": true}
-{"step": "M20-front-redesign", "volumeMm3": 1350709.9181410682, "solids": 1, "valid": true}
-{"step": "M20-screen-surround", "volumeMm3": 1378303.119620912, "solids": 1, "valid": true}
-{"step": "M20-print-planes", "volumeMm3": 1374123.4306081282, "solids": 1, "valid": true}
+{"step": "M19", "volumeMm3": 1411002.6279845457, "solids": 1, "valid": true}
+{"step": "M20", "volumeMm3": 1402296.119821498, "solids": 1, "valid": true}
+{"step": "M20-front-redesign", "volumeMm3": 1402406.8406375998, "solids": 1, "valid": true}
+{"step": "M20-screen-surround", "volumeMm3": 1429813.5709965173, "solids": 1, "valid": true}
+{"step": "M20-print-planes", "volumeMm3": 1425603.4132920625, "solids": 1, "valid": true}
 {"step": "M01", "volumeMm3": 4704311.374319016, "solids": 1, "valid": true}
 {"step": "M02", "volumeMm3": 9408622.748638038, "solids": 1, "valid": true}
 {"step": "M03", "volumeMm3": 1104550.6397153926, "solids": 1, "valid": true}
@@ -101,11 +122,11 @@ Preparing Sherman P: align whole scan before slices; handles excluded; body scal
 {"step": "M15", "volumeMm3": 1959588.7423000836, "solids": 1, "valid": true}
 {"step": "M17", "volumeMm3": 1956681.8097075473, "solids": 1, "valid": true}
 {"step": "M18", "volumeMm3": 1950718.361000618, "solids": 1, "valid": true}
-{"step": "M19", "volumeMm3": 1347047.902135641, "solids": 1, "valid": true}
-{"step": "M20", "volumeMm3": 1338341.3939710786, "solids": 1, "valid": true}
-{"step": "M20-front-redesign", "volumeMm3": 1338341.3939710793, "solids": 1, "valid": true}
-{"step": "M20-screen-surround", "volumeMm3": 1338341.3939710793, "solids": 1, "valid": true}
-{"step": "M20-print-planes", "volumeMm3": 1338341.3939710793, "solids": 1, "valid": true}
+{"step": "M19", "volumeMm3": 1411002.6279845457, "solids": 1, "valid": true}
+{"step": "M20", "volumeMm3": 1402296.119821498, "solids": 1, "valid": true}
+{"step": "M20-front-redesign", "volumeMm3": 1402296.119821498, "solids": 1, "valid": true}
+{"step": "M20-screen-surround", "volumeMm3": 1402296.119821498, "solids": 1, "valid": true}
+{"step": "M20-print-planes", "volumeMm3": 1402296.119821498, "solids": 1, "valid": true}
 ...........{"step": "M01", "volumeMm3": 4704311.374319016, "solids": 1, "valid": true}
 {"step": "M02", "volumeMm3": 9408622.748638038, "solids": 1, "valid": true}
 {"step": "M03", "volumeMm3": 1104550.6397153926, "solids": 1, "valid": true}
@@ -122,11 +143,11 @@ Preparing Sherman P: align whole scan before slices; handles excluded; body scal
 {"step": "M15", "volumeMm3": 1959588.7423000836, "solids": 1, "valid": true}
 {"step": "M17", "volumeMm3": 1956681.8097075473, "solids": 1, "valid": true}
 {"step": "M18", "volumeMm3": 1950718.361000618, "solids": 1, "valid": true}
-{"step": "M19", "volumeMm3": 1347047.902135641, "solids": 1, "valid": true}
-{"step": "M20", "volumeMm3": 1338341.3939710786, "solids": 1, "valid": true}
-{"step": "M20-front-redesign", "volumeMm3": 1350709.9181410682, "solids": 1, "valid": true}
-{"step": "M20-screen-surround", "volumeMm3": 1378303.119620912, "solids": 1, "valid": true}
-{"step": "M20-print-planes", "volumeMm3": 1374123.4306081282, "solids": 1, "valid": true}
+{"step": "M19", "volumeMm3": 1411002.6279845457, "solids": 1, "valid": true}
+{"step": "M20", "volumeMm3": 1402296.119821498, "solids": 1, "valid": true}
+{"step": "M20-front-redesign", "volumeMm3": 1402406.8406375998, "solids": 1, "valid": true}
+{"step": "M20-screen-surround", "volumeMm3": 1429813.5709965173, "solids": 1, "valid": true}
+{"step": "M20-print-planes", "volumeMm3": 1425603.4132920625, "solids": 1, "valid": true}
 ...{"step": "M01", "volumeMm3": 4704311.374319016, "solids": 1, "valid": true}
 {"step": "M01", "volumeMm3": 4704311.374319016, "solids": 1, "valid": true}
 {"step": "M02", "volumeMm3": 9408622.748638038, "solids": 1, "valid": true}
@@ -135,6 +156,6 @@ Preparing Sherman P: align whole scan before slices; handles excluded; body scal
 {"step": "M05", "volumeMm3": 1855482.2089067597, "solids": 1, "valid": true}
 .
 ----------------------------------------------------------------------
-Ran 27 tests in 30.360s
+Ran 29 tests in 35.639s
 
 OK

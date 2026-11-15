@@ -34,3 +34,29 @@ reference validation passes, and export/parameter validation reports ok=true.
 Fresh review found no important manufacturing issues; the test fixture's empty
 bore intersection is normalized as zero volume. Implemented inspection images
 were rendered from manufacturing exports.
+
+## Follow-up: dependent cavity and full clip regression
+
+User inspection found two missed defects despite the earlier green suite.
+The fixed-size M19 cavity breaches the narrowed shell (at Y=50/70 mm there
+is no remaining side wall at Z=0/20/40 mm). The new ramp join at Y=-202.9504
+also became the clip-lifting split, leaving an unlifted piece of the old jaw.
+
+Repair: decouple the clip's original lift boundary from the moved screen-ramp
+join, trim its upper connector to the enlarged screen ramp, and retain the
+original clip lower envelope. Bound the original tapered cavity by the new
+bottom outline inset 8 mm horizontally; the prior model's sampled lower side
+walls were about 8–15 mm thick. Preserve the pocket roof and taper wherever
+they fit, and retain the hollow cavity. Add native lower-clip containment and
+wall/cavity probes, inspect actual underside comparisons, then rerun the suite
+and exported checks. The earlier validity and bore checks did not test these
+functional boundaries and were insufficient.
+
+Follow-up verification: both new tests failed on the defective implementation
+(13129.297 mm³ extra front material and missing neck wall). After repair all
+29 tests pass; 12/12 mesh mounting checks, reference validation, STEP/STL reopening,
+AirTag edit and cutter self-intersection validation pass. Independent review and
+STEP sections found no important defect; straight cavity walls measure 8 mm and
+diagonal horizontal walls about 12.09 mm. Actual export comparison is saved at
+`Build123d/exports/cavity-and-clip-repair.png`. The roof, source notch, original
+outline proposal and wheel fit preparation are preserved.

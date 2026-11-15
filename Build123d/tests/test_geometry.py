@@ -33,6 +33,11 @@ class GeometryTests(unittest.TestCase):
         self.assertAlmostEqual(body.volume, expected.volume, delta=0.1)
         # Front clip material formerly removed by the full scan's fixed handle.
         self.assertTrue(body.solids()[0].is_inside((-40, -237.42678716846677, 33.05263206373636)))
+        # Trunk side walls must survive the subsequent wheel-scan subtraction.
+        for y in (45,50,55,60):
+            for side in (-1,1):
+                self.assertTrue(body.is_inside((side*20,y,30)),(side,y))
+            self.assertFalse(body.is_inside((0,y,30)),y)
         import json
         from pathlib import Path
         saved = json.loads((Path(__file__).resolve().parents[2] / 'SolidCraft/logs/mounting-ceiling-validation.json').read_text())

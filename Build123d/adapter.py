@@ -116,7 +116,10 @@ def build_master(stop=None, imprint=True, airtag_depth=8.5):
     body = stage('M17',body.cut(side,side.mirror(Plane.YZ)))
     rearcut = tool(121,1000,symmetric=True)
     body = stage('M18',body.cut(rearcut,rearcut.mirror(Plane.YZ)))
-    body = stage('M19',body.cut(tool(124,500,direction=-Vector(SKETCHES['BodyCutSketch']['normal']),offset=12,taper=-15)))
+    from trunk_cavity import bound_trunk_cavity
+    cavity = tool(124,500,direction=-Vector(SKETCHES['BodyCutSketch']['normal']),offset=12,taper=-15)
+    cavity = bound_trunk_cavity(cavity, profiles(9,sherman_p_bottom=True)[0])
+    body = stage('M19',body.cut(cavity))
     body = stage('M20',body.cut(tool(126,airtag_depth,direction=-Vector(SKETCHES['AirtagCutSketch']['normal']))))
     # Place the finished geometry before the stationary wheel-body subtraction.
     body = body.translate(ADAPTER_TRANSLATION_MM)

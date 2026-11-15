@@ -30,7 +30,10 @@ def redesign_front(body):
     sr,br=line(ramp);st,bt=line(top);sb,bb=line(bottom)
     start=ramp.bounding_box().min.Y
     join=(bt+CLIP_RISE_MM-br)/(sr-st)
-    split=Plane((0,join,0),z_dir=(0,1,0))
+    # Lift the complete original jaw. The screen-ramp join can move independently;
+    # using it as the lift boundary strands part of the jaw at its old height.
+    lift_join=join+SCREEN_EXTENSION_MM
+    split=Plane((0,lift_join,0),z_dir=(0,1,0))
     rear=body.split(split,Keep.TOP)
     clip=body.split(split,Keep.BOTTOM).translate((0,0,CLIP_RISE_MM))
     # The actual upper face supplies the footprint, including its screen boundary
@@ -41,20 +44,25 @@ def redesign_front(body):
     # Small local root gusset joins the retained lower line to the raised jaw.
     # Its front end is safely forward of the bridge but behind the bore's rear
     # tangent (Y=-205.2743), so it cannot close or resize the circular bore.
-    # Stay between the ramp join and the bore's rear tangent after screen edits.
+    # The root datum follows the original lift boundary, independently of screen.
     bore_rear=-205.27430326680117
-    root_end=min(-199.0,(join+bore_rear)/2)
-    if not bore_rear < root_end < join:
+    root_end=-199.0
+    if not bore_rear < root_end < lift_join:
         raise ValueError('Screen extension leaves no room for the clip root gusset')
     clip_section=clip.intersect(Plane((0,root_end,0),z_dir=(0,1,0)))
     lower=min(v.center().Z for v in clip_section.vertices())
-    gusset=prism_yz([(join,sb*join+bb),(root_end,lower),
+    gusset=prism_yz([(lift_join,sb*lift_join+bb),(root_end,lower),
                      (root_end,st*root_end+bt+CLIP_RISE_MM),
-                     (join,st*join+bt+CLIP_RISE_MM)]).intersect(footprint)
+                     (lift_join,st*lift_join+bt+CLIP_RISE_MM)]).intersect(footprint)
     # Plane/solid intersections return ShapeList in build123d 0.13.
     wedge=Compound(wedge) if isinstance(wedge,ShapeList) else wedge
     gusset=Compound(gusset) if isinstance(gusset,ShapeList) else gusset
     result=rear.fuse(clip,wedge,gusset).clean()
+    # Remove only the upper central connector above the moved screen ramp;
+    # leave the original complete clip and its lower support envelope intact.
+    ramp_air=prism_yz([(join,sr*join+br),(start,sr*start+br),
+                      (start,200),(join,200)],width=86)
+    result=result.cut(ramp_air).clean()
     if len(result.solids())!=1 or not result.is_valid:
         raise ValueError('Raised front reconstruction is not one valid solid')
     return result
