@@ -23,14 +23,14 @@ def colors(a):
 full=colors(mesh(proposed));detail=colors(mesh(proposed,True))
 image=Image.new('RGB',(2400,1500),'#e9eef3');d=ImageDraw.Draw(image)
 f=lambda n:ImageFont.truetype('/usr/share/fonts/TTF/DejaVuSans.ttf',n)
-d.text((40,25),'IMPLEMENTED / parallel sides + uninterrupted front slope',font=f(35),fill='#183044')
-d.text((40,82),'The added upright ledge is removed; the original screen-front incline continues directly into the clip',font=f(23),fill='#4c6074')
+d.text((40,25),'IMPLEMENTED / screen sides 8 mm lower + continuous front slope',font=f(35),fill='#183044')
+d.text((40,82),'Lower parallel rail tops meet the full-width incline; the lifted side-wing steps and rounded-cutout ribbons are removed',font=f(23),fill='#4c6074')
 for k,(title,items,eye,focus) in enumerate([
  ('From the screen opening toward the clip',detail,(.65,1,.78),(0,-191,31)),
  ('Side view / reinforced walls, continuous front ramp',full,(1,.22,.18),(0,-172,31))]):
  x=20+k*1190;d.text((x+20,150),title,font=f(25),fill='#183044')
  image.paste(render(items,eye,(1170,1050),focus=focus),(x,195));d=ImageDraw.Draw(image)
-d.text((40,1300),'Green: reinforced top parallel to underside     Blue: one continuous existing incline into the clip',font=f(25),fill='#183044')
-d.text((40,1360),'Added height remains at the sides • no extra front ledge • no fillets • underside, clip bore and printing planes retained',font=f(23),fill='#405b70')
+d.text((40,1300),'Green: lowered parallel side tops     Blue: continuous existing incline into the clip',font=f(25),fill='#183044')
+d.text((40,1360),'Rails lowered 8 mm • full-width ramp transition • original rounded cutout retained • no fillets • clip bore retained',font=f(23),fill='#405b70')
 d.text((40,1440),'Actual manufacturing STEP • rear hidden only in the left inspection view',font=f(23),fill='#405b70')
 image.save(ROOT/'exports/screen-surround-implemented.png');print(ROOT/'exports/screen-surround-implemented.png')

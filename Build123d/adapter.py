@@ -15,7 +15,7 @@ SKETCHES = {s['name']: s for s in RECIPE['sketches']}
 HISTORY = []
 
 
-def profiles(index, with_source=False, sherman_p_bottom=False):
+def profiles(index, with_source=False, sherman_p_bottom=False, seat_shoulders=False):
     """Make exact selected faces in global coordinates, preserving sketch-space Z."""
     selected = next(p for p in RECIPE['selectedProfiles'] if p['sourceTimelineIndex'] == index)
     result = []
@@ -34,6 +34,11 @@ def profiles(index, with_source=False, sherman_p_bottom=False):
                     raise ValueError('Sherman P bottom adaptation is only for BottomSketch')
                 from bottom_outline import sherman_p_curves
                 curves = sherman_p_curves(curves)
+            if seat_shoulders:
+                if index != 79:
+                    raise ValueError('Seat shoulder continuation is only for SeatHangerSketch')
+                from seat_shoulders import continued_shoulder_curves
+                curves = continued_shoulder_curves(curves)
             for c in curves:
                 if c['type'] == 'Line3D':
                     edges.append(Edge.make_line(point(c['startMm']), point(c['endMm'])))
@@ -58,7 +63,7 @@ def tool(index, depth, direction=None, offset=0, symmetric=False, taper=0):
     s = SKETCHES[selected['profiles'][0]['sketch']]
     n = Vector(s['normal'] if direction is None else direction).normalized()
     solids = []
-    for f in profiles(index, sherman_p_bottom=index == 9):
+    for f in profiles(index, sherman_p_bottom=index == 9, seat_shoulders=index == 79):
         f = f.translate(n*(offset-depth/2 if symmetric else offset))
         solids.append(Solid.extrude_taper(f,n*depth,taper) if taper else Solid.extrude(f,n*depth))
     return solids[0].fuse(*solids[1:]) if len(solids)>1 else solids[0]

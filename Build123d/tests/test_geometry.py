@@ -38,6 +38,9 @@ class GeometryTests(unittest.TestCase):
             for side in (-1,1):
                 self.assertTrue(body.is_inside((side*20,y,30)),(side,y))
             self.assertFalse(body.is_inside((0,y,30)),y)
+        for side in (-1,1):
+            self.assertTrue(body.is_inside((side*30,33,45)))
+            self.assertTrue(body.is_inside((side*25,40,45)))
         import json
         from pathlib import Path
         saved = json.loads((Path(__file__).resolve().parents[2] / 'SolidCraft/logs/mounting-ceiling-validation.json').read_text())

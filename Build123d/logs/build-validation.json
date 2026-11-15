@@ -5,7 +5,7 @@
     -2.426787168466774,
     0.0
   ],
-  "elapsedSeconds": 18.019455746001768,
+  "elapsedSeconds": 17.691433141000743,
   "stages": [
     {
       "step": "M01",
@@ -63,79 +63,79 @@
     },
     {
       "step": "M11",
-      "volumeMm3": 1879790.4819020042,
+      "volumeMm3": 1889392.9409229294,
       "solids": 1,
       "valid": true
     },
     {
       "step": "M12",
-      "volumeMm3": 1986620.0685201085,
+      "volumeMm3": 1996222.5275405184,
       "solids": 1,
       "valid": true
     },
     {
       "step": "M13",
-      "volumeMm3": 1981485.3866050225,
+      "volumeMm3": 1991087.8456254397,
       "solids": 1,
       "valid": true
     },
     {
       "step": "M14",
-      "volumeMm3": 1964106.7410413665,
+      "volumeMm3": 1973709.2000617795,
       "solids": 1,
       "valid": true
     },
     {
       "step": "M15",
-      "volumeMm3": 1959588.7423000836,
+      "volumeMm3": 1969191.2013207842,
       "solids": 1,
       "valid": true
     },
     {
       "step": "M17",
-      "volumeMm3": 1956681.8097075473,
+      "volumeMm3": 1966284.2687282322,
       "solids": 1,
       "valid": true
     },
     {
       "step": "M18",
-      "volumeMm3": 1950718.361000618,
+      "volumeMm3": 1960320.820021316,
       "solids": 1,
       "valid": true
     },
     {
       "step": "M19",
-      "volumeMm3": 1411002.6279845457,
+      "volumeMm3": 1420605.0870041053,
       "solids": 1,
       "valid": true
     },
     {
       "step": "M20",
-      "volumeMm3": 1402296.119821498,
+      "volumeMm3": 1411898.578841103,
       "solids": 1,
       "valid": true
     },
     {
       "step": "M20-front-redesign",
-      "volumeMm3": 1402406.8406375998,
+      "volumeMm3": 1411137.8038767094,
       "solids": 1,
       "valid": true
     },
     {
       "step": "M20-screen-surround",
-      "volumeMm3": 1429813.5709965173,
+      "volumeMm3": 1414319.7926382467,
       "solids": 1,
       "valid": true
     },
     {
       "step": "M20-print-planes",
-      "volumeMm3": 1425603.4132920625,
+      "volumeMm3": 1413939.801151544,
       "solids": 1,
       "valid": true
     },
     {
       "step": "M21",
-      "volumeMm3": 1387005.7927714763,
+      "volumeMm3": 1375342.180567419,
       "solids": 1,
       "valid": true
     }

@@ -1,9 +1,11 @@
-"""Native reinforcement of screen-side walls, retaining the original front ramp."""
+"""Native screen walls, lowered 8 mm and joined to the original front ramp."""
 from build123d import GeomType,Plane,Keep,Solid,Compound,ShapeList,Face,Wire
+
+SCREEN_WALL_LOWERING_MM = 8.0
 
 
 def reinforce_screen(body):
-    """Add above the existing top, parallel to the underside, without a front ledge.
+    """Set the side tops parallel to the underside and flow into the front ramp.
 
     Native face datums define the start, angle, aperture and central ramp. No
     manufacturing geometry is loaded from preview meshes or exchange exports.
@@ -31,7 +33,7 @@ def reinforce_screen(body):
     mr,br=yz_line(ramp);mc,bc=yz_line(cliptop)
     y1=(bc-br)/(mr-mc)
     slope=-bottom.normal_at().Y/bottom.normal_at().Z
-    target=Plane((0,y0,z0),x_dir=(1,0,0),z_dir=(0,-slope,1))
+    target=Plane((0,y0,z0-SCREEN_WALL_LOWERING_MM),x_dir=(1,0,0),z_dir=(0,-slope,1))
     slab=Solid.make_box(200,y0-y1,200,Plane((-100,y1,-50)))
     yfront=min(f.bounding_box().min.Y for f in rails)
     xmin,xmax=rear.bounding_box().min.X,rear.bounding_box().max.X
@@ -58,14 +60,17 @@ def reinforce_screen(body):
         piece=piece.split(target,Keep.BOTTOM)
         if piece is None:
             continue
-        # Remove the unwanted front ledge from additions only. The original
-        # solid, including its continuous 55 degree ramp, is never subtracted.
+        # Keep additions out of the aperture and air above the central incline.
         piece=shape(shape(piece).cut(aperture,ramp_air))
         if piece.volume>1e-6:
             additions.append(piece)
-    if not additions:
-        raise ValueError('No screen-side reinforcement was constructed')
     result=body.fuse(*additions).clean()
+    # Lower both original rail material and reinforcement. Retain the higher
+    # uphill ramp so the rails flow into it instead of ending at a vertical step.
+    above_top=shape(slab.split(target,Keep.TOP))
+    above_ramp=shape(slab.split(Plane(point,z_dir=normal),Keep.TOP))
+    cap=shape(above_top.intersect(above_ramp))
+    result=result.cut(cap).clean()
     if not result.is_valid or len(result.solids())!=1:
         raise ValueError('Screen reinforcement must leave one valid adapter solid')
     return result
