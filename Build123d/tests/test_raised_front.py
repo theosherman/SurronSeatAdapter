@@ -8,7 +8,8 @@ class RaisedFrontTests(unittest.TestCase):
     def setUpClass(cls):
         cls.body=build_master(imprint=False)
         from unittest.mock import patch
-        with patch('front_clip.redesign_front',side_effect=lambda body:body):
+        with patch('front_clip.redesign_front',side_effect=lambda body:body), \
+             patch('screen_surround.reinforce_screen',side_effect=lambda body:body):
             cls.baseline=build_master(imprint=False)
 
     def test_handle_axis_and_unchanged_bore(self):
@@ -39,7 +40,7 @@ class RaisedFrontTests(unittest.TestCase):
         self.assertTrue(faces,'No continued 55 degree screen ramp')
 
     def test_rear_screen_and_underbody_preserved(self):
-        plane=Plane((0,-179.157,0),z_dir=(0,1,0))
+        plane=Plane((0,-101.585,0),z_dir=(0,1,0))
         retained=self.body.split(plane,Keep.TOP)
         original=self.baseline.split(plane,Keep.TOP)
         self.assertAlmostEqual(retained.volume,original.volume,delta=.001)

@@ -1,10 +1,10 @@
 {
   "valid": true,
   "solids": 1,
-  "volumeMm3": 1485451.7872335482,
-  "approvedPreviewVolumeMm3": 1485451.7872912479,
-  "previewVolumeDifferenceMm3": -5.7699624449014664e-05,
-  "removedFromCheckpointMm3": 520.198902745964,
+  "volumeMm3": 1506519.1361302799,
+  "approvedPreviewVolumeMm3": 1506519.1361380445,
+  "previewVolumeDifferenceMm3": -7.764669135212898e-06,
+  "netVolumeChangeFromPrintTrimMm3": 21067.34883880033,
   "planes": [
     {
       "pointMm": [
