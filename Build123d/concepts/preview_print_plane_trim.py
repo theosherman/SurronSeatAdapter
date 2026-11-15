@@ -12,6 +12,8 @@ body=import_step(ROOT/'exports/adapter-body.step')
 faces=[f for f in body.faces() if f.geom_type==GeomType.PLANE and f.area>5000
        and abs(f.normal_at().X)>.85 and f.center().Y>0]
 assert len(faces)==2
+if max(max((v.center()-f.center()).dot(f.normal_at()) for v in body.vertices()) for f in faces)<1e-3:
+ raise ValueError('Historical preview requires the untrimmed raised-front-clip checkpoint; current exports are already trimmed')
 trimmed=body
 report={'previewOnly':True,'authoritativeExportsChanged':False,'planes':[]}
 for face in sorted(faces,key=lambda f:f.normal_at().X):

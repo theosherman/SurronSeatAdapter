@@ -1,4 +1,4 @@
-# Proposed restoration of the printing side planes — awaiting approval
+# Proposed restoration of the printing side planes — approved
 
 User request: preserve the raised clip and thicker bridge, but extend the existing
 large rear sloped side face through the entire body, mirrored on both sides, so
@@ -22,4 +22,4 @@ Review-only STEP/STL and numeric report:
 `Build123d/exports/concepts/print-plane-trim-*`.
 The authoritative adapter source and exports remain untouched. Checkpoint
 `checkpoint/raised-front-clip` at 6021f13 preserves the approved pre-trim model.
-No implementation approval has been given yet.
+User subsequently approved this exact preview and requested implementation. The historical preview artifacts remain unchanged; the implementation is recorded in the print-bed-plane-trim plan.

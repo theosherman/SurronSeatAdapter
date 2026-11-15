@@ -5,7 +5,7 @@
     -2.426787168466774,
     0.0
   ],
-  "elapsedSeconds": 18.729767260996596,
+  "elapsedSeconds": 17.482392240999616,
   "stages": [
     {
       "step": "M01",
@@ -122,8 +122,14 @@
       "valid": true
     },
     {
+      "step": "M20-print-planes",
+      "volumeMm3": 1539191.6835480544,
+      "solids": 1,
+      "valid": true
+    },
+    {
       "step": "M21",
-      "volumeMm3": 1485971.9856879248,
+      "volumeMm3": 1485451.7867870687,
       "solids": 1,
       "valid": true
     }
