@@ -1,6 +1,7 @@
 """Top-view review of the exact selected BottomSketch; no CAD mutations."""
 from pathlib import Path
 import json
+import sys
 import numpy as np
 from PIL import Image, ImageDraw, ImageFont
 from adapter import profiles
@@ -12,6 +13,7 @@ ROOT = Path(__file__).resolve().parent
 
 
 def main():
+    proposal = '--proposal' in sys.argv
     recipe = json.loads((ROOT.parent/'cad-rebuild/recipe.json').read_text())
     selected = next(p for p in recipe['selectedProfiles'] if p['sourceTimelineIndex'] == 9)
     curves = selected['profiles'][0]['loops'][0]['curves']
@@ -65,6 +67,30 @@ def main():
             point = s[1-end]
             if np.allclose(point, start, atol=1e-6):
                 break
+    original = {i: s.copy() for i, s in enumerate(segments, 1)}
+    proposed = {i: s.copy() for i, s in original.items()}
+    if proposal:
+        # Keep line 13's direction and extend to the unchanged X of line 16.
+        a, b = proposed[13]
+        intersection = a+(b-a)*((22-a[0])/(b[0]-a[0]))
+        proposed[13][1] = intersection
+        proposed[16][0] = intersection
+        for i in (14, 15, 5, 6):
+            del proposed[i]
+        # Preview assumption: parallel frontward translation, not a new angle.
+        proposed[17][:, 1] -= 5
+        proposed[16][1] = proposed[17][0]
+        proposed[18][0] = proposed[17][1]
+        for left, right in ((13, 7), (16, 4), (17, 3), (18, 2)):
+            proposed[right] = proposed[left][::-1]*[-1, 1]
+        proposed[19][:, 1] -= 5
+        proposed[20][0] = proposed[19][1]
+        proposed[22][1] = proposed[19][0]
+        outer = [proposed[i] for i in range(1, 19) if i in proposed]
+        assert all(np.allclose(a[1], b[0]) for a, b in zip(outer, outer[1:]+outer[:1]))
+        assert np.allclose(proposed[13][1], proposed[16][0])
+        assert np.allclose(np.diff(proposed[17], axis=0), np.diff(original[17], axis=0))
+        assert np.allclose(proposed[19][:, 1], original[19][:, 1]-5)
     scan = np.concatenate([load(ROOT/'exports/sherman-p-prepared'/f'{part}.stl')
                            for part in ('body-original', 'front-handle', 'rear-handle')])
     # Degenerate triangles set identical framing; the renderer skips their pixels.
@@ -84,11 +110,13 @@ def main():
         return tuple((p[:2]-mid)*[factor, -factor]+np.array(size)/2)
     base = render([(scan, (177, 191, 202)), (bounds, (0, 0, 0))], eye, size)
     blank = Image.new('RGB', size, '#f9fbfd')
-    def draw_outline(img):
+    def draw_outline(img, entries=original, color='#ed2266'):
         d = ImageDraw.Draw(img)
-        for segment in segments:
-            d.line([pixel(x, y) for x, y in segment], fill='#ed2266', width=5)
-        for number, segment in enumerate(segments, 1):
+        for segment in entries.values():
+            d.line([pixel(x, y) for x, y in segment], fill=color, width=5)
+        for number, segment in entries.items():
+            if proposal and number not in (1, 10, 11, 12, 13, 16, 17, 18, 19, 21, 22):
+                continue
             a, b = np.array([pixel(x, y) for x, y in segment])
             middle = (a+b)/2
             delta = b-a
@@ -106,20 +134,28 @@ def main():
     font = lambda n: ImageFont.truetype('/usr/share/fonts/TTF/DejaVuSans.ttf', n)
     result = Image.new('RGB', (2040, 1510), '#e9eef3')
     d = ImageDraw.Draw(result)
-    d.text((30, 20), 'CURRENT BOTTOM SKETCH / Sherman P alignment review', font=font(32), fill='#183044')
+    d.text((30, 20), 'PROPOSED SUSPENSION OUTLINE / preview only' if proposal else 'CURRENT BOTTOM SKETCH / Sherman P alignment review', font=font(32), fill='#183044')
     d.text((30, 70), 'Orthographic top view • front at top • identical scale in every panel • geometry unchanged', font=font(23), fill='#405b70')
-    overlay = base.copy(); draw_outline(overlay); draw_outline(blank)
-    for x, title, panel in [(15, 'Aligned Sherman P scan', base), (690, 'Current BottomSketch + mirror', blank), (1365, 'Current sketch over the scan', overlay)]:
+    overlay = base.copy()
+    if proposal:
+        current = base.copy(); draw_outline(current)
+        draw_outline(overlay, proposed, '#009779'); draw_outline(blank, proposed, '#009779')
+        panels = [(15, 'Current outline / reference', current), (690, 'Proposed sketch / mirrored', blank), (1365, 'Proposed outline over scan', overlay)]
+    else:
+        draw_outline(overlay); draw_outline(blank)
+        panels = [(15, 'Aligned Sherman P scan', base), (690, 'Current BottomSketch + mirror', blank), (1365, 'Current sketch over the scan', overlay)]
+    for x, title, panel in panels:
         result.paste(panel, (x, 155))
         d.text((x+15, 115), title, font=font(23), fill='#183044')
         d.text((x+285, 162), 'FRONT', font=font(18), fill='#405b70')
-    d.text((30, 1420), 'Pink: exact selected base profile, mirrored and placed. Later cuts, clip changes and imprint are not this sketch.', font=font(22), fill='#405b70')
-    d.text((30, 1460), 'Scan: aligned, unscaled body + handles. Suspension-cover boundaries have not been inferred or marked.', font=font(22), fill='#405b70')
-    path = ROOT/'exports/bottom-outline-sherman-p-numbered.png'
+    d.text((30, 1420), '13 extended to vertical 16; 14/15 removed. Mirrored on right. 19 moved 5 mm toward front.' if proposal else 'Pink: exact selected base profile, mirrored and placed. Later cuts, clip changes and imprint are not this sketch.', font=font(22), fill='#405b70')
+    d.text((30, 1460), '17: trial shift 5 mm toward screen, original angle retained. Original line IDs kept; manufactured CAD unchanged.' if proposal else 'Scan: aligned, unscaled body + handles. Suspension-cover boundaries have not been inferred or marked.', font=font(22), fill='#405b70')
+    path = ROOT/('exports/bottom-outline-sherman-p-proposed.png' if proposal else 'exports/bottom-outline-sherman-p-numbered.png')
     result.save(path)
     print(path)
-    (ROOT/'exports/bottom-outline-line-numbers.json').write_text(json.dumps(
-        {str(i): s.tolist() for i, s in enumerate(segments, 1)}, indent=2)+'\n')
+    mapping = 'bottom-outline-proposed-lines.json' if proposal else 'bottom-outline-line-numbers.json'
+    (ROOT/'exports'/mapping).write_text(json.dumps(
+        {str(i): s.tolist() for i, s in (proposed if proposal else original).items()}, indent=2)+'\n')
     print(json.dumps(dict(halfProfileAreaMm2=half_area, mirroredAreaMm2=2*half_area,
                           assemblyTranslationMm=ADAPTER_TRANSLATION_MM, triangles=len(scan))))
 
