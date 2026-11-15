@@ -27,6 +27,44 @@ def main():
         for side in (-1, 1):
             segment = np.array([a, b])*[side, -1, 1]+ADAPTER_TRANSLATION_MM
             segments.append(segment[:, :2])
+    # Merge contiguous collinear halves so each visible straight line gets one ID.
+    pending = [np.round(s, 7) for s in segments]
+    changed = True
+    while changed:
+        changed = False
+        for i in range(len(pending)):
+            if changed:
+                break
+            for j in range(i+1, len(pending)):
+                for ai, bj in ((0, 0), (0, 1), (1, 0), (1, 1)):
+                    a, b = pending[i], pending[j]
+                    if not np.allclose(a[ai], b[bj], atol=1e-6):
+                        continue
+                    u, v = a[1-ai]-a[ai], b[1-bj]-b[bj]
+                    if abs(u[0]*v[1]-u[1]*v[0]) < 1e-5 and u@v < 0:
+                        pending[i] = np.array([a[1-ai], b[1-bj]])
+                        pending.pop(j)
+                        changed = True
+                        break
+                if changed:
+                    break
+    # Walk the outside first, then the screen opening, beginning at front-left.
+    segments = []
+    while pending:
+        start = min((tuple(p) for s in pending for p in s), key=lambda p: (p[1], -p[0]))
+        point = np.array(start)
+        while True:
+            matches = [(i, end) for i, s in enumerate(pending) for end in (0, 1)
+                       if np.allclose(s[end], point, atol=1e-6)]
+            if not matches:
+                break
+            i, end = min(matches, key=lambda pair: (pending[pair[0]][1-pair[1]][1],
+                                                    pending[pair[0]][1-pair[1]][0]))
+            s = pending.pop(i)
+            segments.append(np.array([s[end], s[1-end]]))
+            point = s[1-end]
+            if np.allclose(point, start, atol=1e-6):
+                break
     scan = np.concatenate([load(ROOT/'exports/sherman-p-prepared'/f'{part}.stl')
                            for part in ('body-original', 'front-handle', 'rear-handle')])
     # Degenerate triangles set identical framing; the renderer skips their pixels.
@@ -50,10 +88,20 @@ def main():
         d = ImageDraw.Draw(img)
         for segment in segments:
             d.line([pixel(x, y) for x, y in segment], fill='#ed2266', width=5)
+        for number, segment in enumerate(segments, 1):
+            a, b = np.array([pixel(x, y) for x, y in segment])
+            middle = (a+b)/2
+            delta = b-a
+            normal = np.array([-delta[1], delta[0]])/np.linalg.norm(delta)
+            center = middle+normal*23
+            d.line([tuple(middle), tuple(center)], fill='#163b58', width=2)
+            x, y = center
+            d.rounded_rectangle((x-18, y-15, x+18, y+15), radius=8,
+                                fill='white', outline='#163b58', width=2)
+            d.text((x, y), str(number), font=font(18), fill='#163b58', anchor='mm')
         # The narrow portion's exact 44 mm width is shown without inferring caps.
         y = -10+ADAPTER_TRANSLATION_MM[1]
         a, b = pixel(-22, y), pixel(22, y)
-        d.line([a, b], fill='#ed2266', width=2)
         d.text((a[0]+12, a[1]+8), '44 mm', font=font(18), fill='#b91850')
     font = lambda n: ImageFont.truetype('/usr/share/fonts/TTF/DejaVuSans.ttf', n)
     result = Image.new('RGB', (2040, 1510), '#e9eef3')
@@ -67,9 +115,11 @@ def main():
         d.text((x+285, 162), 'FRONT', font=font(18), fill='#405b70')
     d.text((30, 1420), 'Pink: exact selected base profile, mirrored and placed. Later cuts, clip changes and imprint are not this sketch.', font=font(22), fill='#405b70')
     d.text((30, 1460), 'Scan: aligned, unscaled body + handles. Suspension-cover boundaries have not been inferred or marked.', font=font(22), fill='#405b70')
-    path = ROOT/'exports/bottom-outline-sherman-p-overlay.png'
+    path = ROOT/'exports/bottom-outline-sherman-p-numbered.png'
     result.save(path)
     print(path)
+    (ROOT/'exports/bottom-outline-line-numbers.json').write_text(json.dumps(
+        {str(i): s.tolist() for i, s in enumerate(segments, 1)}, indent=2)+'\n')
     print(json.dumps(dict(halfProfileAreaMm2=half_area, mirroredAreaMm2=2*half_area,
                           assemblyTranslationMm=ADAPTER_TRANSLATION_MM, triangles=len(scan))))
 
