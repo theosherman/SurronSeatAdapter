@@ -18,3 +18,13 @@ are unchanged pending review.
 Preview: `Build123d/exports/parallel-screen-preview.png`.
 Prototype/report: `Build123d/exports/concepts/parallel-screen-*`.
 Source: `Build123d/concepts/preview_parallel_screen.py`.
+
+## Junction inspection
+
+User requested additional views to inspect a suspected extra wall. The unchanged
+proposal does contain an upright extension at the screen's front edge,
+Y=-179.158256 mm, X=-43..43 mm, Z=36.431189..47.173399 mm: height
+10.742211 mm. It is orange in `exports/parallel-screen-join-angles.png`;
+the retained 55 degree incline is blue. These are inspection views only.
+Rear geometry is clipped/hidden solely for rendering so it cannot obscure the
+join; no proposal or manufacturing geometry is overwritten.
