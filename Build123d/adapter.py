@@ -15,7 +15,7 @@ SKETCHES = {s['name']: s for s in RECIPE['sketches']}
 HISTORY = []
 
 
-def profiles(index, with_source=False):
+def profiles(index, with_source=False, sherman_p_bottom=False, seat_shoulders=False):
     """Make exact selected faces in global coordinates, preserving sketch-space Z."""
     selected = next(p for p in RECIPE['selectedProfiles'] if p['sourceTimelineIndex'] == index)
     result = []
@@ -28,7 +28,18 @@ def profiles(index, with_source=False):
         loops = []
         for loop in source['loops']:
             edges = []
-            for c in loop['curves']:
+            curves = loop['curves']
+            if sherman_p_bottom:
+                if index != 9:
+                    raise ValueError('Sherman P bottom adaptation is only for BottomSketch')
+                from bottom_outline import sherman_p_curves
+                curves = sherman_p_curves(curves)
+            if seat_shoulders:
+                if index != 79:
+                    raise ValueError('Seat shoulder continuation is only for SeatHangerSketch')
+                from seat_shoulders import continued_shoulder_curves
+                curves = continued_shoulder_curves(curves)
+            for c in curves:
                 if c['type'] == 'Line3D':
                     edges.append(Edge.make_line(point(c['startMm']), point(c['endMm'])))
                 elif c['type'] == 'Arc3D':
@@ -52,7 +63,7 @@ def tool(index, depth, direction=None, offset=0, symmetric=False, taper=0):
     s = SKETCHES[selected['profiles'][0]['sketch']]
     n = Vector(s['normal'] if direction is None else direction).normalized()
     solids = []
-    for f in profiles(index):
+    for f in profiles(index, sherman_p_bottom=index == 9, seat_shoulders=index == 79):
         f = f.translate(n*(offset-depth/2 if symmetric else offset))
         solids.append(Solid.extrude_taper(f,n*depth,taper) if taper else Solid.extrude(f,n*depth))
     return solids[0].fuse(*solids[1:]) if len(solids)>1 else solids[0]
@@ -98,6 +109,10 @@ def build_master(stop=None, imprint=True, airtag_depth=8.5):
     body = stage('M13',body.cut(tool(86,1000,source_to_model([0,0,1]),symmetric=True)))
     # Exact planar wedge from saved source draft datums (same construction as SolidCraft).
     points = [(-43,159.1595320874856,11.33586233574399),(-43,159.1595320874856,34.33586233574536),(-43,176.73146895659514,36.4311889499611)]
+    # Carry the front opening's existing ramp along its sloped top/bottom planes.
+    from bottom_outline import SCREEN_EXTENSION_MM
+    slope = (points[2][2]-points[1][2])/(points[2][1]-points[1][1])
+    points = [(x,y+SCREEN_EXTENSION_MM,z+slope*SCREEN_EXTENSION_MM) for x,y,z in points]
     wedge = Solid.extrude(Face(Wire.make_polygon([source_to_model(p) for p in points],close=True)),source_to_model((86,0,0)))
     body = stage('M14',body.cut(wedge))
     body = stage('M15',body.cut(tool(89,8,direction=-Vector(SKETCHES['RearSeatNotchSketch']['normal']))))
@@ -106,7 +121,10 @@ def build_master(stop=None, imprint=True, airtag_depth=8.5):
     body = stage('M17',body.cut(side,side.mirror(Plane.YZ)))
     rearcut = tool(121,1000,symmetric=True)
     body = stage('M18',body.cut(rearcut,rearcut.mirror(Plane.YZ)))
-    body = stage('M19',body.cut(tool(124,500,direction=-Vector(SKETCHES['BodyCutSketch']['normal']),offset=12,taper=-15)))
+    from trunk_cavity import bound_trunk_cavity
+    cavity = tool(124,500,direction=-Vector(SKETCHES['BodyCutSketch']['normal']),offset=12,taper=-15)
+    cavity = bound_trunk_cavity(cavity, profiles(9,sherman_p_bottom=True)[0])
+    body = stage('M19',body.cut(cavity))
     body = stage('M20',body.cut(tool(126,airtag_depth,direction=-Vector(SKETCHES['AirtagCutSketch']['normal']))))
     # Place the finished geometry before the stationary wheel-body subtraction.
     body = body.translate(ADAPTER_TRANSLATION_MM)

@@ -1,6 +1,6 @@
 """Physical acceptance checks for the approved raised, thickened front."""
 import unittest
-from build123d import GeomType, Plane, Keep, Vector
+from build123d import GeomType, Plane, Keep, Vector, Solid
 from adapter import build_master
 
 class RaisedFrontTests(unittest.TestCase):
@@ -28,8 +28,16 @@ class RaisedFrontTests(unittest.TestCase):
                         and f.normal_at().Z<-.59]
         self.assertFalse(dovetail_faces)
 
+    def test_extended_screen_gusset_keeps_full_clip_bore_open(self):
+        bore = Solid.make_cylinder(15.1, 100,
+            Plane((-50,-220.37430326680117,32.87424168191536), z_dir=(1,0,0)))
+        overlap = self.body.intersect(bore)
+        self.assertLess(0 if overlap is None else overlap.volume, 1e-5)
+
     def test_bridge_has_added_thickness_above_retained_bottom(self):
-        self.assertTrue(self.body.is_inside(Vector(0,-190,48)))
+        # Enlarged opening moves the 55-degree ramp 10 mm toward the clip.
+        self.assertFalse(self.body.is_inside(Vector(0,-190,48)))
+        self.assertTrue(self.body.is_inside(Vector(0,-200,48)))
         self.assertTrue(self.body.is_inside(Vector(0,-190,17)))
         self.assertFalse(self.body.is_inside(Vector(0,-190,10)))
 
