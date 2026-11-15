@@ -53,7 +53,7 @@ XDG_CACHE_HOME=/tmp/surron-build123d-cache \
 node Build123d/validate-mounting-ceilings.mjs
 ```
 
-Orientation tests check the initial profile, sketch frames and first extrusion, so an end-of-build rotation cannot pass. Material probes use the corrected frame. Tests compare 16 selected-profile sets against their saved areas, the M05 base against Fusion's volume, the finished body against an independent subtraction of the accepted prepared body STEP from the saved pre-imprint adapter, and all twelve mounting ledge/cavity/bore samples against native solid classification. The mesh ceiling check uses two independent ray directions at placed probe points. The export check reopens STEP and STL and rebuilds with an AirTag depth of 8.6 mm to check the expected 102.4295 mm³ change; it does not overwrite nominal exports.
+Orientation tests check the initial profile, sketch frames and first extrusion, so an end-of-build rotation cannot pass. Material probes use the corrected frame. Tests compare 16 selected-profile sets against their saved areas, the revised M01/M05 base against the approved outline using independent native geometry, the finished body against an independent subtraction of the accepted prepared body STEP from the saved pre-imprint adapter, and all twelve mounting ledge/cavity/bore samples against native solid classification. The mesh ceiling check uses two independent ray directions at placed probe points. The export check reopens STEP and STL and rebuilds with an AirTag depth of 8.6 mm to check the expected 102.4295 mm³ change; it does not overwrite nominal exports.
 
 The prior nominal in-memory master volume, before the approved alignment, was approximately **1,517,837.554 mm³**. After the scan alignment the master measured approximately **1,476,826.478 mm³**. After the approved front-clip placement the current master measures approximately **1,473,734.600 mm³**; see `logs/build-validation.json`. The earlier full-scan imprint measured **1,507,476.035 mm³**. Matching volume is useful regression evidence, not proof of whole-model equality or physical fit.
 
@@ -258,3 +258,45 @@ approved continuous-ramp prototype within 0.001 mm³. Independent Boolean review
 confirms zero missing original material and zero difference from the approved
 prototype. `preview_screen_surround.py` renders the implemented join directly
 from manufacturing STEP to `exports/screen-surround-implemented.png`.
+
+
+## Implemented Sherman P suspension-access outline
+
+The user-approved [numbered proposal](exports/bottom-outline-sherman-p-proposed.png)
+is now native manufacturing geometry. `bottom_outline.py` adapts the original
+selected BottomSketch half-loop before the first extrusion; the normal mirror
+produces the opposite side. Source recipes and `profiles(9)` inspection remain
+original; `profiles(9, sherman_p_bottom=True)` exposes the revised native half.
+
+Using the original line numbers: 13 retains its angle and extends to vertical
+16; 14 and 15 are removed. Line 17 translates 10 mm toward the front without
+rotation. Line 19 moves 10 mm forward, enlarging the screen opening from 60 to
+70 mm in the bottom sketch. The center remains 44 mm wide. Both changes are
+mirrored, and the saved proposal coordinates are in the placed model frame.
+
+The existing 55-degree screen ramp follows the extended opening: its datum
+moves forward 10 mm along the original sloped top/bottom planes. Its top join
+is now Y=-202.950417 mm. The clip-root gusset ends at Y=-204.112360 mm, between
+that join and the unchanged bore rear tangent at Y=-205.274303 mm. The original
+30.2 mm clip bore and its axis remain fixed. The side reinforcement and both
+printing planes rebuild from native faces. The separate latch, adapter placement,
+scan preparation and body-only 1.003 fit scale are unchanged; no fillets are added.
+
+Current native pre-imprint volume is **1,374,123.431 mm³**; imprinted volume is
+**1,337,167.667 mm³**. STEP reopens as one valid solid of **1,337,167.678 mm³**;
+STL is one valid solid of **1,337,167.470 mm³**. These current values supersede
+the earlier section volumes. Export validation measures the AirTag edit using
+two native builds separately from STEP serialization: removed volume is
+102.429507785 mm³ and STEP round-trip volume error is +0.010984917 mm³.
+
+`preview_suspension_outline.py` renders the [implemented top and oblique views](exports/suspension-outline-implemented.png)
+from the actual manufacturing STL. The old numbered sketch image is historical
+reference geometry; its line IDs remain stable. Existing seat-hanger features
+remain, including their protrusions outside the narrow base outline. Physical
+cover removal, print fit and printed strength have not been tested.
+
+Verification for this outline: all **27 tests** pass, all **12 mesh mounting-ceiling
+checks** pass, portable reference validation passes, and export/parameter validation
+passes. Native blank and M05 geometry agree with the independently constructed
+approved proposal within 0.001 mm³ in both Boolean directions. Full-cylinder
+intersection confirms the 30.2 mm clip bore contains no adapter material.
