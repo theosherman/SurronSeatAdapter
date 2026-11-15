@@ -1,0 +1,8 @@
+{
+  "translationMm": [0.0, -2.426787168466774, 0.0],
+  "frame": "permanent Build123d frame; negative Y is physical front; Z up",
+  "clipCenterBeforeMm": [0.0, -217.9475160983344, 14.8216096181789],
+  "estimatedHandleCenterYZmm": [-220.37430326680117, 32.69907876],
+  "handleCenterMethod": "Circle fit to upper front-handle scan silhouette; approximate, approved by preview",
+  "scope": "Finished adapter before wheel-body subtraction; finished separate latch; stationary wheel references"
+}

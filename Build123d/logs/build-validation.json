@@ -1,6 +1,11 @@
 {
   "coordinateFrame": "source (x,y,z) -> model (-x,-y,z); physical front is negative Y; Z up",
-  "elapsedSeconds": 35.23126159000094,
+  "adapterTranslationMm": [
+    0.0,
+    -2.426787168466774,
+    0.0
+  ],
+  "elapsedSeconds": 19.111696705000213,
   "stages": [
     {
       "step": "M01",
@@ -118,7 +123,7 @@
     },
     {
       "step": "M21",
-      "volumeMm3": 1476826.4784675327,
+      "volumeMm3": 1473734.599702362,
       "solids": 1,
       "valid": true
     }
