@@ -53,9 +53,9 @@ XDG_CACHE_HOME=/tmp/surron-build123d-cache \
 node Build123d/validate-mounting-ceilings.mjs
 ```
 
-Orientation tests check the initial profile, sketch frames and first extrusion, so an end-of-build rotation cannot pass. Material probes use the corrected frame. Tests compare 16 selected-profile sets against their saved areas, the M05 base against Fusion's volume, the finished body against an independent subtraction of the accepted prepared body STEP from the saved pre-imprint adapter, and all twelve mounting ledge/cavity/bore samples against native solid classification. The additional mesh check uses two independent ray directions. The export check reopens STEP and STL and rebuilds with an AirTag depth of 8.6 mm to check the expected 102.4295 mm³ change; it does not overwrite nominal exports.
+Orientation tests check the initial profile, sketch frames and first extrusion, so an end-of-build rotation cannot pass. Material probes use the corrected frame. Tests compare 16 selected-profile sets against their saved areas, the M05 base against Fusion's volume, the finished body against an independent subtraction of the accepted prepared body STEP from the saved pre-imprint adapter, and all twelve mounting ledge/cavity/bore samples against native solid classification. The mesh ceiling check uses two independent ray directions at placed probe points. The export check reopens STEP and STL and rebuilds with an AirTag depth of 8.6 mm to check the expected 102.4295 mm³ change; it does not overwrite nominal exports.
 
-The prior nominal in-memory master volume, before the approved alignment, was approximately **1,517,837.554 mm³**. The current aligned master measures approximately **1,476,826.478 mm³**; see `logs/build-validation.json`. The earlier full-scan imprint measured **1,507,476.035 mm³**. Matching volume is useful regression evidence, not proof of whole-model equality or physical fit.
+The prior nominal in-memory master volume, before the approved alignment, was approximately **1,517,837.554 mm³**. After the scan alignment the master measured approximately **1,476,826.478 mm³**. After the approved front-clip placement the current master measures approximately **1,473,734.600 mm³**; see `logs/build-validation.json`. The earlier full-scan imprint measured **1,507,476.035 mm³**. Matching volume is useful regression evidence, not proof of whole-model equality or physical fit.
 
 ## Construction choices and limitations
 
@@ -70,6 +70,27 @@ The prior nominal in-memory master volume, before the approved alignment, was ap
 - Exact Onshape parity, full-model source-to-port XOR comparison, and physical print-fit testing have not been established. The orientation revision was separately checked against the previous Build123d STEP after aligning it for comparison: symmetric-difference volume was 0.0012 mm³. See `logs/orientation-validation.json`; this verifies preservation during reorientation, not source-to-port equality.
 
 The existing SolidCraft and Onshape files remain unchanged. The latch remains separate; this source does not merge accessories into the master.
+
+## Approved front-clip placement
+
+The adapter and separate latch now translate **-2.426787168466774 mm along Y**
+(about 2.43 mm toward the front), with X and Z unchanged. This implements the
+approved [side-view preview](exports/front-clip-alignment-proposal.png).
+The clip's circular center is now Y=-220.37430326680117 mm, Z=14.8216096181789 mm,
+vertically aligned with the front-handle center estimated from its scan silhouette
+(Y approximately -220.3743 mm, Z approximately 32.6991 mm).
+
+`adapter-placement.json` controls this assembly placement through
+`coordinates.ADAPTER_TRANSLATION_MM`, shared with the mesh ceiling validator. Manufacturing
+profiles and early checkpoints remain in their original corrected model frame.
+The completed M20 body is placed before the stationary wheel-body subtraction;
+`--no-imprint` and `--stop M20` return that placed geometry. The latch is placed
+after its source checkpoints, remains separate, and keeps its existing clearance.
+Scan alignment, slicing, scale and reference exports are unchanged. The final
+imprint is regenerated at the new position rather than translated from an old cut.
+This supersedes the earlier statement that the drawn scan line exactly coincides
+with the adapter lower plane: the scan retains that approved orientation, while
+its position relative to the translated sloped adapter has changed slightly.
 
 ## Sherman P body-only fit preparation
 
@@ -126,8 +147,8 @@ two inward-shifted limiting planes (the two shoulder faces are coplanar).
 
 All five source checkpoint volumes match within **0.01 mm³**. The final nominal
 solid measures **230819.786248 mm³**; corrected-frame bounds are approximately
-`(-60.865103,150.227354,-45.662921)` to
-`(60.865103,222.424548,47.321249)` mm. Tests check the frame, analytic cylinder
+`(-60.865103,147.800567,-45.662921)` to
+`(60.865103,219.997761,47.321249)` mm. Tests check the frame, analytic cylinder
 retention, all three inward offsets, clearance changes, and temporary shared
 profile edits with restoration. Both exports reopen as one valid solid; STEP
 retains the nominal volume and STL differs by about **0.256 mm³** due to

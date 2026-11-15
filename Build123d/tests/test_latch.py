@@ -13,9 +13,9 @@ class LatchTests(unittest.TestCase):
             self.assertTrue(stage['valid'])
             self.assertEqual(stage['solids'], 1)
         bounds = body.bounding_box()
-        for actual, wanted in zip(tuple(bounds.min), (-60.865103223,150.227353849,-45.662921353)):
+        for actual, wanted in zip(tuple(bounds.min), (-60.865103223,147.800566681,-45.662921353)):
             self.assertAlmostEqual(actual, wanted, delta=0.001)
-        for actual, wanted in zip(tuple(bounds.max), (60.865103223,222.424548470,47.321249211)):
+        for actual, wanted in zip(tuple(bounds.max), (60.865103223,219.997761302,47.321249211)):
             self.assertAlmostEqual(actual, wanted, delta=0.001)
         from build123d import GeomType
         self.assertTrue(any(f.geom_type == GeomType.CYLINDER for f in body.faces()))
@@ -33,14 +33,14 @@ class LatchTests(unittest.TestCase):
 
     def test_three_mating_faces_move_inward_by_clearance(self):
         from latch import build_latch, FEATURES
-        from coordinates import source_to_model
+        from coordinates import source_to_model, ADAPTER_TRANSLATION_MM
         from build123d import GeomType, Vector
         body = build_latch(clearance=0.2)
         for selector in FEATURES[106]['inputFaces']:
             normal = Vector(source_to_model(selector['geometry']['normal']))
             if selector['isParamReversed']:
                 normal = -normal
-            origin = Vector(source_to_model(selector['geometry']['origin']))
+            origin = Vector(source_to_model(selector['geometry']['origin'])) + Vector(ADAPTER_TRANSLATION_MM)
             shifted = [f for f in body.faces() if f.geom_type == GeomType.PLANE
                        and f.normal_at().dot(normal)>1-1e-7
                        and abs((f.center()-origin).dot(normal)+0.2)<1e-6]

@@ -12,6 +12,12 @@ import struct
 from scan_patch import repair_screen_patch, PATCH
 
 
+# User-approved front-clip / stationary front-handle vertical alignment.
+# Applied to finished adapter and separate latch, never to wheel references.
+ADAPTER_TRANSLATION_MM = tuple(json.loads(
+    (Path(__file__).parent/'adapter-placement.json').read_text())['translationMm'])
+
+
 def source_to_model(xyz):
     return [-xyz[0], -xyz[1], xyz[2]]
 
