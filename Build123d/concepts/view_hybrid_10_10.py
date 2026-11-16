@@ -6,8 +6,9 @@ from pathlib import Path
 from build123d import import_step
 from ocp_vscode import show,set_port,Camera,Render
 
+Path('/tmp/surron-seat-adapter-previews/Build123d/exports').mkdir(parents=True,exist_ok=True)
 ROOT=Path(__file__).resolve().parents[1]
-PREVIEW=ROOT/'exports/concepts/rear-cavity/hybrid-10-10'
+PREVIEW=Path('/tmp/surron-seat-adapter-previews/Build123d/exports/concepts/rear-cavity/hybrid-10-10')
 COMPARE_CURRENT=False # True: current assembly beside proposed assembly.
 SHOW_WHEEL=True
 SCAN_OPACITY=.9

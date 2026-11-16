@@ -105,7 +105,7 @@ The existing SolidCraft and Onshape files remain unchanged. The latch remains se
 
 The adapter and separate latch now translate **-2.426787168466774 mm along Y**
 (about 2.43 mm toward the front), with X and Z unchanged. This implements the
-approved [side-view preview](exports/front-clip-alignment-proposal.png).
+approved side-view preview (temporary proposal preview; excluded from Git).
 The clip's circular center is now Y=-220.37430326680117 mm, Z=14.8216096181789 mm,
 vertically aligned with the front-handle center estimated from its scan silhouette
 (Y approximately -220.3743 mm, Z approximately 32.6991 mm).
@@ -292,7 +292,7 @@ from manufacturing STEP to `exports/screen-surround-implemented.png`.
 
 ## Implemented Sherman P suspension-access outline
 
-The user-approved [numbered proposal](exports/bottom-outline-sherman-p-proposed.png)
+The user-approved numbered proposal (temporary proposal preview; excluded from Git)
 is now native manufacturing geometry. `bottom_outline.py` adapts the original
 selected BottomSketch half-loop before the first extrusion; the normal mirror
 produces the opposite side. Source recipes and `profiles(9)` inspection remain

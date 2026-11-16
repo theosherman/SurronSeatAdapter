@@ -12,6 +12,8 @@ Current cavity direction: redraw a simple hexagonal or octagonal cavity confined
 
 ## CAD context
 
+Temporary correction proposals and discussion previews (images, STEP/STL studies, HTML viewers, and their scratch reports) belong under `/tmp/surron-seat-adapter-previews/`, never in tracked exports or commits. Keep durable, updated previews of implemented geometry in the repository. Preview generators must write proposal outputs to `/tmp`; do not stage temporary assets. Historical proposal assets have been removed from the current tree without rewriting Git history.
+
 Read `README.md`, `docs/CAD-REBUILD.md`, and `cad-rebuild/recipe.json` before changing CAD geometry. `docs/PORTING-AND-VALIDATION.md` describes validation for another CAD engine.
 
 Additional user-requested parts: `Latch` and `SaddleBagMount` must remain separate from the adapter and from each other. Their extracted features and build sequences are in `docs/ACCESSORY-PARTS.md` and `cad-rebuild/accessories/`. Extraction does not mean they have been rebuilt in SolidCraft or Onshape.

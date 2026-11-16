@@ -7,7 +7,8 @@ from build123d import Face,Wire,Solid,import_step,GeomType
 sys.path.insert(0,str(Path(__file__).resolve().parents[1]))
 from preview_front_clip import load
 from mesh_preview import render
-ROOT=Path(__file__).resolve().parents[1];OUT=ROOT/'exports/concepts/rear-cavity/option-b-3d'
+Path('/tmp/surron-seat-adapter-previews/Build123d/exports').mkdir(parents=True,exist_ok=True)
+ROOT=Path(__file__).resolve().parents[1];OUT=Path('/tmp/surron-seat-adapter-previews/Build123d/exports/concepts/rear-cavity/option-b-3d')
 OUT.mkdir(parents=True,exist_ok=True)
 font=lambda n:ImageFont.truetype('/usr/share/fonts/TTF/DejaVuSans.ttf',n)
 BLUE=(87,148,187);TEAL=(36,163,173);GREEN=(70,166,113);DARKGREEN=(35,119,82);GOLD=(220,171,73)

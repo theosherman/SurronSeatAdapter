@@ -46,4 +46,4 @@ d.text((45,1220),'Teal: reshaped front     Slate: retained adapter     Gold: act
 d.text((45,1280),f'Existing screen-front ramp measured from CAD: {np.degrees(np.arctan(abs(slope))):.1f}° to horizontal.',font=f(23),fill='#405b70')
 d.text((45,1330),'The incline continues toward the clip; extra material builds thickness instead of lifting the whole underside.',font=f(23),fill='#405b70')
 d.text((45,1410),'PREVIEW ONLY • mesh shape study, not a validated solid • manufacturing CAD and body placement unchanged',font=f(22),fill='#405b70')
-out=R/'exports/front-clip-screen-ramp-preview.png';im.save(out);print(out)
+out=Path('/tmp/surron-seat-adapter-previews/Build123d/exports')/'front-clip-screen-ramp-preview.png';im.save(out);print(out)

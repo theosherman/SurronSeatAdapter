@@ -1,5 +1,7 @@
 """Preview only: infer rear grip circle from the scan; never change CAD solids."""
 from pathlib import Path
+Path('/tmp/surron-seat-adapter-previews/Build123d/logs').mkdir(parents=True,exist_ok=True)
+Path('/tmp/surron-seat-adapter-previews/Build123d/exports').mkdir(parents=True,exist_ok=True)
 import json
 import numpy as np
 from scipy.optimize import least_squares
@@ -80,7 +82,7 @@ report = dict(previewOnly=True, frame='Build123d; Y rearward, Z up',
               requiredPlaneOffsetMm=1.0-overlap,
               caveat='Fixed clip diameter positioned using only the uppermost 3 mm of the rear scan; sides/underside excluded. Plane interference assumes contact is within the face.',
               cadGeometryChanged=False)
-(ROOT/'logs/rear-handle-circle-preview.json').write_text(json.dumps(report, indent=2)+'\n')
+Path('/tmp/surron-seat-adapter-previews/Build123d/logs/rear-handle-circle-preview.json').write_text(json.dumps(report, indent=2)+'\n')
 
 W,H=1600,1000
 image=Image.new('RGB',(W,H),'#f6f8fb')
@@ -141,5 +143,5 @@ draw=ImageDraw.Draw(image)
 draw.text((35,836),f'Rear grip: fixed diameter {2*radius:.1f} mm from clip; estimated center Y {center[0]:.2f}, Z {center[1]:.2f} mm',font=font(22),fill='#193047')
 draw.text((35,878),f'This estimate already intersects the existing latch by ~{overlap:.1f} mm, measured normal to its back face.',font=font(21),fill='#193047')
 draw.text((35,920),'Confirm the inferred circle before deciding how to reach the requested 1 mm interference.',font=font(21),fill='#a53567')
-image.save(OUT/'rear-handle-circle-preview.png')
+image.save(Path('/tmp/surron-seat-adapter-previews/Build123d/exports')/'rear-handle-circle-preview.png')
 print(json.dumps(report,indent=2))

@@ -1,5 +1,6 @@
 """Top-view review of the exact selected BottomSketch; no CAD mutations."""
 from pathlib import Path
+Path('/tmp/surron-seat-adapter-previews/Build123d/exports').mkdir(parents=True,exist_ok=True)
 import json
 import sys
 import numpy as np
@@ -150,11 +151,11 @@ def main():
         d.text((x+285, 162), 'FRONT', font=font(18), fill='#405b70')
     d.text((30, 1420), '13 extended to vertical 16; 14/15 removed. Mirrored on right. 19 moved 10 mm toward front.' if proposal else 'Pink: exact selected base profile, mirrored and placed. Later cuts, clip changes and imprint are not this sketch.', font=font(22), fill='#405b70')
     d.text((30, 1460), '17: shift 10 mm toward screen, original angle retained. Original line IDs kept; manufactured CAD unchanged.' if proposal else 'Scan: aligned, unscaled body + handles. Suspension-cover boundaries have not been inferred or marked.', font=font(22), fill='#405b70')
-    path = ROOT/('exports/bottom-outline-sherman-p-proposed.png' if proposal else 'exports/bottom-outline-sherman-p-numbered.png')
+    path = Path('/tmp/surron-seat-adapter-previews/Build123d/exports')/('bottom-outline-sherman-p-proposed.png' if proposal else 'bottom-outline-sherman-p-numbered.png')
     result.save(path)
     print(path)
     mapping = 'bottom-outline-proposed-lines.json' if proposal else 'bottom-outline-line-numbers.json'
-    (ROOT/'exports'/mapping).write_text(json.dumps(
+    (Path('/tmp/surron-seat-adapter-previews/Build123d/exports')/mapping).write_text(json.dumps(
         {str(i): s.tolist() for i, s in (proposed if proposal else original).items()}, indent=2)+'\n')
     print(json.dumps(dict(halfProfileAreaMm2=half_area, mirroredAreaMm2=2*half_area,
                           assemblyTranslationMm=ADAPTER_TRANSLATION_MM, triangles=len(scan))))

@@ -2,6 +2,7 @@
 from pathlib import Path
 import numpy as np
 from PIL import Image, ImageDraw, ImageFont
+Path('/tmp/surron-seat-adapter-previews/Build123d/exports').mkdir(parents=True,exist_ok=True)
 R=Path(__file__).resolve().parents[1]
 D=np.dtype([('n','<f4',(3,)),('v','<f4',(3,3)),('a','<u2')])
 def read(p):return np.frombuffer(p.read_bytes(),dtype=D,offset=84)['v'].astype(float)
@@ -63,4 +64,4 @@ for k,(name,desc,end,kind) in enumerate([
  d.text((x+25,1510),'Teal = proposed rise; slate = retained body',font=f(19),fill='#526577')
 d=ImageDraw.Draw(im);d.text((42,1595),'PREVIEW ONLY • approximately 18 mm rise • existing clip bore retained • no manufacturing CAD changed',font=f(23),fill='#344f64')
 d.text((42,1630),'Mesh deformation studies show proportions and appearance; jaw engagement, wall thickness and strength still require CAD validation.',font=f(20),fill='#526577')
-out=R/'exports/front-clip-3d-options.png';im.save(out);print(out)
+out=Path('/tmp/surron-seat-adapter-previews/Build123d/exports')/'front-clip-3d-options.png';im.save(out);print(out)

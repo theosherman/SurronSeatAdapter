@@ -1,5 +1,6 @@
 """Review-only native screen-surround reinforcement; no manufacturing changes."""
 from pathlib import Path
+Path('/tmp/surron-seat-adapter-previews/Build123d/exports').mkdir(parents=True,exist_ok=True)
 import sys,json
 import numpy as np
 from PIL import Image,ImageDraw,ImageFont
@@ -7,7 +8,8 @@ from build123d import import_step,GeomType,Plane,Keep,Solid,Compound,ShapeList,e
 ROOT=Path(__file__).resolve().parents[1];sys.path.insert(0,str(ROOT))
 from mesh_preview import render
 from print_planes import trim_to_rear_print_planes
-OUT=ROOT/'exports/concepts'
+OUT=Path('/tmp/surron-seat-adapter-previews/Build123d/exports/concepts')
+OUT.mkdir(parents=True,exist_ok=True)
 body=import_step(ROOT/'exports/adapter-body.step')
 planes=[f for f in body.faces() if f.geom_type==GeomType.PLANE]
 rear=next(f for f in planes if f.area>2000 and -103<f.center().Y<-100 and f.normal_at().Y<-.99)
@@ -74,5 +76,5 @@ draw=ImageDraw.Draw(image)
 draw.text((40,1390),f'Green: new straight top plane ({report["topRiseAngleDegrees"]:.1f}° rise)   •   Screen aperture stays open   •   Added material: {added.volume:,.0f} mm³',font=font(24),fill='#183044')
 draw.text((40,1440),'Existing material retained • underside and bore unchanged • both printing planes maintained • one valid native solid',font=font(23),fill='#405b70')
 draw.text((40,1500),'PREVIEW ONLY • current manufacturing model and exports unchanged',font=font(23),fill='#405b70')
-image.save(ROOT/'exports/reinforced-screen-preview.png')
+image.save(Path('/tmp/surron-seat-adapter-previews/Build123d/exports')/'reinforced-screen-preview.png')
 print(json.dumps(report))
