@@ -30,7 +30,8 @@ SolidCraft/logs/check-stage1.json
 # Temporary review images and scratch files.
 /tmp/
 
-# Correction/discussion proposal assets belong in /tmp, not tracked exports.
+# Correction/discussion proposal assets belong in Build123d/tmp, not tracked exports.
+/Build123d/tmp/
 /Build123d/exports/concepts/
 /Build123d/exports/requested-cavity-preview/
 /Build123d/exports/*-proposed*

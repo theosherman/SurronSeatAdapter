@@ -9,9 +9,9 @@ from PIL import Image,ImageDraw,ImageFont
 from build123d import import_step,export_step,export_stl,Face,Wire,Solid,Plane,Keep,GeomType,Compound,ShapeList
 sys.path.insert(0,str(Path(__file__).resolve().parents[1]))
 from mesh_preview import render
-Path('/tmp/surron-seat-adapter-previews/Build123d/exports').mkdir(parents=True,exist_ok=True)
+(Path(__file__).resolve().parents[1]/'tmp').mkdir(parents=True,exist_ok=True)
 ROOT=Path(__file__).resolve().parents[1]
-OUT=Path('/tmp/surron-seat-adapter-previews/Build123d/exports/concepts/rear-cavity/hybrid-10-10')
+OUT=(Path(__file__).resolve().parents[1]/'tmp/concepts/rear-cavity/hybrid-10-10')
 MOVE_MM=10.0
 EXTRA_WALL_MM=10.0
 

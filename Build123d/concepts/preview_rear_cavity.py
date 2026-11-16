@@ -6,9 +6,9 @@ from PIL import Image, ImageDraw, ImageFont
 sys.path.insert(0,str(Path(__file__).resolve().parents[1]))
 from preview_front_clip import load
 from mesh_preview import render
-Path('/tmp/surron-seat-adapter-previews/Build123d/exports').mkdir(parents=True,exist_ok=True)
+(Path(__file__).resolve().parents[1]/'tmp').mkdir(parents=True,exist_ok=True)
 ROOT=Path(__file__).resolve().parents[1]
-OUT=Path('/tmp/surron-seat-adapter-previews/Build123d/exports/concepts/rear-cavity')
+OUT=(Path(__file__).resolve().parents[1]/'tmp/concepts/rear-cavity')
 OUT.mkdir(parents=True,exist_ok=True)
 FONT='/usr/share/fonts/TTF/DejaVuSans.ttf'
 font=lambda n: ImageFont.truetype(FONT,n)

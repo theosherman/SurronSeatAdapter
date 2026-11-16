@@ -1,13 +1,13 @@
 """Side-profile concept from existing STL geometry; no manufacturing edits."""
 from pathlib import Path
-Path('/tmp/surron-seat-adapter-previews/Build123d/exports').mkdir(parents=True,exist_ok=True)
+(Path(__file__).resolve().parent/'tmp').mkdir(parents=True,exist_ok=True)
 import subprocess
 import numpy as np
 from PIL import Image, ImageDraw, ImageFont, ImageChops
 from preview_front_clip import DTYPE
 
 ROOT=Path(__file__).resolve().parent
-OUT=Path('/tmp/surron-seat-adapter-previews/Build123d/exports')
+OUT=(Path(__file__).resolve().parent/'tmp')
 RISE=8.0
 # Keep the approved preview reproducible after manufacturing exports change.
 BASELINE='85c21dbfe656fbc8b62afdd2b154c4c85f0e93e6'

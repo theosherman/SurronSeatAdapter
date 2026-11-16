@@ -12,7 +12,7 @@ Current cavity direction: redraw a simple hexagonal or octagonal cavity confined
 
 ## CAD context
 
-Temporary correction proposals and discussion previews (images, STEP/STL studies, HTML viewers, and their scratch reports) belong under `/tmp/surron-seat-adapter-previews/`, never in tracked exports or commits. Keep durable, updated previews of implemented geometry in the repository. Preview generators must write proposal outputs to `/tmp`; do not stage temporary assets. Historical proposal assets have been removed from the current tree without rewriting Git history.
+Temporary correction proposals and discussion previews (images, STEP/STL studies, HTML viewers, and their scratch reports) belong under `Build123d/tmp/` inside this repository, never in tracked exports or commits. Keep durable, updated previews of implemented geometry in the repository. Preview generators must write proposal outputs to `Build123d/tmp/` (not system `/tmp` and with no `exports` subdirectory); do not stage temporary assets. Historical proposal assets have been purged from Git history.
 
 Read `README.md`, `docs/CAD-REBUILD.md`, and `cad-rebuild/recipe.json` before changing CAD geometry. `docs/PORTING-AND-VALIDATION.md` describes validation for another CAD engine.
 

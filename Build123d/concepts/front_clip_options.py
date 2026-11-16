@@ -4,7 +4,7 @@ import numpy as np
 from PIL import Image, ImageDraw, ImageFont
 from scipy.optimize import least_squares
 from build123d import import_step, GeomType
-Path('/tmp/surron-seat-adapter-previews/Build123d/exports').mkdir(parents=True,exist_ok=True)
+(Path(__file__).resolve().parents[1]/'tmp').mkdir(parents=True,exist_ok=True)
 R=Path(__file__).resolve().parents[1]
 D=np.dtype([('n','<f4',(3,)),('v','<f4',(3,3)),('a','<u2')])
 def mesh(p): return np.frombuffer(p.read_bytes(),dtype=D,offset=84)['v'].astype(float)
@@ -60,5 +60,5 @@ for k,(title,note,start,style) in enumerate([('A / Long rising transition','Clea
  d.text((left+22,top+711),'Side-profile study / front at left',font=f(18),fill='#4c6074')
  d.text((left+22,top+745),'Root thickness and jaw ends provisional',font=f(17),fill='#4c6074')
 d.text((36,1030),'CONCEPTS ONLY • scan crown estimates handle axis • no fillets added • CAD unchanged • snap fit / strength not validated',font=f(19),fill='#4c6074')
-out=Path('/tmp/surron-seat-adapter-previews/Build123d/exports')/'front-clip-raised-options.png';im.save(out)
+out=(Path(__file__).resolve().parents[1]/'tmp')/'front-clip-raised-options.png';im.save(out)
 print({'preview':str(out),'clipCenterYZ':c.tolist(),'estimatedHandleCenterYZ':fit.tolist(),'riseMm':dz})
