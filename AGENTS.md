@@ -12,6 +12,8 @@ Current cavity direction: redraw a simple hexagonal or octagonal cavity confined
 
 ## CAD context
 
+For user-visible proposal previews, use the automatic browser viewer: `python Build123d/preview_server.py start --no-open` (omit `--no-open` when initially opening it). Write the final image under `Build123d/tmp/` last so it becomes the newest image; the open browser at http://127.0.0.1:8766 updates automatically. Do not ask the user to hunt for image paths.
+
 Temporary correction proposals and discussion previews (images, STEP/STL studies, HTML viewers, and their scratch reports) belong under `Build123d/tmp/` inside this repository, never in tracked exports or commits. Keep durable, updated previews of implemented geometry in the repository. Preview generators must write proposal outputs to `Build123d/tmp/` (not system `/tmp` and with no `exports` subdirectory); do not stage temporary assets. Historical proposal assets have been purged from Git history.
 
 Read `README.md`, `docs/CAD-REBUILD.md`, and `cad-rebuild/recipe.json` before changing CAD geometry. `docs/PORTING-AND-VALIDATION.md` describes validation for another CAD engine.

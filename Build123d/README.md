@@ -32,6 +32,18 @@ in the full grip-bore cylinder. Every exported wheel-reference vertex matches
 the corresponding previous export translated 8 mm, within 0.000004 mm STL
 rounding. See [seating measurements](logs/deeper-seating-validation.json).
 
+## Automatic preview browser
+
+From the repository root, run `python Build123d/preview_server.py start`.
+It starts a background server and opens http://127.0.0.1:8766 in your browser.
+Keep that page open: it displays the newest image under `Build123d/tmp/`
+and checks for changes every second, including when an image is overwritten.
+All proposal images and server logs stay in that ignored directory.
+
+Use `python Build123d/preview_server.py stop` to stop it, or `status` to check it.
+`start --no-open` starts it without opening another browser tab; `--port` selects
+another port. Python's standard library is sufficient; no CAD environment is needed.
+
 ## Run
 
 Dependencies live outside this Git repository:
