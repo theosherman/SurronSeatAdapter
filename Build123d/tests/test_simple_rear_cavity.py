@@ -29,4 +29,18 @@ class RearSketchTests(unittest.TestCase):
             self.assertFalse(self.tool.is_inside(origin+y*v-n*18))
             self.assertTrue(self.tool.is_inside(origin+y*v-n*19))
 
+    def test_cutter_retains_five_mm_normal_to_original_angled_rear_face(self):
+        from pathlib import Path
+        from build123d import import_step,GeomType
+        from coordinates import ADAPTER_TRANSLATION_MM
+        original=import_step(Path(__file__).parent/'fixtures/original-rear-interface.step')
+        normal=Vector(0,.8597932986247546,.5106422266518543)
+        face=next(f for f in original.faces() if f.geom_type==GeomType.PLANE
+                  and f.normal_at().dot(normal)>.999999 and f.area>8000)
+        tool=self.tool.translate(ADAPTER_TRANSLATION_MM)
+        # Every cutter vertex must remain at least 5 mm inside the actual
+        # original exterior face, measured perpendicular to the angled wall.
+        maximum=max((v.center()-face.center()).dot(normal) for v in tool.vertices())
+        self.assertLessEqual(maximum,-5+1e-6)
+
 if __name__=='__main__':unittest.main()

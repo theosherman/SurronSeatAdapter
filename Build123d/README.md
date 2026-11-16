@@ -2,6 +2,16 @@
 
 The full, unsplit adapter is reconstructed as editable Python solid geometry from the repository's millimeter recipe. The final wheel imprint subtracts only the prepared Sherman P middle body, with the source screen patch reconnected before preparation and uniformly scaled by **1.003** about model origin after cuts at Y=-191/+170 mm. Both handles move with the complete scan during alignment, remain unscaled after slicing, and are excluded from subtraction. The master has no fillets or connector recesses. The latch is a separate editable accessory; no split variant or saddlebag mount is built by this project.
 
+## Rear-wall correction preview
+
+The source cavity cutter now stops at a plane parallel to the original angled
+latch wall and 5 mm inward along its normal. This corrects the original cavity
+operation rather than adding material to the completed adapter. The temporary
+browser preview shows the correction; manufacturing exports have not yet been
+updated for it. Ten targeted cavity tests, twelve mounting-ceiling mesh checks,
+and 75 material samples through the corrected rear wall pass. The original
+outer latch face, separate latch, roof offset and rear side cuts are retained.
+
 ## Implemented long cavity and rear side relief
 
 The approved browser preview is implemented in `trunk_cavity.py` and M19 of
