@@ -15,7 +15,7 @@ SKETCHES = {s['name']: s for s in RECIPE['sketches']}
 HISTORY = []
 
 
-def profiles(index, with_source=False, sherman_p_bottom=False, seat_shoulders=False):
+def profiles(index, with_source=False, sherman_p_bottom=False, seat_shoulders=False, manufacturing_offsets=False):
     """Make exact selected faces in global coordinates, preserving sketch-space Z."""
     selected = next(p for p in RECIPE['selectedProfiles'] if p['sourceTimelineIndex'] == index)
     result = []
@@ -29,6 +29,9 @@ def profiles(index, with_source=False, sherman_p_bottom=False, seat_shoulders=Fa
         for loop in source['loops']:
             edges = []
             curves = loop['curves']
+            if manufacturing_offsets and index in (14, 86):
+                from cut_offsets import offset_cut_curves
+                curves = offset_cut_curves(index, curves)
             if sherman_p_bottom:
                 if index != 9:
                     raise ValueError('Sherman P bottom adaptation is only for BottomSketch')
@@ -63,7 +66,7 @@ def tool(index, depth, direction=None, offset=0, symmetric=False, taper=0):
     s = SKETCHES[selected['profiles'][0]['sketch']]
     n = Vector(s['normal'] if direction is None else direction).normalized()
     solids = []
-    for f in profiles(index, sherman_p_bottom=index == 9, seat_shoulders=index == 79):
+    for f in profiles(index, sherman_p_bottom=index == 9, seat_shoulders=index == 79, manufacturing_offsets=True):
         f = f.translate(n*(offset-depth/2 if symmetric else offset))
         solids.append(Solid.extrude_taper(f,n*depth,taper) if taper else Solid.extrude(f,n*depth))
     return solids[0].fuse(*solids[1:]) if len(solids)>1 else solids[0]

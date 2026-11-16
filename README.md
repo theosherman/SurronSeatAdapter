@@ -10,6 +10,8 @@ The lower toe beneath the rear latch is now trimmed at the latch-wall angle mirr
 
 This folder records the reconstruction of the Fusion design **Surron Seat Adapter v3 v2** in Onshape, including the later wheel-scan imprint and a linked printing variant. It is intended to let a future agent rebuild the accepted geometry in another CAD system, including SolidCraft or Zoo Design Studio.
 
+The printing-plane boundaries (faces 1 and 2) and mirrored triangular front corner cuts (face 3 beside the front clip) now sit **1 mm outward**, preserving their angles and retaining more material. These edits change the original manufacturing profiles; see [implemented offsets](Build123d/exports/one-mm-face-offsets-implemented.png).
+
 ## Start here
 
 The [build123d project](Build123d/README.md) reconstructs the unsplit adapter locally from editable Python source, with STEP/STL exports, a body-only Sherman P imprint at 1.003 fit scale, aligned, unscaled handle references, and mounting-ceiling validation. The Build123d fit preparation supersedes its earlier full-scan zero-clearance imprint; other CAD systems retain their documented state. Dependencies are installed in an external Python environment.

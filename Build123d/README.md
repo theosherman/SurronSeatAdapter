@@ -549,3 +549,17 @@ reopen as single valid solids; STEP volume is **1,205,253.602 mm³**. Comparing
 against the 10 mm version shows **0 mm³** of removed prior material and
 **3,832.887 mm³** retained in the extra normal-depth band from 10 to 14 mm.
 The AirTag parameter-edit and cutter self-intersection checks pass.
+
+## Outward face offsets (1 mm)
+
+The original `RearSketch` diagonal and its mirror now sit **1 mm outward**, measured
+normal to the original printing planes (faces 1 and 2). The existing front trim
+uses these shifted native rear planes. Both `FrontCutSketch` triangular corner-cut
+diagonals (face 3 beside the front clip) also move **1 mm outward** into the removed
+corner, reducing those cuts. Original angles, adjoining horizontal/vertical lines,
+and extrusion directions are preserved. `cut_offsets.py` adjusts these original
+manufacturing profiles before extrusion/intersection; the portable historical
+recipe remains unchanged. No finished-body patches are used.
+
+See [implemented offsets](exports/one-mm-face-offsets-implemented.png); regenerate
+with `preview_cut_offsets.py` after rebuilding the manufacturing exports.

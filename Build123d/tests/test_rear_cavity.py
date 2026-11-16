@@ -58,6 +58,14 @@ class RearCavityTests(unittest.TestCase):
         datum=Plane((0,164.41714823915711,1.578677917809248),
                     z_dir=(0,.8597932986247546,.5106422266518543))
         actual=combined(self.body.split(datum,Keep.TOP))
+        # The approved printing-plane offset adds a 1 mm outer strip. Compare
+        # the old interface only inside its original envelope; independent
+        # printing-plane tests check the new boundary and contact patches.
+        import json
+        planes=json.loads((Path(__file__).parent/'fixtures/accepted-dimensions.json').read_text())['printingPlanes']
+        for plane in planes:
+            actual=combined(actual.split(Plane(plane['pointMm'],
+                z_dir=plane['outwardNormal']),Keep.BOTTOM))
         expected=import_step(Path(__file__).parent/'fixtures/original-rear-interface.step')
         from trunk_cavity import rear_cavity_tool,rear_side_tools,trim_lower_rear_tip
         cavity=rear_cavity_tool(SKETCHES['BodyCutSketch']).translate(ADAPTER_TRANSLATION_MM)
