@@ -454,3 +454,21 @@ and STEP/STL reopening plus the AirTag 8.6 mm depth edit pass. Exported native
 interface symmetric difference is **0 mm³** against the original fixture. The
 finished adapter is **1,667,774.540 mm³** and the original separate latch is
 **230,819.786 mm³**. See [native measurements](logs/rear-cavity-validation.json).
+
+## Existing body-top slope continued onto screen walls
+
+The original body-top plane now continues down onto both lowered screen walls,
+meeting their parallel tops at **Y=-121.934061, Z=32.349827 mm**. The change is
+in the existing `screen_surround.py` wall-top envelope, using the native body-top
+face as its datum. It introduces no separate slope angle, raised cap or fillet.
+The screen aperture and original rounded side cuts remain open.
+
+The reopened manufacturing STEP has one continuous coplanar body-top face,
+including both wall transitions. Its comparison with commit `158e916` shows
+**2,761.715 mm³ added**, confined to Y=-121.934061 through -101.586319 mm,
+and **0 mm³ removed**. Final STEP volume is **1,528,326.431 mm³**. See
+`logs/screen-slope-validation.json`. Both pre-imprint and final STEP/STL exports
+are regenerated. Temporary review images remain in `/tmp`, outside the repo.
+Validation: **42 tests** and all **12 mounting-ceiling mesh checks** pass;
+STEP/STL reopening, cutter integrity and the AirTag depth-edit check pass.
+Physical fit and printed strength remain untested.
