@@ -14,6 +14,11 @@ class RearCavityTests(unittest.TestCase):
     @classmethod
     def setUpClass(cls):cls.body=build_master(imprint=False)
 
+    def test_lower_toe_is_removed_without_cutting_upper_seat_support(self):
+        self.assertFalse(self.body.is_inside((0,180,-25)))
+        for x in (-15,0,15):
+            self.assertTrue(self.body.is_inside((x,255,100)),x)
+
     def test_long_middle_cavity_is_open_below_its_roof(self):
         origin=Vector(SKETCHES['BodyCutSketch']['originMm'])+Vector(ADAPTER_TRANSLATION_MM)
         y,n=map(Vector,(SKETCHES['BodyCutSketch']['yAxis'],SKETCHES['BodyCutSketch']['normal']))
@@ -39,11 +44,11 @@ class RearCavityTests(unittest.TestCase):
         for x in (-15,0,15):
             self.assertTrue(self.body.is_inside((x,235,90)),x)
 
-    def test_angled_rear_wall_retains_five_mm_of_material(self):
+    def test_untrimmed_angled_rear_wall_retains_five_mm_of_material(self):
         from trunk_cavity import REAR_WALL_POINT_MM,REAR_WALL_NORMAL
         point,normal=Vector(REAR_WALL_POINT_MM),Vector(REAR_WALL_NORMAL)
         for x in (-25,0,25):
-            for z in (-20,0,20):
+            for z in (0,20):
                 y=point.Y-(z-point.Z)*normal.Z/normal.Y
                 outer=Vector(x,y,z)
                 for depth in (.1,2.5,4.9):
@@ -54,9 +59,17 @@ class RearCavityTests(unittest.TestCase):
                     z_dir=(0,.8597932986247546,.5106422266518543))
         actual=combined(self.body.split(datum,Keep.TOP))
         expected=import_step(Path(__file__).parent/'fixtures/original-rear-interface.step')
-        from trunk_cavity import rear_cavity_tool,rear_side_tools
+        from trunk_cavity import rear_cavity_tool,rear_side_tools,trim_lower_rear_tip
         cavity=rear_cavity_tool(SKETCHES['BodyCutSketch']).translate(ADAPTER_TRANSLATION_MM)
         expected=combined(expected.cut(cavity,*rear_side_tools()))
+        # Independently preserve the entire upper interface, including dovetail.
+        # Do not apply the production trim to this expected region.
+        upper=Plane((0,0,-17.98689437242),z_dir=(0,0,1))
+        actual_upper=combined(actual.split(upper,Keep.TOP))
+        expected_upper=combined(expected.split(upper,Keep.TOP))
+        self.assertLess(combined(actual_upper.cut(expected_upper)).volume,.001)
+        self.assertLess(combined(expected_upper.cut(actual_upper)).volume,.001)
+        expected=combined(trim_lower_rear_tip(expected))
         self.assertLess(combined(actual.cut(expected)).volume,.001)
         self.assertLess(combined(expected.cut(actual)).volume,.001)
 

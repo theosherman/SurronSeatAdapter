@@ -1,5 +1,5 @@
 """Approved long central pocket and symmetric rear exterior relief."""
-from build123d import Face, Wire, Solid, Vector, Plane, Keep
+from build123d import Face, Wire, Solid, Vector, Plane, Keep, Compound, ShapeList
 
 # Millimeters in BodyCutSketch's (u,v) frame; one editable closed outline.
 REAR_CAVITY_POINTS = ((-12,105),(12,105),(12,-65),(23,-80),(43,-96),
@@ -12,6 +12,10 @@ REAR_WALL_THICKNESS_MM = 5.0
 # Exact original broad latch-wall plane in the placed Build123d model frame.
 REAR_WALL_POINT_MM = (0,165.41714823915711,1.578677917809248)
 REAR_WALL_NORMAL = (0,.8597932986247546,.5106422266518543)
+# Lower latch root in the placed model; mirrored wall slope across XY.
+REAR_TIP_POINT_MM = (0,177.270005683283,-17.98689437242)
+REAR_TIP_NORMAL = (0,REAR_WALL_NORMAL[1],-REAR_WALL_NORMAL[2])
+REAR_TIP_WALL_THICKNESS_MM = 10.0
 # Coordinates in the placed Build123d model frame; mirrored about X=0.
 REAR_SIDE_POINTS = ((78,126),(55,140),(55,300),(120,300),(120,126))
 
@@ -23,7 +27,7 @@ def rear_cavity_profile(sketch):
 
 
 def rear_cavity_tool(sketch):
-    """Straight side walls and one rear limit parallel to the original latch wall."""
+    """Straight cavity bounded by the original wall and local lower-tip planes."""
     direction=-Vector(sketch['normal']).normalized()
     profile=rear_cavity_profile(sketch).translate(direction*CAVITY_ROOF_OFFSET_MM)
     cutter=Solid.extrude(profile,direction*350)
@@ -32,7 +36,12 @@ def rear_cavity_tool(sketch):
     from coordinates import ADAPTER_TRANSLATION_MM
     normal=Vector(REAR_WALL_NORMAL)
     point=Vector(REAR_WALL_POINT_MM)-Vector(ADAPTER_TRANSLATION_MM)-normal*REAR_WALL_THICKNESS_MM
-    return cutter.split(Plane(point,z_dir=normal),Keep.BOTTOM)
+    cutter=cutter.split(Plane(point,z_dir=normal),Keep.BOTTOM)
+    # Keep the approved cavity everywhere except beside the new lower diagonal.
+    tip_normal=Vector(REAR_TIP_NORMAL)
+    tip_point=(Vector(REAR_TIP_POINT_MM)-Vector(ADAPTER_TRANSLATION_MM)
+               -tip_normal*REAR_TIP_WALL_THICKNESS_MM)
+    return cutter.split(Plane(tip_point,z_dir=tip_normal),Keep.BOTTOM)
 
 
 def rear_side_tools():
@@ -40,3 +49,13 @@ def rear_side_tools():
     face=Face(Wire.make_polygon([(x,y,-150) for x,y in REAR_SIDE_POINTS],close=True))
     right=Solid.extrude(face,(0,0,350))
     return right,right.mirror(Plane.YZ)
+
+
+def trim_lower_rear_tip(body):
+    """Remove only the toe below the latch root; retain the upper seat support."""
+    point=Vector(REAR_TIP_POINT_MM)
+    outside=body.split(Plane(point,z_dir=REAR_TIP_NORMAL),Keep.TOP)
+    if isinstance(outside,(list,ShapeList)):
+        outside=Compound(outside)
+    toe=outside.split(Plane(point,z_dir=(0,0,1)),Keep.BOTTOM)
+    return body.cut(toe)

@@ -6,6 +6,8 @@
 
 The approved Build123d cavity now extends through the narrow middle into the wider rear as one sixteen-line, straight-sided pocket. A single 18.5 mm roof offset retains 10 mm beneath the existing AirTag recess at sampled locations. The original cavity cutter follows the angled rear latch wall at a 5 mm inward normal offset. Two symmetric rear side cuts reduce the exterior corners while retaining the rear bridge and separate original latch. This supersedes the rear-only octagon and filled-middle direction; see [current Build123d results](Build123d/README.md).
 
+The lower toe beneath the rear latch is now trimmed at the latch-wall angle mirrored across XY, with a local **10 mm** wall retained by limiting the original cavity cutter. The upper seat support, top dovetail and separate latch are preserved; see [the implemented section](Build123d/exports/rear-tip-implemented.png).
+
 This folder records the reconstruction of the Fusion design **Surron Seat Adapter v3 v2** in Onshape, including the later wheel-scan imprint and a linked printing variant. It is intended to let a future agent rebuild the accepted geometry in another CAD system, including SolidCraft or Zoo Design Studio.
 
 ## Start here

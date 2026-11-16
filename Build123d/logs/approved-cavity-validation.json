@@ -1,13 +1,24 @@
 {
   "rearWallNormalThicknessMm": 5.0,
-  "rearWallMaterialChecks": 75,
+  "rearWallMaterialChecks": 60,
   "valid": true,
   "solids": 1,
-  "volumeMm3": 1203492.083294631,
+  "volumeMm3": 1201420.7146520861,
   "roofOffsetMm": 18.5,
   "sampledRoofLocations": 2120,
   "minimumSampledRoofMm": 9.99999999999878,
   "samplingGridMm": 2,
   "limitation": "Interior roof-normal samples; not a continuous all-surface minimum proof.",
-  "approvedPreviewSymmetricDifferenceMm3": 0
+  "approvedPreviewSymmetricDifferenceMm3": 0,
+  "lowerTipWallMinimumDistanceMm": 9.999999999994774,
+  "lowerTipPointMm": [
+    0,
+    177.270005683283,
+    -17.98689437242
+  ],
+  "lowerTipNormal": [
+    0,
+    0.8597932986247546,
+    -0.5106422266518543
+  ]
 }

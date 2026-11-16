@@ -517,3 +517,34 @@ are regenerated. Temporary review images remain in `/tmp`, outside the repo.
 Validation: **42 tests** and all **12 mounting-ceiling mesh checks** pass;
 STEP/STL reopening, cutter integrity and the AirTag depth-edit check pass.
 Physical fit and printed strength remain untested.
+
+## Implemented lower rear toe cut and local 10 mm wall
+
+The lower tip beneath the latch root is trimmed at the latch-wall angle mirrored
+across XY. `REAR_TIP_POINT_MM` anchors the cut at
+`(0,177.270005683283,-17.98689437242)` mm. Removal is confined below the anchor's
+Z so the upper seat support and single top dovetail remain. The separate latch
+is unchanged. `trim_lower_rear_tip()` applies this one exterior trim before the
+wheel subtraction.
+
+The original cavity cutter is additionally limited by the mirrored cut plane
+shifted 10 mm inward along its normal. This retains only the local wall material
+needed beside the lower diagonal; it introduces no added-body patch or second
+pocket. The original rear-wall 5 mm limit, 18.5 mm roof offset, rest of the long
+cavity, side relief and wheel preparation remain in force.
+
+Run `validate_cavity.py --approved-step <approved STEP>` for optional exact preview
+parity and the new diagonal's distance to the cavity tool. The normal command
+validates current exports without loading a historical scratch file.
+`preview_rear_tip.py` generates [the implemented section view](exports/rear-tip-implemented.png)
+from manufacturing STEP and publishes it to the live preview browser.
+
+Verification of this implementation: **49 tests** and all **12 mounting-ceiling
+checks** pass. Reopened STEP/STL are valid single solids. STEP volume is
+**1,201,420.715 mm³** and its symmetric difference from the approved 10 mm
+preview is **0 mm³**. The measured minimum distance from the new cut face to
+the adjusted cavity tool is **10 mm**. All 2,120 interior roof samples retain
+a 10 mm minimum; 60 probes check the untrimmed original 5 mm rear wall.
+The independent upper-interface comparison preserves the entire seat support
+and dovetail. The AirTag 8.6 mm edit and cutter self-intersection checks pass.
+Physical fit and printed strength remain untested.
