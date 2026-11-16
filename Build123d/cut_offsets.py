@@ -1,4 +1,4 @@
-"""Approved 1 mm outward offsets of original manufacturing profile lines.
+"""Approved outward offsets of original manufacturing profile lines.
 
 Intersect the moved diagonals with their original adjoining lines. The portable
 recipe remains the source reference; no finished-body patches are introduced.
@@ -6,7 +6,8 @@ recipe remains the source reference; no finished-body patches are introduced.
 from copy import deepcopy
 from math import hypot, isclose
 
-OUTWARD_OFFSET_MM = 1.0
+PRINTING_OFFSET_MM = 1.0
+FRONT_CORNER_OFFSET_MM = 3.0
 
 
 def offset_cut_curves(index, curves):
@@ -18,8 +19,8 @@ def offset_cut_curves(index, curves):
         bottom = (90.0, 25.580075473268877)
         du, dv = bottom[0]-top[0], bottom[1]-top[1]
         length = hypot(du, dv)
-        replacements = [(top, (top[0]+OUTWARD_OFFSET_MM*length/dv, top[1])),
-                        (bottom, (bottom[0], bottom[1]-OUTWARD_OFFSET_MM*length/du))]
+        replacements = [(top, (top[0]+PRINTING_OFFSET_MM*length/dv, top[1])),
+                        (bottom, (bottom[0], bottom[1]-PRINTING_OFFSET_MM*length/du))]
     elif index == 86:
         # FrontCutSketch XY: move toward the removed corner, shrinking the cut.
         a = (49.0, 193.15953208748562)
@@ -27,9 +28,9 @@ def offset_cut_curves(index, curves):
         length = hypot(b[0]-a[0], b[1]-a[1])
         for side in (-1, 1):
             replacements += [((side*a[0], a[1]),
-                              (side*(a[0]+OUTWARD_OFFSET_MM*length/(a[1]-b[1])), a[1])),
+                              (side*(a[0]+FRONT_CORNER_OFFSET_MM*length/(a[1]-b[1])), a[1])),
                              ((side*b[0], b[1]),
-                              (side*b[0], b[1]+OUTWARD_OFFSET_MM*length/(b[0]-a[0])))]
+                              (side*b[0], b[1]+FRONT_CORNER_OFFSET_MM*length/(b[0]-a[0])))]
     for curve in curves:
         for key in ('startMm', 'endMm'):
             point = curve[key]

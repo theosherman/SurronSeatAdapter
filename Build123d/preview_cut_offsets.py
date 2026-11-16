@@ -1,4 +1,4 @@
-"""Render the implemented one-millimeter offsets from the manufacturing STL."""
+"""Render the implemented outward offsets from the manufacturing STL."""
 from pathlib import Path
 import json
 import numpy as np
@@ -17,7 +17,7 @@ def main():
     front = np.zeros(len(mesh),dtype=bool)
     for side in (-1,1):
         distance = (side*source[:,:,0]*normal[0]+source[:,:,1]*normal[1]
-                    -(49*normal[0]+193.15953208748562*normal[1])-1)
+                    -(49*normal[0]+193.15953208748562*normal[1])-3)
         front |= np.max(abs(distance),axis=1)<.002
     planes = json.loads((ROOT/'tests/fixtures/accepted-dimensions.json').read_text())['printingPlanes']
     printing = np.zeros(len(mesh),dtype=bool)
@@ -30,7 +30,7 @@ def main():
     image = Image.new('RGB',(2100,1400),'#e9eef3')
     draw = ImageDraw.Draw(image)
     font = lambda n: ImageFont.truetype('/usr/share/fonts/TTF/DejaVuSans.ttf',n)
-    draw.text((35,25),'IMPLEMENTED / all three face boundaries moved outward 1 mm',font=font(32),fill='#183044')
+    draw.text((35,25),'IMPLEMENTED / printing planes +1 mm / front corner cuts +3 mm',font=font(32),fill='#183044')
     draw.text((35,80),'Teal: printing planes (1 + 2). Orange: triangular front corner cuts (3), mirrored on both sides.',font=font(23),fill='#405b70')
     image.paste(render(meshes,(1,-.65,.75),(1020,1050)),(20,150))
     image.paste(render(meshes,(1,-.65,.75),(1020,1050),focus=(0,-182,28)),(1060,150))
@@ -40,7 +40,7 @@ def main():
     draw.text((40,1240),'All offsets measured normal to the original faces; original angles and extrusion directions preserved.',font=font(23),fill='#183044')
     draw.text((40,1290),'Original rear profile and triangular cut profiles edited. More material retained; no body patches.',font=font(23),fill='#405b70')
     draw.text((40,1340),'Rendered from the rebuilt manufacturing STL. Opposite faces may be hidden by the body.',font=font(23),fill='#405b70')
-    image.save(ROOT/'exports/one-mm-face-offsets-implemented.png')
-    image.save(ROOT/'tmp/one-mm-face-offsets-implemented.png')
+    image.save(ROOT/'exports/face-offsets-implemented.png')
+    image.save(ROOT/'tmp/face-offsets-implemented.png')
 
 if __name__=='__main__':main()

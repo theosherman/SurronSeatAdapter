@@ -10,7 +10,7 @@ The lower toe beneath the rear latch is now trimmed at the latch-wall angle mirr
 
 This folder records the reconstruction of the Fusion design **Surron Seat Adapter v3 v2** in Onshape, including the later wheel-scan imprint and a linked printing variant. It is intended to let a future agent rebuild the accepted geometry in another CAD system, including SolidCraft or Zoo Design Studio.
 
-The printing-plane boundaries (faces 1 and 2) and mirrored triangular front corner cuts (face 3 beside the front clip) now sit **1 mm outward**, preserving their angles and retaining more material. These edits change the original manufacturing profiles; see [implemented offsets](Build123d/exports/one-mm-face-offsets-implemented.png).
+The printing-plane boundaries (faces 1 and 2) sit **1 mm outward**, and the mirrored triangular front corner cuts (face 3 beside the front clip) sit **3 mm outward** in total, preserving their angles and retaining more material. These edits change the original manufacturing profiles.
 
 ## Start here
 
