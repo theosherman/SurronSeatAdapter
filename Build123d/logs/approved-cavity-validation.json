@@ -1,9 +1,11 @@
 {
+  "rearWallNormalThicknessMm": 5.0,
+  "rearWallMaterialChecks": 75,
   "valid": true,
   "solids": 1,
-  "volumeMm3": 1155554.4803329029,
+  "volumeMm3": 1203492.083294631,
   "roofOffsetMm": 18.5,
-  "sampledRoofLocations": 2578,
+  "sampledRoofLocations": 2120,
   "minimumSampledRoofMm": 9.99999999999878,
   "samplingGridMm": 2,
   "limitation": "Interior roof-normal samples; not a continuous all-surface minimum proof.",

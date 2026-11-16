@@ -2,14 +2,13 @@
 
 The full, unsplit adapter is reconstructed as editable Python solid geometry from the repository's millimeter recipe. The final wheel imprint subtracts only the prepared Sherman P middle body, with the source screen patch reconnected before preparation and uniformly scaled by **1.003** about model origin after cuts at Y=-191/+170 mm. Both handles move with the complete scan during alignment, remain unscaled after slicing, and are excluded from subtraction. The master has no fillets or connector recesses. The latch is a separate editable accessory; no split variant or saddlebag mount is built by this project.
 
-## Rear-wall correction preview
+## Implemented 5 mm angled rear wall
 
 The source cavity cutter now stops at a plane parallel to the original angled
 latch wall and 5 mm inward along its normal. This corrects the original cavity
-operation rather than adding material to the completed adapter. The temporary
-browser preview shows the correction; manufacturing exports have not yet been
-updated for it. Ten targeted cavity tests, twelve mounting-ceiling mesh checks,
-and 75 material samples through the corrected rear wall pass. The original
+operation rather than adding material to the completed adapter. The approved correction is rebuilt into manufacturing STEP/STL exports.
+All 47 regression tests, twelve mounting-ceiling mesh checks, and 75 material
+samples through the corrected rear wall pass. The original
 outer latch face, separate latch, roof offset and rear side cuts are retained.
 
 ## Implemented long cavity and rear side relief
@@ -26,10 +25,10 @@ This supersedes the rear-only octagon, filled-middle assertions and 12 mm/15°
 cavity settings described in historical sections below. Other CAD engines are
 unchanged.
 
-Validation: **45 tests pass**, all **12 mounting-ceiling checks pass**, and
+Validation: **47 tests pass**, all **12 mounting-ceiling checks pass**, and
 STEP/STL reopening plus the AirTag 8.6 mm edit pass. The exported STEP is one
-valid solid, **1,155,554.480 mm³**. Its measured symmetric difference from the
-approved scratch STEP is **0 mm³**. A 2 mm grid gives **2,578** interior
+valid solid, **1,203,492.083 mm³**. Its measured symmetric difference from the
+approved scratch STEP is **0 mm³**. A 2 mm grid gives **2,120** interior
 roof-normal samples with a **10 mm** minimum. Run `validate_cavity.py` for roof samples and optional preview parity,
 the standard regression suite, `validate_exports.py`, and the mounting-ceiling
 mesh checker for manufacturing validation. Sampling is not a continuous minimum

@@ -6,7 +6,7 @@
     0.0
   ],
   "seatingDepthMm": 8.0,
-  "elapsedSeconds": 23.63050241000019,
+  "elapsedSeconds": 18.272560003999388,
   "stages": [
     {
       "step": "M01",
@@ -106,43 +106,43 @@
     },
     {
       "step": "M19",
-      "volumeMm3": 1360022.820168516,
+      "volumeMm3": 1407960.423129776,
       "solids": 1,
       "valid": true
     },
     {
       "step": "M20",
-      "volumeMm3": 1351316.3120050244,
+      "volumeMm3": 1399253.9149663344,
       "solids": 1,
       "valid": true
     },
     {
       "step": "M20-front-redesign",
-      "volumeMm3": 1342682.6935729512,
+      "volumeMm3": 1390620.2965342542,
       "solids": 1,
       "valid": true
     },
     {
       "step": "M20-screen-surround",
-      "volumeMm3": 1348626.3970616057,
+      "volumeMm3": 1396564.0000229117,
       "solids": 1,
       "valid": true
     },
     {
       "step": "M20-print-planes",
-      "volumeMm3": 1346573.7554610835,
+      "volumeMm3": 1394511.3584223571,
       "solids": 1,
       "valid": true
     },
     {
       "step": "M20-rear-side-relief",
-      "volumeMm3": 1288468.711517138,
+      "volumeMm3": 1336406.3144784484,
       "solids": 1,
       "valid": true
     },
     {
       "step": "M21",
-      "volumeMm3": 1155554.4805636685,
+      "volumeMm3": 1203492.0835258297,
       "solids": 1,
       "valid": true
     }

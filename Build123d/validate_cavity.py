@@ -4,7 +4,7 @@ import json
 from build123d import import_step,Vector,Axis
 from adapter import SKETCHES
 from coordinates import ADAPTER_TRANSLATION_MM
-from trunk_cavity import rear_cavity_profile,rear_side_tools,CAVITY_ROOF_OFFSET_MM
+from trunk_cavity import rear_cavity_profile,rear_side_tools,CAVITY_ROOF_OFFSET_MM,REAR_WALL_POINT_MM,REAR_WALL_NORMAL,REAR_WALL_THICKNESS_MM
 
 ROOT=Path(__file__).resolve().parent
 body=import_step(ROOT/'exports/adapter-body.step')
@@ -20,7 +20,7 @@ for v in range(-164,105,2):
         if not profile.is_inside(p):continue
         # Sample interior of the newly exposed roof; points outside body or on
         # existing openings are counted separately, not assigned a thickness.
-        if not body.is_inside(p+n*.05):continue
+        if not body.is_inside(p+n*.05) or body.is_inside(p-n*.05):continue
         distances=[(point-p).dot(n) for point,_ in body.find_intersection_points(Axis(p,n)) if (point-p).dot(n)>1e-3]
         if distances:samples.append(min(distances))
 assert len(samples)>2000
@@ -29,12 +29,22 @@ assert minimum>=9.999,minimum
 for tool in rear_side_tools():
     overlap=body.intersect(tool)
     assert overlap is None or sum(s.volume for s in overlap.solids())<.001
-report=dict(valid=body.is_valid,solids=len(body.solids()),volumeMm3=body.volume,
+wall_normal=Vector(REAR_WALL_NORMAL)
+wall_point=Vector(REAR_WALL_POINT_MM)
+wall_checks=[]
+for x_pos in (-25,-15,0,15,25):
+    for z_pos in (-20,-10,0,10,20):
+        y_pos=wall_point.Y-(z_pos-wall_point.Z)*wall_normal.Z/wall_normal.Y
+        outer=Vector(x_pos,y_pos,z_pos)
+        for depth in (.1,2.5,REAR_WALL_THICKNESS_MM-.1):
+            assert body.is_inside(outer-wall_normal*depth),(x_pos,z_pos,depth)
+            wall_checks.append(dict(x=x_pos,z=z_pos,inwardNormalDepthMm=depth))
+report=dict(rearWallNormalThicknessMm=REAR_WALL_THICKNESS_MM,rearWallMaterialChecks=len(wall_checks),valid=body.is_valid,solids=len(body.solids()),volumeMm3=body.volume,
             roofOffsetMm=CAVITY_ROOF_OFFSET_MM,sampledRoofLocations=len(samples),
             minimumSampledRoofMm=minimum,samplingGridMm=2,
             limitation='Interior roof-normal samples; not a continuous all-surface minimum proof.',
             approvedPreviewSymmetricDifferenceMm3=None)
-approved=ROOT/'tmp/requested-cavity-preview/concept.step'
+approved=ROOT/'tmp/requested-cavity-preview/rear-wall-corrected.step'
 if approved.exists():
     ref=import_step(approved)
     def volume(s):return 0 if s is None else sum(p.volume for p in s.solids())
