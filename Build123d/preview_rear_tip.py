@@ -36,8 +36,8 @@ def drawsection(shapes,box,limits):
    for row in t:dd.polygon([xy(tuple(v[i])) for i in row],fill=color)
  im.paste(tile,(box[0],box[1]));return xy
 
-d.text((35,22),'IMPLEMENTED LOWER CUT + 10 mm LOCAL CAVITY WALL',font=font(30),fill='#203b50')
-d.text((35,78),'Original cavity cutter limited locally; orange marks the lower 10 mm wall zone. Seat support and latch preserved.',font=font(21),fill='#526b7d')
+d.text((35,22),f'IMPLEMENTED LOWER CUT + {REAR_TIP_WALL_THICKNESS_MM:g} mm LOCAL CAVITY WALL',font=font(30),fill='#203b50')
+d.text((35,78),f'Original cavity cutter limited locally; orange marks the lower {REAR_TIP_WALL_THICKNESS_MM:g} mm wall zone. Seat support and latch preserved.',font=font(21),fill='#526b7d')
 im.paste(render([(mesh(s),(48,152,177)),(mesh(l),(58,157,108))],(1,.12,-.1),(950,520)),(15,135))
 drawsection([(s,'#3098b1'),(a,'#e99549')],(990,160,880,470),(125,195,-40,25))
 d=ImageDraw.Draw(im);d.text((35,130),'COMPLETE ADAPTER',font=font(23),fill='#203b50');d.text((1015,125),'CENTER SECTION / REAR WALL CLOSE-UP',font=font(23),fill='#203b50')

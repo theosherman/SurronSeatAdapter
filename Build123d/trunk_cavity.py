@@ -15,7 +15,7 @@ REAR_WALL_NORMAL = (0,.8597932986247546,.5106422266518543)
 # Lower latch root in the placed model; mirrored wall slope across XY.
 REAR_TIP_POINT_MM = (0,177.270005683283,-17.98689437242)
 REAR_TIP_NORMAL = (0,REAR_WALL_NORMAL[1],-REAR_WALL_NORMAL[2])
-REAR_TIP_WALL_THICKNESS_MM = 10.0
+REAR_TIP_WALL_THICKNESS_MM = 14.0
 # Coordinates in the placed Build123d model frame; mirrored about X=0.
 REAR_SIDE_POINTS = ((78,126),(55,140),(55,300),(120,300),(120,126))
 

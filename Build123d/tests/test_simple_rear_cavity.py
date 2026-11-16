@@ -29,14 +29,14 @@ class RearSketchTests(unittest.TestCase):
             self.assertFalse(self.tool.is_inside(origin+y*v-n*18))
             self.assertTrue(self.tool.is_inside(origin+y*v-n*19))
 
-    def test_cavity_retains_ten_mm_inside_mirrored_lower_cut(self):
+    def test_cavity_retains_fourteen_mm_inside_mirrored_lower_cut(self):
         from coordinates import ADAPTER_TRANSLATION_MM
         # Independent accepted placed-model datum; catches wrong sign or spacing.
         point=Vector(0,177.270005683283,-17.98689437242)
         normal=Vector(0,.8597932986247546,-.5106422266518543)
         tool=self.tool.translate(ADAPTER_TRANSLATION_MM)
         maximum=max((v.center()-point).dot(normal) for v in tool.vertices())
-        self.assertLessEqual(maximum,-10+1e-6)
+        self.assertLessEqual(maximum,-14+1e-6)
 
     def test_cutter_retains_five_mm_normal_to_original_angled_rear_face(self):
         from pathlib import Path

@@ -518,7 +518,7 @@ Validation: **42 tests** and all **12 mounting-ceiling mesh checks** pass;
 STEP/STL reopening, cutter integrity and the AirTag depth-edit check pass.
 Physical fit and printed strength remain untested.
 
-## Implemented lower rear toe cut and local 10 mm wall
+## Implemented lower rear toe cut and local 14 mm wall
 
 The lower tip beneath the latch root is trimmed at the latch-wall angle mirrored
 across XY. `REAR_TIP_POINT_MM` anchors the cut at
@@ -528,7 +528,7 @@ is unchanged. `trim_lower_rear_tip()` applies this one exterior trim before the
 wheel subtraction.
 
 The original cavity cutter is additionally limited by the mirrored cut plane
-shifted 10 mm inward along its normal. This retains only the local wall material
+shifted 14 mm inward along its normal. This retains only the local wall material
 needed beside the lower diagonal; it introduces no added-body patch or second
 pocket. The original rear-wall 5 mm limit, 18.5 mm roof offset, rest of the long
 cavity, side relief and wheel preparation remain in force.
@@ -539,12 +539,13 @@ validates current exports without loading a historical scratch file.
 `preview_rear_tip.py` generates [the implemented section view](exports/rear-tip-implemented.png)
 from manufacturing STEP and publishes it to the live preview browser.
 
-Verification of this implementation: **49 tests** and all **12 mounting-ceiling
-checks** pass. Reopened STEP/STL are valid single solids. STEP volume is
-**1,201,420.715 mm³** and its symmetric difference from the approved 10 mm
-preview is **0 mm³**. The measured minimum distance from the new cut face to
-the adjusted cavity tool is **10 mm**. All 2,120 interior roof samples retain
-a 10 mm minimum; 60 probes check the untrimmed original 5 mm rear wall.
-The independent upper-interface comparison preserves the entire seat support
-and dovetail. The AirTag 8.6 mm edit and cutter self-intersection checks pass.
-Physical fit and printed strength remain untested.
+The local wall was subsequently increased from 10 mm to **14 mm** by changing
+only `REAR_TIP_WALL_THICKNESS_MM`. The approved exterior trim stays fixed.
+Current verification is recorded in `logs/approved-cavity-validation.json`
+and `logs/export-and-parameter-validation.json`.
+
+The 14 mm revision passes all 49 tests and 12 mounting-ceiling checks. STEP/STL
+reopen as single valid solids; STEP volume is **1,205,253.602 mm³**. Comparing
+against the 10 mm version shows **0 mm³** of removed prior material and
+**3,832.887 mm³** retained in the extra normal-depth band from 10 to 14 mm.
+The AirTag parameter-edit and cutter self-intersection checks pass.

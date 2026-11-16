@@ -2,7 +2,7 @@
   "step": {
     "valid": true,
     "solids": 1,
-    "volumeMm3": 1201420.7146520861,
+    "volumeMm3": 1205253.6016971327,
     "boundsMm": {
       "min": [
         -77.93135238304802,
@@ -19,7 +19,7 @@
   "stl": {
     "valid": true,
     "solids": 1,
-    "volumeMm3": 1201422.2480578243
+    "volumeMm3": 1205255.139129681
   },
   "scanCutter": {
     "valid": true,
@@ -28,9 +28,9 @@
   },
   "airtagParameterTest": {
     "depthMm": 8.6,
-    "removedMm3": 102.42950780992396,
+    "removedMm3": 102.42950780200772,
     "expectedRemovedMm3": 102.4295078183
   },
-  "stepRoundtripVolumeDeltaMm3": -0.00022772466763854027,
+  "stepRoundtripVolumeDeltaMm3": -0.00022677169181406498,
   "ok": true
 }
