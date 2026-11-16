@@ -29,7 +29,7 @@ The separate **Latch** and **SaddleBagMount** are now extracted too: see [access
 
 - **Master:** one unsplit adapter solid, with small bolt through-holes, larger downward screwdriver-access recesses, retained mounting ceilings, and the aligned Sherman P wheel-top imprint.
 - **Child:** an associative copy of the finished master, split into two solids for smaller printers, with five connector recesses, each 8 mm deep.
-- **No fillets.** The user explicitly cancelled them and requested conservative Onshape API usage.
+- **Fillets:** Build123d now has 1 mm fillets on practical adapter edges, excluding the running dovetail rail. Other CAD implementations retain their earlier no-fillet state.
 - The child contains connector cutouts, not separate loose connector inserts. The original Fusion `Gap = -0.2 mm` insert details were recorded but not implemented.
 
 [Onshape master](https://cad.onshape.com/documents/b1a1f737761c2581236d5ec3/w/eb902961c90530f7f212e211/e/69186d95d4c9dc45ec42f803) · [Onshape split child](https://cad.onshape.com/documents/b1a1f737761c2581236d5ec3/w/eb902961c90530f7f212e211/e/c9c1cb2f1b6e54ba33df5e8a)

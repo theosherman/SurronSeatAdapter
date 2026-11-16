@@ -32,7 +32,7 @@ Preserve these user decisions:
 
 - Master `Adapter Body` is unsplit. The separate `Adapter Body Split` child inherits the completed master and is split into two solids.
 - Only the child has the five 8 mm connector cutouts. No loose connector inserts were requested or created.
-- No fillets: the user cancelled all fillet work.
+- Fillets: the November 15 request supersedes the earlier cancellation for Build123d only. Apply 1 mm fillets to practical adapter-body edges, excluding the running dovetail rail; its rear terminal edges may be rounded. Accessories remain unchanged. See `Build123d/body_fillets.py`.
 - Conserve Onshape API calls. Prefer local preparation, batch meaningful inspections, and avoid per-edge trial loops or repeated full feature-tree reads.
 - Larger screwdriver-access recesses open downward and retain the small through-hole mounting ceilings. The corrected front feature has `offsetOppositeDirection=false`; see `front-screw-ceiling-correction.json`.
 - The initial exclusion of reference-asset subtraction was later superseded by explicit authorization to subtract the aligned Sherman P wheel-top scan from the master. Do not substitute the old Veteran Sherman L reference asset.

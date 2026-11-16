@@ -140,6 +140,8 @@ def build_master(stop=None, imprint=True, airtag_depth=8.5):
     body = stage('M20-rear-side-relief', body.cut(*rear_side_tools()))
     body = stage('M20-lower-rear-tip', trim_lower_rear_tip(body))
     if stop=='M20' or not imprint: return body
+    from body_fillets import fillet_body
+    body = stage('M20-body-fillets', fillet_body(body))
     print('Preparing Sherman P: align whole scan before slices; handles excluded; body scale 1.003', flush=True)
     scan_path = prepare_scan(ROOT/'Sherman_P_Scan_Aligned_To_Adapter_mm.stl', ROOT/'Build123d/inputs/wheel-scan-model-frame.stl')
     scan = Mesher().read(scan_path)
