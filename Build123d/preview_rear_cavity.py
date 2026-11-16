@@ -7,7 +7,7 @@ from build123d import import_step,Plane,Keep,Compound,ShapeList
 from mesh_preview import render
 
 ROOT=Path(__file__).resolve().parent
-BASELINE='8746492'
+BASELINE='74c8fb7'
 FONT='/usr/share/fonts/TTF/DejaVuSans.ttf'
 
 def mesh(shape):

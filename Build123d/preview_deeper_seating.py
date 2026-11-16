@@ -10,7 +10,7 @@ ROOT=Path(__file__).resolve().parent
 OUT=Path('/tmp/surron-seat-adapter-previews/Build123d/exports')
 RISE=8.0
 # Keep the approved preview reproducible after manufacturing exports change.
-BASELINE='fb38b1acc4f525ca9ce3cbb3f4079566f98807d2'
+BASELINE='85c21dbfe656fbc8b62afdd2b154c4c85f0e93e6'
 def load(path):
     relative=path.relative_to(ROOT.parent)
     raw=subprocess.check_output(['git','show',f'{BASELINE}:{relative}'],cwd=ROOT.parent)
