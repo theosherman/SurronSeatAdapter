@@ -1,0 +1,32 @@
+{
+  "ok": true,
+  "checks": [
+    {
+      "pointMm": [
+        -18.94130068214,
+        261.01919499428,
+        99.106845910637
+      ],
+      "beforeBoundaryDistanceMm": 0.15062601167629358,
+      "afterBoundaryDistanceMm": 1.4210854715202004e-14
+    },
+    {
+      "pointMm": [
+        18.94130068214,
+        261.01919499428,
+        99.106845910637
+      ],
+      "beforeBoundaryDistanceMm": 0.15062601167629358,
+      "afterBoundaryDistanceMm": 6.355287432313019e-14
+    },
+    {
+      "pointMm": [
+        0,
+        261.01919499428,
+        89.802283973719
+      ],
+      "beforeBoundaryDistanceMm": 0.15062601167577905,
+      "afterBoundaryDistanceMm": 0.0
+    }
+  ]
+}
