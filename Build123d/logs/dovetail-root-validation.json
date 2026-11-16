@@ -1,0 +1,48 @@
+{
+  "rootEdges": 5,
+  "mirrored": true,
+  "toleranceMm": 0.001,
+  "checks": [
+    {
+      "midpointMm": [
+        -32.5,
+        147.52647957583,
+        31.702071992565
+      ],
+      "maxSharpBoundaryDistanceMm": 0.0
+    },
+    {
+      "midpointMm": [
+        32.5,
+        147.52647957583,
+        31.702071992565
+      ],
+      "maxSharpBoundaryDistanceMm": 0.0
+    },
+    {
+      "midpointMm": [
+        12.309401076759162,
+        149.56904848244113,
+        28.26289879806761
+      ],
+      "maxSharpBoundaryDistanceMm": 5.0242958677880805e-15
+    },
+    {
+      "midpointMm": [
+        3.4994229736184934e-12,
+        151.61161738905,
+        24.823725603567993
+      ],
+      "maxSharpBoundaryDistanceMm": 0.0
+    },
+    {
+      "midpointMm": [
+        -12.309401076756965,
+        149.5690484824381,
+        28.26289879806669
+      ],
+      "maxSharpBoundaryDistanceMm": 3.972054645195637e-15
+    }
+  ],
+  "ok": true
+}

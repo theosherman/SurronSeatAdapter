@@ -5,9 +5,9 @@ The full, unsplit adapter is reconstructed as editable Python solid geometry fro
 ## Implemented 1 mm body fillets
 
 The November 15 request supersedes the earlier no-fillet decision for Build123d.
-`body_fillets.py` applies one 1 mm fillet feature to 157 geometrically selected
+`body_fillets.py` applies one 1 mm fillet feature to 152 geometrically selected
 edges of the placed adapter, before the wheel subtraction. The running dovetail
-rail is excluded; its terminal rear edges are included. The latch and other
+rail and its five-edge body junction are excluded. The two shoulder edges and three trapezoidal-root edges at Y=147.5–151.6 mm remain sharp for latch clearance. Rear terminal edges at Y=261 mm retain their original fillets. `validate_dovetail_root.py` verifies three interior samples on each of the five sharp junction edges in the final manufacturing STEP; results are in `logs/dovetail-root-validation.json`. The latch and other
 accessories remain separate and unchanged. Every selected edge has its mirror; incompatible pairs are omitted on both sides.
 Pairs whose generated fillet faces touch the asymmetric wheel cutter are also
 omitted on both sides, so the wheel cut cannot trim the blends unequally.

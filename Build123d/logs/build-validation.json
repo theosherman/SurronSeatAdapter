@@ -6,7 +6,7 @@
     0.0
   ],
   "seatingDepthMm": 8.0,
-  "elapsedSeconds": 27.95768609300285,
+  "elapsedSeconds": 19.285838797000906,
   "stages": [
     {
       "step": "M01",
@@ -148,13 +148,13 @@
     },
     {
       "step": "M20-body-fillets",
-      "volumeMm3": 1360752.606418744,
+      "volumeMm3": 1360723.9817076128,
       "solids": 1,
       "valid": true
     },
     {
       "step": "M21",
-      "volumeMm3": 1226593.4977969094,
+      "volumeMm3": 1226564.8891191764,
       "solids": 1,
       "valid": true
     }

@@ -11,6 +11,16 @@ class FilletScopeTest(unittest.TestCase):
                 self.assertAlmostEqual(edge['minimum'][1], edge['maximum'][1], places=5)
                 self.assertAlmostEqual(edge['minimum'][1], 261.023, delta=.02)
 
+    def test_body_junction_of_dovetail_stays_sharp(self):
+        # Five connected edges form the shoulders and trapezoid where the rail
+        # grows out of the rear body wall, not its far end at Y=261 mm.
+        root = [edge for edge in SPEC['edges']
+                if 147 < edge['minimum'][1] < 152
+                and 147 < edge['maximum'][1] < 152
+                and 24 < edge['minimum'][2] < 32
+                and 24 < edge['maximum'][2] < 32]
+        self.assertEqual(root, [], 'Highlighted body/rail junction must stay sharp')
+
     def test_every_selected_edge_has_its_mirror(self):
         for edge in SPEC['edges']:
             reflected_min = [-edge['maximum'][0], *edge['minimum'][1:]]
