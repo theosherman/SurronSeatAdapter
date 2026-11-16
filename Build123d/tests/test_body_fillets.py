@@ -21,6 +21,14 @@ class FilletScopeTest(unittest.TestCase):
                 and 24 < edge['maximum'][2] < 32]
         self.assertEqual(root, [], 'Highlighted body/rail junction must stay sharp')
 
+    def test_dovetail_junction_side_returns_stay_sharp(self):
+        # The highlighted U-shaped return on each side of the root.
+        returns = [edge for edge in SPEC['edges']
+                   if 147 < edge['minimum'][1] and edge['maximum'][1] < 179
+                   and 24 < edge['minimum'][2] and edge['maximum'][2] < 50
+                   and max(abs(edge['minimum'][0]),abs(edge['maximum'][0])) < 15]
+        self.assertEqual(returns, [], 'Both mirrored root-side returns must stay sharp')
+
     def test_every_selected_edge_has_its_mirror(self):
         for edge in SPEC['edges']:
             reflected_min = [-edge['maximum'][0], *edge['minimum'][1:]]

@@ -1,5 +1,5 @@
 {
-  "rootEdges": 5,
+  "rootEdges": 11,
   "mirrored": true,
   "toleranceMm": 0.001,
   "checks": [
@@ -42,6 +42,54 @@
         28.26289879806669
       ],
       "maxSharpBoundaryDistanceMm": 3.972054645195637e-15
+    },
+    {
+      "midpointMm": [
+        10.0,
+        162.7625185942569,
+        40.75095025454782
+      ],
+      "maxSharpBoundaryDistanceMm": 7.105427357601002e-15
+    },
+    {
+      "midpointMm": [
+        -10.0,
+        162.7625185942569,
+        40.75095025454782
+      ],
+      "maxSharpBoundaryDistanceMm": 7.105427357601002e-15
+    },
+    {
+      "midpointMm": [
+        -12.238379023212211,
+        177.92252824765674,
+        45.245466432870224
+      ],
+      "maxSharpBoundaryDistanceMm": 0.0
+    },
+    {
+      "midpointMm": [
+        -14.61880215351,
+        165.06318987149194,
+        32.81278638758422
+      ],
+      "maxSharpBoundaryDistanceMm": 3.552713678800501e-15
+    },
+    {
+      "midpointMm": [
+        14.618802153517,
+        165.06318987149194,
+        32.81278638758422
+      ],
+      "maxSharpBoundaryDistanceMm": 3.552713678800501e-15
+    },
+    {
+      "midpointMm": [
+        12.238379023212971,
+        177.92252824765683,
+        45.24546643286874
+      ],
+      "maxSharpBoundaryDistanceMm": 1.7763568394002505e-15
     }
   ],
   "ok": true

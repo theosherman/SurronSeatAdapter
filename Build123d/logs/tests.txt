@@ -1,4 +1,4 @@
-....{"step": "M01", "volumeMm3": 4704311.374319016, "solids": 1, "valid": true}
+.....{"step": "M01", "volumeMm3": 4704311.374319016, "solids": 1, "valid": true}
 {"step": "M02", "volumeMm3": 9408622.748638038, "solids": 1, "valid": true}
 {"step": "M03", "volumeMm3": 1104550.6397153926, "solids": 1, "valid": true}
 {"step": "M04", "volumeMm3": 938534.6876893147, "solids": 1, "valid": true}
@@ -44,9 +44,9 @@
 {"step": "M20-print-planes", "volumeMm3": 1428802.059727575, "solids": 1, "valid": true}
 {"step": "M20-rear-side-relief", "volumeMm3": 1368536.4437653862, "solids": 1, "valid": true}
 {"step": "M20-lower-rear-tip", "volumeMm3": 1361110.0061509798, "solids": 1, "valid": true}
-{"step": "M20-body-fillets", "volumeMm3": 1360723.9817076128, "solids": 1, "valid": true}
+{"step": "M20-body-fillets", "volumeMm3": 1360722.1358594974, "solids": 1, "valid": true}
 Preparing Sherman P: align whole scan before slices; handles excluded; body scale 1.003
-{"step": "M21", "volumeMm3": 1226564.8891191764, "solids": 1, "valid": true}
+{"step": "M21", "volumeMm3": 1226563.188603348, "solids": 1, "valid": true}
 .{"step": "M01", "volumeMm3": 4704311.374319016, "solids": 1, "valid": true}
 {"step": "M02", "volumeMm3": 9408622.748638038, "solids": 1, "valid": true}
 {"step": "M03", "volumeMm3": 1104550.6397153926, "solids": 1, "valid": true}
@@ -217,6 +217,6 @@ Preparing Sherman P: align whole scan before slices; handles excluded; body scal
 {"step": "M05", "volumeMm3": 1877069.37537863, "solids": 1, "valid": true}
 ..
 ----------------------------------------------------------------------
-Ran 55 tests in 38.930s
+Ran 56 tests in 35.782s
 
 OK
