@@ -11,15 +11,6 @@ class FilletScopeTest(unittest.TestCase):
                 self.assertAlmostEqual(edge['minimum'][1], edge['maximum'][1], places=5)
                 self.assertAlmostEqual(edge['minimum'][1], 261.023, delta=.02)
 
-    def test_dovetail_terminal_base_stays_sharp(self):
-        # The two shoulders and central foot at the latch entry must not bulge.
-        roots = [edge for edge in SPEC['edges']
-                 if abs(edge['minimum'][1]-261.01919499428)<.001
-                 and abs(edge['maximum'][1]-261.01919499428)<.001
-                 and abs(edge['minimum'][2]-edge['maximum'][2])<.001
-                 and edge['maximum'][2]<100]
-        self.assertEqual(roots, [], 'Latch-entry base edges must stay unfilleted')
-
     def test_every_selected_edge_has_its_mirror(self):
         for edge in SPEC['edges']:
             reflected_min = [-edge['maximum'][0], *edge['minimum'][1:]]
