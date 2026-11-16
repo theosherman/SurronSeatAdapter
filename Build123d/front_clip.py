@@ -5,8 +5,11 @@ and relocate the existing analytic clip. The source recipe is never edited.
 """
 from build123d import Face, Wire, Solid, Plane, Keep, GeomType, Compound, ShapeList
 
-CLIP_RISE_MM = 18.052632063736358
-HANDLE_CENTER_Z_MM = 32.87424168191536
+from prepare_sherman_p import SEATING_DEPTH_MM
+
+ORIGINAL_CLIP_RISE_MM = 18.052632063736358
+CLIP_RISE_MM = ORIGINAL_CLIP_RISE_MM + SEATING_DEPTH_MM
+HANDLE_CENTER_Z_MM = 32.87424168191536 + SEATING_DEPTH_MM
 
 
 def prism_yz(points, width=200):
@@ -32,7 +35,7 @@ def redesign_front(body):
     join=(bt+CLIP_RISE_MM-br)/(sr-st)
     # Lift the complete original jaw. The screen-ramp join can move independently;
     # using it as the lift boundary strands part of the jaw at its old height.
-    lift_join=join+SCREEN_EXTENSION_MM
+    lift_join=(bt+ORIGINAL_CLIP_RISE_MM-br)/(sr-st)+SCREEN_EXTENSION_MM
     split=Plane((0,lift_join,0),z_dir=(0,1,0))
     rear=body.split(split,Keep.TOP)
     clip=body.split(split,Keep.BOTTOM).translate((0,0,CLIP_RISE_MM))
@@ -57,6 +60,15 @@ def redesign_front(body):
     # Plane/solid intersections return ShapeList in build123d 0.13.
     wedge=Compound(wedge) if isinstance(wedge,ShapeList) else wedge
     gusset=Compound(gusset) if isinstance(gusset,ShapeList) else gusset
+    # The higher ramp now reaches the rear of the grip. Carry the original
+    # circular opening through the connector profile so it stays fully open.
+    arc=next(e for e in body.edges() if e.geom_type==GeomType.CIRCLE
+             and abs(e.radius-15.1)<1e-6 and e.arc_center.Y<-200)
+    center=arc.arc_center
+    bore=Solid.make_cylinder(arc.radius,200,
+        Plane((-100,center.Y,center.Z+CLIP_RISE_MM),z_dir=(1,0,0)))
+    wedge=wedge.cut(bore)
+    wedge=Compound(wedge) if isinstance(wedge,ShapeList) else wedge
     result=rear.fuse(clip,wedge,gusset).clean()
     # Trim the connector and both side wings above the moved screen ramp;
     # leave the original complete clip and its lower support envelope intact.

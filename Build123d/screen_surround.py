@@ -13,7 +13,7 @@ def reinforce_screen(body):
     planes=[f for f in body.faces() if f.geom_type==GeomType.PLANE]
     rear=next(f for f in planes if f.area>2000 and -103<f.center().Y<-100
               and f.normal_at().Y<-.99)
-    cliptop=next(f for f in planes if f.area>1000 and f.center().Y<-200
+    cliptop=next(f for f in planes if f.area>500 and f.center().Y<-200
                  and f.normal_at().Z>.99)
     bottom=next(f for f in planes if f.area>4000 and abs(f.normal_at().X)<1e-6
                 and f.normal_at().Z<-.99 and f.normal_at().Y<-.1)

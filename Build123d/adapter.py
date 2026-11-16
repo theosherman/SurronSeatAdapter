@@ -6,7 +6,7 @@ import time
 from build123d import Edge, Wire, Face, Solid, Plane, Vector, Keep, Compound, ShapeList, Mesher, export_step, export_stl
 
 from coordinates import model_recipe, source_to_model, prepare_scan, ADAPTER_TRANSLATION_MM
-from prepare_sherman_p import prepare_parts
+from prepare_sherman_p import prepare_parts, SEATING_DEPTH_MM
 from scan_patch import PATCH
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -155,7 +155,7 @@ def main():
     stem = 'adapter-body' if not args.stop and not args.no_imprint else 'adapter-body-'+(args.stop or 'pre-imprint')
     export_step(body,output/(stem+'.step'))
     export_stl(body,output/(stem+'.stl'),tolerance=0.005,angular_tolerance=0.05)
-    (Path(__file__).parent/'logs/build-validation.json').write_text(json.dumps(dict(coordinateFrame="source (x,y,z) -> model (-x,-y,z); physical front is negative Y; Z up",adapterTranslationMm=ADAPTER_TRANSLATION_MM,elapsedSeconds=time.monotonic()-start,stages=HISTORY),indent=2)+'\n')
+    (Path(__file__).parent/'logs/build-validation.json').write_text(json.dumps(dict(coordinateFrame="source (x,y,z) -> model (-x,-y,z); physical front is negative Y; Z up",adapterTranslationMm=ADAPTER_TRANSLATION_MM,seatingDepthMm=SEATING_DEPTH_MM,elapsedSeconds=time.monotonic()-start,stages=HISTORY),indent=2)+'\n')
 
 if __name__=='__main__':
     main()

@@ -2,6 +2,36 @@
 
 The full, unsplit adapter is reconstructed as editable Python solid geometry from the repository's millimeter recipe. The final wheel imprint subtracts only the prepared Sherman P middle body, with the source screen patch reconnected before preparation and uniformly scaled by **1.003** about model origin after cuts at Y=-191/+170 mm. Both handles move with the complete scan during alignment, remain unscaled after slicing, and are excluded from subtraction. The master has no fillets or connector recesses. The latch is a separate editable accessory; no split variant or saddlebag mount is built by this project.
 
+## Implemented 8 mm deeper seating
+
+The approved 8 mm placement preview is implemented in the editable source and
+manufacturing STEP/STL exports. `SEATING_DEPTH_MM = 8.0` in `prepare_sherman_p.py`
+raises the whole prepared EUC, including both unscaled handles, exactly 8 mm.
+The existing 1.003 body fit scale is retained: its pivot moves from `(0,0,0)`
+to `(0,0,8)` with the wheel. This is mathematically the original prepared cutter
+translated by 8 mm, without the extra 0.024 mm that scaling the new translation
+about the old pivot would introduce. Rotation, Y slice planes and X/Y placement
+are unchanged. This supersedes the original scan Z position described below.
+
+The front clip follows by exactly 8 mm, placing its bore axis at
+Y=-220.37430326680117, Z=40.87424168191536 mm. The existing front reconstruction
+extends the 55 degree ramp to meet it, keeps the original jaw separation datum,
+and carries the original 30.2 mm circular opening through the connector wedge.
+The original printing planes still trim the sides. Screen walls, mounting
+ceilings, simple rear cavity, original rear interface and separate latch retain
+their controlling geometry. The deeper wheel imprint is regenerated from the
+prepared body; both handles remain reference-only and unscaled.
+
+[Implemented seating and front connection](exports/deeper-seating-8mm-implemented.png)
+shows actual manufacturing meshes. The earlier silhouette preview is conceptual.
+An open viewer updates when `view_adapter.py` is rerun. Physical fit remains untested.
+
+Validation: **41 tests** and **12 mesh mounting-ceiling checks** pass. The reopened
+manufacturing STEP is one valid solid, **1,525,564.716 mm³**, with zero material
+in the full grip-bore cylinder. Every exported wheel-reference vertex matches
+the corresponding previous export translated 8 mm, within 0.000004 mm STL
+rounding. See [seating measurements](logs/deeper-seating-validation.json).
+
 ## Run
 
 Dependencies live outside this Git repository:

@@ -1,0 +1,33 @@
+{
+  "seatingDepthMm": 8,
+  "baselineCommit": "fb38b1acc4f525ca9ce3cbb3f4079566f98807d2",
+  "preparedReferenceTranslationChecks": {
+    "body-scaled": {
+      "maxVertexDistanceMm": 3.814697265625e-06,
+      "ok": true
+    },
+    "body-original": {
+      "maxVertexDistanceMm": 3.814697265625e-06,
+      "ok": true
+    },
+    "front-handle": {
+      "maxVertexDistanceMm": 1.9073486328125e-06,
+      "ok": true
+    },
+    "rear-handle": {
+      "maxVertexDistanceMm": 3.814697265625e-06,
+      "ok": true
+    }
+  },
+  "finalStepValid": true,
+  "finalStepSolids": 1,
+  "finalStepVolumeMm3": 1525564.7162049802,
+  "clipAxisYZmm": [
+    -220.37430326680118,
+    40.87424168191536
+  ],
+  "clipBoreDiameterMm": 30.2,
+  "clipBoreInterferenceMm3": 0,
+  "unitTestsPassed": 41,
+  "meshMountingChecksPassed": 12
+}
