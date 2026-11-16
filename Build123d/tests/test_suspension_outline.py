@@ -8,7 +8,7 @@ from coordinates import ADAPTER_TRANSLATION_MM, source_to_model
 
 class SuspensionOutlineTests(unittest.TestCase):
     def test_native_blank_matches_approved_outline(self):
-        lines = json.loads((Path(__file__).resolve().parents[1]/'exports/bottom-outline-proposed-lines.json').read_text())
+        lines = json.loads((Path(__file__).parent/'fixtures/accepted-dimensions.json').read_text())['bottomOutlineLines']
         def wire(ids):
             return Wire([Edge.make_line((*lines[str(i)][0], 0), (*lines[str(i)][1], 0)) for i in ids])
         outline = Face(wire([i for i in range(1,19) if str(i) in lines]), [wire(range(19,23))])

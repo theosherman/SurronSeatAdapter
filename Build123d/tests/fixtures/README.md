@@ -15,3 +15,5 @@ plane point `(0,164.41714823915711,1.578677917809248)` and normal
 `(0,0.8597932986247546,0.5106422266518543)`. The sketch-only cavity redesign must
 preserve this region by symmetric difference, preventing extra interface rails
 or an unintended outer wall/latch shift.
+
+`accepted-dimensions.json` retains only numeric accepted outline, screen and printing-plane datums for independent regression tests. It replaces test dependencies on deleted temporary proposal reports; it contains no preview images or study solids.

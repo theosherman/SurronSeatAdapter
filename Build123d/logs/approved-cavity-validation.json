@@ -1,0 +1,11 @@
+{
+  "valid": true,
+  "solids": 1,
+  "volumeMm3": 1155554.4803329029,
+  "roofOffsetMm": 18.5,
+  "sampledRoofLocations": 2578,
+  "minimumSampledRoofMm": 9.99999999999878,
+  "samplingGridMm": 2,
+  "limitation": "Interior roof-normal samples; not a continuous all-surface minimum proof.",
+  "approvedPreviewSymmetricDifferenceMm3": 0
+}

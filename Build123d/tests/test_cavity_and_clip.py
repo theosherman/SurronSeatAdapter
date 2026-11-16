@@ -31,15 +31,14 @@ class CavityAndClipTests(unittest.TestCase):
         self.assertLess(old_grip.cut(new_grip).volume,.001)
         self.assertLess(new_grip.cut(old_grip).volume,.001)
 
-    def test_trunk_has_both_side_walls_and_filled_middle(self):
+    def test_trunk_has_both_side_walls_and_open_middle(self):
         for y in (45,50,55,60):
             for z in (0,10,20,30):
                 for side in (-1,1):
                     self.assertTrue(self.body.is_inside(Vector(side*20,y,z)),(side,y,z))
-                self.assertTrue(self.body.is_inside(Vector(0,y,z)),(y,z))
+                self.assertFalse(self.body.is_inside(Vector(0,y,z)),(y,z))
         # Follow the extended rear diagonal too; rear diagonal and roof stay intact.
-        lines=json.loads((Path(__file__).resolve().parents[1]/
-            'exports/bottom-outline-proposed-lines.json').read_text())
+        lines=json.loads((Path(__file__).parent/'fixtures/accepted-dimensions.json').read_text())['bottomOutlineLines']
         a,b=lines['13']
         for y in (70,80,90):
             edge_x=a[0]+(b[0]-a[0])*(y-a[1])/(b[1]-a[1])

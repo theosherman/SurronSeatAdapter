@@ -9,8 +9,7 @@ class ScreenSurroundTests(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
         cls.body=build_master(imprint=False)
-        cls.reference=json.loads((Path(__file__).resolve().parents[1]/
-            'exports/concepts/parallel-screen-report.json').read_text())
+        cls.reference=json.loads((Path(__file__).parent/'fixtures/accepted-dimensions.json').read_text())['screen']
 
     def test_reinforced_sides_and_open_screen(self):
         for x in (-50,50):

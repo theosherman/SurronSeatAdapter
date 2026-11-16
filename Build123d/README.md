@@ -2,6 +2,29 @@
 
 The full, unsplit adapter is reconstructed as editable Python solid geometry from the repository's millimeter recipe. The final wheel imprint subtracts only the prepared Sherman P middle body, with the source screen patch reconnected before preparation and uniformly scaled by **1.003** about model origin after cuts at Y=-191/+170 mm. Both handles move with the complete scan during alignment, remain unscaled after slicing, and are excluded from subtraction. The master has no fillets or connector recesses. The latch is a separate editable accessory; no split variant or saddlebag mount is built by this project.
 
+## Implemented long cavity and rear side relief
+
+The approved browser preview is implemented in `trunk_cavity.py` and M19 of
+`adapter.py`: one editable sixteen-line profile extends through the middle and
+widens at the rear. Straight downward walls start 18.5 mm below BodyCutSketch;
+the original pocket is replaced, so no higher residual roof recess remains.
+The existing 8.5 mm AirTag pocket retains 10 mm of material below it at sampled
+locations. `rear_side_tools()` defines two mirrored, full-height exterior corner
+cuts in the placed model frame, applied before the unchanged wheel subtraction.
+The separate latch, mounting features, rear bridge and original top dovetail remain.
+This supersedes the rear-only octagon, filled-middle assertions and 12 mm/15°
+cavity settings described in historical sections below. Other CAD engines are
+unchanged.
+
+Validation: **45 tests pass**, all **12 mounting-ceiling checks pass**, and
+STEP/STL reopening plus the AirTag 8.6 mm edit pass. The exported STEP is one
+valid solid, **1,155,554.480 mm³**. Its measured symmetric difference from the
+approved scratch STEP is **0 mm³**. A 2 mm grid gives **2,578** interior
+roof-normal samples with a **10 mm** minimum. Run `validate_cavity.py` for roof samples and optional preview parity,
+the standard regression suite, `validate_exports.py`, and the mounting-ceiling
+mesh checker for manufacturing validation. Sampling is not a continuous minimum
+thickness proof; physical fit and strength remain untested.
+
 ## Implemented 8 mm deeper seating
 
 The approved 8 mm placement preview is implemented in the editable source and
@@ -421,7 +444,7 @@ and [native measurements](logs/shoulder-screen-validation.json).
 `preview_shoulders_screen.py` takes a historical STL path and compares it with
 the current manufacturing export; extract the prior STL from commit `4e3cb4d`.
 
-## Simple rear-only cavity; original interface restored
+## Historical rear-only cavity (superseded by approved long cavity)
 
 The rejected face/region patch implementation has been removed. The user
 explicitly chose the **original outer wall/latch interface**, cancelling the
@@ -448,7 +471,8 @@ planar-clearance and original contact/outline tests apply to the normal build
 again, without a legacy-mode switch. `rear_cavity.py` and its workaround API have
 been deleted rather than retained as another selectable implementation.
 
-See [unobstructed underside](exports/rear-cavity-underside.png),
+Historical render snapshots (the current implemented view is `exports/rear-cavity-implemented.png`):
+[unobstructed underside](exports/rear-cavity-underside.png),
 [sketch result before wheel imprint](exports/rear-cavity-before-imprint.png),
 [before/after cutaway](exports/rear-cavity-implemented-cut.png), and
 [assembled comparison](exports/rear-cavity-implemented-full.png). These are
