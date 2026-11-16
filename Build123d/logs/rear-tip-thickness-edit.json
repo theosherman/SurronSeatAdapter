@@ -1,0 +1,12 @@
+{
+  "previousWallMm": 10,
+  "newWallMm": 14,
+  "addedMaterialMm3": 3832.8870436429224,
+  "removedPreviousMaterialMm3": 0,
+  "addedMaterialNormalDepthRangeMm": [
+    10.000000000002537,
+    14.000000000009667
+  ],
+  "valid": true,
+  "solids": 1
+}

@@ -5,7 +5,8 @@ from build123d import GeomType,Keep,Plane
 def trim_to_rear_print_planes(body):
     """Retain the inward half-spaces of the two actual native rear side faces.
 
-    No offsets or guessed angles: use the existing planes in the placed model.
+    Use the native rear planes in the placed model, including the approved
+    1 mm outward offset already applied to the original RearSketch profile.
     Reject missing/ambiguous datums instead of silently choosing another face.
     """
     faces=[f for f in body.faces() if f.geom_type==GeomType.PLANE

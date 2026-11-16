@@ -9,8 +9,7 @@ class ScreenSurroundTests(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
         cls.body=build_master(imprint=False)
-        cls.reference=json.loads((Path(__file__).resolve().parents[1]/
-            'exports/concepts/parallel-screen-report.json').read_text())
+        cls.reference=json.loads((Path(__file__).parent/'fixtures/accepted-dimensions.json').read_text())['screen']
 
     def test_reinforced_sides_and_open_screen(self):
         for x in (-50,50):
@@ -29,6 +28,27 @@ class ScreenSurroundTests(unittest.TestCase):
                and f.normal_at().dot(Vector(-nx,-ny,-nz))>.999999
                and abs(f.center().Z-(z0+slope*(f.center().Y-y0)))<1e-6]
         self.assertTrue(faces)
+
+    def test_existing_body_top_continues_down_onto_both_screen_walls(self):
+        # Original body top from the saved manufacturing geometry, not a new angle.
+        normal=Vector(0,-0.26418906967888117,0.964470909598733)
+        # The exact plane is recovered from the retained central body top.
+        top=next(f for f in self.body.faces() if f.geom_type==GeomType.PLANE
+                 and f.area>2000 and f.normal_at().dot(normal)>.999999
+                 and -100<f.center().Y<-60)
+        datum=top.center()
+        for side in (-1,1):
+            for y in (-103,-110,-118):
+                z=datum.Z-normal.Y/normal.Z*(y-datum.Y)
+                self.assertTrue(self.body.is_inside(Vector(side*50,y,z-.1)),(side,y,z))
+                self.assertFalse(self.body.is_inside(Vector(side*50,y,z+.1)),(side,y,z))
+            # Continuation must be part of the original coplanar top, with no seam.
+            faces=[f for f in self.body.faces() if f.geom_type==GeomType.PLANE
+                   and f.normal_at().dot(normal)>.999999
+                   and f.bounding_box().min.Y<-120
+                   and f.bounding_box().max.Y>-90]
+            self.assertTrue(faces)
+        self.assertFalse(self.body.is_inside(Vector(0,-110,32)))
 
     def test_raised_ribbon_at_rounded_cutout_is_removed(self):
         # User's green circle: the prior 3.418 mm² extrusion ribbon was here.

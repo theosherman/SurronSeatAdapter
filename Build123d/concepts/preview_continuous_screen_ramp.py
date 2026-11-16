@@ -1,12 +1,14 @@
 """Remove only the proposal's new front ledge; retain original continuous ramp."""
 from pathlib import Path
+(Path(__file__).resolve().parents[1]/'tmp').mkdir(parents=True,exist_ok=True)
 import sys,json
 import numpy as np
 from PIL import Image,ImageDraw,ImageFont
 from build123d import import_step,GeomType,Face,Wire,Solid,Plane,Keep,export_step,export_stl
 ROOT=Path(__file__).resolve().parents[1];sys.path.insert(0,str(ROOT))
 from mesh_preview import render
-OUT=ROOT/'exports/concepts'
+OUT=(Path(__file__).resolve().parents[1]/'tmp/concepts')
+OUT.mkdir(parents=True,exist_ok=True)
 original=import_step(ROOT/'exports/adapter-body.step')
 previous=import_step(OUT/'parallel-screen-proposed.step')
 ramp=next(f for f in original.faces() if f.geom_type==GeomType.PLANE and f.area>3000
@@ -60,4 +62,4 @@ for k,(title,items,eye,focus) in enumerate([
 d.text((40,1300),'Green: reinforced top parallel to underside     Blue: one continuous existing incline into the clip',font=f(25),fill='#183044')
 d.text((40,1360),'Added height remains at the sides • no extra front ledge • no fillets • underside, clip bore and printing planes retained',font=f(23),fill='#405b70')
 d.text((40,1440),'PREVIEW ONLY • manufacturing geometry unchanged • rear hidden in the left inspection view',font=f(23),fill='#405b70')
-image.save(ROOT/'exports/continuous-screen-ramp-preview.png');print(json.dumps(report))
+image.save((Path(__file__).resolve().parents[1]/'tmp')/'continuous-screen-ramp-preview.png');print(json.dumps(report))

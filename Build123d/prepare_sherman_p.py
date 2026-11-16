@@ -10,10 +10,12 @@ ROOT = Path(__file__).resolve().parents[1]
 FRONT_Y = -191.0
 REAR_Y = 170.0
 BODY_SCALE = 1.003
-SCALE_ORIGIN = (0, 0, 0)
+SEATING_DEPTH_MM = 8.0
+# Translate the fit-scale pivot with the wheel so the final cutter rises exactly 8 mm.
+SCALE_ORIGIN = (0, 0, SEATING_DEPTH_MM)
 # Approved lower-outer-bottom alignment, in the permanent Build123d frame.
 ALIGNMENT_ANGLE_DEG = -3.4932161177016057
-ALIGNMENT_TRANSLATION_MM = (0, 0, 3.464786838041892)
+ALIGNMENT_TRANSLATION_MM = (0, 0, 3.464786838041892 + SEATING_DEPTH_MM)
 
 
 def align_scan(scan):
@@ -57,7 +59,7 @@ def main():
     report = dict(source=source.name, sourceSha256=hashlib.sha256(source.read_bytes()).hexdigest(),
                   frame='Build123d (-source X, -source Y, source Z), millimeters',
                   cutPlanesYmm=[FRONT_Y, REAR_Y], bodyScale=BODY_SCALE,
-                  scaleOriginMm=SCALE_ORIGIN,
+                  scaleOriginMm=SCALE_ORIGIN, seatingDepthMm=SEATING_DEPTH_MM,
                   alignment=dict(axis='+X', angleDegrees=ALIGNMENT_ANGLE_DEG,
                                  pivotMm=[0,0,0], translationMm=ALIGNMENT_TRANSLATION_MM,
                                  order='whole scan rigid motion, world-Y slices, body-only scale'),

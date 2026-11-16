@@ -4,10 +4,12 @@ import sys,json
 import numpy as np
 from PIL import Image,ImageDraw,ImageFont
 from build123d import import_step,GeomType,Plane,Keep,export_step,export_stl
+(Path(__file__).resolve().parents[1]/'tmp').mkdir(parents=True,exist_ok=True)
 ROOT=Path(__file__).resolve().parents[1]
 sys.path.insert(0,str(ROOT))
 from mesh_preview import render
-OUT=ROOT/'exports/concepts'
+OUT=(Path(__file__).resolve().parents[1]/'tmp/concepts')
+OUT.mkdir(parents=True,exist_ok=True)
 body=import_step(ROOT/'exports/adapter-body.step')
 faces=[f for f in body.faces() if f.geom_type==GeomType.PLANE and f.area>5000
        and abs(f.normal_at().X)>.85 and f.center().Y>0]
@@ -77,6 +79,6 @@ draw=ImageDraw.Draw(image)
 draw.text((42,1415),f'Maximum protrusion: {report["planes"][0]["maxOriginalProtrusionMm"]:.2f} mm   •   Proposed total removal: {removed.volume:,.0f} mm³   •   Result: one valid native solid',font=font(24),fill='#183044')
 draw.text((42,1460),'Orange: proposed removal   •   Green: new coplanar contact faces   •   Gold: front-handle reference',font=font(23),fill='#405b70')
 draw.text((42,1520),'PREVIEW ONLY • authoritative adapter untouched • both cuts use the exact rear-face planes, with no offset',font=font(23),fill='#405b70')
-image.save(ROOT/'exports/print-plane-trim-preview.png')
+image.save((Path(__file__).resolve().parents[1]/'tmp')/'print-plane-trim-preview.png')
 (OUT/'print-plane-trim-report.json').write_text(json.dumps(report,indent=2)+'\n')
 print(json.dumps(report))

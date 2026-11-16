@@ -1,12 +1,13 @@
 """Additional views of the unchanged parallel-screen proposal."""
 from pathlib import Path
+(Path(__file__).resolve().parents[1]/'tmp').mkdir(parents=True,exist_ok=True)
 import sys
 import numpy as np
 from PIL import Image,ImageDraw,ImageFont
 from build123d import import_step,GeomType,Plane,Keep
 ROOT=Path(__file__).resolve().parents[1];sys.path.insert(0,str(ROOT))
 from mesh_preview import render
-s=import_step(ROOT/'exports/concepts/parallel-screen-proposed.step')
+s=import_step((Path(__file__).resolve().parents[1]/'tmp')/'concepts/parallel-screen-proposed.step')
 display=s.split(Plane((0,-123,0),z_dir=(0,1,0)),Keep.BOTTOM)
 v,t=display.tessellate(.025,.07);m=np.array([list(p) for p in v])[np.array(t)]
 # Crop only the view to remove the rear body that would hide the junction.
@@ -32,7 +33,7 @@ for k,(title,eye) in enumerate([('From the screen opening, looking toward the cl
 d.text((40,1285),'Green: parallel top     Blue: retained uphill ramp     Orange: added upright extension at the screen edge',font=f(24),fill='#183044')
 d.text((40,1340),'The orange face is a real extra wall in this proposal. These views make it visible for review.',font=f(24),fill='#405b70')
 d.text((40,1410),'PREVIEW ONLY • manufacturing model untouched • reference scan hidden so it cannot obscure the join',font=f(23),fill='#405b70')
-image.save(ROOT/'exports/parallel-screen-join-angles.png')
+image.save((Path(__file__).resolve().parents[1]/'tmp')/'parallel-screen-join-angles.png')
 print('Orange wall triangles:',int(wall.sum()))
 for face in s.faces():
  if face.geom_type==GeomType.PLANE and face.normal_at().Y>.999 and -181<face.center().Y<-175:

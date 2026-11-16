@@ -1,11 +1,11 @@
-"""Native screen walls, lowered 8 mm and joined to the original front ramp."""
+"""Native screen walls joining the existing body-top and front-ramp planes."""
 from build123d import GeomType,Plane,Keep,Solid,Compound,ShapeList,Face,Wire
 
 SCREEN_WALL_LOWERING_MM = 8.0
 
 
 def reinforce_screen(body):
-    """Set the side tops parallel to the underside and flow into the front ramp.
+    """Continue the body top down to the lowered sides and into the front ramp.
 
     Native face datums define the start, angle, aperture and central ramp. No
     manufacturing geometry is loaded from preview meshes or exchange exports.
@@ -13,12 +13,15 @@ def reinforce_screen(body):
     planes=[f for f in body.faces() if f.geom_type==GeomType.PLANE]
     rear=next(f for f in planes if f.area>2000 and -103<f.center().Y<-100
               and f.normal_at().Y<-.99)
-    cliptop=next(f for f in planes if f.area>1000 and f.center().Y<-200
+    cliptop=next(f for f in planes if f.area>500 and f.center().Y<-200
                  and f.normal_at().Z>.99)
     bottom=next(f for f in planes if f.area>4000 and abs(f.normal_at().X)<1e-6
                 and f.normal_at().Z<-.99 and f.normal_at().Y<-.1)
     ramp=next(f for f in planes if f.area>3000 and .81<f.normal_at().Y<.83
               and .57<f.normal_at().Z<.58)
+    bodytop=next(f for f in planes if f.area>2000
+                 and -.27<f.normal_at().Y<-.26 and .96<f.normal_at().Z<.97
+                 and f.bounding_box().max.Y>rear.center().Y)
     rails=[f for f in planes if f.area>800 and -160<f.center().Y<-145
            and f.normal_at().Z>.99]
     if len(rails)!=2:
@@ -47,6 +50,13 @@ def reinforce_screen(body):
     ramp_air=Solid.extrude(Face(Wire.make_polygon(polygon,close=True)),(xmax-xmin,0,0))
     def shape(value):
         return Compound(value) if isinstance(value,(list,ShapeList)) else value
+    # One controlling wall-top envelope: retain the original body-top plane
+    # until it meets the lowered parallel rail plane. This extends the existing
+    # slope; it introduces no new angle or subsequent local filler feature.
+    above_top=shape(slab.split(target,Keep.TOP))
+    above_bodytop=shape(slab.split(
+        Plane(bodytop.center(),z_dir=bodytop.normal_at()),Keep.TOP))
+    above_sides=shape(above_top.intersect(above_bodytop))
     additions=[]
     for face in planes:
         n=face.normal_at()
@@ -57,9 +67,7 @@ def reinforce_screen(body):
         piece=shape(Solid.extrude(face,(0,0,100)).intersect(slab))
         if not piece.solids():
             continue
-        piece=piece.split(target,Keep.BOTTOM)
-        if piece is None:
-            continue
+        piece=shape(piece.cut(above_sides))
         # Keep additions out of the aperture and air above the central incline.
         piece=shape(shape(piece).cut(aperture,ramp_air))
         if piece.volume>1e-6:
@@ -67,9 +75,8 @@ def reinforce_screen(body):
     result=body.fuse(*additions).clean()
     # Lower both original rail material and reinforcement. Retain the higher
     # uphill ramp so the rails flow into it instead of ending at a vertical step.
-    above_top=shape(slab.split(target,Keep.TOP))
     above_ramp=shape(slab.split(Plane(point,z_dir=normal),Keep.TOP))
-    cap=shape(above_top.intersect(above_ramp))
+    cap=shape(above_sides.intersect(above_ramp))
     result=result.cut(cap).clean()
     if not result.is_valid or len(result.solids())!=1:
         raise ValueError('Screen reinforcement must leave one valid adapter solid')

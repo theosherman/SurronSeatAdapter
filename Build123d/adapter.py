@@ -6,7 +6,7 @@ import time
 from build123d import Edge, Wire, Face, Solid, Plane, Vector, Keep, Compound, ShapeList, Mesher, export_step, export_stl
 
 from coordinates import model_recipe, source_to_model, prepare_scan, ADAPTER_TRANSLATION_MM
-from prepare_sherman_p import prepare_parts
+from prepare_sherman_p import prepare_parts, SEATING_DEPTH_MM
 from scan_patch import PATCH
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -15,7 +15,7 @@ SKETCHES = {s['name']: s for s in RECIPE['sketches']}
 HISTORY = []
 
 
-def profiles(index, with_source=False, sherman_p_bottom=False, seat_shoulders=False):
+def profiles(index, with_source=False, sherman_p_bottom=False, seat_shoulders=False, manufacturing_offsets=False):
     """Make exact selected faces in global coordinates, preserving sketch-space Z."""
     selected = next(p for p in RECIPE['selectedProfiles'] if p['sourceTimelineIndex'] == index)
     result = []
@@ -29,6 +29,9 @@ def profiles(index, with_source=False, sherman_p_bottom=False, seat_shoulders=Fa
         for loop in source['loops']:
             edges = []
             curves = loop['curves']
+            if manufacturing_offsets and index in (14, 86):
+                from cut_offsets import offset_cut_curves
+                curves = offset_cut_curves(index, curves)
             if sherman_p_bottom:
                 if index != 9:
                     raise ValueError('Sherman P bottom adaptation is only for BottomSketch')
@@ -63,7 +66,7 @@ def tool(index, depth, direction=None, offset=0, symmetric=False, taper=0):
     s = SKETCHES[selected['profiles'][0]['sketch']]
     n = Vector(s['normal'] if direction is None else direction).normalized()
     solids = []
-    for f in profiles(index, sherman_p_bottom=index == 9, seat_shoulders=index == 79):
+    for f in profiles(index, sherman_p_bottom=index == 9, seat_shoulders=index == 79, manufacturing_offsets=True):
         f = f.translate(n*(offset-depth/2 if symmetric else offset))
         solids.append(Solid.extrude_taper(f,n*depth,taper) if taper else Solid.extrude(f,n*depth))
     return solids[0].fuse(*solids[1:]) if len(solids)>1 else solids[0]
@@ -121,9 +124,8 @@ def build_master(stop=None, imprint=True, airtag_depth=8.5):
     body = stage('M17',body.cut(side,side.mirror(Plane.YZ)))
     rearcut = tool(121,1000,symmetric=True)
     body = stage('M18',body.cut(rearcut,rearcut.mirror(Plane.YZ)))
-    from trunk_cavity import bound_trunk_cavity
-    cavity = tool(124,500,direction=-Vector(SKETCHES['BodyCutSketch']['normal']),offset=12,taper=-15)
-    cavity = bound_trunk_cavity(cavity, profiles(9,sherman_p_bottom=True)[0])
+    from trunk_cavity import rear_cavity_tool
+    cavity = rear_cavity_tool(SKETCHES['BodyCutSketch'])
     body = stage('M19',body.cut(cavity))
     body = stage('M20',body.cut(tool(126,airtag_depth,direction=-Vector(SKETCHES['AirtagCutSketch']['normal']))))
     # Place the finished geometry before the stationary wheel-body subtraction.
@@ -134,6 +136,9 @@ def build_master(stop=None, imprint=True, airtag_depth=8.5):
     body = stage('M20-screen-surround', reinforce_screen(body))
     from print_planes import trim_to_rear_print_planes
     body = stage('M20-print-planes', trim_to_rear_print_planes(body))
+    from trunk_cavity import rear_side_tools,trim_lower_rear_tip
+    body = stage('M20-rear-side-relief', body.cut(*rear_side_tools()))
+    body = stage('M20-lower-rear-tip', trim_lower_rear_tip(body))
     if stop=='M20' or not imprint: return body
     print('Preparing Sherman P: align whole scan before slices; handles excluded; body scale 1.003', flush=True)
     scan_path = prepare_scan(ROOT/'Sherman_P_Scan_Aligned_To_Adapter_mm.stl', ROOT/'Build123d/inputs/wheel-scan-model-frame.stl')
@@ -156,7 +161,7 @@ def main():
     stem = 'adapter-body' if not args.stop and not args.no_imprint else 'adapter-body-'+(args.stop or 'pre-imprint')
     export_step(body,output/(stem+'.step'))
     export_stl(body,output/(stem+'.stl'),tolerance=0.005,angular_tolerance=0.05)
-    (Path(__file__).parent/'logs/build-validation.json').write_text(json.dumps(dict(coordinateFrame="source (x,y,z) -> model (-x,-y,z); physical front is negative Y; Z up",adapterTranslationMm=ADAPTER_TRANSLATION_MM,elapsedSeconds=time.monotonic()-start,stages=HISTORY),indent=2)+'\n')
+    (Path(__file__).parent/'logs/build-validation.json').write_text(json.dumps(dict(coordinateFrame="source (x,y,z) -> model (-x,-y,z); physical front is negative Y; Z up",adapterTranslationMm=ADAPTER_TRANSLATION_MM,seatingDepthMm=SEATING_DEPTH_MM,elapsedSeconds=time.monotonic()-start,stages=HISTORY),indent=2)+'\n')
 
 if __name__=='__main__':
     main()

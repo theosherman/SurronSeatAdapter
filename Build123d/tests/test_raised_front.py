@@ -18,7 +18,7 @@ class RaisedFrontTests(unittest.TestCase):
         self.assertTrue(arcs)
         for e in arcs:
             self.assertAlmostEqual(e.arc_center.Y,-220.3743032668,places=6)
-            self.assertAlmostEqual(e.arc_center.Z,32.8742416819,places=6)
+            self.assertAlmostEqual(e.arc_center.Z,40.8742416819,places=6)
 
     def test_front_dovetail_removed(self):
         self.assertFalse(self.body.is_inside(Vector(0,-201.98,63.0)))
@@ -30,9 +30,9 @@ class RaisedFrontTests(unittest.TestCase):
 
     def test_extended_screen_gusset_keeps_full_clip_bore_open(self):
         bore = Solid.make_cylinder(15.1, 100,
-            Plane((-50,-220.37430326680117,32.87424168191536), z_dir=(1,0,0)))
+            Plane((-50,-220.37430326680117,40.87424168191536), z_dir=(1,0,0)))
         overlap = self.body.intersect(bore)
-        self.assertLess(0 if overlap is None else overlap.volume, 1e-5)
+        self.assertLess(sum(s.volume for s in overlap) if isinstance(overlap,list) else (0 if overlap is None else overlap.volume), 1e-5)
 
     def test_bridge_has_added_thickness_above_retained_bottom(self):
         # Enlarged opening moves the 55-degree ramp 10 mm toward the clip.
