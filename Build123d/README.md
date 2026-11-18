@@ -602,3 +602,9 @@ recipe remains unchanged. No finished-body patches are used.
 
 The saved [earlier preview](exports/one-mm-face-offsets-implemented.png) shows the
 initial 1 mm face-3 offset. No new preview was requested for the 3 mm revision.
+
+### Two-piece printing variant
+
+After rebuilding the master, run `Build123d/split_adapter.py` with the same Python environment. It reads `exports/adapter-body.step` and writes separate front and rear STEP and STL files. The child uses the portable recipe's sloped split plane and five 8 mm connector recesses in the placed adapter frame.
+
+In the model orientation, the front is approximately 152 × 354 × 88 mm, and the rear is 156 × 171 × 137 mm. With Z up, the front needs about 339 mm square before slicer margins, even when rotated in the bed plane.
