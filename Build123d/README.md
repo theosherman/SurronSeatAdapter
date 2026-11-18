@@ -608,3 +608,9 @@ initial 1 mm face-3 offset. No new preview was requested for the 3 mm revision.
 After rebuilding the master, run `Build123d/split_adapter.py` with the same Python environment. It reads `exports/adapter-body.step` and writes separate front and rear STEP and STL files. The child uses the portable recipe's sloped split plane and five 8 mm connector recesses in the placed adapter frame.
 
 In the model orientation, the front is approximately 152 × 354 × 88 mm, and the rear is 156 × 171 × 137 mm. With Z up, the front needs about 339 mm square before slicer margins, even when rotated in the bed plane.
+
+To inspect the two halves in VS Code, open **OCP CAD Viewer: Open viewer**
+from the command palette, then select **View split adapter in OCP CAD Viewer**
+in the Run and Debug dropdown and press **Ctrl+F5**. The viewer loads both
+saved STEP files in their assembled positions. Use the object tree to hide
+either half. **View adapter in OCP CAD Viewer** opens the unsplit master.
