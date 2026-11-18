@@ -2,9 +2,9 @@
 
 ## Scope
 
-SolidCraft and Zoo Design Studio are intended future targets. Neither implementation nor API compatibility was tested in this session. Use the saved geometry and operation intent; do not assume either target accepts Onshape payloads, FeatureScript, Fusion tokens, or the same mesh Boolean operations.
+Use the saved geometry and operation intent when porting to another CAD engine. The [Build123d project](../README.md) is the current editable implementation.
 
-Start with [recipe.json](../cad-rebuild/recipe.json), [CAD-REBUILD.md](CAD-REBUILD.md), and the [aligned millimeter scan](../Sherman_P_Scan_Aligned_To_Adapter_mm.stl). The large historical Onshape schema responses are not needed for another CAD engine.
+Start with [recipe.json](../cad-rebuild/recipe.json), [CAD-REBUILD.md](CAD-REBUILD.md), and the [aligned millimeter scan](../reference/fusion/Sherman_P_Scan_Aligned_To_Adapter_mm.stl). The large historical Onshape schema responses are not needed for another CAD engine.
 
 ## Check the target's capabilities first
 
@@ -120,7 +120,7 @@ The exact cap origins/normals are in [front-screw-ceiling-correction.json](../fr
 
 ## Cross-kernel comparison
 
-For the verified Veteran Sherman L reference preparation, see [wheel reference preparation](WHEEL-REFERENCE-PREPARATION.md): split off both handles first, then uniformly scale only the central body by 1.003 about its saved pivot, and exclude both handles from subtraction. This source procedure has not yet been applied to the existing SolidCraft Sherman P imprint.
+For the verified Veteran Sherman L reference preparation, see [wheel reference preparation](WHEEL-REFERENCE-PREPARATION.md): split off both handles first, then uniformly scale only the central body by 1.003 about its saved pivot, and exclude both handles from subtraction.
 
 Use body count, silhouette, dimensions, selected-profile areas and material tests together. Choose and record the target tolerance. A single matching volume does not prove identical topology. Investigate substantial discrepancies before spending remote calls on finishing details.
 

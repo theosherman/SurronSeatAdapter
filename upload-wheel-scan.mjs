@@ -10,7 +10,7 @@ const store=new CredentialStore();
 const creds=store.resolve();
 if(!creds)throw new Error('The connected Onshape credential is unavailable');
 const client=new OnshapeClient(createAuthProvider(creds,store));
-const file='Sherman_P_Scan_Aligned_To_Adapter_mm.stl';
+const file='reference/fusion/Sherman_P_Scan_Aligned_To_Adapter_mm.stl';
 const form=new FormData();
 form.append('file',new Blob([fs.readFileSync(file)],{type:'application/sla'}),file);
 form.append('storeInDocument','true');

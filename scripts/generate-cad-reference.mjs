@@ -9,11 +9,11 @@ const mm=p=>p.map(v=>v*10);
 const cross=(a,b)=>[a[1]*b[2]-a[2]*b[1],a[2]*b[0]-a[0]*b[2],a[0]*b[1]-a[1]*b[0]];
 const fmt=n=>Math.abs(n)<1e-10?'0':Number(n.toFixed(9)).toString();
 const vector=p=>'('+p.map(fmt).join(', ')+')';
-const extraction=read('fusion-adapter-extraction.json');
-const timeline=read('fusion-timeline-and-user-parameters.json');
-const profileSource=read('fusion-selected-profile-loops.json');
-const connectorSource=read('fusion-connector-source.json');
-const extrusions=read('fusion-adapter-extrusions.json');
+const extraction=read('reference/fusion/fusion-adapter-extraction.json');
+const timeline=read('reference/fusion/fusion-timeline-and-user-parameters.json');
+const profileSource=read('reference/fusion/fusion-selected-profile-loops.json');
+const connectorSource=read('reference/fusion/fusion-connector-source.json');
+const extrusions=read('reference/fusion/fusion-adapter-extrusions.json');
 
 function geometry(c){
   const out={type:c.type.split('::').at(-1),construction:c.construction??false};
@@ -133,7 +133,7 @@ This is the current handoff for the completed Fusion-to-Onshape rebuild. The old
 
 ## Read first
 
-1. [README.md](README.md): final model structure and file map.
+1. [Onshape reconstruction notes](docs/ONSHAPE-RECONSTRUCTION.md): captured Onshape model structure and file map.
 2. [CAD rebuild guide](docs/CAD-REBUILD.md): source geometry, corrections and datums.
 3. [Portable recipe](cad-rebuild/recipe.json): millimeter geometry and selected loops for another CAD engine.
 4. [Porting and validation](docs/PORTING-AND-VALIDATION.md): implementation and verification checklist.
@@ -156,7 +156,7 @@ No fillets or separate loose inserts are included. The old Veteran Sherman L cut
 
 The sequence above was completed and checked in Onshape. The user visually reviewed the close reconstruction and requested the documented corrections. The complete Fusion constraint graph and an exhaustive whole-assembly equality comparison were not captured.
 
-Saved evidence includes all 200 source timeline markers, 18 sketches, 37 exact selected profiles, 149 model parameters, the Gap user parameter, exact scan placement, source scripts, final FeatureScript and validation. A SolidCraft or Zoo Design Studio implementation has not been built or tested.
+Saved evidence includes all 200 source timeline markers, 18 sketches, 37 exact selected profiles, 149 model parameters, the Gap user parameter, exact scan placement, source scripts, final FeatureScript and validation.
 
 Conserve future Onshape API calls. Run node scripts/generate-cad-reference.mjs to regenerate local tables and recipe files. Do not automatically replay live upload scripts or historical transient IDs.
 `);

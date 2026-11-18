@@ -1,7 +1,7 @@
 import fs from 'node:fs';
 
-const input = 'Sherman_P_Flush_Screen_Fusion_Default.stl';
-const output = 'Sherman_P_Scan_Aligned_To_Adapter_mm.stl';
+const input = 'reference/fusion/Sherman_P_Flush_Screen_Fusion_Default.stl';
+const output = 'reference/fusion/Sherman_P_Scan_Aligned_To_Adapter_mm.stl';
 const raw = fs.readFileSync(input);
 const count = raw.readUInt32LE(80);
 if (raw.length !== 84 + count * 50) throw new Error('Unexpected binary STL layout');

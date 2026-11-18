@@ -5,7 +5,7 @@
       "name": "View adapter in OCP CAD Viewer",
       "type": "debugpy",
       "request": "launch",
-      "program": "${workspaceFolder}/Build123d/view_adapter.py",
+      "program": "${workspaceFolder}/view_adapter.py",
       "python": "${userHome}/.local/share/venvs/surron-build123d/bin/python",
       "console": "integratedTerminal",
       "cwd": "${workspaceFolder}"
@@ -14,7 +14,7 @@
       "name": "View split adapter in OCP CAD Viewer",
       "type": "debugpy",
       "request": "launch",
-      "program": "${workspaceFolder}/Build123d/view_adapter_split.py",
+      "program": "${workspaceFolder}/view_adapter_split.py",
       "python": "${userHome}/.local/share/venvs/surron-build123d/bin/python",
       "console": "integratedTerminal",
       "cwd": "${workspaceFolder}"

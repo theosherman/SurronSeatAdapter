@@ -8,38 +8,21 @@ onshape-response-*.json
 Thumbs.db
 .superpowers/
 
-# Superseded SolidCraft experiments and command-discovery transcripts.
-SolidCraft/models/experiments/
-SolidCraft/models/.~*.lock
-SolidCraft/scripts/*-test.json
-SolidCraft/scripts/diagnose-*.json
-SolidCraft/logs/*-request.json
-SolidCraft/logs/*contracts*.json
-SolidCraft/logs/references.json
-SolidCraft/logs/diagnose-*.json
-SolidCraft/logs/*-result.json
-!SolidCraft/logs/child-result.json
-SolidCraft/logs/*-replay.json
-SolidCraft/logs/*-measure.json
-!SolidCraft/logs/pre-imprint-measure.json
-!SolidCraft/logs/imprinted-measure.json
-SolidCraft/logs/frame-check.json
-SolidCraft/logs/inspect-dovetail.json
-SolidCraft/logs/check-stage1.json
-
 # Temporary review images and scratch files.
 /tmp/
 
-# Correction/discussion proposal assets belong in Build123d/tmp, not tracked exports.
-/Build123d/tmp/
-/Build123d/exports/concepts/
-/Build123d/exports/requested-cavity-preview/
-/Build123d/exports/*-proposed*
-/Build123d/exports/*-proposal*
-/Build123d/exports/*-options.png
-/Build123d/exports/*-preview.png
-!/Build123d/exports/adapter-body-preview.png
-/Build123d/exports/bottom-outline-*.json
-/Build123d/exports/bottom-outline-sherman-p-*.png
-/Build123d/exports/parallel-screen-join-angles.png
-/Build123d/logs/*-preview.json
+# Legacy proposal output names
+/exports/concepts/
+/exports/requested-cavity-preview/
+/exports/*-proposed*
+/exports/*-proposal*
+/exports/*-options.png
+/exports/*-preview.png
+!/exports/adapter-body-preview.png
+/exports/bottom-outline-*.json
+/exports/bottom-outline-sherman-p-*.png
+/exports/parallel-screen-join-angles.png
+/logs/*-preview.json
+__pycache__/
+*.pyc
+.venv/

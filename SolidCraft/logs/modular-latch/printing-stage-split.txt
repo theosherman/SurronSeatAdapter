@@ -1,4 +1,0 @@
-error: 1 timeline feature(s) failed, so nothing was written (--allow-errors writes the bodies anyway):
-  C02_PrintSplit: body `AdapterBodyFront`: the operation failed: SMLib boolean: SMLib's check refuses the result: 1 failed tests:
-SmCone::Test #5 Bad Cone GenCurve LineScale: GenCurve Line Scale != 1/Cos(m_dSemiAngleRad). It must, to parameterize GenCurve to the cone's height. (offset=2.2415403e-12, tolerance= 2e-12) [owner SmCylinder]
-

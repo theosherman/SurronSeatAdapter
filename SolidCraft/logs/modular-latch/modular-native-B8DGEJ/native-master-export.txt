@@ -1,2 +1,0 @@
-note: the script leaves out appearances (colours of bodies and faces)
-C:\Projects\Sherman P Seat Adapter\SolidCraft\models\experiments\modular-native-B8DGEJ\adapter-body-build.json: 59 steps

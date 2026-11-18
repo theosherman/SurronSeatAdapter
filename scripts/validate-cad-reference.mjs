@@ -8,8 +8,8 @@ const assert=(ok,message)=>{if(!ok)throw new Error(message);};
 const dot=(a,b)=>a.reduce((n,v,i)=>n+v*b[i],0);
 const norm=a=>Math.hypot(...a);
 const recipe=read('cad-rebuild/recipe.json');
-const timeline=read('fusion-timeline-and-user-parameters.json');
-const parameters=read('fusion-adapter-parameters.json');
+const timeline=read('reference/fusion/fusion-timeline-and-user-parameters.json');
+const parameters=read('reference/fusion/fusion-adapter-parameters.json');
 const manifest=read('cad-rebuild/onshape-current-manifest.json');
 
 function finite(value,where='recipe'){
