@@ -605,7 +605,7 @@ initial 1 mm face-3 offset. No new preview was requested for the 3 mm revision.
 
 ### Two-piece printing variant
 
-After rebuilding the master, run `Build123d/split_adapter.py` with the same Python environment. It reads `exports/adapter-body.step` and writes separate front and rear STEP and STL files. The child uses the portable recipe's sloped split plane and five 8 mm connector recesses. The two interior recesses are scaled copies of the top hourglass, placed on the cavity roof and centered along the split.
+After rebuilding the master, run `Build123d/split_adapter.py` with the same Python environment. It reads `exports/adapter-body.step` and writes separate front and rear STEP and STL files. The child uses the portable recipe's sloped split plane and five 8 mm connector recesses. The two interior recesses are 16 × 12 mm hourglasses on the cavity side walls, with their waists on the split seam.
 
 In the model orientation, the front is approximately 152 × 354 × 88 mm, and the rear is 156 × 171 × 137 mm. With Z up, the front needs about 339 mm square before slicer margins, even when rotated in the bed plane.
 
