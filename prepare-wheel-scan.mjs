@@ -1,4 +1,5 @@
 import fs from 'node:fs';
+import { basename } from 'node:path';
 
 const input = 'reference/fusion/Sherman_P_Flush_Screen_Fusion_Default.stl';
 const output = 'reference/fusion/Sherman_P_Scan_Aligned_To_Adapter_mm.stl';
@@ -44,6 +45,6 @@ for(let t=0;t<count;t++)for(let v=0;v<3;v++) {
 }
 if(sampleError>0.001) throw new Error('STL did not match the Fusion scan sample');
 fs.writeFileSync(output,aligned);
-const report={input,output,units:'millimeter',triangles:count,uniqueVertices:vertices.size,badEdges,rotationDiagonal:rotation,translationMillimeters:translation,boundsMillimeters:{min,max},volumeMillimetersCubed:Math.abs(volume),fusionReferenceVolumeMillimetersCubed:4221287.871964949,sampleMatchErrorMillimeters:sampleError,alignmentSource:'Existing Sherman P Body Top Refined v4 component geometry and occurrence transform in Fusion'};
+const report={input:basename(input),output:basename(output),units:'millimeter',triangles:count,uniqueVertices:vertices.size,badEdges,rotationDiagonal:rotation,translationMillimeters:translation,boundsMillimeters:{min,max},volumeMillimetersCubed:Math.abs(volume),fusionReferenceVolumeMillimetersCubed:4221287.871964949,sampleMatchErrorMillimeters:sampleError,alignmentSource:'Existing Sherman P Body Top Refined v4 component geometry and occurrence transform in Fusion'};
 fs.writeFileSync('wheel-scan-alignment.json',JSON.stringify(report,null,2)+'\n');
 console.log(JSON.stringify(report));
