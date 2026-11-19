@@ -11,6 +11,10 @@ from measure import volume
 from trunk_cavity import REAR_CAVITY_POINTS
 
 
+EXTERIOR_CONNECTOR_OUTWARD_MM = 8.0
+EXTERIOR_CONNECTOR_DROP_MM = 5.0
+
+
 def placed_point(point):
     return Vector(source_to_model(point)) + Vector(ADAPTER_TRANSLATION_MM)
 
@@ -77,7 +81,14 @@ def build_split(master):
             or partition_error > max(0.1, master_volume * 2e-6)):
         raise ValueError('Split did not partition the master into two solids')
     top, side, _, opposite_side, _ = child['connectorInstances']
-    tools = [(instance['name'], connector_tool(instance)) for instance in (top, side, opposite_side)]
+    # Move the exterior recesses along the split plane to clear the cavity keys.
+    # The Y offset keeps the waist centered on the seam when lowering the tool.
+    z_shift = -EXTERIOR_CONNECTOR_DROP_MM
+    y_shift = -z_shift * plane.z_dir.Z / plane.z_dir.Y
+    tools = [(top['name'], connector_tool(top))]
+    tools += [(instance['name'], connector_tool(instance).translate(
+        (sign * EXTERIOR_CONNECTOR_OUTWARD_MM, y_shift, z_shift)))
+        for sign, instance in ((-1, side), (1, opposite_side))]
     tools += [(f'cavity-wall-{sign:+d}', cavity_connector(plane, sign, top['depthMm']))
               for sign in (-1, 1)]
     for name, half in zip(('front', 'rear'), halves):
