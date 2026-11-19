@@ -65,10 +65,23 @@ def cavity_connector(split_plane, side, depth):
     return Solid.extrude(face, direction * (depth / direction.dot(outward)))
 
 
+def split_plane():
+    datum = RECIPE['child']['splitPlane']
+    return Plane(placed_point(datum['originMm']), z_dir=source_to_model(datum['normal']))
+
+
+def connector_tools(plane):
+    instances = RECIPE['child']['connectorInstances']
+    top = next(instance for instance in instances if instance['name'] == 'top')
+    return [
+        ('top', connector_tool(top)),
+        ('cavity-positive-x', cavity_connector(plane, -1, top['depthMm'])),
+        ('cavity-negative-x', cavity_connector(plane, 1, top['depthMm'])),
+    ]
+
+
 def build_split(master):
-    child = RECIPE['child']
-    datum = child['splitPlane']
-    plane = Plane(placed_point(datum['originMm']), z_dir=source_to_model(datum['normal']))
+    plane = split_plane()
     sides = master.split(plane, keep=Keep.BOTH)
     halves = sorted((solid for side in sides if side for solid in side.solids()),
                     key=lambda solid: solid.center().Y)
@@ -79,10 +92,7 @@ def build_split(master):
     if (len(halves) != 2 or not all(half.is_valid for half in halves)
             or partition_error > max(0.1, master_volume * 2e-6)):
         raise ValueError('Split did not partition the master into two solids')
-    top = next(instance for instance in child['connectorInstances'] if instance['name'] == 'top')
-    tools = [(top['name'], connector_tool(top))]
-    tools += [(f'cavity-wall-{sign:+d}', cavity_connector(plane, sign, top['depthMm']))
-              for sign in (-1, 1)]
+    tools = connector_tools(plane)
     for name, half in zip(('front', 'rear'), halves):
         for connector_name, tool in tools:
             cut = half.cut(tool)

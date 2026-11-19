@@ -188,7 +188,7 @@ reflectVector(V) = V - 2*dot(V,n)*n
 
 Transform positions, sketch axes, and extrusion direction independently. A reflection reverses frame handedness; recomputing a normal and always cutting in its negative direction can send a mirrored pocket outward. The recipe's `extrusionDirection` avoids that mistake.
 
-The original Fusion source also made loose connector inserts (`Extrude3`/`Extrude4`), offsets using `Gap=-0.2 mm`, and fillets. Build123d creates the three specified recesses in the printing variant.
+The original Fusion source made loose inserts with a different clearance. The current [Build123d keys](../README.md#two-piece-printing-variant) are generated from the three active recesses with 0.4 mm clearance per face.
 
 ## Evidence and limits
 

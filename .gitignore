@@ -24,11 +24,14 @@ __pycache__/
 *.pyc
 .venv/
 
-# Keep only the four final manufacturing STLs in Git.
+# Keep final manufacturing STLs in Git.
 *.stl
 !/exports/adapter-body.stl
 !/exports/adapter-body-split-front.stl
 !/exports/adapter-body-split-rear.stl
 !/exports/latch.stl
+!/exports/butterfly-key-top.stl
+!/exports/butterfly-key-cavity-negative-x.stl
+!/exports/butterfly-key-cavity-positive-x.stl
 /inputs/wheel-scan-model-frame.json
 /exports/sherman-p-prepared/
