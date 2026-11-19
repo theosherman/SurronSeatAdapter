@@ -6,6 +6,21 @@ The full, unsplit adapter is reconstructed as editable Python solid geometry fro
 
 ## Run
 
+The original Sherman P wheel scan is a local source asset. On a fresh checkout,
+place the original Fusion STL at
+`reference/fusion/Sherman_P_Flush_Screen_Fusion_Default.stl` and generate the
+aligned scan before building. With the project's full Git history, you can
+recover the exact source as follows:
+
+```bash
+if [ ! -f reference/fusion/Sherman_P_Flush_Screen_Fusion_Default.stl ]; then
+  scan=reference/fusion/Sherman_P_Flush_Screen_Fusion_Default.stl
+  source=7e367abfa7c57c604f21cef6ce5d0a66a908f04b:$scan
+  git cat-file -e "$source" && git show "$source" > "$scan"
+fi
+node prepare-wheel-scan.mjs
+```
+
 Dependencies live outside this Git repository:
 
 ```bash
@@ -58,7 +73,7 @@ The script rebuilds the native Python geometry and sends it to the interactive v
 
 - `exports/adapter-body.step`: final single solid, analytic manufacturing faces plus faceted scan imprint.
 - `exports/adapter-body.stl`: final printing mesh, tessellation tolerance 0.005 mm and angular tolerance 0.05 rad.
-- `exports/adapter-body-pre-imprint.step` and `.stl`: retained analytic checkpoint (generated separately).
+- `exports/adapter-body-pre-imprint.step`: retained analytic checkpoint. Its STL is a local output from `./run.sh --no-imprint`.
 - `exports/adapter-body-preview.png`: top and underside overview; regenerate using `preview.py`.
 - `logs/build-validation.json`: measured per-stage validity, body count, volume and elapsed time.
 
@@ -66,7 +81,11 @@ The Python script is the parametric source; STEP is a geometry exchange file, no
 
 ## Verification
 
+Generate the local prepared wheel exports before running the geometry tests,
+export validators, or previews that show the wheel and handles.
+
 ```bash
+~/.local/share/venvs/surron-build123d/bin/python prepare_sherman_p.py
 XDG_CACHE_HOME=/tmp/surron-build123d-cache \
   ~/.local/share/venvs/surron-build123d/bin/python -m unittest discover -s tests
 XDG_CACHE_HOME=/tmp/surron-build123d-cache \
@@ -230,7 +249,7 @@ Before slicing, the complete scan (including both handles) rotates **-3.49321611
 
 The moved scan is then split into three regions at the existing world-Y planes. Only the middle body is uniformly scaled by **1.003** (0.3%) about the model origin `(0,0,0)`; both handles retain their moved geometry and coordinates without any fit scaling. The scaled body is then fused with the unscaled aligned handles, accepting their small overlaps. This is a proportional fit allowance, not a constant-distance surface offset. It is specific to the Sherman P; the older Sherman L pivot is not reused.
 
-`exports/sherman-p-prepared/` contains the three aligned, unscaled regions, scaled body, and merged scan as separate STEP/STL files. `logs/sherman-p-preparation.json` records source hash, planes, pivot, measured volumes, bounds, partition conservation and reopened-export checks. `exports/sherman-p-proposed-handle-cuts.png` records the original cut-location preview before the alignment revision.
+`prepare_sherman_p.py` writes ignored local exports to `exports/sherman-p-prepared/`, containing the three aligned, unscaled regions, scaled body, and merged scan as separate STEP/STL files. `logs/sherman-p-preparation.json` records source hash, planes, pivot, measured volumes, bounds, partition conservation and reopened-export checks.
 
 The adapter build now calls this preparation with `reunite=False` and subtracts only `body-scaled`. The viewer displays the two unscaled aligned handles separately. The merged export remains available for whole-scan inspection, but is never used as the adapter cutter. This supersedes the earlier request to use the reunited scan. Original scans remain unchanged.
 
@@ -283,21 +302,6 @@ source metrics; physical fit and a full source-to-port Boolean comparison
 remain untested.
 
 
-## Rear-handle / TPU latch preview
-
-`preview_rear_handle.py` generates `exports/rear-handle-circle-preview.png` and
-`logs/rear-handle-circle-preview.json` without changing geometry or creating a
-cylinder. The user confirmed equal front/rear handle size matching the clip bore:
-**30.2 mm diameter**, extracted from the adapter's analytic clip arcs. Only the
-uppermost **3 mm** of each scan section is used to locate that fixed-size circle;
-sides and underside are explicitly excluded. Sections at X=-40/-20/0/+20/+40 mm
-are recorded; the central section drives the drawing. Cyan points identify the
-trusted crown, magenta is the inferred circle, and orange is the 1 mm interference
-target. The existing latch already crosses this estimate by about **2.44 mm**
-normal to its back face, with the projected contact inside the actual face.
-The user must review the circle before the latch geometry is revised; this is
-an estimate from partial scan evidence, not a physical fit validation.
-
 ## Raised front clip and continuous screen ramp
 
 The user-approved front redesign is implemented by `front_clip.py` after the
@@ -318,9 +322,7 @@ M20 source-stage volume now excludes the omitted dovetail, and the new
 `--stop M20` and `--no-imprint` return that redesigned pre-imprint body.
 
 `preview_front_clip.py` renders `exports/front-clip-implemented.png` directly from
-the current manufacturing STL and reference handle. Earlier files under `concepts/`
-and the three concept image sheets are appearance studies, not manufacturing
-geometry. The native implementation replaces those mesh-deformation studies.
+the current manufacturing STL and reference handle.
 The general `preview.py` still renders the full adapter upper/underside sheet.
 Physical snap fit, material stiffness and printed strength are not established by
 the CAD checks.
@@ -344,10 +346,7 @@ rear faces rather than copied coordinates or guessed angles. The front protruded
 side. Adapter placement, screen ramp, clip bore, rear latch, separate accessories,
 scan preparation and imprint clearance remain unchanged.
 
-`exports/print-plane-trim-preview.png` and `exports/concepts/print-plane-trim-*`
-retain the approved **historical proposal**. The concept script refuses to
-regenerate that comparison from already-trimmed manufacturing exports. The current
-manufacturing result is `exports/front-clip-implemented.png`, regenerated using
+The manufacturing result is `exports/front-clip-implemented.png`, regenerated using
 `preview_front_clip.py`, with new contact faces highlighted green.
 
 Current trimmed model verification: **23 tests** and **12 mesh ceiling checks**
@@ -532,13 +531,7 @@ planar-clearance and original contact/outline tests apply to the normal build
 again, without a legacy-mode switch. `rear_cavity.py` and its workaround API have
 been deleted rather than retained as another selectable implementation.
 
-Historical render snapshots (the current implemented view is `exports/rear-cavity-implemented.png`):
-[unobstructed underside](exports/rear-cavity-underside.png),
-[sketch result before wheel imprint](exports/rear-cavity-before-imprint.png),
-[before/after cutaway](exports/rear-cavity-implemented-cut.png), and
-[assembled comparison](exports/rear-cavity-implemented-full.png). These are
-rendered from the actual rebuilt manufacturing STEP solids. Historical preview
-files and plans describing the rejected 10+10 mm approach are superseded.
+The [implemented cavity view](exports/rear-cavity-implemented.png) shows the rebuilt cavity.
 
 Checks cover the eight-edge sketch, no draft intrusion into the narrow middle,
 filled middle material, empty pocket without blocks, continuous rear wall,
@@ -612,9 +605,6 @@ corner, reducing those cuts. Original angles, adjoining horizontal/vertical line
 and extrusion directions are preserved. `cut_offsets.py` adjusts these original
 manufacturing profiles before extrusion/intersection; the portable historical
 recipe remains unchanged. No finished-body patches are used.
-
-The saved [earlier preview](exports/one-mm-face-offsets-implemented.png) shows the
-initial 1 mm face-3 offset. No new preview was requested for the 3 mm revision.
 
 ### Two-piece printing variant
 

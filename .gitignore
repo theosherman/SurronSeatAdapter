@@ -26,3 +26,12 @@ Thumbs.db
 __pycache__/
 *.pyc
 .venv/
+
+# Keep only the four final manufacturing STLs in Git.
+*.stl
+!/exports/adapter-body.stl
+!/exports/adapter-body-split-front.stl
+!/exports/adapter-body-split-rear.stl
+!/exports/latch.stl
+/inputs/wheel-scan-model-frame.json
+/exports/sherman-p-prepared/

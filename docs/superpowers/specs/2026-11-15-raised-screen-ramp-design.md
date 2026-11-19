@@ -1,5 +1,0 @@
-# Approved raised screen-ramp front
-
-User approved `Build123d/exports/front-clip-screen-ramp-preview.png` and requested implementation, additionally removing the front dovetail. Preserve adapter placement and wheel alignment. Preserve the screen opening and the underside behind its front uphill face. Continue that existing 55 degree ramp toward the raised clip, adding thickness rather than translating the complete front bridge. Clip bore remains 30.2 mm diameter, center Y=-220.3743032668 mm and estimated Z=32.8742416819 mm (18.0526320637 mm rise). No fillets. Remove only M16 FrontDovetailSketch addition; retain rear dovetail and separate latch.
-
-Approaches: previous constant-thickness raised transitions were superseded by this user-approved thicker ramp. Use native planar additions and the original analytic clip translated vertically; do not manufacture from the deformed preview mesh. Keep bottom material behind the screen ramp unchanged and blend only the immediate clip root. Reapply stationary body-only scan subtraction with zero new clearance.
