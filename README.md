@@ -593,7 +593,7 @@ recipe remains unchanged. No finished-body patches are used.
 
 ### Two-piece printing variant
 
-After rebuilding the master, run `split_adapter.py` with the same Python environment. It reads `exports/adapter-body.step` and writes separate front and rear STEP and STL files. The child uses the portable recipe's sloped split plane and five 8 mm connector recesses. The two interior butterfly-key recesses are 16 × 12 mm, with their waists on the split seam. The exterior side recesses sit 8 mm farther outward and 5 mm lower along the seam to leave solid material between the exterior and interior recesses.
+After rebuilding the master, run `split_adapter.py` with the same Python environment. It reads `exports/adapter-body.step` and writes separate front and rear STEP and STL files. The child uses the portable recipe's sloped split plane and has three 8 mm connector recesses. One large recess spans the top and one 16 × 12 mm butterfly-key recess opens onto each inner cavity wall. Each cavity-key waist follows the split plane through the full 8 mm depth, measured normal to the cavity wall.
 
 In the model orientation, the front is approximately 152 × 354 × 88 mm, and the rear is 156 × 171 × 137 mm. With Z up, the front needs about 339 mm square before slicer margins, even when rotated in the bed plane.
 

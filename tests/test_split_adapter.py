@@ -2,16 +2,25 @@
 import unittest
 from pathlib import Path
 
-from build123d import import_step
+from build123d import Keep, Plane, import_step
 
-from split_adapter import build_split
+from split_adapter import RECIPE, build_split, placed_point, source_to_model
 
 
 class SplitAdapterTests(unittest.TestCase):
-    def test_exterior_recesses_do_not_break_into_cavity_butterflies(self):
+    def test_each_half_has_only_the_top_and_two_equal_cavity_recesses(self):
         master = import_step(Path(__file__).resolve().parents[1] / 'exports/adapter-body.step')
-        rear = dict(build_split(master))['rear']
-        for side in (-1, 1):
-            with self.subTest(side=side):
-                # The exterior tool used to remove this point beside the lower wing.
-                self.assertTrue(rear.is_inside((side * 47.0804, 105.5344, 7.884)))
+        datum = RECIPE['child']['splitPlane']
+        seam = Plane(placed_point(datum['originMm']), z_dir=source_to_model(datum['normal']))
+        uncut = sorted(master.split(seam, keep=Keep.BOTH), key=lambda part: part.center().Y)
+
+        for bare, (name, finished) in zip(uncut, build_split(master), strict=True):
+            with self.subTest(half=name):
+                removed = bare.cut(finished)
+                recesses = removed if isinstance(removed, list) else removed.solids()
+                volumes = sorted(recess.volume for recess in recesses)
+                self.assertEqual(len(volumes), 3, volumes)
+                # Each cavity profile is 150 mm² and is cut 8 mm deep, half on either side.
+                self.assertAlmostEqual(volumes[0], 600.0, places=3)
+                self.assertAlmostEqual(volumes[1], 600.0, places=3)
+                self.assertAlmostEqual(volumes[2], 6647.521, places=3)

@@ -8,7 +8,7 @@ The source was the active Fusion document `Surron Seat Adapter v3 v2`, in projec
 
 Use [recipe.json](../cad-rebuild/recipe.json) as the machine-readable specification and [FEATURE-RECIPE.md](FEATURE-RECIPE.md) as its table of operations. Every source marker is indexed in [FUSION-TIMELINE.md](FUSION-TIMELINE.md). Timeline indices in this documentation are **zero-based**.
 
-The baseline records the corrected screw access, the Sherman P imprint, and five recesses on the printing variant. The current Build123d model applies its finishing fillets separately.
+The baseline records the corrected screw access, the Sherman P imprint, and the original Fusion connector recesses. The current Build123d model applies finishing fillets separately and uses three connector recesses in the printing variant.
 
 ## Final model structure
 
@@ -22,7 +22,7 @@ flowchart TD
   imprint --> parent[Adapter Body: one finished master solid]
   parent --> derived[Live associative child copy]
   derived --> split[Split on original Fusion split plane]
-  split --> connectors[Five connector recesses, 8 mm deep]
+  split --> connectors[Three connector recesses, 8 mm deep]
   connectors --> child[Adapter Body Split: two printable solids]
 ```
 
@@ -164,13 +164,13 @@ B = (0, -109.93653499568712, -20.751900973452995)
 
 Extend it across the width in the global X direction to form an infinite splitting plane. A normal is `normalize(cross((1,0,0), B-A))`, approximately `(0,0.9799247046208692,-0.1993679344170023)`. Keep both sides. The plane therefore follows the intended tilted split through the adapter, not the center mirror plane `X=0`.
 
-### Five connector recesses
+### Connector recesses
 
-The source is `TopJointSketch` plus `SideJointSketch` and source mirror features 192–193. The printing variant adds one top connector recess and four side connector recesses, all **8 mm deep**. Build123d relocates the two inner recesses to the cavity side walls as described in the [current split workflow](../README.md#two-piece-printing-variant).
+The current Build123d printing variant uses the `TopJointSketch` recess and one butterfly-key recess on each inner cavity wall. All three are **8 mm deep**. The original Fusion recipe also included four side recesses derived from `SideJointSketch` and mirror features 192–193. See the [current split workflow](../README.md#two-piece-printing-variant).
 
 The top connector combines two neighboring trapezoidal profiles into one hourglass recess. In the original top-joint sketch frame its overall U range is approximately `±26.547005384` mm, with a 30 mm-wide waist at `v=103.59226295038653` mm and ends at `v=83.59226295038653` and `v=123.59226295038653` mm. Do not mistake the two selected profile regions for two separate connectors.
 
-The side connector also combines two neighboring profiles. Create four placements:
+The original Fusion side connector combined two neighboring profiles in four placements:
 
 1. Original side profile/frame.
 2. Original reflected across source plane 192.
@@ -188,7 +188,7 @@ reflectVector(V) = V - 2*dot(V,n)*n
 
 Transform positions, sketch axes, and extrusion direction independently. A reflection reverses frame handedness; recomputing a normal and always cutting in its negative direction can send a mirrored pocket outward. The recipe's `extrusionDirection` avoids that mistake.
 
-The original Fusion source also made loose connector inserts (`Extrude3`/`Extrude4`), offsets using `Gap=-0.2 mm`, and fillets. Those parts/details were not requested in the final child and were not recreated. The five recesses are present; separate printable keys are not.
+The original Fusion source also made loose connector inserts (`Extrude3`/`Extrude4`), offsets using `Gap=-0.2 mm`, and fillets. Build123d creates the three specified recesses in the printing variant.
 
 ## Evidence and limits
 
