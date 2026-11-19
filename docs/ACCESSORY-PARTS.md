@@ -2,7 +2,7 @@
 
 These are **separate parts**, extracted from `Surron Seat Adapter v3 v2` for reference. Build123d provides a [separate editable latch](../README.md#separate-latch). The saddlebag mount remains extracted only. Read the [adapter guide](CAD-REBUILD.md) for the shared assembly coordinate convention. This accessory scope was added after that guide was written.
 
-The source API uses centimeters and radians; both accessory recipes use **millimeters and degrees**. All timeline indices are zero-based. Extraction temporarily rolled the source timeline and restored marker **200**; no source geometry was edited or document saved. No Onshape API calls were made.
+The source API uses centimeters and radians; both accessory recipes use **millimeters and degrees**. All timeline indices are zero-based. Extraction temporarily rolled the source timeline and restored marker **200**; no source geometry was edited or document saved.
 
 ## Files
 

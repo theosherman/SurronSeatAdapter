@@ -55,4 +55,4 @@ assert.equal(curves,84);
 assert.equal(faceSelectors,11);
 const doc=fs.readFileSync(path.join(dir,'../../docs/ACCESSORY-PARTS.md'),'utf8');
 for(const match of doc.matchAll(/\]\(([^)]+)\)/g))assert.ok(fs.existsSync(path.resolve(dir,'../../docs',match[1].split('#')[0])),match[1]);
-console.log(JSON.stringify({ok:true,parts:2,sketches:5,curves,selectedProfiles:profiles,offsetFaceSelectors:faceSelectors,sourceReadErrors:0,markerRestored:raw.markerAfter,onshapeApiCalls:0}));
+console.log(JSON.stringify({ok:true,parts:2,sketches:5,curves,selectedProfiles:profiles,offsetFaceSelectors:faceSelectors,sourceReadErrors:0,markerRestored:raw.markerAfter}));

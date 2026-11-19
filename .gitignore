@@ -1,6 +1,3 @@
-# Large transient Onshape schema responses; portable source evidence is retained.
-onshape-response-*.json
-
 # Local editor and CAD backups.
 *.bak
 *.tmp

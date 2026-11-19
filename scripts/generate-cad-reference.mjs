@@ -65,7 +65,7 @@ const steps=[
   {id:'M06',source:[17,18],operation:'ADD_UP_TO_PLANE',sketch:'TrunkDovetailSketch',profileSource:18,targetPlane:{originMm:[0,-263.44598216275198,109.10684591063722],normal:[0,-1,0]}},
   {id:'M07',source:[74,75],operation:'REMOVE_THROUGH_ALL_BOTH_DIRECTIONS',sketch:'BoltHolesSketch',profileSource:75,diameterMm:7},
   {id:'M08',source:[76],operation:'REMOVE_DOWNWARD_FROM_OFFSET_PLANE',sketch:'BoltHolesSketch',profileSource:76,diameterMm:17,roofOffsetMm:3,note:'Start 3 mm below the top sketch plane, then cut toward underside through all. Preserve the small through-hole and roof.'},
-  {id:'M09',source:[77],operation:'REMOVE_BOUNDED_ABOVE_AND_THROUGH_ALL_BELOW',sketch:'BoltHolesSketch',profileSource:77,diameterMm:17,nominalRoofOffsetMm:3,finalRoofPlaneNormal:[0,0.26418906967888117,0.964470909598733],finalRoofPlanePointMm:[23,73.86340632647599,41.74904474222621],note:'Use the exact as-built plane for an Onshape match. Offset is nominally 3 mm; the extrusion axis and sloped roof normal differ. Final Onshape offsetOppositeDirection=false.'},
+  {id:'M09',source:[77],operation:'REMOVE_BOUNDED_ABOVE_AND_THROUGH_ALL_BELOW',sketch:'BoltHolesSketch',profileSource:77,diameterMm:17,nominalRoofOffsetMm:3,finalRoofPlaneNormal:[0,0.26418906967888117,0.964470909598733],finalRoofPlanePointMm:[23,73.86340632647599,41.74904474222621],note:'Use the recorded front ceiling plane. The nominal offset is 3 mm, and the extrusion axis and sloped roof normal differ.'},
   {id:'M10',source:[78,79],operation:'NEW',sketch:'SeatHangerSketch',profileSource:79,depthMm:1,direction:'negative sketch normal'},
   {id:'M11',source:[80,81,82],operation:'DRAFT_MIRROR_UNION',draftSource:80,angleDegrees:45,mirrorPlane:{originMm:[0,0,0],normal:[1,0,0]},note:'Draft the hanger, mirror it, and join both hangers to the master.'},
   {id:'M12',source:[83,84],operation:'ADD_SYMMETRIC',sketch:'HandleMountSketch',profileSource:84,totalDepthMm:98,direction:[1,0,0]},
@@ -80,7 +80,7 @@ const steps=[
   {id:'M21',source:[199],operation:'SUBTRACT_ALIGNED_WHEEL_SCAN',alignment:'wheel-scan-alignment.json',clearanceMm:0,note:'Explicit later user authorization. Use the Sherman P scan, not the old Veteran Sherman L reference asset.'},
 ];
 
-const recipe={schemaVersion:'1.0',canonicalLengthUnit:'millimeter',angleUnit:'degree',status:'Portable specification of the accepted Onshape rebuild; not a tested SolidCraft or Zoo implementation',sourceDocument:timeline.document,sourceTimelineIndices:'zero-based',globalAxes:{x:'left/right width',y:'front toward screen cutout is positive',z:'up'},positionFormula:'globalMm = originMm + xAxis*uMm + yAxis*vMm + normal*wMm; normal = cross(xAxis,yAxis). Do not drop nonzero sketch-space w.',scope:{master:'one unsplit solid with wheel imprint',child:'associative master copy split into two solids, five 8 mm connector recesses',fillets:false,separateConnectorInserts:false},sourceUserParameters:timeline.userParameters.map(p=>({...p,valueMm:p.unit==='mm'?p.value*10:null})),sketches,selectedProfiles,drafts,masterSteps:steps,child:{relationship:'live/associative link to completed master',splitPlane:{originMm:splitA,normal:splitN.map(v=>v/norm),lineEndpointsMm:[splitA,splitB],extrusionDirectionAcrossWidth:[1,0,0],keepBothSides:true},connectorMirrors:mirrors,connectorInstances:connectors,depthMm:8,notImplementedFromSource:[191,194,195,196,197,198],note:'No source fillets, loose connector inserts, or Gap-based insert offsets were reproduced.'},scan:read('wheel-scan-alignment.json'),finalValidation:read('wheel-imprint-state.json')};
+const recipe={schemaVersion:'1.0',canonicalLengthUnit:'millimeter',angleUnit:'degree',status:'Portable baseline geometry from Fusion and documented design corrections',sourceDocument:timeline.document,sourceTimelineIndices:'zero-based',globalAxes:{x:'left/right width',y:'front toward screen cutout is positive',z:'up'},positionFormula:'globalMm = originMm + xAxis*uMm + yAxis*vMm + normal*wMm; normal = cross(xAxis,yAxis). Do not drop nonzero sketch-space w.',scope:{master:'one unsplit solid with wheel imprint',child:'associative master copy split into two solids, five 8 mm connector recesses',fillets:false,separateConnectorInserts:false},sourceUserParameters:timeline.userParameters.map(p=>({...p,valueMm:p.unit==='mm'?p.value*10:null})),sketches,selectedProfiles,drafts,masterSteps:steps,child:{relationship:'live/associative link to completed master',splitPlane:{originMm:splitA,normal:splitN.map(v=>v/norm),lineEndpointsMm:[splitA,splitB],extrusionDirectionAcrossWidth:[1,0,0],keepBothSides:true},connectorMirrors:mirrors,connectorInstances:connectors,depthMm:8,notImplementedFromSource:[191,194,195,196,197,198],note:'No source fillets, loose connector inserts, or Gap-based insert offsets were reproduced.'},scan:read('wheel-scan-alignment.json')};
 write('cad-rebuild/recipe.json',recipe);
 
 let catalog='# Fusion sketch catalog\n\nGenerated from the saved extraction. All positions and radii below are millimeters; direction vectors are unitless. Full exact geometry is in [recipe.json](../cad-rebuild/recipe.json). Original dimension expressions are preserved there without guessing their units.\n\n';
@@ -102,7 +102,7 @@ function disposition(t){
  if(t.index===199)return 'Reference source for later authorized Sherman P scan imprint';
  if(t.entityType?.includes('Fillet'))return 'Excluded: all fillets cancelled by user';
  if([194,195,196].includes(t.index))return 'Excluded: separate inserts/Gap offsets not recreated';
- if(childUsed.has(t.index))return 'Child split/connectors; construction reorganized in Onshape';
+ if(childUsed.has(t.index))return 'Source for the printing split and connector recesses';
  if(masterUsed.has(t.index))return 'Master geometry or its reference sketch/datum';
  if([179,180,181,182].includes(t.index))return 'Fusion copy/move/component setup replaced with live child derivation';
  if(t.suppressed)return 'Suppressed source branch; not recreated';
@@ -110,7 +110,7 @@ function disposition(t){
 }
 let table='# Fusion timeline map\n\nAll 200 source markers are listed with zero-based indices. Disposition describes the accepted rebuild, not an instruction to replay unrelated assembly branches. The Fusion entityComponent field is preserved in the JSON but can be misleading for linked/reparented features (notably index 12); use selected profiles and the feature recipe.\n\n| Index | Source marker | Entity type | Suppressed | Rebuild disposition |\n|---:|---|---|:---:|---|\n';
 for(const t of timeline.timeline)table+=`| ${t.index} | ${t.name.trim().replaceAll('|','\\|')} | ${(t.entityType??'').split('::').at(-1)} | ${t.suppressed?'yes':'no'} | ${disposition(t)} |\n`;
-table+='\n## Source warnings\n\nWarnings were captured before rebuilding. They are evidence about source references, not current Onshape failures. See the JSON for full messages.\n\n';
+table+='\n## Source warnings\n\nWarnings describe the original Fusion source references. See the source JSON for full messages.\n\n';
 for(const t of timeline.timeline.filter(t=>t.message))table+=`- ${t.index}: \`${t.name.trim()}\` - ${t.message.replace(/<[^>]*>/g,' ').replace(/\s+/g,' ').slice(0,500)}\n`;
 write('docs/FUSION-TIMELINE.md',table);
 
@@ -122,42 +122,4 @@ features+='\n## Selected profile evidence\n\n| Fusion feature index | Marker | S
 for(const f of selectedProfiles)for(const p of f.profiles)features+=`| ${f.sourceTimelineIndex} | ${f.timelineName} | ${p.sketch} | ${fmt(p.areaMm2)} | ${vector(p.centroidMm)} |\n`;
 write('docs/FEATURE-RECIPE.md',features);
 
-const currentSketches=read('onshape-current-sketch-ids.json');
-for(const s of ['SplitBodySketch','TopJointSketch','SideJointSketch'])delete currentSketches[s];
-const imprint=read('wheel-imprint-state.json'),child=read('child-split-state.json'),connectorsState=read('connector-cutouts-state.json');
-const manifest={status:'Final accepted state, documented 2026-11-12; not a live API inventory',document:imprint.master.doc,workspace:imprint.master.ws,master:imprint.master,child:imprint.child,scan:imprint.scanPartStudio,masterSketches:currentSketches,features:{childDerived:child.derivedFeature,childSplitPlane:child.planeFeature,childSplit:child.splitFeature,childConnectors:connectorsState.featureId,rearScrewAccess:'F9orq0gyXHsXnGW_1',frontScrewAccess:'FXQWXmmJub3ISHs_1',scanDerived:imprint.scanDerivedFeature,scanScale:imprint.scanUnitScaleFeature,wheelImprint:imprint.booleanFeature},versions:{preImprint:imprint.preImprintVersion,historicalUnsplitWithFillets:'6fc7581e82a4b84cb8cd893f'},authoritativeFrontScrewPayload:'../front-screw-ceiling-correction.json',validation:imprint};
-write('cad-rebuild/onshape-current-manifest.json',manifest);
-write('BUILD-SEQUENCE.md',`# Current build sequence and handoff
-
-This is the current handoff for the completed Fusion-to-Onshape rebuild. The old incremental notes are preserved at [docs/history/BUILD-SEQUENCE-session-log.md](docs/history/BUILD-SEQUENCE-session-log.md). They contain superseded instructions and stale IDs.
-
-## Read first
-
-1. [Onshape reconstruction notes](docs/ONSHAPE-RECONSTRUCTION.md): captured Onshape model structure and file map.
-2. [CAD rebuild guide](docs/CAD-REBUILD.md): source geometry, corrections and datums.
-3. [Portable recipe](cad-rebuild/recipe.json): millimeter geometry and selected loops for another CAD engine.
-4. [Porting and validation](docs/PORTING-AND-VALIDATION.md): implementation and verification checklist.
-5. [Current manifest](cad-rebuild/onshape-current-manifest.json): saved final IDs and measured state.
-
-## Accepted sequence
-
-1. Rebuild the unsplit master using the bottom, side and rear profiles, signed extrusions, intersections, mirrors and unions.
-2. Add dovetails, drafted hangers, handle mount, relief cuts, underside tapered cavity and AirTag recess.
-3. Preserve four 7 mm through-holes and four larger 17 mm downward screwdriver-access recesses with retained mounting ceilings. Apply the final front ceiling correction, not the earlier reversed offset.
-4. Align the supplied Sherman P scan using the saved exact transform, check units, and subtract the zero-clearance underside imprint from the master.
-5. Reference the completed master associatively in a separate printing child. Keep the master unsplit.
-6. Split the child into two solids on the plane from the first Fusion SplitBodySketch line.
-7. Add five 8 mm-deep connector recesses to the child: one top and four side locations using the saved mirror planes.
-8. Verify one master solid, two child solids, retained screw ceilings, open small holes and access cavities, and healthy inherited/connector features.
-
-No fillets or separate loose inserts are included. The old Veteran Sherman L cut is excluded; the later explicitly authorized Sherman P scan imprint is included. The source Gap parameter is recorded, but its insert offsets were not applied.
-
-## Current status
-
-The sequence above was completed and checked in Onshape. The user visually reviewed the close reconstruction and requested the documented corrections. The complete Fusion constraint graph and an exhaustive whole-assembly equality comparison were not captured.
-
-Saved evidence includes all 200 source timeline markers, 18 sketches, 37 exact selected profiles, 149 model parameters, the Gap user parameter, exact scan placement, source scripts, final FeatureScript and validation.
-
-Conserve future Onshape API calls. Run node scripts/generate-cad-reference.mjs to regenerate local tables and recipe files. Do not automatically replay live upload scripts or historical transient IDs.
-`);
 console.log(JSON.stringify({timeline:timeline.timeline.length,sketches:sketches.length,selectedProfiles:selectedProfiles.reduce((n,f)=>n+f.profiles.length,0),masterSteps:steps.length,connectorInstances:connectors.length,canonicalUnit:recipe.canonicalLengthUnit}));

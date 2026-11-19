@@ -187,17 +187,17 @@ All 200 source markers are listed with zero-based indices. Disposition describes
 | 180 | CopyPasteBodies1 | CopyPasteBody | no | Fusion copy/move/component setup replaced with live child derivation |
 | 181 | AdapterBodySplit:1 | Occurrence | no | Fusion copy/move/component setup replaced with live child derivation |
 | 182 | CutPasteBodies1 | CutPasteBody | no | Fusion copy/move/component setup replaced with live child derivation |
-| 183 | SplitBodySketch | Sketch | no | Child split/connectors; construction reorganized in Onshape |
-| 184 | Split1 | SplitBodyFeature | no | Child split/connectors; construction reorganized in Onshape |
-| 185 | TopJointSketch | Sketch | no | Child split/connectors; construction reorganized in Onshape |
-| 186 | Extrude20 | ExtrudeFeature | no | Child split/connectors; construction reorganized in Onshape |
-| 187 | SideJointSketch | Sketch | no | Child split/connectors; construction reorganized in Onshape |
-| 188 | Extrude2 | ExtrudeFeature | no | Child split/connectors; construction reorganized in Onshape |
-| 189 | Plane3 | ConstructionPlane | no | Child split/connectors; construction reorganized in Onshape |
-| 190 | Plane4 | ConstructionPlane | no | Child split/connectors; construction reorganized in Onshape |
+| 183 | SplitBodySketch | Sketch | no | Source for the printing split and connector recesses |
+| 184 | Split1 | SplitBodyFeature | no | Source for the printing split and connector recesses |
+| 185 | TopJointSketch | Sketch | no | Source for the printing split and connector recesses |
+| 186 | Extrude20 | ExtrudeFeature | no | Source for the printing split and connector recesses |
+| 187 | SideJointSketch | Sketch | no | Source for the printing split and connector recesses |
+| 188 | Extrude2 | ExtrudeFeature | no | Source for the printing split and connector recesses |
+| 189 | Plane3 | ConstructionPlane | no | Source for the printing split and connector recesses |
+| 190 | Plane4 | ConstructionPlane | no | Source for the printing split and connector recesses |
 | 191 | Fillet2 | FilletFeature | no | Excluded: all fillets cancelled by user |
-| 192 | Mirror3 | MirrorFeature | no | Child split/connectors; construction reorganized in Onshape |
-| 193 | Mirror1 | MirrorFeature | no | Child split/connectors; construction reorganized in Onshape |
+| 192 | Mirror3 | MirrorFeature | no | Source for the printing split and connector recesses |
+| 193 | Mirror1 | MirrorFeature | no | Source for the printing split and connector recesses |
 | 194 | Extrude3 | ExtrudeFeature | no | Excluded: separate inserts/Gap offsets not recreated |
 | 195 | Extrude4 | ExtrudeFeature | no | Excluded: separate inserts/Gap offsets not recreated |
 | 196 | OffsetFaces1 | OffsetFacesFeature | no | Excluded: separate inserts/Gap offsets not recreated |
@@ -207,7 +207,7 @@ All 200 source markers are listed with zero-based indices. Disposition describes
 
 ## Source warnings
 
-Warnings were captured before rebuilding. They are evidence about source references, not current Onshape failures. See the JSON for full messages.
+Warnings describe the original Fusion source references. See the source JSON for full messages.
 
 - 75: `ScrewHoleExtrude` - Cannot extend extrusion to object. The extrusion profile falls outside the boundary of the selected body. Select a face or plane instead, or adjust the profile so that it falls inside the boundary of the selected body.Cannot extend extrusion to object. The extrusion profile falls outside the boundary of the selected body. Select a face or plane instead, or adjust the profile so that it falls inside the boundary of the selected body. 2 Reference Failures Cannot extend extrusion to object. The ext
 - 83: `HandleMountSketch` - Edge 1 missing 1 Reference Failures The project source is lost, Cache is used!Project1Curve 1 missing 1 Reference Failures The project source is lost, Cache is used!Project4HandleMountSketch

@@ -2,13 +2,13 @@
 
 ## Purpose and authoritative inputs
 
-Reproduce the accepted Onshape geometry from the original Fusion model in another CAD system. This guide records what was extracted, which features were reproduced, what changed at the user's request, and how the finished parent/child relationship works.
+Use the original Fusion geometry and documented corrections as a portable baseline. See the [Build123d README](../README.md) for later model revisions and manufacturing exports. This guide records what was extracted, which features were reproduced, what changed at the user's request, and how the finished parent/child relationship works.
 
 The source was the active Fusion document `Surron Seat Adapter v3 v2`, in project/folder `Sherman P`. It had 200 timeline entries. Relevant components were `AdapterBody` and `AdapterBodySplit`; the source assembly also contained a seat, latch, saddlebag mount, old trunk branches, and reference wheel geometry that were outside the requested rebuild.
 
 Use [recipe.json](../cad-rebuild/recipe.json) as the machine-readable specification and [FEATURE-RECIPE.md](FEATURE-RECIPE.md) as its table of operations. Every source marker is indexed in [FUSION-TIMELINE.md](FUSION-TIMELINE.md). Timeline indices in this documentation are **zero-based**.
 
-The saved final design takes precedence over the original source where the user explicitly changed scope: no fillets, no old reference-wheel cut, a live printing child, five connector recesses, corrected screw access, and a later authorized Sherman P scan imprint.
+The baseline records the corrected screw access, the Sherman P imprint, and five recesses on the printing variant. The current Build123d model applies its finishing fillets separately.
 
 ## Final model structure
 
@@ -26,7 +26,7 @@ flowchart TD
   connectors --> child[Adapter Body Split: two printable solids]
 ```
 
-The master retains its own editable history. The child references the finished master and adds print-specific geometry. Onshape's native Derived feature supplies this association. In another CAD system, use an equivalent linked body, external reference, dependency graph, or a child model generated from the same master body function. A plain detached copy does not preserve the intended update behavior.
+The master retains its own editable history. The child references the finished master and adds print-specific geometry. Build123d creates the printing variant from the completed master export.
 
 ## Units and coordinate frames
 
@@ -34,8 +34,6 @@ The master retains its own editable history. The child references the finished m
 |---|---|---|
 | Raw Fusion extracts | centimeters | radians for numeric parameter values |
 | Portable recipe and this guide | millimeters | degrees |
-| Onshape convenience tools used during the session | inches | degrees |
-| Raw Onshape geometry and FeatureScript output | meters unless explicitly unit-tagged | explicit units |
 | Original and aligned STL files | unitless numbers interpreted as millimeters for this project | n/a |
 
 Conversions: `mm = Fusion_cm * 10`, `inches = Fusion_cm / 2.54`, `meters = mm / 1000`, `degrees = radians * 180/pi`. Preserve the original expressions separately from numerical conversions. `Gap` is a Fusion user parameter with expression `-0.2 mm`; its numeric Fusion API value is `-0.02` centimeters.
@@ -51,15 +49,13 @@ globalPoint = sketchOrigin + u*sketchXAxis + v*sketchYAxis + w*N
 
 All terms must use the same length unit. Directions are unitless. The rear sketch contains nonzero sketch-space Z, about `-263.445982 mm`; dropping that coordinate moves its plane to the wrong location. Its source X axis is global +X, source Y axis is global -Z, and its normal is global +Y.
 
-Onshape assigned canonical in-plane directions to several imported construction planes. Merely copying the plane normal did not preserve Fusion's sketch orientation. Seven sketches needed coordinate conversion into Onshape's actual frame. When porting, either construct the requested frame exactly or transform every curve point into the target sketch's actual frame. Do not patch this by guessing signs.
-
 ## Geometry and profile selection
 
 The first extraction saved 18 sketches and 233 source curves, with dimensions and frames. This includes three split-variant sketches that no longer exist in the master. Their geometry remains in the portable recipe because it is needed to reconstruct the child.
 
 Most curves are exact lines, circles, and arcs. One `RearSeatNotchSketch` ellipse was initially sampled, then replaced with an exact native ellipse. In its original Fusion sketch frame it has center `(-14.5, 196.70896933768436)` mm, major radius `3.5` mm, minor radius `3.4895137853640384` mm, and major axis +U. The portable recipe contains these exact parameters, not the temporary segments.
 
-An extrusion often selects only some regions of a sketch. The profile-loop extraction saves **37 selected profiles across 20 extrusion features**, including outer/inner loops, analytic curve data, areas, and centroids. Use those loops to identify or build the intended regions. A bounding-box match was useful during migration, but Fusion's boxes for arcs were sometimes loose while Onshape's were tight. Boxes alone are not a reliable cross-kernel profile identifier.
+An extrusion often selects only some regions of a sketch. The profile-loop extraction saves **37 selected profiles across 20 extrusion features**, including outer/inner loops, analytic curve data, areas, and centroids. Use those loops to identify or build the intended regions. Fusion arc bounding boxes can be loose. Use the exact loops and measured areas to identify profiles.
 
 If building CSG rather than native sketch features, construct a planar face from each selected outer loop minus its inner loops, merge adjacent selected regions where appropriate, and extrude that face. The curve list can contain reversed edges and collinear segments. Order/orient a loop by endpoint connectivity; do not assume every curve is already in traversal order.
 
@@ -98,13 +94,11 @@ The rear pair is at sketch coordinates `u=±14.5`, `v=193.9428441873774` mm; the
 
 - Small holes: remove through all in both directions along N. This avoids copying broken source extent references.
 - Rear larger recesses (`Extrude6`): start 3 mm below the top sketch plane, then cut through all in direction -N. The first attempt incorrectly made a shallow top counterbore instead of an underside access opening.
-- Front larger recesses (`Extrude7`): bound the top of the cavity below its sloped top face, and extend the other side downward through all. The accepted final Onshape setting is **`offsetOppositeDirection=false`** with a nominal 3 mm stopping offset. The opposite setting removed the mounting ceiling entirely.
+- Front larger recesses (`Extrude7`): bound the top of the cavity below its sloped top face, and extend the other side downward through all. Use the recorded plane below to preserve the mounting ceiling at the nominal 3 mm stopping offset.
 
 For an exact as-built front ceiling, use an infinite plane through `(23, 73.86340632647599, 41.74904474222621)` mm with upward normal `(0, 0.26418906967888117, 0.964470909598733)`. The same plane serves the opposite hole because its normal has zero X component. Remove the large bore below that plane, retain material above it, and retain the independent 7 mm through-hole. The bore axis and this plane normal are not identical, so nominal offset direction matters; do not substitute an unexamined normal offset.
 
-Final front verification found two annular ceiling faces of about **188.915 mm²** each. Material tests in the linked child confirmed, for both holes: material in the ledge, empty screwdriver access below it, and an open small through-hole. See [front-screw-ceiling-correction.json](../front-screw-ceiling-correction.json).
-
-User-provided comparison images are preserved as [Fusion reference](images/fusion-front-holes-reference.png) and [Onshape before the ceiling correction](images/onshape-front-holes-before-correction.png). The second image documents the defect, not the final model.
+The [Fusion reference image](images/fusion-front-holes-reference.png) shows the original mounting holes.
 
 ### Hangers, front mount and dovetails: source 78–98
 
@@ -116,13 +110,13 @@ Apply the five selected `RearSeatNotchSketch` regions as an 8 mm cut in the nega
 
 Source `Extrude13` at index 93 could not be read as a valid extrusion. Inspection showed zero produced faces/bodies and identical `AdapterBody` volume and face count immediately before and after it. It was skipped, not guessed.
 
-`HingeTrajectorySketch` is reference geometry. The selected circular `SeatCutoutSketch` region was cut through all in both directions and mirrored across `X=0`. Fusion specified a start from a nonparallel flank face; the Onshape reconstruction used a through-cylinder instead. The original start-plane datum is saved in the recipe. This is a documented adaptation, not a proof of exact source topology equivalence.
+`HingeTrajectorySketch` is reference geometry. The selected circular `SeatCutoutSketch` region was cut through all in both directions and mirrored across `X=0`. Fusion specified a start from a nonparallel flank face; the portable baseline uses a through-cylinder. The original start-plane datum is saved in the recipe. This is a documented adaptation, not a proof of exact source topology equivalence.
 
 ### Rear relief, underside cavity and AirTag recess: source 119–126
 
 Cut the selected `RearCutSketch` profiles through all in both directions and mirror them across `X=0`.
 
-For `BodyCutSketch`, start **12 mm below** the sketch plane, remove through all toward the underside, and apply the **15° taper**. Its cavity widens toward the bottom. Onshape required `startOffsetBound=BLIND` explicitly when enabling the offset; omitting that field caused regeneration failure even without a draft.
+For `BodyCutSketch`, start **12 mm below** the sketch plane, remove through all toward the underside, and apply the **15° taper**. Its cavity widens toward the bottom.
 
 Cut the selected `AirtagCutSketch` region **8.5 mm** in the negative sketch-normal direction.
 
@@ -130,7 +124,7 @@ Cut the selected `AirtagCutSketch` region **8.5 mm** in the negative sketch-norm
 
 The old source split/cut at index 131 used `Veteran Sherman L v2 / Body` as its tool. It and the associated body removal at 132 were initially omitted. The later wheel imprint uses a different, explicitly supplied **Sherman P** scan; do not replay both cuts.
 
-All fillets were cancelled. Source 127–128 also belonged to saddlebag/latch branches rather than the requested adapter. Although adapter fillets were attempted and partially succeeded, both Onshape fillet features were subsequently deleted. No fillet should be replayed from the historical notes.
+Source fillets 127–128 belong to accessory branches. The current adapter uses a separate [Build123d finishing operation](../body_fillets.py).
 
 ## Wheel-top scan imprint
 
@@ -153,13 +147,7 @@ minimum = (-105.889551633, -249.614913836, -71.769897461) mm
 maximum = ( 103.881040103,  243.801132307,  34.509460449) mm
 ```
 
-The transform was recovered from the Fusion component's local geometry and occurrence transform. [prepare-wheel-scan.mjs](../prepare-wheel-scan.mjs) reproduces it and its checks. Use the saved aligned STL directly in another CAD engine to avoid aligning it twice.
-
-Onshape's upload accepted a `unit=millimeter` form value but interpreted the coordinates as meters. A native **0.001 scale about the global origin** corrected the scan after derivation into the master. This is an Onshape import correction, **not** another physical scale to apply to the aligned millimeter STL in a CAD system that imports it correctly.
-
-The imported scan tab contained the principal solid plus tiny auxiliary solids/sheets. The principal solid's checked volume matched the complete source scan within float-rounding tolerance and was used as the tool. A native Boolean subtract consumed that tool in the master; the reference import tab remains. No clearance was added: the requested imprint is zero-offset relative to the scan.
-
-Before changing the master, version `1e8c886e61f4df0b52f97731` saved the pre-imprint state. After subtraction, the master remained one solid and its volume dropped by about **20.052 cm³**. See [wheel-imprint-state.json](../wheel-imprint-state.json) and the [final underside image](../wheel-imprint-underside.png).
+The transform was recovered from the Fusion component's local geometry and occurrence transform. [prepare-wheel-scan.mjs](../prepare-wheel-scan.mjs) reproduces it and its checks. Generate the aligned millimeter STL using the [scan setup](../README.md#run). The adapter imprint has zero added clearance.
 
 ## Linked printing child
 
@@ -176,11 +164,9 @@ B = (0, -109.93653499568712, -20.751900973452995)
 
 Extend it across the width in the global X direction to form an infinite splitting plane. A normal is `normalize(cross((1,0,0), B-A))`, approximately `(0,0.9799247046208692,-0.1993679344170023)`. Keep both sides. The plane therefore follows the intended tilted split through the adapter, not the center mirror plane `X=0`.
 
-Onshape implements this with a linked Derived body, a saved custom construction plane, and a native Split feature. Other CAD systems may use an equivalent datum or an extruded sheet as the split tool.
-
 ### Five connector recesses
 
-The source is `TopJointSketch` plus `SideJointSketch` and source mirror features 192–193. The final child adds one top connector recess and four side connector recesses, all **8 mm deep**.
+The source is `TopJointSketch` plus `SideJointSketch` and source mirror features 192–193. The printing variant adds one top connector recess and four side connector recesses, all **8 mm deep**. Build123d relocates the two inner recesses to the cavity side walls as described in the [current split workflow](../README.md#two-piece-printing-variant).
 
 The top connector combines two neighboring trapezoidal profiles into one hourglass recess. In the original top-joint sketch frame its overall U range is approximately `±26.547005384` mm, with a 30 mm-wide waist at `v=103.59226295038653` mm and ends at `v=83.59226295038653` and `v=123.59226295038653` mm. Do not mistake the two selected profile regions for two separate connectors.
 
@@ -202,21 +188,8 @@ reflectVector(V) = V - 2*dot(V,n)*n
 
 Transform positions, sketch axes, and extrusion direction independently. A reflection reverses frame handedness; recomputing a normal and always cutting in its negative direction can send a mirrored pocket outward. The recipe's `extrusionDirection` avoids that mistake.
 
-The Onshape child uses a single custom feature `Five connector cutouts — 8 mm` to reduce remote API calls. It constructs the five source profiles, makes cutting tools, and subtracts them together. [connector-cutouts.fs](../connector-cutouts.fs) is the feature fragment; [the complete Feature Studio](../cad-rebuild/onshape-feature-studio.fs) includes imports and helper planes.
-
 The original Fusion source also made loose connector inserts (`Extrude3`/`Extrude4`), offsets using `Gap=-0.2 mm`, and fillets. Those parts/details were not requested in the final child and were not recreated. The five recesses are present; separate printable keys are not.
 
 ## Evidence and limits
 
-The final captured Onshape checks were:
-
-| Model | Solid count | Volume | Relevant statuses |
-|---|---:|---:|---|
-| Master after imprint | 1 | 1,511.781841927387 cm³ | imprint OK |
-| Linked split child after imprint and connectors | 2 | 1,494.140907663128 cm³ total | Derived OK; connectors OK |
-
-These are regression references, not a dimensional manufacturing certification. Different kernels, tessellation, region ordering, and tiny fragment handling may produce small numerical differences. A material change in volume or a different body count requires investigation.
-
-The user visually reviewed the rebuild and identified the connector and screw-ceiling omissions, which were corrected. There was no exhaustive automated equality comparison between the entire Fusion assembly and the final Onshape model. The requested final scope intentionally differs from the full Fusion assembly. No prototype print or physical fit test was recorded.
-
-For current IDs, use [onshape-current-manifest.json](../cad-rebuild/onshape-current-manifest.json). For future software ports, follow [PORTING-AND-VALIDATION.md](PORTING-AND-VALIDATION.md). The historical session log preserves abandoned approaches but must not override this guide.
+See the [porting checklist](PORTING-AND-VALIDATION.md) for dimensional and material checks and the [Build123d README](../README.md#verification) for the current validation commands.

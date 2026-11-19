@@ -99,7 +99,7 @@ The prior nominal in-memory master volume, before the approved alignment, was ap
 
 ## Source references
 
-The [Fusion extracts](reference/fusion/) preserve the original source geometry, parameters, accessory data, and wheel scans. The [millimeter recipe](cad-rebuild/recipe.json) provides build inputs for the editable Python model. The [Onshape reconstruction notes](docs/ONSHAPE-RECONSTRUCTION.md) document the prior CAD workflow.
+The [Fusion extracts](reference/fusion/) preserve the original source geometry, parameters, accessory data, and wheel scans. The [millimeter recipe](cad-rebuild/recipe.json) provides build inputs for the editable Python model.
 
 ## Implemented 1 mm body fillets
 
@@ -212,9 +212,9 @@ rounding. See [seating measurements](logs/deeper-seating-validation.json).
 - The wheel mesh becomes a closed faceted BREP using build123d's `Mesher`, then a native solid Boolean. Before patch reconnection, float conversion changed the imported volume by about 0.034 mm³. No mesh decimation or smoothing is applied. A local front-screen connectivity repair reconnects 31 triangles while preserving all 7,988 original vertices and the 16,000-triangle count. The original STL remains unchanged; `scan-screen-patch.json` records the exact replacement connectivity and source checksum. The body-only fit allowance is the explicitly requested 1.003 uniform scale, not an additional surface offset. The scan uses the same permanent coordinate-frame correction as all manufacturing geometry; its approved rigid alignment is applied before slicing.
 - The separately documented Sherman L preparation is not replayed; the Sherman P uses its own approved cuts and model-origin scaling pivot.
 - Like the earlier ports, the side bores use through cylinders instead of Fusion's nonparallel from-face start. Original constraint graphs are not recovered.
-- Exact Onshape parity, full-model source-to-port XOR comparison, and physical print-fit testing have not been established. The orientation revision was separately checked against the previous Build123d STEP after aligning it for comparison: symmetric-difference volume was 0.0012 mm³. See `logs/orientation-validation.json`; this verifies preservation during reorientation, not source-to-port equality.
+- Full-model comparison against the Fusion source and physical print-fit testing remain open. The orientation revision was separately checked against the previous Build123d STEP after aligning it for comparison: symmetric-difference volume was 0.0012 mm³. See `logs/orientation-validation.json`; this verifies preservation during reorientation, not source-to-port equality.
 
-The existing SolidCraft and Onshape files remain unchanged. The latch remains separate; this source does not merge accessories into the master.
+The latch remains a separate solid.
 
 ## Approved front-clip placement
 

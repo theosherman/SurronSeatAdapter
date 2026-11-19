@@ -1,4 +1,4 @@
-"""Editable millimeter reconstruction from the portable Fusion/Onshape recipe."""
+"""Editable millimeter reconstruction from the portable Fusion-derived recipe."""
 from pathlib import Path
 import argparse
 import json

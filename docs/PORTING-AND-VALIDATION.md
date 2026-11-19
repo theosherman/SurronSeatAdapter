@@ -4,7 +4,7 @@
 
 Use the saved geometry and operation intent when porting to another CAD engine. The [Build123d project](../README.md) is the current editable implementation.
 
-Start with [recipe.json](../cad-rebuild/recipe.json), [CAD-REBUILD.md](CAD-REBUILD.md), and the [aligned millimeter scan](../reference/fusion/Sherman_P_Scan_Aligned_To_Adapter_mm.stl). The large historical Onshape schema responses are not needed for another CAD engine.
+Start with [recipe.json](../cad-rebuild/recipe.json), [CAD-REBUILD.md](CAD-REBUILD.md), and the [wheel scan setup](../README.md#run).
 
 ## Check the target's capabilities first
 
@@ -67,7 +67,7 @@ Use a native linked body in history-based CAD or a dependency between these func
 
 ## Scan rules
 
-The aligned STL is already rotated and translated into the adapter's millimeter coordinates. Do not apply the alignment transform twice. Do not apply the Onshape-specific 0.001 scale correction unless the new target actually imports those millimeter numbers as meters.
+The aligned STL is already rotated and translated into the adapter's millimeter coordinates. Import the aligned geometry at millimeter scale and check its dimensions.
 
 Expected source measurements:
 
@@ -76,7 +76,7 @@ Expected source measurements:
 - Closed scan volume approximately `4,221,287.872 mm³`.
 - Positive-Y screen opening and negative-Y rear end aligned correctly.
 
-The recorded quantized edge incidence was two for every edge. This is useful evidence, not a guarantee that every kernel accepts every facet. Onshape produced a principal solid and tiny auxiliary fragments/sheets; its principal volume matched the full scan within float-rounding tolerance and was used for the imprint.
+The recorded quantized edge incidence was two for every edge. This is useful evidence, not a guarantee that every kernel accepts every facet.
 
 If repair or decimation is necessary elsewhere, preserve the original and record the procedure/tolerance. Do not silently smooth the fit surface or add clearance. The accepted imprint uses zero added clearance.
 
@@ -88,19 +88,15 @@ If repair or decimation is necessary elsewhere, preserve the original and record
 - Four open 7 mm through-holes.
 - Four 17 mm access recesses opening downward, with mounting material retained above them.
 - Front ceilings present on both sides of the screen opening, not 17 mm through-holes.
-- Nominal 3 mm ceiling offset; use the exact saved front plane for the accepted Onshape geometry because its normal differs from the bore axis.
+- Nominal 3 mm ceiling offset; use the exact saved front plane because its normal differs from the bore axis.
 - Interior cavity starts 12 mm below its sketch and expands toward the underside with a 15° taper.
 - AirTag recess is 8.5 mm deep.
-- No fillets or old reference-wheel cut.
-
-Recorded pre-imprint master volume: **1,531.834017805817 cm³**, after the front-ceiling correction and removal of fillets.
+- Validate the portable baseline before applying Build123d finishing fillets. Use the Sherman P wheel reference.
 
 ### Master after the scan
 
 - One solid, with the scan consumed as a tool rather than left as another output body.
 - Underside follows the aligned scan.
-- Recorded volume: **1,511.781841927387 cm³**.
-- Material removed from that pre-imprint state: approximately **20.052175878429 cm³**.
 
 ### Child
 
@@ -109,14 +105,13 @@ Recorded pre-imprint master volume: **1,531.834017805817 cm³**, after the front
 - Two principal printable solids.
 - Split plane contains the saved two endpoints and spans X.
 - Five connector locations: one top, four side, each 8 mm deep.
-- No added loose inserts, insert clearance or fillets.
-- Recorded total volume: **1,494.140907663128 cm³**.
+- Verify the five recesses and their clearances on the two output solids.
 
 ### Front ceiling material tests
 
 The final screw correction tested three points for each front hole in the child: solid material inside the annular ledge, empty space below it in the access recess, and an empty central small hole.
 
-The exact cap origins/normals are in [front-screw-ceiling-correction.json](../front-screw-ceiling-correction.json). For each cap, the recorded material point was 1.5 mm opposite the downward cap normal plus 5.5 mm in global X. The cavity point was 1.5 mm along the downward normal plus the same X offset. The central-hole point omitted the X offset. These tests were recorded before the scan imprint; recheck after a port if a changed scan intersection affects this area.
+The front ceiling plane is in M09 of the [portable recipe](../cad-rebuild/recipe.json). For each cap, the recorded material point was 1.5 mm opposite the downward cap normal plus 5.5 mm in global X. The cavity point was 1.5 mm along the downward normal plus the same X offset. The central-hole point omitted the X offset. These tests were recorded before the scan imprint; recheck after a port if a changed scan intersection affects this area.
 
 ## Cross-kernel comparison
 
@@ -125,17 +120,3 @@ For the verified Veteran Sherman L reference preparation, see [wheel reference p
 Use body count, silhouette, dimensions, selected-profile areas and material tests together. Choose and record the target tolerance. A single matching volume does not prove identical topology. Investigate substantial discrepancies before spending remote calls on finishing details.
 
 Save the target's editable code/project, dependency versions, key views, measurements, import units and any deviations. A comparison STEP/STL should accompany rather than replace the editable source where supported. No physical print/fit test was recorded in this session.
-
-## API lessons
-
-- Prepare geometry, conversions and payloads locally before remote writes.
-- An accepted Onshape write can still create a failed feature. Check feature state before claiming success.
-- When reusing a stable query string, remove stale transient `deterministicIds`; otherwise they can override the query and erase selections.
-- Native Boolean feature type is `booleanBodies`, not `boolean`.
-- Explicitly set `startOffsetBound=BLIND` for a blind start offset.
-- Use a typed FeatureScript length bound such as `LENGTH_BOUNDS`; the untyped map attempted in this session failed at runtime.
-- The upload helper was necessary because the connector had no multipart upload tool. It reuses the installed auth provider without saving/printing credentials.
-- Check imported geometry size. The supplied upload unit field did not prevent the 1000x scale issue.
-- Avoid repeated full feature-tree calls and per-edge fillet trials. The user explicitly requested conservative API use and cancellation of fillets.
-
-No new Onshape API calls were made for this documentation. Additional Fusion profile/datum extraction restored the original timeline marker.

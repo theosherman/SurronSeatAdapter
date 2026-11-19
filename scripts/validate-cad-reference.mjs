@@ -10,7 +10,6 @@ const norm=a=>Math.hypot(...a);
 const recipe=read('cad-rebuild/recipe.json');
 const timeline=read('reference/fusion/fusion-timeline-and-user-parameters.json');
 const parameters=read('reference/fusion/fusion-adapter-parameters.json');
-const manifest=read('cad-rebuild/onshape-current-manifest.json');
 
 function finite(value,where='recipe'){
  if(typeof value==='number')assert(Number.isFinite(value),`Non-finite number at ${where}`);
@@ -51,10 +50,6 @@ const rear=recipe.sketches.find(s=>s.name==='RearSketch');
 assert(rear.curves.some(c=>c.startMm&&Math.abs(c.startMm[2]+263.44598216275198)<1e-7),'Rear sketch local-Z offset was dropped');
 const split=recipe.child.splitPlane;
 for(const p of split.lineEndpointsMm)assert(Math.abs(dot(p.map((v,i)=>v-split.originMm[i]),split.normal))<1e-8,'Split endpoint is off its plane');
-assert(manifest.validation.masterValidation.bodyCount===1,'Final master count is wrong');
-assert(manifest.validation.childValidation.bodyCount===2,'Final child count is wrong');
-assert(manifest.validation.masterValidation.volume>manifest.validation.childValidation.volume,'Connector cuts must reduce child volume');
-for(const removed of ['SplitBodySketch','TopJointSketch','SideJointSketch'])assert(!manifest.masterSketches[removed],`Deleted master sketch ${removed} is still in the current manifest`);
 
 const docs=['README.md','AGENTS.md','BUILD-SEQUENCE.md',...fs.readdirSync(path.join(root,'docs')).filter(n=>n.endsWith('.md')).map(n=>'docs/'+n)];
 let links=0;
@@ -66,4 +61,4 @@ for(const file of docs){
   assert(fs.existsSync(path.resolve(root,path.dirname(file),decodeURIComponent(target))),`${file}: broken link ${target}`);links++;
  }
 }
-console.log(JSON.stringify({ok:true,timelineMarkers:200,sourceSketches:18,modelParameters:149,selectedProfiles:37,connectorInstances:5,localLinksChecked:links,onshapeApiCalls:0}));
+console.log(JSON.stringify({ok:true,timelineMarkers:200,sourceSketches:18,modelParameters:149,selectedProfiles:37,connectorInstances:5,localLinksChecked:links}));
