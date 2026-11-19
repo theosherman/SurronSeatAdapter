@@ -66,4 +66,15 @@ class ScreenSurroundTests(unittest.TestCase):
                   and abs(f.center().X)>43 and f.center().Z>35]
         self.assertFalse(uprights)
 
+    def test_screen_side_walls_reach_the_front_ramp(self):
+        rear_y, rear_z = self.reference['startYZmm']
+        _, normal_y, normal_z = self.reference['bottomPlaneNormal']
+        for y in (-173, -177, -181, -188):
+            wall_z = rear_z - 8.0 - normal_y / normal_z * (y - rear_y)
+            for side in (-1, 1):
+                with self.subTest(y=y, side=side):
+                    self.assertTrue(self.body.is_inside(Vector(side * 43.5, y, wall_z - .2)))
+                    self.assertFalse(self.body.is_inside(Vector(side * 43.5, y, wall_z + .2)))
+                    self.assertFalse(self.body.is_inside(Vector(side * 42.5, y, wall_z - .2)))
+
 if __name__=='__main__':unittest.main()

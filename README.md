@@ -103,7 +103,7 @@ The [Fusion extracts](reference/fusion/) preserve the original source geometry, 
 ## Implemented 1 mm body fillets
 
 The November 15 request supersedes the earlier no-fillet decision for Build123d.
-`body_fillets.py` applies one 1 mm fillet feature to 125 geometrically selected
+`body_fillets.py` applies one 1 mm fillet feature to 131 geometrically selected
 edges of the placed adapter, before the wheel subtraction. The running dovetail
 rail and its body junction are excluded. The two shoulder edges and three
 trapezoidal-root edges at Y=147.5–151.6 mm remain sharp for latch clearance.
@@ -613,3 +613,10 @@ The same profile bounds the raised jaw and its bridge. The separate
 
 The [front-clip preview](exports/front-clip-implemented.png) shows the change
 before finishing and wheel subtraction.
+
+Both screen cutout walls continue along their existing top plane until it
+intersects the tangent ramp. The screen opening remains 86 mm wide between
+the walls. The two lower wall-to-ramp edges stay sharp where a 1 mm fillet
+would meet the wheel imprint. See the [before and after 3D view](exports/screen-walls-to-ramp.png).
+The updated geometry is in the STEP and STL exports. The saved 3MF slicer
+project still contains the earlier wall geometry.

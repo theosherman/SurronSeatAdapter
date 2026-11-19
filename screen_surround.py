@@ -68,17 +68,7 @@ def reinforce_screen(body):
     # uphill ramp so the rails flow into it instead of ending at a vertical step.
     above_ramp=shape(slab.split(Plane(point,z_dir=normal),Keep.TOP))
     cap=shape(above_sides.intersect(above_ramp))
-    # Limit the outer wings to the ramp before the opening. Stop 0.05 mm
-    # short of the opening to preserve the rail connection at its front edge.
-    high -= .05
-    from front_clip import prism_yz
-    wing_air = prism_yz([(low,ramp_z(low)),(high,ramp_z(high)),
-                         (high,150),(low,150)])
-    # The central ramp already has this surface. Cut only the outer wings.
-    left_box = Solid.make_box(100+xmin,80,200,Plane((-100,low,-10)))
-    right_box = Solid.make_box(100-xmax,80,200,Plane((xmax,low,-10)))
-    result=result.cut(cap,shape(wing_air.intersect(left_box)),
-                      shape(wing_air.intersect(right_box))).clean()
+    result=result.cut(cap).clean()
     if not result.is_valid or len(result.solids())!=1:
         raise ValueError('Screen reinforcement must leave one valid adapter solid')
     return result
