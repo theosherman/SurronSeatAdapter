@@ -31,7 +31,6 @@ __pycache__/
 !/exports/adapter-body-split-rear.stl
 !/exports/latch.stl
 !/exports/butterfly-key-top.stl
-!/exports/butterfly-key-cavity-negative-x.stl
-!/exports/butterfly-key-cavity-positive-x.stl
+!/exports/butterfly-key-cavity.stl
 /inputs/wheel-scan-model-frame.json
 /exports/sherman-p-prepared/

@@ -595,19 +595,19 @@ recipe remains unchanged. No finished-body patches are used.
 
 After rebuilding the master, run `split_adapter.py` with the same Python environment. It reads `exports/adapter-body.step` and writes separate front and rear STEP and STL files. The child uses the portable recipe's sloped split plane and has three 8 mm connector recesses. One large recess spans the top and one 16 × 12 mm butterfly-key recess opens onto each inner cavity wall. Each cavity-key waist follows the split plane through the full 8 mm depth, measured normal to the cavity wall.
 
-Run `butterfly_keys.py` to export the three separately printable keys. Each key has 0.4 mm clearance per face, or 0.8 mm across two parallel opposing faces. The keys are 7.2 mm thick normal to their broad faces. STEP files retain assembled positions, and STLs lie flat at Z=0. The cavity file names identify their installed sides by model X coordinate.
+Run `butterfly_keys.py` to export the two printable key shapes. Print the top key once and the cavity key twice. Each key has 0.4 mm clearance per face, or 0.8 mm across two parallel opposing faces. The keys are 7.2 mm thick normal to their broad faces. STEP files retain assembled positions, and STLs lie flat at Z=0.
 
 - [Top key STL](exports/butterfly-key-top.stl)
-- [Cavity key on the negative X wall STL](exports/butterfly-key-cavity-negative-x.stl)
-- [Cavity key on the positive X wall STL](exports/butterfly-key-cavity-positive-x.stl)
+- [Cavity key STL, print twice](exports/butterfly-key-cavity.stl)
 
 In the model orientation, the front is approximately 152 × 354 × 88 mm, and the rear is 156 × 171 × 137 mm. With Z up, the front needs about 339 mm square before slicer margins, even when rotated in the bed plane.
 
 To inspect the two halves in VS Code, open **OCP CAD Viewer: Open viewer**
 from the command palette, then select **View split adapter in OCP CAD Viewer**
 in the Run and Debug dropdown and press **Ctrl+F5**. The viewer loads both
-saved STEP files in their assembled positions. Use the object tree to hide
-either half. **View adapter in OCP CAD Viewer** opens the unsplit master.
+halves, the seated top key, and the seated negative X cavity key. The positive X
+recess is open for inspection. Use the object tree to hide either half or key.
+**View adapter in OCP CAD Viewer** opens the unsplit master.
 
 ## Screen ramp tangent to the front clip
 

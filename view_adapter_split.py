@@ -1,4 +1,4 @@
-"""Display the two saved adapter halves in OCP CAD Viewer."""
+"""Display the split adapter with two seated keys in OCP CAD Viewer."""
 from pathlib import Path
 
 from build123d import import_step
@@ -9,12 +9,16 @@ def main():
     exports = Path(__file__).resolve().parent / "exports"
     front = import_step(exports / "adapter-body-split-front.step")
     rear = import_step(exports / "adapter-body-split-rear.step")
+    top_key = import_step(exports / "butterfly-key-top.step")
+    cavity_key = import_step(exports / "butterfly-key-cavity.step")
     set_port(3939)
     show(
         front,
         rear,
-        names=["Front", "Rear"],
-        colors=["steelblue", "orange"],
+        top_key,
+        cavity_key,
+        names=["Front", "Rear", "Top key", "Cavity key (negative X)"],
+        colors=["steelblue", "orange", "mediumseagreen", "mediumseagreen"],
         reset_camera=Camera.RESET,
     )
 

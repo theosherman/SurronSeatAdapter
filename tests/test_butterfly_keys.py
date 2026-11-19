@@ -1,16 +1,29 @@
 """Check the printable keys against the shared recess geometry."""
 import unittest
 
+from build123d import Plane
+
 from butterfly_keys import build_keys, lay_flat
 from split_adapter import connector_tools, split_plane
 
 
 class ButterflyKeyTests(unittest.TestCase):
-    def test_each_recess_has_a_key_with_clearance_on_every_face(self):
-        recesses = dict(connector_tools(split_plane()))
+    def test_two_printable_keys_fit_all_three_recesses(self):
+        seam = split_plane()
+        recesses = dict(connector_tools(seam))
         keys = dict(build_keys())
-        self.assertEqual(set(keys), {'top', 'cavity-negative-x', 'cavity-positive-x'})
-        for name, key in keys.items():
+        self.assertEqual(set(keys), {'top', 'cavity'})
+        cavity = keys['cavity']
+        cap = max(cavity.faces(), key=lambda face: face.area)
+        # Two reflections make a rigid rotation, so the print fits the other wall too.
+        axis = cap.normal_at().cross(seam.z_dir)
+        opposite = cavity.mirror(Plane(cavity.center(), z_dir=axis)).mirror(Plane.YZ)
+        placements = {
+            'top': keys['top'],
+            'cavity-negative-x': cavity,
+            'cavity-positive-x': opposite,
+        }
+        for name, key in placements.items():
             with self.subTest(key=name):
                 recess = recesses[name]
                 self.assertTrue(key.is_valid)

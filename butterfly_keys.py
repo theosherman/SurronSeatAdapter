@@ -1,4 +1,4 @@
-"""Export three separate butterfly keys from the split adapter's recesses."""
+"""Export the two printable butterfly key shapes from the adapter's recesses."""
 from pathlib import Path
 
 from build123d import Kind, Plane, export_step
@@ -11,7 +11,9 @@ KEY_CLEARANCE_MM = 0.4
 
 
 def build_keys():
-    for name, recess in connector_tools(split_plane()):
+    recesses = dict(connector_tools(split_plane()))
+    for name, recess_name in (('top', 'top'), ('cavity', 'cavity-negative-x')):
+        recess = recesses[recess_name]
         key = recess.offset_3d([], -KEY_CLEARANCE_MM, kind=Kind.INTERSECTION)
         if not key.is_valid or len(key.solids()) != 1:
             raise ValueError(f'{name}: clearance must produce one valid butterfly key')
