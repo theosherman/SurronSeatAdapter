@@ -1,7 +1,7 @@
 """Check the printable keys against the shared recess geometry."""
 import unittest
 
-from build123d import Plane
+from build123d import GeomType, Plane
 
 from butterfly_keys import build_keys, lay_flat
 from split_adapter import connector_tools, split_plane
@@ -31,7 +31,12 @@ class ButterflyKeyTests(unittest.TestCase):
                 overlap = key.intersect(recess)
                 self.assertAlmostEqual(sum(solid.volume for solid in overlap.solids()), key.volume, places=5)
                 for face in recess.faces():
-                    self.assertAlmostEqual(key.distance_to(face), 0.4, places=5)
+                    self.assertGreaterEqual(key.distance_to(face), 0.39999)
+                blends = [face for face in key.faces() if face.geom_type == GeomType.CYLINDER]
+                # The two tangent joins in the top profile share their blend surfaces.
+                self.assertEqual(len(blends), 22 if name == 'top' else 18)
+                for blend in blends:
+                    self.assertAlmostEqual(blend.radius, 1.0, places=5)
                 bounds = lay_flat(key).bounding_box()
                 self.assertAlmostEqual(bounds.min.Z, 0.0, places=5)
                 self.assertAlmostEqual(bounds.size.Z, 7.2, places=5)

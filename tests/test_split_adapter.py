@@ -2,9 +2,9 @@
 import unittest
 from pathlib import Path
 
-from build123d import Keep, Plane, import_step
+from build123d import GeomType, Keep, Plane, Vector, import_step
 
-from split_adapter import RECIPE, build_split, placed_point, source_to_model
+from split_adapter import RECIPE, build_split, connector_tools, placed_point, source_to_model, split_plane
 
 
 class SplitAdapterTests(unittest.TestCase):
@@ -20,7 +20,28 @@ class SplitAdapterTests(unittest.TestCase):
                 recesses = removed if isinstance(removed, list) else removed.solids()
                 volumes = sorted(recess.volume for recess in recesses)
                 self.assertEqual(len(volumes), 3, volumes)
-                # Each cavity profile is 150 mm² and is cut 8 mm deep, half on either side.
-                self.assertAlmostEqual(volumes[0], 600.0, places=3)
-                self.assertAlmostEqual(volumes[1], 600.0, places=3)
-                self.assertAlmostEqual(volumes[2], 6647.521, places=3)
+                # The rim adds volume to each 600 mm³ cavity pocket and the top pocket.
+                self.assertGreater(volumes[0], 600.0)
+                self.assertAlmostEqual(volumes[0], volumes[1], places=3)
+                self.assertGreater(volumes[2], 6647.521)
+
+    def test_recess_rounds_are_confined_to_the_mouth(self):
+        plane = split_plane()
+        nominal = dict(connector_tools(plane))
+        rounded = dict(connector_tools(plane, rim_radius=1.0))
+        outward = {'top': Vector(0, 0, 1), 'cavity-negative-x': Vector(1, 0, 0),
+                   'cavity-positive-x': Vector(-1, 0, 0)}
+        for name, original in nominal.items():
+            with self.subTest(recess=name):
+                tool = rounded[name]
+                caps = sorted(original.faces(), key=lambda face: face.area)[-2:]
+                mouth = max(caps, key=lambda face: face.normal_at().dot(outward[name]))
+                extra = tool.cut(original)
+                self.assertAlmostEqual(original.cut(tool).volume, 0.0, places=5)
+                self.assertGreater(extra.volume, 0.0)
+                self.assertLess(max((mouth.center() - v.center()).dot(mouth.normal_at())
+                                    for v in extra.vertices()), 2.0)
+                blends = [face for face in tool.faces() if face.geom_type == GeomType.CYLINDER]
+                self.assertEqual(len(blends), 6)
+                for blend in blends:
+                    self.assertAlmostEqual(blend.radius, 1.0, places=5)

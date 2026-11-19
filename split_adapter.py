@@ -11,11 +11,37 @@ from measure import volume
 from trunk_cavity import REAR_CAVITY_POINTS
 
 
+RECESS_RIM_RADIUS_MM = 1.0
+
+
 def placed_point(point):
     return Vector(source_to_model(point)) + Vector(ADAPTER_TRANSLATION_MM)
 
 
-def connector_tool(instance):
+def recess_tool(mouth, direction, rim_radius):
+    tool = Solid.extrude(mouth, direction)
+    if not rim_radius:
+        return tool
+
+    # Create the rim on a flat reference surface so the round can run out
+    # naturally where the real cavity wall bends next to the recess.
+    normal = mouth.normal_at()
+    inward = normal if normal.dot(direction) > 0 else -normal
+    frame = Plane(mouth.center(), z_dir=inward)
+    local = frame.to_local_coords(tool)
+    bounds = local.bounding_box()
+    margin = 2 * rim_radius
+    stock = Solid.make_box(bounds.size.X + 2 * margin, bounds.size.Y + 2 * margin,
+                           bounds.max.Z + margin,
+                           Plane((bounds.min.X - margin, bounds.min.Y - margin, 0)))
+    pocket = stock.cut(local)
+    opening = next(face for face in pocket.faces()
+                   if abs(face.center().Z) < 1e-7 and face.inner_wires())
+    relieved = pocket.fillet(rim_radius, opening.inner_wires()[0].edges())
+    return frame.from_local_coords(stock.cut(relieved))
+
+
+def connector_tool(instance, rim_radius=0):
     origin = placed_point(instance['originMm'])
     x = Vector(source_to_model(instance['xAxis']))
     y = Vector(source_to_model(instance['yAxis']))
@@ -34,10 +60,10 @@ def connector_tool(instance):
     wire = Wire([Edge.make_line(point(a), point(b)) for a, b in segments
                  if degree[a] == 2 or degree[b] == 2])
     direction = Vector(source_to_model(instance['extrusionDirection']))
-    return Solid.extrude(Face(wire), direction.normalized()*instance['depthMm'])
+    return recess_tool(Face(wire), direction.normalized()*instance['depthMm'], rim_radius)
 
 
-def cavity_connector(split_plane, side, depth):
+def cavity_connector(split_plane, side, depth, rim_radius=0):
     """Place an hourglass on the angled cavity wall at the split seam."""
     sketch = SKETCHES['BodyCutSketch']
     origin = Vector(sketch['originMm']) + Vector(ADAPTER_TRANSLATION_MM)
@@ -62,7 +88,7 @@ def cavity_connector(split_plane, side, depth):
     outward = -inward
     # Keep the waist on the seam while measuring the depth normal to the wall.
     direction = outward - seam_normal * outward.dot(seam_normal)
-    return Solid.extrude(face, direction * (depth / direction.dot(outward)))
+    return recess_tool(face, direction * (depth / direction.dot(outward)), rim_radius)
 
 
 def split_plane():
@@ -70,13 +96,13 @@ def split_plane():
     return Plane(placed_point(datum['originMm']), z_dir=source_to_model(datum['normal']))
 
 
-def connector_tools(plane):
+def connector_tools(plane, rim_radius=0):
     instances = RECIPE['child']['connectorInstances']
     top = next(instance for instance in instances if instance['name'] == 'top')
     return [
-        ('top', connector_tool(top)),
-        ('cavity-positive-x', cavity_connector(plane, -1, top['depthMm'])),
-        ('cavity-negative-x', cavity_connector(plane, 1, top['depthMm'])),
+        ('top', connector_tool(top, rim_radius)),
+        ('cavity-positive-x', cavity_connector(plane, -1, top['depthMm'], rim_radius)),
+        ('cavity-negative-x', cavity_connector(plane, 1, top['depthMm'], rim_radius)),
     ]
 
 
@@ -92,7 +118,7 @@ def build_split(master):
     if (len(halves) != 2 or not all(half.is_valid for half in halves)
             or partition_error > max(0.1, master_volume * 2e-6)):
         raise ValueError('Split did not partition the master into two solids')
-    tools = connector_tools(plane)
+    tools = connector_tools(plane, rim_radius=RECESS_RIM_RADIUS_MM)
     for name, half in zip(('front', 'rear'), halves):
         for connector_name, tool in tools:
             cut = half.cut(tool)
