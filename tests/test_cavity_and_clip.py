@@ -21,9 +21,9 @@ class CavityAndClipTests(unittest.TestCase):
                 and face.center().Y>0 and abs(normal.X)>.85
                 and .4<normal.Z<.5 and abs(normal.Y)<1e-8):
                 old=old.split(Plane(face.center(),z_dir=normal),Keep.BOTTOM)
-        # The ramp meets the raised clip at Y=-209.06; the jaw forward of
-        # Y=-210 retains its original geometry, translated exactly 8 mm.
-        plane=Plane((0,-210,0),z_dir=(0,1,0))
+        # The tangent trim begins around Y=-217.21. The jaw forward of
+        # Y=-218 retains its original geometry, translated exactly 8 mm.
+        plane=Plane((0,-218,0),z_dir=(0,1,0))
         old_grip=old.split(plane,Keep.BOTTOM)
         new_grip=self.body.split(plane,Keep.BOTTOM)
         old_grip=Compound(old_grip) if isinstance(old_grip,list) else old_grip

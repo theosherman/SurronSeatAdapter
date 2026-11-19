@@ -57,8 +57,8 @@ class ScreenSurroundTests(unittest.TestCase):
 
     def test_continuous_front_ramp_without_added_upright(self):
         ramps=[f for f in self.body.faces() if f.geom_type==GeomType.PLANE
-               and .81<f.normal_at().Y<.83 and .57<f.normal_at().Z<.58
-               and f.bounding_box().min.Y<-202 and f.bounding_box().max.Y>-178
+               and .84<f.normal_at().Y<.86 and .52<f.normal_at().Z<.54
+               and f.bounding_box().min.Y<-197 and f.bounding_box().max.Y>-178
                and f.area>3000]
         self.assertEqual(len(ramps),1)
         uprights=[f for f in self.body.faces() if f.geom_type==GeomType.PLANE

@@ -103,7 +103,7 @@ The [Fusion extracts](reference/fusion/) preserve the original source geometry, 
 ## Implemented 1 mm body fillets
 
 The November 15 request supersedes the earlier no-fillet decision for Build123d.
-`body_fillets.py` applies one 1 mm fillet feature to 146 geometrically selected
+`body_fillets.py` applies one 1 mm fillet feature to 125 geometrically selected
 edges of the placed adapter, before the wheel subtraction. The running dovetail
 rail and its body junction are excluded. The two shoulder edges and three
 trapezoidal-root edges at Y=147.5–151.6 mm remain sharp for latch clearance.
@@ -602,3 +602,14 @@ from the command palette, then select **View split adapter in OCP CAD Viewer**
 in the Run and Debug dropdown and press **Ctrl+F5**. The viewer loads both
 saved STEP files in their assembled positions. Use the object tree to hide
 either half. **View adapter in OCP CAD Viewer** opens the unsplit master.
+
+## Screen ramp tangent to the front clip
+
+The front reconstruction derives a **57.982°** ramp from the existing lower
+screen edge and the clip's **26.338 mm** outer radius. In the placed center
+section, they meet at Y=-198.043 mm and Z=54.838 mm with a shared tangent.
+The same profile bounds the raised jaw and its bridge. The separate
+**30.2 mm** clip bore stays on its established axis.
+
+The [front-clip preview](exports/front-clip-implemented.png) shows the change
+before finishing and wheel subtraction.

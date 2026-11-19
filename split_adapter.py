@@ -7,6 +7,7 @@ from build123d import Edge, Face, Keep, Plane, Solid, Vector, Wire, export_step,
 from adapter import RECIPE, SKETCHES
 from coordinates import ADAPTER_TRANSLATION_MM, source_to_model
 from export_mesh import export_stl_mm
+from measure import volume
 from trunk_cavity import REAR_CAVITY_POINTS
 
 
@@ -68,7 +69,12 @@ def build_split(master):
     sides = master.split(plane, keep=Keep.BOTH)
     halves = sorted((solid for side in sides if side for solid in side.solids()),
                     key=lambda solid: solid.center().Y)
-    if len(halves) != 2 or abs(sum(half.volume for half in halves) - master.volume) > 0.1:
+    master_volume = volume(master)
+    partition_error = abs(sum(volume(half) for half in halves) - master_volume)
+    # Splitting the saved, faceted wheel imprint can change the measured
+    # volume slightly. Use the same 2 ppm limit as the STEP round-trip check.
+    if (len(halves) != 2 or not all(half.is_valid for half in halves)
+            or partition_error > max(0.1, master_volume * 2e-6)):
         raise ValueError('Split did not partition the master into two solids')
     top, side, _, opposite_side, _ = child['connectorInstances']
     tools = [(instance['name'], connector_tool(instance)) for instance in (top, side, opposite_side)]

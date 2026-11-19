@@ -35,17 +35,22 @@ class RaisedFrontTests(unittest.TestCase):
         self.assertLess(sum(s.volume for s in overlap) if isinstance(overlap,list) else (0 if overlap is None else overlap.volume), 1e-5)
 
     def test_bridge_has_added_thickness_above_retained_bottom(self):
-        # Enlarged opening moves the 55-degree ramp 10 mm toward the clip.
         self.assertFalse(self.body.is_inside(Vector(0,-190,48)))
         self.assertTrue(self.body.is_inside(Vector(0,-200,48)))
         self.assertTrue(self.body.is_inside(Vector(0,-190,17)))
         self.assertFalse(self.body.is_inside(Vector(0,-190,10)))
 
-    def test_screen_front_ramp_continues(self):
-        faces=[f for f in self.body.faces() if f.geom_type==GeomType.PLANE
-               and f.area>100 and f.bounding_box().min.Y<-190 and abs(f.normal_at().Z)>.5
-               and abs(abs(f.normal_at().Y)-0.819152)<1e-4]
-        self.assertTrue(faces,'No continued 55 degree screen ramp')
+    def test_screen_ramp_is_tangent_to_the_outer_clip(self):
+        section = self.body.intersect(Plane.YZ)
+        start = Vector(0,-171.5863192559,12.5282901425)
+        contact = Vector(0,-198.0430732835,54.8381651900)
+        ramp = next(e for e in section.edges() if e.geom_type == GeomType.LINE
+                    and min(((e @ t)-start).length for t in (0,1)) < 1e-5
+                    and min(((e @ t)-contact).length for t in (0,1)) < 1e-5)
+        arc = next(e for e in section.edges() if e.geom_type == GeomType.CIRCLE
+                   and min(((e @ t)-contact).length for t in (0,1)) < 1e-5)
+        self.assertAlmostEqual(arc.radius, 26.3377104606, places=6)
+        self.assertAlmostEqual(((ramp @ 1) - (ramp @ 0)).dot(contact-arc.arc_center), 0, places=6)
 
     def test_rear_screen_and_underbody_preserved(self):
         plane=Plane((0,-101.585,0),z_dir=(0,1,0))

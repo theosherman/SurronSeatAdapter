@@ -5,8 +5,8 @@
     0
   ],
   "ok": true,
-  "source": "file:///home/theo/Projects/SurronSeatAdapter/Build123d/exports/adapter-body.stl",
-  "triangles": 757148,
+  "source": "file:///home/theo/Projects/SurronSeatAdapter/exports/adapter-body.stl",
+  "triangles": 691900,
   "checks": [
     {
       "name": "front -23 mounting ledge",
