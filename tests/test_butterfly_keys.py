@@ -14,7 +14,7 @@ class ButterflyKeyTests(unittest.TestCase):
         keys = dict(build_keys())
         self.assertEqual(set(keys), {'top', 'cavity'})
         cavity = keys['cavity']
-        cap = max(cavity.faces(), key=lambda face: face.area)
+        cap = next(face for face in recesses['cavity-negative-x'].faces() if len(face.edges()) > 4)
         # Two reflections make a rigid rotation, so the print fits the other wall too.
         axis = cap.normal_at().cross(seam.z_dir)
         opposite = cavity.mirror(Plane(cavity.center(), z_dir=axis)).mirror(Plane.YZ)
@@ -39,4 +39,4 @@ class ButterflyKeyTests(unittest.TestCase):
                     self.assertAlmostEqual(blend.radius, 1.0, places=5)
                 bounds = lay_flat(key).bounding_box()
                 self.assertAlmostEqual(bounds.min.Z, 0.0, places=5)
-                self.assertAlmostEqual(bounds.size.Z, 7.2, places=5)
+                self.assertAlmostEqual(bounds.size.Z, 9.2, places=5)

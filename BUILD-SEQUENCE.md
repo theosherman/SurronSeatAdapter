@@ -4,7 +4,7 @@ The editable CAD project uses Build123d and preserves the original Fusion geomet
 
 1. [Set up the environment and prepare the wheel scan](README.md#run).
 2. Run `./run.sh` to build the unsplit master, including the finishing fillets and zero-added-clearance Sherman P imprint.
-3. Run `split_adapter.py` with the same Python environment to create the two printing halves and their five connector recesses.
+3. Run `split_adapter.py` with the same Python environment to create the two printing halves and their three 10 mm connector recesses.
 4. Run `latch.py` to export the separate latch. The [saddlebag mount recipe](docs/ACCESSORY-PARTS.md) remains available as a Fusion reference.
 5. Follow the [verification instructions](README.md#verification) to regenerate the scan inspection outputs and validate the model.
 

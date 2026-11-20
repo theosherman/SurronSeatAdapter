@@ -11,6 +11,7 @@ from measure import volume
 from trunk_cavity import REAR_CAVITY_POINTS
 
 
+CONNECTOR_DEPTH_MM = 10.0
 RECESS_RIM_RADIUS_MM = 1.0
 
 
@@ -41,7 +42,7 @@ def recess_tool(mouth, direction, rim_radius):
     return frame.from_local_coords(stock.cut(relieved))
 
 
-def connector_tool(instance, rim_radius=0):
+def connector_tool(instance, depth, rim_radius=0):
     origin = placed_point(instance['originMm'])
     x = Vector(source_to_model(instance['xAxis']))
     y = Vector(source_to_model(instance['yAxis']))
@@ -60,7 +61,7 @@ def connector_tool(instance, rim_radius=0):
     wire = Wire([Edge.make_line(point(a), point(b)) for a, b in segments
                  if degree[a] == 2 or degree[b] == 2])
     direction = Vector(source_to_model(instance['extrusionDirection']))
-    return recess_tool(Face(wire), direction.normalized()*instance['depthMm'], rim_radius)
+    return recess_tool(Face(wire), direction.normalized()*depth, rim_radius)
 
 
 def cavity_connector(split_plane, side, depth, rim_radius=0):
@@ -100,9 +101,9 @@ def connector_tools(plane, rim_radius=0):
     instances = RECIPE['child']['connectorInstances']
     top = next(instance for instance in instances if instance['name'] == 'top')
     return [
-        ('top', connector_tool(top, rim_radius)),
-        ('cavity-positive-x', cavity_connector(plane, -1, top['depthMm'], rim_radius)),
-        ('cavity-negative-x', cavity_connector(plane, 1, top['depthMm'], rim_radius)),
+        ('top', connector_tool(top, CONNECTOR_DEPTH_MM, rim_radius)),
+        ('cavity-positive-x', cavity_connector(plane, -1, CONNECTOR_DEPTH_MM, rim_radius)),
+        ('cavity-negative-x', cavity_connector(plane, 1, CONNECTOR_DEPTH_MM, rim_radius)),
     ]
 
 

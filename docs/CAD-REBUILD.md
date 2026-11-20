@@ -22,7 +22,7 @@ flowchart TD
   imprint --> parent[Adapter Body: one finished master solid]
   parent --> derived[Live associative child copy]
   derived --> split[Split on original Fusion split plane]
-  split --> connectors[Three connector recesses, 8 mm deep]
+  split --> connectors[Three connector recesses, 10 mm deep]
   connectors --> child[Adapter Body Split: two printable solids]
 ```
 
@@ -166,7 +166,7 @@ Extend it across the width in the global X direction to form an infinite splitti
 
 ### Connector recesses
 
-The current Build123d printing variant uses the `TopJointSketch` recess and one butterfly-key recess on each inner cavity wall. All three are **8 mm deep**. The original Fusion recipe also included four side recesses derived from `SideJointSketch` and mirror features 192–193. See the [current split workflow](../README.md#two-piece-printing-variant).
+The current Build123d printing variant uses the `TopJointSketch` recess and one butterfly-key recess on each inner cavity wall. All three are **10 mm deep** in Build123d. The portable recipe records the original 8 mm depth. The original Fusion recipe also included four side recesses derived from `SideJointSketch` and mirror features 192–193. See the [current split workflow](../README.md#two-piece-printing-variant).
 
 The top connector combines two neighboring trapezoidal profiles into one hourglass recess. In the original top-joint sketch frame its overall U range is approximately `±26.547005384` mm, with a 30 mm-wide waist at `v=103.59226295038653` mm and ends at `v=83.59226295038653` and `v=123.59226295038653` mm. Do not mistake the two selected profile regions for two separate connectors.
 

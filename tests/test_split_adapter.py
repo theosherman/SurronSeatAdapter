@@ -20,10 +20,10 @@ class SplitAdapterTests(unittest.TestCase):
                 recesses = removed if isinstance(removed, list) else removed.solids()
                 volumes = sorted(recess.volume for recess in recesses)
                 self.assertEqual(len(volumes), 3, volumes)
-                # The rim adds volume to each 600 mm³ cavity pocket and the top pocket.
-                self.assertGreater(volumes[0], 600.0)
+                # The rim adds volume to each 750 mm³ cavity pocket and the top pocket.
+                self.assertGreater(volumes[0], 750.0)
                 self.assertAlmostEqual(volumes[0], volumes[1], places=3)
-                self.assertGreater(volumes[2], 6647.521)
+                self.assertGreater(volumes[2], 8309.401)
 
     def test_recess_rounds_are_confined_to_the_mouth(self):
         plane = split_plane()
@@ -34,7 +34,8 @@ class SplitAdapterTests(unittest.TestCase):
         for name, original in nominal.items():
             with self.subTest(recess=name):
                 tool = rounded[name]
-                caps = sorted(original.faces(), key=lambda face: face.area)[-2:]
+                caps = [face for face in original.faces() if len(face.edges()) > 4]
+                self.assertAlmostEqual(caps[0].distance_to(caps[1]), 10.0, places=5)
                 mouth = max(caps, key=lambda face: face.normal_at().dot(outward[name]))
                 extra = tool.cut(original)
                 self.assertAlmostEqual(original.cut(tool).volume, 0.0, places=5)

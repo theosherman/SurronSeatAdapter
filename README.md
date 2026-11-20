@@ -593,11 +593,11 @@ recipe remains unchanged. No finished-body patches are used.
 
 ### Two-piece printing variant
 
-After rebuilding the master, run `split_adapter.py` with the same Python environment. It reads `exports/adapter-body.step` and writes separate front and rear STEP and STL files. The child uses the portable recipe's sloped split plane and has three 8 mm connector recesses. One large recess spans the top and one 16 × 12 mm butterfly-key recess opens onto each inner cavity wall. Each cavity-key waist follows the split plane through the full 8 mm depth, measured normal to the cavity wall.
+After rebuilding the master, run `split_adapter.py` with the same Python environment. It reads `exports/adapter-body.step` and writes separate front and rear STEP and STL files. The child uses the portable recipe's sloped split plane and has three 10 mm connector recesses. One large recess spans the top and one 16 × 12 mm butterfly-key recess opens onto each inner cavity wall. Each cavity-key waist follows the split plane through the full 10 mm depth, measured normal to the cavity wall.
 
 The three recess openings have 1 mm rim fillets. Their floors and the edges where the walls meet the floors stay sharp.
 
-Run `butterfly_keys.py` to export the two printable key shapes. Print the top key once and the cavity key twice. Every key edge has a 1 mm fillet. The keys are 7.2 mm thick, with at least 0.4 mm clearance from the recess faces, including at the rounded waist. STEP files retain assembled positions, and STLs lie flat at Z=0.
+Run `butterfly_keys.py` to export the two printable key shapes. Print the top key once and the cavity key twice. Every key edge has a 1 mm fillet. The keys are 9.2 mm thick, with at least 0.4 mm clearance from the recess faces, including at the rounded waist. STEP files retain assembled positions, and STLs lie flat at Z=0.
 
 - [Top key STL](exports/butterfly-key-top.stl)
 - [Cavity key STL, print twice](exports/butterfly-key-cavity.stl)

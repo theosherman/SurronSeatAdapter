@@ -1,7 +1,7 @@
 """Export the two printable butterfly key shapes from the adapter's recesses."""
 from pathlib import Path
 
-from build123d import Kind, Plane, Solid, export_step
+from build123d import GeomType, Kind, Plane, Solid, export_step
 
 from export_mesh import export_stl_mm
 from split_adapter import connector_tools, split_plane
@@ -19,7 +19,8 @@ def build_keys():
         recess = recesses[recess_name]
         inset = recess.offset_3d([], -(KEY_CLEARANCE_MM + KEY_FILLET_SIDE_RELIEF_MM),
                                  kind=Kind.INTERSECTION)
-        cap, opposite = sorted(inset.faces(), key=lambda face: face.area)[-2:]
+        # The two butterfly ends have more edges than the four-sided extrusion walls.
+        cap, opposite = (face for face in inset.faces() if len(face.edges()) > 4)
         sweep = opposite.center() - cap.center()
         # Restore the cap spacing while keeping the extra inset on the sides.
         extension = sweep * (KEY_FILLET_SIDE_RELIEF_MM / abs(sweep.dot(cap.normal_at())))
@@ -31,7 +32,8 @@ def build_keys():
 
 
 def lay_flat(key):
-    base = max(key.faces(), key=lambda face: face.area)
+    base = next(face for face in key.faces()
+                if face.geom_type == GeomType.PLANE and len(face.edges()) > 4)
     return Plane(base.center(), z_dir=-base.normal_at()).to_local_coords(key)
 
 
