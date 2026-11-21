@@ -38,6 +38,17 @@ body { margin: 0; height: 100vh; height: 100dvh; }
     position: absolute; top: 38px; left: 5px; max-width: calc(100% - 22px);
     padding: 4px 6px; border-radius: 5px; color: #edf3f8; background: #19262f; font-size: 12px;
 }
+#annotations { position: absolute; inset: 0; overflow: hidden; pointer-events: none; }
+.feature-label {
+    position: absolute; top: 0; left: 0; white-space: nowrap;
+    padding: 2px 5px; border: 1px solid #587281; border-radius: 4px;
+    background: #14232eee; color: #f0f7fb; font: 11px/14px system-ui;
+}
+.feature-label::after {
+    content: ''; position: absolute; left: 50%; top: 100%;
+    width: 4px; height: 4px; border-radius: 50%; background: #a2e3df;
+    transform: translateX(-50%);
+}
 canvas { display: block; width: 100%; height: 100%; min-height: 0; touch-action: none; cursor: grab; background: #14232e; }
 canvas:active { cursor: grabbing; }
 </style>
@@ -51,7 +62,10 @@ __EUC__
 <details id="view-menu">
 <summary>View <span aria-hidden="true">▾</span></summary>
 <div id="view-panel">
-<div id="parts" role="group" aria-label="Part visibility">__CONTROLS__</div>
+<div id="parts" role="group" aria-label="Part visibility">
+__CONTROLS__
+<label id="label-control" hidden><input type="checkbox" id="show-labels">Labels</label>
+</div>
 <div class="view-actions">
 <button id="closer" aria-label="Zoom in">+</button>
 <button id="farther" aria-label="Zoom out">−</button>
@@ -64,6 +78,8 @@ __EUC__
 </header>
 <div id="status" role="status">Loading parts…</div>
 <canvas tabindex="0" aria-label="Interactive CAD preview. Pinch to zoom and drag with two fingers to pan. Right-drag to pan with a mouse. Arrow keys rotate and plus or minus zoom."></canvas>
+<div id="annotations" hidden aria-hidden="true"></div>
+<script id="feature-labels" type="application/json">__FEATURE_LABELS__</script>
 __MESHES__
 <script>
 async function start() {
@@ -135,6 +151,45 @@ async function start() {
     const scale = gl.getUniformLocation(program, 'scale');
     const pan = gl.getUniformLocation(program, 'pan');
     const partColor = gl.getUniformLocation(program, 'partColor');
+    const annotationLayer = document.querySelector('#annotations');
+    const showLabels = document.querySelector('#show-labels');
+    const annotations = JSON.parse(document.getElementById('feature-labels').textContent).map(label => {
+        const element = document.createElement('span');
+        element.className = 'feature-label';
+        element.textContent = label.name;
+        annotationLayer.append(element);
+        return {...label, element};
+    });
+    document.querySelector('#label-control').hidden = annotations.length === 0;
+
+    function drawLabels(matrix, scaleX, scaleY) {
+        annotationLayer.hidden = !showLabels.checked;
+        if (annotationLayer.hidden) return;
+        const width = canvas.clientWidth, height = canvas.clientHeight;
+        const visibleMeshes = new Set(parts.filter(part => !part.label.hidden && part.checkbox.checked)
+            .map(part => Number(part.checkbox.dataset.mesh)));
+        const occupied = [];
+        for (const label of annotations) {
+            label.width ??= label.element.offsetWidth;
+            label.height ??= label.element.offsetHeight;
+            const [nx, ny, nz] = label.normal;
+            const facing = matrix[2] * nx + matrix[5] * ny + matrix[8] * nz;
+            const [x, y, z] = label.point;
+            const screenX = width / 2 + panX + width * scaleX * (matrix[0] * x + matrix[3] * y + matrix[6] * z) / 2;
+            const screenY = height / 2 + panY - height * scaleY * (matrix[1] * x + matrix[4] * y + matrix[7] * z) / 2;
+            const left = screenX - label.width / 2, right = screenX + label.width / 2;
+            const bottom = screenY - 4, top = bottom - label.height;
+            const overlaps = occupied.some(box => left < box.right + 3 && right > box.left - 3
+                && top < box.bottom + 3 && bottom > box.top - 3);
+            const visible = facing > .25 && label.meshes.some(mesh => visibleMeshes.has(mesh))
+                && left >= 3 && right <= width - 3 && top >= 40 && bottom <= height - 4 && !overlaps;
+            label.element.style.visibility = visible ? 'visible' : 'hidden';
+            if (visible) {
+                label.element.style.transform = `translate(${left}px, ${top}px)`;
+                occupied.push({left, right, top, bottom});
+            }
+        }
+    }
 
     let yaw, pitch, zoom, panX, panY;
     const maxPitch = Math.PI / 2 - .005;
@@ -149,8 +204,10 @@ async function start() {
         const h = Math.cos(pitch), v = Math.sin(pitch);
         gl.viewport(0, 0, canvas.width, canvas.height);
         gl.clear(gl.COLOR_BUFFER_BIT | gl.DEPTH_BUFFER_BIT);
-        gl.uniformMatrix3fv(view, false, [c, -s*v, s*h, s, c*v, -c*h, 0, h, v]);
-        gl.uniform2f(scale, zoom * Math.min(1, 1/aspect), zoom * Math.min(1, aspect));
+        const matrix = [c, -s*v, s*h, s, c*v, -c*h, 0, h, v];
+        const scaleX = zoom * Math.min(1, 1/aspect), scaleY = zoom * Math.min(1, aspect);
+        gl.uniformMatrix3fv(view, false, matrix);
+        gl.uniform2f(scale, scaleX, scaleY);
         gl.uniform2f(pan, 2 * panX / Math.max(1, canvas.clientWidth),
                          -2 * panY / Math.max(1, canvas.clientHeight));
         for (const part of parts) {
@@ -159,6 +216,7 @@ async function start() {
             gl.uniform3fv(partColor, part.color);
             gl.drawElements(gl.TRIANGLES, part.count, gl.UNSIGNED_INT, 0);
         }
+        drawLabels(matrix, scaleX, scaleY);
     }
     function rotate(x, y) {
         yaw -= x * .009;
@@ -255,7 +313,7 @@ async function start() {
     document.querySelector('#farther').onclick = () => magnify(1 / 1.2);
     document.querySelector('#reset').onclick = reset;
     toolbar.addEventListener('change', event => {
-        if (event.target.matches('input[data-mesh]')) draw();
+        if (event.target === showLabels || event.target.matches('input[data-mesh]')) draw();
     });
     new ResizeObserver(draw).observe(canvas);
     reset();

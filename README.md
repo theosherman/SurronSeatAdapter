@@ -60,6 +60,8 @@ Open `exports/preview.html` in the Files panel. Use the top picker to switch
 between **Adapter** and **Adapter Split**. The **View** menu holds part
 visibility, zoom, reset, and gesture help. Drag to rotate, right-drag to pan,
 and scroll to zoom. The viewer runs offline and needs WebGL 2.
+Turn on **Labels** in **View** to identify adapter features and the split hardware.
+Rotate to reveal labels on other sides of the model.
 On a touchscreen, drag with one finger to rotate, drag with two fingers to
 pan, and pinch to zoom.
 
