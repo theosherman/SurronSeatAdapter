@@ -52,12 +52,12 @@ Set `BUILD123D_PYTHON` to use a different environment. Installed here with Pytho
 
 Python callers can use `build_master(airtag_depth=8.5)` to regenerate the part with an editable AirTag pocket depth. Other dimensions remain in the recipe and named operations. Checkpoint builds update the validation log; rerun the full build to restore the final log.
 
-## View STLs in T3 Code
+## View CAD in T3 Code
 
-Open `exports/preview.html` in the Files panel. Switch between **Adapter** and
-**Adapter Split** and use the checkboxes to show or hide parts. Drag to rotate,
-right-drag to pan, and scroll or use the buttons to zoom. The viewer runs
-offline and needs WebGL 2.
+Open `exports/preview.html` in the Files panel. Use the top picker to switch
+between **Adapter** and **Adapter Split**. The **View** menu holds part
+visibility, zoom, reset, and gesture help. Drag to rotate, right-drag to pan,
+and scroll to zoom. The viewer runs offline and needs WebGL 2.
 On a touchscreen, drag with one finger to rotate, drag with two fingers to
 pan, and pinch to zoom.
 
@@ -67,7 +67,7 @@ existing exports. Pass STEP or binary STL paths to select specific files and
 write `preview.html` beside the first input. Use the STEP keys to show them
 seated in the adapter.
 
-Both tabs share an optional **EUC** overlay from the prepared Sherman P mesh.
+The top **EUC** checkbox toggles the prepared Sherman P overlay for either variant.
 To include a **Surron Seat** overlay, use a binary `surron-seat.stl` positioned
 in the adapter's model frame. The default build checks `exports/` and
 `reference/fusion/` for that file. Both overlays start hidden.

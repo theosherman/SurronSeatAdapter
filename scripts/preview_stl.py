@@ -60,6 +60,7 @@ def write_preview(paths, output):
         raise ValueError('Preview meshes have invalid bounds')
 
     controls = []
+    euc_control = ''
     payloads = []
     for index, (path, (vertices, indices)) in enumerate(zip(paths, meshes, strict=True)):
         stem = path.stem
@@ -68,15 +69,20 @@ def write_preview(paths, output):
         variant = 'split' if stem in SPLIT_PARTS else 'adapter'
         if stem in REFERENCES or stem == 'latch':
             variant = 'both'
-        controls.append(f'<label data-variant="{variant}">'
-                        f'<input type="checkbox" data-color="{color}"{checked}>'
-                        f'{escape(name)}</label>')
+        control = (f'<label data-variant="{variant}">'
+                   f'<input type="checkbox" data-mesh="{index}" data-color="{color}"{checked}>'
+                   f'{escape(name)}</label>')
+        if stem == 'merged' and not euc_control:
+            euc_control = control
+        else:
+            controls.append(control)
         packed = pack('<I', len(vertices)) + ((vertices - center) / radius).astype('<f4').tobytes()
         packed += indices.astype('<u4').tobytes()
         payload = b64encode(compress(packed, compresslevel=6, mtime=0)).decode('ascii')
         payloads.append(f'<script id="mesh-{index}" type="application/octet-stream">{payload}</script>')
 
     output.write_text(TEMPLATE.read_text().replace('__CONTROLS__', '\n'.join(controls))
+                      .replace('__EUC__', euc_control)
                       .replace('__MESHES__', '\n'.join(payloads)), encoding='utf-8')
     return output
 
