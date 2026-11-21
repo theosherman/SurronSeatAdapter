@@ -15,10 +15,15 @@ keeps previous print files available.
 
 ## Run
 
-Run `./build.sh` to build the STEP parts and the offline preview in the ignored
-`exports/` directory. Use `./build.sh --stl` to also generate printable STLs,
-or `scripts/build-release.sh` to validate and package a release ZIP.
-A full build clears prior generated exports, including any old release ZIP.
+For routine adapter-body edits, run `./build.sh --preview`. It rebuilds
+`exports/adapter-body.step` and `exports/preview.html` with the wheel and seat
+references. It leaves existing split and accessory files in place.
+
+Run `./build.sh` for all STEP parts and the full preview. Both local commands
+generate STEP files and HTML. The GitHub release build uses
+`./build.sh --stl` through `scripts/build-release.sh` to generate printable STLs,
+validate the exports, and package a release ZIP. A full build clears prior
+generated exports, including any old release ZIP.
 The master and preview read the checked-in references under `reference/`.
 Adapter builds never regenerate reference geometry.
 The [historical Bambu Studio project](reference/slicer/adapter-body.3mf)
@@ -31,7 +36,7 @@ to choose a different executable.
 ```bash
 # Install dependencies once for your Python 3.14 user account.
 python3.14 -m pip install --user -r requirements.lock.txt
-./build.sh
+./build.sh --preview
 ```
 
 Use `/opt/az/bin/python3.14` in place of `python3.14` if it is outside
@@ -45,7 +50,7 @@ python3.14 latch.py
 ```
 
 `adapter.py` is the editable CAD source. It reads `cad-rebuild/recipe.json`
-and subtracts [the prepared wheel body](reference/wheel/body-scaled.step).
+and subtracts [the prepared wheel body](reference/wheel/body-scaled.brep).
 All coordinates are millimeters. Build123d uses a permanent corrected frame:
 physical front is negative Y and Z is up. `coordinates.py` maps source global
 points and vectors to `(-x,-y,z)` before making geometry. Sketch-local
@@ -137,7 +142,7 @@ XDG_CACHE_HOME=/tmp/surron-build123d-cache \
 node validate-mounting-ceilings.mjs
 ```
 
-Orientation tests check the initial profile, sketch frames and first extrusion, so an end-of-build rotation cannot pass. Material probes use the corrected frame. Tests compare 16 selected-profile sets against their saved areas, the revised M01/M05 base against the approved outline using independent native geometry, the finished body against an independent subtraction of the accepted prepared body STEP from the in-memory pre-imprint adapter, and all twelve mounting ledge/cavity/bore samples against native solid classification. The mesh ceiling check uses two independent ray directions at placed probe points. The export check reopens STEP and STL and rebuilds with an AirTag depth of 8.6 mm to check the expected 102.4295 mm³ change; it does not overwrite nominal exports.
+Orientation tests check the initial profile, sketch frames and first extrusion, so an end-of-build rotation cannot pass. Material probes use the corrected frame. Tests compare 16 selected-profile sets against their saved areas, the revised M01/M05 base against the approved outline using independent native geometry, the finished body against an independent subtraction of the accepted prepared body BREP from the in-memory pre-imprint adapter, and all twelve mounting ledge/cavity/bore samples against native solid classification. The mesh ceiling check uses two independent ray directions at placed probe points. The export check reopens STEP and STL and rebuilds with an AirTag depth of 8.6 mm to check the expected 102.4295 mm³ change; it does not overwrite nominal exports.
 
 The prior nominal in-memory master volume, before the approved alignment, was approximately **1,517,837.554 mm³**. After the scan alignment the master measured approximately **1,476,826.478 mm³**. After the approved front-clip placement the current master measures approximately **1,473,734.600 mm³**; see `logs/build-validation.json`. The earlier full-scan imprint measured **1,507,476.035 mm³**. Matching volume is useful regression evidence, not proof of whole-model equality or physical fit.
 
@@ -296,7 +301,7 @@ including the approved 8 mm seating adjustment. It slices at **Y=-191 mm**
 and **Y=+170 mm**, then scales only the middle body by **1.003** about `(0,0,8)`.
 
 The script validates the outputs before replacing the checked-in files in
-`reference/wheel/`. The adapter subtracts `body-scaled.step` with zero added
+`reference/wheel/`. The adapter subtracts `body-scaled.brep` with zero added
 clearance. The CAD viewer reads that same body and the two unscaled handle
 STEPs. The HTML preview reads `merged.stl`, which reunites the body and handles
 for display. Commit the regenerated reference files with any intentional

@@ -8,16 +8,15 @@ if ! command -v "$python_bin" >/dev/null; then
 fi
 export XDG_CACHE_HOME="${XDG_CACHE_HOME:-/tmp/surron-build123d-cache}"
 
-if [[ $# -gt 0 && ! ( $# -eq 1 && $1 == --stl ) ]]; then
+if [[ $# -gt 0 && ! ( $# -eq 1 && ( $1 == --stl || $1 == --preview ) ) ]]; then
   exec "$python_bin" "$project_dir/adapter.py" "$@"
 fi
 
 cd "$project_dir"
+if [[ ${1:-} == --preview ]]; then
+  exec "$python_bin" -m scripts.build_cad --preview
+fi
 rm -f -- exports/adapter-body{,-split-front,-split-rear,-pre-imprint,-M[0-9][0-9]}.{step,stl} \
   exports/{butterfly-key-top,butterfly-key-cavity,latch}.{step,stl} \
   exports/preview.html exports/*.preview.html exports/SurronSeatAdapter.zip{,.tmp}
-"$python_bin" adapter.py "$@"
-"$python_bin" split_adapter.py "$@"
-"$python_bin" butterfly_keys.py "$@"
-"$python_bin" latch.py "$@"
-"$python_bin" -m scripts.preview_stl
+exec "$python_bin" -m scripts.build_cad "$@"

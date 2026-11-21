@@ -3,7 +3,7 @@ from pathlib import Path
 import argparse
 import json
 import time
-from build123d import Edge, Wire, Face, Solid, Plane, Vector, Keep, Compound, ShapeList, export_step, import_step
+from build123d import Edge, Wire, Face, Solid, Plane, Vector, Keep, Compound, ShapeList, import_brep, export_step, import_step
 
 from coordinates import model_recipe, source_to_model, ADAPTER_TRANSLATION_MM
 from reference.wheel import SEATING_DEPTH_MM, WHEEL_REFERENCE
@@ -142,8 +142,22 @@ def build_master(stop=None, imprint=True, airtag_depth=8.5):
     if stop=='M20' or not imprint: return body
     from body_fillets import fillet_body
     body = stage('M20-body-fillets', fillet_body(body))
-    cutter = import_step(WHEEL_REFERENCE / 'body-scaled.step')
+    cutter = import_brep(WHEEL_REFERENCE / 'body-scaled.brep')
     return stage('M21', body.cut(cutter))
+
+
+def export_master(output, *, stl=False, stop=None, imprint=True):
+    start = time.monotonic()
+    body = build_master(stop=stop, imprint=imprint)
+    output.mkdir(exist_ok=True)
+    stem = 'adapter-body' if not stop and imprint else 'adapter-body-'+(stop or 'pre-imprint')
+    step = output / (stem + '.step')
+    if not export_step(body, step):
+        raise ValueError(f'STEP export failed: {step}')
+    if stl:
+        export_stl_mm(import_step(step), step.with_suffix('.stl'))
+    (Path(__file__).parent/'logs/build-validation.json').write_text(json.dumps(dict(coordinateFrame="source (x,y,z) -> model (-x,-y,z); physical front is negative Y; Z up",adapterTranslationMm=ADAPTER_TRANSLATION_MM,seatingDepthMm=SEATING_DEPTH_MM,elapsedSeconds=time.monotonic()-start,stages=HISTORY),indent=2)+'\n')
+    return step, body
 
 
 def main():
@@ -152,15 +166,8 @@ def main():
     parser.add_argument('--stop',choices=['M01','M05','M06','M09','M20'])
     parser.add_argument('--stl', action='store_true', help='Also export the printable STL')
     args = parser.parse_args()
-    start = time.monotonic()
-    body = build_master(stop=args.stop,imprint=not args.no_imprint)
-    output = Path(__file__).parent/'exports'
-    output.mkdir(exist_ok=True)
-    stem = 'adapter-body' if not args.stop and not args.no_imprint else 'adapter-body-'+(args.stop or 'pre-imprint')
-    export_step(body,output/(stem+'.step'))
-    if args.stl:
-        export_stl_mm(import_step(output/(stem+'.step')), output/(stem+'.stl'))
-    (Path(__file__).parent/'logs/build-validation.json').write_text(json.dumps(dict(coordinateFrame="source (x,y,z) -> model (-x,-y,z); physical front is negative Y; Z up",adapterTranslationMm=ADAPTER_TRANSLATION_MM,seatingDepthMm=SEATING_DEPTH_MM,elapsedSeconds=time.monotonic()-start,stages=HISTORY),indent=2)+'\n')
+    export_master(ROOT / 'exports', stl=args.stl, stop=args.stop, imprint=not args.no_imprint)
+
 
 if __name__=='__main__':
     main()

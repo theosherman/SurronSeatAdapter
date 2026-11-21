@@ -130,12 +130,7 @@ def build_split(master):
         yield name, half.clean()
 
 
-def main():
-    parser = ArgumentParser(description=__doc__)
-    parser.add_argument('--stl', action='store_true', help='Also export the printable STLs')
-    args = parser.parse_args()
-    output = Path(__file__).resolve().parent / 'exports'
-    master = import_step(output / 'adapter-body.step')
+def export_split(output, master, *, stl=False):
     for name, half in list(build_split(master)):
         step = output / f'adapter-body-split-{name}.step'
         if not export_step(half, step):
@@ -143,9 +138,18 @@ def main():
         exported = import_step(step)
         if not exported.is_valid or len(exported.solids()) != 1:
             raise ValueError(f'Invalid exported solid: {step}')
-        if args.stl:
+        if stl:
             export_stl_mm(half, step.with_suffix('.stl'))
         print(f'{name}: {exported.bounding_box().size}', flush=True)
+        yield step, exported
+
+
+def main():
+    parser = ArgumentParser(description=__doc__)
+    parser.add_argument('--stl', action='store_true', help='Also export the printable STLs')
+    args = parser.parse_args()
+    export_dir = Path(__file__).resolve().parent / 'exports'
+    list(export_split(export_dir, import_step(export_dir / 'adapter-body.step'), stl=args.stl))
 
 
 if __name__ == '__main__':

@@ -4,7 +4,7 @@ from pathlib import Path
 import struct
 import subprocess
 from tempfile import TemporaryDirectory
-from build123d import Mesher, Plane, Keep, Axis, Compound, export_step, export_stl, import_step
+from build123d import Mesher, Plane, Keep, Axis, Compound, export_brep, import_brep, export_step, export_stl, import_step
 from coordinates import source_to_model
 from . import SEATING_DEPTH_MM, WHEEL_REFERENCE
 from .scan_patch import PATCH, repair_screen_patch
@@ -78,7 +78,13 @@ def main():
         assert abs(partition - scan.volume) < 0.1
         assert abs(parts['body-scaled'].volume - parts['body-original'].volume * BODY_SCALE**3) < 0.1
 
-        for name in ('body-scaled', 'front-handle', 'rear-handle'):
+        cutter = work / 'body-scaled.brep'
+        if not export_brep(parts['body-scaled'], cutter):
+            raise ValueError(f'Could not export {cutter.name}')
+        reopened = import_brep(cutter)
+        assert reopened.is_valid and len(reopened.solids()) == 1
+        assert abs(reopened.volume - parts['body-scaled'].volume) < 0.2
+        for name in ('front-handle', 'rear-handle'):
             step = work / f'{name}.step'
             if not export_step(parts[name], step):
                 raise ValueError(f'Could not export {step.name}')
@@ -91,7 +97,7 @@ def main():
         reopened, = Mesher().read(merged)
         assert reopened.is_valid and len(reopened.solids()) == 1
         assert abs(reopened.volume - parts['merged'].volume) < 0.2
-        for name in ('body-scaled.step', 'front-handle.step', 'rear-handle.step', 'merged.stl'):
+        for name in ('body-scaled.brep', 'front-handle.step', 'rear-handle.step', 'merged.stl'):
             (work / name).replace(WHEEL_REFERENCE / name)
             print(WHEEL_REFERENCE / name)
 

@@ -115,20 +115,15 @@ def build_latch(clearance=0.2, with_stages=False):
     return (body, stages) if with_stages else body
 
 
-def main():
-    parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument('--clearance', type=float, default=0.2)
-    parser.add_argument('--stl', action='store_true', help='Also export the printable STL')
-    args = parser.parse_args()
-    body, stages = build_latch(args.clearance, with_stages=True)
-    output = Path(__file__).parent/'exports'
+def export_latch(output, *, stl=False, clearance=0.2):
+    body, stages = build_latch(clearance, with_stages=True)
     output.mkdir(exist_ok=True)
-    step, stl = output/'latch.step', output/'latch.stl'
+    step, stl_path = output/'latch.step', output/'latch.stl'
     export_step(body, step)
     exports = [('step', import_step(step))]
-    if args.stl:
-        export_stl(body, stl, tolerance=0.005, angular_tolerance=0.05)
-        exports.append(('stl', Compound(Mesher().read(stl))))
+    if stl:
+        export_stl(body, stl_path, tolerance=0.005, angular_tolerance=0.05)
+        exports.append(('stl', Compound(Mesher().read(stl_path))))
     reopened = {}
     for name, shape in exports:
         bounds = shape.bounding_box()
@@ -136,10 +131,19 @@ def main():
                               boundsMm=[tuple(bounds.min), tuple(bounds.max)])
         if not shape.is_valid or len(shape.solids()) != 1 or abs(shape.volume-body.volume)>body.volume*1e-4:
             raise ValueError(f'Latch export failed validation: {reopened[name]}')
-    report = dict(clearanceMm=args.clearance, fillets=False, coordinateFrame='source (x,y,z) -> model (-x,-y,z)',
+    report = dict(clearanceMm=clearance, fillets=False, coordinateFrame='source (x,y,z) -> model (-x,-y,z)',
                   placementTranslationMm=ADAPTER_TRANSLATION_MM, stages=stages, reopened=reopened, physicalFitTested=False)
     (Path(__file__).parent/'logs/latch-validation.json').write_text(json.dumps(report, indent=2)+'\n')
     print(json.dumps(report, indent=2))
+    return step, exports[0][1]
+
+
+def main():
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument('--clearance', type=float, default=0.2)
+    parser.add_argument('--stl', action='store_true', help='Also export the printable STL')
+    args = parser.parse_args()
+    export_latch(Path(__file__).resolve().parent / 'exports', stl=args.stl, clearance=args.clearance)
 
 
 if __name__ == '__main__':

@@ -24,11 +24,11 @@ class GeometryTests(unittest.TestCase):
         self.assertEqual(len(body.solids()), 1)
         self.assertTrue(body.is_valid)
         # Independent accepted tool/checkpoint regression: handles must not cut the adapter.
-        from build123d import import_step
+        from build123d import import_brep
         from pathlib import Path
         root = Path(__file__).resolve().parents[1]
         pre = build_master(imprint=False)
-        tool = import_step(root/'reference/wheel/body-scaled.step')
+        tool = import_brep(root/'reference/wheel/body-scaled.brep')
         from body_fillets import fillet_body
         expected = fillet_body(pre).cut(tool)
         self.assertAlmostEqual(body.volume, expected.volume, delta=0.1)

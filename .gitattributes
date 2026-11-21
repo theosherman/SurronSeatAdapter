@@ -4,3 +4,4 @@
 * whitespace=cr-at-eol,-blank-at-eof
 # Prepared reference geometry is reviewed in CAD rather than as an entity dump.
 reference/wheel/*.step -diff
+reference/wheel/*.brep -diff

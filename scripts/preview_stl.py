@@ -12,6 +12,7 @@ import numpy as np
 TRIANGLE = np.dtype([('normal', '<f4', (3,)), ('vertices', '<f4', (3, 3)), ('attribute', '<u2')])
 TEMPLATE = Path(__file__).with_name('stl_preview.html')
 REFERENCE_DIR = Path(__file__).resolve().parents[1] / 'reference'
+REFERENCE_MESHES = (REFERENCE_DIR / 'wheel/merged.stl', REFERENCE_DIR / 'seat/surron-seat.stl')
 PARTS = {
     'adapter-body-split-front': ('Split front', '#5ea5e7'),
     'adapter-body-split-rear': ('Split rear', '#efa55b'),
@@ -102,14 +103,15 @@ def planar_labels(shape, stem):
     return labels
 
 
-def read_mesh(path):
+def read_mesh(path, shape=None):
     step = path.with_suffix('.step')
-    if path.suffix.lower() == '.step' or (
+    if shape is not None or path.suffix.lower() == '.step' or (
             path.stem in ('butterfly-key-top', 'butterfly-key-cavity') and step.is_file()):
         # The printable key meshes are laid flat. The STEPs preserve the seated pose.
         from build123d import import_step
 
-        shape = import_step(path if path.suffix.lower() == '.step' else step)
+        if shape is None:
+            shape = import_step(path if path.suffix.lower() == '.step' else step)
         vertices, triangles = shape.tessellate(.05, .15)
         unique, indices = np.unique(np.asarray([tuple(vertex) for vertex in vertices]),
                                     axis=0, return_inverse=True)
@@ -125,11 +127,12 @@ def read_mesh(path):
     return vertices, indices, []
 
 
-def write_preview(paths, output):
+def write_preview(paths, output, *, shapes=None):
     paths = [path for path in paths if path.stem != 'adapter-body-pre-imprint']
     if not paths:
         raise ValueError('No previewable CAD files')
-    meshes = [read_mesh(path) for path in paths]
+    shapes = {} if shapes is None else shapes
+    meshes = [read_mesh(path, shapes.get(path)) for path in paths]
     if any(not vertices.size or not np.isfinite(vertices).all() for vertices, _, _ in meshes):
         raise ValueError('Preview meshes must have finite vertices')
     low = np.min([vertices.min(axis=0) for vertices, _, _ in meshes], axis=0)
@@ -178,18 +181,22 @@ def write_preview(paths, output):
     return output
 
 
+def preview_parts(exports):
+    order = {name: index for index, name in enumerate(PARTS)}
+    return sorted(exports.glob('*.step'),
+                  key=lambda path: (order.get(path.stem, len(order)), path.name))
+
+
 def main():
     parser = ArgumentParser(description=__doc__)
     parser.add_argument('parts', nargs='*', type=Path, help='STEP or binary STL files')
     args = parser.parse_args()
     exports = Path('exports')
-    order = {name: index for index, name in enumerate(PARTS)}
-    parts = args.parts or sorted(exports.glob('*.step'),
-                                key=lambda path: (order.get(path.stem, len(order)), path.name))
+    parts = args.parts or preview_parts(exports)
     if not parts:
         parser.error('No STEP files found in exports/')
     if not args.parts:
-        parts.extend((REFERENCE_DIR / 'wheel/merged.stl', REFERENCE_DIR / 'seat/surron-seat.stl'))
+        parts.extend(REFERENCE_MESHES)
     output = write_preview(parts, parts[0].with_name('preview.html'))
     if not args.parts:
         for legacy in exports.glob('*.preview.html'):
