@@ -28,10 +28,12 @@ body { margin: 0; height: 100vh; height: 100dvh; }
     width: min(100%, 224px); max-height: calc(100dvh - 43px); overflow: auto;
     background: var(--surface); border: 1px solid var(--border); border-radius: 6px; padding: 5px;
 }
-#parts { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0 4px; }
-#parts label { min-height: 24px; }
+.view-group + .view-group { border-top: 1px solid var(--border); margin-top: 4px; padding-top: 4px; }
+.view-heading { margin: 0; font-size: 11px; color: #c0ccd6; }
+.checklist { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0 4px; }
+.checklist label { min-height: 24px; }
 #toolbar label[hidden] { display: none; }
-.view-actions { display: grid; grid-template-columns: 1fr 1fr 2fr; gap: 3px; }
+.view-actions { display: grid; grid-template-columns: 1fr 1fr 2fr; gap: 3px; margin-top: 4px; }
 #view-panel button { min-height: 26px; }
 #gestures { margin: 4px 1px 0; color: #c0ccd6; font-size: 11px; }
 #status {
@@ -64,10 +66,18 @@ __EUC__
 <details id="view-menu">
 <summary>View <span aria-hidden="true">▾</span></summary>
 <div id="view-panel">
-<div id="parts" role="group" aria-label="Part visibility">
+<div id="parts-group" class="view-group" role="group" aria-labelledby="parts-heading">
+<p id="parts-heading" class="view-heading">Parts</p>
+<div class="checklist">
 __CONTROLS__
-<label id="label-control" hidden><input type="checkbox" id="show-labels">Labels</label>
-<label id="face-control" hidden><input type="checkbox" id="show-faces">Face labels</label>
+</div>
+</div>
+<div id="labels-group" class="view-group" role="group" aria-labelledby="labels-heading" hidden>
+<p id="labels-heading" class="view-heading">Labels</p>
+<div class="checklist">
+<label id="label-control" hidden><input type="checkbox" id="show-labels">Features</label>
+<label id="face-control" hidden><input type="checkbox" id="show-faces">Faces</label>
+</div>
 </div>
 <div class="view-actions">
 <button id="closer" aria-label="Zoom in">+</button>
@@ -166,6 +176,7 @@ async function start() {
     });
     document.querySelector('#label-control').hidden = !annotations.some(label => !label.face);
     document.querySelector('#face-control').hidden = !annotations.some(label => label.face);
+    document.querySelector('#labels-group').hidden = annotations.length === 0;
 
     function drawLabels(matrix, scaleX, scaleY) {
         annotationLayer.hidden = !showLabels.checked && !showFaces.checked;
@@ -251,6 +262,8 @@ async function start() {
         for (const {label} of parts) {
             label.hidden = !['both', picker.value].includes(label.dataset.variant);
         }
+        document.querySelector('#parts-group').hidden =
+            !document.querySelector('#parts-group .checklist label:not([hidden])');
         draw();
     }
     picker.onchange = selectVariant;
