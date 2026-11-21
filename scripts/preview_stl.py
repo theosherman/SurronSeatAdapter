@@ -17,7 +17,6 @@ PARTS = {
     'butterfly-key-cavity': ('Cavity key', '#65cf92'),
     'latch': ('Latch', '#c0a5eb'),
     'adapter-body': ('Full adapter', '#4abdc7'),
-    'adapter-body-pre-imprint': ('Adapter before wheel imprint', '#aab7c5'),
     'merged': ('EUC', '#788698'),
     'surron-seat': ('Surron Seat', '#a69680'),
 }
@@ -44,6 +43,9 @@ def read_mesh(stl):
 
 
 def write_preview(stls, output):
+    stls = [stl for stl in stls if stl.stem != 'adapter-body-pre-imprint']
+    if not stls:
+        raise ValueError('No previewable STL files')
     meshes = [read_mesh(stl) for stl in stls]
     if any(not vertices.size or not np.isfinite(vertices).all() for vertices, _ in meshes):
         raise ValueError('Preview meshes must have finite vertices')
@@ -54,15 +56,11 @@ def write_preview(stls, output):
     if radius <= 0:
         raise ValueError('Preview meshes have invalid bounds')
 
-    stems = {stl.stem for stl in stls}
-    hidden = set(REFERENCES)
-    if 'adapter-body' in stems:
-        hidden.add('adapter-body-pre-imprint')
     controls = []
     payloads = []
     for index, (stl, (vertices, indices)) in enumerate(zip(stls, meshes, strict=True)):
         name, color = PARTS.get(stl.stem, (stl.stem, '#4abdc7'))
-        checked = '' if stl.stem in hidden else ' checked'
+        checked = '' if stl.stem in REFERENCES else ' checked'
         variant = 'split' if stl.stem in SPLIT_PARTS else 'adapter'
         if stl.stem in REFERENCES or stl.stem == 'latch':
             variant = 'both'
