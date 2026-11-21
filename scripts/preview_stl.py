@@ -1,4 +1,4 @@
-"""Write one offline interactive preview for a set of binary STL exports."""
+"""Write an offline interactive preview from STEP parts and binary STL meshes."""
 from argparse import ArgumentParser
 from base64 import b64encode
 from gzip import compress
@@ -25,28 +25,31 @@ SPLIT_PARTS = {'adapter-body-split-front', 'adapter-body-split-rear',
 REFERENCES = {'merged', 'surron-seat'}
 
 
-def read_mesh(stl):
-    step = stl.with_suffix('.step')
-    if stl.stem in ('butterfly-key-top', 'butterfly-key-cavity') and step.is_file():
+def read_mesh(path):
+    step = path.with_suffix('.step')
+    if path.suffix.lower() == '.step' or (
+            path.stem in ('butterfly-key-top', 'butterfly-key-cavity') and step.is_file()):
         # The printable key meshes are laid flat. The STEPs preserve the seated pose.
         from build123d import import_step
 
-        vertices, triangles = import_step(step).tessellate(.005, .05)
-        return np.asarray([tuple(vertex) for vertex in vertices]), np.asarray(triangles)
+        vertices, triangles = import_step(path if path.suffix.lower() == '.step' else step).tessellate(.05, .15)
+        unique, indices = np.unique(np.asarray([tuple(vertex) for vertex in vertices]),
+                                    axis=0, return_inverse=True)
+        return unique, indices[np.asarray(triangles)]
 
-    raw = stl.read_bytes()
+    raw = path.read_bytes()
     triangles = int.from_bytes(raw[80:84], 'little')
     if not triangles or len(raw) != 84 + TRIANGLE.itemsize * triangles:
-        raise ValueError(f'{stl} is not a nonempty binary STL')
+        raise ValueError(f'{path} is not a nonempty binary STL')
     coordinates = np.frombuffer(raw, dtype=TRIANGLE, offset=84)['vertices'].reshape(-1, 3)
     return np.unique(coordinates, axis=0, return_inverse=True)
 
 
-def write_preview(stls, output):
-    stls = [stl for stl in stls if stl.stem != 'adapter-body-pre-imprint']
-    if not stls:
-        raise ValueError('No previewable STL files')
-    meshes = [read_mesh(stl) for stl in stls]
+def write_preview(paths, output):
+    paths = [path for path in paths if path.stem != 'adapter-body-pre-imprint']
+    if not paths:
+        raise ValueError('No previewable CAD files')
+    meshes = [read_mesh(path) for path in paths]
     if any(not vertices.size or not np.isfinite(vertices).all() for vertices, _ in meshes):
         raise ValueError('Preview meshes must have finite vertices')
     low = np.min([vertices.min(axis=0) for vertices, _ in meshes], axis=0)
@@ -58,11 +61,12 @@ def write_preview(stls, output):
 
     controls = []
     payloads = []
-    for index, (stl, (vertices, indices)) in enumerate(zip(stls, meshes, strict=True)):
-        name, color = PARTS.get(stl.stem, (stl.stem, '#4abdc7'))
-        checked = '' if stl.stem in REFERENCES else ' checked'
-        variant = 'split' if stl.stem in SPLIT_PARTS else 'adapter'
-        if stl.stem in REFERENCES or stl.stem == 'latch':
+    for index, (path, (vertices, indices)) in enumerate(zip(paths, meshes, strict=True)):
+        stem = path.stem
+        name, color = PARTS.get(stem, (stem, '#4abdc7'))
+        checked = '' if stem in REFERENCES else ' checked'
+        variant = 'split' if stem in SPLIT_PARTS else 'adapter'
+        if stem in REFERENCES or stem == 'latch':
             variant = 'both'
         controls.append(f'<label data-variant="{variant}">'
                         f'<input type="checkbox" data-color="{color}"{checked}>'
@@ -79,22 +83,23 @@ def write_preview(stls, output):
 
 def main():
     parser = ArgumentParser(description=__doc__)
-    parser.add_argument('stls', nargs='*', type=Path)
+    parser.add_argument('parts', nargs='*', type=Path, help='STEP or binary STL files')
     args = parser.parse_args()
     exports = Path('exports')
     order = {name: index for index, name in enumerate(PARTS)}
-    stls = args.stls or sorted(exports.glob('*.stl'),
-                              key=lambda path: (order.get(path.stem, len(order)), path.name))
-    if not stls:
-        parser.error('No STL files found in exports/')
-    if not args.stls:
+    parts = args.parts or sorted(exports.glob('*.step'),
+                                key=lambda path: (order.get(path.stem, len(order)), path.name))
+    if not parts:
+        parser.error('No STEP files found in exports/')
+    if not args.parts:
         euc = exports / 'sherman-p-prepared' / 'merged.stl'
         if euc.is_file():
-            stls.append(euc)
-        seat = Path('reference/fusion/surron-seat.stl')
-        if seat.is_file() and exports / seat.name not in stls:
-            stls.append(seat)
-    print(write_preview(stls, stls[0].with_name('preview.html')))
+            parts.append(euc)
+        for seat in (exports / 'surron-seat.stl', Path('reference/fusion/surron-seat.stl')):
+            if seat.is_file() and seat.stem not in {part.stem for part in parts}:
+                parts.append(seat)
+                break
+    print(write_preview(parts, parts[0].with_name('preview.html')))
 
 
 if __name__ == '__main__':
