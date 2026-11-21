@@ -19,6 +19,8 @@ The original Sherman P wheel scan is tracked under `reference/fusion/`.
 Run `./run.sh` to build the STEP parts and the offline preview in the ignored
 `exports/` directory. Use `./run.sh --stl` to also generate printable STLs,
 or `scripts/build-release.sh` to validate and package a release ZIP.
+A full build clears prior generated exports, including any old release ZIP.
+Keep reference meshes for the preview alongside the project inputs or in `exports/`.
 The [historical Bambu Studio project](reference/slicer/adapter-body.3mf)
 preserves the earlier slicer settings and geometry.
 
@@ -66,6 +68,7 @@ Run `python -m scripts.preview_stl` from the repo root to refresh it from
 existing exports. Pass STEP or binary STL paths to select specific files and
 write `preview.html` beside the first input. Use the STEP keys to show them
 seated in the adapter.
+Refreshing the default preview removes legacy per-part HTML files from `exports/`.
 
 The top **EUC** checkbox toggles the prepared Sherman P overlay for either variant.
 To include a **Surron Seat** overlay, use a binary `surron-seat.stl` positioned

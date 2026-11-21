@@ -105,7 +105,11 @@ def main():
             if seat.is_file() and seat.stem not in {part.stem for part in parts}:
                 parts.append(seat)
                 break
-    print(write_preview(parts, parts[0].with_name('preview.html')))
+    output = write_preview(parts, parts[0].with_name('preview.html'))
+    if not args.parts:
+        for legacy in exports.glob('*.preview.html'):
+            legacy.unlink()
+    print(output)
 
 
 if __name__ == '__main__':

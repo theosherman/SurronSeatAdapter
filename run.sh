@@ -10,6 +10,10 @@ fi
 
 cd "$project_dir"
 node prepare-wheel-scan.mjs
+rm -f -- exports/adapter-body{,-split-front,-split-rear,-pre-imprint,-M[0-9][0-9]}.{step,stl} \
+  exports/{butterfly-key-top,butterfly-key-cavity,latch}.{step,stl} \
+  exports/sherman-p-prepared/{body-original,body-scaled,front-handle,rear-handle,merged}.{step,stl} \
+  exports/preview.html exports/*.preview.html exports/SurronSeatAdapter.zip{,.tmp}
 "$python_bin" adapter.py "$@"
 "$python_bin" split_adapter.py "$@"
 "$python_bin" butterfly_keys.py "$@"
