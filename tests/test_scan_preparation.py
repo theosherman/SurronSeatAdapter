@@ -1,7 +1,7 @@
 """Verify approved whole-scan movement precedes world-Y slicing and body scale."""
 import unittest
 from build123d import Solid, Axis, Plane, Keep
-from prepare_sherman_p import prepare_parts
+from reference.wheel.prepare import align_scan, prepare_parts
 
 
 class ScanPreparationTests(unittest.TestCase):
@@ -36,7 +36,6 @@ class ScanPreparationTests(unittest.TestCase):
 
     def test_attached_line_meets_lower_outer_bottom(self):
         from build123d import Edge
-        from prepare_sherman_p import align_scan
         # Approved drawn line in YZ: z=-0.0577784327454574*y-11.047808379470325.
         line = Edge.make_line((0, -100, -5.269965104924585), (0, 100, -16.825651654016065))
         aligned = align_scan(line)
@@ -55,23 +54,3 @@ class ScanPreparationTests(unittest.TestCase):
         self.assertAlmostEqual(sum(parts[k].volume for k in ('front-handle', 'body-original', 'rear-handle')), scan.volume, places=5)
         self.assertTrue(parts['merged'].is_valid)
         self.assertEqual(len(parts['merged'].solids()), 1)
-
-    def test_screen_reconnection_preserves_scan_points_and_triangle_count(self):
-        import struct
-        from pathlib import Path
-        from coordinates import source_to_model
-        from scan_patch import repair_screen_patch
-        raw = bytearray((Path(__file__).resolve().parents[1]/'reference/fusion/Sherman_P_Scan_Aligned_To_Adapter_mm.stl').read_bytes())
-        for i in range(16000):
-            for j in range(4):
-                at = 84+i*50+j*12
-                struct.pack_into('<3f',raw,at,*source_to_model(struct.unpack_from('<3f',raw,at)))
-        repaired = repair_screen_patch(raw)
-        def vertices(data):
-            return {struct.unpack_from('<3f',data,84+i*50+j*12) for i in range(16000) for j in (1,2,3)}
-        self.assertEqual(len(repaired), len(raw))
-        self.assertEqual(vertices(repaired), vertices(raw))
-        self.assertEqual(len(vertices(repaired)), 7988)
-        self.assertNotEqual(repaired, raw)
-        with self.assertRaises(ValueError):
-            repair_screen_patch(b'not the approved scan')

@@ -147,7 +147,7 @@ minimum = (-105.889551633, -249.614913836, -71.769897461) mm
 maximum = ( 103.881040103,  243.801132307,  34.509460449) mm
 ```
 
-The transform was recovered from the Fusion component's local geometry and occurrence transform. [prepare-wheel-scan.mjs](../prepare-wheel-scan.mjs) reproduces it and its checks. Generate the aligned millimeter STL using the [scan setup](../README.md#run). The adapter imprint has zero added clearance.
+The transform was recovered from the Fusion component's local geometry and occurrence transform. [align-source.mjs](../reference/wheel/align-source.mjs) reproduces it during [explicit wheel preparation](../README.md#sherman-p-body-only-fit-preparation). Routine builds use the checked-in prepared body BREP. The adapter imprint has zero added clearance.
 
 ## Linked printing child
 

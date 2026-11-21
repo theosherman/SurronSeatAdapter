@@ -1,14 +1,14 @@
 """Verify that the asymmetric wheel cutter cannot trim new fillet surfaces."""
 import json
 from pathlib import Path
-from build123d import import_step, Face, Vector
+from build123d import import_brep, import_step, Face, Vector
 from OCP.BRepFilletAPI import BRepFilletAPI_MakeFillet
 from body_fillets import SPEC, require_mirrored_selection
 
 folder = Path(__file__).resolve().parent
 require_mirrored_selection(SPEC['edges'])
 body = import_step(folder/'exports/adapter-body-pre-imprint.step')
-cutter = import_step(folder/'exports/sherman-p-prepared/body-scaled.step')
+cutter = import_brep(folder/'reference/wheel/body-scaled.brep')
 edges = list(body.edges())
 selected = []
 for row in SPEC['edges']:

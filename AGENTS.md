@@ -18,6 +18,8 @@ Printing-face offsets are approved and implemented: faces 1 and 2 use a **1 mm o
 
 ## CAD context
 
+Use `./build.sh --preview` for routine master-body edits. Use `./build.sh` when the change needs the split halves, keys, or latch in the preview. The GitHub release build generates printable STLs.
+
 For user-visible proposal previews, use the automatic browser viewer: `python preview_server.py start --no-open` (omit `--no-open` when initially opening it). Write the final image under `tmp/` last so it becomes the newest image; the open browser at http://127.0.0.1:8766 updates automatically. Do not ask the user to hunt for image paths.
 
 Temporary correction proposals and discussion previews (images, STEP/STL studies, HTML viewers, and their scratch reports) belong under `tmp/` inside this repository, never in tracked exports or commits. Keep historical design illustrations under `docs/images/cad/`. The release build generates current part previews. The ignored `exports/` directory is for generated output. Preview generators must write proposal outputs to `tmp/` (not system `/tmp` and with no `exports` subdirectory); do not stage temporary assets. Historical proposal assets have been purged from Git history.
@@ -35,6 +37,7 @@ Preserve these user decisions:
 - Fillets: the November 15 request supersedes the earlier cancellation for Build123d only. Apply 1 mm fillets to practical adapter-body edges, excluding the running dovetail rail; its rear terminal edges may be rounded. The five connected edges at the body/dovetail junction (shoulders and trapezoidal root around Y=147.5–151.6 mm) and the three-edge side return on each side must remain sharp for latch clearance; this is distinct from the terminal end at Y=261 mm. Accessories remain unchanged. Symmetry is mandatory: each fillet must have the same mirrored fillet, or be removed on both sides. The screen walls extend to the tangent ramp. The finishing feature has 131 selected edges. Exclude mirrored pairs whose generated fillet faces touch the asymmetric wheel cutter. Validate actual pre-imprint symmetry with `validate_fillets.py`. See `body_fillets.py`.
 - Larger screwdriver-access recesses open downward and retain the small through-hole mounting ceilings. The exact front ceiling plane is recorded in `cad-rebuild/recipe.json` under M09.
 - The initial exclusion of reference-asset subtraction was later superseded by explicit authorization to subtract the aligned Sherman P wheel-top scan from the master. Do not substitute the old Veteran Sherman L reference asset.
+- Wheel and seat preparation live under `reference/` and run only by explicit request. Routine adapter builds and previews read the checked-in prepared references. Keep the original scans and commit regenerated references only when their preparation changes.
 - The final imprint has zero added clearance. Do not silently add a fit allowance.
 - Later reference-preparation request: Fusion must remain reference-only. The authoritative Sherman L v1 history verifies a uniform **1.003** fit scale on `Body` only, after splits at Y=190/-180 mm; both handles are excluded. See `reference/fusion/sherman-l-preparation-verified.json`. This supersedes the guessed 1.01 interpretation. The recent P import in Fusion is experimental, not the source for the original preparation procedure.
 

@@ -3,63 +3,15 @@ from pathlib import Path
 import argparse
 import json
 import time
-from build123d import Edge, Wire, Face, Solid, Plane, Vector, Keep, Compound, ShapeList, Mesher, export_step, import_step
+from build123d import Wire, Face, Solid, Plane, Vector, Keep, Compound, ShapeList, import_brep, export_step, import_step
 
-from coordinates import model_recipe, source_to_model, prepare_scan, ADAPTER_TRANSLATION_MM
-from prepare_sherman_p import prepare_parts, SEATING_DEPTH_MM
-from scan_patch import PATCH
+from adapter_profiles import RECIPE, SKETCHES, profiles
+from coordinates import source_to_model, ADAPTER_TRANSLATION_MM
+from reference.wheel import SEATING_DEPTH_MM, WHEEL_REFERENCE
 from export_mesh import export_stl_mm
 
 ROOT = Path(__file__).resolve().parent
-RECIPE = model_recipe(json.loads((ROOT / 'cad-rebuild/recipe.json').read_text()))
-SKETCHES = {s['name']: s for s in RECIPE['sketches']}
 HISTORY = []
-
-
-def profiles(index, with_source=False, sherman_p_bottom=False, seat_shoulders=False, manufacturing_offsets=False):
-    """Make exact selected faces in global coordinates, preserving sketch-space Z."""
-    selected = next(p for p in RECIPE['selectedProfiles'] if p['sourceTimelineIndex'] == index)
-    result = []
-    for source in selected['profiles']:
-        s = SKETCHES[source['sketch']]
-        origin, x, y = map(Vector, (s['originMm'], s['xAxis'], s['yAxis']))
-        n = x.cross(y)
-        def point(p):
-            return origin + x*p[0] + y*p[1] + n*(p[2] if len(p)>2 else 0)
-        loops = []
-        for loop in source['loops']:
-            edges = []
-            curves = loop['curves']
-            if manufacturing_offsets and index in (14, 86):
-                from cut_offsets import offset_cut_curves
-                curves = offset_cut_curves(index, curves)
-            if sherman_p_bottom:
-                if index != 9:
-                    raise ValueError('Sherman P bottom adaptation is only for BottomSketch')
-                from bottom_outline import sherman_p_curves
-                curves = sherman_p_curves(curves)
-            if seat_shoulders:
-                if index != 79:
-                    raise ValueError('Seat shoulder continuation is only for SeatHangerSketch')
-                from seat_shoulders import continued_shoulder_curves
-                curves = continued_shoulder_curves(curves)
-            for c in curves:
-                if c['type'] == 'Line3D':
-                    edges.append(Edge.make_line(point(c['startMm']), point(c['endMm'])))
-                elif c['type'] == 'Arc3D':
-                    edges.append(Edge.make_three_point_arc(point(c['startMm']), point(c['midMm']), point(c['endMm'])))
-                elif c['type'] == 'Circle3D':
-                    edges.append(Edge.make_circle(c['radiusMm'], Plane(point(c['centerMm']), x_dir=x, z_dir=n)))
-                else:
-                    raise ValueError(c['type'])
-            wire = Wire(edges)
-            assert wire.is_closed, (index, 'open wire')
-            loops.append((loop['outer'], wire))
-        outer = [w for is_outer,w in loops if is_outer]
-        assert len(outer) == 1
-        face = Face(outer[0], [w for is_outer,w in loops if not is_outer])
-        result.append((face, source) if with_source else face)
-    return result
 
 
 def tool(index, depth, direction=None, offset=0, symmetric=False, taper=0):
@@ -143,13 +95,22 @@ def build_master(stop=None, imprint=True, airtag_depth=8.5):
     if stop=='M20' or not imprint: return body
     from body_fillets import fillet_body
     body = stage('M20-body-fillets', fillet_body(body))
-    print('Preparing Sherman P: align whole scan before slices; handles excluded; body scale 1.003', flush=True)
-    scan_path = prepare_scan(ROOT/'reference/fusion/Sherman_P_Scan_Aligned_To_Adapter_mm.stl', ROOT/'inputs/wheel-scan-model-frame.stl')
-    scan = Mesher().read(scan_path)
-    assert len(scan)==1 and scan[0].is_valid and len(scan[0].solids())==1
-    assert abs(scan[0].volume-PATCH['repairedSignedVolumeMm3'])<0.1
-    parts = prepare_parts(scan[0], reunite=False)
-    return stage('M21',body.cut(parts['body-scaled']))
+    cutter = import_brep(WHEEL_REFERENCE / 'body-scaled.brep')
+    return stage('M21', body.cut(cutter))
+
+
+def export_master(output, *, stl=False, stop=None, imprint=True):
+    start = time.monotonic()
+    body = build_master(stop=stop, imprint=imprint)
+    output.mkdir(exist_ok=True)
+    stem = 'adapter-body' if not stop and imprint else 'adapter-body-'+(stop or 'pre-imprint')
+    step = output / (stem + '.step')
+    if not export_step(body, step):
+        raise ValueError(f'STEP export failed: {step}')
+    if stl:
+        export_stl_mm(import_step(step), step.with_suffix('.stl'))
+    (Path(__file__).parent/'logs/build-validation.json').write_text(json.dumps(dict(coordinateFrame="source (x,y,z) -> model (-x,-y,z); physical front is negative Y; Z up",adapterTranslationMm=ADAPTER_TRANSLATION_MM,seatingDepthMm=SEATING_DEPTH_MM,elapsedSeconds=time.monotonic()-start,stages=HISTORY),indent=2)+'\n')
+    return step, body
 
 
 def main():
@@ -158,15 +119,8 @@ def main():
     parser.add_argument('--stop',choices=['M01','M05','M06','M09','M20'])
     parser.add_argument('--stl', action='store_true', help='Also export the printable STL')
     args = parser.parse_args()
-    start = time.monotonic()
-    body = build_master(stop=args.stop,imprint=not args.no_imprint)
-    output = Path(__file__).parent/'exports'
-    output.mkdir(exist_ok=True)
-    stem = 'adapter-body' if not args.stop and not args.no_imprint else 'adapter-body-'+(args.stop or 'pre-imprint')
-    export_step(body,output/(stem+'.step'))
-    if args.stl:
-        export_stl_mm(import_step(output/(stem+'.step')), output/(stem+'.stl'))
-    (Path(__file__).parent/'logs/build-validation.json').write_text(json.dumps(dict(coordinateFrame="source (x,y,z) -> model (-x,-y,z); physical front is negative Y; Z up",adapterTranslationMm=ADAPTER_TRANSLATION_MM,seatingDepthMm=SEATING_DEPTH_MM,elapsedSeconds=time.monotonic()-start,stages=HISTORY),indent=2)+'\n')
+    export_master(ROOT / 'exports', stl=args.stl, stop=args.stop, imprint=not args.no_imprint)
+
 
 if __name__=='__main__':
     main()
