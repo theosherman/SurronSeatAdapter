@@ -1,13 +1,13 @@
 """Approved native front reconstruction in the permanently placed model frame.
 
-Raise the analytic clip and join its outer circle to the screen opening
-with a tangent ramp. Trim the main underside to retain the imprint depth.
+Keep the screen and rearward underside, raise the analytic clip, and join
+its outer circle to the screen opening with a tangent ramp.
 """
 from math import acos, atan2, cos, hypot, pi, sin, sqrt
 
 from build123d import Edge, Face, Wire, Solid, Plane, Keep, GeomType, Compound, ShapeList
 
-from prepare_sherman_p import SEATING_DEPTH_MM, SEAT_LOWERING_MM
+from prepare_sherman_p import SEATING_DEPTH_MM
 
 ORIGINAL_CLIP_RISE_MM = 18.052632063736358
 CLIP_RISE_MM = ORIGINAL_CLIP_RISE_MM + SEATING_DEPTH_MM
@@ -19,25 +19,6 @@ def prism_yz(points, width=200):
     return Solid.extrude(face,(width,0,0))
 
 
-def main_underside(body):
-    return next(f for f in body.faces() if f.geom_type == GeomType.PLANE
-                and f.area > 10000 and f.normal_at().Z < -.99
-                and abs(f.normal_at().Y + .118) < .002)
-
-
-def trim_main_underside(body):
-    underside = main_underside(body)
-    front_y = underside.bounding_box().min.Y
-    rear_y = body.bounding_box().max.Y + 1
-    datum, normal = underside.center(), underside.normal_at()
-    slope = -normal.Y / normal.Z
-    front_z = datum.Z + slope * (front_y - datum.Y) + SEAT_LOWERING_MM
-    rear_z = front_z + slope * (rear_y - front_y)
-    floor = body.bounding_box().min.Z - 1
-    return body.cut(prism_yz([(front_y, front_z), (rear_y, rear_z),
-                             (rear_y, floor), (front_y, floor)]))
-
-
 def redesign_front(body):
     planes=[f for f in body.faces() if f.geom_type==GeomType.PLANE]
     from bottom_outline import SCREEN_EXTENSION_MM
@@ -45,7 +26,8 @@ def redesign_front(body):
               and .81<f.normal_at().Y<.83 and .57<f.normal_at().Z<.58)
     top=next(f for f in planes if f.area>4000 and -200<f.center().Y<-175
              and f.normal_at().Z>.99)
-    bottom=main_underside(body)
+    bottom=next(f for f in planes if f.area>10000
+                and f.normal_at().Z<-.99 and abs(f.normal_at().Y+.118)<.002)
     def line(face):
         p,n=face.center(),face.normal_at()
         slope=-n.Y/n.Z
@@ -71,7 +53,7 @@ def redesign_front(body):
         raise ValueError('Screen extension leaves no room for the clip root gusset')
     clip_section=clip.intersect(Plane((0,root_end,0),z_dir=(0,1,0)))
     lower=min(v.center().Z for v in clip_section.vertices())
-    gusset=prism_yz([(lift_join,sb*lift_join+bb+SEAT_LOWERING_MM),(root_end,lower),
+    gusset=prism_yz([(lift_join,sb*lift_join+bb),(root_end,lower),
                      (root_end,st*root_end+bt+CLIP_RISE_MM),
                      (lift_join,st*lift_join+bt+CLIP_RISE_MM)]).intersect(footprint)
     # Derive the new ramp from its original lower edge and the outer clip circle.
@@ -80,7 +62,7 @@ def redesign_front(body):
                  if edge.geom_type == GeomType.CIRCLE and edge.arc_center.Y < -210),
                 key=lambda edge: edge.radius)
     center, radius = outer.arc_center, outer.radius
-    start_z = sr*start+br+SEAT_LOWERING_MM
+    start_z = sr*start+br
     dy, dz = start-center.Y, start_z-center.Z
     angle = atan2(dz, dy) + acos(radius / hypot(dy, dz))
 

@@ -8,7 +8,7 @@ class ScanPreparationTests(unittest.TestCase):
     def test_alignment_precedes_slices_and_only_middle_scales(self):
         scan = Solid.make_box(20, 500, 40).translate((-10, -250, -20))
         # Independent reference: rigid motion of the complete scan, before clipping.
-        reference = scan.rotate(Axis.X, -3.4932161177016057).translate((0, 0, 26.464786838041892))
+        reference = scan.rotate(Axis.X, -3.4932161177016057).translate((0, 0, 11.464786838041892))
         parts = prepare_parts(scan)
         front, body, rear = [parts[k] for k in ('front-handle', 'body-original', 'rear-handle')]
         regions = [front, body, rear]
@@ -25,7 +25,7 @@ class ScanPreparationTests(unittest.TestCase):
         self.assertAlmostEqual(scaled.volume, body.volume * 1.003**3, places=5)
         self.assertAlmostEqual(scaled.bounding_box().min.Y, -191*1.003, places=6)
         self.assertAlmostEqual(scaled.bounding_box().max.Y, 170*1.003, places=6)
-        expected_scaled = body.translate((0, 0, -23)).scale(1.003, about=(0,0,0)).translate((0, 0, 23))
+        expected_scaled = body.translate((0, 0, -8)).scale(1.003, about=(0,0,0)).translate((0, 0, 8))
         self.assertLess(abs(scaled.cut(expected_scaled).volume), 1e-6)
         self.assertLess(abs(expected_scaled.cut(scaled).volume), 1e-6)
         merged = parts['merged']
@@ -41,7 +41,7 @@ class ScanPreparationTests(unittest.TestCase):
         line = Edge.make_line((0, -100, -5.269965104924585), (0, 100, -16.825651654016065))
         aligned = align_scan(line)
         for v in aligned.vertices():
-            self.assertAlmostEqual(v.Z, -0.11924278067999218*v.Y+15.357237157925979, places=8)
+            self.assertAlmostEqual(v.Z, -0.11924278067999218*v.Y+0.357237157925979, places=8)
 
     def test_disconnected_slice_fragments_are_preserved(self):
         # A connected scan may have several disconnected solids on one side of a cut.

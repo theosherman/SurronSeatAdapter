@@ -10,9 +10,8 @@ ROOT = Path(__file__).resolve().parent
 FRONT_Y = -191.0
 REAR_Y = 170.0
 BODY_SCALE = 1.003
-SEAT_LOWERING_MM = 15.0  # Relative to the printed 8 mm deeper-seating revision.
-SEATING_DEPTH_MM = 8.0 + SEAT_LOWERING_MM
-# Translate the fit-scale pivot with the wheel to preserve the exact rise.
+SEATING_DEPTH_MM = 8.0
+# Translate the fit-scale pivot with the wheel so the final cutter rises exactly 8 mm.
 SCALE_ORIGIN = (0, 0, SEATING_DEPTH_MM)
 # Approved lower-outer-bottom alignment, in the permanent Build123d frame.
 ALIGNMENT_ANGLE_DEG = -3.4932161177016057

@@ -2,11 +2,7 @@
 from pathlib import Path
 import json
 import argparse
-from build123d import import_step,Vector,GeomType
-from OCP.IntCurvesFace import IntCurvesFace_ShapeIntersector
-from OCP.IntCurveSurface import IntCurveSurface_In, IntCurveSurface_Out
-from OCP.gp import gp_Dir, gp_Lin, gp_Pnt
-
+from build123d import import_step,Vector,Axis,GeomType
 from adapter import SKETCHES
 from coordinates import ADAPTER_TRANSLATION_MM
 from trunk_cavity import rear_cavity_profile,rear_side_tools,CAVITY_ROOF_OFFSET_MM,REAR_WALL_POINT_MM,REAR_WALL_NORMAL,REAR_WALL_THICKNESS_MM,REAR_TIP_POINT_MM,REAR_TIP_NORMAL,REAR_TIP_WALL_THICKNESS_MM,rear_cavity_tool
@@ -22,23 +18,16 @@ x,y=map(Vector,(sketch['xAxis'],sketch['yAxis']))
 origin=Vector(sketch['originMm'])+Vector(ADAPTER_TRANSLATION_MM)-n*CAVITY_ROOF_OFFSET_MM
 profile=rear_cavity_profile(sketch).translate(Vector(ADAPTER_TRANSLATION_MM)-n*CAVITY_ROOF_OFFSET_MM)
 samples=[]
-intersector=IntCurvesFace_ShapeIntersector()
-intersector.Load(body.wrapped,1e-6)
-direction=gp_Dir(*n)
 for v in range(-164,105,2):
     for u in range(-47,48,2):
         p=origin+x*u+y*v
         if not profile.is_inside(p):continue
-        # Start at the original cavity roof and measure only where the ray
-        # still enters material there after the underside and wheel cuts.
-        intersector.Perform(gp_Lin(gp_Pnt(*p),direction),-.05,200)
-        hits=[(intersector.WParameter(i),intersector.Transition(i))
-              for i in range(1,intersector.NbPnt()+1)]
-        if not any(abs(t)<.001 and transition==IntCurveSurface_In for t,transition in hits):
-            continue
-        thickness=[t for t,transition in hits if t>.001 and transition==IntCurveSurface_Out]
-        if thickness:samples.append(min(thickness))
-assert len(samples)>=1800,len(samples)
+        # Sample interior of the newly exposed roof; points outside body or on
+        # existing openings are counted separately, not assigned a thickness.
+        if not body.is_inside(p+n*.05) or body.is_inside(p-n*.05):continue
+        distances=[(point-p).dot(n) for point,_ in body.find_intersection_points(Axis(p,n)) if (point-p).dot(n)>1e-3]
+        if distances:samples.append(min(distances))
+assert len(samples)>2000
 minimum=min(samples)
 assert minimum>=9.999,minimum
 for tool in rear_side_tools():
@@ -64,12 +53,8 @@ cavity=rear_cavity_tool(sketch).translate(ADAPTER_TRANSLATION_MM)
 cut_faces=[f for f in body.faces() if f.geom_type==GeomType.PLANE
            and f.normal_at().dot(tip_normal)>.999999]
 distances=[f.distance_to(cavity) for f in cut_faces]
-# The 15 mm underside cut can remove the outer tip face. Check the original
-# cavity limit even where its matching exterior face has been trimmed away.
-maximum=max((v.center()-Vector(REAR_TIP_POINT_MM)).dot(tip_normal) for v in cavity.vertices())
-assert maximum<=-REAR_TIP_WALL_THICKNESS_MM+1e-5,maximum
-assert not distances or min(distances)>=REAR_TIP_WALL_THICKNESS_MM-1e-5,distances
-report['lowerTipWallMinimumDistanceMm']=min(distances,default=None)
+assert distances and min(distances)>=REAR_TIP_WALL_THICKNESS_MM-1e-5,distances
+report['lowerTipWallMinimumDistanceMm']=min(distances)
 report['lowerTipPointMm']=REAR_TIP_POINT_MM
 report['lowerTipNormal']=REAR_TIP_NORMAL
 approved=args.approved_step
