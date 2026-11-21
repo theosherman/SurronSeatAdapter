@@ -52,6 +52,15 @@ Set `BUILD123D_PYTHON` to use a different environment. Installed here with Pytho
 
 Python callers can use `build_master(airtag_depth=8.5)` to regenerate the part with an editable AirTag pocket depth. Other dimensions remain in the recipe and named operations. Checkpoint builds update the validation log; rerun the full build to restore the final log.
 
+## Luna Surron seat reference
+
+The [original seat scan](reference/seat/LunaSurronSeat_30k.stl) and the
+[stud-corrected mesh](reference/seat/LunaSurronSeat_Studs_5p3x15.stl) share the
+original scan coordinates. The corrected mesh uses four smooth Ø5.3 mm studs
+with 15 mm exposed length from the surrounding plastic mounting faces. Each
+axis and base location is fitted from the scan. The seat meshes are reference
+assets for checking fit.
+
 ## View STLs in T3 Code
 
 Open the matching `*.preview.html` file in the Files panel. Drag to rotate and
