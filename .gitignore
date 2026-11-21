@@ -15,7 +15,8 @@ __pycache__/
 *.pyc
 .venv/
 
-# Keep the original wheel scan as a build input.
+# Track the original wheel and seat reference meshes.
 *.stl
 !/reference/fusion/Sherman_P_Flush_Screen_Fusion_Default.stl
+!/reference/seat/LunaSurronSeat_30k.stl
 /inputs/wheel-scan-model-frame.json
