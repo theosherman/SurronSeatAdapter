@@ -40,26 +40,25 @@ Keep reference meshes for the preview alongside the project inputs or in `export
 The [historical Bambu Studio project](reference/slicer/adapter-body.3mf)
 preserves the earlier slicer settings and geometry.
 
-Dependencies live outside this Git repository:
+The launcher uses shared Python 3.14. It looks for `python3.14` on
+`PATH`, then checks `/opt/az/bin/python3.14`. Set `BUILD123D_PYTHON`
+to choose a different executable.
 
 ```bash
-# Existing environment on this machine:
-./run.sh
-
-# Recreate on another machine (use a Python version supported by the pinned wheels):
-python -m venv ~/.local/share/venvs/surron-build123d
-~/.local/share/venvs/surron-build123d/bin/pip install -r requirements.lock.txt
+# Install dependencies once for your Python 3.14 user account.
+python3.14 -m pip install --user -r requirements.lock.txt
 ./run.sh
 ```
+
+Use `/opt/az/bin/python3.14` in place of `python3.14` if it is outside
+`PATH`. Worktrees share the user-site dependencies.
 
 To rebuild the split halves or latch individually, run:
 
 ```bash
-~/.local/share/venvs/surron-build123d/bin/python split_adapter.py
-~/.local/share/venvs/surron-build123d/bin/python latch.py
+python3.14 split_adapter.py
+python3.14 latch.py
 ```
-
-Set `BUILD123D_PYTHON` to use a different environment. Installed here with Python 3.14.7, build123d 0.13.0, and OCCT bindings 8.0.1.1.0. No system Python packages were modified. `requirements.txt` pins the main library; `requirements.lock.txt` records the complete environment.
 
 `adapter.py` is the editable CAD source. It reads `cad-rebuild/recipe.json` and `reference/fusion/Sherman_P_Scan_Aligned_To_Adapter_mm.stl` directly. All coordinates are millimeters. Build123d uses a permanent corrected frame: physical front is negative Y and Z is up. `coordinates.py` maps source global points and vectors to `(-x,-y,z)` before making any geometry; sketch-local coordinates and dimensions stay unchanged. Explicit extrusion directions, stopping/draft planes, and wedge vertices use this same frame. The scan vertices and normals are converted into `inputs/wheel-scan-model-frame.stl` before BREP import. No completed body is rotated. The authoritative shared recipe and original aligned scan retain their historical coordinates.
 
@@ -69,6 +68,15 @@ Set `BUILD123D_PYTHON` to use a different environment. Installed here with Pytho
 ```
 
 Python callers can use `build_master(airtag_depth=8.5)` to regenerate the part with an editable AirTag pocket depth. Other dimensions remain in the recipe and named operations. Checkpoint builds update the validation log; rerun the full build to restore the final log.
+
+## Luna Surron seat reference
+
+The [original seat scan](reference/seat/LunaSurronSeat_30k.stl) and the
+[stud-corrected mesh](reference/seat/LunaSurronSeat_Studs_5p3x15.stl) share the
+original scan coordinates. The corrected mesh uses four smooth Ø5.3 mm studs
+with 15 mm exposed length from the surrounding plastic mounting faces. Each
+axis and base location is fitted from the scan. The seat meshes are reference
+assets for checking fit.
 
 ## View CAD in T3 Code
 
@@ -92,13 +100,13 @@ write `preview.html` beside the first input. Use the STEP keys to show them
 seated in the adapter.
 Refreshing the default preview removes legacy per-part HTML files from `exports/`.
 
-The top **EUC** checkbox toggles the prepared Sherman P overlay for either variant.
+The top **EUC** and **Seat** checkboxes toggle the prepared Sherman P and
+Luna Surron seat overlays for either adapter variant. Both start hidden.
 The default local build embeds the wheel mesh in `preview.html` and deletes the
 intermediate STL. To include the EUC when refreshing just the HTML, first run
 `python prepare_sherman_p.py --preview-only` to recreate that mesh.
-To include a **Surron Seat** overlay, use a binary `surron-seat.stl` positioned
-in the adapter's model frame. The default build checks `exports/` and
-`reference/fusion/` for that file. Both overlays start hidden.
+The preview places the corrected seat scan with a rigid fit from its four
+stud bases to the adapter hole mouths. The scan's original dimensions are preserved.
 
 ## Automatic preview browser
 
@@ -133,11 +141,11 @@ Generate the prepared wheel exports before running the geometry tests. Use
 `./run.sh --stl` before running the STL validators.
 
 ```bash
-~/.local/share/venvs/surron-build123d/bin/python prepare_sherman_p.py
+python3.14 prepare_sherman_p.py
 XDG_CACHE_HOME=/tmp/surron-build123d-cache \
-  ~/.local/share/venvs/surron-build123d/bin/python -m unittest discover -s tests
+  python3.14 -m unittest discover -s tests
 XDG_CACHE_HOME=/tmp/surron-build123d-cache \
-  ~/.local/share/venvs/surron-build123d/bin/python validate_exports.py
+  python3.14 validate_exports.py
 node validate-mounting-ceilings.mjs
 ```
 
@@ -289,7 +297,7 @@ its position relative to the translated sloped adapter has changed slightly.
 The separately prepared Sherman P uses approved vertical planes at **Y=-191 mm** (front) and **Y=+170 mm** (rear), in the corrected build123d frame. Run:
 
 ```bash
-~/.local/share/venvs/surron-build123d/bin/python prepare_sherman_p.py
+python3.14 prepare_sherman_p.py
 ```
 
 Before slicing, the complete scan (including both handles) rotates **-3.4932161177016057° about model +X**, around `(0,0,0)`, then translates **+3.464786838041892 mm in Z**. This is the approved lower-outer-bottom alignment: clockwise in the front-left side view. The user-drawn top reference line aligns with the adapter’s lower outer bottom plane, not its cavity roof. The original source scan remains unchanged.
@@ -324,7 +332,7 @@ The latch is never fused into the adapter. No fillets or saddlebag mount are add
 
 ```bash
 XDG_CACHE_HOME=/tmp/surron-build123d-cache \
-  ~/.local/share/venvs/surron-build123d/bin/python latch.py
+  python3.14 latch.py
 ```
 
 This produces `exports/latch.step`, `exports/latch.stl` and

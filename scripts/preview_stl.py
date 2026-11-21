@@ -11,6 +11,21 @@ import numpy as np
 
 TRIANGLE = np.dtype([('normal', '<f4', (3,)), ('vertices', '<f4', (3, 3)), ('attribute', '<u2')])
 TEMPLATE = Path(__file__).with_name('stl_preview.html')
+SEAT_SCAN = Path(__file__).resolve().parents[1] / 'reference/seat/LunaSurronSeat_Studs_5p3x15.stl'
+# Stud bases in scan coordinates, matched to the rear and front hole mouths
+# on the placed adapter. Each pair is ordered by increasing model X.
+SEAT_STUD_BASES = np.array([
+    [24.70667, 15.33698, 475.16435],
+    [14.98497, 42.77187, 469.04293],
+    [266.48427, 98.95719, 505.11411],
+    [250.87502, 141.84964, 494.85075],
+])
+ADAPTER_HOLE_MOUTHS = np.array([
+    [-14.5, 178.99538, 81.07012],
+    [14.5, 178.99538, 81.07012],
+    [-23, -76.74852, 44.00181],
+    [23, -76.74852, 44.00181],
+])
 PARTS = {
     'adapter-body-split-front': ('Split front', '#5ea5e7'),
     'adapter-body-split-rear': ('Split rear', '#efa55b'),
@@ -19,7 +34,7 @@ PARTS = {
     'latch': ('Latch', '#c0a5eb'),
     'adapter-body': ('Full adapter', '#4abdc7'),
     'merged': ('EUC', '#788698'),
-    'surron-seat': ('Surron Seat', '#a69680'),
+    'surron-seat': ('Seat', '#a69680'),
 }
 SPLIT_PARTS = {'adapter-body-split-front', 'adapter-body-split-rear',
                'butterfly-key-top', 'butterfly-key-cavity'}
@@ -101,6 +116,16 @@ def planar_labels(shape, stem):
     return labels
 
 
+def place_seat(vertices):
+    """Fit the four stud bases with a proper rotation and translation."""
+    source_center = SEAT_STUD_BASES.mean(axis=0)
+    target_center = ADAPTER_HOLE_MOUTHS.mean(axis=0)
+    covariance = (SEAT_STUD_BASES - source_center).T @ (ADAPTER_HOLE_MOUTHS - target_center)
+    left, _, right = np.linalg.svd(covariance)
+    left[:, -1] *= np.linalg.det(left @ right)
+    return (vertices - source_center) @ (left @ right) + target_center
+
+
 def read_mesh(path):
     step = path.with_suffix('.step')
     if path.suffix.lower() == '.step' or (
@@ -121,6 +146,8 @@ def read_mesh(path):
         raise ValueError(f'{path} is not a nonempty binary STL')
     coordinates = np.frombuffer(raw, dtype=TRIANGLE, offset=84)['vertices'].reshape(-1, 3)
     vertices, indices = np.unique(coordinates, axis=0, return_inverse=True)
+    if path.name == SEAT_SCAN.name:
+        vertices = place_seat(vertices)
     return vertices, indices, []
 
 
@@ -139,10 +166,10 @@ def write_preview(paths, output):
         raise ValueError('Preview meshes have invalid bounds')
 
     controls = []
-    euc_control = ''
+    reference_controls = []
     payloads = []
     for index, (path, (vertices, indices, _)) in enumerate(zip(paths, meshes, strict=True)):
-        stem = path.stem
+        stem = 'surron-seat' if path.name == SEAT_SCAN.name else path.stem
         name, color = PARTS.get(stem, (stem, '#4abdc7'))
         checked = '' if stem in REFERENCES else ' checked'
         variant = 'split' if stem in SPLIT_PARTS else 'adapter'
@@ -151,8 +178,8 @@ def write_preview(paths, output):
         control = (f'<label data-variant="{variant}">'
                    f'<input type="checkbox" data-mesh="{index}" data-color="{color}"{checked}>'
                    f'{escape(name)}</label>')
-        if stem == 'merged' and not euc_control:
-            euc_control = control
+        if stem in REFERENCES:
+            reference_controls.append(control)
         else:
             controls.append(control)
         packed = pack('<I', len(vertices)) + ((vertices - center) / radius).astype('<f4').tobytes()
@@ -171,7 +198,7 @@ def write_preview(paths, output):
                            normal=normal, face=True) for name, point, normal in faces)
 
     output.write_text(TEMPLATE.read_text().replace('__CONTROLS__', '\n'.join(controls))
-                      .replace('__EUC__', euc_control)
+                      .replace('__REFERENCES__', '\n'.join(reference_controls))
                       .replace('__FEATURE_LABELS__', dumps(labels))
                       .replace('__MESHES__', '\n'.join(payloads)), encoding='utf-8')
     return output
@@ -191,7 +218,7 @@ def main():
         euc = exports / 'sherman-p-prepared' / 'merged.stl'
         if euc.is_file():
             parts.append(euc)
-        for seat in (exports / 'surron-seat.stl', Path('reference/fusion/surron-seat.stl')):
+        for seat in (SEAT_SCAN, exports / 'surron-seat.stl', Path('reference/fusion/surron-seat.stl')):
             if seat.is_file() and seat.stem not in {part.stem for part in parts}:
                 parts.append(seat)
                 break
