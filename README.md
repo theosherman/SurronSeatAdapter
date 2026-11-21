@@ -54,14 +54,16 @@ Python callers can use `build_master(airtag_depth=8.5)` to regenerate the part w
 
 ## View STLs in T3 Code
 
-Open the matching `*.preview.html` file in the Files panel. Drag to rotate and
-scroll or use the buttons to zoom. The HTML embeds the STL geometry and runs
-offline. The desktop or web viewer needs WebGL 2.
+Open `exports/preview.html` in the Files panel. Use the checkboxes to show or
+hide parts in a shared view. The split adapter, keys, and latch are visible
+by default. Drag to rotate and scroll or use the buttons to zoom. The viewer
+runs offline and needs WebGL 2.
 
-The release build writes HTML previews beside the STLs in `exports/`.
-To preview existing binary STLs, including parts extracted from the ZIP, run
+The release build generates this file. To preview existing binary STLs, run
 `python -m scripts.preview_stl` from the repo root. Pass STL paths to select
-specific files.
+specific files and write `preview.html` beside the first STL. For the seated
+positions of the butterfly keys, keep their matching STEP files beside the
+print-oriented STLs.
 
 ## Automatic preview browser
 
