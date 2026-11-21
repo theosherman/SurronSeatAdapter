@@ -15,8 +15,8 @@ keeps previous print files available.
 
 ## Run
 
-Run `./run.sh` to build the STEP parts and the offline preview in the ignored
-`exports/` directory. Use `./run.sh --stl` to also generate printable STLs,
+Run `./build.sh` to build the STEP parts and the offline preview in the ignored
+`exports/` directory. Use `./build.sh --stl` to also generate printable STLs,
 or `scripts/build-release.sh` to validate and package a release ZIP.
 A full build clears prior generated exports, including any old release ZIP.
 The master and preview read the checked-in references under `reference/`.
@@ -31,7 +31,7 @@ to choose a different executable.
 ```bash
 # Install dependencies once for your Python 3.14 user account.
 python3.14 -m pip install --user -r requirements.lock.txt
-./run.sh
+./build.sh
 ```
 
 Use `/opt/az/bin/python3.14` in place of `python3.14` if it is outside
@@ -53,8 +53,8 @@ coordinates and dimensions stay unchanged. The prepared wheel is already in
 the corrected frame.
 
 ```bash
-./run.sh --no-imprint  # analytic body before scan subtraction
-./run.sh --stop M05   # base checkpoint (also M01, M06, M09, M20)
+./build.sh --no-imprint  # analytic body before scan subtraction
+./build.sh --stop M05   # base checkpoint (also M01, M06, M09, M20)
 ```
 
 Python callers can use `build_master(airtag_depth=8.5)` to regenerate the part with an editable AirTag pocket depth. Other dimensions remain in the recipe and named operations. Checkpoint builds update the validation log; rerun the full build to restore the final log.
@@ -127,7 +127,7 @@ The Python build scripts contain the parametric feature history. STEP provides e
 
 ## Verification
 
-Use `./run.sh --stl` before running the STL validators.
+Use `./build.sh --stl` before running the STL validators.
 
 ```bash
 XDG_CACHE_HOME=/tmp/surron-build123d-cache \

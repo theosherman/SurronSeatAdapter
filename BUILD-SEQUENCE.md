@@ -11,7 +11,7 @@ STEP files under `step/`, and three PNG views per part under `previews/`.
 The manual build steps are:
 
 1. [Set up the environment and prepare the wheel scan](README.md#run).
-2. Run `./run.sh` to build the unsplit master, including the finishing fillets and zero-added-clearance Sherman P imprint.
+2. Run `./build.sh` to build the unsplit master, including the finishing fillets and zero-added-clearance Sherman P imprint.
 3. Run `split_adapter.py` with the same Python environment to create the two printing halves and their three 10 mm connector recesses.
 4. Run `latch.py` to export the separate latch. The [saddlebag mount recipe](docs/ACCESSORY-PARTS.md) remains available as a Fusion reference.
 5. Run `butterfly_keys.py` to export the two connector keys.
