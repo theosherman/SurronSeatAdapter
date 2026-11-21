@@ -58,6 +58,8 @@ Open `exports/preview.html` in the Files panel. Switch between **Adapter** and
 **Adapter Split** and use the checkboxes to show or hide parts. Drag to rotate,
 right-drag to pan, and scroll or use the buttons to zoom. The viewer runs
 offline and needs WebGL 2.
+On a touchscreen, drag with one finger to rotate, drag with two fingers to
+pan, and pinch to zoom.
 
 The release build generates this file. To preview existing binary STLs, run
 `python -m scripts.preview_stl` from the repo root. Pass STL paths to select

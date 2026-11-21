@@ -26,7 +26,7 @@ canvas:active { cursor: grabbing; }
 <button id="split-tab" data-variant="split" aria-selected="false" aria-controls="parts" tabindex="-1" role="tab">Adapter Split</button>
 </div>
 <div id="parts" role="tabpanel" aria-labelledby="adapter-tab">__CONTROLS__</div>
-<canvas tabindex="0" aria-label="Interactive STL preview. Right-drag to pan. Arrow keys rotate and plus or minus zoom."></canvas>
+<canvas tabindex="0" aria-label="Interactive STL preview. Pinch to zoom and drag with two fingers to pan. Right-drag to pan with a mouse. Arrow keys rotate and plus or minus zoom."></canvas>
 __MESHES__
 <script>
 async function start() {
@@ -127,8 +127,11 @@ async function start() {
         pitch = Math.max(-maxPitch, Math.min(maxPitch, pitch + y * .009));
         draw();
     }
+    function boundedZoom(value) {
+        return Math.min(8, Math.max(.25, value));
+    }
     function magnify(factor) {
-        zoom = Math.min(8, Math.max(.25, zoom * factor));
+        zoom = boundedZoom(zoom * factor);
         draw();
     }
     function reset() {
@@ -158,27 +161,51 @@ async function start() {
             selectTab(tabs[1 - index]);
         };
     }
-    let pointer = null;
+    const pointers = new Map();
     canvas.oncontextmenu = event => event.preventDefault();
     canvas.onpointerdown = event => {
-        if (pointer !== null || (event.button !== 0 && event.button !== 2)) return;
-        pointer = {id: event.pointerId, x: event.clientX, y: event.clientY, pan: event.button === 2};
+        if (event.button !== 0 && event.button !== 2) return;
+        const touch = event.pointerType === 'touch';
+        const active = pointers.values().next().value;
+        if (pointers.size >= 2 || (active && (!touch || !active.touch))) return;
+        pointers.set(event.pointerId, {x: event.clientX, y: event.clientY, touch, pan: event.button === 2});
         canvas.setPointerCapture(event.pointerId);
     };
     canvas.onpointermove = event => {
-        if (pointer?.id !== event.pointerId) return;
-        const x = event.clientX - pointer.x, y = event.clientY - pointer.y;
-        if (pointer.pan) {
-            panX += x;
-            panY += y;
-            draw();
+        const pointer = pointers.get(event.pointerId);
+        if (!pointer) return;
+        const x = event.clientX, y = event.clientY;
+        const {x: previousX, y: previousY} = pointer;
+        const dx = x - previousX, dy = y - previousY;
+        pointer.x = x;
+        pointer.y = y;
+        if (pointers.size === 2) {
+            const [first, second] = pointers.values();
+            const other = first === pointer ? second : first;
+            const before = Math.max(1, Math.hypot(previousX - other.x, previousY - other.y));
+            const after = Math.max(1, Math.hypot(x - other.x, y - other.y));
+            const nextZoom = boundedZoom(zoom * after / before);
+            const scaleChange = nextZoom / zoom - 1;
+            const bounds = canvas.getBoundingClientRect();
+            // Scale about the previous finger midpoint, then follow its movement.
+            const anchorX = (previousX + other.x) / 2 - bounds.left - canvas.clientWidth / 2;
+            const anchorY = (previousY + other.y) / 2 - bounds.top - canvas.clientHeight / 2;
+            panX += (panX - anchorX) * scaleChange + dx / 2;
+            panY += (panY - anchorY) * scaleChange + dy / 2;
+            zoom = nextZoom;
+        } else if (pointer.pan) {
+            panX += dx;
+            panY += dy;
         } else {
-            rotate(x, y);
+            rotate(dx, dy);
+            return;
         }
-        pointer.x = event.clientX;
-        pointer.y = event.clientY;
+        draw();
     };
-    canvas.onlostpointercapture = () => { pointer = null; };
+    const endPointer = event => { pointers.delete(event.pointerId); };
+    canvas.onpointerup = endPointer;
+    canvas.onpointercancel = endPointer;
+    canvas.onlostpointercapture = endPointer;
     canvas.addEventListener('wheel', event => {
         event.preventDefault();
         magnify(Math.exp(-event.deltaY * .0015));
@@ -200,7 +227,9 @@ async function start() {
     const hasAdapter = parts.some(({label}) => label.dataset.variant === 'adapter');
     const hasSplit = parts.some(({label}) => label.dataset.variant === 'split');
     selectTab(!hasAdapter && hasSplit ? tabs[1] : tabs[0]);
-    status.textContent = 'Drag to rotate · Right-drag to pan · Scroll to zoom';
+    status.textContent = matchMedia('(pointer: coarse)').matches
+        ? 'Drag to rotate · Two fingers to pan · Pinch to zoom'
+        : 'Drag to rotate · Right-drag to pan · Scroll to zoom';
 }
 start().catch(error => { document.querySelector('#status').textContent = error.message; });
 </script>
