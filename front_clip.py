@@ -7,7 +7,7 @@ from math import acos, atan2, cos, hypot, pi, sin, sqrt
 
 from build123d import Edge, Face, Wire, Solid, Plane, Keep, GeomType, Compound, ShapeList
 
-from prepare_sherman_p import SEATING_DEPTH_MM
+from reference.wheel import SEATING_DEPTH_MM
 
 ORIGINAL_CLIP_RISE_MM = 18.052632063736358
 CLIP_RISE_MM = ORIGINAL_CLIP_RISE_MM + SEATING_DEPTH_MM

@@ -15,12 +15,12 @@ keeps previous print files available.
 
 ## Run
 
-The original Sherman P wheel scan is tracked under `reference/fusion/`.
 Run `./run.sh` to build the STEP parts and the offline preview in the ignored
 `exports/` directory. Use `./run.sh --stl` to also generate printable STLs,
 or `scripts/build-release.sh` to validate and package a release ZIP.
 A full build clears prior generated exports, including any old release ZIP.
-Keep reference meshes for the preview alongside the project inputs or in `exports/`.
+The master and preview read the checked-in references under `reference/`.
+Adapter builds never regenerate reference geometry.
 The [historical Bambu Studio project](reference/slicer/adapter-body.3mf)
 preserves the earlier slicer settings and geometry.
 
@@ -44,7 +44,13 @@ python3.14 split_adapter.py
 python3.14 latch.py
 ```
 
-`adapter.py` is the editable CAD source. It reads `cad-rebuild/recipe.json` and `reference/fusion/Sherman_P_Scan_Aligned_To_Adapter_mm.stl` directly. All coordinates are millimeters. Build123d uses a permanent corrected frame: physical front is negative Y and Z is up. `coordinates.py` maps source global points and vectors to `(-x,-y,z)` before making any geometry; sketch-local coordinates and dimensions stay unchanged. Explicit extrusion directions, stopping/draft planes, and wedge vertices use this same frame. The scan vertices and normals are converted into `inputs/wheel-scan-model-frame.stl` before BREP import. No completed body is rotated. The authoritative shared recipe and original aligned scan retain their historical coordinates.
+`adapter.py` is the editable CAD source. It reads `cad-rebuild/recipe.json`
+and subtracts [the prepared wheel body](reference/wheel/body-scaled.step).
+All coordinates are millimeters. Build123d uses a permanent corrected frame:
+physical front is negative Y and Z is up. `coordinates.py` maps source global
+points and vectors to `(-x,-y,z)` before making geometry. Sketch-local
+coordinates and dimensions stay unchanged. The prepared wheel is already in
+the corrected frame.
 
 ```bash
 ./run.sh --no-imprint  # analytic body before scan subtraction
@@ -60,7 +66,10 @@ The [original seat scan](reference/seat/LunaSurronSeat_30k.stl) and the
 original scan coordinates. The corrected mesh uses four smooth Ø5.3 mm studs
 with 15 mm exposed length from the surrounding plastic mounting faces. Each
 axis and base location is fitted from the scan. The seat meshes are reference
-assets for checking fit.
+assets for checking fit. The preview uses the [aligned seat](reference/seat/surron-seat.stl),
+prepared by rigidly fitting the four stud bases to the adapter hole mouths.
+Regenerate it with `python3.14 -m reference.seat.prepare` when the seat
+reference or its placement changes.
 
 ## View CAD in T3 Code
 
@@ -86,11 +95,8 @@ Refreshing the default preview removes legacy per-part HTML files from `exports/
 
 The top **EUC** and **Seat** checkboxes toggle the prepared Sherman P and
 Luna Surron seat overlays for either adapter variant. Both start hidden.
-The default local build embeds the wheel mesh in `preview.html` and deletes the
-intermediate STL. To include the EUC when refreshing just the HTML, first run
-`python prepare_sherman_p.py --preview-only` to recreate that mesh.
-The preview places the corrected seat scan with a rigid fit from its four
-stud bases to the adapter hole mouths. The scan's original dimensions are preserved.
+The HTML embeds the checked-in [wheel mesh](reference/wheel/merged.stl)
+and [seat mesh](reference/seat/surron-seat.stl) on every default preview refresh.
 
 ## Automatic preview browser
 
@@ -121,11 +127,9 @@ The Python build scripts contain the parametric feature history. STEP provides e
 
 ## Verification
 
-Generate the prepared wheel exports before running the geometry tests. Use
-`./run.sh --stl` before running the STL validators.
+Use `./run.sh --stl` before running the STL validators.
 
 ```bash
-python3.14 prepare_sherman_p.py
 XDG_CACHE_HOME=/tmp/surron-build123d-cache \
   python3.14 -m unittest discover -s tests
 XDG_CACHE_HOME=/tmp/surron-build123d-cache \
@@ -214,7 +218,7 @@ thickness proof; physical fit and strength remain untested.
 ## Implemented 8 mm deeper seating
 
 The approved 8 mm placement preview is implemented in the editable source and
-manufacturing STEP/STL exports. `SEATING_DEPTH_MM = 8.0` in `prepare_sherman_p.py`
+manufacturing STEP/STL exports. `SEATING_DEPTH_MM = 8.0` in `reference/wheel/__init__.py`
 raises the whole prepared EUC, including both unscaled handles, exactly 8 mm.
 The existing 1.003 body fit scale is retained: its pivot moves from `(0,0,0)`
 to `(0,0,8)` with the wheel. This is mathematically the original prepared cutter
@@ -248,7 +252,7 @@ rounding. See [seating measurements](logs/deeper-seating-validation.json).
 - Hanger draft uses native OCCT draft. The front draft uses the saved exact planar wedge equivalent, whose removed volume matches the earlier Fusion reconstruction.
 - Both side-cut tools are analytic cylinders. No polygon cutter or smoothing is used.
 - The underside cavity uses a negative 15 degree tapered extrusion toward the underside, starting 12 mm below its sketch plane.
-- The wheel mesh becomes a closed faceted BREP using build123d's `Mesher`, then a native solid Boolean. Before patch reconnection, float conversion changed the imported volume by about 0.034 mm³. No mesh decimation or smoothing is applied. A local front-screen connectivity repair reconnects 31 triangles while preserving all 7,988 original vertices and the 16,000-triangle count. The original STL remains unchanged; `scan-screen-patch.json` records the exact replacement connectivity and source checksum. The body-only fit allowance is the explicitly requested 1.003 uniform scale, not an additional surface offset. The scan uses the same permanent coordinate-frame correction as all manufacturing geometry; its approved rigid alignment is applied before slicing.
+- The wheel mesh becomes a closed faceted BREP using build123d's `Mesher`, then a native solid Boolean. Before patch reconnection, float conversion changed the imported volume by about 0.034 mm³. No mesh decimation or smoothing is applied. A local front-screen connectivity repair reconnects 31 triangles while preserving all 7,988 original vertices and the 16,000-triangle count. The original STL remains unchanged; `reference/wheel/scan-screen-patch.json` records the exact replacement connectivity and source checksum. The body-only fit allowance is the explicitly requested 1.003 uniform scale, not an additional surface offset. The scan uses the same permanent coordinate-frame correction as all manufacturing geometry; its approved rigid alignment is applied before slicing.
 - The separately documented Sherman L preparation is not replayed; the Sherman P uses its own approved cuts and model-origin scaling pivot.
 - Like the earlier ports, the side bores use through cylinders instead of Fusion's nonparallel from-face start. Original constraint graphs are not recovered.
 - Full-model comparison against the Fusion source and physical print-fit testing remain open. The orientation revision was separately checked against the previous Build123d STEP after aligning it for comparison: symmetric-difference volume was 0.0012 mm³. See `logs/orientation-validation.json`; this verifies preservation during reorientation, not source-to-port equality.
@@ -278,19 +282,25 @@ its position relative to the translated sloped adapter has changed slightly.
 
 ## Sherman P body-only fit preparation
 
-The separately prepared Sherman P uses approved vertical planes at **Y=-191 mm** (front) and **Y=+170 mm** (rear), in the corrected build123d frame. Run:
+Run the wheel preparation explicitly when the source scan or its fit changes.
+This command uses Node.js for the original Fusion alignment.
 
 ```bash
-python3.14 prepare_sherman_p.py
+python3.14 -m reference.wheel.prepare
 ```
 
-Before slicing, the complete scan (including both handles) rotates **-3.4932161177016057° about model +X**, around `(0,0,0)`, then translates **+3.464786838041892 mm in Z**. This is the approved lower-outer-bottom alignment: clockwise in the front-left side view. The user-drawn top reference line aligns with the adapter’s lower outer bottom plane, not its cavity roof. The original source scan remains unchanged.
+The script reads the [original Fusion scan](reference/fusion/Sherman_P_Flush_Screen_Fusion_Default.stl),
+corrects the frame and reconnects the screen patch. It then rotates the entire
+wheel **-3.4932161177016057° about model +X** and translates it **+11.464786838041892 mm in Z**,
+including the approved 8 mm seating adjustment. It slices at **Y=-191 mm**
+and **Y=+170 mm**, then scales only the middle body by **1.003** about `(0,0,8)`.
 
-The moved scan is then split into three regions at the existing world-Y planes. Only the middle body is uniformly scaled by **1.003** (0.3%) about the model origin `(0,0,0)`; both handles retain their moved geometry and coordinates without any fit scaling. The scaled body is then fused with the unscaled aligned handles, accepting their small overlaps. This is a proportional fit allowance, not a constant-distance surface offset. It is specific to the Sherman P; the older Sherman L pivot is not reused.
-
-`prepare_sherman_p.py` writes ignored local exports to `exports/sherman-p-prepared/`, containing the three aligned, unscaled regions, scaled body, and merged scan as separate STEP/STL files. `logs/sherman-p-preparation.json` records source hash, planes, pivot, measured volumes, bounds, partition conservation and reopened-export checks.
-
-The adapter build now calls this preparation with `reunite=False` and subtracts only `body-scaled`. The viewer displays the two unscaled aligned handles separately. The merged export remains available for whole-scan inspection, but is never used as the adapter cutter. This supersedes the earlier request to use the reunited scan. Original scans remain unchanged.
+The script validates the outputs before replacing the checked-in files in
+`reference/wheel/`. The adapter subtracts `body-scaled.step` with zero added
+clearance. The CAD viewer reads that same body and the two unscaled handle
+STEPs. The HTML preview reads `merged.stl`, which reunites the body and handles
+for display. Commit the regenerated reference files with any intentional
+preparation changes. The source scan is preserved.
 
 The rear slice now contains two disconnected solids (including a small 353.26 mm³
 scan fragment). Both are retained in the rear-handle reference; the reunited scan

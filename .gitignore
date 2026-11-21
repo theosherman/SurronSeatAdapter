@@ -20,4 +20,5 @@ __pycache__/
 !/reference/fusion/Sherman_P_Flush_Screen_Fusion_Default.stl
 !/reference/seat/LunaSurronSeat_30k.stl
 !/reference/seat/LunaSurronSeat_Studs_5p3x15.stl
-/inputs/wheel-scan-model-frame.json
+!/reference/wheel/merged.stl
+!/reference/seat/surron-seat.stl

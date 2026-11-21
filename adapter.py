@@ -3,11 +3,10 @@ from pathlib import Path
 import argparse
 import json
 import time
-from build123d import Edge, Wire, Face, Solid, Plane, Vector, Keep, Compound, ShapeList, Mesher, export_step, import_step
+from build123d import Edge, Wire, Face, Solid, Plane, Vector, Keep, Compound, ShapeList, export_step, import_step
 
-from coordinates import model_recipe, source_to_model, prepare_scan, ADAPTER_TRANSLATION_MM
-from prepare_sherman_p import prepare_parts, SEATING_DEPTH_MM
-from scan_patch import PATCH
+from coordinates import model_recipe, source_to_model, ADAPTER_TRANSLATION_MM
+from reference.wheel import SEATING_DEPTH_MM, WHEEL_REFERENCE
 from export_mesh import export_stl_mm
 
 ROOT = Path(__file__).resolve().parent
@@ -143,13 +142,8 @@ def build_master(stop=None, imprint=True, airtag_depth=8.5):
     if stop=='M20' or not imprint: return body
     from body_fillets import fillet_body
     body = stage('M20-body-fillets', fillet_body(body))
-    print('Preparing Sherman P: align whole scan before slices; handles excluded; body scale 1.003', flush=True)
-    scan_path = prepare_scan(ROOT/'reference/fusion/Sherman_P_Scan_Aligned_To_Adapter_mm.stl', ROOT/'inputs/wheel-scan-model-frame.stl')
-    scan = Mesher().read(scan_path)
-    assert len(scan)==1 and scan[0].is_valid and len(scan[0].solids())==1
-    assert abs(scan[0].volume-PATCH['repairedSignedVolumeMm3'])<0.1
-    parts = prepare_parts(scan[0], reunite=False)
-    return stage('M21',body.cut(parts['body-scaled']))
+    cutter = import_step(WHEEL_REFERENCE / 'body-scaled.step')
+    return stage('M21', body.cut(cutter))
 
 
 def main():

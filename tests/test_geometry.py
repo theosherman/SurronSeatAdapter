@@ -26,9 +26,9 @@ class GeometryTests(unittest.TestCase):
         # Independent accepted tool/checkpoint regression: handles must not cut the adapter.
         from build123d import import_step
         from pathlib import Path
-        exports = Path(__file__).resolve().parents[1] / 'exports'
+        root = Path(__file__).resolve().parents[1]
         pre = build_master(imprint=False)
-        tool = import_step(exports/'sherman-p-prepared/body-scaled.step')
+        tool = import_step(root/'reference/wheel/body-scaled.step')
         from body_fillets import fillet_body
         expected = fillet_body(pre).cut(tool)
         self.assertAlmostEqual(body.volume, expected.volume, delta=0.1)

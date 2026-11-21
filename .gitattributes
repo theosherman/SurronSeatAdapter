@@ -2,3 +2,5 @@
 * -text
 # Generated CAD scripts sometimes end with a blank line; retain source fidelity.
 * whitespace=cr-at-eol,-blank-at-eof
+# Prepared reference geometry is reviewed in CAD rather than as an entity dump.
+reference/wheel/*.step -diff

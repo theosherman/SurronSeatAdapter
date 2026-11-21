@@ -18,7 +18,7 @@ delta = volume(nominal)-volume(changed)
 roundtrip_delta = volume(base)-volume(nominal)
 # Curved fillet BSplines change OCCT integration/STEP trimming by about 1.4 ppm.
 roundtrip_limit = max(0.1, volume(nominal)*2e-6)
-cutter = import_step(folder/'exports/sherman-p-prepared/body-scaled.step')
+cutter = import_step(folder/'reference/wheel/body-scaled.step')
 analysis = BOPAlgo_ArgumentAnalyzer()
 analysis.SetShape1(cutter.wrapped)
 analysis.SelfInterMode = True

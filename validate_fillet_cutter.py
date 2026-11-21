@@ -8,7 +8,7 @@ from body_fillets import SPEC, require_mirrored_selection
 folder = Path(__file__).resolve().parent
 require_mirrored_selection(SPEC['edges'])
 body = import_step(folder/'exports/adapter-body-pre-imprint.step')
-cutter = import_step(folder/'exports/sherman-p-prepared/body-scaled.step')
+cutter = import_step(folder/'reference/wheel/body-scaled.step')
 edges = list(body.edges())
 selected = []
 for row in SPEC['edges']:
