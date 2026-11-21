@@ -20,7 +20,7 @@ Printing-face offsets are approved and implemented: faces 1 and 2 use a **1 mm o
 
 For user-visible proposal previews, use the automatic browser viewer: `python preview_server.py start --no-open` (omit `--no-open` when initially opening it). Write the final image under `tmp/` last so it becomes the newest image; the open browser at http://127.0.0.1:8766 updates automatically. Do not ask the user to hunt for image paths.
 
-Temporary correction proposals and discussion previews (images, STEP/STL studies, HTML viewers, and their scratch reports) belong under `tmp/` inside this repository, never in tracked exports or commits. Keep durable, updated previews of implemented geometry in the repository. Preview generators must write proposal outputs to `tmp/` (not system `/tmp` and with no `exports` subdirectory); do not stage temporary assets. Historical proposal assets have been purged from Git history.
+Temporary correction proposals and discussion previews (images, STEP/STL studies, HTML viewers, and their scratch reports) belong under `tmp/` inside this repository, never in tracked exports or commits. Keep historical design illustrations under `docs/images/cad/`. The release build generates current part previews. The ignored `exports/` directory is for generated output. Preview generators must write proposal outputs to `tmp/` (not system `/tmp` and with no `exports` subdirectory); do not stage temporary assets. Historical proposal assets have been purged from Git history.
 
 Read `README.md`, `docs/CAD-REBUILD.md`, and `cad-rebuild/recipe.json` before changing CAD geometry. `docs/PORTING-AND-VALIDATION.md` describes validation for another CAD engine.
 

@@ -8,29 +8,14 @@ Thumbs.db
 # Temporary review images and scratch files.
 /tmp/
 
-# Legacy proposal output names
-/exports/concepts/
-/exports/requested-cavity-preview/
-/exports/*-proposed*
-/exports/*-proposal*
-/exports/*-options.png
-/exports/*-preview.png
-!/exports/adapter-body-preview.png
-/exports/bottom-outline-*.json
-/exports/bottom-outline-sherman-p-*.png
-/exports/parallel-screen-join-angles.png
+# Locally generated CAD and release bundles.
+/exports/
 /logs/*-preview.json
 __pycache__/
 *.pyc
 .venv/
 
-# Keep final manufacturing STLs in Git.
+# Keep the original wheel scan as a build input.
 *.stl
-!/exports/adapter-body.stl
-!/exports/adapter-body-split-front.stl
-!/exports/adapter-body-split-rear.stl
-!/exports/latch.stl
-!/exports/butterfly-key-top.stl
-!/exports/butterfly-key-cavity.stl
+!/reference/fusion/Sherman_P_Flush_Screen_Fusion_Default.stl
 /inputs/wheel-scan-model-frame.json
-/exports/sherman-p-prepared/
