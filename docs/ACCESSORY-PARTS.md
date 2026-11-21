@@ -53,7 +53,10 @@ Expected no-fillet result: **1 solid**, volume **55620.93486 mm^3**, bounding bo
 
 ## Latch
 
-The latch mates with the rear adapter dovetail. 2 local sketches; 6 source features, including one archival fillet.
+The latch mates with the rear adapter dovetail. The current Build123d latch
+uses a 110 mm rectangular TopCutSketch at stage 104. The table below records
+the original tapered Fusion latch and its archival checkpoints. Current
+Build123d checkpoints are recorded in `logs/latch-validation.json`.
 
 | Timeline | Sketch | Curves | Dimensions | Constraints | Origin mm | X axis | Y axis |
 |---:|---|---:|---:|---:|---|---|---|
