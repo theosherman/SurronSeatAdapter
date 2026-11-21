@@ -17,8 +17,12 @@ PARTS = {
     'butterfly-key-cavity': ('Cavity key', '#65cf92'),
     'latch': ('Latch', '#c0a5eb'),
     'adapter-body': ('Full adapter', '#4abdc7'),
-    'adapter-body-pre-imprint': ('Adapter before wheel imprint', '#aab7c5'),
+    'merged': ('EUC', '#788698'),
+    'surron-seat': ('Surron Seat', '#a69680'),
 }
+SPLIT_PARTS = {'adapter-body-split-front', 'adapter-body-split-rear',
+               'butterfly-key-top', 'butterfly-key-cavity'}
+REFERENCES = {'merged', 'surron-seat'}
 
 
 def read_mesh(stl):
@@ -39,6 +43,9 @@ def read_mesh(stl):
 
 
 def write_preview(stls, output):
+    stls = [stl for stl in stls if stl.stem != 'adapter-body-pre-imprint']
+    if not stls:
+        raise ValueError('No previewable STL files')
     meshes = [read_mesh(stl) for stl in stls]
     if any(not vertices.size or not np.isfinite(vertices).all() for vertices, _ in meshes):
         raise ValueError('Preview meshes must have finite vertices')
@@ -49,18 +56,16 @@ def write_preview(stls, output):
     if radius <= 0:
         raise ValueError('Preview meshes have invalid bounds')
 
-    stems = {stl.stem for stl in stls}
-    hidden = set()
-    if stems & {'adapter-body-split-front', 'adapter-body-split-rear'}:
-        hidden.add('adapter-body')
-    if hidden or 'adapter-body' in stems:
-        hidden.add('adapter-body-pre-imprint')
     controls = []
     payloads = []
     for index, (stl, (vertices, indices)) in enumerate(zip(stls, meshes, strict=True)):
         name, color = PARTS.get(stl.stem, (stl.stem, '#4abdc7'))
-        checked = '' if stl.stem in hidden else ' checked'
-        controls.append(f'<label><input type="checkbox" data-color="{color}"{checked}>'
+        checked = '' if stl.stem in REFERENCES else ' checked'
+        variant = 'split' if stl.stem in SPLIT_PARTS else 'adapter'
+        if stl.stem in REFERENCES or stl.stem == 'latch':
+            variant = 'both'
+        controls.append(f'<label data-variant="{variant}">'
+                        f'<input type="checkbox" data-color="{color}"{checked}>'
                         f'{escape(name)}</label>')
         packed = pack('<I', len(vertices)) + ((vertices - center) / radius).astype('<f4').tobytes()
         packed += indices.astype('<u4').tobytes()
@@ -82,6 +87,13 @@ def main():
                               key=lambda path: (order.get(path.stem, len(order)), path.name))
     if not stls:
         parser.error('No STL files found in exports/')
+    if not args.stls:
+        euc = exports / 'sherman-p-prepared' / 'merged.stl'
+        if euc.is_file():
+            stls.append(euc)
+        seat = Path('reference/fusion/surron-seat.stl')
+        if seat.is_file() and exports / seat.name not in stls:
+            stls.append(seat)
     print(write_preview(stls, stls[0].with_name('preview.html')))
 
 

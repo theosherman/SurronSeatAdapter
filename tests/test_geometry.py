@@ -27,7 +27,7 @@ class GeometryTests(unittest.TestCase):
         from build123d import import_step
         from pathlib import Path
         exports = Path(__file__).resolve().parents[1] / 'exports'
-        pre = import_step(exports/'adapter-body-pre-imprint.step')
+        pre = build_master(imprint=False)
         tool = import_step(exports/'sherman-p-prepared/body-scaled.step')
         from body_fillets import fillet_body
         expected = fillet_body(pre).cut(tool)

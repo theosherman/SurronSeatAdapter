@@ -5,7 +5,6 @@ cd "$(dirname -- "$0")/.."
 python_bin="${BUILD123D_PYTHON:-python}"
 
 node prepare-wheel-scan.mjs
-"$python_bin" adapter.py --no-imprint
 "$python_bin" adapter.py
 "$python_bin" split_adapter.py
 "$python_bin" butterfly_keys.py
