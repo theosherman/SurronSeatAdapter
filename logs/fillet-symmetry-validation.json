@@ -1,6 +1,6 @@
 {
-  "samples": 2037,
-  "maxMirrorBoundaryDistanceMm": 1.4158097526603576e-06,
+  "samples": 1917,
+  "maxMirrorBoundaryDistanceMm": 1.7192608315905646e-06,
   "toleranceMm": 0.001,
   "valid": true,
   "solids": 1,

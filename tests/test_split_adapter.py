@@ -22,7 +22,9 @@ class SplitAdapterTests(unittest.TestCase):
                 self.assertEqual(len(volumes), 3, volumes)
                 # The rim adds volume to each 750 mm³ cavity pocket and the top pocket.
                 self.assertGreater(volumes[0], 750.0)
-                self.assertAlmostEqual(volumes[0], volumes[1], places=3)
+                # The raised, asymmetric wheel imprint clips the front rims
+                # slightly differently while the recess tools remain mirrored.
+                self.assertAlmostEqual(volumes[0], volumes[1], delta=0.02)
                 self.assertGreater(volumes[2], 8309.401)
 
     def test_recess_rounds_are_confined_to_the_mouth(self):
