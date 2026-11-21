@@ -61,7 +61,7 @@ class RearCavityTests(unittest.TestCase):
         datum=Plane((0,164.41714823915711,1.578677917809248),
                     z_dir=(0,.8597932986247546,.5106422266518543))
         actual=combined(self.body.split(datum,Keep.TOP))
-        # The approved printing-plane offset adds a 1 mm outer strip. Compare
+        # The approved printing-plane offset adds an outer strip. Compare
         # the old interface only inside its original envelope; independent
         # printing-plane tests check the new boundary and contact patches.
         import json

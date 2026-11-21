@@ -640,8 +640,10 @@ The AirTag parameter-edit and cutter self-intersection checks pass.
 
 ## Outward face offsets
 
-The original `RearSketch` diagonal and its mirror now sit **1 mm outward**, measured
-normal to the original printing planes (faces 1 and 2). The existing front trim
+The original `RearSketch` diagonal and its mirror now sit **10 mm outward** in
+total, measured normal to the original printing planes (faces 1 and 2). This
+adds 9 mm to the previous offset to recover 2 mm of screen sidewall at the
+wheel imprint. The existing front trim
 uses these shifted native rear planes. Both `FrontCutSketch` triangular corner-cut
 diagonals (face 3 beside the front clip) move **3 mm outward in total** into the removed
 corner, reducing those cuts. Original angles, adjoining horizontal/vertical lines,
