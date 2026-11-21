@@ -24,3 +24,7 @@ else
   "$python_bin" prepare_sherman_p.py
 fi
 "$python_bin" -m scripts.preview_stl
+if [[ $# -eq 0 ]]; then
+  rm -f -- exports/sherman-p-prepared/merged.stl
+  rmdir exports/sherman-p-prepared 2>/dev/null || true
+fi

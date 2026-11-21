@@ -71,6 +71,9 @@ seated in the adapter.
 Refreshing the default preview removes legacy per-part HTML files from `exports/`.
 
 The top **EUC** checkbox toggles the prepared Sherman P overlay for either variant.
+The default local build embeds the wheel mesh in `preview.html` and deletes the
+intermediate STL. To include the EUC when refreshing just the HTML, first run
+`python prepare_sherman_p.py --preview-only` to recreate that mesh.
 To include a **Surron Seat** overlay, use a binary `surron-seat.stl` positioned
 in the adapter's model frame. The default build checks `exports/` and
 `reference/fusion/` for that file. Both overlays start hidden.
