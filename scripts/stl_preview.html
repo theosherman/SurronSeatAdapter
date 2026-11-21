@@ -2,36 +2,119 @@
 <html lang="en">
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>__PART__</title>
+<title>CAD preview</title>
 <style>
 :root { color-scheme: light dark; font: 14px system-ui; }
-body { margin: 0; display: grid; grid-template-rows: auto 1fr; height: 100dvh; }
-header { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 14px; padding: 10px 14px; }
+body { margin: 0; height: 100vh; height: 100dvh; }
+#toolbar {
+    --surface: #19262f; --control: #23343f; --border: #40515e;
+    position: absolute; z-index: 1; inset: 5px 5px auto;
+    display: flex; align-items: center; justify-content: space-between; gap: 4px;
+    pointer-events: none; color-scheme: dark; color: #edf3f8; font-size: 12px;
+}
+#toolbar > *, #toolbar-actions > * { pointer-events: auto; }
+#toolbar-actions { display: flex; gap: 3px; pointer-events: none; }
+#toolbar select, #toolbar button, #toolbar summary, #toolbar-actions > label {
+    box-sizing: border-box; min-height: 30px; padding: 0 6px; font: inherit;
+    color: inherit; background: var(--control); border: 1px solid var(--border); border-radius: 6px;
+}
+#toolbar select { min-width: 0; }
+#toolbar summary, #toolbar label { display: flex; align-items: center; gap: 4px; }
+#toolbar summary { list-style: none; }
+#toolbar summary::-webkit-details-marker { display: none; }
+#toolbar input { accent-color: #9ce0dc; margin: 0; width: 12px; height: 12px; flex: none; }
+#view-panel {
+    position: absolute; right: 0; top: 33px; box-sizing: border-box;
+    width: min(100%, 224px); max-height: calc(100dvh - 43px); overflow: auto;
+    background: var(--surface); border: 1px solid var(--border); border-radius: 6px; padding: 5px;
+}
+.view-group + .view-group { border-top: 1px solid var(--border); margin-top: 4px; padding-top: 4px; }
+.view-group-header { display: flex; justify-content: space-between; align-items: center; gap: 3px; }
+.view-heading { margin: 0; font-size: 11px; color: #c0ccd6; }
+.selection-actions { display: flex; gap: 3px; }
+.checklist { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0 4px; }
+.checklist label { min-height: 24px; }
+#toolbar label[hidden] { display: none; }
+.view-actions { display: grid; grid-template-columns: 1fr 1fr 2fr; gap: 3px; margin-top: 4px; }
+#view-panel button { min-height: 26px; }
+#view-panel .selection-actions button { min-height: 20px; min-width: 35px; padding: 0 4px; font-size: 11px; }
+#gestures { margin: 4px 1px 0; color: #c0ccd6; font-size: 11px; }
+#status {
+    position: absolute; top: 38px; left: 5px; max-width: calc(100% - 22px);
+    padding: 4px 6px; border-radius: 5px; color: #edf3f8; background: #19262f; font-size: 12px;
+}
+#annotations { position: absolute; inset: 0; overflow: hidden; pointer-events: none; }
+.feature-label {
+    position: absolute; top: 0; left: 0; white-space: nowrap;
+    padding: 2px 5px; border: 1px solid #587281; border-radius: 4px;
+    background: #14232eee; color: #f0f7fb; font: 11px/14px system-ui;
+}
+.feature-label::after {
+    content: ''; position: absolute; left: 50%; top: 100%;
+    width: 4px; height: 4px; border-radius: 50%; background: #a2e3df;
+    transform: translateX(-50%);
+}
+.face-label { border-color: #8c83ad; }
+.face-label::after { background: #cec2f4; }
 canvas { display: block; width: 100%; height: 100%; min-height: 0; touch-action: none; cursor: grab; background: #14232e; }
 canvas:active { cursor: grabbing; }
 </style>
-<header>
-<strong>__PART__</strong>
-<span id="status" role="status">Loading mesh…</span>
+<header id="toolbar" aria-label="CAD preview controls">
+<select id="variants" aria-label="Adapter variant">
+<option value="adapter">Adapter</option>
+<option value="split">Adapter Split</option>
+</select>
+<div id="toolbar-actions">
+__REFERENCES__
+<details id="view-menu">
+<summary>View <span aria-hidden="true">▾</span></summary>
+<div id="view-panel">
+<div id="parts-group" class="view-group" role="group" aria-labelledby="parts-heading">
+<div class="view-group-header">
+<p id="parts-heading" class="view-heading">Parts</p>
+<div class="selection-actions">
+<button type="button" data-invert aria-label="Invert Parts selection">Invert</button>
+<button type="button" data-all aria-label="Select all Parts">All</button>
+</div>
+</div>
+<div class="checklist">
+__CONTROLS__
+</div>
+</div>
+<div id="labels-group" class="view-group" role="group" aria-labelledby="labels-heading" hidden>
+<div class="view-group-header">
+<p id="labels-heading" class="view-heading">Labels</p>
+<div class="selection-actions">
+<button type="button" data-invert aria-label="Invert Labels selection">Invert</button>
+<button type="button" data-all aria-label="Select all Labels">All</button>
+</div>
+</div>
+<div class="checklist">
+<label id="label-control" hidden><input type="checkbox" id="show-labels">Features</label>
+<label id="face-control" hidden><input type="checkbox" id="show-faces">Faces</label>
+</div>
+</div>
+<div class="view-actions">
 <button id="closer" aria-label="Zoom in">+</button>
 <button id="farther" aria-label="Zoom out">−</button>
 <button id="reset">Reset view</button>
+</div>
+<p id="gestures"></p>
+</div>
+</details>
+</div>
 </header>
-<canvas tabindex="0" aria-label="Interactive STL preview. Arrow keys rotate and plus or minus zoom."></canvas>
-<script id="mesh" type="application/octet-stream">__MESH__</script>
+<div id="status" role="status">Loading parts…</div>
+<canvas tabindex="0" aria-label="Interactive CAD preview. Pinch to zoom and drag with two fingers to pan. Right-drag to pan with a mouse. Arrow keys rotate and plus or minus zoom."></canvas>
+<div id="annotations" hidden aria-hidden="true"></div>
+<script id="feature-labels" type="application/json">__FEATURE_LABELS__</script>
+__MESHES__
 <script>
 async function start() {
     const canvas = document.querySelector('canvas');
     const status = document.querySelector('#status');
     const gl = canvas.getContext('webgl2', {antialias: true});
     if (!gl) throw new Error('WebGL 2 is unavailable in this viewer.');
-
-    const packed = Uint8Array.from(atob(document.querySelector('#mesh').textContent), c => c.charCodeAt(0));
-    const stream = new Blob([packed]).stream().pipeThrough(new DecompressionStream('gzip'));
-    const mesh = await new Response(stream).arrayBuffer();
-    const count = new DataView(mesh).getUint32(0, true);
-    const positions = new Float32Array(mesh, 4, count * 3);
-    const indices = new Uint32Array(mesh, 4 + positions.byteLength);
 
     function shader(type, source) {
         const object = gl.createShader(type);
@@ -45,19 +128,21 @@ async function start() {
         in vec3 position;
         uniform mat3 view;
         uniform vec2 scale;
+        uniform vec2 pan;
         out vec3 surface;
         void main() {
             surface = view * position;
-            gl_Position = vec4(surface.xy * scale, -surface.z * .5, 1.);
+            gl_Position = vec4(surface.xy * scale + pan, -surface.z * .5, 1.);
         }`));
     gl.attachShader(program, shader(gl.FRAGMENT_SHADER, `#version 300 es
         precision highp float;
         in vec3 surface;
+        uniform vec3 partColor;
         out vec4 color;
         void main() {
             vec3 normal = normalize(cross(dFdx(surface), dFdy(surface)));
             float light = .38 + .62 * max(0., dot(normal, normalize(vec3(-.4,.7,1.))));
-            color = vec4(vec3(.29,.74,.78) * light, 1.);
+            color = vec4(partColor * light, 1.);
         }`));
     gl.linkProgram(program);
     if (!gl.getProgramParameter(program, gl.LINK_STATUS)) throw new Error(gl.getProgramInfoLog(program));
@@ -66,17 +151,83 @@ async function start() {
         gl.bindBuffer(target, gl.createBuffer());
         gl.bufferData(target, array, gl.STATIC_DRAW);
     }
-    upload(gl.ARRAY_BUFFER, positions);
     const attribute = gl.getAttribLocation(program, 'position');
-    gl.enableVertexAttribArray(attribute);
-    gl.vertexAttribPointer(attribute, 3, gl.FLOAT, false, 0, 0);
-    upload(gl.ELEMENT_ARRAY_BUFFER, indices);
+    const picker = document.querySelector('#variants');
+    const menu = document.querySelector('#view-menu');
+    const toolbar = document.querySelector('#toolbar');
+    const parts = [];
+    for (const checkbox of toolbar.querySelectorAll('input[data-mesh]')) {
+        const payload = document.getElementById(`mesh-${checkbox.dataset.mesh}`).textContent;
+        const packed = Uint8Array.from(atob(payload), character => character.charCodeAt(0));
+        const stream = new Blob([packed]).stream().pipeThrough(new DecompressionStream('gzip'));
+        const mesh = await new Response(stream).arrayBuffer();
+        const count = new DataView(mesh).getUint32(0, true);
+        const positions = new Float32Array(mesh, 4, count * 3);
+        const indices = new Uint32Array(mesh, 4 + positions.byteLength);
+        const vertexArray = gl.createVertexArray();
+        gl.bindVertexArray(vertexArray);
+        upload(gl.ARRAY_BUFFER, positions);
+        gl.enableVertexAttribArray(attribute);
+        gl.vertexAttribPointer(attribute, 3, gl.FLOAT, false, 0, 0);
+        upload(gl.ELEMENT_ARRAY_BUFFER, indices);
+        const color = [1, 3, 5].map(offset => parseInt(checkbox.dataset.color.slice(offset, offset + 2), 16) / 255);
+        parts.push({checkbox, label: checkbox.parentElement, vertexArray, color, count: indices.length});
+    }
     gl.enable(gl.DEPTH_TEST);
     gl.clearColor(.078, .137, .18, 1);
     const view = gl.getUniformLocation(program, 'view');
     const scale = gl.getUniformLocation(program, 'scale');
+    const pan = gl.getUniformLocation(program, 'pan');
+    const partColor = gl.getUniformLocation(program, 'partColor');
+    const annotationLayer = document.querySelector('#annotations');
+    const showLabels = document.querySelector('#show-labels');
+    const showFaces = document.querySelector('#show-faces');
+    const annotations = JSON.parse(document.getElementById('feature-labels').textContent).map(label => {
+        const element = document.createElement('span');
+        element.className = label.face ? 'feature-label face-label' : 'feature-label';
+        element.textContent = label.name;
+        annotationLayer.append(element);
+        return {...label, element};
+    });
+    document.querySelector('#label-control').hidden = !annotations.some(label => !label.face);
+    document.querySelector('#face-control').hidden = !annotations.some(label => label.face);
+    document.querySelector('#labels-group').hidden = annotations.length === 0;
 
-    let yaw, pitch, zoom;
+    function drawLabels(matrix, scaleX, scaleY) {
+        annotationLayer.hidden = !showLabels.checked && !showFaces.checked;
+        if (annotationLayer.hidden) return;
+        const width = canvas.clientWidth, height = canvas.clientHeight;
+        const visibleMeshes = new Set(parts.filter(part => !part.label.hidden && part.checkbox.checked)
+            .map(part => Number(part.checkbox.dataset.mesh)));
+        const occupied = [];
+        for (const label of annotations) {
+            const toggle = label.face ? showFaces : showLabels;
+            if (!toggle.checked || !label.meshes.some(mesh => visibleMeshes.has(mesh))) {
+                label.element.style.visibility = 'hidden';
+                continue;
+            }
+            label.width ??= label.element.offsetWidth;
+            label.height ??= label.element.offsetHeight;
+            const [nx, ny, nz] = label.normal;
+            const facing = matrix[2] * nx + matrix[5] * ny + matrix[8] * nz;
+            const [x, y, z] = label.point;
+            const screenX = width / 2 + panX + width * scaleX * (matrix[0] * x + matrix[3] * y + matrix[6] * z) / 2;
+            const screenY = height / 2 + panY - height * scaleY * (matrix[1] * x + matrix[4] * y + matrix[7] * z) / 2;
+            const left = screenX - label.width / 2, right = screenX + label.width / 2;
+            const bottom = screenY - 4, top = bottom - label.height;
+            const overlaps = occupied.some(box => left < box.right + 3 && right > box.left - 3
+                && top < box.bottom + 3 && bottom > box.top - 3);
+            const visible = facing > .25 && left >= 3 && right <= width - 3 &&
+                top >= 40 && bottom <= height - 4 && !overlaps;
+            label.element.style.visibility = visible ? 'visible' : 'hidden';
+            if (visible) {
+                label.element.style.transform = `translate(${left}px, ${top}px)`;
+                occupied.push({left, right, top, bottom});
+            }
+        }
+    }
+
+    let yaw, pitch, zoom, panX, panY;
     const maxPitch = Math.PI / 2 - .005;
     function draw() {
         const ratio = Math.min(devicePixelRatio || 1, 2);
@@ -89,38 +240,130 @@ async function start() {
         const h = Math.cos(pitch), v = Math.sin(pitch);
         gl.viewport(0, 0, canvas.width, canvas.height);
         gl.clear(gl.COLOR_BUFFER_BIT | gl.DEPTH_BUFFER_BIT);
-        gl.uniformMatrix3fv(view, false, [c, -s*v, s*h, s, c*v, -c*h, 0, h, v]);
-        gl.uniform2f(scale, zoom * Math.min(1, 1/aspect), zoom * Math.min(1, aspect));
-        gl.drawElements(gl.TRIANGLES, indices.length, gl.UNSIGNED_INT, 0);
+        const matrix = [c, -s*v, s*h, s, c*v, -c*h, 0, h, v];
+        const scaleX = zoom * Math.min(1, 1/aspect), scaleY = zoom * Math.min(1, aspect);
+        gl.uniformMatrix3fv(view, false, matrix);
+        gl.uniform2f(scale, scaleX, scaleY);
+        gl.uniform2f(pan, 2 * panX / Math.max(1, canvas.clientWidth),
+                         -2 * panY / Math.max(1, canvas.clientHeight));
+        for (const part of parts) {
+            if (part.label.hidden || !part.checkbox.checked) continue;
+            gl.bindVertexArray(part.vertexArray);
+            gl.uniform3fv(partColor, part.color);
+            gl.drawElements(gl.TRIANGLES, part.count, gl.UNSIGNED_INT, 0);
+        }
+        drawLabels(matrix, scaleX, scaleY);
     }
     function rotate(x, y) {
         yaw -= x * .009;
         pitch = Math.max(-maxPitch, Math.min(maxPitch, pitch + y * .009));
         draw();
     }
+    function boundedZoom(value) {
+        return Math.min(8, Math.max(.25, value));
+    }
     function magnify(factor) {
-        zoom = Math.min(8, Math.max(.25, zoom * factor));
+        zoom = boundedZoom(zoom * factor);
         draw();
     }
     function reset() {
         yaw = .95;
         pitch = .57;
         zoom = .91;
+        panX = panY = 0;
         draw();
     }
-    let pointer = null;
+    const refreshSelectionButtons = [...toolbar.querySelectorAll('.view-group')].map(group => {
+        const invert = group.querySelector('[data-invert]');
+        const all = group.querySelector('[data-all]');
+        const heading = group.querySelector('.view-heading').textContent;
+        const checkboxes = () => [...group.querySelectorAll('.checklist label:not([hidden]) input')];
+        const allChecked = inputs => inputs.every(input => input.checked);
+        function refresh() {
+            const inputs = checkboxes();
+            const checked = allChecked(inputs);
+            invert.disabled = all.disabled = inputs.length === 0;
+            all.textContent = checked ? 'None' : 'All';
+            all.setAttribute('aria-label', checked ? `Clear all ${heading}` : `Select all ${heading}`);
+        }
+        invert.onclick = () => {
+            for (const input of checkboxes()) input.checked = !input.checked;
+            refresh();
+            draw();
+        };
+        all.onclick = () => {
+            const inputs = checkboxes();
+            const checked = !allChecked(inputs);
+            for (const input of inputs) input.checked = checked;
+            refresh();
+            draw();
+        };
+        group.addEventListener('change', refresh);
+        return refresh;
+    });
+    function selectVariant() {
+        for (const {label} of parts) {
+            label.hidden = !['both', picker.value].includes(label.dataset.variant);
+        }
+        document.querySelector('#parts-group').hidden =
+            !document.querySelector('#parts-group .checklist label:not([hidden])');
+        for (const refresh of refreshSelectionButtons) refresh();
+        draw();
+    }
+    picker.onchange = selectVariant;
+    document.addEventListener('pointerdown', event => {
+        if (menu.open && !menu.contains(event.target)) menu.open = false;
+    });
+    document.addEventListener('keydown', event => {
+        if (event.key !== 'Escape' || !menu.open) return;
+        menu.open = false;
+        menu.querySelector('summary').focus();
+    });
+    const pointers = new Map();
+    canvas.oncontextmenu = event => event.preventDefault();
     canvas.onpointerdown = event => {
-        if (pointer !== null) return;
-        pointer = {id: event.pointerId, x: event.clientX, y: event.clientY};
+        if (event.button !== 0 && event.button !== 2) return;
+        const touch = event.pointerType === 'touch';
+        const active = pointers.values().next().value;
+        if (pointers.size >= 2 || (active && (!touch || !active.touch))) return;
+        pointers.set(event.pointerId, {x: event.clientX, y: event.clientY, touch, pan: event.button === 2});
         canvas.setPointerCapture(event.pointerId);
     };
     canvas.onpointermove = event => {
-        if (pointer?.id !== event.pointerId) return;
-        rotate(event.clientX - pointer.x, event.clientY - pointer.y);
-        pointer.x = event.clientX;
-        pointer.y = event.clientY;
+        const pointer = pointers.get(event.pointerId);
+        if (!pointer) return;
+        const x = event.clientX, y = event.clientY;
+        const {x: previousX, y: previousY} = pointer;
+        const dx = x - previousX, dy = y - previousY;
+        pointer.x = x;
+        pointer.y = y;
+        if (pointers.size === 2) {
+            const [first, second] = pointers.values();
+            const other = first === pointer ? second : first;
+            const before = Math.max(1, Math.hypot(previousX - other.x, previousY - other.y));
+            const after = Math.max(1, Math.hypot(x - other.x, y - other.y));
+            const nextZoom = boundedZoom(zoom * after / before);
+            const scaleChange = nextZoom / zoom - 1;
+            const bounds = canvas.getBoundingClientRect();
+            // Scale about the previous finger midpoint, then follow its movement.
+            const anchorX = (previousX + other.x) / 2 - bounds.left - canvas.clientWidth / 2;
+            const anchorY = (previousY + other.y) / 2 - bounds.top - canvas.clientHeight / 2;
+            panX += (panX - anchorX) * scaleChange + dx / 2;
+            panY += (panY - anchorY) * scaleChange + dy / 2;
+            zoom = nextZoom;
+        } else if (pointer.pan) {
+            panX += dx;
+            panY += dy;
+        } else {
+            rotate(dx, dy);
+            return;
+        }
+        draw();
     };
-    canvas.onlostpointercapture = () => { pointer = null; };
+    const endPointer = event => { pointers.delete(event.pointerId); };
+    canvas.onpointerup = endPointer;
+    canvas.onpointercancel = endPointer;
+    canvas.onlostpointercapture = endPointer;
     canvas.addEventListener('wheel', event => {
         event.preventDefault();
         magnify(Math.exp(-event.deltaY * .0015));
@@ -136,9 +379,23 @@ async function start() {
     document.querySelector('#closer').onclick = () => magnify(1.2);
     document.querySelector('#farther').onclick = () => magnify(1 / 1.2);
     document.querySelector('#reset').onclick = reset;
+    toolbar.addEventListener('change', event => {
+        if (event.target === showLabels || event.target === showFaces || event.target.matches('input[data-mesh]')) draw();
+    });
     new ResizeObserver(draw).observe(canvas);
     reset();
-    status.textContent = 'Drag to rotate · Scroll to zoom';
+    const hasAdapter = parts.some(({label}) => label.dataset.variant === 'adapter');
+    const hasSplit = parts.some(({label}) => label.dataset.variant === 'split');
+    for (const option of picker.options) {
+        option.disabled = option.value === 'adapter' ? !hasAdapter : !hasSplit;
+    }
+    picker.value = !hasAdapter && hasSplit ? 'split' : 'adapter';
+    picker.disabled = !hasAdapter || !hasSplit;
+    selectVariant();
+    status.hidden = true;
+    document.querySelector('#gestures').textContent = matchMedia('(pointer: coarse)').matches
+        ? 'Drag to rotate · Two fingers to pan · Pinch to zoom'
+        : 'Drag to rotate · Right-drag to pan · Scroll to zoom';
 }
 start().catch(error => { document.querySelector('#status').textContent = error.message; });
 </script>
