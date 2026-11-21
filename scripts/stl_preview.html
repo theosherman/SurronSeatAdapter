@@ -5,28 +5,94 @@
 <title>CAD preview</title>
 <style>
 :root { color-scheme: light dark; font: 14px system-ui; }
-body { margin: 0; display: grid; grid-template-rows: auto auto auto minmax(0, 1fr); height: 100dvh; }
-header { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 14px; padding: 10px 14px; }
-#variants { display: flex; gap: 6px; padding: 0 14px 8px; }
-#variants [aria-selected="true"] { font-weight: bold; border-color: #4abdc7; }
-#parts { display: flex; flex-wrap: wrap; gap: 6px 16px; padding: 0 14px 10px; }
-#parts label:not([hidden]) { display: inline-flex; align-items: center; gap: 4px; }
+body { margin: 0; height: 100vh; height: 100dvh; }
+#toolbar {
+    --surface: #19262f; --control: #23343f; --border: #40515e;
+    position: absolute; z-index: 1; inset: 5px 5px auto;
+    display: flex; align-items: center; justify-content: space-between; gap: 4px;
+    pointer-events: none; color-scheme: dark; color: #edf3f8; font-size: 12px;
+}
+#toolbar > *, #toolbar-actions > * { pointer-events: auto; }
+#toolbar-actions { display: flex; gap: 3px; pointer-events: none; }
+#toolbar select, #toolbar button, #toolbar summary, #toolbar-actions > label {
+    box-sizing: border-box; min-height: 30px; padding: 0 6px; font: inherit;
+    color: inherit; background: var(--control); border: 1px solid var(--border); border-radius: 6px;
+}
+#toolbar select { min-width: 0; }
+#toolbar summary, #toolbar label { display: flex; align-items: center; gap: 4px; }
+#toolbar summary { list-style: none; }
+#toolbar summary::-webkit-details-marker { display: none; }
+#toolbar input { accent-color: #9ce0dc; margin: 0; width: 12px; height: 12px; flex: none; }
+#view-panel {
+    position: absolute; right: 0; top: 33px; box-sizing: border-box;
+    width: min(100%, 224px); max-height: calc(100dvh - 43px); overflow: auto;
+    background: var(--surface); border: 1px solid var(--border); border-radius: 6px; padding: 5px;
+}
+.view-group + .view-group { border-top: 1px solid var(--border); margin-top: 4px; padding-top: 4px; }
+.view-heading { margin: 0; font-size: 11px; color: #c0ccd6; }
+.checklist { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0 4px; }
+.checklist label { min-height: 24px; }
+#toolbar label[hidden] { display: none; }
+.view-actions { display: grid; grid-template-columns: 1fr 1fr 2fr; gap: 3px; margin-top: 4px; }
+#view-panel button { min-height: 26px; }
+#gestures { margin: 4px 1px 0; color: #c0ccd6; font-size: 11px; }
+#status {
+    position: absolute; top: 38px; left: 5px; max-width: calc(100% - 22px);
+    padding: 4px 6px; border-radius: 5px; color: #edf3f8; background: #19262f; font-size: 12px;
+}
+#annotations { position: absolute; inset: 0; overflow: hidden; pointer-events: none; }
+.feature-label {
+    position: absolute; top: 0; left: 0; white-space: nowrap;
+    padding: 2px 5px; border: 1px solid #587281; border-radius: 4px;
+    background: #14232eee; color: #f0f7fb; font: 11px/14px system-ui;
+}
+.feature-label::after {
+    content: ''; position: absolute; left: 50%; top: 100%;
+    width: 4px; height: 4px; border-radius: 50%; background: #a2e3df;
+    transform: translateX(-50%);
+}
+.face-label { border-color: #8c83ad; }
+.face-label::after { background: #cec2f4; }
 canvas { display: block; width: 100%; height: 100%; min-height: 0; touch-action: none; cursor: grab; background: #14232e; }
 canvas:active { cursor: grabbing; }
 </style>
-<header>
-<strong>CAD preview</strong>
-<span id="status" role="status">Loading parts…</span>
+<header id="toolbar" aria-label="CAD preview controls">
+<select id="variants" aria-label="Adapter variant">
+<option value="adapter">Adapter</option>
+<option value="split">Adapter Split</option>
+</select>
+<div id="toolbar-actions">
+__EUC__
+<details id="view-menu">
+<summary>View <span aria-hidden="true">▾</span></summary>
+<div id="view-panel">
+<div id="parts-group" class="view-group" role="group" aria-labelledby="parts-heading">
+<p id="parts-heading" class="view-heading">Parts</p>
+<div class="checklist">
+__CONTROLS__
+</div>
+</div>
+<div id="labels-group" class="view-group" role="group" aria-labelledby="labels-heading" hidden>
+<p id="labels-heading" class="view-heading">Labels</p>
+<div class="checklist">
+<label id="label-control" hidden><input type="checkbox" id="show-labels">Features</label>
+<label id="face-control" hidden><input type="checkbox" id="show-faces">Faces</label>
+</div>
+</div>
+<div class="view-actions">
 <button id="closer" aria-label="Zoom in">+</button>
 <button id="farther" aria-label="Zoom out">−</button>
 <button id="reset">Reset view</button>
-</header>
-<div id="variants" role="tablist" aria-label="Adapter variant">
-<button id="adapter-tab" data-variant="adapter" aria-selected="true" aria-controls="parts" role="tab">Adapter</button>
-<button id="split-tab" data-variant="split" aria-selected="false" aria-controls="parts" tabindex="-1" role="tab">Adapter Split</button>
 </div>
-<div id="parts" role="tabpanel" aria-labelledby="adapter-tab">__CONTROLS__</div>
-<canvas tabindex="0" aria-label="Interactive STL preview. Pinch to zoom and drag with two fingers to pan. Right-drag to pan with a mouse. Arrow keys rotate and plus or minus zoom."></canvas>
+<p id="gestures"></p>
+</div>
+</details>
+</div>
+</header>
+<div id="status" role="status">Loading parts…</div>
+<canvas tabindex="0" aria-label="Interactive CAD preview. Pinch to zoom and drag with two fingers to pan. Right-drag to pan with a mouse. Arrow keys rotate and plus or minus zoom."></canvas>
+<div id="annotations" hidden aria-hidden="true"></div>
+<script id="feature-labels" type="application/json">__FEATURE_LABELS__</script>
 __MESHES__
 <script>
 async function start() {
@@ -71,11 +137,12 @@ async function start() {
         gl.bufferData(target, array, gl.STATIC_DRAW);
     }
     const attribute = gl.getAttribLocation(program, 'position');
-    const panel = document.querySelector('#parts');
-    const tabs = [...document.querySelectorAll('#variants button')];
+    const picker = document.querySelector('#variants');
+    const menu = document.querySelector('#view-menu');
+    const toolbar = document.querySelector('#toolbar');
     const parts = [];
-    for (const [index, checkbox] of [...document.querySelectorAll('#parts input')].entries()) {
-        const payload = document.getElementById(`mesh-${index}`).textContent;
+    for (const checkbox of toolbar.querySelectorAll('input[data-mesh]')) {
+        const payload = document.getElementById(`mesh-${checkbox.dataset.mesh}`).textContent;
         const packed = Uint8Array.from(atob(payload), character => character.charCodeAt(0));
         const stream = new Blob([packed]).stream().pipeThrough(new DecompressionStream('gzip'));
         const mesh = await new Response(stream).arrayBuffer();
@@ -97,6 +164,53 @@ async function start() {
     const scale = gl.getUniformLocation(program, 'scale');
     const pan = gl.getUniformLocation(program, 'pan');
     const partColor = gl.getUniformLocation(program, 'partColor');
+    const annotationLayer = document.querySelector('#annotations');
+    const showLabels = document.querySelector('#show-labels');
+    const showFaces = document.querySelector('#show-faces');
+    const annotations = JSON.parse(document.getElementById('feature-labels').textContent).map(label => {
+        const element = document.createElement('span');
+        element.className = label.face ? 'feature-label face-label' : 'feature-label';
+        element.textContent = label.name;
+        annotationLayer.append(element);
+        return {...label, element};
+    });
+    document.querySelector('#label-control').hidden = !annotations.some(label => !label.face);
+    document.querySelector('#face-control').hidden = !annotations.some(label => label.face);
+    document.querySelector('#labels-group').hidden = annotations.length === 0;
+
+    function drawLabels(matrix, scaleX, scaleY) {
+        annotationLayer.hidden = !showLabels.checked && !showFaces.checked;
+        if (annotationLayer.hidden) return;
+        const width = canvas.clientWidth, height = canvas.clientHeight;
+        const visibleMeshes = new Set(parts.filter(part => !part.label.hidden && part.checkbox.checked)
+            .map(part => Number(part.checkbox.dataset.mesh)));
+        const occupied = [];
+        for (const label of annotations) {
+            const toggle = label.face ? showFaces : showLabels;
+            if (!toggle.checked || !label.meshes.some(mesh => visibleMeshes.has(mesh))) {
+                label.element.style.visibility = 'hidden';
+                continue;
+            }
+            label.width ??= label.element.offsetWidth;
+            label.height ??= label.element.offsetHeight;
+            const [nx, ny, nz] = label.normal;
+            const facing = matrix[2] * nx + matrix[5] * ny + matrix[8] * nz;
+            const [x, y, z] = label.point;
+            const screenX = width / 2 + panX + width * scaleX * (matrix[0] * x + matrix[3] * y + matrix[6] * z) / 2;
+            const screenY = height / 2 + panY - height * scaleY * (matrix[1] * x + matrix[4] * y + matrix[7] * z) / 2;
+            const left = screenX - label.width / 2, right = screenX + label.width / 2;
+            const bottom = screenY - 4, top = bottom - label.height;
+            const overlaps = occupied.some(box => left < box.right + 3 && right > box.left - 3
+                && top < box.bottom + 3 && bottom > box.top - 3);
+            const visible = facing > .25 && left >= 3 && right <= width - 3 &&
+                top >= 40 && bottom <= height - 4 && !overlaps;
+            label.element.style.visibility = visible ? 'visible' : 'hidden';
+            if (visible) {
+                label.element.style.transform = `translate(${left}px, ${top}px)`;
+                occupied.push({left, right, top, bottom});
+            }
+        }
+    }
 
     let yaw, pitch, zoom, panX, panY;
     const maxPitch = Math.PI / 2 - .005;
@@ -111,8 +225,10 @@ async function start() {
         const h = Math.cos(pitch), v = Math.sin(pitch);
         gl.viewport(0, 0, canvas.width, canvas.height);
         gl.clear(gl.COLOR_BUFFER_BIT | gl.DEPTH_BUFFER_BIT);
-        gl.uniformMatrix3fv(view, false, [c, -s*v, s*h, s, c*v, -c*h, 0, h, v]);
-        gl.uniform2f(scale, zoom * Math.min(1, 1/aspect), zoom * Math.min(1, aspect));
+        const matrix = [c, -s*v, s*h, s, c*v, -c*h, 0, h, v];
+        const scaleX = zoom * Math.min(1, 1/aspect), scaleY = zoom * Math.min(1, aspect);
+        gl.uniformMatrix3fv(view, false, matrix);
+        gl.uniform2f(scale, scaleX, scaleY);
         gl.uniform2f(pan, 2 * panX / Math.max(1, canvas.clientWidth),
                          -2 * panY / Math.max(1, canvas.clientHeight));
         for (const part of parts) {
@@ -121,6 +237,7 @@ async function start() {
             gl.uniform3fv(partColor, part.color);
             gl.drawElements(gl.TRIANGLES, part.count, gl.UNSIGNED_INT, 0);
         }
+        drawLabels(matrix, scaleX, scaleY);
     }
     function rotate(x, y) {
         yaw -= x * .009;
@@ -141,26 +258,23 @@ async function start() {
         panX = panY = 0;
         draw();
     }
-    function selectTab(tab) {
-        for (const button of tabs) {
-            button.setAttribute('aria-selected', button === tab);
-            button.tabIndex = button === tab ? 0 : -1;
-        }
-        panel.setAttribute('aria-labelledby', tab.id);
+    function selectVariant() {
         for (const {label} of parts) {
-            label.hidden = !['both', tab.dataset.variant].includes(label.dataset.variant);
+            label.hidden = !['both', picker.value].includes(label.dataset.variant);
         }
+        document.querySelector('#parts-group').hidden =
+            !document.querySelector('#parts-group .checklist label:not([hidden])');
         draw();
     }
-    for (const [index, tab] of tabs.entries()) {
-        tab.onclick = () => selectTab(tab);
-        tab.onkeydown = event => {
-            if (event.key !== 'ArrowLeft' && event.key !== 'ArrowRight') return;
-            event.preventDefault();
-            tabs[1 - index].focus();
-            selectTab(tabs[1 - index]);
-        };
-    }
+    picker.onchange = selectVariant;
+    document.addEventListener('pointerdown', event => {
+        if (menu.open && !menu.contains(event.target)) menu.open = false;
+    });
+    document.addEventListener('keydown', event => {
+        if (event.key !== 'Escape' || !menu.open) return;
+        menu.open = false;
+        menu.querySelector('summary').focus();
+    });
     const pointers = new Map();
     canvas.oncontextmenu = event => event.preventDefault();
     canvas.onpointerdown = event => {
@@ -221,13 +335,21 @@ async function start() {
     document.querySelector('#closer').onclick = () => magnify(1.2);
     document.querySelector('#farther').onclick = () => magnify(1 / 1.2);
     document.querySelector('#reset').onclick = reset;
-    panel.addEventListener('change', draw);
+    toolbar.addEventListener('change', event => {
+        if (event.target === showLabels || event.target === showFaces || event.target.matches('input[data-mesh]')) draw();
+    });
     new ResizeObserver(draw).observe(canvas);
     reset();
     const hasAdapter = parts.some(({label}) => label.dataset.variant === 'adapter');
     const hasSplit = parts.some(({label}) => label.dataset.variant === 'split');
-    selectTab(!hasAdapter && hasSplit ? tabs[1] : tabs[0]);
-    status.textContent = matchMedia('(pointer: coarse)').matches
+    for (const option of picker.options) {
+        option.disabled = option.value === 'adapter' ? !hasAdapter : !hasSplit;
+    }
+    picker.value = !hasAdapter && hasSplit ? 'split' : 'adapter';
+    picker.disabled = !hasAdapter || !hasSplit;
+    selectVariant();
+    status.hidden = true;
+    document.querySelector('#gestures').textContent = matchMedia('(pointer: coarse)').matches
         ? 'Drag to rotate · Two fingers to pan · Pinch to zoom'
         : 'Drag to rotate · Right-drag to pan · Scroll to zoom';
 }
