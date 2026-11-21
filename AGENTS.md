@@ -16,7 +16,7 @@ Current cavity direction (approved and implemented): one long sixteen-line centr
 
 Printing-face offsets are approved and implemented: faces 1 and 2 use a **1 mm outward normal offset** of the original `RearSketch` diagonal and its mirror. Existing front print-plane trimming follows those native rear planes. Face 3 is the triangular `FrontCutSketch` / `Extrude12` corner cut beside the front clip, **not BottomSketch**; both diagonals move **3 mm outward** (total; supersedes the first 1 mm) toward the removed corners, retaining more material with unchanged angles and Z extrusion. `cut_offsets.py` edits the original manufacturing profiles; do not add finished-body patches.
 
-The approved 15 mm seat lowering raises the Sherman P scan, front clip, and screen walls relative to the printed revision. The original underside plane is translated up 15 mm, clipping the lowest portion of the original cavity and rear toe. Maintain the upper latch interface, mounting datums, and existing cavity cutter limits.
+The approved 18 mm seat lowering raises the Sherman P scan, front clip, and screen walls relative to the printed revision. The original underside plane is translated up 18 mm, clipping the lowest portion of the original cavity and rear toe. Maintain the upper latch interface, mounting datums, and existing cavity cutter limits.
 
 ## CAD context
 

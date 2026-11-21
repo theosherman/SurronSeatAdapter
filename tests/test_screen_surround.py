@@ -20,7 +20,7 @@ class ScreenSurroundTests(unittest.TestCase):
         rear_y, rear_z = self.reference['startYZmm']
         _, ny, nz = self.reference['bottomPlaneNormal']
         for y in (-106, -115, -130, -145, -160, -173, -181, -188):
-            wall_z = rear_z + 7 - ny / nz * (y - rear_y)
+            wall_z = rear_z + 10 - ny / nz * (y - rear_y)
             for x in (-44, 44):
                 self.assertTrue(self.body.is_inside((x, y, wall_z - .2)), (x, y))
                 self.assertFalse(self.body.is_inside((x, y, wall_z + .2)), (x, y))
@@ -37,7 +37,7 @@ class ScreenSurroundTests(unittest.TestCase):
         join_z = point.Z - normal.Y / normal.Z * (join_y - point.Y)
         rear_y, rear_z = self.reference['startYZmm']
         for y in (-101, -98, -92, -88):
-            z = rear_z + 7 + (join_z - rear_z - 7) * (y - rear_y) / (join_y - rear_y)
+            z = rear_z + 10 + (join_z - rear_z - 10) * (y - rear_y) / (join_y - rear_y)
             self.assertTrue(self.body.is_inside((0, y, z - .2)))
             self.assertFalse(self.body.is_inside((0, y, z + .2)))
 

@@ -22,7 +22,7 @@ class RearCavityTests(unittest.TestCase):
     def test_long_middle_cavity_is_open_below_its_roof(self):
         origin=Vector(SKETCHES['BodyCutSketch']['originMm'])+Vector(ADAPTER_TRANSLATION_MM)
         y,n=map(Vector,(SKETCHES['BodyCutSketch']['yAxis'],SKETCHES['BodyCutSketch']['normal']))
-        for v in (-50,0,50):
+        for v in (-50,0,35):
             self.assertFalse(self.body.is_inside(origin+y*v-n*30),v)
             self.assertTrue(self.body.is_inside(origin+y*v-n*18),v)
         # The new underside reaches above the old cavity roof near the front.
@@ -73,9 +73,9 @@ class RearCavityTests(unittest.TestCase):
         from trunk_cavity import rear_cavity_tool,rear_side_tools,trim_lower_rear_tip
         cavity=rear_cavity_tool(SKETCHES['BodyCutSketch']).translate(ADAPTER_TRANSLATION_MM)
         expected=combined(expected.cut(cavity,*rear_side_tools()))
-        # Independently apply the measured original bottom plane plus 15 mm.
+        # Independently apply the measured original bottom plane plus 18 mm.
         # Its rear intersection is below the latch root and dovetail.
-        upper=Plane((0,0,7.06786030784744), z_dir=(0,.1184039683059526,.9929655081066024))
+        upper=Plane((0,0,10.06786030784744), z_dir=(0,.1184039683059526,.9929655081066024))
         actual_upper=combined(actual.split(upper,Keep.TOP))
         expected_upper=combined(expected.split(upper,Keep.TOP))
         self.assertLess(combined(actual_upper.cut(expected_upper)).volume,.001)

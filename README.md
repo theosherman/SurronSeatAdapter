@@ -1,23 +1,25 @@
 # Surron Seat Adapter
 
-The full, unsplit adapter is reconstructed as editable Python solid geometry from the repository's millimeter recipe. The final wheel imprint subtracts only the prepared Sherman P middle body, with the source screen patch reconnected before preparation and uniformly scaled by **1.003** about model origin after cuts at Y=-191/+170 mm. Both handles move with the complete scan during alignment, remain unscaled after slicing, and are excluded from subtraction. The master has 1 mm finishing fillets and no connector recesses. The project also builds a two-piece printing variant and a separate editable latch. The saddlebag mount has a saved reference recipe.
+The full, unsplit adapter is reconstructed as editable Python solid geometry from the repository's millimeter recipe. The final wheel imprint subtracts only the prepared Sherman P middle body, with the source screen patch reconnected before preparation and uniformly scaled by **1.003** about its raised datum after cuts at Y=-191/+170 mm. Both handles move with the complete scan during alignment, remain unscaled after slicing, and are excluded from subtraction. The master has 1 mm finishing fillets and no connector recesses. The project also builds a two-piece printing variant and a separate editable latch. The saddlebag mount has a saved reference recipe.
 
 **Project priority.** Keep the geometry, feature history, and build workflow simple and editable.
 
-## Implemented 15 mm seat lowering
+## Implemented 18 mm seat lowering
 
-The Sherman P scan sits **15 mm higher than the printed 8 mm revision**, so the
-seat mounts sit 15 mm lower relative to the wheel. The front clip and tangent
+The Sherman P scan sits **18 mm higher than the printed 8 mm revision**, so the
+seat mounts sit 18 mm lower relative to the wheel. The front clip and tangent
 ramp rise with the scan. The screen walls rise to meet the ramp and slope back
 to the original body top ahead of the front bolt seats. A parallel cut moves the
-main underside up 15 mm, including at the lower rear toe. The imprint still uses
-the scaled wheel body with zero added clearance. The 1 mm finish uses 119
-mirrored edge selections compatible with the raised imprint.
+main underside up 18 mm, including at the lower rear toe. The imprint uses the
+wheel body scaled about its raised datum, with zero added clearance. The 1 mm
+finish uses mirrored edge selections compatible with the raised imprint.
+The split child's cavity-key recesses sit 3 mm higher along the seam so both
+halves retain the full 10 mm recess depth.
 
 The raised front handle scan still overlaps the clip more than it did on the
 printed revision. Physical clip fit remains open. See the
-[15 mm revision preview](docs/images/cad/adapter-body-15mm-lowered.png).
-Run `scripts/build-release.sh` on this branch for the 15 mm files. GitHub
+[previous 15 mm revision preview](docs/images/cad/adapter-body-15mm-lowered.png).
+Run `scripts/build-release.sh` on this branch for the 18 mm files. GitHub
 Releases follows `main`.
 
 ## Download

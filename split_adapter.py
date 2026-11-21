@@ -78,7 +78,7 @@ def cavity_connector(split_plane, side, depth, rim_radius=0):
     if inward.X*wall_point.X > 0:
         inward = -inward
 
-    z = 15
+    z = 18  # Retain full recess depth above the raised underside and wheel imprint.
     seam_normal = split_plane.z_dir
     seam_y = split_plane.origin.Y - (z-split_plane.origin.Z)*seam_normal.Z/seam_normal.Y
     wall_x = wall_point.X - ((seam_y-wall_point.Y)*inward.Y + (z-wall_point.Z)*inward.Z)/inward.X
