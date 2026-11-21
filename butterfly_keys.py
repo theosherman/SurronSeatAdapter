@@ -1,4 +1,5 @@
 """Export the two printable butterfly key shapes from the adapter's recesses."""
+from argparse import ArgumentParser
 from pathlib import Path
 
 from build123d import GeomType, Kind, Plane, Solid, export_step
@@ -38,12 +39,17 @@ def lay_flat(key):
 
 
 def main():
+    parser = ArgumentParser(description=__doc__)
+    parser.add_argument('--stl', action='store_true', help='Also export flat printable STLs')
+    args = parser.parse_args()
     output = Path(__file__).resolve().parent / 'exports'
+    output.mkdir(exist_ok=True)
     for name, key in build_keys():
         step = output / f'butterfly-key-{name}.step'
         if not export_step(key, step):
             raise ValueError(f'STEP export failed: {step}')
-        export_stl_mm(lay_flat(key), step.with_suffix('.stl'))
+        if args.stl:
+            export_stl_mm(lay_flat(key), step.with_suffix('.stl'))
 
 
 if __name__ == '__main__':

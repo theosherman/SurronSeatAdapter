@@ -118,15 +118,19 @@ def build_latch(clearance=0.2, with_stages=False):
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--clearance', type=float, default=0.2)
+    parser.add_argument('--stl', action='store_true', help='Also export the printable STL')
     args = parser.parse_args()
     body, stages = build_latch(args.clearance, with_stages=True)
     output = Path(__file__).parent/'exports'
     output.mkdir(exist_ok=True)
     step, stl = output/'latch.step', output/'latch.stl'
     export_step(body, step)
-    export_stl(body, stl, tolerance=0.005, angular_tolerance=0.05)
+    exports = [('step', import_step(step))]
+    if args.stl:
+        export_stl(body, stl, tolerance=0.005, angular_tolerance=0.05)
+        exports.append(('stl', Compound(Mesher().read(stl))))
     reopened = {}
-    for name, shape in [('step', import_step(step)), ('stl', Compound(Mesher().read(stl)))]:
+    for name, shape in exports:
         bounds = shape.bounding_box()
         reopened[name] = dict(valid=shape.is_valid, solids=len(shape.solids()), volumeMm3=shape.volume,
                               boundsMm=[tuple(bounds.min), tuple(bounds.max)])

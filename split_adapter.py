@@ -1,4 +1,5 @@
 """Export the two-piece printing child from the completed master STEP."""
+from argparse import ArgumentParser
 from collections import Counter
 from pathlib import Path
 
@@ -130,6 +131,9 @@ def build_split(master):
 
 
 def main():
+    parser = ArgumentParser(description=__doc__)
+    parser.add_argument('--stl', action='store_true', help='Also export the printable STLs')
+    args = parser.parse_args()
     output = Path(__file__).resolve().parent / 'exports'
     master = import_step(output / 'adapter-body.step')
     for name, half in list(build_split(master)):
@@ -139,7 +143,8 @@ def main():
         exported = import_step(step)
         if not exported.is_valid or len(exported.solids()) != 1:
             raise ValueError(f'Invalid exported solid: {step}')
-        export_stl_mm(half, step.with_suffix('.stl'))
+        if args.stl:
+            export_stl_mm(half, step.with_suffix('.stl'))
         print(f'{name}: {exported.bounding_box().size}', flush=True)
 
 

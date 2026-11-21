@@ -157,6 +157,7 @@ def main():
     parser = argparse.ArgumentParser()
     parser.add_argument('--no-imprint',action='store_true')
     parser.add_argument('--stop',choices=['M01','M05','M06','M09','M20'])
+    parser.add_argument('--stl', action='store_true', help='Also export the printable STL')
     args = parser.parse_args()
     start = time.monotonic()
     body = build_master(stop=args.stop,imprint=not args.no_imprint)
@@ -164,7 +165,8 @@ def main():
     output.mkdir(exist_ok=True)
     stem = 'adapter-body' if not args.stop and not args.no_imprint else 'adapter-body-'+(args.stop or 'pre-imprint')
     export_step(body,output/(stem+'.step'))
-    export_stl_mm(import_step(output/(stem+'.step')), output/(stem+'.stl'))
+    if args.stl:
+        export_stl_mm(import_step(output/(stem+'.step')), output/(stem+'.stl'))
     (Path(__file__).parent/'logs/build-validation.json').write_text(json.dumps(dict(coordinateFrame="source (x,y,z) -> model (-x,-y,z); physical front is negative Y; Z up",adapterTranslationMm=ADAPTER_TRANSLATION_MM,seatingDepthMm=SEATING_DEPTH_MM,elapsedSeconds=time.monotonic()-start,stages=HISTORY),indent=2)+'\n')
 
 if __name__=='__main__':
