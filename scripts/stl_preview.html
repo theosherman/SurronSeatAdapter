@@ -49,6 +49,8 @@ body { margin: 0; height: 100vh; height: 100dvh; }
     width: 4px; height: 4px; border-radius: 50%; background: #a2e3df;
     transform: translateX(-50%);
 }
+.face-label { border-color: #8c83ad; }
+.face-label::after { background: #cec2f4; }
 canvas { display: block; width: 100%; height: 100%; min-height: 0; touch-action: none; cursor: grab; background: #14232e; }
 canvas:active { cursor: grabbing; }
 </style>
@@ -65,6 +67,7 @@ __EUC__
 <div id="parts" role="group" aria-label="Part visibility">
 __CONTROLS__
 <label id="label-control" hidden><input type="checkbox" id="show-labels">Labels</label>
+<label id="face-control" hidden><input type="checkbox" id="show-faces">Face labels</label>
 </div>
 <div class="view-actions">
 <button id="closer" aria-label="Zoom in">+</button>
@@ -153,23 +156,30 @@ async function start() {
     const partColor = gl.getUniformLocation(program, 'partColor');
     const annotationLayer = document.querySelector('#annotations');
     const showLabels = document.querySelector('#show-labels');
+    const showFaces = document.querySelector('#show-faces');
     const annotations = JSON.parse(document.getElementById('feature-labels').textContent).map(label => {
         const element = document.createElement('span');
-        element.className = 'feature-label';
+        element.className = label.face ? 'feature-label face-label' : 'feature-label';
         element.textContent = label.name;
         annotationLayer.append(element);
         return {...label, element};
     });
-    document.querySelector('#label-control').hidden = annotations.length === 0;
+    document.querySelector('#label-control').hidden = !annotations.some(label => !label.face);
+    document.querySelector('#face-control').hidden = !annotations.some(label => label.face);
 
     function drawLabels(matrix, scaleX, scaleY) {
-        annotationLayer.hidden = !showLabels.checked;
+        annotationLayer.hidden = !showLabels.checked && !showFaces.checked;
         if (annotationLayer.hidden) return;
         const width = canvas.clientWidth, height = canvas.clientHeight;
         const visibleMeshes = new Set(parts.filter(part => !part.label.hidden && part.checkbox.checked)
             .map(part => Number(part.checkbox.dataset.mesh)));
         const occupied = [];
         for (const label of annotations) {
+            const toggle = label.face ? showFaces : showLabels;
+            if (!toggle.checked || !label.meshes.some(mesh => visibleMeshes.has(mesh))) {
+                label.element.style.visibility = 'hidden';
+                continue;
+            }
             label.width ??= label.element.offsetWidth;
             label.height ??= label.element.offsetHeight;
             const [nx, ny, nz] = label.normal;
@@ -181,8 +191,8 @@ async function start() {
             const bottom = screenY - 4, top = bottom - label.height;
             const overlaps = occupied.some(box => left < box.right + 3 && right > box.left - 3
                 && top < box.bottom + 3 && bottom > box.top - 3);
-            const visible = facing > .25 && label.meshes.some(mesh => visibleMeshes.has(mesh))
-                && left >= 3 && right <= width - 3 && top >= 40 && bottom <= height - 4 && !overlaps;
+            const visible = facing > .25 && left >= 3 && right <= width - 3 &&
+                top >= 40 && bottom <= height - 4 && !overlaps;
             label.element.style.visibility = visible ? 'visible' : 'hidden';
             if (visible) {
                 label.element.style.transform = `translate(${left}px, ${top}px)`;
@@ -313,7 +323,7 @@ async function start() {
     document.querySelector('#farther').onclick = () => magnify(1 / 1.2);
     document.querySelector('#reset').onclick = reset;
     toolbar.addEventListener('change', event => {
-        if (event.target === showLabels || event.target.matches('input[data-mesh]')) draw();
+        if (event.target === showLabels || event.target === showFaces || event.target.matches('input[data-mesh]')) draw();
     });
     new ResizeObserver(draw).observe(canvas);
     reset();

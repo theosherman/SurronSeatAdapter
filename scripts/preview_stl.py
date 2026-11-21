@@ -43,7 +43,7 @@ FEATURE_LABELS = {
         ('Cavity roof', (0, -38, 18), BOTTOM),
     ),
     ('adapter-body', 'adapter-body-split-rear'): (
-        ('Rear dovetail', (0, 225, 98.8), TOP),
+        ('Rear dovetail', (0, 207.47, 58), (0, .51, -.86)),
         ('Rear mounting holes', (14.5, 179.5, 81), TOP),
         ('Rear seat support', (30, 215, 94.9), TOP),
         ('Rear bridge', (0, 145, 74.2), TOP),
@@ -68,6 +68,38 @@ FEATURE_LABELS = {
     ),
 }
 
+FACE_PREFIXES = {
+    'adapter-body-split-front': 'Front face',
+    'adapter-body-split-rear': 'Rear face',
+    'latch': 'Latch face',
+    'butterfly-key-top': 'Top key face',
+    'butterfly-key-cavity': 'Cavity key face',
+}
+
+
+def planar_labels(shape, stem):
+    from build123d import GeomType
+
+    faces = [face for face in shape.faces() if face.geom_type == GeomType.PLANE]
+    if not faces:
+        return []
+    # Keep the larger CAD faces and omit small imprint facets and blends.
+    minimum_area = min(120, max(face.area for face in faces) * .02)
+    faces = sorted((face for face in faces if face.area >= minimum_area),
+                   key=lambda face: (-round(face.area, 6), tuple(face.center())))
+    prefix = FACE_PREFIXES.get(stem, 'Face')
+    labels = []
+    for number, face in enumerate(faces, start=1):
+        vertices, triangles = face.tessellate(.05, .15)
+        if triangles:
+            # A triangle centroid stays inside the trimmed face, even around holes.
+            corners = np.asarray([tuple(vertex) for vertex in vertices])[triangles]
+            areas = np.linalg.norm(np.cross(corners[:, 1] - corners[:, 0],
+                                            corners[:, 2] - corners[:, 0]), axis=1)
+            point = corners[areas.argmax()].mean(axis=0)
+            labels.append((f'{prefix} {number}', point, tuple(face.normal_at())))
+    return labels
+
 
 def read_mesh(path):
     step = path.with_suffix('.step')
@@ -76,17 +108,20 @@ def read_mesh(path):
         # The printable key meshes are laid flat. The STEPs preserve the seated pose.
         from build123d import import_step
 
-        vertices, triangles = import_step(path if path.suffix.lower() == '.step' else step).tessellate(.05, .15)
+        shape = import_step(path if path.suffix.lower() == '.step' else step)
+        vertices, triangles = shape.tessellate(.05, .15)
         unique, indices = np.unique(np.asarray([tuple(vertex) for vertex in vertices]),
                                     axis=0, return_inverse=True)
-        return unique, indices[np.asarray(triangles)]
+        faces = [] if path.stem in REFERENCES else planar_labels(shape, path.stem)
+        return unique, indices[np.asarray(triangles)], faces
 
     raw = path.read_bytes()
     triangles = int.from_bytes(raw[80:84], 'little')
     if not triangles or len(raw) != 84 + TRIANGLE.itemsize * triangles:
         raise ValueError(f'{path} is not a nonempty binary STL')
     coordinates = np.frombuffer(raw, dtype=TRIANGLE, offset=84)['vertices'].reshape(-1, 3)
-    return np.unique(coordinates, axis=0, return_inverse=True)
+    vertices, indices = np.unique(coordinates, axis=0, return_inverse=True)
+    return vertices, indices, []
 
 
 def write_preview(paths, output):
@@ -94,19 +129,19 @@ def write_preview(paths, output):
     if not paths:
         raise ValueError('No previewable CAD files')
     meshes = [read_mesh(path) for path in paths]
-    if any(not vertices.size or not np.isfinite(vertices).all() for vertices, _ in meshes):
+    if any(not vertices.size or not np.isfinite(vertices).all() for vertices, _, _ in meshes):
         raise ValueError('Preview meshes must have finite vertices')
-    low = np.min([vertices.min(axis=0) for vertices, _ in meshes], axis=0)
-    high = np.max([vertices.max(axis=0) for vertices, _ in meshes], axis=0)
+    low = np.min([vertices.min(axis=0) for vertices, _, _ in meshes], axis=0)
+    high = np.max([vertices.max(axis=0) for vertices, _, _ in meshes], axis=0)
     center = (low + high) / 2
-    radius = max(np.linalg.norm(vertices - center, axis=1).max() for vertices, _ in meshes)
+    radius = max(np.linalg.norm(vertices - center, axis=1).max() for vertices, _, _ in meshes)
     if radius <= 0:
         raise ValueError('Preview meshes have invalid bounds')
 
     controls = []
     euc_control = ''
     payloads = []
-    for index, (path, (vertices, indices)) in enumerate(zip(paths, meshes, strict=True)):
+    for index, (path, (vertices, indices, _)) in enumerate(zip(paths, meshes, strict=True)):
         stem = path.stem
         name, color = PARTS.get(stem, (stem, '#4abdc7'))
         checked = '' if stem in REFERENCES else ' checked'
@@ -131,6 +166,9 @@ def write_preview(paths, output):
         if owners:
             labels.extend(dict(name=name, meshes=owners, point=((point - center) / radius).tolist(),
                                normal=normal) for name, point, normal in features)
+    for index, (_, _, faces) in enumerate(meshes):
+        labels.extend(dict(name=name, meshes=[index], point=((point - center) / radius).tolist(),
+                           normal=normal, face=True) for name, point, normal in faces)
 
     output.write_text(TEMPLATE.read_text().replace('__CONTROLS__', '\n'.join(controls))
                       .replace('__EUC__', euc_control)
