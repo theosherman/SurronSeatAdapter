@@ -80,6 +80,8 @@ In **View**, **Parts** controls model visibility. Under **Labels**, turn on
 **Features** to identify adapter landmarks and split hardware, or **Faces** to
 number the larger planar faces in the exported STEP
 parts. Rotate or zoom to reveal more labels.
+Each group has **Invert** and **All** buttons. **All** changes to **None** when
+every visible checkbox in the group is selected.
 On a touchscreen, drag with one finger to rotate, drag with two fingers to
 pan, and pinch to zoom.
 

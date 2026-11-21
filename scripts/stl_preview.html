@@ -29,12 +29,15 @@ body { margin: 0; height: 100vh; height: 100dvh; }
     background: var(--surface); border: 1px solid var(--border); border-radius: 6px; padding: 5px;
 }
 .view-group + .view-group { border-top: 1px solid var(--border); margin-top: 4px; padding-top: 4px; }
+.view-group-header { display: flex; justify-content: space-between; align-items: center; gap: 3px; }
 .view-heading { margin: 0; font-size: 11px; color: #c0ccd6; }
+.selection-actions { display: flex; gap: 3px; }
 .checklist { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0 4px; }
 .checklist label { min-height: 24px; }
 #toolbar label[hidden] { display: none; }
 .view-actions { display: grid; grid-template-columns: 1fr 1fr 2fr; gap: 3px; margin-top: 4px; }
 #view-panel button { min-height: 26px; }
+#view-panel .selection-actions button { min-height: 20px; min-width: 35px; padding: 0 4px; font-size: 11px; }
 #gestures { margin: 4px 1px 0; color: #c0ccd6; font-size: 11px; }
 #status {
     position: absolute; top: 38px; left: 5px; max-width: calc(100% - 22px);
@@ -67,13 +70,25 @@ __EUC__
 <summary>View <span aria-hidden="true">▾</span></summary>
 <div id="view-panel">
 <div id="parts-group" class="view-group" role="group" aria-labelledby="parts-heading">
+<div class="view-group-header">
 <p id="parts-heading" class="view-heading">Parts</p>
+<div class="selection-actions">
+<button type="button" data-invert aria-label="Invert Parts selection">Invert</button>
+<button type="button" data-all aria-label="Select all Parts">All</button>
+</div>
+</div>
 <div class="checklist">
 __CONTROLS__
 </div>
 </div>
 <div id="labels-group" class="view-group" role="group" aria-labelledby="labels-heading" hidden>
+<div class="view-group-header">
 <p id="labels-heading" class="view-heading">Labels</p>
+<div class="selection-actions">
+<button type="button" data-invert aria-label="Invert Labels selection">Invert</button>
+<button type="button" data-all aria-label="Select all Labels">All</button>
+</div>
+</div>
 <div class="checklist">
 <label id="label-control" hidden><input type="checkbox" id="show-labels">Features</label>
 <label id="face-control" hidden><input type="checkbox" id="show-faces">Faces</label>
@@ -258,12 +273,41 @@ async function start() {
         panX = panY = 0;
         draw();
     }
+    const refreshSelectionButtons = [...toolbar.querySelectorAll('.view-group')].map(group => {
+        const invert = group.querySelector('[data-invert]');
+        const all = group.querySelector('[data-all]');
+        const heading = group.querySelector('.view-heading').textContent;
+        const checkboxes = () => [...group.querySelectorAll('.checklist label:not([hidden]) input')];
+        const allChecked = inputs => inputs.every(input => input.checked);
+        function refresh() {
+            const inputs = checkboxes();
+            const checked = allChecked(inputs);
+            invert.disabled = all.disabled = inputs.length === 0;
+            all.textContent = checked ? 'None' : 'All';
+            all.setAttribute('aria-label', checked ? `Clear all ${heading}` : `Select all ${heading}`);
+        }
+        invert.onclick = () => {
+            for (const input of checkboxes()) input.checked = !input.checked;
+            refresh();
+            draw();
+        };
+        all.onclick = () => {
+            const inputs = checkboxes();
+            const checked = !allChecked(inputs);
+            for (const input of inputs) input.checked = checked;
+            refresh();
+            draw();
+        };
+        group.addEventListener('change', refresh);
+        return refresh;
+    });
     function selectVariant() {
         for (const {label} of parts) {
             label.hidden = !['both', picker.value].includes(label.dataset.variant);
         }
         document.querySelector('#parts-group').hidden =
             !document.querySelector('#parts-group .checklist label:not([hidden])');
+        for (const refresh of refreshSelectionButtons) refresh();
         draw();
     }
     picker.onchange = selectVariant;
