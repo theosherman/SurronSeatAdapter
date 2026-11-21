@@ -54,16 +54,21 @@ Python callers can use `build_master(airtag_depth=8.5)` to regenerate the part w
 
 ## View STLs in T3 Code
 
-Open `exports/preview.html` in the Files panel. Use the checkboxes to show or
-hide parts in a shared view. The split adapter, keys, and latch are visible
-by default. Drag to rotate and scroll or use the buttons to zoom. The viewer
-runs offline and needs WebGL 2.
+Open `exports/preview.html` in the Files panel. Switch between **Adapter** and
+**Adapter Split** and use the checkboxes to show or hide parts. Drag to rotate,
+right-drag to pan, and scroll or use the buttons to zoom. The viewer runs
+offline and needs WebGL 2.
 
 The release build generates this file. To preview existing binary STLs, run
 `python -m scripts.preview_stl` from the repo root. Pass STL paths to select
 specific files and write `preview.html` beside the first STL. For the seated
 positions of the butterfly keys, keep their matching STEP files beside the
 print-oriented STLs.
+
+Both tabs share an optional **EUC** overlay from the prepared Sherman P mesh.
+To include a **Surron Seat** overlay, use a binary `surron-seat.stl` positioned
+in the adapter's model frame. The default build checks `exports/` and
+`reference/fusion/` for that file. Both overlays start hidden.
 
 ## Automatic preview browser
 
