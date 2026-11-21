@@ -1,7 +1,7 @@
 {
-  "selectedEdges": 131,
-  "generatedFaces": 159,
-  "minimumCutterDistanceMm": 1.4795221531015137,
+  "selectedEdges": 119,
+  "generatedFaces": 139,
+  "minimumCutterDistanceMm": 2.652229573218462,
   "toleranceMm": 0.001,
   "ok": true
 }

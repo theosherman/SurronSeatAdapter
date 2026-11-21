@@ -4,6 +4,22 @@ The full, unsplit adapter is reconstructed as editable Python solid geometry fro
 
 **Project priority.** Keep the geometry, feature history, and build workflow simple and editable.
 
+## Implemented 15 mm seat lowering
+
+The Sherman P scan sits **15 mm higher than the printed 8 mm revision**, so the
+seat mounts sit 15 mm lower relative to the wheel. The front clip and tangent
+ramp rise with the scan. The screen walls rise to meet the ramp and slope back
+to the original body top ahead of the front bolt seats. A parallel cut moves the
+main underside up 15 mm, including at the lower rear toe. The imprint still uses
+the scaled wheel body with zero added clearance. The 1 mm finish uses 119
+mirrored edge selections compatible with the raised imprint.
+
+The raised front handle scan still overlaps the clip more than it did on the
+printed revision. Physical clip fit remains open. See the
+[15 mm revision preview](docs/images/cad/adapter-body-15mm-lowered.png).
+Run `scripts/build-release.sh` on this branch for the 15 mm files. GitHub
+Releases follows `main`.
+
 ## Download
 
 Download `SurronSeatAdapter.zip` from the [latest successful build](https://github.com/theosherman/SurronSeatAdapter/releases/latest).
@@ -104,7 +120,7 @@ The [Fusion extracts](reference/fusion/) preserve the original source geometry, 
 ## Implemented 1 mm body fillets
 
 The November 15 request supersedes the earlier no-fillet decision for Build123d.
-`body_fillets.py` applies one 1 mm fillet feature to 131 geometrically selected
+`body_fillets.py` applies one 1 mm fillet feature to 119 geometrically selected
 edges of the placed adapter, before the wheel subtraction. The running dovetail
 rail and its body junction are excluded. The two shoulder edges and three
 trapezoidal-root edges at Y=147.5–151.6 mm remain sharp for latch clearance.

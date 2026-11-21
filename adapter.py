@@ -131,7 +131,7 @@ def build_master(stop=None, imprint=True, airtag_depth=8.5):
     body = stage('M20',body.cut(tool(126,airtag_depth,direction=-Vector(SKETCHES['AirtagCutSketch']['normal']))))
     # Place the finished geometry before the stationary wheel-body subtraction.
     body = body.translate(ADAPTER_TRANSLATION_MM)
-    from front_clip import redesign_front
+    from front_clip import redesign_front, trim_main_underside
     body = stage('M20-front-redesign', redesign_front(body))
     from screen_surround import reinforce_screen
     body = stage('M20-screen-surround', reinforce_screen(body))
@@ -140,6 +140,7 @@ def build_master(stop=None, imprint=True, airtag_depth=8.5):
     from trunk_cavity import rear_side_tools,trim_lower_rear_tip
     body = stage('M20-rear-side-relief', body.cut(*rear_side_tools()))
     body = stage('M20-lower-rear-tip', trim_lower_rear_tip(body))
+    body = stage('M20-raised-underside', trim_main_underside(body))
     if stop=='M20' or not imprint: return body
     from body_fillets import fillet_body
     body = stage('M20-body-fillets', fillet_body(body))

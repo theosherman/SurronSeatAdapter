@@ -11,7 +11,7 @@ class CavityAndClipTests(unittest.TestCase):
         cls.body = build_master(imprint=False)
 
     def test_raised_grip_preserved_outside_redesigned_connection(self):
-        old = import_step(Path(__file__).parent/'fixtures/front-before-suspension.step').translate((0,0,8))
+        old = import_step(Path(__file__).parent/'fixtures/front-before-suspension.step').translate((0,0,23))
         # Raising the clip requires the existing fixed printing planes to trim
         # its outer sides. Compare both grips inside those same half-spaces.
         from build123d import GeomType
@@ -22,7 +22,7 @@ class CavityAndClipTests(unittest.TestCase):
                 and .4<normal.Z<.5 and abs(normal.Y)<1e-8):
                 old=old.split(Plane(face.center(),z_dir=normal),Keep.BOTTOM)
         # The tangent trim begins around Y=-217.21. The jaw forward of
-        # Y=-218 retains its original geometry, translated exactly 8 mm.
+        # Y=-218 retains its original geometry, translated exactly 23 mm.
         plane=Plane((0,-218,0),z_dir=(0,1,0))
         old_grip=old.split(plane,Keep.BOTTOM)
         new_grip=self.body.split(plane,Keep.BOTTOM)
@@ -33,7 +33,7 @@ class CavityAndClipTests(unittest.TestCase):
 
     def test_trunk_has_both_side_walls_and_open_middle(self):
         for y in (45,50,55,60):
-            for z in (0,10,20,30):
+            for z in (5,10,20,30):
                 for side in (-1,1):
                     self.assertTrue(self.body.is_inside(Vector(side*20,y,z)),(side,y,z))
                 self.assertFalse(self.body.is_inside(Vector(0,y,z)),(y,z))
