@@ -335,27 +335,22 @@ XDG_CACHE_HOME=/tmp/surron-build123d-cache \
   python3.14 latch.py
 ```
 
-This produces `exports/latch.step`, `exports/latch.stl` and
-`logs/latch-validation.json`. Python callers can use
-`build_latch(clearance=0.2)`; `with_stages=True` also returns checkpoint measurements.
-The dovetail cutter directly consumes the master recipe's selected rear-dovetail
-profile through `adapter.profiles(18)` so profile edits propagate into both parts.
-Side and top regions use the accessory recipe's exact selected loops, including
-analytic R5/R15 arcs. The source oblique extrusion limit is reproduced by a long
-extrusion trimmed to its saved plane. The three face offsets are reproduced by
-two inward-shifted limiting planes (the two shoulder faces are coplanar).
+This produces `exports/latch.step` and `logs/latch-validation.json`. Pass
+`--stl` to also generate `exports/latch.stl`. Python callers can use
+`build_latch(clearance=0.2)`, and `with_stages=True` also returns checkpoint
+measurements.
 
-All five source checkpoint volumes match within **0.01 mm³**. The final nominal
-solid measures **230819.786248 mm³**; corrected-frame bounds are approximately
-`(-60.865103,147.800567,-45.662921)` to
-`(60.865103,219.997761,47.321249)` mm. Tests check the frame, analytic cylinder
-retention, all three inward offsets, clearance changes, and temporary shared
-profile edits with restoration. Both exports reopen as one valid solid; STEP
-retains the nominal volume and STL differs by about **0.256 mm³** due to
-0.005 mm tessellation. These checks establish agreement with the extracted
-source metrics; physical fit and a full source-to-port Boolean comparison
-remain untested.
+The latch's top-view intersection profile is a 110 mm rectangle with vertical
+sidewalls at X = ±55 mm, aligned with the adapter's rear sidewalls and parallel
+through the latch depth. The side profile retains the original R5/R15 arcs.
+The dovetail cutter uses the shared rear-dovetail profile through
+`adapter.profiles(18)`. The original three mating surfaces retain their
+0.2 mm inward offset through two limiting planes.
 
+The nominal solid measures **252902.395 mm³**. STEP and STL each reopen as one
+valid solid. The modeled latch clears the adapter body. The widened latch
+overlaps the aligned Sherman P rear handle scan by about **26 mm³**.
+Physical fit has yet to be tested.
 
 ## Raised front clip and continuous screen ramp
 

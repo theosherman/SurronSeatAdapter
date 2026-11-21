@@ -1,21 +1,36 @@
-"""Independent source metrics catch incorrect loops, trim sides and frame signs."""
+"""Checkpoint and geometry checks for the editable latch."""
 import unittest
 
 
 class LatchTests(unittest.TestCase):
-    def test_source_checkpoints_and_model_bounds(self):
+    def test_latch_sidewalls_align_with_rear_adapter(self):
+        from build123d import GeomType
+        from latch import build_latch
+
+        body = build_latch()
+        for sign in (-1, 1):
+            sides = [face for face in body.faces()
+                     if face.geom_type == GeomType.PLANE
+                     and abs(face.normal_at().X - sign) < 1e-7
+                     and abs(face.center().X - sign * 55) < 1e-7]
+            self.assertEqual(len(sides), 1)
+            bounds = sides[0].bounding_box()
+            self.assertAlmostEqual(bounds.min.Y, body.bounding_box().min.Y, places=6)
+            self.assertAlmostEqual(bounds.max.Y, body.bounding_box().max.Y, places=6)
+
+    def test_checkpoints_and_model_bounds(self):
         from latch import build_latch
         body, stages = build_latch(with_stages=True)
-        expected = [161420.2604, 322840.5208, 238753.4027, 232662.8943, 230819.7862464548]
+        expected = [161420.2604, 322840.5208, 260778.5622, 254688.0538, 252902.3949]
         self.assertEqual(len(stages), len(expected))
         for stage, volume in zip(stages, expected):
             self.assertAlmostEqual(stage['volumeMm3'], volume, delta=0.01)
             self.assertTrue(stage['valid'])
             self.assertEqual(stage['solids'], 1)
         bounds = body.bounding_box()
-        for actual, wanted in zip(tuple(bounds.min), (-60.865103223,147.800566681,-45.662921353)):
+        for actual, wanted in zip(tuple(bounds.min), (-55.0,147.800566681,-45.662921353)):
             self.assertAlmostEqual(actual, wanted, delta=0.001)
-        for actual, wanted in zip(tuple(bounds.max), (60.865103223,219.997761302,47.321249211)):
+        for actual, wanted in zip(tuple(bounds.max), (55.0,219.997761302,47.321249211)):
             self.assertAlmostEqual(actual, wanted, delta=0.001)
         from build123d import GeomType
         self.assertTrue(any(f.geom_type == GeomType.CYLINDER for f in body.faces()))
@@ -25,7 +40,7 @@ class LatchTests(unittest.TestCase):
         nominal = build_latch()
         zero = build_latch(clearance=0)
         larger = build_latch(clearance=0.3)
-        self.assertAlmostEqual(zero.volume, 232662.89426460396, delta=0.01)
+        self.assertAlmostEqual(zero.volume, 254688.0538, delta=0.01)
         self.assertLess(larger.volume, nominal.volume)
         self.assertAlmostEqual(nominal.cut(zero).volume, 0, delta=0.001)
         with self.assertRaises(ValueError):

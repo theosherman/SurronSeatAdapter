@@ -10,6 +10,7 @@ import math
 from build123d import Edge, Wire, Face, Solid, Plane, Vector, Keep, Compound, ShapeList, export_step, export_stl, import_step, Mesher
 from coordinates import source_to_model, ADAPTER_TRANSLATION_MM
 from adapter_profiles import profiles as adapter_profiles
+from trunk_cavity import REAR_SIDE_X_MM
 
 ROOT = Path(__file__).resolve().parent
 RECIPE = json.loads((ROOT/'cad-rebuild/accessories/latch-recipe.json').read_text())
@@ -22,6 +23,16 @@ def selected_faces(index):
     if index == 105:
         # Both master and latch derive their mating interface from the same data.
         return adapter_profiles(18)
+    if index == 104:
+        # Redraw TopCutSketch as a rectangle, keeping its original front edge.
+        # The rear edge lies beyond the latch blank.
+        front_y = 149.9532667443008
+        rear_y = 263.445982162752
+        x = REAR_SIDE_X_MM
+        return [Face(Wire.make_polygon(
+            [(-x, front_y, 0), (x, front_y, 0), (x, rear_y, 0), (-x, rear_y, 0)],
+            close=True,
+        ))]
     faces = []
     for profile in FEATURES[index]['profiles']:
         sketch = SKETCHES[profile['sketch']]

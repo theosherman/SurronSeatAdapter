@@ -23,7 +23,8 @@ PART_INPUTS = {
     'adapter': MASTER_INPUTS,
     'split halves': (*CONNECTOR_INPUTS, 'measure.py'),
     'butterfly keys': (*CONNECTOR_INPUTS, 'butterfly_keys.py'),
-    'latch': (*SHARED_INPUTS, 'latch.py', 'cad-rebuild/accessories/latch-recipe.json'),
+    'latch': (*SHARED_INPUTS, 'latch.py', 'trunk_cavity.py',
+              'cad-rebuild/accessories/latch-recipe.json'),
 }
 BUILD_ENVIRONMENT = [sys.version, BUILD123D_VERSION, OCP_VERSION]
 
