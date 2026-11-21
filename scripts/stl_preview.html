@@ -1,0 +1,145 @@
+<!doctype html>
+<html lang="en">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>__PART__</title>
+<style>
+:root { color-scheme: light dark; font: 14px system-ui; }
+body { margin: 0; display: grid; grid-template-rows: auto 1fr; height: 100dvh; }
+header { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 14px; padding: 10px 14px; }
+canvas { display: block; width: 100%; height: 100%; min-height: 0; touch-action: none; cursor: grab; background: #14232e; }
+canvas:active { cursor: grabbing; }
+</style>
+<header>
+<strong>__PART__</strong>
+<span id="status" role="status">Loading mesh…</span>
+<button id="closer" aria-label="Zoom in">+</button>
+<button id="farther" aria-label="Zoom out">−</button>
+<button id="reset">Reset view</button>
+</header>
+<canvas tabindex="0" aria-label="Interactive STL preview. Arrow keys rotate and plus or minus zoom."></canvas>
+<script id="mesh" type="application/octet-stream">__MESH__</script>
+<script>
+async function start() {
+    const canvas = document.querySelector('canvas');
+    const status = document.querySelector('#status');
+    const gl = canvas.getContext('webgl2', {antialias: true});
+    if (!gl) throw new Error('WebGL 2 is unavailable in this viewer.');
+
+    const packed = Uint8Array.from(atob(document.querySelector('#mesh').textContent), c => c.charCodeAt(0));
+    const stream = new Blob([packed]).stream().pipeThrough(new DecompressionStream('gzip'));
+    const mesh = await new Response(stream).arrayBuffer();
+    const count = new DataView(mesh).getUint32(0, true);
+    const positions = new Float32Array(mesh, 4, count * 3);
+    const indices = new Uint32Array(mesh, 4 + positions.byteLength);
+
+    function shader(type, source) {
+        const object = gl.createShader(type);
+        gl.shaderSource(object, source);
+        gl.compileShader(object);
+        if (!gl.getShaderParameter(object, gl.COMPILE_STATUS)) throw new Error(gl.getShaderInfoLog(object));
+        return object;
+    }
+    const program = gl.createProgram();
+    gl.attachShader(program, shader(gl.VERTEX_SHADER, `#version 300 es
+        in vec3 position;
+        uniform mat3 view;
+        uniform vec2 scale;
+        out vec3 surface;
+        void main() {
+            surface = view * position;
+            gl_Position = vec4(surface.xy * scale, -surface.z * .5, 1.);
+        }`));
+    gl.attachShader(program, shader(gl.FRAGMENT_SHADER, `#version 300 es
+        precision highp float;
+        in vec3 surface;
+        out vec4 color;
+        void main() {
+            vec3 normal = normalize(cross(dFdx(surface), dFdy(surface)));
+            float light = .38 + .62 * max(0., dot(normal, normalize(vec3(-.4,.7,1.))));
+            color = vec4(vec3(.29,.74,.78) * light, 1.);
+        }`));
+    gl.linkProgram(program);
+    if (!gl.getProgramParameter(program, gl.LINK_STATUS)) throw new Error(gl.getProgramInfoLog(program));
+    gl.useProgram(program);
+    function upload(target, array) {
+        gl.bindBuffer(target, gl.createBuffer());
+        gl.bufferData(target, array, gl.STATIC_DRAW);
+    }
+    upload(gl.ARRAY_BUFFER, positions);
+    const attribute = gl.getAttribLocation(program, 'position');
+    gl.enableVertexAttribArray(attribute);
+    gl.vertexAttribPointer(attribute, 3, gl.FLOAT, false, 0, 0);
+    upload(gl.ELEMENT_ARRAY_BUFFER, indices);
+    gl.enable(gl.DEPTH_TEST);
+    gl.clearColor(.078, .137, .18, 1);
+    const view = gl.getUniformLocation(program, 'view');
+    const scale = gl.getUniformLocation(program, 'scale');
+
+    let yaw, pitch, zoom;
+    const maxPitch = Math.PI / 2 - .005;
+    function draw() {
+        const ratio = Math.min(devicePixelRatio || 1, 2);
+        const width = Math.max(1, Math.round(canvas.clientWidth * ratio));
+        const height = Math.max(1, Math.round(canvas.clientHeight * ratio));
+        if (canvas.width !== width) canvas.width = width;
+        if (canvas.height !== height) canvas.height = height;
+        const aspect = canvas.width / canvas.height;
+        const c = Math.cos(yaw), s = Math.sin(yaw);
+        const h = Math.cos(pitch), v = Math.sin(pitch);
+        gl.viewport(0, 0, canvas.width, canvas.height);
+        gl.clear(gl.COLOR_BUFFER_BIT | gl.DEPTH_BUFFER_BIT);
+        gl.uniformMatrix3fv(view, false, [c, -s*v, s*h, s, c*v, -c*h, 0, h, v]);
+        gl.uniform2f(scale, zoom * Math.min(1, 1/aspect), zoom * Math.min(1, aspect));
+        gl.drawElements(gl.TRIANGLES, indices.length, gl.UNSIGNED_INT, 0);
+    }
+    function rotate(x, y) {
+        yaw -= x * .009;
+        pitch = Math.max(-maxPitch, Math.min(maxPitch, pitch + y * .009));
+        draw();
+    }
+    function magnify(factor) {
+        zoom = Math.min(8, Math.max(.25, zoom * factor));
+        draw();
+    }
+    function reset() {
+        yaw = .95;
+        pitch = .57;
+        zoom = .91;
+        draw();
+    }
+    let pointer = null;
+    canvas.onpointerdown = event => {
+        if (pointer !== null) return;
+        pointer = {id: event.pointerId, x: event.clientX, y: event.clientY};
+        canvas.setPointerCapture(event.pointerId);
+    };
+    canvas.onpointermove = event => {
+        if (pointer?.id !== event.pointerId) return;
+        rotate(event.clientX - pointer.x, event.clientY - pointer.y);
+        pointer.x = event.clientX;
+        pointer.y = event.clientY;
+    };
+    canvas.onlostpointercapture = () => { pointer = null; };
+    canvas.addEventListener('wheel', event => {
+        event.preventDefault();
+        magnify(Math.exp(-event.deltaY * .0015));
+    }, {passive: false});
+    canvas.onkeydown = event => {
+        const directions = {ArrowLeft: [-12, 0], ArrowRight: [12, 0], ArrowUp: [0, -12], ArrowDown: [0, 12]};
+        if (directions[event.key]) rotate(...directions[event.key]);
+        else if (event.key === '+' || event.key === '=') magnify(1.2);
+        else if (event.key === '-') magnify(1 / 1.2);
+        else return;
+        event.preventDefault();
+    };
+    document.querySelector('#closer').onclick = () => magnify(1.2);
+    document.querySelector('#farther').onclick = () => magnify(1 / 1.2);
+    document.querySelector('#reset').onclick = reset;
+    new ResizeObserver(draw).observe(canvas);
+    reset();
+    status.textContent = 'Drag to rotate · Scroll to zoom';
+}
+start().catch(error => { document.querySelector('#status').textContent = error.message; });
+</script>
+</html>
