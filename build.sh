@@ -13,10 +13,4 @@ if [[ $# -gt 0 && ! ( $# -eq 1 && ( $1 == --stl || $1 == --preview ) ) ]]; then
 fi
 
 cd "$project_dir"
-if [[ ${1:-} == --preview ]]; then
-  exec "$python_bin" -m scripts.build_cad --preview
-fi
-rm -f -- exports/adapter-body{,-split-front,-split-rear,-pre-imprint,-M[0-9][0-9]}.{step,stl} \
-  exports/{butterfly-key-top,butterfly-key-cavity,latch}.{step,stl} \
-  exports/preview.html exports/*.preview.html exports/SurronSeatAdapter.zip{,.tmp}
 exec "$python_bin" -m scripts.build_cad "$@"

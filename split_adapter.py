@@ -5,7 +5,7 @@ from pathlib import Path
 
 from build123d import Edge, Face, Keep, Plane, Solid, Vector, Wire, export_step, import_step
 
-from adapter import RECIPE, SKETCHES
+from adapter_profiles import RECIPE, SKETCHES
 from coordinates import ADAPTER_TRANSLATION_MM, source_to_model
 from export_mesh import export_stl_mm
 from measure import volume

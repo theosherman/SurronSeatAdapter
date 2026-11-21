@@ -15,15 +15,16 @@ keeps previous print files available.
 
 ## Run
 
-For routine adapter-body edits, run `./build.sh --preview`. It rebuilds
-`exports/adapter-body.step` and `exports/preview.html` with the wheel and seat
-references. It leaves existing split and accessory files in place.
+Use `./build.sh` for the full STEP preview, or `./build.sh --preview` to
+check only the adapter body with the wheel and seat references. Local builds
+reuse STEP files whose input and output hashes match `exports/build-state.json`.
+A missing or changed STEP is regenerated. The split halves also depend on the
+master STEP. Each run refreshes `exports/preview.html` for the selected view.
+Delete the build-state file to force the next local build to regenerate its parts.
 
-Run `./build.sh` for all STEP parts and the full preview. Both local commands
-generate STEP files and HTML. The GitHub release build uses
-`./build.sh --stl` through `scripts/build-release.sh` to generate printable STLs,
-validate the exports, and package a release ZIP. A full build clears prior
-generated exports, including any old release ZIP.
+The GitHub release build uses `./build.sh --stl` through
+`scripts/build-release.sh` to clear prior generated files, rebuild all parts,
+validate the exports, and package a release ZIP.
 The master and preview read the checked-in references under `reference/`.
 Adapter builds never regenerate reference geometry.
 The [historical Bambu Studio project](reference/slicer/adapter-body.3mf)

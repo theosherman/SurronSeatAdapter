@@ -9,7 +9,7 @@ import json
 import math
 from build123d import Edge, Wire, Face, Solid, Plane, Vector, Keep, Compound, ShapeList, export_step, export_stl, import_step, Mesher
 from coordinates import source_to_model, ADAPTER_TRANSLATION_MM
-from adapter import profiles as adapter_profiles
+from adapter_profiles import profiles as adapter_profiles
 
 ROOT = Path(__file__).resolve().parent
 RECIPE = json.loads((ROOT/'cad-rebuild/accessories/latch-recipe.json').read_text())
