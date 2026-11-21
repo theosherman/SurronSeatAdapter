@@ -68,6 +68,17 @@ Set `BUILD123D_PYTHON` to use a different environment. Installed here with Pytho
 
 Python callers can use `build_master(airtag_depth=8.5)` to regenerate the part with an editable AirTag pocket depth. Other dimensions remain in the recipe and named operations. Checkpoint builds update the validation log; rerun the full build to restore the final log.
 
+## View STLs in T3 Code
+
+Open the matching `*.preview.html` file in the Files panel. Drag to rotate and
+scroll or use the buttons to zoom. The HTML embeds the STL geometry and runs
+offline. The desktop or web viewer needs WebGL 2.
+
+The release build writes HTML previews beside the STLs in `exports/`.
+To preview existing binary STLs, including parts extracted from the ZIP, run
+`python -m scripts.preview_stl` from the repo root. Pass STL paths to select
+specific files.
+
 ## Automatic preview browser
 
 From the repository root, run `python preview_server.py start`.
