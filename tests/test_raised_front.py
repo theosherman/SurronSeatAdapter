@@ -52,6 +52,23 @@ class RaisedFrontTests(unittest.TestCase):
         self.assertAlmostEqual(arc.radius, 26.3377104606, places=6)
         self.assertAlmostEqual(((ramp @ 1) - (ramp @ 0)).dot(contact-arc.arc_center), 0, places=6)
 
+    def test_underside_ramp_is_tangent_to_the_rear_jaw(self):
+        for x in (-40, -25, 0, 25, 40):
+            with self.subTest(x=x):
+                section = self.body.intersect(Plane((x, 0, 0), z_dir=(1, 0, 0)))
+                contact = Vector(x, -206.0072929962, 44.50724991895)
+                join = Vector(x, -192.9504174705, 33.07580462039)
+                edges = [edge for edge in section.edges()
+                         if min(((edge @ t) - contact).length for t in (0, 1)) < 1e-5]
+                ramp = next((edge for edge in edges if edge.geom_type == GeomType.LINE), None)
+                arc = next((edge for edge in edges if edge.geom_type == GeomType.CIRCLE), None)
+                self.assertIsNotNone(ramp)
+                self.assertIsNotNone(arc)
+                self.assertLess(min(((ramp @ t) - join).length for t in (0, 1)), 1e-5)
+                self.assertAlmostEqual(arc.radius, 5.618855230321, places=6)
+                self.assertAlmostEqual(((ramp @ 1) - (ramp @ 0)).dot(contact - arc.arc_center),
+                                       0, places=6)
+
     def test_rear_screen_and_underbody_preserved(self):
         plane=Plane((0,-86.999,0),z_dir=(0,1,0))
         retained=self.body.split(plane,Keep.TOP)

@@ -18,6 +18,8 @@ Printing-face offsets are approved and implemented: faces 1 and 2 use a **1 mm o
 
 The approved 18 mm seat lowering raises the Sherman P scan, front clip, and screen walls relative to the printed revision. The original underside plane is translated up 18 mm, clipping the lowest portion of the original cavity and rear toe. Maintain the upper latch interface, mounting datums, and existing cavity cutter limits.
 
+The approved front-clip underside ramp is tangent to the native rounded rear jaw. The bridge and gusset share this lower profile at the lift boundary. Preserve the upper screen-ramp tangent and the full 30.2 mm clip bore.
+
 ## CAD context
 
 For user-visible proposal previews, use the automatic browser viewer: `python preview_server.py start --no-open` (omit `--no-open` when initially opening it). Write the final image under `tmp/` last so it becomes the newest image; the open browser at http://127.0.0.1:8766 updates automatically. Do not ask the user to hunt for image paths.

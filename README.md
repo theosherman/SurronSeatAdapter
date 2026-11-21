@@ -16,6 +16,10 @@ finish uses mirrored edge selections compatible with the raised imprint.
 The split child's cavity-key recesses sit 3 mm higher along the seam so both
 halves retain the full 10 mm recess depth.
 
+The underside ramp is tangent to the existing rounded rear jaw and joins the
+raised underside at the original lift boundary. The clip bore stays 30.2 mm
+in diameter.
+
 The raised front handle scan still overlaps the clip more than it did on the
 printed revision. Physical clip fit remains open. See the
 [previous 15 mm revision preview](docs/images/cad/adapter-body-15mm-lowered.png).
