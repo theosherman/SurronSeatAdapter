@@ -10,12 +10,15 @@ import math
 from build123d import Edge, Wire, Face, Solid, Plane, Vector, Keep, Compound, ShapeList, export_step, export_stl, import_step, Mesher
 from coordinates import source_to_model, ADAPTER_TRANSLATION_MM
 from adapter_profiles import profiles as adapter_profiles
-from trunk_cavity import REAR_SIDE_X_MM
+from trunk_cavity import REAR_SIDE_X_MM, REAR_WALL_NORMAL, REAR_WALL_POINT_MM
 
 ROOT = Path(__file__).resolve().parent
 RECIPE = json.loads((ROOT/'cad-rebuild/accessories/latch-recipe.json').read_text())
 FEATURES = {f['index']: f for f in RECIPE['features']}
 SKETCHES = {s['name']: s for s in RECIPE['sketches'] + RECIPE['externalDependencies']}
+# Run and inward movement of one straight outer ceiling edge in the XY view.
+REAR_CEILING_TAPER = (54.0 - 28.183821804872828) / (260.01919499427396 - 174.31392815517032)
+NOMINAL_CLEARANCE_MM = 0.2
 
 
 def selected_faces(index):
@@ -77,7 +80,22 @@ def source_plane(geometry):
     return Plane(source_to_model(geometry['origin']), z_dir=source_to_model(geometry['normal']))
 
 
-def build_latch(clearance=0.2, with_stages=False):
+def width_envelope():
+    envelope = extrusion(104, (0, 0, 1), two_sided=True)
+    normal = Vector(REAR_WALL_NORMAL)
+    seam = Vector(REAR_WALL_POINT_MM) - Vector(ADAPTER_TRANSLATION_MM) + normal * NOMINAL_CLEARANCE_MM
+    # In each horizontal section the taper starts at the sloped mating wall.
+    # Keep the original width cap ahead of that wall.
+    for side in (-1, 1):
+        plane = Plane(
+            (side * REAR_SIDE_X_MM, seam.Y, seam.Z),
+            z_dir=(side, REAR_CEILING_TAPER, REAR_CEILING_TAPER * normal.Z / normal.Y),
+        )
+        envelope = envelope.split(plane, Keep.BOTTOM)
+    return envelope
+
+
+def build_latch(clearance=NOMINAL_CLEARANCE_MM, with_stages=False):
     """Return one latch solid; positive clearance moves three mating faces inward."""
     if not math.isfinite(clearance) or clearance < 0:
         raise ValueError('Latch clearance must be finite and nonnegative')
@@ -100,7 +118,7 @@ def build_latch(clearance=0.2, with_stages=False):
     blank = extrusion(102, source_to_model(first['directionHint']))
     body = stage(102, blank.split(source_plane(first['entity']['geometry']), Keep.BOTTOM))
     body = stage(103, body.fuse(body.mirror(Plane.YZ)))
-    body = stage(104, body.intersect(extrusion(104, (0,0,1), two_sided=True)))
+    body = stage(104, body.intersect(width_envelope()))
     slot_extent = FEATURES[105]['extentOne']
     slot = extrusion(105, source_to_model(slot_extent['directionHint']))
     slot = slot.split(source_plane(slot_extent['entity']['geometry']), Keep.BOTTOM)
@@ -126,7 +144,7 @@ def build_latch(clearance=0.2, with_stages=False):
     return (body, stages) if with_stages else body
 
 
-def export_latch(output, *, stl=False, clearance=0.2):
+def export_latch(output, *, stl=False, clearance=NOMINAL_CLEARANCE_MM):
     body, stages = build_latch(clearance, with_stages=True)
     output.mkdir(exist_ok=True)
     step, stl_path = output/'latch.step', output/'latch.stl'
@@ -151,7 +169,7 @@ def export_latch(output, *, stl=False, clearance=0.2):
 
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument('--clearance', type=float, default=0.2)
+    parser.add_argument('--clearance', type=float, default=NOMINAL_CLEARANCE_MM)
     parser.add_argument('--stl', action='store_true', help='Also export the printable STL')
     args = parser.parse_args()
     export_latch(Path(__file__).resolve().parent / 'exports', stl=args.stl, clearance=args.clearance)
