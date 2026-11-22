@@ -23,6 +23,8 @@ body { margin: 0; height: 100vh; height: 100dvh; }
 #toolbar summary { list-style: none; }
 #toolbar summary::-webkit-details-marker { display: none; }
 #toolbar input { accent-color: #9ce0dc; margin: 0; width: 12px; height: 12px; flex: none; }
+#toolbar .reference-opacity input { width: clamp(32px, 9vw, 80px); height: 20px; }
+.reference-opacity span { min-width: 4ch; text-align: right; font-variant-numeric: tabular-nums; }
 #view-panel {
     position: absolute; right: 0; top: 33px; box-sizing: border-box;
     width: min(100%, 224px); max-height: calc(100dvh - 43px); overflow: auto;
@@ -138,11 +140,12 @@ async function start() {
         precision highp float;
         in vec3 surface;
         uniform vec3 partColor;
+        uniform float opacity;
         out vec4 color;
         void main() {
             vec3 normal = normalize(cross(dFdx(surface), dFdy(surface)));
             float light = .38 + .62 * max(0., dot(normal, normalize(vec3(-.4,.7,1.))));
-            color = vec4(partColor * light, 1.);
+            color = vec4(partColor * light, opacity);
         }`));
     gl.linkProgram(program);
     if (!gl.getProgramParameter(program, gl.LINK_STATUS)) throw new Error(gl.getProgramInfoLog(program));
@@ -156,8 +159,8 @@ async function start() {
     const menu = document.querySelector('#view-menu');
     const toolbar = document.querySelector('#toolbar');
     const parts = [];
-    for (const checkbox of toolbar.querySelectorAll('input[data-mesh]')) {
-        const payload = document.getElementById(`mesh-${checkbox.dataset.mesh}`).textContent;
+    for (const control of toolbar.querySelectorAll('input[data-mesh]')) {
+        const payload = document.getElementById(`mesh-${control.dataset.mesh}`).textContent;
         const packed = Uint8Array.from(atob(payload), character => character.charCodeAt(0));
         const stream = new Blob([packed]).stream().pipeThrough(new DecompressionStream('gzip'));
         const mesh = await new Response(stream).arrayBuffer();
@@ -170,8 +173,9 @@ async function start() {
         gl.enableVertexAttribArray(attribute);
         gl.vertexAttribPointer(attribute, 3, gl.FLOAT, false, 0, 0);
         upload(gl.ELEMENT_ARRAY_BUFFER, indices);
-        const color = [1, 3, 5].map(offset => parseInt(checkbox.dataset.color.slice(offset, offset + 2), 16) / 255);
-        parts.push({checkbox, label: checkbox.parentElement, vertexArray, color, count: indices.length});
+        const color = [1, 3, 5].map(offset => parseInt(control.dataset.color.slice(offset, offset + 2), 16) / 255);
+        const center = control.dataset.center?.split(' ').map(Number);
+        parts.push({control, label: control.parentElement, vertexArray, color, center, count: indices.length});
     }
     gl.enable(gl.DEPTH_TEST);
     gl.clearColor(.078, .137, .18, 1);
@@ -179,6 +183,8 @@ async function start() {
     const scale = gl.getUniformLocation(program, 'scale');
     const pan = gl.getUniformLocation(program, 'pan');
     const partColor = gl.getUniformLocation(program, 'partColor');
+    const opacity = gl.getUniformLocation(program, 'opacity');
+    gl.blendFuncSeparate(gl.SRC_ALPHA, gl.ONE_MINUS_SRC_ALPHA, gl.ZERO, gl.ONE);
     const annotationLayer = document.querySelector('#annotations');
     const showLabels = document.querySelector('#show-labels');
     const showFaces = document.querySelector('#show-faces');
@@ -193,12 +199,17 @@ async function start() {
     document.querySelector('#face-control').hidden = !annotations.some(label => label.face);
     document.querySelector('#labels-group').hidden = annotations.length === 0;
 
+    function partOpacity({control, label}) {
+        if (label.hidden) return 0;
+        return control.type === 'range' ? control.valueAsNumber / 100 : Number(control.checked);
+    }
+
     function drawLabels(matrix, scaleX, scaleY) {
         annotationLayer.hidden = !showLabels.checked && !showFaces.checked;
         if (annotationLayer.hidden) return;
         const width = canvas.clientWidth, height = canvas.clientHeight;
-        const visibleMeshes = new Set(parts.filter(part => !part.label.hidden && part.checkbox.checked)
-            .map(part => Number(part.checkbox.dataset.mesh)));
+        const visibleMeshes = new Set(parts.filter(part => partOpacity(part) > 0)
+            .map(part => Number(part.control.dataset.mesh)));
         const occupied = [];
         for (const label of annotations) {
             const toggle = label.face ? showFaces : showLabels;
@@ -229,6 +240,13 @@ async function start() {
 
     let yaw, pitch, zoom, panX, panY;
     const maxPitch = Math.PI / 2 - .005;
+    function drawPart(part, alpha) {
+        gl.bindVertexArray(part.vertexArray);
+        gl.uniform3fv(partColor, part.color);
+        gl.uniform1f(opacity, alpha);
+        gl.drawElements(gl.TRIANGLES, part.count, gl.UNSIGNED_INT, 0);
+    }
+
     function draw() {
         const ratio = Math.min(devicePixelRatio || 1, 2);
         const width = Math.max(1, Math.round(canvas.clientWidth * ratio));
@@ -246,11 +264,28 @@ async function start() {
         gl.uniform2f(scale, scaleX, scaleY);
         gl.uniform2f(pan, 2 * panX / Math.max(1, canvas.clientWidth),
                          -2 * panY / Math.max(1, canvas.clientHeight));
+        const translucent = [];
         for (const part of parts) {
-            if (part.label.hidden || !part.checkbox.checked) continue;
-            gl.bindVertexArray(part.vertexArray);
-            gl.uniform3fv(partColor, part.color);
-            gl.drawElements(gl.TRIANGLES, part.count, gl.UNSIGNED_INT, 0);
+            const alpha = partOpacity(part);
+            if (alpha === 1) drawPart(part, alpha);
+            if (alpha > 0 && alpha < 1) {
+                const [x, y, z] = part.center;
+                translucent.push({part, alpha, depth: matrix[2] * x + matrix[5] * y + matrix[8] * z});
+            }
+        }
+        if (translucent.length) {
+            gl.enable(gl.BLEND);
+            for (const {part, alpha} of translucent.sort((a, b) => a.depth - b.depth)) {
+                // Blend only the closest surface of each scan so overlapping facets
+                // of the same part do not build up opacity.
+                gl.colorMask(false, false, false, false);
+                drawPart(part, alpha);
+                gl.colorMask(true, true, true, true);
+                gl.depthFunc(gl.EQUAL);
+                drawPart(part, alpha);
+                gl.depthFunc(gl.LESS);
+            }
+            gl.disable(gl.BLEND);
         }
         drawLabels(matrix, scaleX, scaleY);
     }
@@ -380,7 +415,14 @@ async function start() {
     document.querySelector('#farther').onclick = () => magnify(1 / 1.2);
     document.querySelector('#reset').onclick = reset;
     toolbar.addEventListener('change', event => {
-        if (event.target === showLabels || event.target === showFaces || event.target.matches('input[data-mesh]')) draw();
+        if (event.target === showLabels || event.target === showFaces ||
+            event.target.matches('input[type="checkbox"][data-mesh]')) draw();
+    });
+    toolbar.addEventListener('input', event => {
+        const control = event.target;
+        if (!control.matches('.reference-opacity input')) return;
+        control.nextElementSibling.textContent = `${control.value}%`;
+        draw();
     });
     new ResizeObserver(draw).observe(canvas);
     reset();
