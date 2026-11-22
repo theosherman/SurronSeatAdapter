@@ -74,8 +74,7 @@ def build_master(stop=None, imprint=True, airtag_depth=8.5):
     body = stage('M14',body.cut(wedge))
     body = stage('M15',body.cut(tool(89,8,direction=-Vector(SKETCHES['RearSeatNotchSketch']['normal']))))
     # M16 front dovetail omitted by explicit user request; rear dovetail retained.
-    side = tool(97,1000,symmetric=True)
-    body = stage('M17',body.cut(side,side.mirror(Plane.YZ)))
+    # M17 round seat-edge relief omitted by explicit user request.
     rearcut = tool(121,1000,symmetric=True)
     body = stage('M18',body.cut(rearcut,rearcut.mirror(Plane.YZ)))
     from trunk_cavity import rear_cavity_tool
