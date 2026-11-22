@@ -59,7 +59,8 @@ def build_master(stop=None, imprint=True, airtag_depth=8.5):
     hanger = tool(79,1,direction=-Vector(SKETCHES['SeatHangerSketch']['normal']))
     d = RECIPE['drafts'][0]
     face = min(hanger.faces(),key=lambda f:(f.center()-Vector(d['selectedFaces'][0]['pointMm'])).length)
-    hanger = hanger.draft([face],Plane(d['neutralPlane']['originMm'],z_dir=d['neutralPlane']['normal']),45)
+    # The 30-degree draft raises the inner underside clear of the adjusters.
+    hanger = hanger.draft([face],Plane(d['neutralPlane']['originMm'],z_dir=d['neutralPlane']['normal']),30)
     body = stage('M11',body.fuse(hanger,hanger.mirror(Plane.YZ)))
     body = stage('M12',body.fuse(tool(84,98,source_to_model([1,0,0]),symmetric=True)))
     body = stage('M13',body.cut(tool(86,1000,source_to_model([0,0,1]),symmetric=True)))
