@@ -24,7 +24,7 @@ The approved front-clip underside ramp is tangent to the native rounded rear jaw
 
 The approved suspension adjuster clearance uses a 30° underside draft on the original mirrored seat shoulders. Preserve the outer seat-contact edge and full shoulder span. The rear seat notch profiles extend through the widened flanks at the original 8 mm depth.
 
-The original mirrored round seat-edge relief (M17) is removed from the manufacturing build. Leave this area uncut pending the user’s replacement design.
+The approved seat-edge relief (M17, option C) uses mirrored 28 mm cylindrical cuts at the original sketch center and tilt. Apply the cuts after the raised underside trim and before the finishing fillets. The portable recipe retains the historical 40 mm source profile.
 
 ## CAD context
 

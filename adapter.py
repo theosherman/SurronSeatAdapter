@@ -74,7 +74,6 @@ def build_master(stop=None, imprint=True, airtag_depth=8.5):
     body = stage('M14',body.cut(wedge))
     body = stage('M15',body.cut(tool(89,8,direction=-Vector(SKETCHES['RearSeatNotchSketch']['normal']))))
     # M16 front dovetail omitted by explicit user request; rear dovetail retained.
-    # M17 round seat-edge relief omitted by explicit user request.
     rearcut = tool(121,1000,symmetric=True)
     body = stage('M18',body.cut(rearcut,rearcut.mirror(Plane.YZ)))
     from trunk_cavity import rear_cavity_tool
@@ -93,6 +92,9 @@ def build_master(stop=None, imprint=True, airtag_depth=8.5):
     body = stage('M20-rear-side-relief', body.cut(*rear_side_tools()))
     body = stage('M20-lower-rear-tip', trim_lower_rear_tip(body))
     body = stage('M20-raised-underside', trim_main_underside(body))
+    # M17 uses the original tilted sketch with the approved 28 mm diameter.
+    relief = tool(97,240,symmetric=True).translate(ADAPTER_TRANSLATION_MM)
+    body = stage('M20-seat-edge-relief', body.cut(relief, relief.mirror(Plane.YZ)))
     if stop=='M20' or not imprint: return body
     from body_fillets import fillet_body
     body = stage('M20-body-fillets', fillet_body(body))
