@@ -3,25 +3,31 @@ import unittest
 
 
 class LatchTests(unittest.TestCase):
-    def test_latch_sidewalls_align_with_rear_adapter(self):
-        from build123d import GeomType
+    def test_latch_tapers_from_the_full_width_mating_wall(self):
+        from math import atan2, degrees
+        from build123d import GeomType, Vector
         from latch import build_latch
+        from trunk_cavity import REAR_WALL_NORMAL, REAR_WALL_POINT_MM
 
+        wall_normal = Vector(REAR_WALL_NORMAL)
+        wall_point = Vector(REAR_WALL_POINT_MM) + wall_normal * 0.2
         body = build_latch()
         for sign in (-1, 1):
             sides = [face for face in body.faces()
                      if face.geom_type == GeomType.PLANE
-                     and abs(face.normal_at().X - sign) < 1e-7
-                     and abs(face.center().X - sign * 55) < 1e-7]
+                     and sign * face.normal_at().X > 0.9
+                     and face.normal_at().Y > 0.1]
             self.assertEqual(len(sides), 1)
-            bounds = sides[0].bounding_box()
-            self.assertAlmostEqual(bounds.min.Y, body.bounding_box().min.Y, places=6)
-            self.assertAlmostEqual(bounds.max.Y, body.bounding_box().max.Y, places=6)
+            normal = sides[0].normal_at()
+            self.assertAlmostEqual(degrees(atan2(normal.Y, abs(normal.X))), 16.763375, places=5)
+            self.assertAlmostEqual(normal.Z / normal.Y, wall_normal.Z / wall_normal.Y, places=6)
+            seam = Vector(sign * 55, wall_point.Y, wall_point.Z)
+            self.assertAlmostEqual((sides[0].center() - seam).dot(normal), 0, places=6)
 
     def test_checkpoints_and_model_bounds(self):
         from latch import build_latch
         body, stages = build_latch(with_stages=True)
-        expected = [161420.2604, 322840.5208, 260778.5622, 254688.0538, 252902.3949]
+        expected = [161420.2604, 322840.5208, 232959.5491, 226869.0407, 225149.5238]
         self.assertEqual(len(stages), len(expected))
         for stage, volume in zip(stages, expected):
             self.assertAlmostEqual(stage['volumeMm3'], volume, delta=0.01)
@@ -40,7 +46,7 @@ class LatchTests(unittest.TestCase):
         nominal = build_latch()
         zero = build_latch(clearance=0)
         larger = build_latch(clearance=0.3)
-        self.assertAlmostEqual(zero.volume, 254688.0538, delta=0.01)
+        self.assertAlmostEqual(zero.volume, 226869.0407, delta=0.01)
         self.assertLess(larger.volume, nominal.volume)
         self.assertAlmostEqual(nominal.cut(zero).volume, 0, delta=0.001)
         with self.assertRaises(ValueError):

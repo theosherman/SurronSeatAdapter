@@ -340,16 +340,17 @@ This produces `exports/latch.step` and `logs/latch-validation.json`. Pass
 `build_latch(clearance=0.2)`, and `with_stages=True` also returns checkpoint
 measurements.
 
-The latch's top-view intersection profile is a 110 mm rectangle with vertical
-sidewalls at X = ±55 mm, aligned with the adapter's rear sidewalls and parallel
-through the latch depth. The side profile retains the original R5/R15 arcs.
-The dovetail cutter uses the shared rear-dovetail profile through
-`adapter.profiles(18)`. The original three mating surfaces retain their
-0.2 mm inward offset through two limiting planes.
+The latch is 110 mm wide at its sloped mating wall, with its edges aligned
+to the adapter's rear sidewalls at X = ±55 mm. Each side tapers inward toward
+the handle by **16.76°** in a horizontal section, matching the outer rear
+ceiling edges in the underside view. The dovetail cutter uses the shared
+rear-dovetail profile through `adapter_profiles.profiles(18)`. The three
+mating surfaces retain their nominal 0.2 mm inward offset.
 
-The nominal solid measures **252902.395 mm³**. STEP and STL each reopen as one
-valid solid. The modeled latch clears the adapter body. The widened latch
-overlaps the aligned Sherman P rear handle scan by about **26 mm³**.
+The nominal solid measures **225149.524 mm³**. STEP and STL each reopen
+as one valid solid. A separate 3 mm thickening study extended the latch
+body and tongue and overlapped the Sherman P rear handle scan by about
+1057 mm³. The production latch uses the original body and tongue thicknesses.
 Physical fit has yet to be tested.
 
 ## Raised front clip and continuous screen ramp
