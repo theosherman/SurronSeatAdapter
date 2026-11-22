@@ -25,7 +25,7 @@ def profiles(index, with_source=False, sherman_p_bottom=False, seat_shoulders=Fa
         for loop in source['loops']:
             edges = []
             curves = loop['curves']
-            if manufacturing_offsets and index in (14, 86):
+            if manufacturing_offsets and index in (14, 86, 89):
                 from cut_offsets import offset_cut_curves
                 curves = offset_cut_curves(index, curves)
             if sherman_p_bottom:

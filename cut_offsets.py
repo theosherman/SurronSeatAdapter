@@ -8,6 +8,7 @@ from math import hypot, isclose
 
 PRINTING_OFFSET_MM = 10.0
 FRONT_CORNER_OFFSET_MM = 3.0
+REAR_NOTCH_OUTER_U_MM = 100.0
 
 
 def offset_cut_curves(index, curves):
@@ -31,6 +32,14 @@ def offset_cut_curves(index, curves):
                               (side*(a[0]+FRONT_CORNER_OFFSET_MM*length/(a[1]-b[1])), a[1])),
                              ((side*b[0], b[1]),
                               (side*b[0], b[1]+FRONT_CORNER_OFFSET_MM*length/(b[0]-a[0])))]
+    elif index == 89:
+        # The selected notch loops share internal edges. Extend their common
+        # outer endpoints past the widened flank, preserving the floor,
+        # longitudinal ends and inner edge of each cut.
+        for side in (-1, 1):
+            for v in (244.70896933768438, 264.7089693376844):
+                replacements.append(((side * 36.35629606105309, v),
+                                     (side * REAR_NOTCH_OUTER_U_MM, v)))
     for curve in curves:
         for key in ('startMm', 'endMm'):
             point = curve[key]

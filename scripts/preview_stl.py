@@ -39,7 +39,7 @@ FEATURE_LABELS = {
         ('Clip bore', (0, -220.4, 40.9), BOTTOM),
         ('Screen ramp', (0, -194, 50), (0, .7, .7)),
         ('Screen side wall', (47, -167, 37.7), TOP),
-        ('Front seat support', (50, -90, 39.7), TOP),
+        ('Seat edge clearance', (50, -90, 39.7), TOP),
         ('Front screw access', (23, -76.4, 15), BOTTOM),
         ('Wheel imprint', (38, -70, 9.6), BOTTOM),
         ('Cavity roof', (0, -38, 18), BOTTOM),
