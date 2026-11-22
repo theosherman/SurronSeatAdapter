@@ -17,3 +17,20 @@ class CutOffsetTests(unittest.TestCase):
             self.assertAlmostEqual((faces[0].center()-old).dot(normal),3,places=6)
         self.assertTrue(cutter.is_valid)
         self.assertEqual(len(cutter.solids()),2)
+
+    def test_rear_notches_extend_outward_at_original_depth(self):
+        from adapter_profiles import SKETCHES
+
+        sketch = SKETCHES['RearSeatNotchSketch']
+        origin, u, v, normal = map(Vector, (
+            sketch['originMm'], sketch['xAxis'], sketch['yAxis'], sketch['normal']))
+        cutter = tool(89, 8, direction=-normal)
+        self.assertTrue(cutter.is_valid)
+        self.assertEqual(len(cutter.solids()), 2)
+        for side in (-1, 1):
+            center = origin + v * 254.7089693376844
+            self.assertFalse(cutter.is_inside(center - normal * 4))
+            for width in (14, 35, 50, 90):
+                point = center + u * (side * width)
+                self.assertTrue(cutter.is_inside(point - normal * 4))
+                self.assertFalse(cutter.is_inside(point - normal * 8.1))

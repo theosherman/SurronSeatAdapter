@@ -22,6 +22,10 @@ The approved production latch raises the original face 1–6 edge 18 mm in Z at 
 
 The approved front-clip underside ramp is tangent to the native rounded rear jaw. The bridge and gusset share this lower profile at the lift boundary. Preserve the upper screen-ramp tangent and the full 30.2 mm clip bore.
 
+The approved suspension adjuster clearance uses a 30° underside draft on the original mirrored seat shoulders. Preserve the outer seat-contact edge and full shoulder span. The rear seat notch profiles extend through the widened flanks at the original 8 mm depth.
+
+The original mirrored round seat-edge relief (M17) is removed from the manufacturing build. Leave this area uncut pending the user’s replacement design.
+
 ## CAD context
 
 Use `./build.sh --preview` for routine master-body edits. Use `./build.sh` when the change needs the split halves, keys, or latch in the preview. The GitHub release build generates printable STLs.
