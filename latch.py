@@ -10,6 +10,7 @@ import math
 from build123d import Edge, Wire, Face, Solid, Plane, Vector, Keep, Compound, ShapeList, export_step, export_stl, import_step, Mesher
 from coordinates import source_to_model, ADAPTER_TRANSLATION_MM
 from adapter import profiles as adapter_profiles
+from trunk_cavity import REAR_SIDE_X_MM
 
 ROOT = Path(__file__).resolve().parent
 RECIPE = json.loads((ROOT/'cad-rebuild/accessories/latch-recipe.json').read_text())
@@ -22,6 +23,16 @@ def selected_faces(index):
     if index == 105:
         # Both master and latch derive their mating interface from the same data.
         return adapter_profiles(18)
+    if index == 104:
+        # Redraw TopCutSketch as a rectangle, keeping its original front edge.
+        # The rear edge lies beyond the latch blank.
+        front_y = 149.9532667443008
+        rear_y = 263.445982162752
+        x = REAR_SIDE_X_MM
+        return [Face(Wire.make_polygon(
+            [(-x, front_y, 0), (x, front_y, 0), (x, rear_y, 0), (-x, rear_y, 0)],
+            close=True,
+        ))]
     faces = []
     for profile in FEATURES[index]['profiles']:
         sketch = SKETCHES[profile['sketch']]
@@ -118,15 +129,19 @@ def build_latch(clearance=0.2, with_stages=False):
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--clearance', type=float, default=0.2)
+    parser.add_argument('--stl', action='store_true', help='Also export the printable STL')
     args = parser.parse_args()
     body, stages = build_latch(args.clearance, with_stages=True)
     output = Path(__file__).parent/'exports'
     output.mkdir(exist_ok=True)
     step, stl = output/'latch.step', output/'latch.stl'
     export_step(body, step)
-    export_stl(body, stl, tolerance=0.005, angular_tolerance=0.05)
+    exports = [('step', import_step(step))]
+    if args.stl:
+        export_stl(body, stl, tolerance=0.005, angular_tolerance=0.05)
+        exports.append(('stl', Compound(Mesher().read(stl))))
     reopened = {}
-    for name, shape in [('step', import_step(step)), ('stl', Compound(Mesher().read(stl)))]:
+    for name, shape in exports:
         bounds = shape.bounding_box()
         reopened[name] = dict(valid=shape.is_valid, solids=len(shape.solids()), volumeMm3=shape.volume,
                               boundsMm=[tuple(bounds.min), tuple(bounds.max)])

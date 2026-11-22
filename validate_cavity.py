@@ -25,8 +25,9 @@ samples=[]
 intersector=IntCurvesFace_ShapeIntersector()
 intersector.Load(body.wrapped,1e-6)
 direction=gp_Dir(*n)
-for v in range(-164,105,2):
-    for u in range(-47,48,2):
+grid_mm=1
+for v in range(-164,105,grid_mm):
+    for u in range(-47,48,grid_mm):
         p=origin+x*u+y*v
         if not profile.is_inside(p):continue
         # Start at the original cavity roof and measure only where the ray
@@ -48,7 +49,8 @@ wall_normal=Vector(REAR_WALL_NORMAL)
 wall_point=Vector(REAR_WALL_POINT_MM)
 wall_checks=[]
 for x_pos in (-25,-15,0,15,25):
-    for z_pos in (-10,0,10,20):
+    # Sample the surviving wall above the raised underside plane.
+    for z_pos in (-6,0,10,20):
         y_pos=wall_point.Y-(z_pos-wall_point.Z)*wall_normal.Z/wall_normal.Y
         outer=Vector(x_pos,y_pos,z_pos)
         for depth in (.1,2.5,REAR_WALL_THICKNESS_MM-.1):
@@ -56,7 +58,7 @@ for x_pos in (-25,-15,0,15,25):
             wall_checks.append(dict(x=x_pos,z=z_pos,inwardNormalDepthMm=depth))
 report=dict(rearWallNormalThicknessMm=REAR_WALL_THICKNESS_MM,rearWallMaterialChecks=len(wall_checks),valid=body.is_valid,solids=len(body.solids()),volumeMm3=body.volume,
             roofOffsetMm=CAVITY_ROOF_OFFSET_MM,sampledRoofLocations=len(samples),
-            minimumSampledRoofMm=minimum,samplingGridMm=2,
+            minimumSampledRoofMm=minimum,samplingGridMm=grid_mm,
             limitation='Interior roof-normal samples; not a continuous all-surface minimum proof.',
             approvedPreviewSymmetricDifferenceMm3=None)
 tip_normal=Vector(REAR_TIP_NORMAL)
@@ -64,7 +66,7 @@ cavity=rear_cavity_tool(sketch).translate(ADAPTER_TRANSLATION_MM)
 cut_faces=[f for f in body.faces() if f.geom_type==GeomType.PLANE
            and f.normal_at().dot(tip_normal)>.999999]
 distances=[f.distance_to(cavity) for f in cut_faces]
-# The 15 mm underside cut can remove the outer tip face. Check the original
+# The raised underside cut can remove the outer tip face. Check the original
 # cavity limit even where its matching exterior face has been trimmed away.
 maximum=max((v.center()-Vector(REAR_TIP_POINT_MM)).dot(tip_normal) for v in cavity.vertices())
 assert maximum<=-REAR_TIP_WALL_THICKNESS_MM+1e-5,maximum

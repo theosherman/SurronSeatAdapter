@@ -1,4 +1,5 @@
 """Prepare the Sherman P scan independently; align the complete scan before slicing and body-only scaling."""
+from argparse import ArgumentParser
 from pathlib import Path
 import hashlib
 import json
@@ -10,7 +11,7 @@ ROOT = Path(__file__).resolve().parent
 FRONT_Y = -191.0
 REAR_Y = 170.0
 BODY_SCALE = 1.003
-SEAT_LOWERING_MM = 15.0  # Relative to the printed 8 mm deeper-seating revision.
+SEAT_LOWERING_MM = 18.0  # Relative to the printed 8 mm deeper-seating revision.
 SEATING_DEPTH_MM = 8.0 + SEAT_LOWERING_MM
 # Translate the fit-scale pivot with the wheel to preserve the exact rise.
 SCALE_ORIGIN = (0, 0, SEATING_DEPTH_MM)
@@ -50,12 +51,22 @@ def measurements(shape):
 
 
 def main():
+    parser = ArgumentParser(description=__doc__)
+    parser.add_argument('--preview-only', action='store_true', help='Export only the merged EUC preview STL')
+    args = parser.parse_args()
     start = time.monotonic()
     source = ROOT/'reference/fusion/Sherman_P_Scan_Aligned_To_Adapter_mm.stl'
     scan_path = prepare_scan(source, ROOT/'inputs/wheel-scan-model-frame.stl')
     scan = Mesher().read(scan_path)[0]
     print('Aligning entire scan, splitting, scaling body only; fusing unscaled handles', flush=True)
     parts = prepare_parts(scan)
+    output = ROOT/'exports/sherman-p-prepared'
+    output.mkdir(parents=True, exist_ok=True)
+    if args.preview_only:
+        merged = parts['merged']
+        assert merged.is_valid and len(merged.solids()) == 1
+        export_stl(merged, output/'merged.stl', tolerance=0.005, angular_tolerance=0.05)
+        return
     aligned = align_scan(scan)
     report = dict(source=source.name, sourceSha256=hashlib.sha256(source.read_bytes()).hexdigest(),
                   frame='Build123d (-source X, -source Y, source Z), millimeters',
@@ -87,8 +98,6 @@ def main():
     report['validation'] = dict(partitionVolumeErrorMm3=partition_error,
                                 bodyScaleVolumeErrorMm3=scale_error,
                                 unscaledAlignedHandleVolumeErrorsMm3=handle_errors)
-    output = ROOT/'exports/sherman-p-prepared'
-    output.mkdir(parents=True, exist_ok=True)
     for name, part in parts.items():
         export_step(part, output/f'{name}.step')
         export_stl(part, output/f'{name}.stl', tolerance=0.005, angular_tolerance=0.05)

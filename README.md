@@ -1,23 +1,29 @@
 # Surron Seat Adapter
 
-The full, unsplit adapter is reconstructed as editable Python solid geometry from the repository's millimeter recipe. The final wheel imprint subtracts only the prepared Sherman P middle body, with the source screen patch reconnected before preparation and uniformly scaled by **1.003** about model origin after cuts at Y=-191/+170 mm. Both handles move with the complete scan during alignment, remain unscaled after slicing, and are excluded from subtraction. The master has 1 mm finishing fillets and no connector recesses. The project also builds a two-piece printing variant and a separate editable latch. The saddlebag mount has a saved reference recipe.
+The full, unsplit adapter is reconstructed as editable Python solid geometry from the repository's millimeter recipe. The final wheel imprint subtracts only the prepared Sherman P middle body, with the source screen patch reconnected before preparation and uniformly scaled by **1.003** about its raised datum after cuts at Y=-191/+170 mm. Both handles move with the complete scan during alignment, remain unscaled after slicing, and are excluded from subtraction. The master has 1 mm finishing fillets and no connector recesses. The project also builds a two-piece printing variant and a separate editable latch. The saddlebag mount has a saved reference recipe.
 
 **Project priority.** Keep the geometry, feature history, and build workflow simple and editable.
 
-## Implemented 15 mm seat lowering
+## Implemented 18 mm seat lowering
 
-The Sherman P scan sits **15 mm higher than the printed 8 mm revision**, so the
-seat mounts sit 15 mm lower relative to the wheel. The front clip and tangent
+The Sherman P scan sits **18 mm higher than the printed 8 mm revision**, so the
+seat mounts sit 18 mm lower relative to the wheel. The front clip and tangent
 ramp rise with the scan. The screen walls rise to meet the ramp and slope back
 to the original body top ahead of the front bolt seats. A parallel cut moves the
-main underside up 15 mm, including at the lower rear toe. The imprint still uses
-the scaled wheel body with zero added clearance. The 1 mm finish uses 119
-mirrored edge selections compatible with the raised imprint.
+main underside up 18 mm, including at the lower rear toe. The imprint uses the
+wheel body scaled about its raised datum, with zero added clearance. The 1 mm
+finish uses mirrored edge selections compatible with the raised imprint.
+The split child's cavity-key recesses sit 3 mm higher along the seam so both
+halves retain the full 10 mm recess depth.
+
+The underside ramp is tangent to the existing rounded rear jaw and joins the
+raised underside at the original lift boundary. The clip bore stays 30.2 mm
+in diameter.
 
 The raised front handle scan still overlaps the clip more than it did on the
 printed revision. Physical clip fit remains open. See the
-[15 mm revision preview](docs/images/cad/adapter-body-15mm-lowered.png).
-Run `scripts/build-release.sh` on this branch for the 15 mm files. GitHub
+[previous 15 mm revision preview](docs/images/cad/adapter-body-15mm-lowered.png).
+Run `scripts/build-release.sh` on this branch for the 18 mm files. GitHub
 Releases follows `main`.
 
 ## Download
@@ -32,32 +38,33 @@ keeps previous print files available.
 ## Run
 
 The original Sherman P wheel scan is tracked under `reference/fusion/`.
-Generate the aligned scan with `node prepare-wheel-scan.mjs`, or run
-`scripts/build-release.sh` to build the ZIP locally using Python and Node on
-your PATH. Generated files belong in the ignored `exports/` directory.
+Run `./run.sh` to build the STEP parts and the offline preview in the ignored
+`exports/` directory. Use `./run.sh --stl` to also generate printable STLs,
+or `scripts/build-release.sh` to validate and package a release ZIP.
+A full build clears prior generated exports, including any old release ZIP.
+Keep reference meshes for the preview alongside the project inputs or in `exports/`.
 The [historical Bambu Studio project](reference/slicer/adapter-body.3mf)
 preserves the earlier slicer settings and geometry.
 
-Dependencies live outside this Git repository:
+The launcher uses shared Python 3.14. It looks for `python3.14` on
+`PATH`, then checks `/opt/az/bin/python3.14`. Set `BUILD123D_PYTHON`
+to choose a different executable.
 
 ```bash
-# Existing environment on this machine:
-./run.sh
-
-# Recreate on another machine (use a Python version supported by the pinned wheels):
-python -m venv ~/.local/share/venvs/surron-build123d
-~/.local/share/venvs/surron-build123d/bin/pip install -r requirements.lock.txt
+# Install dependencies once for your Python 3.14 user account.
+python3.14 -m pip install --user -r requirements.lock.txt
 ./run.sh
 ```
 
-To export the split halves and separate latch after building the master, run:
+Use `/opt/az/bin/python3.14` in place of `python3.14` if it is outside
+`PATH`. Worktrees share the user-site dependencies.
+
+To rebuild the split halves or latch individually, run:
 
 ```bash
-~/.local/share/venvs/surron-build123d/bin/python split_adapter.py
-~/.local/share/venvs/surron-build123d/bin/python latch.py
+python3.14 split_adapter.py
+python3.14 latch.py
 ```
-
-Set `BUILD123D_PYTHON` to use a different environment. Installed here with Python 3.14.7, build123d 0.13.0, and OCCT bindings 8.0.1.1.0. No system Python packages were modified. `requirements.txt` pins the main library; `requirements.lock.txt` records the complete environment.
 
 `adapter.py` is the editable CAD source. It reads `cad-rebuild/recipe.json` and `reference/fusion/Sherman_P_Scan_Aligned_To_Adapter_mm.stl` directly. All coordinates are millimeters. Build123d uses a permanent corrected frame: physical front is negative Y and Z is up. `coordinates.py` maps source global points and vectors to `(-x,-y,z)` before making any geometry; sketch-local coordinates and dimensions stay unchanged. Explicit extrusion directions, stopping/draft planes, and wedge vertices use this same frame. The scan vertices and normals are converted into `inputs/wheel-scan-model-frame.stl` before BREP import. No completed body is rotated. The authoritative shared recipe and original aligned scan retain their historical coordinates.
 
@@ -68,16 +75,44 @@ Set `BUILD123D_PYTHON` to use a different environment. Installed here with Pytho
 
 Python callers can use `build_master(airtag_depth=8.5)` to regenerate the part with an editable AirTag pocket depth. Other dimensions remain in the recipe and named operations. Checkpoint builds update the validation log; rerun the full build to restore the final log.
 
-## View STLs in T3 Code
+## Luna Surron seat reference
 
-Open the matching `*.preview.html` file in the Files panel. Drag to rotate and
-scroll or use the buttons to zoom. The HTML embeds the STL geometry and runs
-offline. The desktop or web viewer needs WebGL 2.
+The [original seat scan](reference/seat/LunaSurronSeat_30k.stl) and the
+[stud-corrected mesh](reference/seat/LunaSurronSeat_Studs_5p3x15.stl) share the
+original scan coordinates. The corrected mesh uses four smooth Ø5.3 mm studs
+with 15 mm exposed length from the surrounding plastic mounting faces. Each
+axis and base location is fitted from the scan. The seat meshes are reference
+assets for checking fit.
 
-The release build writes HTML previews beside the STLs in `exports/`.
-To preview existing binary STLs, including parts extracted from the ZIP, run
-`python -m scripts.preview_stl` from the repo root. Pass STL paths to select
-specific files.
+## View CAD in T3 Code
+
+Open `exports/preview.html` in the Files panel. Use the top picker to switch
+between **Adapter** and **Adapter Split**. The **View** menu holds part
+visibility, zoom, reset, and gesture help. Drag to rotate, right-drag to pan,
+and scroll to zoom. The viewer runs offline and needs WebGL 2.
+In **View**, **Parts** controls model visibility. Under **Labels**, turn on
+**Features** to identify adapter landmarks and split hardware, or **Faces** to
+number the larger planar faces in the exported STEP
+parts. Rotate or zoom to reveal more labels.
+Each group has **Invert** and **All** buttons. **All** changes to **None** when
+every visible checkbox in the group is selected.
+On a touchscreen, drag with one finger to rotate, drag with two fingers to
+pan, and pinch to zoom.
+
+The local and release builds generate this file from the exported STEP parts.
+Run `python -m scripts.preview_stl` from the repo root to refresh it from
+existing exports. Pass STEP or binary STL paths to select specific files and
+write `preview.html` beside the first input. Use the STEP keys to show them
+seated in the adapter.
+Refreshing the default preview removes legacy per-part HTML files from `exports/`.
+
+The top **EUC** and **Seat** checkboxes toggle the prepared Sherman P and
+Luna Surron seat overlays for either adapter variant. Both start hidden.
+The default local build embeds the wheel mesh in `preview.html` and deletes the
+intermediate STL. To include the EUC when refreshing just the HTML, first run
+`python prepare_sherman_p.py --preview-only` to recreate that mesh.
+The preview places the corrected seat scan with a rigid fit from its four
+stud bases to the adapter hole mouths. The scan's original dimensions are preserved.
 
 ## Automatic preview browser
 
@@ -100,8 +135,7 @@ The script rebuilds the native Python geometry and sends it to the interactive v
 ## Outputs
 
 - `exports/adapter-body.step`: final single solid, analytic manufacturing faces plus faceted scan imprint.
-- `exports/adapter-body.stl`: final printing mesh, tessellation tolerance 0.005 mm and angular tolerance 0.05 rad.
-- `exports/adapter-body-pre-imprint.step`: retained analytic checkpoint. Its STL is a local output from `./run.sh --no-imprint`.
+- `exports/adapter-body.stl`: optional printing mesh, tessellation tolerance 0.005 mm and angular tolerance 0.05 rad.
 - `exports/SurronSeatAdapter.zip`: release bundle generated by `scripts/build-release.sh`.
 - `logs/build-validation.json`: measured per-stage validity, body count, volume and elapsed time.
 
@@ -109,18 +143,19 @@ The Python build scripts contain the parametric feature history. STEP provides e
 
 ## Verification
 
-Generate the local prepared wheel exports before running the geometry tests or export validators.
+Generate the prepared wheel exports before running the geometry tests. Use
+`./run.sh --stl` before running the STL validators.
 
 ```bash
-~/.local/share/venvs/surron-build123d/bin/python prepare_sherman_p.py
+python3.14 prepare_sherman_p.py
 XDG_CACHE_HOME=/tmp/surron-build123d-cache \
-  ~/.local/share/venvs/surron-build123d/bin/python -m unittest discover -s tests
+  python3.14 -m unittest discover -s tests
 XDG_CACHE_HOME=/tmp/surron-build123d-cache \
-  ~/.local/share/venvs/surron-build123d/bin/python validate_exports.py
+  python3.14 validate_exports.py
 node validate-mounting-ceilings.mjs
 ```
 
-Orientation tests check the initial profile, sketch frames and first extrusion, so an end-of-build rotation cannot pass. Material probes use the corrected frame. Tests compare 16 selected-profile sets against their saved areas, the revised M01/M05 base against the approved outline using independent native geometry, the finished body against an independent subtraction of the accepted prepared body STEP from the saved pre-imprint adapter, and all twelve mounting ledge/cavity/bore samples against native solid classification. The mesh ceiling check uses two independent ray directions at placed probe points. The export check reopens STEP and STL and rebuilds with an AirTag depth of 8.6 mm to check the expected 102.4295 mm³ change; it does not overwrite nominal exports.
+Orientation tests check the initial profile, sketch frames and first extrusion, so an end-of-build rotation cannot pass. Material probes use the corrected frame. Tests compare 16 selected-profile sets against their saved areas, the revised M01/M05 base against the approved outline using independent native geometry, the finished body against an independent subtraction of the accepted prepared body STEP from the in-memory pre-imprint adapter, and all twelve mounting ledge/cavity/bore samples against native solid classification. The mesh ceiling check uses two independent ray directions at placed probe points. The export check reopens STEP and STL and rebuilds with an AirTag depth of 8.6 mm to check the expected 102.4295 mm³ change; it does not overwrite nominal exports.
 
 The prior nominal in-memory master volume, before the approved alignment, was approximately **1,517,837.554 mm³**. After the scan alignment the master measured approximately **1,476,826.478 mm³**. After the approved front-clip placement the current master measures approximately **1,473,734.600 mm³**; see `logs/build-validation.json`. The earlier full-scan imprint measured **1,507,476.035 mm³**. Matching volume is useful regression evidence, not proof of whole-model equality or physical fit.
 
@@ -268,7 +303,7 @@ its position relative to the translated sloped adapter has changed slightly.
 The separately prepared Sherman P uses approved vertical planes at **Y=-191 mm** (front) and **Y=+170 mm** (rear), in the corrected build123d frame. Run:
 
 ```bash
-~/.local/share/venvs/surron-build123d/bin/python prepare_sherman_p.py
+python3.14 prepare_sherman_p.py
 ```
 
 Before slicing, the complete scan (including both handles) rotates **-3.4932161177016057° about model +X**, around `(0,0,0)`, then translates **+3.464786838041892 mm in Z**. This is the approved lower-outer-bottom alignment: clockwise in the front-left side view. The user-drawn top reference line aligns with the adapter’s lower outer bottom plane, not its cavity roof. The original source scan remains unchanged.
@@ -303,30 +338,25 @@ The latch is never fused into the adapter. No fillets or saddlebag mount are add
 
 ```bash
 XDG_CACHE_HOME=/tmp/surron-build123d-cache \
-  ~/.local/share/venvs/surron-build123d/bin/python latch.py
+  python3.14 latch.py
 ```
 
-This produces `exports/latch.step`, `exports/latch.stl` and
-`logs/latch-validation.json`. Python callers can use
-`build_latch(clearance=0.2)`; `with_stages=True` also returns checkpoint measurements.
-The dovetail cutter directly consumes the master recipe's selected rear-dovetail
-profile through `adapter.profiles(18)` so profile edits propagate into both parts.
-Side and top regions use the accessory recipe's exact selected loops, including
-analytic R5/R15 arcs. The source oblique extrusion limit is reproduced by a long
-extrusion trimmed to its saved plane. The three face offsets are reproduced by
-two inward-shifted limiting planes (the two shoulder faces are coplanar).
+This produces `exports/latch.step` and `logs/latch-validation.json`. Pass
+`--stl` to also generate `exports/latch.stl`. Python callers can use
+`build_latch(clearance=0.2)`, and `with_stages=True` also returns checkpoint
+measurements.
 
-All five source checkpoint volumes match within **0.01 mm³**. The final nominal
-solid measures **230819.786248 mm³**; corrected-frame bounds are approximately
-`(-60.865103,147.800567,-45.662921)` to
-`(60.865103,219.997761,47.321249)` mm. Tests check the frame, analytic cylinder
-retention, all three inward offsets, clearance changes, and temporary shared
-profile edits with restoration. Both exports reopen as one valid solid; STEP
-retains the nominal volume and STL differs by about **0.256 mm³** due to
-0.005 mm tessellation. These checks establish agreement with the extracted
-source metrics; physical fit and a full source-to-port Boolean comparison
-remain untested.
+The latch's top-view intersection profile is a 110 mm rectangle with vertical
+sidewalls at X = ±55 mm, aligned with the adapter's rear sidewalls and parallel
+through the latch depth. The side profile retains the original R5/R15 arcs.
+The dovetail cutter uses the shared rear-dovetail profile through
+`adapter.profiles(18)`. The original three mating surfaces retain their
+0.2 mm inward offset through two limiting planes.
 
+The nominal solid measures **252902.395 mm³**. STEP and STL each reopen as one
+valid solid. The modeled latch clears the adapter body. The widened latch
+overlaps the aligned Sherman P rear handle scan by about **26 mm³**.
+Physical fit has yet to be tested.
 
 ## Raised front clip and continuous screen ramp
 
@@ -610,8 +640,10 @@ The AirTag parameter-edit and cutter self-intersection checks pass.
 
 ## Outward face offsets
 
-The original `RearSketch` diagonal and its mirror now sit **1 mm outward**, measured
-normal to the original printing planes (faces 1 and 2). The existing front trim
+The original `RearSketch` diagonal and its mirror now sit **10 mm outward** in
+total, measured normal to the original printing planes (faces 1 and 2). This
+adds 9 mm to the previous offset to recover 2 mm of screen sidewall at the
+wheel imprint. The existing front trim
 uses these shifted native rear planes. Both `FrontCutSketch` triangular corner-cut
 diagonals (face 3 beside the front clip) move **3 mm outward in total** into the removed
 corner, reducing those cuts. Original angles, adjoining horizontal/vertical lines,

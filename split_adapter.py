@@ -1,4 +1,5 @@
 """Export the two-piece printing child from the completed master STEP."""
+from argparse import ArgumentParser
 from collections import Counter
 from pathlib import Path
 
@@ -77,7 +78,7 @@ def cavity_connector(split_plane, side, depth, rim_radius=0):
     if inward.X*wall_point.X > 0:
         inward = -inward
 
-    z = 15
+    z = 18  # Retain full recess depth above the raised underside and wheel imprint.
     seam_normal = split_plane.z_dir
     seam_y = split_plane.origin.Y - (z-split_plane.origin.Z)*seam_normal.Z/seam_normal.Y
     wall_x = wall_point.X - ((seam_y-wall_point.Y)*inward.Y + (z-wall_point.Z)*inward.Z)/inward.X
@@ -130,6 +131,9 @@ def build_split(master):
 
 
 def main():
+    parser = ArgumentParser(description=__doc__)
+    parser.add_argument('--stl', action='store_true', help='Also export the printable STLs')
+    args = parser.parse_args()
     output = Path(__file__).resolve().parent / 'exports'
     master = import_step(output / 'adapter-body.step')
     for name, half in list(build_split(master)):
@@ -139,7 +143,8 @@ def main():
         exported = import_step(step)
         if not exported.is_valid or len(exported.solids()) != 1:
             raise ValueError(f'Invalid exported solid: {step}')
-        export_stl_mm(half, step.with_suffix('.stl'))
+        if args.stl:
+            export_stl_mm(half, step.with_suffix('.stl'))
         print(f'{name}: {exported.bounding_box().size}', flush=True)
 
 

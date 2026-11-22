@@ -5,8 +5,8 @@
     -2.426787168466774,
     0.0
   ],
-  "seatingDepthMm": 23.0,
-  "elapsedSeconds": 49.17756889387965,
+  "seatingDepthMm": 26.0,
+  "elapsedSeconds": 47.06631316430867,
   "stages": [
     {
       "step": "M01",
@@ -28,139 +28,139 @@
     },
     {
       "step": "M04",
-      "volumeMm3": 938534.6876893147,
+      "volumeMm3": 1024338.7841448697,
       "solids": 1,
       "valid": true
     },
     {
       "step": "M05",
-      "volumeMm3": 1877069.37537863,
+      "volumeMm3": 2048677.5682897402,
       "solids": 1,
       "valid": true
     },
     {
       "step": "M06",
-      "volumeMm3": 1902569.6845416322,
+      "volumeMm3": 2074177.8774527428,
       "solids": 1,
       "valid": true
     },
     {
       "step": "M07",
-      "volumeMm3": 1896808.5111780525,
+      "volumeMm3": 2068416.704088452,
       "solids": 1,
       "valid": true
     },
     {
       "step": "M08",
-      "volumeMm3": 1886215.800008211,
+      "volumeMm3": 2057823.992918516,
       "solids": 1,
       "valid": true
     },
     {
       "step": "M09",
-      "volumeMm3": 1870214.3022314087,
+      "volumeMm3": 2041822.4951390112,
       "solids": 1,
       "valid": true
     },
     {
       "step": "M11",
-      "volumeMm3": 1910980.1073947935,
+      "volumeMm3": 2082588.3003030033,
       "solids": 1,
       "valid": true
     },
     {
       "step": "M12",
-      "volumeMm3": 2017809.694012384,
+      "volumeMm3": 2189417.8869214067,
       "solids": 1,
       "valid": true
     },
     {
       "step": "M13",
-      "volumeMm3": 2014601.6729091231,
+      "volumeMm3": 2178596.879487751,
       "solids": 1,
       "valid": true
     },
     {
       "step": "M14",
-      "volumeMm3": 1997223.0273454671,
+      "volumeMm3": 2161218.2339240983,
       "solids": 1,
       "valid": true
     },
     {
       "step": "M15",
-      "volumeMm3": 1992346.2243841747,
+      "volumeMm3": 2153907.431520643,
       "solids": 1,
       "valid": true
     },
     {
       "step": "M17",
-      "volumeMm3": 1988848.1559343203,
+      "volumeMm3": 2146479.8731991975,
       "solids": 1,
       "valid": true
     },
     {
       "step": "M18",
-      "volumeMm3": 1982884.70722723,
+      "volumeMm3": 2140516.4244927135,
       "solids": 1,
       "valid": true
     },
     {
       "step": "M19",
-      "volumeMm3": 1440954.468987553,
+      "volumeMm3": 1598586.1862550124,
       "solids": 1,
       "valid": true
     },
     {
       "step": "M20",
-      "volumeMm3": 1432247.9608242658,
+      "volumeMm3": 1589879.6780915665,
       "solids": 1,
       "valid": true
     },
     {
       "step": "M20-front-redesign",
-      "volumeMm3": 1469187.1263719401,
+      "volumeMm3": 1634191.1568001648,
       "solids": 1,
       "valid": true
     },
     {
       "step": "M20-screen-surround",
-      "volumeMm3": 1521121.017643759,
+      "volumeMm3": 1725637.8540493208,
       "solids": 1,
       "valid": true
     },
     {
       "step": "M20-print-planes",
-      "volumeMm3": 1499387.9624683892,
+      "volumeMm3": 1709986.7815364057,
       "solids": 1,
       "valid": true
     },
     {
       "step": "M20-rear-side-relief",
-      "volumeMm3": 1439122.346440926,
+      "volumeMm3": 1625063.3225323479,
       "solids": 1,
       "valid": true
     },
     {
       "step": "M20-lower-rear-tip",
-      "volumeMm3": 1431695.9088752354,
+      "volumeMm3": 1617636.8848011796,
       "solids": 1,
       "valid": true
     },
     {
       "step": "M20-raised-underside",
-      "volumeMm3": 1143716.2473650414,
+      "volumeMm3": 1247508.3625050564,
       "solids": 1,
       "valid": true
     },
     {
       "step": "M20-body-fillets",
-      "volumeMm3": 1143374.1817927589,
+      "volumeMm3": 1247186.071729254,
       "solids": 1,
       "valid": true
     },
     {
       "step": "M21",
-      "volumeMm3": 1002021.5496657834,
+      "volumeMm3": 1102041.0124923734,
       "solids": 1,
       "valid": true
     }
