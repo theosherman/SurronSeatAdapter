@@ -9,11 +9,12 @@ body { margin: 0; height: 100vh; height: 100dvh; }
 #toolbar {
     --surface: #19262f; --control: #23343f; --border: #40515e;
     position: absolute; z-index: 1; inset: 5px 5px auto;
-    display: flex; align-items: center; justify-content: space-between; gap: 4px;
+    display: flex; flex-wrap: wrap; align-items: center; gap: 4px;
     pointer-events: none; color-scheme: dark; color: #edf3f8; font-size: 12px;
 }
-#toolbar > *, #toolbar-actions > * { pointer-events: auto; }
-#toolbar-actions { display: flex; gap: 3px; pointer-events: none; }
+#toolbar > :not(#toolbar-actions, #status), #toolbar-actions > * { flex: none; pointer-events: auto; }
+#toolbar-actions { display: contents; }
+#toolbar-actions > :first-child { margin-inline-start: auto; }
 #toolbar select, #toolbar button, #toolbar summary, #toolbar-actions > label {
     box-sizing: border-box; min-height: 30px; padding: 0 6px; font: inherit;
     color: inherit; background: var(--control); border: 1px solid var(--border); border-radius: 6px;
@@ -26,14 +27,13 @@ body { margin: 0; height: 100vh; height: 100dvh; }
 #toolbar .reference-opacity input { width: clamp(32px, 9vw, 80px); height: 20px; }
 .reference-opacity span { min-width: 4ch; text-align: right; font-variant-numeric: tabular-nums; }
 #section-controls {
-    position: absolute; left: 0; top: 33px;
     display: flex; align-items: center; gap: 6px; padding-right: 6px;
     background: var(--surface); border: 1px solid var(--border); border-radius: 6px;
 }
 #toolbar #section-position { width: 105px; height: 20px; }
 #view-panel {
-    position: absolute; z-index: 1; right: 0; top: 33px; box-sizing: border-box;
-    width: min(100%, 224px); max-height: calc(100dvh - 43px); overflow: auto;
+    position: absolute; z-index: 1; right: 0; top: calc(100% + 3px); box-sizing: border-box;
+    width: min(100%, 224px); max-height: calc(100dvh - 110px); overflow: auto;
     background: var(--surface); border: 1px solid var(--border); border-radius: 6px; padding: 5px;
 }
 .view-group + .view-group { border-top: 1px solid var(--border); margin-top: 4px; padding-top: 4px; }
@@ -48,7 +48,7 @@ body { margin: 0; height: 100vh; height: 100dvh; }
 #view-panel .selection-actions button { min-height: 20px; min-width: 35px; padding: 0 4px; font-size: 11px; }
 #gestures { margin: 4px 1px 0; color: #c0ccd6; font-size: 11px; }
 #status {
-    position: absolute; top: 73px; left: 5px; max-width: calc(100% - 22px);
+    position: absolute; top: calc(100% + 3px); left: 0; max-width: calc(100% - 12px);
     padding: 4px 6px; border-radius: 5px; color: #edf3f8; background: #19262f; font-size: 12px;
 }
 #annotations { position: absolute; inset: 0; overflow: hidden; pointer-events: none; }
@@ -119,8 +119,8 @@ __CONTROLS__
 </div>
 </details>
 </div>
-</header>
 <div id="status" role="status">Loading parts…</div>
+</header>
 <canvas tabindex="0" aria-label="Interactive CAD preview. Pinch to zoom and drag with two fingers to pan. Right-drag to pan with a mouse. Arrow keys rotate and plus or minus zoom."></canvas>
 <div id="annotations" hidden aria-hidden="true"></div>
 <script id="feature-labels" type="application/json">__FEATURE_LABELS__</script>
@@ -232,6 +232,7 @@ async function start() {
         annotationLayer.hidden = !showLabels.checked && !showFaces.checked;
         if (annotationLayer.hidden) return;
         const width = canvas.clientWidth, height = canvas.clientHeight;
+        const minTop = toolbar.getBoundingClientRect().bottom + 5;
         const visibleMeshes = new Set(parts.filter(part => partOpacity(part) > 0)
             .map(part => Number(part.control.dataset.mesh)));
         const occupied = [];
@@ -254,7 +255,7 @@ async function start() {
             const overlaps = occupied.some(box => left < box.right + 3 && right > box.left - 3
                 && top < box.bottom + 3 && bottom > box.top - 3);
             const visible = facing > .25 && left >= 3 && right <= width - 3 &&
-                top >= 40 && bottom <= height - 4 && !overlaps;
+                top >= minTop && bottom <= height - 4 && !overlaps;
             label.element.style.visibility = visible ? 'visible' : 'hidden';
             if (visible) {
                 label.element.style.transform = `translate(${left}px, ${top}px)`;
