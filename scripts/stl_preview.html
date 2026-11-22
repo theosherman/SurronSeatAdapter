@@ -9,11 +9,12 @@ body { margin: 0; height: 100vh; height: 100dvh; }
 #toolbar {
     --surface: #19262f; --control: #23343f; --border: #40515e;
     position: absolute; z-index: 1; inset: 5px 5px auto;
-    display: flex; align-items: center; justify-content: space-between; gap: 4px;
+    display: flex; flex-wrap: wrap; align-items: center; gap: 4px;
     pointer-events: none; color-scheme: dark; color: #edf3f8; font-size: 12px;
 }
-#toolbar > *, #toolbar-actions > * { pointer-events: auto; }
-#toolbar-actions { display: flex; gap: 3px; pointer-events: none; }
+#toolbar > :not(#toolbar-actions, #status), #toolbar-actions > * { flex: none; pointer-events: auto; }
+#toolbar-actions { display: contents; }
+#toolbar-actions > :first-child { margin-inline-start: auto; }
 #toolbar select, #toolbar button, #toolbar summary, #toolbar-actions > label {
     box-sizing: border-box; min-height: 30px; padding: 0 6px; font: inherit;
     color: inherit; background: var(--control); border: 1px solid var(--border); border-radius: 6px;
@@ -23,9 +24,16 @@ body { margin: 0; height: 100vh; height: 100dvh; }
 #toolbar summary { list-style: none; }
 #toolbar summary::-webkit-details-marker { display: none; }
 #toolbar input { accent-color: #9ce0dc; margin: 0; width: 12px; height: 12px; flex: none; }
+#toolbar .reference-opacity input { width: clamp(32px, 9vw, 80px); height: 20px; }
+.reference-opacity span { min-width: 4ch; text-align: right; font-variant-numeric: tabular-nums; }
+#section-controls {
+    display: flex; align-items: center; gap: 6px; padding-right: 6px;
+    background: var(--surface); border: 1px solid var(--border); border-radius: 6px;
+}
+#toolbar #section-position { width: 105px; height: 20px; }
 #view-panel {
-    position: absolute; right: 0; top: 33px; box-sizing: border-box;
-    width: min(100%, 224px); max-height: calc(100dvh - 43px); overflow: auto;
+    position: absolute; z-index: 1; right: 0; top: calc(100% + 3px); box-sizing: border-box;
+    width: min(100%, 224px); max-height: calc(100dvh - 110px); overflow: auto;
     background: var(--surface); border: 1px solid var(--border); border-radius: 6px; padding: 5px;
 }
 .view-group + .view-group { border-top: 1px solid var(--border); margin-top: 4px; padding-top: 4px; }
@@ -40,7 +48,7 @@ body { margin: 0; height: 100vh; height: 100dvh; }
 #view-panel .selection-actions button { min-height: 20px; min-width: 35px; padding: 0 4px; font-size: 11px; }
 #gestures { margin: 4px 1px 0; color: #c0ccd6; font-size: 11px; }
 #status {
-    position: absolute; top: 38px; left: 5px; max-width: calc(100% - 22px);
+    position: absolute; top: calc(100% + 3px); left: 0; max-width: calc(100% - 12px);
     padding: 4px 6px; border-radius: 5px; color: #edf3f8; background: #19262f; font-size: 12px;
 }
 #annotations { position: absolute; inset: 0; overflow: hidden; pointer-events: none; }
@@ -64,6 +72,14 @@ canvas:active { cursor: grabbing; }
 <option value="adapter">Adapter</option>
 <option value="split">Adapter Split</option>
 </select>
+<div id="section-controls" role="group" aria-label="Vertical section cut" data-extents="__SECTION_EXTENTS__">
+<select id="section-direction" aria-label="Section direction">
+<option value="off">Section off</option>
+<option value="side">Side cut</option>
+<option value="front">Front cut</option>
+</select>
+<input id="section-position" type="range" min="0" max="100" value="50" aria-label="Section depth" disabled>
+</div>
 <div id="toolbar-actions">
 __REFERENCES__
 <details id="view-menu">
@@ -103,8 +119,8 @@ __CONTROLS__
 </div>
 </details>
 </div>
-</header>
 <div id="status" role="status">Loading parts…</div>
+</header>
 <canvas tabindex="0" aria-label="Interactive CAD preview. Pinch to zoom and drag with two fingers to pan. Right-drag to pan with a mouse. Arrow keys rotate and plus or minus zoom."></canvas>
 <div id="annotations" hidden aria-hidden="true"></div>
 <script id="feature-labels" type="application/json">__FEATURE_LABELS__</script>
@@ -129,20 +145,26 @@ async function start() {
         uniform mat3 view;
         uniform vec2 scale;
         uniform vec2 pan;
+        uniform vec3 sectionPlane;
         out vec3 surface;
+        out float sectionDistance;
         void main() {
             surface = view * position;
+            sectionDistance = dot(sectionPlane.xy, position.xy) + sectionPlane.z;
             gl_Position = vec4(surface.xy * scale + pan, -surface.z * .5, 1.);
         }`));
     gl.attachShader(program, shader(gl.FRAGMENT_SHADER, `#version 300 es
         precision highp float;
         in vec3 surface;
+        in float sectionDistance;
         uniform vec3 partColor;
+        uniform float opacity;
         out vec4 color;
         void main() {
             vec3 normal = normalize(cross(dFdx(surface), dFdy(surface)));
+            if (sectionDistance > 0.) discard;
             float light = .38 + .62 * max(0., dot(normal, normalize(vec3(-.4,.7,1.))));
-            color = vec4(partColor * light, 1.);
+            color = vec4(partColor * light, opacity);
         }`));
     gl.linkProgram(program);
     if (!gl.getProgramParameter(program, gl.LINK_STATUS)) throw new Error(gl.getProgramInfoLog(program));
@@ -155,9 +177,14 @@ async function start() {
     const picker = document.querySelector('#variants');
     const menu = document.querySelector('#view-menu');
     const toolbar = document.querySelector('#toolbar');
+    const sectionDirection = document.querySelector('#section-direction');
+    const sectionPosition = document.querySelector('#section-position');
+    const [sectionX, sectionY] = document.querySelector('#section-controls').dataset.extents.split(' ').map(Number);
+    const sectionPlane = gl.getUniformLocation(program, 'sectionPlane');
+    let section = [0, 0, 0];
     const parts = [];
-    for (const checkbox of toolbar.querySelectorAll('input[data-mesh]')) {
-        const payload = document.getElementById(`mesh-${checkbox.dataset.mesh}`).textContent;
+    for (const control of toolbar.querySelectorAll('input[data-mesh]')) {
+        const payload = document.getElementById(`mesh-${control.dataset.mesh}`).textContent;
         const packed = Uint8Array.from(atob(payload), character => character.charCodeAt(0));
         const stream = new Blob([packed]).stream().pipeThrough(new DecompressionStream('gzip'));
         const mesh = await new Response(stream).arrayBuffer();
@@ -170,8 +197,9 @@ async function start() {
         gl.enableVertexAttribArray(attribute);
         gl.vertexAttribPointer(attribute, 3, gl.FLOAT, false, 0, 0);
         upload(gl.ELEMENT_ARRAY_BUFFER, indices);
-        const color = [1, 3, 5].map(offset => parseInt(checkbox.dataset.color.slice(offset, offset + 2), 16) / 255);
-        parts.push({checkbox, label: checkbox.parentElement, vertexArray, color, count: indices.length});
+        const color = [1, 3, 5].map(offset => parseInt(control.dataset.color.slice(offset, offset + 2), 16) / 255);
+        const center = control.dataset.center?.split(' ').map(Number);
+        parts.push({control, label: control.parentElement, vertexArray, color, center, count: indices.length});
     }
     gl.enable(gl.DEPTH_TEST);
     gl.clearColor(.078, .137, .18, 1);
@@ -179,6 +207,8 @@ async function start() {
     const scale = gl.getUniformLocation(program, 'scale');
     const pan = gl.getUniformLocation(program, 'pan');
     const partColor = gl.getUniformLocation(program, 'partColor');
+    const opacity = gl.getUniformLocation(program, 'opacity');
+    gl.blendFuncSeparate(gl.SRC_ALPHA, gl.ONE_MINUS_SRC_ALPHA, gl.ZERO, gl.ONE);
     const annotationLayer = document.querySelector('#annotations');
     const showLabels = document.querySelector('#show-labels');
     const showFaces = document.querySelector('#show-faces');
@@ -193,16 +223,24 @@ async function start() {
     document.querySelector('#face-control').hidden = !annotations.some(label => label.face);
     document.querySelector('#labels-group').hidden = annotations.length === 0;
 
+    function partOpacity({control, label}) {
+        if (label.hidden) return 0;
+        return control.type === 'range' ? control.valueAsNumber / 100 : Number(control.checked);
+    }
+
     function drawLabels(matrix, scaleX, scaleY) {
         annotationLayer.hidden = !showLabels.checked && !showFaces.checked;
         if (annotationLayer.hidden) return;
         const width = canvas.clientWidth, height = canvas.clientHeight;
-        const visibleMeshes = new Set(parts.filter(part => !part.label.hidden && part.checkbox.checked)
-            .map(part => Number(part.checkbox.dataset.mesh)));
+        const minTop = toolbar.getBoundingClientRect().bottom + 5;
+        const visibleMeshes = new Set(parts.filter(part => partOpacity(part) > 0)
+            .map(part => Number(part.control.dataset.mesh)));
         const occupied = [];
         for (const label of annotations) {
             const toggle = label.face ? showFaces : showLabels;
-            if (!toggle.checked || !label.meshes.some(mesh => visibleMeshes.has(mesh))) {
+            const [x, y, z] = label.point;
+            if (!toggle.checked || !label.meshes.some(mesh => visibleMeshes.has(mesh)) ||
+                section[0] * x + section[1] * y + section[2] > 0) {
                 label.element.style.visibility = 'hidden';
                 continue;
             }
@@ -210,7 +248,6 @@ async function start() {
             label.height ??= label.element.offsetHeight;
             const [nx, ny, nz] = label.normal;
             const facing = matrix[2] * nx + matrix[5] * ny + matrix[8] * nz;
-            const [x, y, z] = label.point;
             const screenX = width / 2 + panX + width * scaleX * (matrix[0] * x + matrix[3] * y + matrix[6] * z) / 2;
             const screenY = height / 2 + panY - height * scaleY * (matrix[1] * x + matrix[4] * y + matrix[7] * z) / 2;
             const left = screenX - label.width / 2, right = screenX + label.width / 2;
@@ -218,7 +255,7 @@ async function start() {
             const overlaps = occupied.some(box => left < box.right + 3 && right > box.left - 3
                 && top < box.bottom + 3 && bottom > box.top - 3);
             const visible = facing > .25 && left >= 3 && right <= width - 3 &&
-                top >= 40 && bottom <= height - 4 && !overlaps;
+                top >= minTop && bottom <= height - 4 && !overlaps;
             label.element.style.visibility = visible ? 'visible' : 'hidden';
             if (visible) {
                 label.element.style.transform = `translate(${left}px, ${top}px)`;
@@ -229,6 +266,23 @@ async function start() {
 
     let yaw, pitch, zoom, panX, panY;
     const maxPitch = Math.PI / 2 - .005;
+    function drawPart(part, alpha) {
+        gl.bindVertexArray(part.vertexArray);
+        gl.uniform3fv(partColor, part.color);
+        gl.uniform1f(opacity, alpha);
+        gl.drawElements(gl.TRIANGLES, part.count, gl.UNSIGNED_INT, 0);
+    }
+
+    function blendNearestSurface(part, alpha) {
+        // Avoid building up opacity where multiple facets cover the same pixel.
+        gl.colorMask(false, false, false, false);
+        drawPart(part, alpha);
+        gl.colorMask(true, true, true, true);
+        gl.depthFunc(gl.EQUAL);
+        drawPart(part, alpha);
+        gl.depthFunc(gl.LESS);
+    }
+
     function draw() {
         const ratio = Math.min(devicePixelRatio || 1, 2);
         const width = Math.max(1, Math.round(canvas.clientWidth * ratio));
@@ -246,11 +300,36 @@ async function start() {
         gl.uniform2f(scale, scaleX, scaleY);
         gl.uniform2f(pan, 2 * panX / Math.max(1, canvas.clientWidth),
                          -2 * panY / Math.max(1, canvas.clientHeight));
+        gl.uniform3fv(sectionPlane, section);
+        const translucent = [];
         for (const part of parts) {
-            if (part.label.hidden || !part.checkbox.checked) continue;
-            gl.bindVertexArray(part.vertexArray);
-            gl.uniform3fv(partColor, part.color);
-            gl.drawElements(gl.TRIANGLES, part.count, gl.UNSIGNED_INT, 0);
+            const alpha = partOpacity(part);
+            if (alpha === 1) drawPart(part, alpha);
+            if (alpha > 0 && alpha < 1) {
+                const [x, y, z] = part.center;
+                translucent.push({part, alpha, depth: matrix[2] * x + matrix[5] * y + matrix[8] * z});
+            }
+        }
+        if (translucent.length) {
+            gl.enable(gl.BLEND);
+            for (const {part, alpha} of translucent.sort((a, b) => a.depth - b.depth)) {
+                if ('showUnderside' in part.control.dataset) {
+                    // Let deeper facets contribute without blocking the two main seat layers.
+                    gl.depthMask(false);
+                    drawPart(part, .4 * alpha * (1 - alpha));
+                    gl.depthMask(true);
+                    gl.enable(gl.CULL_FACE);
+                    gl.cullFace(gl.FRONT);
+                    blendNearestSurface(part, alpha);
+                    gl.cullFace(gl.BACK);
+                    // Let the far side show through the nearer shell.
+                    blendNearestSurface(part, alpha * (.5 + .5 * alpha));
+                    gl.disable(gl.CULL_FACE);
+                } else {
+                    blendNearestSurface(part, alpha);
+                }
+            }
+            gl.disable(gl.BLEND);
         }
         drawLabels(matrix, scaleX, scaleY);
     }
@@ -379,8 +458,27 @@ async function start() {
     document.querySelector('#closer').onclick = () => magnify(1.2);
     document.querySelector('#farther').onclick = () => magnify(1 / 1.2);
     document.querySelector('#reset').onclick = reset;
+    function updateSection() {
+        sectionPosition.disabled = sectionDirection.value === 'off';
+        const depth = sectionPosition.valueAsNumber;
+        const offset = depth / 50 - 1;
+        // +X enters from the side; -Y enters from the front.
+        if (sectionPosition.disabled || depth === 0) section = [0, 0, 0];
+        else if (sectionDirection.value === 'side') section = [1, 0, offset * sectionX];
+        else section = [0, -1, offset * sectionY];
+        draw();
+    }
+    sectionDirection.addEventListener('change', updateSection);
+    sectionPosition.addEventListener('input', updateSection);
     toolbar.addEventListener('change', event => {
-        if (event.target === showLabels || event.target === showFaces || event.target.matches('input[data-mesh]')) draw();
+        if (event.target === showLabels || event.target === showFaces ||
+            event.target.matches('input[type="checkbox"][data-mesh]')) draw();
+    });
+    toolbar.addEventListener('input', event => {
+        const control = event.target;
+        if (!control.matches('.reference-opacity input')) return;
+        control.nextElementSibling.textContent = `${control.value}%`;
+        draw();
     });
     new ResizeObserver(draw).observe(canvas);
     reset();
@@ -392,6 +490,7 @@ async function start() {
     picker.value = !hasAdapter && hasSplit ? 'split' : 'adapter';
     picker.disabled = !hasAdapter || !hasSplit;
     selectVariant();
+    updateSection();
     status.hidden = true;
     document.querySelector('#gestures').textContent = matchMedia('(pointer: coarse)').matches
         ? 'Drag to rotate · Two fingers to pan · Pinch to zoom'

@@ -147,17 +147,23 @@ def write_preview(paths, output, *, shapes=None):
     for index, (path, (vertices, indices, _)) in enumerate(zip(paths, meshes, strict=True)):
         stem = path.stem
         name, color = PARTS.get(stem, (stem, '#4abdc7'))
-        checked = '' if stem in REFERENCES else ' checked'
         variant = 'split' if stem in SPLIT_PARTS else 'adapter'
         if stem in REFERENCES or stem == 'latch':
             variant = 'both'
-        control = (f'<label data-variant="{variant}">'
-                   f'<input type="checkbox" data-mesh="{index}" data-color="{color}"{checked}>'
-                   f'{escape(name)}</label>')
+        mesh_attributes = f'data-mesh="{index}" data-color="{color}"'
         if stem in REFERENCES:
-            reference_controls.append(control)
+            midpoint = ((vertices.min(axis=0) + vertices.max(axis=0)) / 2 - center) / radius
+            position = ' '.join(str(value) for value in midpoint)
+            underside = ' data-show-underside' if stem == 'surron-seat' else ''
+            reference_controls.append(
+                f'<label class="reference-opacity" data-variant="{variant}">{escape(name)}'
+                f'<input type="range" min="0" max="100" value="0" {mesh_attributes}'
+                f' data-center="{position}"{underside} aria-label="{escape(name)} opacity">'
+                '<span aria-hidden="true">0%</span></label>')
         else:
-            controls.append(control)
+            controls.append(f'<label data-variant="{variant}">'
+                            f'<input type="checkbox" {mesh_attributes} checked>'
+                            f'{escape(name)}</label>')
         packed = pack('<I', len(vertices)) + ((vertices - center) / radius).astype('<f4').tobytes()
         packed += indices.astype('<u4').tobytes()
         payload = b64encode(compress(packed, compresslevel=6, mtime=0)).decode('ascii')
@@ -175,6 +181,7 @@ def write_preview(paths, output, *, shapes=None):
 
     output.write_text(TEMPLATE.read_text().replace('__CONTROLS__', '\n'.join(controls))
                       .replace('__REFERENCES__', '\n'.join(reference_controls))
+                      .replace('__SECTION_EXTENTS__', ' '.join(map(str, ((high - center) / radius)[:2])))
                       .replace('__FEATURE_LABELS__', dumps(labels))
                       .replace('__MESHES__', '\n'.join(payloads)), encoding='utf-8')
     return output
