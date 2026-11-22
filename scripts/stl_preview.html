@@ -287,6 +287,10 @@ async function start() {
             gl.enable(gl.BLEND);
             for (const {part, alpha} of translucent.sort((a, b) => a.depth - b.depth)) {
                 if ('showUnderside' in part.control.dataset) {
+                    // Let deeper facets contribute without blocking the two main seat layers.
+                    gl.depthMask(false);
+                    drawPart(part, .4 * alpha * (1 - alpha));
+                    gl.depthMask(true);
                     gl.enable(gl.CULL_FACE);
                     gl.cullFace(gl.FRONT);
                     blendNearestSurface(part, alpha);
