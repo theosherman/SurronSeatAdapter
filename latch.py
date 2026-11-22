@@ -22,6 +22,8 @@ NOMINAL_CLEARANCE_MM = 0.2
 
 TONGUE_RISE_MM = 18.0
 TONGUE_THICKNESS_MM = 14.393670059803053
+# Approximate rise per millimeter rearward from the side-view redline.
+UNDERSIDE_SLOPE = 0.154
 # Lower edge of the sloped adapter wall after the approved underside trim.
 MATING_WALL_BOTTOM_Z_MM = -8.769549214940586
 
@@ -42,11 +44,14 @@ def latch_side_profile():
     inner_tip = outer_tip - TONGUE_THICKNESS_MM * tip_normal
     rounded_tip = (outer_tip+inner_tip)*0.5 + tip_direction * (TONGUE_THICKNESS_MM*0.5)
 
-    # Face 5 runs parallel to the upper shoulder. Face 7 and face 10
-    # are parallel offsets of the two outer tongue faces.
+    # Faces 7 and 10 are parallel offsets of the outer tongue faces.
+    # The shallow underside runs from the wall bottom to face 7.
     top_rear = top_front + wall_normal * (corner-top_front).dot(wall_normal)
     inner_corner_plane = corner - TONGUE_THICKNESS_MM * wall_normal
-    inner_root = wall_bottom + wall_normal * (inner_corner_plane-wall_bottom).dot(wall_normal)
+    underside = Vector(0, 1, UNDERSIDE_SLOPE)
+    inner_root = wall_bottom + underside * (
+        (inner_corner_plane-wall_bottom).dot(wall_normal) / underside.dot(wall_normal)
+    )
     inner_corner = inner_tip + tip_direction * (
         (inner_corner_plane-inner_tip).dot(wall_normal) / tip_direction.dot(wall_normal)
     )

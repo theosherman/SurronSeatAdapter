@@ -27,7 +27,7 @@ class LatchTests(unittest.TestCase):
     def test_checkpoints_and_model_bounds(self):
         from latch import build_latch
         body, stages = build_latch(with_stages=True)
-        expected = [167003.3044, 334006.6088, 246821.2055, 238920.4155, 237272.8187]
+        expected = [175923.9473, 351847.8947, 260724.1544, 252823.3644, 251174.8808]
         self.assertEqual(len(stages), len(expected))
         for stage, volume in zip(stages, expected):
             self.assertAlmostEqual(stage['volumeMm3'], volume, delta=0.01)
@@ -58,19 +58,19 @@ class LatchTests(unittest.TestCase):
                      and abs((corner-face.center()).dot(normal) - 14.393670) < 1e-5]
             self.assertEqual(len(inner), 1)
 
-        shelf_normal = Vector(0, .51064222665185, -.85979329862475)
-        shelf, = [face for face in planes if face.normal_at().dot(shelf_normal) > 1-1e-7]
-        # The nominal mating clearance trims 0.2 mm along the sloped wall normal.
-        self.assertAlmostEqual(shelf.bounding_box().min.Z,
-                               -8.769549 + 0.2 * shelf_normal.Y, places=5)
-        self.assertTrue(any(face.normal_at().dot(-shelf_normal) > 1-1e-7 for face in planes))
+        # The redline meets face 7 about halfway down the original segment.
+        shelf_normal = Vector(0, .154, -1).normalized()
+        shelf, = [face for face in planes if face.normal_at().dot(shelf_normal) > .99999]
+        bounds = shelf.bounding_box()
+        self.assertAlmostEqual(bounds.min.Z, -8.73673, places=4)
+        self.assertAlmostEqual(bounds.max.Z, -4.54849, places=4)
 
     def test_clearance_removes_material_and_rejects_negative(self):
         from latch import build_latch
         nominal = build_latch()
         zero = build_latch(clearance=0)
         larger = build_latch(clearance=0.3)
-        self.assertAlmostEqual(zero.volume, 238920.4155, delta=0.01)
+        self.assertAlmostEqual(zero.volume, 252823.3644, delta=0.01)
         self.assertLess(larger.volume, nominal.volume)
         self.assertAlmostEqual(nominal.cut(zero).volume, 0, delta=0.001)
         with self.assertRaises(ValueError):
