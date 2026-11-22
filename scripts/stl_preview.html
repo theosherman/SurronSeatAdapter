@@ -247,6 +247,16 @@ async function start() {
         gl.drawElements(gl.TRIANGLES, part.count, gl.UNSIGNED_INT, 0);
     }
 
+    function blendNearestSurface(part, alpha) {
+        // Avoid building up opacity where multiple facets cover the same pixel.
+        gl.colorMask(false, false, false, false);
+        drawPart(part, alpha);
+        gl.colorMask(true, true, true, true);
+        gl.depthFunc(gl.EQUAL);
+        drawPart(part, alpha);
+        gl.depthFunc(gl.LESS);
+    }
+
     function draw() {
         const ratio = Math.min(devicePixelRatio || 1, 2);
         const width = Math.max(1, Math.round(canvas.clientWidth * ratio));
@@ -276,14 +286,17 @@ async function start() {
         if (translucent.length) {
             gl.enable(gl.BLEND);
             for (const {part, alpha} of translucent.sort((a, b) => a.depth - b.depth)) {
-                // Blend only the closest surface of each scan so overlapping facets
-                // of the same part do not build up opacity.
-                gl.colorMask(false, false, false, false);
-                drawPart(part, alpha);
-                gl.colorMask(true, true, true, true);
-                gl.depthFunc(gl.EQUAL);
-                drawPart(part, alpha);
-                gl.depthFunc(gl.LESS);
+                if ('showUnderside' in part.control.dataset) {
+                    gl.enable(gl.CULL_FACE);
+                    gl.cullFace(gl.FRONT);
+                    blendNearestSurface(part, alpha);
+                    gl.cullFace(gl.BACK);
+                    // Let the far side show through the nearer shell.
+                    blendNearestSurface(part, alpha * (.5 + .5 * alpha));
+                    gl.disable(gl.CULL_FACE);
+                } else {
+                    blendNearestSurface(part, alpha);
+                }
             }
             gl.disable(gl.BLEND);
         }

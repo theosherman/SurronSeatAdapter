@@ -155,10 +155,11 @@ def write_preview(paths, output, *, shapes=None):
         if stem in REFERENCES:
             midpoint = ((vertices.min(axis=0) + vertices.max(axis=0)) / 2 - center) / radius
             position = ' '.join(str(value) for value in midpoint)
+            underside = ' data-show-underside' if stem == 'surron-seat' else ''
             reference_controls.append(
                 f'<label class="reference-opacity" data-variant="{variant}">{escape(name)}'
                 f'<input type="range" min="0" max="100" value="0" {mesh_attributes}'
-                f' data-center="{position}" aria-label="{escape(name)} opacity">'
+                f' data-center="{position}"{underside} aria-label="{escape(name)} opacity">'
                 '<span aria-hidden="true">0%</span></label>')
         else:
             controls.append(f'<label data-variant="{variant}">'
