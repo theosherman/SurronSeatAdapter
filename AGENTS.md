@@ -18,6 +18,8 @@ Printing-face offsets are approved and implemented: faces 1 and 2 use a **10 mm 
 
 The approved 18 mm seat lowering raises the Sherman P scan, front clip, and screen walls relative to the printed revision. The original underside plane is translated up 18 mm, clipping the lowest portion of the original cavity and rear toe. Maintain the upper latch interface, mounting datums, and existing cavity cutter limits.
 
+The approved production latch raises the original face 1–6 edge 18 mm in Z at the original X/Y position and preserves the outer tongue length. In the single native side profile, face 2 follows the sloped adapter wall to its lower edge, face 5 is parallel to face 9, and face pairs 1–7 and 6–10 both have 14.39 mm normal thickness. Keep the shared dovetail, separate solid, and nominal mating clearance. The preview labels the hook **Latch tongue**.
+
 The approved front-clip underside ramp is tangent to the native rounded rear jaw. The bridge and gusset share this lower profile at the lift boundary. Preserve the upper screen-ramp tangent and the full 30.2 mm clip bore.
 
 ## CAD context

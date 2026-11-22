@@ -1,4 +1,4 @@
-"""Separate editable latch, reconstructed from exact millimeter source loops.
+"""Separate editable latch with a native side profile and shared dovetail cut.
 
 All geometry is constructed in Build123d's permanent (-x,-y,z) model frame.
 The dovetail cutter consumes the adapter's selected profile, not a traced copy.
@@ -15,58 +15,63 @@ from trunk_cavity import REAR_SIDE_X_MM, REAR_WALL_NORMAL, REAR_WALL_POINT_MM
 ROOT = Path(__file__).resolve().parent
 RECIPE = json.loads((ROOT/'cad-rebuild/accessories/latch-recipe.json').read_text())
 FEATURES = {f['index']: f for f in RECIPE['features']}
-SKETCHES = {s['name']: s for s in RECIPE['sketches'] + RECIPE['externalDependencies']}
 # Run and inward movement of one straight outer ceiling edge in the XY view.
 REAR_CEILING_TAPER = (54.0 - 28.183821804872828) / (260.01919499427396 - 174.31392815517032)
 NOMINAL_CLEARANCE_MM = 0.2
 
 
+TONGUE_RISE_MM = 18.0
+TONGUE_THICKNESS_MM = 14.393670059803053
+# Lower edge of the sloped adapter wall after the approved underside trim.
+MATING_WALL_BOTTOM_Z_MM = -8.769549214940586
+
+
+def latch_side_profile():
+    """Construct the latch as a single YZ profile before the shared dovetail cut."""
+    wall_normal = Vector(REAR_WALL_NORMAL)
+    toward_tip = Vector(0, wall_normal.Z, -wall_normal.Y)
+    top_front = Vector(0, 149.9532667443008, 31.702071992564846)
+    wall_bottom = top_front + toward_tip * ((MATING_WALL_BOTTOM_Z_MM - top_front.Z) / toward_tip.Z)
+
+    rise = Vector(0, 0, TONGUE_RISE_MM)
+    # Original faces 1 and 6 meet at corner. Keep its Y and the length of face 6.
+    corner = Vector(0, 222.4245484695098, -29.76219965660978) + rise
+    outer_tip = Vector(0, 215.4245484695093, -43.00018346988403) + rise
+    tip_direction = (outer_tip-corner).normalized()
+    tip_normal = Vector(0, -tip_direction.Z, tip_direction.Y)
+    inner_tip = outer_tip - TONGUE_THICKNESS_MM * tip_normal
+    rounded_tip = (outer_tip+inner_tip)*0.5 + tip_direction * (TONGUE_THICKNESS_MM*0.5)
+
+    # Face 5 runs parallel to the upper shoulder. Face 7 and face 10
+    # are parallel offsets of the two outer tongue faces.
+    top_rear = top_front + wall_normal * (corner-top_front).dot(wall_normal)
+    inner_corner_plane = corner - TONGUE_THICKNESS_MM * wall_normal
+    inner_root = wall_bottom + wall_normal * (inner_corner_plane-wall_bottom).dot(wall_normal)
+    inner_corner = inner_tip + tip_direction * (
+        (inner_corner_plane-inner_tip).dot(wall_normal) / tip_direction.dot(wall_normal)
+    )
+
+    points = (top_rear, top_front, wall_bottom, inner_root, inner_corner, inner_tip)
+    edges = [Edge.make_line(a, b) for a, b in zip(points, points[1:])]
+    edges.extend((Edge.make_three_point_arc(inner_tip, rounded_tip, outer_tip),
+                  Edge.make_line(outer_tip, corner), Edge.make_line(corner, top_rear)))
+    return Face(Wire(edges))
+
+
 def selected_faces(index):
-    """Evaluate exact selected loops in their original sketch frames."""
-    if index == 105:
-        # Both master and latch derive their mating interface from the same data.
-        return adapter_profiles(18)
+    if index == 102:
+        return [latch_side_profile()]
     if index == 104:
-        # Redraw TopCutSketch as a rectangle, keeping its original front edge.
-        # The rear edge lies beyond the latch blank.
-        front_y = 149.9532667443008
-        rear_y = 263.445982162752
+        # Rectangular width cap. Its rear edge lies beyond the latch blank.
+        front_y, rear_y = 149.9532667443008, 263.445982162752
         x = REAR_SIDE_X_MM
         return [Face(Wire.make_polygon(
             [(-x, front_y, 0), (x, front_y, 0), (x, rear_y, 0), (-x, rear_y, 0)],
             close=True,
         ))]
-    faces = []
-    for profile in FEATURES[index]['profiles']:
-        sketch = SKETCHES[profile['sketch']]
-        origin, x, y = (Vector(source_to_model(sketch[k])) for k in ('origin','xAxis','yAxis'))
-        normal = x.cross(y)
-        def point(p):
-            return origin + x*p[0] + y*p[1] + normal*p[2]
-        loops = []
-        for loop in profile['loops']:
-            edges = []
-            for curve in loop['curves']:
-                kind = curve['type'].split('::')[-1]
-                if kind == 'Line3D':
-                    edge = Edge.make_line(point(curve['start']), point(curve['end']))
-                elif kind == 'Arc3D':
-                    edge = Edge.make_three_point_arc(point(curve['start']), point(curve['mid']), point(curve['end']))
-                else:
-                    raise ValueError(f'Unsupported latch curve: {kind}')
-                edges.append(edge)
-            wire = Wire(edges)
-            if not wire.is_closed:
-                raise ValueError(f'Open latch profile at source {index}')
-            loops.append((loop['outer'], wire))
-        outer = [w for is_outer,w in loops if is_outer]
-        if len(outer) != 1:
-            raise ValueError('Expected one outer loop')
-        face = Face(outer[0], [w for is_outer,w in loops if not is_outer])
-        if abs(face.area-profile['areaMm2']) > 0.01:
-            raise ValueError(f'Source profile area mismatch at {index}')
-        faces.append(face)
-    return faces
+    if index == 105:
+        return adapter_profiles(18)
+    raise ValueError(f'Unsupported latch profile: {index}')
 
 
 def extrusion(index, direction, distance=500, two_sided=False):
@@ -83,9 +88,9 @@ def source_plane(geometry):
 def width_envelope():
     envelope = extrusion(104, (0, 0, 1), two_sided=True)
     normal = Vector(REAR_WALL_NORMAL)
-    seam = Vector(REAR_WALL_POINT_MM) - Vector(ADAPTER_TRANSLATION_MM) + normal * NOMINAL_CLEARANCE_MM
-    # In each horizontal section the taper starts at the sloped mating wall.
-    # Keep the original width cap ahead of that wall.
+    seam = (Vector(REAR_WALL_POINT_MM) - Vector(ADAPTER_TRANSLATION_MM)
+            + normal * NOMINAL_CLEARANCE_MM + Vector(0, 0, TONGUE_RISE_MM))
+    # Lift the taper planes with the tongue while retaining the 110 mm width cap.
     for side in (-1, 1):
         plane = Plane(
             (side * REAR_SIDE_X_MM, seam.Y, seam.Z),

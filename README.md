@@ -361,18 +361,21 @@ This produces `exports/latch.step` and `logs/latch-validation.json`. Pass
 `build_latch(clearance=0.2)`, and `with_stages=True` also returns checkpoint
 measurements.
 
-The latch is 110 mm wide at its sloped mating wall, with its edges aligned
-to the adapter's rear sidewalls at X = ±55 mm. Each side tapers inward toward
-the handle by **16.76°** in a horizontal section, matching the outer rear
-ceiling edges in the underside view. The dovetail cutter uses the shared
-rear-dovetail profile through `adapter_profiles.profiles(18)`. The three
-mating surfaces retain their nominal 0.2 mm inward offset.
+The latch uses a 110 mm width cap and a 16.76° inward taper per side. The
+taper follows the raised tongue. The dovetail cutter still uses the shared
+profile through `adapter_profiles.profiles(18)`. The three mating surfaces
+retain their nominal 0.2 mm inward offset.
 
-The nominal solid measures **225149.524 mm³**. STEP and STL each reopen
-as one valid solid. A separate 3 mm thickening study extended the latch
-body and tongue and overlapped the Sherman P rear handle scan by about
-1057 mm³. The production latch uses the original body and tongue thicknesses.
-Physical fit has yet to be tested.
+The native side profile raises the original face 1–6 edge **18 mm** at its
+original fore–aft position. The mating wall runs straight to the bottom of
+the adapter wall. The shelf (original face 5) runs parallel to the upper
+shoulder (original face 9), and the two tongue face pairs (1–7 and 6–10)
+are **14.39 mm** thick normal to their faces. The viewer labels the hook
+**Latch tongue** under **View → Labels → Features**.
+
+The nominal solid measures **237,272.819 mm³**. The seated model has
+**0.31 mm** minimum clearance to the raised rear handle scan. Physical fit
+has yet to be tested.
 
 ## Raised front clip and continuous screen ramp
 
