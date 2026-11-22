@@ -25,8 +25,14 @@ body { margin: 0; height: 100vh; height: 100dvh; }
 #toolbar input { accent-color: #9ce0dc; margin: 0; width: 12px; height: 12px; flex: none; }
 #toolbar .reference-opacity input { width: clamp(32px, 9vw, 80px); height: 20px; }
 .reference-opacity span { min-width: 4ch; text-align: right; font-variant-numeric: tabular-nums; }
+#section-controls {
+    position: absolute; left: 0; top: 33px;
+    display: flex; align-items: center; gap: 6px; padding-right: 6px;
+    background: var(--surface); border: 1px solid var(--border); border-radius: 6px;
+}
+#toolbar #section-position { width: 105px; height: 20px; }
 #view-panel {
-    position: absolute; right: 0; top: 33px; box-sizing: border-box;
+    position: absolute; z-index: 1; right: 0; top: 33px; box-sizing: border-box;
     width: min(100%, 224px); max-height: calc(100dvh - 43px); overflow: auto;
     background: var(--surface); border: 1px solid var(--border); border-radius: 6px; padding: 5px;
 }
@@ -42,7 +48,7 @@ body { margin: 0; height: 100vh; height: 100dvh; }
 #view-panel .selection-actions button { min-height: 20px; min-width: 35px; padding: 0 4px; font-size: 11px; }
 #gestures { margin: 4px 1px 0; color: #c0ccd6; font-size: 11px; }
 #status {
-    position: absolute; top: 38px; left: 5px; max-width: calc(100% - 22px);
+    position: absolute; top: 73px; left: 5px; max-width: calc(100% - 22px);
     padding: 4px 6px; border-radius: 5px; color: #edf3f8; background: #19262f; font-size: 12px;
 }
 #annotations { position: absolute; inset: 0; overflow: hidden; pointer-events: none; }
@@ -66,6 +72,14 @@ canvas:active { cursor: grabbing; }
 <option value="adapter">Adapter</option>
 <option value="split">Adapter Split</option>
 </select>
+<div id="section-controls" role="group" aria-label="Vertical section cut" data-extents="__SECTION_EXTENTS__">
+<select id="section-direction" aria-label="Section direction">
+<option value="off">Section off</option>
+<option value="side">Side cut</option>
+<option value="front">Front cut</option>
+</select>
+<input id="section-position" type="range" min="0" max="100" value="50" aria-label="Section depth" disabled>
+</div>
 <div id="toolbar-actions">
 __REFERENCES__
 <details id="view-menu">
@@ -131,19 +145,24 @@ async function start() {
         uniform mat3 view;
         uniform vec2 scale;
         uniform vec2 pan;
+        uniform vec3 sectionPlane;
         out vec3 surface;
+        out float sectionDistance;
         void main() {
             surface = view * position;
+            sectionDistance = dot(sectionPlane.xy, position.xy) + sectionPlane.z;
             gl_Position = vec4(surface.xy * scale + pan, -surface.z * .5, 1.);
         }`));
     gl.attachShader(program, shader(gl.FRAGMENT_SHADER, `#version 300 es
         precision highp float;
         in vec3 surface;
+        in float sectionDistance;
         uniform vec3 partColor;
         uniform float opacity;
         out vec4 color;
         void main() {
             vec3 normal = normalize(cross(dFdx(surface), dFdy(surface)));
+            if (sectionDistance > 0.) discard;
             float light = .38 + .62 * max(0., dot(normal, normalize(vec3(-.4,.7,1.))));
             color = vec4(partColor * light, opacity);
         }`));
@@ -158,6 +177,11 @@ async function start() {
     const picker = document.querySelector('#variants');
     const menu = document.querySelector('#view-menu');
     const toolbar = document.querySelector('#toolbar');
+    const sectionDirection = document.querySelector('#section-direction');
+    const sectionPosition = document.querySelector('#section-position');
+    const [sectionX, sectionY] = document.querySelector('#section-controls').dataset.extents.split(' ').map(Number);
+    const sectionPlane = gl.getUniformLocation(program, 'sectionPlane');
+    let section = [0, 0, 0];
     const parts = [];
     for (const control of toolbar.querySelectorAll('input[data-mesh]')) {
         const payload = document.getElementById(`mesh-${control.dataset.mesh}`).textContent;
@@ -213,7 +237,9 @@ async function start() {
         const occupied = [];
         for (const label of annotations) {
             const toggle = label.face ? showFaces : showLabels;
-            if (!toggle.checked || !label.meshes.some(mesh => visibleMeshes.has(mesh))) {
+            const [x, y, z] = label.point;
+            if (!toggle.checked || !label.meshes.some(mesh => visibleMeshes.has(mesh)) ||
+                section[0] * x + section[1] * y + section[2] > 0) {
                 label.element.style.visibility = 'hidden';
                 continue;
             }
@@ -221,7 +247,6 @@ async function start() {
             label.height ??= label.element.offsetHeight;
             const [nx, ny, nz] = label.normal;
             const facing = matrix[2] * nx + matrix[5] * ny + matrix[8] * nz;
-            const [x, y, z] = label.point;
             const screenX = width / 2 + panX + width * scaleX * (matrix[0] * x + matrix[3] * y + matrix[6] * z) / 2;
             const screenY = height / 2 + panY - height * scaleY * (matrix[1] * x + matrix[4] * y + matrix[7] * z) / 2;
             const left = screenX - label.width / 2, right = screenX + label.width / 2;
@@ -274,6 +299,7 @@ async function start() {
         gl.uniform2f(scale, scaleX, scaleY);
         gl.uniform2f(pan, 2 * panX / Math.max(1, canvas.clientWidth),
                          -2 * panY / Math.max(1, canvas.clientHeight));
+        gl.uniform3fv(sectionPlane, section);
         const translucent = [];
         for (const part of parts) {
             const alpha = partOpacity(part);
@@ -431,6 +457,18 @@ async function start() {
     document.querySelector('#closer').onclick = () => magnify(1.2);
     document.querySelector('#farther').onclick = () => magnify(1 / 1.2);
     document.querySelector('#reset').onclick = reset;
+    function updateSection() {
+        sectionPosition.disabled = sectionDirection.value === 'off';
+        const depth = sectionPosition.valueAsNumber;
+        const offset = depth / 50 - 1;
+        // +X enters from the side; -Y enters from the front.
+        if (sectionPosition.disabled || depth === 0) section = [0, 0, 0];
+        else if (sectionDirection.value === 'side') section = [1, 0, offset * sectionX];
+        else section = [0, -1, offset * sectionY];
+        draw();
+    }
+    sectionDirection.addEventListener('change', updateSection);
+    sectionPosition.addEventListener('input', updateSection);
     toolbar.addEventListener('change', event => {
         if (event.target === showLabels || event.target === showFaces ||
             event.target.matches('input[type="checkbox"][data-mesh]')) draw();
@@ -451,6 +489,7 @@ async function start() {
     picker.value = !hasAdapter && hasSplit ? 'split' : 'adapter';
     picker.disabled = !hasAdapter || !hasSplit;
     selectVariant();
+    updateSection();
     status.hidden = true;
     document.querySelector('#gestures').textContent = matchMedia('(pointer: coarse)').matches
         ? 'Drag to rotate · Two fingers to pan · Pinch to zoom'

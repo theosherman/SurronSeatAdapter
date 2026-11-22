@@ -182,6 +182,7 @@ def write_preview(paths, output, *, shapes=None):
 
     output.write_text(TEMPLATE.read_text().replace('__CONTROLS__', '\n'.join(controls))
                       .replace('__REFERENCES__', '\n'.join(reference_controls))
+                      .replace('__SECTION_EXTENTS__', ' '.join(map(str, ((high - center) / radius)[:2])))
                       .replace('__FEATURE_LABELS__', dumps(labels))
                       .replace('__MESHES__', '\n'.join(payloads)), encoding='utf-8')
     return output
