@@ -6,7 +6,7 @@ recipe remains the source reference; no finished-body patches are introduced.
 from copy import deepcopy
 from math import hypot, isclose
 
-PRINTING_OFFSET_MM = 1.0
+PRINTING_OFFSET_MM = 10.0
 FRONT_CORNER_OFFSET_MM = 3.0
 
 

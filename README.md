@@ -1,8 +1,29 @@
 # Surron Seat Adapter
 
-The full, unsplit adapter is reconstructed as editable Python solid geometry from the repository's millimeter recipe. The final wheel imprint subtracts only the prepared Sherman P middle body, with the source screen patch reconnected before preparation and uniformly scaled by **1.003** about model origin after cuts at Y=-191/+170 mm. Both handles move with the complete scan during alignment, remain unscaled after slicing, and are excluded from subtraction. The master has 1 mm finishing fillets and no connector recesses. The project also builds a two-piece printing variant and a separate editable latch. The saddlebag mount has a saved reference recipe.
+The full, unsplit adapter is reconstructed as editable Python solid geometry from the repository's millimeter recipe. The final wheel imprint subtracts only the prepared Sherman P middle body, with the source screen patch reconnected before preparation and uniformly scaled by **1.003** about its raised datum after cuts at Y=-191/+170 mm. Both handles move with the complete scan during alignment, remain unscaled after slicing, and are excluded from subtraction. The master has 1 mm finishing fillets and no connector recesses. The project also builds a two-piece printing variant and a separate editable latch. The saddlebag mount has a saved reference recipe.
 
 **Project priority.** Keep the geometry, feature history, and build workflow simple and editable.
+
+## Implemented 18 mm seat lowering
+
+The Sherman P scan sits **18 mm higher than the printed 8 mm revision**, so the
+seat mounts sit 18 mm lower relative to the wheel. The front clip and tangent
+ramp rise with the scan. The screen walls rise to meet the ramp and slope back
+to the original body top ahead of the front bolt seats. A parallel cut moves the
+main underside up 18 mm, including at the lower rear toe. The imprint uses the
+wheel body scaled about its raised datum, with zero added clearance. The 1 mm
+finish uses mirrored edge selections compatible with the raised imprint.
+The split child's cavity-key recesses sit 3 mm higher along the seam so both
+halves retain the full 10 mm recess depth.
+
+The underside ramp is tangent to the existing rounded rear jaw and joins the
+raised underside at the original lift boundary. The clip bore stays 30.2 mm
+in diameter.
+
+The raised front handle scan still overlaps the clip more than it did on the
+printed revision. Physical clip fit remains open. See the
+[previous 15 mm revision preview](docs/images/cad/adapter-body-15mm-lowered.png).
+Run `scripts/build-release.sh` to generate the 18 mm files locally.
 
 ## Download
 
@@ -154,7 +175,7 @@ The [Fusion extracts](reference/fusion/) preserve the original source geometry, 
 ## Implemented 1 mm body fillets
 
 The November 15 request supersedes the earlier no-fillet decision for Build123d.
-`body_fillets.py` applies one 1 mm fillet feature to 131 geometrically selected
+`body_fillets.py` applies one 1 mm fillet feature to 119 geometrically selected
 edges of the placed adapter, before the wheel subtraction. The running dovetail
 rail and its body junction are excluded. The two shoulder edges and three
 trapezoidal-root edges at Y=147.5–151.6 mm remain sharp for latch clearance.
@@ -221,11 +242,11 @@ the standard regression suite, `validate_exports.py`, and the mounting-ceiling
 mesh checker for manufacturing validation. Sampling is not a continuous minimum
 thickness proof; physical fit and strength remain untested.
 
-## Implemented 8 mm deeper seating
+## Historical 8 mm deeper-seating revision
 
 The approved 8 mm placement preview is implemented in the editable source and
-manufacturing STEP/STL exports. `SEATING_DEPTH_MM = 8.0` in `reference/wheel/__init__.py`
-raises the whole prepared EUC, including both unscaled handles, exactly 8 mm.
+manufacturing STEP/STL exports for that revision. The whole prepared EUC,
+including both unscaled handles, rose exactly 8 mm.
 The existing 1.003 body fit scale is retained: its pivot moves from `(0,0,0)`
 to `(0,0,8)` with the wheel. This is mathematically the original prepared cutter
 translated by 8 mm, without the extra 0.024 mm that scaling the new translation
@@ -297,9 +318,9 @@ python3.14 -m reference.wheel.prepare
 
 The script reads the [original Fusion scan](reference/fusion/Sherman_P_Flush_Screen_Fusion_Default.stl),
 corrects the frame and reconnects the screen patch. It then rotates the entire
-wheel **-3.4932161177016057° about model +X** and translates it **+11.464786838041892 mm in Z**,
-including the approved 8 mm seating adjustment. It slices at **Y=-191 mm**
-and **Y=+170 mm**, then scales only the middle body by **1.003** about `(0,0,8)`.
+wheel **-3.4932161177016057° about model +X** and translates it **+29.464786838041892 mm in Z**,
+including the 26 mm total seating adjustment. It slices at **Y=-191 mm**
+and **Y=+170 mm**, then scales only the middle body by **1.003** about `(0,0,26)`.
 
 The script validates the outputs before replacing the checked-in files in
 `reference/wheel/`. The adapter subtracts `body-scaled.brep` with zero added
@@ -635,8 +656,10 @@ The AirTag parameter-edit and cutter self-intersection checks pass.
 
 ## Outward face offsets
 
-The original `RearSketch` diagonal and its mirror now sit **1 mm outward**, measured
-normal to the original printing planes (faces 1 and 2). The existing front trim
+The original `RearSketch` diagonal and its mirror now sit **10 mm outward** in
+total, measured normal to the original printing planes (faces 1 and 2). This
+adds 9 mm to the previous offset to recover 2 mm of screen sidewall at the
+wheel imprint. The existing front trim
 uses these shifted native rear planes. Both `FrontCutSketch` triangular corner-cut
 diagonals (face 3 beside the front clip) move **3 mm outward in total** into the removed
 corner, reducing those cuts. Original angles, adjoining horizontal/vertical lines,

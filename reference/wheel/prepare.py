@@ -12,7 +12,7 @@ from .scan_patch import PATCH, repair_screen_patch
 FRONT_Y = -191.0
 REAR_Y = 170.0
 BODY_SCALE = 1.003
-# Translate the fit-scale pivot with the wheel so the final cutter rises exactly 8 mm.
+# Translate the fit-scale pivot with the wheel to preserve its exact rise after scaling.
 SCALE_ORIGIN = (0, 0, SEATING_DEPTH_MM)
 # Approved lower-outer-bottom alignment, in the permanent Build123d frame.
 ALIGNMENT_ANGLE_DEG = -3.4932161177016057

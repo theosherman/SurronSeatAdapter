@@ -13,16 +13,25 @@ class SplitAdapterTests(unittest.TestCase):
         datum = RECIPE['child']['splitPlane']
         seam = Plane(placed_point(datum['originMm']), z_dir=source_to_model(datum['normal']))
         uncut = sorted(master.split(seam, keep=Keep.BOTH), key=lambda part: part.center().Y)
+        cavity_tools = [tool for name, tool in connector_tools(seam) if name.startswith('cavity-')]
 
         for bare, (name, finished) in zip(uncut, build_split(master), strict=True):
             with self.subTest(half=name):
+                for tool in cavity_tools:
+                    # The raised underside and wheel imprint must leave stock
+                    # for the full 10 mm nominal pocket in both halves.
+                    stock = bare.intersect(tool)
+                    self.assertAlmostEqual(sum(solid.volume for solid in stock.solids()),
+                                           750.0, delta=0.01)
                 removed = bare.cut(finished)
                 recesses = removed if isinstance(removed, list) else removed.solids()
                 volumes = sorted(recess.volume for recess in recesses)
                 self.assertEqual(len(volumes), 3, volumes)
                 # The rim adds volume to each 750 mm³ cavity pocket and the top pocket.
                 self.assertGreater(volumes[0], 750.0)
-                self.assertAlmostEqual(volumes[0], volumes[1], places=3)
+                # The raised, asymmetric wheel imprint clips the front rims
+                # slightly differently while the recess tools remain mirrored.
+                self.assertAlmostEqual(volumes[0], volumes[1], delta=0.02)
                 self.assertGreater(volumes[2], 8309.401)
 
     def test_recess_rounds_are_confined_to_the_mouth(self):

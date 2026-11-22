@@ -1,13 +1,13 @@
 """Approved native front reconstruction in the permanently placed model frame.
 
-Keep the screen and rearward underside, raise the analytic clip, and join
-its outer circle to the screen opening with a tangent ramp.
+Raise the analytic clip and join the screen opening and underside to its
+curves with tangent ramps. Trim the main underside to retain the imprint depth.
 """
-from math import acos, atan2, cos, hypot, pi, sin, sqrt
+from math import acos, atan2, cos, hypot, sin, sqrt
 
 from build123d import Edge, Face, Wire, Solid, Plane, Keep, GeomType, Compound, ShapeList
 
-from reference.wheel import SEATING_DEPTH_MM
+from reference.wheel import SEATING_DEPTH_MM, SEAT_LOWERING_MM
 
 ORIGINAL_CLIP_RISE_MM = 18.052632063736358
 CLIP_RISE_MM = ORIGINAL_CLIP_RISE_MM + SEATING_DEPTH_MM
@@ -19,6 +19,25 @@ def prism_yz(points, width=200):
     return Solid.extrude(face,(width,0,0))
 
 
+def main_underside(body):
+    return next(f for f in body.faces() if f.geom_type == GeomType.PLANE
+                and f.area > 10000 and f.normal_at().Z < -.99
+                and abs(f.normal_at().Y + .118) < .002)
+
+
+def trim_main_underside(body):
+    underside = main_underside(body)
+    front_y = underside.bounding_box().min.Y
+    rear_y = body.bounding_box().max.Y + 1
+    datum, normal = underside.center(), underside.normal_at()
+    slope = -normal.Y / normal.Z
+    front_z = datum.Z + slope * (front_y - datum.Y) + SEAT_LOWERING_MM
+    rear_z = front_z + slope * (rear_y - front_y)
+    floor = body.bounding_box().min.Z - 1
+    return body.cut(prism_yz([(front_y, front_z), (rear_y, rear_z),
+                             (rear_y, floor), (front_y, floor)]))
+
+
 def redesign_front(body):
     planes=[f for f in body.faces() if f.geom_type==GeomType.PLANE]
     from bottom_outline import SCREEN_EXTENSION_MM
@@ -26,8 +45,7 @@ def redesign_front(body):
               and .81<f.normal_at().Y<.83 and .57<f.normal_at().Z<.58)
     top=next(f for f in planes if f.area>4000 and -200<f.center().Y<-175
              and f.normal_at().Z>.99)
-    bottom=next(f for f in planes if f.area>10000
-                and f.normal_at().Z<-.99 and abs(f.normal_at().Y+.118)<.002)
+    bottom=main_underside(body)
     def line(face):
         p,n=face.center(),face.normal_at()
         slope=-n.Y/n.Z
@@ -43,18 +61,20 @@ def redesign_front(body):
     # The actual upper face supplies the footprint, including its screen boundary
     # and side chamfers. Vertical prisms add thickness, never scale the section.
     footprint=Solid.extrude(top.translate((0,0,-80)),(0,0,160))
-    # Small local root gusset joins the retained lower line to the raised jaw.
-    # Its front end is safely forward of the bridge but behind the bore's rear
-    # tangent (Y=-205.2743), so it cannot close or resize the circular bore.
-    # The root datum follows the original lift boundary, independently of screen.
-    bore_rear=-205.27430326680117
-    root_end=-199.0
-    if not bore_rear < root_end < lift_join:
-        raise ValueError('Screen extension leaves no room for the clip root gusset')
-    clip_section=clip.intersect(Plane((0,root_end,0),z_dir=(0,1,0)))
-    lower=min(v.center().Z for v in clip_section.vertices())
-    gusset=prism_yz([(lift_join,sb*lift_join+bb),(root_end,lower),
-                     (root_end,st*root_end+bt+CLIP_RISE_MM),
+    # Draw the lower ramp tangent to the rear jaw from the raised underside
+    # at the lift boundary. The gusset and bridge share this lower line.
+    jaw = next(edge for edge in clip.intersect(Plane.YZ).edges()
+               if edge.geom_type == GeomType.CIRCLE and 5 < edge.radius < 6
+               and -210 < edge.arc_center.Y < -195)
+    jaw_center = jaw.arc_center
+    root_z = sb*lift_join+bb+SEAT_LOWERING_MM
+    dy, dz = lift_join-jaw_center.Y, root_z-jaw_center.Z
+    jaw_angle = atan2(dz, dy) - acos(jaw.radius / hypot(dy, dz))
+    contact_y = jaw_center.Y + jaw.radius*cos(jaw_angle)
+    contact_z = jaw_center.Z + jaw.radius*sin(jaw_angle)
+    lower_slope = (root_z-contact_z) / (lift_join-contact_y)
+    gusset=prism_yz([(lift_join,root_z),(contact_y,contact_z),
+                     (contact_y,st*contact_y+bt+CLIP_RISE_MM),
                      (lift_join,st*lift_join+bt+CLIP_RISE_MM)]).intersect(footprint)
     # Derive the new ramp from its original lower edge and the outer clip circle.
     # The original crown and the new tangent point lie on the same circle.
@@ -62,24 +82,24 @@ def redesign_front(body):
                  if edge.geom_type == GeomType.CIRCLE and edge.arc_center.Y < -210),
                 key=lambda edge: edge.radius)
     center, radius = outer.arc_center, outer.radius
-    start_z = sr*start+br
+    start_z = sr*start+br+SEAT_LOWERING_MM
     dy, dz = start-center.Y, start_z-center.Z
     angle = atan2(dz, dy) + acos(radius / hypot(dy, dz))
 
     def circle_point(theta):
         return (-100, center.Y+radius*cos(theta), center.Z+radius*sin(theta))
 
-    crown_angle = pi / 2
-    crown = circle_point(crown_angle)
+    arc_start_angle = acos((contact_y-center.Y) / radius)
+    arc_start = circle_point(arc_start_angle)
     tangent = circle_point(angle)
     ramp_start = (-100, start, start_z)
-    floor_front = (-100, start, 0)
-    floor_back = (-100, crown[1], 0)
-    contour = Edge.make_three_point_arc(crown, circle_point((angle+crown_angle)/2), tangent)
+    floor_at_screen = (-100, start, root_z+lower_slope*(start-lift_join))
+    floor_at_jaw = (-100, contact_y, contact_z)
+    contour = Edge.make_three_point_arc(arc_start, circle_point((angle+arc_start_angle)/2), tangent)
     profile = Face(Wire([contour, Edge.make_line(tangent, ramp_start),
-                         Edge.make_line(ramp_start, floor_front),
-                         Edge.make_line(floor_front, floor_back),
-                         Edge.make_line(floor_back, crown)]))
+                         Edge.make_line(ramp_start, floor_at_screen),
+                         Edge.make_line(floor_at_screen, floor_at_jaw),
+                         Edge.make_line(floor_at_jaw, arc_start)]))
     envelope = Solid.extrude(profile, (200,0,0))
     gusset = Compound(gusset) if isinstance(gusset,ShapeList) else gusset
     gusset = gusset.intersect(envelope)
@@ -107,6 +127,7 @@ def redesign_front(body):
     bridge = Compound(bridge) if isinstance(bridge,ShapeList) else bridge
     gusset = Compound(gusset) if isinstance(gusset,ShapeList) else gusset
     bridge = bridge.cut(bore)
+    gusset = gusset.cut(bore)
     bridge = Compound(bridge) if isinstance(bridge,ShapeList) else bridge
     result = rear.fuse(clip,bridge,gusset).clean()
     if len(result.solids())!=1 or not result.is_valid:
