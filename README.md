@@ -96,9 +96,11 @@ prepared by rigidly fitting the four stud bases to the adapter hole mouths.
 Regenerate it with `python3.14 -m reference.seat.prepare` when the seat
 reference or its placement changes.
 
-## View CAD in T3 Code
+## View the CAD model
 
-Open `exports/preview.html` in the Files panel. Use the top picker to switch
+[Open the interactive 3D preview](https://theosherman.github.io/SurronSeatAdapter/).
+For a local build, open `exports/preview.html` in T3 Code’s Files panel or in
+your browser. Use the top picker to switch
 between **Adapter** and **Adapter Split**. The **View** menu holds part
 visibility, zoom, reset, and gesture help. Drag to rotate, right-drag to pan,
 and scroll to zoom. The viewer runs offline and needs WebGL 2.
