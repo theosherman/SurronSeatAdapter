@@ -208,14 +208,13 @@ its report is `logs/fillet-cutter-validation.json`. This supersedes the first, a
 
 The [saved top and underside views](docs/images/cad/body-fillets-implemented.png) show the implemented fillets.
 
-## Implemented 5 mm angled rear wall
+## Implemented 10 mm angled rear wall
 
-The source cavity cutter now stops at a plane parallel to the original angled
-latch wall and 5 mm inward along its normal. This corrects the original cavity
-operation rather than adding material to the completed adapter. The approved correction is rebuilt into manufacturing STEP/STL exports.
-All 47 regression tests, twelve mounting-ceiling mesh checks, and 75 material
-samples through the corrected rear wall pass. The original
-outer latch face, separate latch, roof offset and rear side cuts are retained.
+The cavity cutter stops at a plane parallel to the angled latch contact face,
+10 mm inward along its normal. Moving the cavity boundary 5 mm farther inward
+doubles the previous wall thickness and preserves the latch contact face and
+the separate latch position. The two mirrored cavity side-to-rear edges stay
+sharp because their fillets would touch the wheel imprint cutter.
 
 ## Implemented long cavity and rear side relief
 
@@ -636,7 +635,7 @@ wheel subtraction.
 The original cavity cutter is additionally limited by the mirrored cut plane
 shifted 14 mm inward along its normal. This retains only the local wall material
 needed beside the lower diagonal; it introduces no added-body patch or second
-pocket. The original rear-wall 5 mm limit, 18.5 mm roof offset, rest of the long
+pocket. The broad latch-wall 10 mm limit, 18.5 mm roof offset, rest of the long
 cavity, side relief and wheel preparation remain in force.
 
 Run `validate_cavity.py --approved-step <approved STEP>` for optional exact preview
