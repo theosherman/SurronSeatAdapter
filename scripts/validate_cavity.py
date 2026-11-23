@@ -14,7 +14,7 @@ from trunk_cavity import rear_cavity_profile,rear_side_tools,CAVITY_ROOF_OFFSET_
 parser=argparse.ArgumentParser()
 parser.add_argument('--approved-step',type=Path)
 args=parser.parse_args()
-ROOT=Path(__file__).resolve().parent
+ROOT=Path(__file__).resolve().parents[1]
 body=import_step(ROOT/'exports/adapter-body.step')
 sketch=SKETCHES['BodyCutSketch']
 n=Vector(sketch['normal'])
@@ -83,5 +83,7 @@ if approved is not None:
     assert difference<.001,difference
     report['approvedPreviewSymmetricDifferenceMm3']=difference
 assert body.is_valid and len(body.solids())==1
-(ROOT/'logs/approved-cavity-validation.json').write_text(json.dumps(report,indent=2)+'\n')
+report_path = ROOT/'logs/approved-cavity-validation.json'
+report_path.parent.mkdir(exist_ok=True)
+report_path.write_text(json.dumps(report,indent=2)+'\n')
 print(json.dumps(report))

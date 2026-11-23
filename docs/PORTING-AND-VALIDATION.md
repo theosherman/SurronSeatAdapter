@@ -4,7 +4,7 @@
 
 Use the saved geometry and operation intent when porting to another CAD engine. The [Build123d project](../README.md) is the current editable implementation.
 
-Start with [recipe.json](../cad-rebuild/recipe.json), [CAD-REBUILD.md](CAD-REBUILD.md), and the [wheel scan setup](../README.md#run).
+Start with [recipe.json](../cad-rebuild/recipe.json), [CAD-REBUILD.md](CAD-REBUILD.md), and the [wheel scan setup](WHEEL-REFERENCE-PREPARATION.md#sherman-p-body-only-fit-preparation).
 
 ## Check the target's capabilities first
 

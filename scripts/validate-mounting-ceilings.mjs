@@ -1,5 +1,5 @@
 import fs from 'node:fs';
-const root=new URL('./',import.meta.url);
+const root=new URL('../',import.meta.url);
 const placement=JSON.parse(fs.readFileSync(new URL('adapter-placement.json',root))).translationMm;
 const meshPath=process.argv[2]??new URL('exports/adapter-body.stl',root);
 const mesh=fs.readFileSync(meshPath);
@@ -42,6 +42,8 @@ for(const u of [-14.5,14.5]){
  capTests('rear '+u,center,bolt.normal);
 }
 const report={adapterTranslationMm:placement,ok:checks.every(c=>c.ok),source:String(meshPath),triangles:count,checks,method:'Two independent triangle ray parity tests at 0.5 mm above/below each saved cap plane; annular sample 6 mm off bore axis.'};
-fs.writeFileSync(process.argv[3]??new URL('logs/mounting-ceiling-validation.json',root),JSON.stringify(report,null,2));
+const defaultReport = new URL('logs/mounting-ceiling-validation.json', root);
+if (!process.argv[3]) fs.mkdirSync(new URL('./', defaultReport), { recursive: true });
+fs.writeFileSync(process.argv[3] ?? defaultReport, JSON.stringify(report, null, 2));
 console.log(JSON.stringify({ok:report.ok,checks:checks.length,failed:checks.filter(c=>!c.ok)}));
 if(!report.ok)process.exitCode=1;

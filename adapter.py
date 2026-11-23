@@ -115,7 +115,9 @@ def export_master(output, *, stl=False, stop=None, imprint=True):
         raise ValueError(f'STEP export failed: {step}')
     if stl:
         export_stl_mm(import_step(step), step.with_suffix('.stl'))
-    (Path(__file__).parent/'logs/build-validation.json').write_text(json.dumps(dict(coordinateFrame="source (x,y,z) -> model (-x,-y,z); physical front is negative Y; Z up",adapterTranslationMm=ADAPTER_TRANSLATION_MM,seatingDepthMm=SEATING_DEPTH_MM,elapsedSeconds=time.monotonic()-start,stages=HISTORY),indent=2)+'\n')
+    report_path = Path(__file__).parent/'logs/build-validation.json'
+    report_path.parent.mkdir(exist_ok=True)
+    report_path.write_text(json.dumps(dict(coordinateFrame="source (x,y,z) -> model (-x,-y,z); physical front is negative Y; Z up",adapterTranslationMm=ADAPTER_TRANSLATION_MM,seatingDepthMm=SEATING_DEPTH_MM,elapsedSeconds=time.monotonic()-start,stages=HISTORY),indent=2)+'\n')
     return step, body
 
 

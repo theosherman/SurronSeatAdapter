@@ -1,8 +1,58 @@
-# Wheel reference preparation: verified Veteran Sherman L procedure
+# Reference preparation
+
+## Sherman P body-only fit preparation
+
+Run the wheel preparation explicitly when the source scan or its fit changes.
+This command uses Node.js for the original Fusion alignment.
+
+```bash
+python3.14 -m reference.wheel.prepare
+```
+
+The script reads the [original Fusion scan](../reference/fusion/Sherman_P_Flush_Screen_Fusion_Default.stl),
+corrects the frame and reconnects the screen patch. It then rotates the entire
+wheel **-3.4932161177016057° about model +X** and translates it **+29.464786838041892 mm in Z**,
+including the 26 mm total seating adjustment. It slices at **Y=-191 mm**
+and **Y=+170 mm**, then scales only the middle body by **1.003** about `(0,0,26)`.
+
+The script validates the outputs before replacing the checked-in files in
+`reference/wheel/`. The adapter subtracts `body-scaled.brep` with zero added
+clearance. The CAD viewer reads that same body and the two unscaled handle
+STEPs. The HTML preview reads `merged.stl`, which reunites the body and handles
+for display. Commit the regenerated reference files with any intentional
+preparation changes. The source scan is preserved.
+
+The rear slice now contains two disconnected solids (including a small 353.26 mm³
+scan fragment). Both are retained in the rear-handle reference; the reunited scan
+remains a single solid. No fragments are discarded or used as adapter cutters.
+
+The original scan passes ordinary solid-validity checks but has 38 self-intersection
+reports near its front screen. The approved placement made the direct Boolean
+fail. `scan_patch.py` applies the checksum-guarded connectivity recipe before
+alignment and slicing. It changes triangle connections only: no vertex moves,
+no smoothing, no triangle-count reduction and no clearance offset. The repaired
+mesh has zero self-intersection reports; its signed volume changes by about
+-38.209 mm³ out of 4.22 million mm³. This resolves the folded surface ambiguity;
+it does not reproduce every original facet interior. The source points and patch
+boundary remain exact. The export validator checks the reopened cutter again.
+
+## Luna Surron seat reference
+
+The [original seat scan](../reference/seat/LunaSurronSeat_30k.stl) and the
+[stud-corrected mesh](../reference/seat/LunaSurronSeat_Studs_5p3x15.stl) share the
+original scan coordinates. The corrected mesh uses four smooth Ø5.3 mm studs
+with 15 mm exposed length from the surrounding plastic mounting faces. Each
+axis and base location is fitted from the scan. The seat meshes are reference
+assets for checking fit. The preview uses the [aligned seat](../reference/seat/surron-seat.stl),
+prepared by rigidly fitting the four stud bases to the adapter hole mouths.
+Regenerate it with `python3.14 -m reference.seat.prepare` when the seat
+reference or its placement changes.
+
+## Historical Veteran Sherman L procedure
 
 Current documentation scope: the original **Veteran Sherman L** asset and its preparation. The later Sherman P import was an unfinished replacement experiment and is excluded from this source-history task. Existing destination-model records describe separate later work; this documentation update changes no CAD geometry.
 
-## Verified correction from Sherman L version 1
+### Verified correction from Sherman L version 1
 
 The user clarified that Fusion is reference-only and the Sherman L supplies the original preparation procedure; the recent P import is experimental. The earlier **Veteran Sherman L v1** retains the missing history. Its `Scale1` (timeline index 14) is **uniform 1.003**, a **0.3% enlargement**, applied only to `Body`. Both handles remain unscaled. The selected scale point is approximately **(-0.0616645813, -26.7304611206, -2.6051712036) mm** in that asset's coordinate frame.
 
@@ -10,7 +60,7 @@ The user clarified that Fusion is reference-only and the Sherman L supplies the 
 
 The earlier version was opened for inspection, its cursor was restored to 61, and it was closed without saving. The original seat-adapter project remained active afterward. No Fusion features were edited or saved. This source inspection does not itself alter the existing SolidCraft subtraction.
 
-## Procedure to preserve in other CAD tools
+### Procedure to preserve in other CAD tools
 
 The splits isolate the central wheel body so it can be subtracted from the adapter without subtracting either handle or cutting away the adapter's front clip. Keep the original asset and both handle pieces as separate reference geometry.
 
@@ -24,7 +74,7 @@ The dimensions and pivot above belong to the **Sherman L** source asset. When pr
 
 This documents the verified source preparation; it does not apply it to the current SolidCraft model. The existing Sherman P imprint remains at zero added clearance until deliberately rebuilt. Fusion remains reference-only.
 
-## Historical inspection notes (superseded)
+### Historical inspection notes (superseded)
 
 The notes below describe the **superseded initial inspection** of flattened version 2. The scale uncertainty is now resolved; **do not use the earlier proposed 1.01 factor**. Any pending questions or proposed changes below are historical, not current instructions.
 

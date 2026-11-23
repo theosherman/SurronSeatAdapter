@@ -176,7 +176,9 @@ def export_latch(output, *, stl=False, clearance=NOMINAL_CLEARANCE_MM):
             raise ValueError(f'Latch export failed validation: {reopened[name]}')
     report = dict(clearanceMm=clearance, fillets=False, coordinateFrame='source (x,y,z) -> model (-x,-y,z)',
                   placementTranslationMm=ADAPTER_TRANSLATION_MM, stages=stages, reopened=reopened, physicalFitTested=False)
-    (Path(__file__).parent/'logs/latch-validation.json').write_text(json.dumps(report, indent=2)+'\n')
+    report_path = Path(__file__).parent/'logs/latch-validation.json'
+    report_path.parent.mkdir(exist_ok=True)
+    report_path.write_text(json.dumps(report, indent=2)+'\n')
     print(json.dumps(report, indent=2))
     return step, exports[0][1]
 

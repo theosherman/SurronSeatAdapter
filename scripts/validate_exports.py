@@ -2,12 +2,12 @@
 import json
 from pathlib import Path
 from build123d import import_brep, import_step
-from validate_mesh import inspect_stl
+from .validate_mesh import inspect_stl
 from measure import volume
 from adapter import build_master
 from OCP.BOPAlgo import BOPAlgo_ArgumentAnalyzer
 
-folder = Path(__file__).resolve().parent
+folder = Path(__file__).resolve().parents[1]
 base = import_step(folder/'exports/adapter-body.step')
 mesh = inspect_stl(folder/'exports/adapter-body.stl')
 nominal = build_master()
@@ -35,6 +35,8 @@ report = dict(
     ok=cutter_ok and base.is_valid and len(base.solids())==1 and mesh['valid'] and mesh['solids']==1
        and abs(delta-102.4295078183)<0.01 and abs(roundtrip_delta)<roundtrip_limit
        and abs(mesh['volumeMm3']-volume(base))<5)
-(folder/'logs/export-and-parameter-validation.json').write_text(json.dumps(report,indent=2)+'\n')
+report_path = folder/'logs/export-and-parameter-validation.json'
+report_path.parent.mkdir(exist_ok=True)
+report_path.write_text(json.dumps(report,indent=2)+'\n')
 print(json.dumps(report))
 assert report['ok'], report

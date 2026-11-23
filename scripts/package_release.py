@@ -7,7 +7,7 @@ import numpy as np
 from PIL import Image
 from build123d import import_step
 
-from validate_mesh import inspect_stl
+from scripts.validate_mesh import inspect_stl
 
 PARTS = (
     'adapter-body', 'adapter-body-split-front', 'adapter-body-split-rear',

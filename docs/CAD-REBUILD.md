@@ -2,13 +2,31 @@
 
 ## Purpose and authoritative inputs
 
-Use the original Fusion geometry and documented corrections as a portable baseline. See the [Build123d README](../README.md) for later model revisions and manufacturing exports. This guide records what was extracted, which features were reproduced, what changed at the user's request, and how the finished parent/child relationship works.
+Use the original Fusion geometry and documented corrections as a portable baseline. See the [design history](DESIGN-HISTORY.md) for later model revisions and the [build guide](../BUILD-SEQUENCE.md) for manufacturing exports. This guide records what was extracted, which features were reproduced, and how the finished parent and child relate.
 
 The source was the active Fusion document `Surron Seat Adapter v3 v2`, in project/folder `Sherman P`. It had 200 timeline entries. Relevant components were `AdapterBody` and `AdapterBodySplit`; the source assembly also contained a seat, latch, saddlebag mount, old trunk branches, and reference wheel geometry that were outside the requested rebuild.
 
 Use [recipe.json](../cad-rebuild/recipe.json) as the machine-readable specification and [FEATURE-RECIPE.md](FEATURE-RECIPE.md) as its table of operations. Every source marker is indexed in [FUSION-TIMELINE.md](FUSION-TIMELINE.md). Timeline indices in this documentation are **zero-based**.
 
 The baseline records the corrected screw access, the Sherman P imprint, and the original Fusion connector recesses. The current Build123d model applies finishing fillets separately and uses three connector recesses in the printing variant.
+
+## CAD source map
+
+| Area | Source |
+| --- | --- |
+| Fusion sketches, selected loops, and baseline operations | [Portable recipe](../cad-rebuild/recipe.json) and [raw extracts](../reference/fusion/) |
+| Production master feature order and AirTag pocket | [adapter.py](../adapter.py), with the manufacturing profiles in [adapter_profiles.py](../adapter_profiles.py) |
+| Cavity and rear wall thicknesses | [trunk_cavity.py](../trunk_cavity.py) |
+| Printing plane offsets, seat shoulders, and front geometry | [cut_offsets.py](../cut_offsets.py), [seat_shoulders.py](../seat_shoulders.py), [front_clip.py](../front_clip.py), and [screen_surround.py](../screen_surround.py) |
+| Finishing edges and latch clearance | [body_fillets.py](../body_fillets.py), [body-fillets.json](../body-fillets.json), and [latch.py](../latch.py) |
+| Split plane, recesses, and keys | [split_adapter.py](../split_adapter.py) and [butterfly_keys.py](../butterfly_keys.py) |
+| Production coordinate frame and assembly placement | [coordinates.py](../coordinates.py) and [adapter-placement.json](../adapter-placement.json) |
+| Wheel seating height, imprint, and preview scans | [reference/wheel](../reference/wheel/), [reference/seat](../reference/seat/), and the [preparation guide](WHEEL-REFERENCE-PREPARATION.md) |
+
+Use these sources for current dimensions and the [design history](DESIGN-HISTORY.md)
+for the rationale and measurements from individual revisions. Run
+`node scripts/generate-cad-reference.mjs` to regenerate the portable baseline
+and its source tables.
 
 ## Final model structure
 
@@ -147,7 +165,7 @@ minimum = (-105.889551633, -249.614913836, -71.769897461) mm
 maximum = ( 103.881040103,  243.801132307,  34.509460449) mm
 ```
 
-The transform was recovered from the Fusion component's local geometry and occurrence transform. [align-source.mjs](../reference/wheel/align-source.mjs) reproduces it during [explicit wheel preparation](../README.md#sherman-p-body-only-fit-preparation). Routine builds use the checked-in prepared body BREP. The adapter imprint has zero added clearance.
+The transform was recovered from the Fusion component's local geometry and occurrence transform. [align-source.mjs](../reference/wheel/align-source.mjs) reproduces it during [explicit wheel preparation](WHEEL-REFERENCE-PREPARATION.md#sherman-p-body-only-fit-preparation). Routine builds use the checked-in prepared body BREP. The adapter imprint has zero added clearance.
 
 ## Linked printing child
 
@@ -166,7 +184,7 @@ Extend it across the width in the global X direction to form an infinite splitti
 
 ### Connector recesses
 
-The production Build123d variant uses a transverse split at placed Y=37 mm, one top recess cut 12.8 mm perpendicular to the roof, and two 6.8 mm cavity-wall recesses. See the [current split workflow](../README.md#two-piece-printing-variant). The portable recipe preserves the original Fusion geometry described below, including its original 8 mm pocket depth and four side recesses.
+The production Build123d variant uses a transverse split, one top recess perpendicular to the roof, and two cavity-wall recesses. The placed split location and depths are defined in [split_adapter.py](../split_adapter.py). See the [current split workflow](../README.md#two-piece-printing-variant). The portable recipe preserves the original Fusion geometry described below, including its original 8 mm pocket depth and four side recesses.
 
 The top connector combines two neighboring trapezoidal profiles into one hourglass recess. In the original top-joint sketch frame its overall U range is approximately `±26.547005384` mm, with a 30 mm-wide waist at `v=103.59226295038653` mm and ends at `v=83.59226295038653` and `v=123.59226295038653` mm. Do not mistake the two selected profile regions for two separate connectors.
 
@@ -192,4 +210,4 @@ The original Fusion source made loose inserts with a different clearance. The cu
 
 ## Evidence and limits
 
-See the [porting checklist](PORTING-AND-VALIDATION.md) for dimensional and material checks and the [Build123d README](../README.md#verification) for the current validation commands.
+See the [porting checklist](PORTING-AND-VALIDATION.md) for dimensional and material checks and the [build guide](../BUILD-SEQUENCE.md#verification) for the current validation commands.
