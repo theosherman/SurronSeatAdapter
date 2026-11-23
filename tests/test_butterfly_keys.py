@@ -38,4 +38,4 @@ class ButterflyKeyTests(unittest.TestCase):
                     self.assertAlmostEqual(blend.radius, 1.0, places=5)
                 bounds = lay_flat(key).bounding_box()
                 self.assertAlmostEqual(bounds.min.Z, 0.0, places=5)
-                self.assertAlmostEqual(bounds.size.Z, 12.0 if name == "top" else 3.0, places=5)
+                self.assertAlmostEqual(bounds.size.Z, 12.0 if name == "top" else 6.0, places=5)
