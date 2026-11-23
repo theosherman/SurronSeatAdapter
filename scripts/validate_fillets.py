@@ -24,7 +24,8 @@ def check_symmetry(body):
 
 if __name__ == '__main__':
     report = check_symmetry(fillet_body(build_master(imprint=False)))
-    path = Path(__file__).parent/'logs/fillet-symmetry-validation.json'
+    path = Path(__file__).resolve().parents[1]/'logs/fillet-symmetry-validation.json'
+    path.parent.mkdir(exist_ok=True)
     path.write_text(json.dumps(report, indent=2)+'\n')
     print(json.dumps(report))
     assert report['ok'], report

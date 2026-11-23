@@ -8,9 +8,10 @@ Thumbs.db
 # Temporary review images and scratch files.
 /tmp/
 
-# Locally generated CAD and release bundles.
+# Locally generated CAD, release bundles, and validation reports.
 /exports/
-/logs/*-preview.json
+/logs/
+/inputs/wheel-scan-model-frame.json
 __pycache__/
 *.pyc
 .venv/

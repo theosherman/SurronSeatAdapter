@@ -2,7 +2,7 @@ import struct
 import tempfile
 import unittest
 from pathlib import Path
-from validate_mesh import inspect_stl
+from scripts.validate_mesh import inspect_stl
 
 
 class MeshValidationTest(unittest.TestCase):

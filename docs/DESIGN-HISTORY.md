@@ -1,0 +1,526 @@
+# Design history
+
+These entries record decisions and measurements from individual revisions. For the current model and build instructions, see the [README](../README.md) and [CAD source map](CAD-REBUILD.md#cad-source-map).
+
+## Implemented 18 mm seat lowering
+
+The Sherman P scan sits **18 mm higher than the printed 8 mm revision**, so the
+seat mounts sit 18 mm lower relative to the wheel. The front clip and tangent
+ramp rise with the scan. The screen walls rise to meet the ramp and slope back
+to the original body top ahead of the front bolt seats. A parallel cut moves the
+main underside up 18 mm, including at the lower rear toe. The imprint uses the
+wheel body scaled about its raised datum, with zero added clearance. The 1 mm
+finish uses mirrored edge selections compatible with the raised imprint.
+
+The underside ramp is tangent to the existing rounded rear jaw and joins the
+raised underside at the original lift boundary. The clip bore stays 30.2 mm
+in diameter.
+
+The raised front handle scan still overlaps the clip more than it did on the
+printed revision. Physical clip fit remains open. See the
+[previous 15 mm revision preview](images/cad/adapter-body-15mm-lowered.png).
+
+## Implemented 1 mm body fillets
+
+The November 15 request supersedes the earlier no-fillet decision for Build123d.
+`body_fillets.py` applies one 1 mm fillet feature to 119 geometrically selected
+edges of the placed adapter, before the wheel subtraction. The running dovetail
+rail and its body junction are excluded. The two shoulder edges and three
+trapezoidal-root edges at Y=147.5–151.6 mm remain sharp for latch clearance.
+The three-edge side return on each side also remains sharp: eleven junction
+edges in total. Rear terminal edges at Y=261 mm retain their original fillets.
+`python3.14 -m scripts.validate_dovetail_root` verifies three interior samples on each of the eleven
+sharp junction edges in the final manufacturing STEP; results are in
+[dovetail-root-validation.json](https://github.com/theosherman/SurronSeatAdapter/blob/f5a28647cce4b7c13a90c2f91e937fec370a6cbe/logs/dovetail-root-validation.json). The latch and other
+accessories remain separate and unchanged. Every selected edge has its mirror; incompatible pairs are omitted on both sides.
+Pairs whose generated fillet faces touch the asymmetric wheel cutter are also
+omitted on both sides, so the wheel cut cannot trim the blends unequally.
+Incompatible edges and the faceted
+EUC contact surface remain sharp. This is broad practical coverage, not every edge.
+
+`body-fillets.json` stores geometric selectors rather than unstable edge numbers.
+Changed or ambiguous selectors stop regeneration explicitly. AirTag floor and depth-dependent corner edges remain sharp to preserve the pocket-depth parameter. The sharp
+`--no-imprint` / M20 checkpoint stays available for source-feature inspection.
+The final manufacturing STEP/STL include the fillets. Curved-surface validation
+uses adaptive volume integration; the STL topology is checked directly without
+constructing a BREP face for each triangle. `export_mesh.py` tessellates the saved
+STEP with **absolute 0.005 mm** deflection and 0.05 rad angular tolerance. This
+avoids relative tessellation over-refining tiny blend junctions. STL topology uses a 0.000001 mm
+coordinate tolerance to ignore float32 collapsed triangles and sub-micron seams.
+The curved STEP round-trip volume limit is 2 ppm (about 2.45 mm³). This is a numerical export limit, not wheel-fit clearance.
+
+`python3.14 -m scripts.validate_fillets` checks reflected boundary points before the intentionally
+asymmetric wheel-scan subtraction. Its report is saved in
+[fillet-symmetry-validation.json](https://github.com/theosherman/SurronSeatAdapter/blob/f5a28647cce4b7c13a90c2f91e937fec370a6cbe/logs/fillet-symmetry-validation.json). `python3.14 -m scripts.validate_fillet_cutter` also checks
+that generated edge and corner blend faces clear the prepared wheel cutter;
+its report is [fillet-cutter-validation.json](https://github.com/theosherman/SurronSeatAdapter/blob/f5a28647cce4b7c13a90c2f91e937fec370a6cbe/logs/fillet-cutter-validation.json). This supersedes the first, asymmetric
+150-edge selection. Symmetry takes priority over fillet coverage.
+
+The [saved top and underside views](images/cad/body-fillets-implemented.png) show the implemented fillets.
+
+## Implemented 5 mm angled rear wall
+
+The source cavity cutter now stops at a plane parallel to the original angled
+latch wall and 5 mm inward along its normal. This corrects the original cavity
+operation rather than adding material to the completed adapter. The approved correction is rebuilt into manufacturing STEP/STL exports.
+All 47 regression tests, twelve mounting-ceiling mesh checks, and 75 material
+samples through the corrected rear wall pass. The original
+outer latch face, separate latch, roof offset and rear side cuts are retained.
+
+## Implemented long cavity and rear side relief
+
+The approved browser preview is implemented in `trunk_cavity.py` and M19 of
+`adapter.py`: one editable sixteen-line profile extends through the middle and
+widens at the rear. Straight downward walls start 18.5 mm below BodyCutSketch;
+the original pocket is replaced, so no higher residual roof recess remains.
+The existing 8.5 mm AirTag pocket retains 10 mm of material below it at sampled
+locations. `rear_side_tools()` defines two mirrored, full-height exterior corner
+cuts in the placed model frame, applied before the unchanged wheel subtraction.
+The separate latch, mounting features, rear bridge and original top dovetail remain.
+This supersedes the rear-only octagon, filled-middle assertions and 12 mm/15°
+cavity settings described in historical sections below. Other CAD engines are
+unchanged.
+
+Validation: **47 tests pass**, all **12 mounting-ceiling checks pass**, and
+STEP/STL reopening plus the AirTag 8.6 mm edit pass. The exported STEP is one
+valid solid, **1,203,492.083 mm³**. Its measured symmetric difference from the
+approved scratch STEP is **0 mm³**. A 2 mm grid gives **2,120** interior
+roof-normal samples with a **10 mm** minimum. Run `python3.14 -m scripts.validate_cavity` for roof samples and optional preview parity,
+the standard regression suite, `python3.14 -m scripts.validate_exports`, and the mounting-ceiling
+mesh checker for manufacturing validation. Sampling is not a continuous minimum
+thickness proof; physical fit and strength remain untested.
+
+## Historical 8 mm deeper-seating revision
+
+The approved 8 mm placement preview is implemented in the editable source and
+manufacturing STEP/STL exports for that revision. The whole prepared EUC,
+including both unscaled handles, rose exactly 8 mm.
+The existing 1.003 body fit scale is retained: its pivot moves from `(0,0,0)`
+to `(0,0,8)` with the wheel. This is mathematically the original prepared cutter
+translated by 8 mm, without the extra 0.024 mm that scaling the new translation
+about the old pivot would introduce. Rotation, Y slice planes and X/Y placement
+are unchanged. This supersedes the original scan Z position described below.
+
+The front clip follows by exactly 8 mm, placing its bore axis at
+Y=-220.37430326680117, Z=40.87424168191536 mm. The existing front reconstruction
+extends the 55 degree ramp to meet it, keeps the original jaw separation datum,
+and carries the original 30.2 mm circular opening through the connector wedge.
+The original printing planes still trim the sides. Screen walls, mounting
+ceilings, simple rear cavity, original rear interface and separate latch retain
+their controlling geometry. The deeper wheel imprint is regenerated from the
+prepared body; both handles remain reference-only and unscaled.
+
+[Implemented seating and front connection](images/cad/deeper-seating-8mm-implemented.png)
+shows actual manufacturing meshes. The earlier silhouette preview is conceptual.
+An open viewer updates when `view_adapter.py` is rerun. Physical fit remains untested.
+
+Validation: **41 tests** and **12 mesh mounting-ceiling checks** pass. The reopened
+manufacturing STEP is one valid solid, **1,525,564.716 mm³**, with zero material
+in the full grip-bore cylinder. Every exported wheel-reference vertex matches
+the corresponding previous export translated 8 mm, within 0.000004 mm STL
+rounding. See [seating measurements](https://github.com/theosherman/SurronSeatAdapter/blob/f5a28647cce4b7c13a90c2f91e937fec370a6cbe/logs/deeper-seating-validation.json).
+
+## Construction choices and limitations
+
+- Exact selected line, arc and circle loops are assembled with their original sketch frames, including nonzero sketch-space Z. Profile-area tests use 0.01 mm² tolerance.
+- Four 7 mm through-holes and downward 17 mm recesses retain their mounting ceilings. The front recesses use the exact saved sloped roof plane.
+- Hanger draft uses native OCCT draft. The front draft uses the saved exact planar wedge equivalent, whose removed volume matches the earlier Fusion reconstruction.
+- Both side-cut tools are analytic cylinders. No polygon cutter or smoothing is used.
+- The underside cavity uses a negative 15 degree tapered extrusion toward the underside, starting 12 mm below its sketch plane.
+- The wheel mesh becomes a closed faceted BREP using build123d's `Mesher`, then a native solid Boolean. Before patch reconnection, float conversion changed the imported volume by about 0.034 mm³. No mesh decimation or smoothing is applied. A local front-screen connectivity repair reconnects 31 triangles while preserving all 7,988 original vertices and the 16,000-triangle count. The original STL remains unchanged; `reference/wheel/scan-screen-patch.json` records the exact replacement connectivity and source checksum. The body-only fit allowance is the explicitly requested 1.003 uniform scale, not an additional surface offset. The scan uses the same permanent coordinate-frame correction as all manufacturing geometry; its approved rigid alignment is applied before slicing.
+- The separately documented Sherman L preparation is not replayed; the Sherman P uses its own approved cuts and model-origin scaling pivot.
+- Like the earlier ports, the side bores use through cylinders instead of Fusion's nonparallel from-face start. Original constraint graphs are not recovered.
+- Full-model comparison against the Fusion source and physical print-fit testing remain open. The orientation revision was separately checked against the previous Build123d STEP after aligning it for comparison: symmetric-difference volume was 0.0012 mm³. See [orientation-validation.json](https://github.com/theosherman/SurronSeatAdapter/blob/f5a28647cce4b7c13a90c2f91e937fec370a6cbe/logs/orientation-validation.json); this verifies preservation during reorientation, not source-to-port equality.
+
+The latch remains a separate solid.
+
+## Approved front-clip placement
+
+The adapter and separate latch now translate **-2.426787168466774 mm along Y**
+(about 2.43 mm toward the front), with X and Z unchanged. This implements the
+approved side-view preview (temporary proposal preview; excluded from Git).
+The clip's circular center is now Y=-220.37430326680117 mm, Z=14.8216096181789 mm,
+vertically aligned with the front-handle center estimated from its scan silhouette
+(Y approximately -220.3743 mm, Z approximately 32.6991 mm).
+
+`adapter-placement.json` controls this assembly placement through
+`coordinates.ADAPTER_TRANSLATION_MM`, shared with the mesh ceiling validator. Manufacturing
+profiles and early checkpoints remain in their original corrected model frame.
+The completed M20 body is placed before the stationary wheel-body subtraction;
+`--no-imprint` and `--stop M20` return that placed geometry. The latch is placed
+after its source checkpoints, remains separate, and keeps its existing clearance.
+Scan alignment, slicing, scale and reference exports are unchanged. The final
+imprint is regenerated at the new position rather than translated from an old cut.
+This supersedes the earlier statement that the drawn scan line exactly coincides
+with the adapter lower plane: the scan retains that approved orientation, while
+its position relative to the translated sloped adapter has changed slightly.
+
+## Separate latch
+
+`latch.py` builds the Latch as one separate solid in the same corrected model
+frame. `view_adapter.py` displays it in green alongside the adapter and scan
+references. Change `LATCH_CLEARANCE` there to adjust its three mating faces;
+the default is **0.2 mm inward**, preserving the source functional clearance.
+The latch is never fused into the adapter. No fillets or saddlebag mount are added.
+
+```bash
+XDG_CACHE_HOME=/tmp/surron-build123d-cache \
+  python3.14 latch.py
+```
+
+This produces `exports/latch.step` and `logs/latch-validation.json`. Pass
+`--stl` to also generate `exports/latch.stl`. Python callers can use
+`build_latch(clearance=0.2)`, and `with_stages=True` also returns checkpoint
+measurements.
+
+The latch uses a 110 mm width cap and a 16.76° inward taper per side. The
+taper follows the raised tongue. The dovetail cutter still uses the shared
+profile through `adapter_profiles.profiles(18)`. The three mating surfaces
+retain their nominal 0.2 mm inward offset.
+
+The native side profile raises the original face 1–6 edge **18 mm** at its
+original fore–aft position. The mating wall runs straight to the bottom of
+the adapter wall. The shelf (original face 5) rises rearward at about 8.8°
+to meet face 7, matching the side-view mark-up. The two tongue face pairs
+(1–7 and 6–10) are **14.39 mm** thick normal to their faces. The viewer labels the hook
+**Latch tongue** under **View → Labels → Features**.
+
+The nominal solid measures **251,174.881 mm³**. The seated model has
+**0.31 mm** minimum clearance to the raised rear handle scan. Physical fit
+has yet to be tested.
+
+## Raised front clip and continuous screen ramp
+
+The user-approved front redesign is implemented by `front_clip.py` after the
+permanent adapter placement and before the stationary middle-body subtraction.
+The existing 55° front wall of the screen opening continues upwards into a thicker
+front bridge. Its intersection with the raised original top plane is computed
+from the native face planes (approximately Y=-192.95 mm). The original underside
+is retained behind that join; a short local root gusset meets the raised clip at
+Y=-199 mm. The clip's original analytic circular bore and jaws move vertically
+18.0526320637 mm to center Z=32.8742416819 mm, retaining center
+Y=-220.3743032668 mm and diameter 30.2 mm. This center remains an estimate from
+the trusted crown of the handle scan, not a physical measurement.
+
+Only the M16 front dovetail addition is omitted. The rear dovetail and separate
+latch remain unchanged. No fillets are added. Source recipes remain unchanged;
+M20 source-stage volume now excludes the omitted dovetail, and the new
+`M20-front-redesign` stage records the finished, placed front before imprint.
+`--stop M20` and `--no-imprint` return that redesigned pre-imprint body.
+
+The [saved front clip view](images/cad/front-clip-implemented.png) shows the adapter and reference handle.
+Physical snap fit, material stiffness and printed strength are not established by
+the CAD checks.
+
+Verified redesign results: all **21 tests** pass; all **12 mesh ceiling checks**
+pass. Reopened STEP volume is **1,485,971.986 mm³**, with one valid solid; STL is
+also one valid solid and differs by about **0.987 mm³** at export tessellation.
+The AirTag depth-edit validator passes. Independent review additionally checked
+that a full cylinder at the retained 30.2 mm bore axis intersects no adapter
+material. See [export-and-parameter-validation.json](https://github.com/theosherman/SurronSeatAdapter/blob/f5a28647cce4b7c13a90c2f91e937fec370a6cbe/logs/export-and-parameter-validation.json).
+
+## Restored side printing planes
+
+`print_planes.py` extends both existing large rear sloped side planes through the
+raised front, retaining each inward half-space without an offset. It runs after
+`M20-front-redesign` and before scan subtraction as `M20-print-planes`, and is
+included in pre-imprint/`--stop M20` results. Plane datums come from the native
+rear faces rather than copied coordinates or guessed angles. The front protruded
+4.547544 mm beyond each plane; the approved cut removes approximately
+520.1988 mm³ total. This restores coplanar front/rear printing contact on either
+side. Adapter placement, screen ramp, clip bore, rear latch, separate accessories,
+scan preparation and imprint clearance remain unchanged.
+
+The [saved front clip view](images/cad/front-clip-implemented.png) highlights the contact faces in green.
+
+Current trimmed model verification: **23 tests** and **12 mesh ceiling checks**
+pass. Reopened STEP is one valid solid of **1,485,451.787 mm³**, matching the
+approved trim preview within 0.001 mm³. Independent review found zero Boolean
+difference from that preview in either direction and zero material intrusion
+into the clip bore. [print-plane-validation.json](https://github.com/theosherman/SurronSeatAdapter/blob/f5a28647cce4b7c13a90c2f91e937fec370a6cbe/logs/print-plane-validation.json) records both original
+plane datums and the resulting negligible signed protrusion residuals.
+
+## Reinforced screen-side walls and uninterrupted front incline
+
+`screen_surround.py` adds material above the screen-side walls, starting at the
+rear edge of the screen opening (Y=-101.586319 mm, Z=37.923506 mm). The new
+side tops use the exact native underside slope, **6.8°**, instead of aiming at
+the clip height. The central original **55°** screen-front incline remains one
+continuous planar face into the clip: no added upright ledge and no fillets.
+
+This native operation runs as `M20-screen-surround`, after front reconstruction
+and before restoring both rear printing planes. Additions exclude the screen
+aperture and all central space above the original ramp. The original body is
+never subtracted during reinforcement; underside, clip bore/axis and rear/latch
+geometry remain unchanged. The resulting addition after the print-plane cuts
+is approximately **21,067.349 mm³**. Native construction uses the recipe-built
+faces, not the approved preview STEP/STL as an input.
+
+The earlier rear/screen retained-region regression now compares the original
+body behind the rear screen edge, since changing the side walls beside the
+screen is explicitly authorized. Original underside material probes remain.
+Historical concept images and prototypes are retained as approval evidence.
+
+Verified current reinforced model: **26 tests** and **12 mesh ceiling checks**
+pass. Reopened STEP is one valid solid of **1,506,519.136 mm³**, matching the
+approved continuous-ramp prototype within 0.001 mm³. Independent Boolean review
+confirms zero missing original material and zero difference from the approved
+prototype. The [saved screen surround view](images/cad/screen-surround-implemented.png) shows the implemented join.
+
+
+## Implemented Sherman P suspension-access outline
+
+The user-approved numbered proposal (temporary proposal preview; excluded from Git)
+is now native manufacturing geometry. `bottom_outline.py` adapts the original
+selected BottomSketch half-loop before the first extrusion; the normal mirror
+produces the opposite side. Source recipes and `profiles(9)` inspection remain
+original; `profiles(9, sherman_p_bottom=True)` exposes the revised native half.
+
+Using the original line numbers: 13 retains its angle and extends to vertical
+16; 14 and 15 are removed. Line 17 translates 10 mm toward the front without
+rotation. Line 19 moves 10 mm forward, enlarging the screen opening from 60 to
+70 mm in the bottom sketch. The center remains 44 mm wide. Both changes are
+mirrored, and the saved proposal coordinates are in the placed model frame.
+
+The existing 55-degree screen ramp follows the extended opening: its datum
+moves forward 10 mm along the original sloped top/bottom planes. Its top join
+is Y=-202.950417 mm. The complete original clip is lifted using the original
+Y=-192.950417 mm separation boundary; the root gusset retains Y=-199 mm.
+The upper connector is trimmed to the moved screen-ramp plane. The original
+30.2 mm clip bore and its axis remain fixed. Side reinforcement uses the native
+ramp/top plane intersection, and both printing planes rebuild from native faces.
+The separate latch, placement, scan preparation and body-only 1.003 fit scale
+remain unchanged; no fillets are added.
+
+At the trunk/clip repair milestone, pre-imprint volume was **1,425,603.413 mm³**; imprinted native
+volume is **1,387,005.793 mm³**. STEP reopens as one valid solid of
+**1,387,005.792 mm³**; STL is one valid solid of **1,387,007.322 mm³**.
+These values supersede the initial outline implementation and earlier volumes.
+Export validation separately measures the native AirTag edit (102.429507809 mm³)
+and STEP round-trip volume error (-0.000375059 mm³).
+
+The [saved top and oblique views](images/cad/suspension-outline-implemented.png) show the implemented outline. The old numbered sketch image is historical
+reference geometry; its line IDs remain stable. Existing seat-hanger features
+remain, including their protrusions outside the narrow base outline. Physical
+cover removal, print fit and printed strength have not been tested.
+
+Verification at the trunk/clip repair milestone: all **29 tests** passed, all **12 mesh mounting-ceiling
+checks** pass, portable reference validation passes, and export/parameter validation
+passes. Native blank and M05 geometry agree with the independently constructed
+approved proposal within 0.001 mm³ in both Boolean directions. Full-cylinder
+intersection confirms the 30.2 mm clip bore contains no adapter material.
+
+
+### Trunk walls and complete clip repair
+
+The initial outline implementation left the original M19 pocket unchanged, which
+cut completely through the narrowed side walls. Its clip-lifting split also
+followed the relocated ramp and stranded part of the original jaw below the
+raised clip. Earlier tests verified validity and bore clearance but missed both
+functional defects; the initial green suite was insufficient.
+
+`trunk_cavity.py` now intersects the original tapered pocket tool with an envelope
+formed from the revised outer footprint, offset inward **8 mm in the XY plane**.
+Prior-model lower-wall samples were approximately 8–15 mm thick. The constraint
+restores the straight narrowed walls and routes the pocket around the changed
+rear diagonal, while retaining a hollow cavity, its original roof plane, and
+15-degree taper wherever the old cutter fits. This wall allowance is unrelated
+to scan fit clearance. It does not assert an 8 mm minimum through every later
+cut or scan imprint; final-material probes check the affected neck after imprint.
+
+Independent STEP sections confirm 8 mm straight cavity walls and approximately
+12.09 mm horizontal walls beside the diagonal. The original roof is unchanged,
+including its pre-existing local source notch. The M19 pocket still removes
+approximately **539,715.733 mm³** before later cuts.
+
+The clip repair lifts the entire original jaw independently of the larger screen
+opening, retaining its original lower envelope and grip geometry. A historical
+native clip fixture checks for added hanging material and preserved grip volume.
+New material probes verify the hollow pocket, side walls, roof, and final imprinted
+walls. All 29 tests and existing exported checks pass.
+
+The [saved underside comparison](images/cad/cavity-and-clip-repair.png) shows the original, defective, and repaired versions from left to right. Rerun `view_adapter.py` to refresh an already-open viewer.
+
+
+## Seat-support continuations and screen walls lowered 8 mm
+
+The two later user reference images are preserved as [shoulder marks](images/seat-shoulder-support-request.png)
+and [screen-junction circles](images/screen-wall-lowering-request.png).
+`seat_shoulders.py` extends the existing rear shoulder edge of each seat-support
+tab into the narrow body, replacing the forward-folding return shown in image one.
+The original shoulder plane, outer seat-contact edge, and 45-degree underside
+draft are retained. Each rear shoulder face now spans X=22–51 mm (29 mm total)
+and has approximately **529.281 mm²** area, compared with the prior 15.620 mm span
+and **162.039 mm²**. This adds material continuity along the marked load path;
+printed load capacity has not been established.
+
+The manufacturing profile uses `profiles(79, seat_shoulders=True)`; default
+source-profile inspection and the shared portable recipe remain original.
+The change flows through the normal mirrored M11 operation and subsequent cuts.
+
+`SCREEN_WALL_LOWERING_MM = 8.0` in `screen_surround.py` lowers the parallel side-top
+plane from Z=37.923506 to **29.923506 mm** at Y=-101.586319 mm. A scoped native cut
+caps both original rail material and added reinforcement, retaining the higher
+55-degree front incline. `front_clip.py` trims the raised connector across the
+full width, removing the two side-wing upright steps seen in the black circle.
+The two former 3.418 mm² extrusion ribbons near `(±55.84,-103.407,38)` in the
+green circle disappear after lowering. The original rounded cutout is retained;
+no replacement circular cut or fillet is added.
+
+At the shoulder/screen milestone, native pre-imprint volume was **1,413,939.801 mm³**; imprinted volume was
+**1,375,342.181 mm³**. STEP reopens as one valid solid of **1,375,342.180 mm³**;
+STL is one valid solid of **1,375,343.706 mm³**. These values supersede the
+previous milestone volumes. All **33 tests**, all **12 mesh mounting-ceiling
+checks**, source reference validation, export reopening and AirTag depth-edit
+validation pass. Native shoulder material is checked after the wheel imprint,
+not just on the pre-imprint blank. Clip, trunk-wall and printing-plane regressions
+remain active. The separate accessories and wheel fit preparation are unchanged.
+
+See the [before/after implemented comparison](images/cad/shoulders-and-lowered-screen.png)
+and [native measurements](https://github.com/theosherman/SurronSeatAdapter/blob/f5a28647cce4b7c13a90c2f91e937fec370a6cbe/logs/shoulder-screen-validation.json).
+
+## Historical rear-only cavity (superseded by approved long cavity)
+
+The rejected face/region patch implementation has been removed. The user
+explicitly chose the **original outer wall/latch interface**, cancelling the
+10 mm wall relocation and latch extension. The latch source, its placement,
+and the single original top dovetail are restored to the accepted pre-patch
+configuration. The outer rear interface is checked against an immutable native
+fixture from commit `8746492` by symmetric difference.
+
+`trunk_cavity.py` contains one controlling **eight-line polygon** on the existing
+`BodyCutSketch` plane. `REAR_CAVITY_POINTS` is the complete editable outline in
+sketch millimeters. The usual M19 feature removes this polygon with the original
+**12 mm roof offset** and **15 degree downward draft**. There are no extra wall
+extrusions, moved regions, duplicated dovetails, or follow-up clearance patches.
+The original mounting features and approved body-only Sherman P cutter remain.
+
+The pocket is confined to the wider rear section. Its shorter rear reach leaves
+a continuous thicker rear wall. The narrow middle is now solid CAD geometry;
+the slicer's infill setting controls how that material prints. It is not a
+request for 100% print infill. No new fillets or wheel-fit allowance are added.
+
+The original latch remains a separate source-derived solid with its established
+0.2 mm selected-face clearance; it is not thickened or extended. The source
+planar-clearance and original contact/outline tests apply to the normal build
+again, without a legacy-mode switch. `rear_cavity.py` and its workaround API have
+been deleted rather than retained as another selectable implementation.
+
+The [implemented cavity view](images/cad/rear-cavity-implemented.png) shows the rebuilt cavity.
+
+Checks cover the eight-edge sketch, no draft intrusion into the narrow middle,
+filled middle material, empty pocket without blocks, continuous rear wall,
+exact original exterior/dovetail interface, original latch checkpoints, full rear
+screwdriver paths, mounting ceilings, printing planes, and unchanged wheel
+preparation. Physical printed fit and strength remain untested.
+
+Final validation: **41 tests pass**, all **12 mounting-ceiling mesh checks pass**,
+and STEP/STL reopening plus the AirTag 8.6 mm depth edit pass. Exported native
+interface symmetric difference is **0 mm³** against the original fixture. The
+finished adapter is **1,667,774.540 mm³** and the original separate latch is
+**230,819.786 mm³**. See [native measurements](https://github.com/theosherman/SurronSeatAdapter/blob/f5a28647cce4b7c13a90c2f91e937fec370a6cbe/logs/rear-cavity-validation.json).
+
+## Existing body-top slope continued onto screen walls
+
+The original body-top plane now continues down onto both lowered screen walls,
+meeting their parallel tops at **Y=-121.934061, Z=32.349827 mm**. The change is
+in the existing `screen_surround.py` wall-top envelope, using the native body-top
+face as its datum. It introduces no separate slope angle, raised cap or fillet.
+The screen aperture and original rounded side cuts remain open.
+
+The reopened manufacturing STEP has one continuous coplanar body-top face,
+including both wall transitions. Its comparison with commit `158e916` shows
+**2,761.715 mm³ added**, confined to Y=-121.934061 through -101.586319 mm,
+and **0 mm³ removed**. Final STEP volume is **1,528,326.431 mm³**. See
+[screen-slope-validation.json](https://github.com/theosherman/SurronSeatAdapter/blob/f5a28647cce4b7c13a90c2f91e937fec370a6cbe/logs/screen-slope-validation.json). Both pre-imprint and final STEP/STL exports
+were regenerated for this revision.
+Validation: **42 tests** and all **12 mounting-ceiling mesh checks** pass;
+STEP/STL reopening, cutter integrity and the AirTag depth-edit check pass.
+Physical fit and printed strength remain untested.
+
+## Implemented lower rear toe cut and local 14 mm wall
+
+The lower tip beneath the latch root is trimmed at the latch-wall angle mirrored
+across XY. `REAR_TIP_POINT_MM` anchors the cut at
+`(0,177.270005683283,-17.98689437242)` mm. Removal is confined below the anchor's
+Z so the upper seat support and single top dovetail remain. The separate latch
+is unchanged. `trim_lower_rear_tip()` applies this one exterior trim before the
+wheel subtraction.
+
+The original cavity cutter is additionally limited by the mirrored cut plane
+shifted 14 mm inward along its normal. This retains only the local wall material
+needed beside the lower diagonal; it introduces no added-body patch or second
+pocket. The original rear-wall 5 mm limit, 18.5 mm roof offset, rest of the long
+cavity, side relief and wheel preparation remain in force.
+
+Run `validate_cavity.py --approved-step <approved STEP>` for optional exact preview
+parity and the new diagonal's distance to the cavity tool. The normal command
+validates current exports without loading a historical scratch file.
+The [saved section view](images/cad/rear-tip-implemented.png) shows the implemented rear cut.
+
+The local wall was subsequently increased from 10 mm to **14 mm** by changing
+only `REAR_TIP_WALL_THICKNESS_MM`. The approved exterior trim stays fixed.
+Current verification is recorded in [approved-cavity-validation.json](https://github.com/theosherman/SurronSeatAdapter/blob/f5a28647cce4b7c13a90c2f91e937fec370a6cbe/logs/approved-cavity-validation.json)
+and [export-and-parameter-validation.json](https://github.com/theosherman/SurronSeatAdapter/blob/f5a28647cce4b7c13a90c2f91e937fec370a6cbe/logs/export-and-parameter-validation.json).
+
+The 14 mm revision passes all 49 tests and 12 mounting-ceiling checks. STEP/STL
+reopen as single valid solids; STEP volume is **1,205,253.602 mm³**. Comparing
+against the 10 mm version shows **0 mm³** of removed prior material and
+**3,832.887 mm³** retained in the extra normal-depth band from 10 to 14 mm.
+The AirTag parameter-edit and cutter self-intersection checks pass.
+
+## Outward face offsets
+
+The original `RearSketch` diagonal and its mirror now sit **10 mm outward** in
+total, measured normal to the original printing planes (faces 1 and 2). This
+adds 9 mm to the previous offset to recover 2 mm of screen sidewall at the
+wheel imprint. The existing front trim
+uses these shifted native rear planes. Both `FrontCutSketch` triangular corner-cut
+diagonals (face 3 beside the front clip) move **3 mm outward in total** into the removed
+corner, reducing those cuts. Original angles, adjoining horizontal/vertical lines,
+and extrusion directions are preserved. `cut_offsets.py` adjusts these original
+manufacturing profiles before extrusion/intersection; the portable historical
+recipe remains unchanged. No finished-body patches are used.
+
+## Shoulder split and butterfly key revision
+
+After rebuilding the master, run `split_adapter.py` with the same Python environment. The printing child uses a transverse split at placed Y = 37 mm. Its top recess cuts 12.8 mm perpendicular to the roof, with the waist centered on the split at the opening. Each cavity wall has a matching 3.8 mm deep recess with flared tips. The three openings have 1 mm rim fillets and the pocket floors stay sharp. The completed master remains unsplit and has no connector recesses.
+
+The shoulders retain their 30° underside draft. The rear edge extends 19 mm in the sketch and then shifts 10 mm rearward in placed Y. The front vertices stay at their source positions, 10 mm ahead of the former uniformly rear-shifted profile. The AirTag recess moves 90 mm along the tilted top plane toward the rear mounting holes.
+
+Run `butterfly_keys.py` to export a 12 mm thick top key and a 3 mm thick cavity key. Print one top key and two cavity keys. The print files lie flat at Z = 0. The assembled STEP keys retain 0.4 mm minimum clearance and 1 mm edge fillets.
+
+## Follow-up wall, connector, and latch revisions
+
+The angled latch wall increased to 10 mm measured inward along its normal.
+The two cavity returns stay sharp where fillets would meet the wheel
+imprint. The separate latch and its contact face kept their position.
+[Wall and fillet verification](https://github.com/theosherman/SurronSeatAdapter/blob/9739d28/logs/fillet-cutter-validation.json).
+
+The cavity keys increased to 6 mm thick, and the matching recesses to
+6.8 mm deep. The top key and recess kept their dimensions.
+[Connector revision](https://github.com/theosherman/SurronSeatAdapter/commit/211bebe).
+
+The latch body gained 3 mm along the underside shelf normal. The mating
+wall extends along its plane to meet the shelf. The tongue retained its
+14.39 mm normal thickness, and the nominal latch volume increased to
+259,953.288 mm³.
+[Latch verification](https://github.com/theosherman/SurronSeatAdapter/blob/9e872d3f83465308e92f0490b3eda89cbc2c1e56/logs/latch-validation.json).
+
+## Screen ramp tangent to the front clip
+
+The front reconstruction derives a **57.982°** ramp from the existing lower
+screen edge and the clip's **26.338 mm** outer radius. In the placed center
+section, they meet at Y=-198.043 mm and Z=54.838 mm with a shared tangent.
+The same profile bounds the raised jaw and its bridge. The separate
+**30.2 mm** clip bore stays on its established axis.
+
+The [front-clip preview](images/cad/front-clip-implemented.png) shows the change
+before finishing and wheel subtraction.
+
+Both screen cutout walls continue along their existing top plane until it
+intersects the tangent ramp. The screen opening remains 86 mm wide between
+the walls. The two lower wall-to-ramp edges stay sharp where a 1 mm fillet
+would meet the wheel imprint. See the [before and after 3D view](images/cad/screen-walls-to-ramp.png).
+The updated geometry is in the STEP and STL exports. The saved 3MF slicer
+project still contains the earlier wall geometry.

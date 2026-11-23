@@ -5,7 +5,7 @@ from build123d import import_brep, import_step, Face, Vector
 from OCP.BRepFilletAPI import BRepFilletAPI_MakeFillet
 from body_fillets import SPEC, require_mirrored_selection
 
-folder = Path(__file__).resolve().parent
+folder = Path(__file__).resolve().parents[1]
 require_mirrored_selection(SPEC['edges'])
 body = import_step(folder/'exports/adapter-body-pre-imprint.step')
 cutter = import_brep(folder/'reference/wheel/body-scaled.brep')
@@ -32,6 +32,8 @@ for edge in selected:
 minimum = min(face.distance_to(cutter) for face in faces.values())
 report = dict(selectedEdges=len(selected),generatedFaces=len(faces),
               minimumCutterDistanceMm=minimum,toleranceMm=.001,ok=minimum>.001)
-(folder/'logs/fillet-cutter-validation.json').write_text(json.dumps(report,indent=2)+'\n')
+report_path = folder/'logs/fillet-cutter-validation.json'
+report_path.parent.mkdir(exist_ok=True)
+report_path.write_text(json.dumps(report,indent=2)+'\n')
 print(json.dumps(report))
 assert report['ok'],report

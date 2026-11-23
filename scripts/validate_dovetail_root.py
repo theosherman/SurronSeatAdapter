@@ -4,7 +4,7 @@ from pathlib import Path
 from build123d import import_step, Compound, Vertex
 from body_fillets import require_mirrored_selection
 
-folder = Path(__file__).resolve().parent
+folder = Path(__file__).resolve().parents[1]
 sharp = import_step(folder/'exports/adapter-body-pre-imprint.step')
 finished = import_step(folder/'exports/adapter-body.step')
 # This is the body junction, not the remote terminal at Y=261 mm.
@@ -30,6 +30,8 @@ for edge in root:
                        maxSharpBoundaryDistanceMm=max(distances)))
 report = dict(rootEdges=11,mirrored=True,toleranceMm=.001,checks=checks,
               ok=all(row['maxSharpBoundaryDistanceMm']<.001 for row in checks))
-(folder/'logs/dovetail-root-validation.json').write_text(json.dumps(report,indent=2)+'\n')
+report_path = folder/'logs/dovetail-root-validation.json'
+report_path.parent.mkdir(exist_ok=True)
+report_path.write_text(json.dumps(report,indent=2)+'\n')
 print(json.dumps(report))
 assert report['ok'], report

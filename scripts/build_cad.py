@@ -4,6 +4,7 @@ from fcntl import LOCK_EX, flock
 from hashlib import file_digest
 import json
 from pathlib import Path
+from subprocess import run
 import sys
 
 from build123d import __version__ as BUILD123D_VERSION, import_step
@@ -131,12 +132,28 @@ def main():
     mode = parser.add_mutually_exclusive_group()
     mode.add_argument('--preview', action='store_true', help='Build only the master and its preview')
     mode.add_argument('--stl', action='store_true', help='Rebuild all parts and export printable STLs')
+    mode.add_argument('--release', action='store_true', help='Build, validate, and package printable parts')
+    parser.add_argument('--no-imprint', action='store_true', help='Export the analytic master before finishing and imprint')
+    parser.add_argument('--stop', choices=('M01', 'M05', 'M06', 'M09', 'M20'),
+                        help='Export only a master checkpoint')
     args = parser.parse_args()
+    master_only = args.no_imprint or args.stop is not None
+    if master_only and (args.preview or args.release):
+        parser.error('--no-imprint and --stop cannot be combined with --preview or --release')
     output = Path('exports')
     output.mkdir(exist_ok=True)
     with (output / '.build.lock').open('a') as lock:
         flock(lock, LOCK_EX)
-        build(output, preview_only=args.preview, stl=args.stl)
+        if master_only:
+            from adapter import export_master
+
+            export_master(output, stl=args.stl, stop=args.stop, imprint=not args.no_imprint)
+        else:
+            build(output, preview_only=args.preview, stl=args.stl or args.release)
+        if args.release:
+            run([sys.executable, '-m', 'unittest', 'discover', '-s', 'tests'], check=True)
+            run(['node', 'scripts/validate-mounting-ceilings.mjs'], check=True)
+            run([sys.executable, '-m', 'scripts.package_release'], check=True)
 
 
 if __name__ == '__main__':
