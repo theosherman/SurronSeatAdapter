@@ -1,23 +1,19 @@
 """Export the two-piece printing child from the completed master STEP."""
 from argparse import ArgumentParser
-from collections import Counter
 from pathlib import Path
 
-from build123d import Edge, Face, Keep, Plane, Solid, Vector, Wire, export_step, import_step
+from build123d import Face, Keep, Plane, Solid, Vector, Wire, export_step, import_step
 
-from adapter_profiles import RECIPE, SKETCHES
-from coordinates import ADAPTER_TRANSLATION_MM, source_to_model
+from adapter_profiles import SKETCHES
+from coordinates import ADAPTER_TRANSLATION_MM
 from export_mesh import export_stl_mm
 from measure import volume
-from trunk_cavity import REAR_CAVITY_POINTS
 
 
-CONNECTOR_DEPTH_MM = 10.0
+SPLIT_Y_MM = 37.0
+TOP_POCKET_DEPTH_MM = 12.8
+CAVITY_POCKET_DEPTH_MM = 3.8
 RECESS_RIM_RADIUS_MM = 1.0
-
-
-def placed_point(point):
-    return Vector(source_to_model(point)) + Vector(ADAPTER_TRANSLATION_MM)
 
 
 def recess_tool(mouth, direction, rim_radius):
@@ -27,6 +23,7 @@ def recess_tool(mouth, direction, rim_radius):
 
     # Create the rim on a flat reference surface so the round can run out
     # naturally where the real cavity wall bends next to the recess.
+    direction = Vector(direction)
     normal = mouth.normal_at()
     inward = normal if normal.dot(direction) > 0 else -normal
     frame = Plane(mouth.center(), z_dir=inward)
@@ -43,69 +40,39 @@ def recess_tool(mouth, direction, rim_radius):
     return frame.from_local_coords(stock.cut(relieved))
 
 
-def connector_tool(instance, depth, rim_radius=0):
-    origin = placed_point(instance['originMm'])
-    x = Vector(source_to_model(instance['xAxis']))
-    y = Vector(source_to_model(instance['yAxis']))
-    normal = x.cross(y)
-    segments = [
-        tuple(tuple(round(value, 10) for value in curve[key]) for key in ('startMm', 'endMm'))
-        for curve in instance['curves']
-    ]
-    degree = Counter(point for segment in segments for point in segment)
-
-    def point(coords):
-        u, v, w = coords
-        return origin + u*x + v*y + w*normal
-
-    # The two adjacent profiles share one internal divider between the waist vertices.
-    wire = Wire([Edge.make_line(point(a), point(b)) for a, b in segments
-                 if degree[a] == 2 or degree[b] == 2])
-    direction = Vector(source_to_model(instance['extrusionDirection']))
-    return recess_tool(Face(wire), direction.normalized()*depth, rim_radius)
-
-
-def cavity_connector(split_plane, side, depth, rim_radius=0):
-    """Place an hourglass on the angled cavity wall at the split seam."""
-    sketch = SKETCHES['BodyCutSketch']
-    origin = Vector(sketch['originMm']) + Vector(ADAPTER_TRANSLATION_MM)
-    x, y, roof_normal = (Vector(sketch[key]) for key in ('xAxis', 'yAxis', 'normal'))
-    # The widening wall segment immediately before the straight 48 mm section.
-    (u0, v0), (u1, v1) = REAR_CAVITY_POINTS[4:6]
-    wall_point = origin + x*(side*u0) + y*v0
-    tangent = x*(side*(u1-u0)) + y*(v1-v0)
-    inward = tangent.cross(roof_normal).normalized()
-    if inward.X*wall_point.X > 0:
-        inward = -inward
-
-    z = 18  # Retain full recess depth above the raised underside and wheel imprint.
-    seam_normal = split_plane.z_dir
-    seam_y = split_plane.origin.Y - (z-split_plane.origin.Z)*seam_normal.Z/seam_normal.Y
-    wall_x = wall_point.X - ((seam_y-wall_point.Y)*inward.Y + (z-wall_point.Z)*inward.Z)/inward.X
-    center = Vector(wall_x, seam_y, z)
-    across = (seam_normal - inward*seam_normal.dot(inward)).normalized()
-    along = inward.cross(across).normalized()
-    outline = [(-8,-6), (8,-6), (4.5,0), (8,6), (-8,6), (-4.5,0)]
-    face = Face(Wire.make_polygon([center + along*u + across*v for u, v in outline], close=True))
-    outward = -inward
-    # Keep the waist on the seam while measuring the depth normal to the wall.
-    direction = outward - seam_normal * outward.dot(seam_normal)
-    return recess_tool(face, direction * (depth / direction.dot(outward)), rim_radius)
+def butterfly_outline(waist, tip, length):
+    """Symmetric outline from half-widths and half-length."""
+    return [(-tip, -length), (tip, -length), (waist, 0),
+            (tip, length), (-tip, length), (-waist, 0)]
 
 
 def split_plane():
-    datum = RECIPE['child']['splitPlane']
-    return Plane(placed_point(datum['originMm']), z_dir=source_to_model(datum['normal']))
+    return Plane((0, SPLIT_Y_MM, 0), z_dir=(0, 1, 0))
 
 
 def connector_tools(plane, rim_radius=0):
-    instances = RECIPE['child']['connectorInstances']
-    top = next(instance for instance in instances if instance['name'] == 'top')
-    return [
-        ('top', connector_tool(top, CONNECTOR_DEPTH_MM, rim_radius)),
-        ('cavity-positive-x', cavity_connector(plane, -1, CONNECTOR_DEPTH_MM, rim_radius)),
-        ('cavity-negative-x', cavity_connector(plane, 1, CONNECTOR_DEPTH_MM, rim_radius)),
-    ]
+    seam_y = plane.origin.Y
+    sketch = SKETCHES['SeatHangerSketch']
+    origin = Vector(sketch['originMm']) + Vector(ADAPTER_TRANSLATION_MM)
+    normal = Vector(sketch['normal'])
+
+    def top_z(y):
+        return origin.Z - normal.Y / normal.Z * (y - origin.Y)
+
+    top = Face(Wire.make_polygon([
+        (x, seam_y+y, top_z(seam_y+y))
+        for x, y in butterfly_outline(11.5, 21.5, 20.75)
+    ], close=True))
+    # Vertical sweep keeps the waist in the split plane; depth is normal to the roof.
+    tools = [('top', recess_tool(top, (0, 0, -TOP_POCKET_DEPTH_MM / normal.Z), rim_radius))]
+    for side, name in ((-1, 'cavity-negative-x'), (1, 'cavity-positive-x')):
+        # The long central cavity has parallel walls at X = +/-12 mm.
+        mouth = Face(Wire.make_polygon([
+            (side*12, seam_y+y, 23+z)
+            for z, y in butterfly_outline(2.75, 5.5, 15)
+        ], close=True))
+        tools.append((name, recess_tool(mouth, (side*CAVITY_POCKET_DEPTH_MM, 0, 0), rim_radius)))
+    return tools
 
 
 def build_split(master):
