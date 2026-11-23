@@ -10,8 +10,8 @@ from split_adapter import connector_tools, split_plane
 
 KEY_CLEARANCE_MM = 0.4
 KEY_FILLET_RADIUS_MM = 1.0
-# A 1 mm concave fillet adds up to 0.106 mm back at the waist.
-KEY_FILLET_SIDE_RELIEF_MM = 0.11
+# A 1 mm concave fillet adds up to 0.13 mm back at the waist.
+KEY_FILLET_SIDE_RELIEF_MM = 0.14
 
 
 def build_keys():

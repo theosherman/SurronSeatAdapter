@@ -2,7 +2,7 @@
 import unittest
 from pathlib import Path
 from build123d import Vector,Plane,Keep,Compound,ShapeList,import_step
-from adapter import build_master,SKETCHES
+from adapter import build_master,SKETCHES,tool
 from coordinates import ADAPTER_TRANSLATION_MM
 
 
@@ -57,7 +57,7 @@ class RearCavityTests(unittest.TestCase):
                 for depth in (.1,2.5,4.9):
                     self.assertTrue(self.body.is_inside(outer-normal*depth),(x,z,depth))
 
-    def test_original_interface_changes_only_by_approved_cavity_and_side_cuts(self):
+    def test_original_interface_changes_only_by_approved_cuts(self):
         datum=Plane((0,164.41714823915711,1.578677917809248),
                     z_dir=(0,.8597932986247546,.5106422266518543))
         actual=combined(self.body.split(datum,Keep.TOP))
@@ -72,7 +72,17 @@ class RearCavityTests(unittest.TestCase):
         expected=import_step(Path(__file__).parent/'fixtures/original-rear-interface.step')
         from trunk_cavity import rear_cavity_tool,rear_side_tools,trim_lower_rear_tip
         cavity=rear_cavity_tool(SKETCHES['BodyCutSketch']).translate(ADAPTER_TRANSLATION_MM)
-        expected=combined(expected.cut(cavity,*rear_side_tools()))
+        tag_sketch = SKETCHES['AirtagCutSketch']
+        tag_normal = Vector(tag_sketch['normal'])
+        tag = tool(126, 8.5, direction=-tag_normal).translate(
+            Vector(ADAPTER_TRANSLATION_MM) + 90 * Vector(tag_sketch['yAxis']))
+        expected=combined(expected.cut(cavity,tag,*rear_side_tools()))
+        old_center = Vector(tag_sketch['originMm']) + Vector(ADAPTER_TRANSLATION_MM)
+        old_center += 26.8363533686 * Vector(tag_sketch['yAxis'])
+        new_center = old_center + 90 * Vector(tag_sketch['yAxis'])
+        self.assertTrue(self.body.is_inside(old_center - 4 * tag_normal))
+        self.assertFalse(self.body.is_inside(new_center - 4 * tag_normal))
+        self.assertTrue(self.body.is_inside(new_center - 9 * tag_normal))
         # Independently apply the measured original bottom plane plus 18 mm.
         # Its rear intersection is below the latch root and dovetail.
         upper=Plane((0,0,10.06786030784744), z_dir=(0,.1184039683059526,.9929655081066024))

@@ -56,9 +56,10 @@ def build_master(stop=None, imprint=True, airtag_depth=8.5):
     front = tool(77,1000,symmetric=True).split(Plane(roof['finalRoofPlanePointMm'],z_dir=roof['finalRoofPlaneNormal']),Keep.BOTTOM)
     body = stage('M09',body.cut(*(front if isinstance(front,list) else [front])))
     if stop=='M09': return body
-    hanger = tool(79,1,direction=-Vector(SKETCHES['SeatHangerSketch']['normal']))
+    underside = -Vector(SKETCHES['SeatHangerSketch']['normal'])
+    hanger = tool(79,1,direction=underside)
     d = RECIPE['drafts'][0]
-    face = min(hanger.faces(),key=lambda f:(f.center()-Vector(d['selectedFaces'][0]['pointMm'])).length)
+    face = max(hanger.faces(), key=lambda f: f.normal_at().dot(underside))
     # The 30-degree draft raises the inner underside clear of the adjusters.
     hanger = hanger.draft([face],Plane(d['neutralPlane']['originMm'],z_dir=d['neutralPlane']['normal']),30)
     body = stage('M11',body.fuse(hanger,hanger.mirror(Plane.YZ)))
@@ -80,7 +81,9 @@ def build_master(stop=None, imprint=True, airtag_depth=8.5):
     from trunk_cavity import rear_cavity_tool
     cavity = rear_cavity_tool(SKETCHES['BodyCutSketch'])
     body = stage('M19',body.cut(cavity))
-    body = stage('M20',body.cut(tool(126,airtag_depth,direction=-Vector(SKETCHES['AirtagCutSketch']['normal']))))
+    tag_sketch = SKETCHES['AirtagCutSketch']
+    tag = tool(126, airtag_depth, direction=-Vector(tag_sketch['normal']))
+    body = stage('M20', body.cut(tag.translate(Vector(tag_sketch['yAxis']) * 90)))
     # Place the finished geometry before the stationary wheel-body subtraction.
     body = body.translate(ADAPTER_TRANSLATION_MM)
     from front_clip import redesign_front, trim_main_underside

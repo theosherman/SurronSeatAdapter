@@ -2,7 +2,7 @@
   "step": {
     "valid": true,
     "solids": 1,
-    "volumeMm3": 1102041.0087318667,
+    "volumeMm3": 1105424.2240067709,
     "boundsMm": {
       "min": [
         -77.93135238304048,
@@ -19,7 +19,7 @@
   "stl": {
     "valid": true,
     "solids": 1,
-    "volumeMm3": 1102040.4819876452
+    "volumeMm3": 1105422.4703939639
   },
   "scanCutter": {
     "valid": true,
@@ -31,7 +31,7 @@
     "removedMm3": 102.42950780619867,
     "expectedRemovedMm3": 102.4295078183
   },
-  "stepRoundtripVolumeDeltaMm3": 0.001054693479090929,
-  "stepRoundtripVolumeLimitMm3": 2.2040820153543463,
+  "stepRoundtripVolumeDeltaMm3": -0.00011410447768867016,
+  "stepRoundtripVolumeLimitMm3": 2.2108484482417508,
   "ok": true
 }

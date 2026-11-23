@@ -33,7 +33,6 @@ FEATURE_LABELS = {
     ('adapter-body', 'adapter-body-split-front'): (
         ('Front clip', (0, -225, 66.8), TOP),
         ('Screen opening', (0, -150, 37), TOP),
-        ('AirTag pocket', (0, 20, 48.7), TOP),
         ('Front mounting holes', (23, -76.4, 44.5), TOP),
         ('Underside cavity', (0, 42, 34.3), BOTTOM),
         ('Clip bore', (0, -220.4, 40.9), BOTTOM),
@@ -44,6 +43,7 @@ FEATURE_LABELS = {
         ('Cavity roof', (0, -38, 18), BOTTOM),
     ),
     ('adapter-body', 'adapter-body-split-rear'): (
+        ('AirTag pocket', (0, 108, 66.6), TOP),
         ('Rear dovetail', (0, 207.47, 58), (0, .51, -.86)),
         ('Rear mounting holes', (14.5, 179.5, 81), TOP),
         ('Rear seat support', (30, 215, 94.9), TOP),
@@ -54,15 +54,15 @@ FEATURE_LABELS = {
         ('Rear screw access', (14.5, 179.5, 42), BOTTOM),
     ),
     ('adapter-body-split-front', 'adapter-body-split-rear'): (
-        ('Split seam', (33, 94, 62.3), TOP),
-        ('Top key recess', (0, 97, 64.4), TOP),
-        ('Cavity key recess', (51, 100.2, 15), (-.6, 0, -.8)),
+        ('Split seam', (33, 37, 52.2), TOP),
+        ('Top key recess', (0, 37, 52.2), TOP),
+        ('Cavity key recess', (12, 37, 23), (-.6, 0, -.8)),
     ),
     ('butterfly-key-top',): (
-        ('Top butterfly key', (0, 94, 58), TOP),
+        ('Top butterfly key', (0, 37, 51.7), TOP),
     ),
     ('butterfly-key-cavity',): (
-        ('Cavity butterfly key', (-51, 100.2, 15), (.6, 0, -.8)),
+        ('Cavity butterfly key', (-12.4, 37, 23), (.6, 0, -.8)),
     ),
     ('latch',): (
         ('Latch tongue', (0, 216.498, -18.381), (0, .884, -.467)),

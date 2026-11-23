@@ -21,8 +21,8 @@ flowchart TD
   finished --> imprint
   imprint --> parent[Adapter Body: one finished master solid]
   parent --> derived[Live associative child copy]
-  derived --> split[Split on original Fusion split plane]
-  split --> connectors[Three connector recesses, 10 mm deep]
+  derived --> split[Split at placed Y=37 mm]
+  split --> connectors[Three shoulder and cavity-wall recesses]
   connectors --> child[Adapter Body Split: two printable solids]
 ```
 
@@ -151,7 +151,7 @@ The transform was recovered from the Fusion component's local geometry and occur
 
 ## Linked printing child
 
-### Split plane
+### Historical Fusion split plane
 
 Create a live copy/reference of the completed master, including corrected holes and the wheel imprint. Do not cut the master into pieces.
 
@@ -166,7 +166,7 @@ Extend it across the width in the global X direction to form an infinite splitti
 
 ### Connector recesses
 
-The current Build123d printing variant uses the `TopJointSketch` recess and one butterfly-key recess on each inner cavity wall. All three are **10 mm deep** in Build123d. The portable recipe records the original 8 mm depth. The original Fusion recipe also included four side recesses derived from `SideJointSketch` and mirror features 192–193. See the [current split workflow](../README.md#two-piece-printing-variant).
+The production Build123d variant uses a transverse split at placed Y=37 mm, one 12.8 mm top recess, and two 3.8 mm cavity-wall recesses. See the [current split workflow](../README.md#two-piece-printing-variant). The portable recipe preserves the original Fusion geometry described below, including its original 8 mm pocket depth and four side recesses.
 
 The top connector combines two neighboring trapezoidal profiles into one hourglass recess. In the original top-joint sketch frame its overall U range is approximately `±26.547005384` mm, with a 30 mm-wide waist at `v=103.59226295038653` mm and ends at `v=83.59226295038653` and `v=123.59226295038653` mm. Do not mistake the two selected profile regions for two separate connectors.
 
