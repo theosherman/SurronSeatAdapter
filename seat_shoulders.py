@@ -31,8 +31,8 @@ def continued_shoulder_curves(curves):
     if changed!=2:
         raise ValueError('Seat shoulder source no longer has the expected return vertex')
     # Extend the original rear edge in sketch coordinates, then translate
-    # the entire mirrored shoulder outline by 10 mm along placed Y.
-    shift = 10.0 / SKETCHES['SeatHangerSketch']['yAxis'][1]
+    # the entire mirrored shoulder outline 5 mm toward the front (negative Y).
+    shift = -5.0 / SKETCHES['SeatHangerSketch']['yAxis'][1]
     rear_v = (a[1], b[1], body_v)
     for curve in result:
         for key in ('startMm', 'endMm'):
