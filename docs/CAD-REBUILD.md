@@ -166,7 +166,7 @@ Extend it across the width in the global X direction to form an infinite splitti
 
 ### Connector recesses
 
-The production Build123d variant uses a transverse split at placed Y=37 mm, one 12.8 mm top recess, and two 3.8 mm cavity-wall recesses. See the [current split workflow](../README.md#two-piece-printing-variant). The portable recipe preserves the original Fusion geometry described below, including its original 8 mm pocket depth and four side recesses.
+The production Build123d variant uses a transverse split at placed Y=37 mm, one top recess cut 12.8 mm perpendicular to the roof, and two 3.8 mm cavity-wall recesses. See the [current split workflow](../README.md#two-piece-printing-variant). The portable recipe preserves the original Fusion geometry described below, including its original 8 mm pocket depth and four side recesses.
 
 The top connector combines two neighboring trapezoidal profiles into one hourglass recess. In the original top-joint sketch frame its overall U range is approximately `±26.547005384` mm, with a 30 mm-wide waist at `v=103.59226295038653` mm and ends at `v=83.59226295038653` and `v=123.59226295038653` mm. Do not mistake the two selected profile regions for two separate connectors.
 

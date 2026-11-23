@@ -1,4 +1,4 @@
-"""Regression checks for the split adapter's cavity butterfly keys."""
+"""Regression checks for the split adapter's butterfly recesses."""
 import unittest
 from pathlib import Path
 
@@ -8,6 +8,17 @@ from split_adapter import build_split, connector_tools, split_plane
 
 
 class SplitAdapterTests(unittest.TestCase):
+    def test_top_recess_is_perpendicular_to_its_opening(self):
+        seam = split_plane()
+        tool = dict(connector_tools(seam))['top']
+        floor, mouth = sorted(
+            (face for face in tool.faces() if len(face.edges()) == 6),
+            key=lambda face: face.center().Z,
+        )
+        sweep = floor.center() - mouth.center()
+        self.assertAlmostEqual(sweep.length, 12.8, places=6)
+        self.assertAlmostEqual(sweep.cross(mouth.normal_at()).length, 0.0, places=6)
+
     def test_each_half_has_only_the_top_and_two_equal_cavity_recesses(self):
         master = import_step(Path(__file__).resolve().parents[1] / 'exports/adapter-body.step')
         seam = split_plane()

@@ -670,7 +670,7 @@ recipe remains unchanged. No finished-body patches are used.
 
 ### Two-piece printing variant
 
-After rebuilding the master, run `split_adapter.py` with the same Python environment. The printing child uses a transverse split at placed Y = 37 mm. Its 12.8 mm deep top recess spans the shoulders. Each cavity wall has a matching 3.8 mm deep recess with flared tips. The three openings have 1 mm rim fillets and the pocket floors stay sharp. The completed master remains unsplit and has no connector recesses.
+After rebuilding the master, run `split_adapter.py` with the same Python environment. The printing child uses a transverse split at placed Y = 37 mm. Its top recess cuts 12.8 mm perpendicular to the roof, with the waist centered on the split at the opening. Each cavity wall has a matching 3.8 mm deep recess with flared tips. The three openings have 1 mm rim fillets and the pocket floors stay sharp. The completed master remains unsplit and has no connector recesses.
 
 The shoulders retain their 30° underside draft. The rear edge extends 19 mm in the sketch and then shifts 10 mm rearward in placed Y. The front vertices stay at their source positions, 10 mm ahead of the former uniformly rear-shifted profile. The AirTag recess moves 90 mm along the tilted top plane toward the rear mounting holes.
 
