@@ -366,13 +366,14 @@ profile through `adapter_profiles.profiles(18)`. The three mating surfaces
 retain their nominal 0.2 mm inward offset.
 
 The native side profile raises the original face 1–6 edge **18 mm** at its
-original fore–aft position. The mating wall runs straight to the bottom of
-the adapter wall. The shelf (original face 5) rises rearward at about 8.8°
-to meet face 7, matching the side-view mark-up. The two tongue face pairs
+original fore–aft position. The body is 3 mm thicker along the underside
+shelf's outward normal. The mating wall extends along its original plane
+to meet the shelf, which still rises rearward at about 8.8° to reach face 7.
+The two tongue face pairs
 (1–7 and 6–10) are **14.39 mm** thick normal to their faces. The viewer labels the hook
 **Latch tongue** under **View → Labels → Features**.
 
-The nominal solid measures **251,174.881 mm³**. The seated model has
+The nominal solid measures **259,953.288 mm³**. The seated model has
 **0.31 mm** minimum clearance to the raised rear handle scan. Physical fit
 has yet to be tested.
 

@@ -10,7 +10,7 @@
   "stages": [
     {
       "sourceIndex": 102,
-      "volumeMm3": 175923.94733847887,
+      "volumeMm3": 181526.54711191327,
       "valid": true,
       "solids": 1,
       "boundsMm": [
@@ -28,7 +28,7 @@
     },
     {
       "sourceIndex": 103,
-      "volumeMm3": 351847.89467695786,
+      "volumeMm3": 363053.0942238267,
       "valid": true,
       "solids": 1,
       "boundsMm": [
@@ -46,13 +46,13 @@
     },
     {
       "sourceIndex": 104,
-      "volumeMm3": 260724.1544007361,
+      "volumeMm3": 269573.7206103319,
       "valid": true,
       "solids": 1,
       "boundsMm": [
         [
           -55.00000000000001,
-          149.95326674430078,
+          149.9532667443008,
           -28.8328405246475
         ],
         [
@@ -64,7 +64,7 @@
     },
     {
       "sourceIndex": 105,
-      "volumeMm3": 252823.3643513462,
+      "volumeMm3": 261672.93056093703,
       "valid": true,
       "solids": 1,
       "boundsMm": [
@@ -82,7 +82,7 @@
     },
     {
       "sourceIndex": 106,
-      "volumeMm3": 251174.8808413028,
+      "volumeMm3": 259953.28789638594,
       "valid": true,
       "solids": 1,
       "boundsMm": [
@@ -103,7 +103,7 @@
     "step": {
       "valid": true,
       "solids": 1,
-      "volumeMm3": 251174.88084121628,
+      "volumeMm3": 259953.28789627372,
       "boundsMm": [
         [
           -55.0,
@@ -111,7 +111,7 @@
           -28.83284052464208
         ],
         [
-          55.00000000000032,
+          55.00000000000135,
           219.997761301043,
           52.0148479163626
         ]
@@ -120,7 +120,7 @@
     "stl": {
       "valid": true,
       "solids": 1,
-      "volumeMm3": 251174.35883322198,
+      "volumeMm3": 259952.77524165442,
       "boundsMm": [
         [
           -55.0,

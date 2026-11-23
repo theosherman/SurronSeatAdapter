@@ -27,7 +27,7 @@ class LatchTests(unittest.TestCase):
     def test_checkpoints_and_model_bounds(self):
         from latch import build_latch
         body, stages = build_latch(with_stages=True)
-        expected = [175923.9473, 351847.8947, 260724.1544, 252823.3644, 251174.8808]
+        expected = [181526.5471, 363053.0942, 269573.7206, 261672.9306, 259953.2879]
         self.assertEqual(len(stages), len(expected))
         for stage, volume in zip(stages, expected):
             self.assertAlmostEqual(stage['volumeMm3'], volume, delta=0.01)
@@ -58,19 +58,19 @@ class LatchTests(unittest.TestCase):
                      and abs((corner-face.center()).dot(normal) - 14.393670) < 1e-5]
             self.assertEqual(len(inner), 1)
 
-        # The redline meets face 7 about halfway down the original segment.
+        # The shelf keeps its slope and moves 3 mm along its outward normal.
         shelf_normal = Vector(0, .154, -1).normalized()
         shelf, = [face for face in planes if face.normal_at().dot(shelf_normal) > .99999]
-        bounds = shelf.bounding_box()
-        self.assertAlmostEqual(bounds.min.Z, -8.73673, places=4)
-        self.assertAlmostEqual(bounds.max.Z, -4.54849, places=4)
+        original_shelf = Vector(0, 171.563092565, -8.769549215)
+        self.assertAlmostEqual((shelf.center() - original_shelf).dot(shelf_normal),
+                               3.0, places=5)
 
     def test_clearance_removes_material_and_rejects_negative(self):
         from latch import build_latch
         nominal = build_latch()
         zero = build_latch(clearance=0)
         larger = build_latch(clearance=0.3)
-        self.assertAlmostEqual(zero.volume, 252823.3644, delta=0.01)
+        self.assertAlmostEqual(zero.volume, 261672.9306, delta=0.01)
         self.assertLess(larger.volume, nominal.volume)
         self.assertAlmostEqual(nominal.cut(zero).volume, 0, delta=0.001)
         with self.assertRaises(ValueError):
