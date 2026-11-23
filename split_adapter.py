@@ -63,8 +63,7 @@ def connector_tools(plane, rim_radius=0):
         (x, seam_y+y, top_z(seam_y+y))
         for x, y in butterfly_outline(11.5, 21.5, 20.75)
     ], close=True))
-    # Vertical sweep keeps the waist in the split plane; depth is normal to the roof.
-    tools = [('top', recess_tool(top, (0, 0, -TOP_POCKET_DEPTH_MM / normal.Z), rim_radius))]
+    tools = [('top', recess_tool(top, -TOP_POCKET_DEPTH_MM * normal, rim_radius))]
     for side, name in ((-1, 'cavity-negative-x'), (1, 'cavity-positive-x')):
         # The long central cavity has parallel walls at X = +/-12 mm.
         mouth = Face(Wire.make_polygon([
