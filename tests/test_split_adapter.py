@@ -49,7 +49,7 @@ class SplitAdapterTests(unittest.TestCase):
             with self.subTest(recess=name):
                 tool = rounded[name]
                 caps = [face for face in original.faces() if len(face.edges()) > 4]
-                self.assertAlmostEqual(caps[0].distance_to(caps[1]), 12.8 if name == "top" else 3.8, places=5)
+                self.assertAlmostEqual(caps[0].distance_to(caps[1]), 12.8 if name == "top" else 6.8, places=5)
                 mouth = max(caps, key=lambda face: face.normal_at().dot(outward[name]))
                 extra = tool.cut(original)
                 self.assertAlmostEqual(original.cut(tool).volume, 0.0, places=5)

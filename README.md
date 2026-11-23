@@ -671,11 +671,11 @@ recipe remains unchanged. No finished-body patches are used.
 
 ### Two-piece printing variant
 
-After rebuilding the master, run `split_adapter.py` with the same Python environment. The printing child uses a transverse split at placed Y = 37 mm. Its top recess cuts 12.8 mm perpendicular to the roof, with the waist centered on the split at the opening. Each cavity wall has a matching 3.8 mm deep recess with flared tips. The three openings have 1 mm rim fillets and the pocket floors stay sharp. The completed master remains unsplit and has no connector recesses.
+After rebuilding the master, run `split_adapter.py` with the same Python environment. The printing child uses a transverse split at placed Y = 37 mm. Its top recess cuts 12.8 mm perpendicular to the roof, with the waist centered on the split at the opening. Each cavity wall has a matching 6.8 mm deep recess with flared tips. The three openings have 1 mm rim fillets and the pocket floors stay sharp. The completed master remains unsplit and has no connector recesses.
 
 The shoulders retain their 30° underside draft. The rear edge extends 19 mm in the sketch and then shifts 10 mm rearward in placed Y. The front vertices stay at their source positions, 10 mm ahead of the former uniformly rear-shifted profile. The AirTag recess moves 90 mm along the tilted top plane toward the rear mounting holes.
 
-Run `butterfly_keys.py` to export a 12 mm thick top key and a 3 mm thick cavity key. Print one top key and two cavity keys. The print files lie flat at Z = 0. The assembled STEP keys retain 0.4 mm minimum clearance and 1 mm edge fillets.
+Run `butterfly_keys.py` to export a 12 mm thick top key and a 6 mm thick cavity key (60% of the 10 mm sidewall). Print one top key and two cavity keys. The print files lie flat at Z = 0. The assembled STEP keys retain 0.4 mm minimum clearance and 1 mm edge fillets.
 
 At the saved Bambu Studio tilt and with independent in-plane rotations, the STL footprints are approximately 245.3 × 245.2 mm front and 200.6 × 200.6 mm rear. Check brim and support clearance on the 250 mm bed in the slicer.
 
