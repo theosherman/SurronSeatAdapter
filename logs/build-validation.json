@@ -6,7 +6,7 @@
     0.0
   ],
   "seatingDepthMm": 26.0,
-  "elapsedSeconds": 5.852290868759155,
+  "elapsedSeconds": 7.098255287855864,
   "stages": [
     {
       "step": "M01",
@@ -100,67 +100,67 @@
     },
     {
       "step": "M19",
-      "volumeMm3": 1602872.2099091755,
+      "volumeMm3": 1627216.2543926525,
       "solids": 1,
       "valid": true
     },
     {
       "step": "M20",
-      "volumeMm3": 1594165.701747165,
+      "volumeMm3": 1618509.746230642,
       "solids": 1,
       "valid": true
     },
     {
       "step": "M20-front-redesign",
-      "volumeMm3": 1638477.1804566765,
+      "volumeMm3": 1662821.224940156,
       "solids": 1,
       "valid": true
     },
     {
       "step": "M20-screen-surround",
-      "volumeMm3": 1733739.9510258287,
+      "volumeMm3": 1758083.9955093083,
       "solids": 1,
       "valid": true
     },
     {
       "step": "M20-print-planes",
-      "volumeMm3": 1717536.7810673432,
+      "volumeMm3": 1741880.8255508232,
       "solids": 1,
       "valid": true
     },
     {
       "step": "M20-rear-side-relief",
-      "volumeMm3": 1632613.3218531606,
+      "volumeMm3": 1656957.366336642,
       "solids": 1,
       "valid": true
     },
     {
       "step": "M20-lower-rear-tip",
-      "volumeMm3": 1625186.8842385365,
+      "volumeMm3": 1649530.9287220181,
       "solids": 1,
       "valid": true
     },
     {
       "step": "M20-raised-underside",
-      "volumeMm3": 1255058.3608367492,
+      "volumeMm3": 1278466.5600572024,
       "solids": 1,
       "valid": true
     },
     {
       "step": "M20-seat-edge-relief",
-      "volumeMm3": 1251315.1124681153,
+      "volumeMm3": 1274723.3116886637,
       "solids": 1,
       "valid": true
     },
     {
       "step": "M20-body-fillets",
-      "volumeMm3": 1251030.7966599073,
+      "volumeMm3": 1274406.1181937677,
       "solids": 1,
       "valid": true
     },
     {
       "step": "M21",
-      "volumeMm3": 1107232.0070266107,
+      "volumeMm3": 1129840.2510018267,
       "solids": 1,
       "valid": true
     }

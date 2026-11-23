@@ -47,15 +47,16 @@ class RearCavityTests(unittest.TestCase):
         for x in (-15,0,15):
             self.assertTrue(self.body.is_inside((x,235,90)),x)
 
-    def test_untrimmed_angled_rear_wall_retains_five_mm_of_material(self):
+    def test_angled_latch_wall_is_ten_mm_thick_inward(self):
         from trunk_cavity import REAR_WALL_POINT_MM,REAR_WALL_NORMAL
         point,normal=Vector(REAR_WALL_POINT_MM),Vector(REAR_WALL_NORMAL)
         for x in (-25,0,25):
             for z in (5,20):
                 y=point.Y-(z-point.Z)*normal.Z/normal.Y
                 outer=Vector(x,y,z)
-                for depth in (.1,2.5,4.9):
+                for depth in (.1,4.9,9.9):
                     self.assertTrue(self.body.is_inside(outer-normal*depth),(x,z,depth))
+                self.assertFalse(self.body.is_inside(outer-normal*10.1),(x,z))
 
     def test_original_interface_changes_only_by_approved_cuts(self):
         datum=Plane((0,164.41714823915711,1.578677917809248),

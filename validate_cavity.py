@@ -50,12 +50,13 @@ wall_point=Vector(REAR_WALL_POINT_MM)
 wall_checks=[]
 for x_pos in (-25,-15,0,15,25):
     # Sample the surviving wall above the raised underside plane.
-    for z_pos in (-6,0,10,20):
+    for z_pos in (5,10,15,20):
         y_pos=wall_point.Y-(z_pos-wall_point.Z)*wall_normal.Z/wall_normal.Y
         outer=Vector(x_pos,y_pos,z_pos)
-        for depth in (.1,2.5,REAR_WALL_THICKNESS_MM-.1):
+        for depth in (.1,REAR_WALL_THICKNESS_MM/2,REAR_WALL_THICKNESS_MM-.1):
             assert body.is_inside(outer-wall_normal*depth),(x_pos,z_pos,depth)
             wall_checks.append(dict(x=x_pos,z=z_pos,inwardNormalDepthMm=depth))
+        assert not body.is_inside(outer-wall_normal*(REAR_WALL_THICKNESS_MM+.1)),(x_pos,z_pos)
 report=dict(rearWallNormalThicknessMm=REAR_WALL_THICKNESS_MM,rearWallMaterialChecks=len(wall_checks),valid=body.is_valid,solids=len(body.solids()),volumeMm3=body.volume,
             roofOffsetMm=CAVITY_ROOF_OFFSET_MM,sampledRoofLocations=len(samples),
             minimumSampledRoofMm=minimum,samplingGridMm=grid_mm,
