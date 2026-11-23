@@ -7,6 +7,11 @@ the other support. Seat-contact edges and the original underside draft stay put.
 from copy import deepcopy
 from math import isclose
 
+from adapter_profiles import SKETCHES
+
+
+REAR_EXTENSION_MM = 19.0
+
 
 def continued_shoulder_curves(curves):
     result=deepcopy(curves)
@@ -25,4 +30,14 @@ def continued_shoulder_curves(curves):
                 changed+=1
     if changed!=2:
         raise ValueError('Seat shoulder source no longer has the expected return vertex')
+    # Extend the original rear edge in sketch coordinates, then translate
+    # the entire mirrored shoulder outline by 10 mm along placed Y.
+    shift = 10.0 / SKETCHES['SeatHangerSketch']['yAxis'][1]
+    rear_v = (a[1], b[1], body_v)
+    for curve in result:
+        for key in ('startMm', 'endMm'):
+            point = curve[key]
+            if any(close(point[1], v) for v in rear_v):
+                point[1] += REAR_EXTENSION_MM
+            point[1] += shift
     return result

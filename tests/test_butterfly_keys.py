@@ -33,10 +33,9 @@ class ButterflyKeyTests(unittest.TestCase):
                 for face in recess.faces():
                     self.assertGreaterEqual(key.distance_to(face), 0.39999)
                 blends = [face for face in key.faces() if face.geom_type == GeomType.CYLINDER]
-                # The two tangent joins in the top profile share their blend surfaces.
-                self.assertEqual(len(blends), 22 if name == 'top' else 18)
+                self.assertEqual(len(blends), 18)
                 for blend in blends:
                     self.assertAlmostEqual(blend.radius, 1.0, places=5)
                 bounds = lay_flat(key).bounding_box()
                 self.assertAlmostEqual(bounds.min.Z, 0.0, places=5)
-                self.assertAlmostEqual(bounds.size.Z, 9.2, places=5)
+                self.assertAlmostEqual(bounds.size.Z, 12.0 if name == "top" else 3.0, places=5)

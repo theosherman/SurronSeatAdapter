@@ -13,8 +13,6 @@ to the original body top ahead of the front bolt seats. A parallel cut moves the
 main underside up 18 mm, including at the lower rear toe. The imprint uses the
 wheel body scaled about its raised datum, with zero added clearance. The 1 mm
 finish uses mirrored edge selections compatible with the raised imprint.
-The split child's cavity-key recesses sit 3 mm higher along the seam so both
-halves retain the full 10 mm recess depth.
 
 The underside ramp is tangent to the existing rounded rear jaw and joins the
 raised underside at the original lift boundary. The clip bore stays 30.2 mm
@@ -672,16 +670,13 @@ recipe remains unchanged. No finished-body patches are used.
 
 ### Two-piece printing variant
 
-After rebuilding the master, run `split_adapter.py` with the same Python environment. It reads `exports/adapter-body.step` and writes separate front and rear STEP and STL files. The child uses the portable recipe's sloped split plane and has three 10 mm connector recesses. One large recess spans the top and one 16 × 12 mm butterfly-key recess opens onto each inner cavity wall. Each cavity-key waist follows the split plane through the full 10 mm depth, measured normal to the cavity wall.
+After rebuilding the master, run `split_adapter.py` with the same Python environment. The printing child uses a transverse split at placed Y = 37 mm. Its 12.8 mm deep top recess spans the shoulders. Each cavity wall has a matching 3.8 mm deep recess with flared tips. The three openings have 1 mm rim fillets and the pocket floors stay sharp. The completed master remains unsplit and has no connector recesses.
 
-The three recess openings have 1 mm rim fillets. Their floors and the edges where the walls meet the floors stay sharp.
+The shoulders retain their 30° underside draft. Compared with the original continued shoulder sketch, the rear edge extends 19 mm in the sketch and the full profile moves 10 mm rearward in placed Y. The AirTag recess moves 90 mm along the tilted top plane toward the rear mounting holes.
 
-Run `butterfly_keys.py` to export the two printable key shapes. Print the top key once and the cavity key twice. Every key edge has a 1 mm fillet. The keys are 9.2 mm thick, with at least 0.4 mm clearance from the recess faces, including at the rounded waist. STEP files retain assembled positions, and STLs lie flat at Z=0.
+Run `butterfly_keys.py` to export a 12 mm thick top key and a 3 mm thick cavity key. Print one top key and two cavity keys. The print files lie flat at Z = 0. The assembled STEP keys retain 0.4 mm minimum clearance and 1 mm edge fillets.
 
-- `butterfly-key-top.stl`, print once
-- `butterfly-key-cavity.stl`, print twice
-
-In the model orientation, the front is approximately 152 × 354 × 88 mm, and the rear is 156 × 171 × 137 mm. With Z up, the front needs about 339 mm square before slicer margins, even when rotated in the bed plane.
+At the saved Bambu Studio tilt and with independent in-plane rotations, the STL footprints are approximately 245.3 × 245.2 mm front and 200.6 × 200.6 mm rear. Check brim and support clearance on the 250 mm bed in the slicer.
 
 To inspect the two halves in VS Code, open **OCP CAD Viewer: Open viewer**
 from the command palette, then select **View split adapter in OCP CAD Viewer**
