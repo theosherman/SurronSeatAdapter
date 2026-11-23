@@ -22,6 +22,7 @@ NOMINAL_CLEARANCE_MM = 0.2
 
 TONGUE_RISE_MM = 18.0
 TONGUE_THICKNESS_MM = 14.393670059803053
+BODY_THICKENING_MM = 3.0
 # Approximate rise per millimeter rearward from the side-view redline.
 UNDERSIDE_SLOPE = 0.154
 # Lower edge of the sloped adapter wall after the approved underside trim.
@@ -34,6 +35,9 @@ def latch_side_profile():
     toward_tip = Vector(0, wall_normal.Z, -wall_normal.Y)
     top_front = Vector(0, 149.9532667443008, 31.702071992564846)
     wall_bottom = top_front + toward_tip * ((MATING_WALL_BOTTOM_Z_MM - top_front.Z) / toward_tip.Z)
+    # Extend the mating wall along its plane to meet the offset underside.
+    underside_normal = Vector(0, UNDERSIDE_SLOPE, -1).normalized()
+    shelf_front = wall_bottom + toward_tip * (BODY_THICKENING_MM / toward_tip.dot(underside_normal))
 
     rise = Vector(0, 0, TONGUE_RISE_MM)
     # Original faces 1 and 6 meet at corner. Keep its Y and the length of face 6.
@@ -45,18 +49,18 @@ def latch_side_profile():
     rounded_tip = (outer_tip+inner_tip)*0.5 + tip_direction * (TONGUE_THICKNESS_MM*0.5)
 
     # Faces 7 and 10 are parallel offsets of the outer tongue faces.
-    # The shallow underside runs from the wall bottom to face 7.
+    # The offset underside meets the original face 7 plane.
     top_rear = top_front + wall_normal * (corner-top_front).dot(wall_normal)
     inner_corner_plane = corner - TONGUE_THICKNESS_MM * wall_normal
     underside = Vector(0, 1, UNDERSIDE_SLOPE)
-    inner_root = wall_bottom + underside * (
-        (inner_corner_plane-wall_bottom).dot(wall_normal) / underside.dot(wall_normal)
+    inner_root = shelf_front + underside * (
+        (inner_corner_plane-shelf_front).dot(wall_normal) / underside.dot(wall_normal)
     )
     inner_corner = inner_tip + tip_direction * (
         (inner_corner_plane-inner_tip).dot(wall_normal) / tip_direction.dot(wall_normal)
     )
 
-    points = (top_rear, top_front, wall_bottom, inner_root, inner_corner, inner_tip)
+    points = (top_rear, top_front, shelf_front, inner_root, inner_corner, inner_tip)
     edges = [Edge.make_line(a, b) for a, b in zip(points, points[1:])]
     edges.extend((Edge.make_three_point_arc(inner_tip, rounded_tip, outer_tip),
                   Edge.make_line(outer_tip, corner), Edge.make_line(corner, top_rear)))
