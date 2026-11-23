@@ -26,7 +26,7 @@ The approved suspension adjuster clearance uses a 30° underside draft on the or
 
 The approved seat-edge relief (M17, option C) uses mirrored 28 mm cylindrical cuts at the original sketch center and tilt. Apply the cuts after the raised underside trim and before the finishing fillets. The portable recipe retains the historical 40 mm source profile.
 
-The approved shoulder split uses the finite mirrored shoulder sketch, with its rear edge continued 19 mm in sketch space and the profile placed 5 mm forward of its unshifted position (negative Y). Keep the 30° draft. The top butterfly has a 43 mm tip-width pocket, and the two cavity-wall keys have wider 9.8 mm nominal tips before finishing. The earlier continuous shoulder extension into the rear body was rejected.
+The approved shoulder split uses the finite mirrored shoulder sketch, with its rear edge continued 19 mm in sketch space and then shifted 10 mm rearward in placed Y. The front vertices stay at their source positions, 10 mm ahead of the former uniformly rear-shifted profile. Keep the 30° draft. The top butterfly has a 43 mm tip-width pocket, and the two cavity-wall keys have wider 9.8 mm nominal tips before finishing. The earlier continuous shoulder extension into the rear body was rejected.
 
 ## CAD context
 

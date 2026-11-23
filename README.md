@@ -672,7 +672,7 @@ recipe remains unchanged. No finished-body patches are used.
 
 After rebuilding the master, run `split_adapter.py` with the same Python environment. The printing child uses a transverse split at placed Y = 37 mm. Its 12.8 mm deep top recess spans the shoulders. Each cavity wall has a matching 3.8 mm deep recess with flared tips. The three openings have 1 mm rim fillets and the pocket floors stay sharp. The completed master remains unsplit and has no connector recesses.
 
-The shoulders retain their 30° underside draft. Compared with the original continued shoulder sketch, the rear edge extends 19 mm in the sketch and the full profile sits 5 mm forward of its unshifted position (negative Y). The AirTag recess moves 90 mm along the tilted top plane toward the rear mounting holes.
+The shoulders retain their 30° underside draft. The rear edge extends 19 mm in the sketch and then shifts 10 mm rearward in placed Y. The front vertices stay at their source positions, 10 mm ahead of the former uniformly rear-shifted profile. The AirTag recess moves 90 mm along the tilted top plane toward the rear mounting holes.
 
 Run `butterfly_keys.py` to export a 12 mm thick top key and a 3 mm thick cavity key. Print one top key and two cavity keys. The print files lie flat at Z = 0. The assembled STEP keys retain 0.4 mm minimum clearance and 1 mm edge fillets.
 
