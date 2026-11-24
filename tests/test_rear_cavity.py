@@ -1,7 +1,7 @@
 """Shape acceptance: long open cavity, rear side relief, original latch interface."""
 import unittest
 from pathlib import Path
-from build123d import Vector,Plane,Keep,Compound,ShapeList,Solid,import_step
+from build123d import GeomType,Vector,Plane,Keep,Compound,ShapeList,Solid,import_step
 from adapter import build_master,SKETCHES,tool
 from coordinates import ADAPTER_TRANSLATION_MM
 
@@ -48,14 +48,25 @@ class RearCavityTests(unittest.TestCase):
             self.assertTrue(self.body.is_inside((x,235,90)),x)
 
     def test_rear_seat_raised_area_and_notch_floors(self):
-        slope = .27456857573275 / .9615675208845652
-        for x, y, rise in ((0,191.47,0), (0,191.49,5), (0,223.12,5),
+        roof_normal = Vector(0,-.27456857573275,.9615675208845652)
+        slope = -roof_normal.Y / roof_normal.Z
+        for x, y, rise in ((0,191.49,5), (0,221.8,5),
                            (0,223.14,0), (0,235,0)):
             height = 88.39413736888 + (y - 188.48114962565) * slope + rise
             self.assertTrue(self.body.is_inside((x,y,height-.005)), (x,y))
             self.assertFalse(self.body.is_inside((x,y,height+.005)), (x,y))
+        for y in (188.5,191.47):
+            height = 83.00002409678 + (y - 188.48114962565) * (.1993679344170023 / .9799247046208692)
+            self.assertTrue(self.body.is_inside((0,y,height-.005)), y)
+            self.assertFalse(self.body.is_inside((0,y,height+.005)), y)
+        walls = [face for face in self.body.faces() if face.geom_type == GeomType.PLANE
+                 and 221.8 < face.center().Y < 225
+                 and face.normal_at().Y > .9 and face.area > 10]
+        self.assertTrue(walls)
+        for wall in walls:
+            self.assertAlmostEqual(wall.normal_at().dot(roof_normal),0,places=6)
         for x in (-20,20):
-            for y in (223.14,235):
+            for y in (224.7,235):
                 height = 90.82434901374 + (y - 226.1286209686) * slope + 3
                 self.assertTrue(self.body.is_inside((x,y,height-.005)), (x,y))
                 self.assertFalse(self.body.is_inside((x,y,height+.005)), (x,y))
@@ -93,7 +104,7 @@ class RearCavityTests(unittest.TestCase):
         expected=combined(expected.cut(cavity,tag,*rear_side_tools()))
         # The fixture predates the stepped roof and frontward notch extensions.
         # Exclude their envelope while keeping the lower latch and rail in scope.
-        roof_change = Solid.make_box(120, 54, 30, Plane((-60,191.48,88)))
+        roof_change = Solid.make_box(120, 57, 31, Plane((-60,188.48,82.99)))
         actual = combined(actual.cut(roof_change))
         expected = combined(expected.cut(roof_change))
         old_center = Vector(tag_sketch['originMm']) + Vector(ADAPTER_TRANSLATION_MM)

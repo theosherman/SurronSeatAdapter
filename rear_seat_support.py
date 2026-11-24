@@ -1,5 +1,7 @@
 """Production SideSketch roof step and rear seat notch cutter, in millimeters."""
-from build123d import Face, Keep, Plane, Solid, Vector, Wire
+from math import isclose
+
+from build123d import Face, Plane, Solid, Vector, Wire
 
 from adapter_profiles import SKETCHES
 from cut_offsets import REAR_NOTCH_OUTER_U_MM
@@ -25,28 +27,46 @@ def support_rear_y():
 
 
 def stepped_roof_curves(curves):
-    """Replace the rear roof line with the stepped SideSketch outline."""
+    """Continue the lower roof to the full step and square the rear wall to the roof."""
+    rear_roof = next((c for c in curves
+                      if c['startMm'][0] < c['endMm'][0] < 0
+                      and c['startMm'][1] > c['endMm'][1] > 85), None)
+    if rear_roof is None:
+        yield from curves
+        return
+
+    start, end = rear_roof['startMm'], rear_roof['endMm']
+    rear_u = -support_rear_y()
+    front_u = end[0] - EDGE_INSET_MM
+    rear_slope = (end[1] - start[1]) / (end[0] - start[0])
+    _, _, normal = notch_datum()
+    rear_z = start[1] + rear_slope * (rear_u - start[0])
+    front_z = start[1] + rear_slope * (front_u - start[0]) + SUPPORT_RISE_MM
+    rear_wall = normal * (SUPPORT_RISE_MM * normal.Z)
+    lower_roof = next(c for c in curves
+                      if isclose(c['startMm'][0], end[0]) and c['endMm'][0] > 0)
+    lower_start, lower_end = lower_roof['startMm'], lower_roof['endMm']
+    lower_slope = (lower_end[1] - lower_start[1]) / (lower_end[0] - lower_start[0])
+    lower_front = [front_u, lower_start[1] + lower_slope * (front_u - lower_start[0]), 0]
+
     for curve in curves:
-        start, end = curve['startMm'], curve['endMm']
-        if start[0] < end[0] < 0 and start[1] > end[1] > 85:
-            rear_u = -support_rear_y()
-            front_u = end[0] - EDGE_INSET_MM
-            points = [start]
-            for u, lifts in ((rear_u, (0, SUPPORT_RISE_MM)), (front_u, (SUPPORT_RISE_MM, 0))):
-                height = start[1] + (end[1] - start[1]) * (u - start[0]) / (end[0] - start[0])
-                points.extend([u, height + lift, 0] for lift in lifts)
-            points.append(end)
+        if curve is rear_roof:
+            points = [start, [rear_u, rear_z, 0],
+                      [rear_u - rear_wall.Y, rear_z + rear_wall.Z, 0],
+                      [front_u, front_z, 0], lower_front]
             yield from (dict(type='Line3D', startMm=a, endMm=b) for a, b in zip(points, points[1:]))
-        else:
+        elif curve is lower_roof:
+            yield dict(curve, startMm=lower_front)
+        elif not all(isclose(curve[key][0], end[0]) for key in ('startMm', 'endMm')):
             yield curve
 
 
 def rear_notch_tools():
     """Extrude two mirrored notch profiles to the raised floor datum."""
     origin, longitudinal, normal = notch_datum()
-    # Start the sketch beyond the new front boundary, then trim the cutter
-    # vertically so the two floors end exactly at the raised roof step.
-    front_v = (support_rear_y() - origin.Y) / longitudinal.Y - EDGE_INSET_MM
+    # The extrusion direction is parallel to the rear step wall, so the
+    # profile can start directly at its intersection with the rear roof.
+    front_v = (support_rear_y() - origin.Y) / longitudinal.Y
     profile = Face(Wire.make_polygon([
         origin + longitudinal * v + Vector(x, 0, 0)
         for x, v in ((13.5, front_v), (REAR_NOTCH_OUTER_U_MM, front_v),
@@ -54,6 +74,4 @@ def rear_notch_tools():
     ], close=True))
     depth = NOTCH_DEPTH_MM - NOTCH_RISE_MM * normal.Z
     cutter = Solid.extrude(profile, -normal * depth)
-    front_plane = Plane((0, support_rear_y(), 0), z_dir=(0, 1, 0))
-    cutter = cutter.split(front_plane, Keep.TOP)
     return cutter, cutter.mirror(Plane.YZ)

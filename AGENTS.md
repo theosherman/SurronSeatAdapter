@@ -24,7 +24,7 @@ The approved front-clip underside ramp is tangent to the native rounded rear jaw
 
 The approved suspension adjuster clearance uses a 30° underside draft on the original mirrored seat shoulders. Preserve the outer seat-contact edge and full shoulder span.
 
-The approved rear seat support (Face 6) uses a 5 mm vertical step in the original SideSketch roof line. In placed Y, the front end is 3 mm rearward of the original roof break and the rear end is 3 mm forward of the original notch floor edge. The mirrored notch floors (formerly Faces 55 and 56) rise 3 mm in Z and extend forward to meet that rear step, preserving the center aisle. The cutouts continue through the widened flanks. See `rear_seat_support.py`.
+The approved rear seat support (Face 6) uses a 5 mm vertical rise above the original SideSketch rear roof. Continue the lower roof to the full front step, 3 mm rearward of the original roof break. The rear step wall is square to the sloped roof and meets the original rear roof plane 3 mm forward of the original notch floor edge in placed Y. The mirrored notch floors (formerly Faces 55 and 56) rise 3 mm in Z and extend forward to meet that wall, preserving the center aisle. The cutouts continue through the widened flanks. See `rear_seat_support.py`.
 
 The approved seat-edge relief (M17, option C) uses mirrored 28 mm cylindrical cuts at the original sketch center and tilt. Apply the cuts after the raised underside trim and before the finishing fillets. The portable recipe retains the historical 40 mm source profile.
 
