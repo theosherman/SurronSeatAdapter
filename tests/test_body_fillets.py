@@ -39,6 +39,12 @@ class FilletScopeTest(unittest.TestCase):
                        and all(abs(a-b)<.001 for a,b in zip(other['maximum'],reflected_max))]
             self.assertEqual(len(mirrors), 1, edge)
 
+    def test_runtime_rejects_different_mirrored_radii(self):
+        left = dict(length=10, minimum=[-1,0,0], maximum=[-1,10,0], radiusMm=5)
+        right = dict(length=10, minimum=[1,0,0], maximum=[1,10,0])
+        with self.assertRaisesRegex(ValueError, 'no mirrored partner'):
+            require_mirrored_selection([left, right])
+
     def test_runtime_rejects_one_sided_fillets(self):
         edge = dict(length=10, minimum=[1,0,0], maximum=[1,10,0])
         with self.assertRaisesRegex(ValueError, 'no mirrored partner'):

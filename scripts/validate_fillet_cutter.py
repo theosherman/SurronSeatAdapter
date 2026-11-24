@@ -1,27 +1,13 @@
 """Verify that the asymmetric wheel cutter cannot trim new fillet surfaces."""
 import json
 from pathlib import Path
-from build123d import import_brep, import_step, Face, Vector
-from OCP.BRepFilletAPI import BRepFilletAPI_MakeFillet
-from body_fillets import SPEC, require_mirrored_selection
+from build123d import import_brep, import_step, Face
+from body_fillets import build_fillet
 
 folder = Path(__file__).resolve().parents[1]
-require_mirrored_selection(SPEC['edges'])
 body = import_step(folder/'exports/adapter-body-pre-imprint.step')
 cutter = import_brep(folder/'reference/wheel/body-scaled.brep')
-edges = list(body.edges())
-selected = []
-for row in SPEC['edges']:
-    matches = [e for e in edges if abs(e.length-row['length'])<.001
-               and (e.bounding_box().min-Vector(row['minimum'])).length<.001
-               and (e.bounding_box().max-Vector(row['maximum'])).length<.001]
-    assert len(matches)==1, row
-    selected.append(matches[0])
-builder = BRepFilletAPI_MakeFillet(body.wrapped)
-for edge in selected:
-    builder.Add(SPEC['radiusMm'],edge.wrapped)
-builder.Build()
-assert builder.IsDone()
+builder, selected = build_fillet(body)
 # Include corner blends generated from vertices as well as edge blends.
 faces = {}
 for edge in selected:
