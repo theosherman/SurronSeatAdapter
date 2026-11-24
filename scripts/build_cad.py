@@ -17,6 +17,7 @@ SHARED_INPUTS = ('adapter_profiles.py', 'coordinates.py', 'adapter-placement.jso
                  'cad-rebuild/recipe.json')
 MASTER_INPUTS = (*SHARED_INPUTS, 'adapter.py', 'body_fillets.py', 'body-fillets.json',
                  'bottom_outline.py', 'cut_offsets.py', 'front_clip.py', 'print_planes.py',
+                 'rear_seat_support.py',
                  'screen_surround.py', 'seat_shoulders.py', 'trunk_cavity.py',
                  'reference/wheel/__init__.py', 'reference/wheel/body-scaled.brep')
 CONNECTOR_INPUTS = (*SHARED_INPUTS, 'split_adapter.py', 'trunk_cavity.py')

@@ -22,7 +22,9 @@ The approved production latch raises the original face 1–6 edge 18 mm in Z at 
 
 The approved front-clip underside ramp is tangent to the native rounded rear jaw. The bridge and gusset share this lower profile at the lift boundary. Preserve the upper screen-ramp tangent and the full 30.2 mm clip bore.
 
-The approved suspension adjuster clearance uses a 30° underside draft on the original mirrored seat shoulders. Preserve the outer seat-contact edge and full shoulder span. The rear seat notch profiles extend through the widened flanks at the original 8 mm depth.
+The approved suspension adjuster clearance uses a 30° underside draft on the original mirrored seat shoulders. Preserve the outer seat-contact edge and full shoulder span.
+
+The approved rear seat support (Face 6) uses a 2 mm vertical rise above the original SideSketch rear roof. Continue the lower roof to the full front step, 3 mm rearward of the original roof break. The rear step wall is square to the sloped roof and meets the original rear roof plane 3 mm forward of the original notch floor edge in placed Y. The mirrored notch floors (formerly Faces 55 and 56) rise 3 mm in Z and extend forward to meet that wall, preserving the center aisle. The cutouts continue through the widened flanks. See `rear_seat_support.py`.
 
 The approved seat-edge relief (M17, option C) uses mirrored 28 mm cylindrical cuts at the original sketch center and tilt. Apply the cuts after the raised underside trim and before the finishing fillets. The portable recipe retains the historical 40 mm source profile.
 
