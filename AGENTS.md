@@ -32,7 +32,7 @@ The approved shoulder split uses the finite mirrored shoulder sketch, with its r
 
 ## CAD context
 
-Use `./build.sh --preview` for routine master-body edits. Use `./build.sh` when the change needs the split halves, keys, or latch in the preview. The GitHub release build generates printable STLs.
+Use `./build.sh --preview` for routine master-body edits. Use `./build.sh` when the change needs the split halves, keys, or latch in the preview. Link directly to `exports/preview.html` when reporting local CAD changes. GitHub Actions builds and publishes the printable release ZIP. Use the HTML preview for routine local review.
 
 For user-visible proposal previews, use the automatic browser viewer: `python preview_server.py start --no-open` (omit `--no-open` when initially opening it). Write the final image under `tmp/` last so it becomes the newest image; the open browser at http://127.0.0.1:8766 updates automatically. Do not ask the user to hunt for image paths.
 
