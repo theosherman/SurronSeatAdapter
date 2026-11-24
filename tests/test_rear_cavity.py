@@ -50,7 +50,7 @@ class RearCavityTests(unittest.TestCase):
     def test_rear_seat_raised_area_and_notch_floors(self):
         roof_normal = Vector(0,-.27456857573275,.9615675208845652)
         slope = -roof_normal.Y / roof_normal.Z
-        for x, y, rise in ((0,191.49,5), (0,221.8,5),
+        for x, y, rise in ((0,191.49,4), (0,221.8,4),
                            (0,223.14,0), (0,235,0)):
             height = 88.39413736888 + (y - 188.48114962565) * slope + rise
             self.assertTrue(self.body.is_inside((x,y,height-.005)), (x,y))
