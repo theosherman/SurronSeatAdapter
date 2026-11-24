@@ -73,7 +73,8 @@ def build_master(stop=None, imprint=True, airtag_depth=8.5):
     points = [(x,y+SCREEN_EXTENSION_MM,z+slope*SCREEN_EXTENSION_MM) for x,y,z in points]
     wedge = Solid.extrude(Face(Wire.make_polygon([source_to_model(p) for p in points],close=True)),source_to_model((86,0,0)))
     body = stage('M14',body.cut(wedge))
-    body = stage('M15',body.cut(tool(89,8,direction=-Vector(SKETCHES['RearSeatNotchSketch']['normal']))))
+    from rear_seat_support import rear_notch_tools
+    body = stage('M15',body.cut(*rear_notch_tools()))
     # M16 front dovetail omitted by explicit user request; rear dovetail retained.
     rearcut = tool(121,1000,symmetric=True)
     body = stage('M18',body.cut(rearcut,rearcut.mirror(Plane.YZ)))
