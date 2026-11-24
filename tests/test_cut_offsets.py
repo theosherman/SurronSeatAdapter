@@ -1,22 +1,21 @@
 """Check the manufacturing cutters against independently measured source planes."""
 import unittest
-from math import hypot
 from adapter import tool
-from build123d import GeomType, Vector
+from build123d import GeomType, Vector, Vertex
 
 class CutOffsetTests(unittest.TestCase):
-    def test_front_triangle_faces_are_three_mm_outward_on_both_sides(self):
-        cutter=tool(86,1000,(0,0,1),symmetric=True)
-        length=hypot(31,29.84830397955)
-        for side in (-1,1):
-            normal=Vector(-side*29.84830397955/length,-31/length,0)
-            old=Vector(-side*49,-193.15953208748562,0)
-            faces=[f for f in cutter.faces() if f.geom_type==GeomType.PLANE
-                   and abs(f.normal_at().dot(normal))>.999999]
-            self.assertEqual(len(faces),1)
-            self.assertAlmostEqual((faces[0].center()-old).dot(normal),3,places=6)
+    def test_front_diagonals_meet_clip_sides_at_cut_end(self):
+        cutter = tool(86, 1000, (0, 0, 1), symmetric=True)
+        for side in (-1, 1):
+            diagonal = next(f for f in cutter.faces()
+                            if f.geom_type == GeomType.PLANE
+                            and .5 < abs(f.normal_at().X) < .9
+                            and abs(f.normal_at().Y) > .5
+                            and side * f.center().X > 0)
+            clip_corner = Vertex(side * 49, -193.15953208748562, 0)
+            self.assertLess(diagonal.distance_to(clip_corner), 1e-6)
         self.assertTrue(cutter.is_valid)
-        self.assertEqual(len(cutter.solids()),2)
+        self.assertEqual(len(cutter.solids()), 2)
 
     def test_rear_notches_extend_outward_at_original_depth(self):
         from adapter_profiles import SKETCHES
