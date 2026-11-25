@@ -26,14 +26,14 @@ class LatchTests(unittest.TestCase):
     def test_checkpoints_and_model_bounds(self):
         from latch import build_latch
         body, stages = build_latch(with_stages=True)
-        expected = [177968.6474, 355937.2948, 257845.8529, 249905.6728, 248390.1813]
+        expected = [179262.6191, 358525.2382, 259844.4746, 251904.2945, 250388.8030]
         self.assertEqual(len(stages), len(expected))
         for stage, volume in zip(stages, expected):
             self.assertAlmostEqual(stage['volumeMm3'], volume, delta=0.01)
             self.assertTrue(stage['valid'])
             self.assertEqual(stage['solids'], 1)
         bounds = body.bounding_box()
-        for actual, wanted in zip(tuple(bounds.min), (-54.694612192,147.800566681,-30.158535099)):
+        for actual, wanted in zip(tuple(bounds.min), (-54.694612192,147.800566681,-30.319984909)):
             self.assertAlmostEqual(actual, wanted, delta=0.001)
         for actual, wanted in zip(tuple(bounds.max), (54.694612192,218.033855901,52.116976362)):
             self.assertAlmostEqual(actual, wanted, delta=0.001)
@@ -57,7 +57,7 @@ class LatchTests(unittest.TestCase):
                        Vector(0, .88401823052998, -.46745242334450)):
             inner = [face for face in planes
                      if face.normal_at().dot(-normal) > 1-1e-7
-                     and abs((corner-face.center()).dot(normal) + 0.2 - 19.393670) < 1e-5]
+                     and abs((corner-face.center()).dot(normal) + 0.2 - 20.0) < 1e-5]
             self.assertEqual(len(inner), 1)
 
         # The shelf rises 8 mm in Z from its previous 3 mm normal offset.
@@ -72,7 +72,7 @@ class LatchTests(unittest.TestCase):
         nominal = build_latch()
         zero, stages = build_latch(clearance=0, with_stages=True)
         larger = build_latch(clearance=0.3)
-        self.assertAlmostEqual(stages[-1]['volumeMm3'], 249905.6728, delta=0.01)
+        self.assertAlmostEqual(stages[-1]['volumeMm3'], 251904.2945, delta=0.01)
         self.assertLess(zero.volume, stages[-1]['volumeMm3'])
         self.assertLess(larger.volume, nominal.volume)
         self.assertAlmostEqual(nominal.cut(zero).volume, 0, delta=0.001)
