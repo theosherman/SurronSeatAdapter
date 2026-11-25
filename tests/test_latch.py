@@ -49,7 +49,8 @@ class LatchTests(unittest.TestCase):
         cylinders = [(face, BRepAdaptor_Surface(face.wrapped).Cylinder().Radius())
                      for face in body.faces().filter_by(GeomType.CYLINDER)]
         tongue_fillet, = [face for face, radius in cylinders if abs(radius - 10) < 1e-6]
-        self.assertEqual(sum(abs(radius - 1) < 1e-6 for _, radius in cylinders), 23)
+        self.assertEqual(sum(abs(radius - 1) < 1e-6 for _, radius in cylinders), 21)
+        self.assertEqual(sum(abs(radius - 4.5) < 1e-6 for _, radius in cylinders), 2)
         self.assertLess((tongue_fillet.center() - corner).length, 3)
 
         planes = body.faces().filter_by(GeomType.PLANE)

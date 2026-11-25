@@ -58,7 +58,8 @@ uses a redrawn side profile at stage 102 with the tongue corner raised 18 mm
 and 14.39 mm normal thickness through both tongue face pairs. Stage 104
 retains its 110 mm width cap and shifts the 16.76° taper planes up with the
 tongue. A finishing operation uses a 10 mm radius on the outer tongue edge
-closest to the rear handle and 1 mm on the other eligible sharp edges.
+closest to the rear handle, 4.5 mm on both long edges of the inner tongue
+wall, and 1 mm on the other eligible sharp edges.
 The slot faces and all edges touching the dovetail cutter stay sharp.
 The table below records the original
 Fusion latch and its archival checkpoints. Current
