@@ -2,7 +2,7 @@
 from argparse import ArgumentParser
 from pathlib import Path
 
-from build123d import Face, Keep, Plane, Solid, Vector, Wire, export_step, import_step
+from build123d import Axis, Face, Keep, Plane, Solid, Vector, Wire, export_step, import_step
 
 from adapter_profiles import SKETCHES
 from coordinates import ADAPTER_TRANSLATION_MM
@@ -28,6 +28,8 @@ def recess_tool(mouth, direction, rim_radius):
     inward = normal if normal.dot(direction) > 0 else -normal
     frame = Plane(mouth.center(), z_dir=inward)
     local = frame.to_local_coords(tool)
+    # Match the key's side corners, including the concave fillets at the waist.
+    local = local.fillet(rim_radius, local.edges().filter_by(Axis.Z))
     bounds = local.bounding_box()
     margin = 2 * rim_radius
     stock = Solid.make_box(bounds.size.X + 2 * margin, bounds.size.Y + 2 * margin,

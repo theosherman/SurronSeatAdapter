@@ -16,9 +16,10 @@ available in the [release history](https://github.com/theosherman/SurronSeatAdap
 ## Two-piece printing variant
 
 Use the split front and rear STLs with one top butterfly key, two copies of the
-cavity key, and the separate latch. The keys match their recesses with zero
-nominal CAD clearance. The full adapter STL is the one-piece
-alternative. Check brim and support clearance in your slicer. At the saved
+cavity key, and the separate latch. The keys have 1 mm fillets on every edge
+and match the recess sidewalls with zero nominal CAD clearance. The full
+adapter STL is the one-piece alternative. Check brim and support clearance in
+your slicer. At the saved
 Bambu Studio tilt with independent in-plane rotations, the split footprints
 were approximately 245.3 × 245.2 mm front and 200.6 × 200.6 mm rear. The
 [historical slicer project](reference/slicer/adapter-body.3mf) preserves an
