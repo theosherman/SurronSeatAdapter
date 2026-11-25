@@ -8,6 +8,7 @@ import argparse
 import json
 import math
 from build123d import Edge, Wire, Face, Solid, Plane, Vector, Keep, Compound, ShapeList, export_step, export_stl, import_step, Mesher
+from OCP.BRepFilletAPI import BRepFilletAPI_MakeFillet
 from coordinates import source_to_model, ADAPTER_TRANSLATION_MM
 from adapter_profiles import profiles as adapter_profiles
 from trunk_cavity import REAR_SIDE_X_MM, REAR_WALL_NORMAL, REAR_WALL_POINT_MM
@@ -22,6 +23,9 @@ NOMINAL_CLEARANCE_MM = 0.2
 
 TONGUE_RISE_MM = 18.0
 TONGUE_THICKNESS_MM = 14.393670059803053
+TONGUE_CORNER = Vector(0, 222.4245484695098, -29.76219965660978 + TONGUE_RISE_MM)
+TONGUE_FILLET_MM = 10.0
+EDGE_FILLET_MM = 1.0
 BODY_THICKENING_MM = 3.0
 # Approximate rise per millimeter rearward from the side-view redline.
 UNDERSIDE_SLOPE = 0.154
@@ -39,10 +43,9 @@ def latch_side_profile():
     underside_normal = Vector(0, UNDERSIDE_SLOPE, -1).normalized()
     shelf_front = wall_bottom + toward_tip * (BODY_THICKENING_MM / toward_tip.dot(underside_normal))
 
-    rise = Vector(0, 0, TONGUE_RISE_MM)
     # Original faces 1 and 6 meet at corner. Keep its Y and the length of face 6.
-    corner = Vector(0, 222.4245484695098, -29.76219965660978) + rise
-    outer_tip = Vector(0, 215.4245484695093, -43.00018346988403) + rise
+    corner = TONGUE_CORNER
+    outer_tip = Vector(0, 215.4245484695093, -43.00018346988403 + TONGUE_RISE_MM)
     tip_direction = (outer_tip-corner).normalized()
     tip_normal = Vector(0, -tip_direction.Z, tip_direction.Y)
     inner_tip = outer_tip - TONGUE_THICKNESS_MM * tip_normal
@@ -109,6 +112,32 @@ def width_envelope():
     return envelope
 
 
+def fillet_latch(body, dovetail_cutter):
+    """Round the exterior while preserving the full dovetail slot boundary."""
+    tolerance = 1e-6
+    edges = body.edges()
+    tongue_edge, = [edge for edge in edges if (edge.center() - TONGUE_CORNER).length < tolerance]
+    faces = [(face, face.edges()) for face in body.faces()]
+    fillet = BRepFilletAPI_MakeFillet(body.wrapped)
+    fillet.Add(TONGUE_FILLET_MM, tongue_edge.wrapped)
+    for edge in edges:
+        if edge.is_same(tongue_edge) or edge.distance_to(dovetail_cutter) < tolerance:
+            continue
+        point = edge.position_at(0.5)
+        first, second = [face.normal_at(point) for face, boundary in faces
+                         if any(edge.is_same(segment) for segment in boundary)]
+        # The existing rounded tip joins the tongue planes tangentially.
+        if first.dot(second) < 1 - tolerance:
+            fillet.Add(EDGE_FILLET_MM, edge.wrapped)
+    fillet.Build()
+    if not fillet.IsDone():
+        raise ValueError('Latch fillets did not build')
+    result = Solid(fillet.Shape()).clean()
+    if not result.is_valid or len(result.solids()) != 1:
+        raise ValueError('Latch fillets did not produce one valid solid')
+    return result
+
+
 def build_latch(clearance=NOMINAL_CLEARANCE_MM, with_stages=False):
     """Return one latch solid; positive clearance moves three mating faces inward."""
     if not math.isfinite(clearance) or clearance < 0:
@@ -152,6 +181,7 @@ def build_latch(clearance=NOMINAL_CLEARANCE_MM, with_stages=False):
             planes.append((origin, normal))
             body = body.split(Plane(origin, z_dir=normal), Keep.BOTTOM)
     body = stage(106, body)
+    body = fillet_latch(body, slot)
     # Follow the adapter assembly placement while retaining a separate solid.
     body = body.translate(ADAPTER_TRANSLATION_MM)
     body.label = 'Latch'
@@ -174,7 +204,8 @@ def export_latch(output, *, stl=False, clearance=NOMINAL_CLEARANCE_MM):
                               boundsMm=[tuple(bounds.min), tuple(bounds.max)])
         if not shape.is_valid or len(shape.solids()) != 1 or abs(shape.volume-body.volume)>body.volume*1e-4:
             raise ValueError(f'Latch export failed validation: {reopened[name]}')
-    report = dict(clearanceMm=clearance, fillets=False, coordinateFrame='source (x,y,z) -> model (-x,-y,z)',
+    report = dict(clearanceMm=clearance, fillets=dict(tongueMm=TONGUE_FILLET_MM, exteriorMm=EDGE_FILLET_MM),
+                  coordinateFrame='source (x,y,z) -> model (-x,-y,z)',
                   placementTranslationMm=ADAPTER_TRANSLATION_MM, stages=stages, reopened=reopened, physicalFitTested=False)
     report_path = Path(__file__).parent/'logs/latch-validation.json'
     report_path.parent.mkdir(exist_ok=True)

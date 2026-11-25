@@ -36,19 +36,21 @@ class LatchTests(unittest.TestCase):
         bounds = body.bounding_box()
         for actual, wanted in zip(tuple(bounds.min), (-55.0,147.800566681,-28.832840525)):
             self.assertAlmostEqual(actual, wanted, delta=0.001)
-        for actual, wanted in zip(tuple(bounds.max), (55.0,219.997761302,52.014847916)):
+        for actual, wanted in zip(tuple(bounds.max), (55.0,218.535663307,52.014847916)):
             self.assertAlmostEqual(actual, wanted, delta=0.001)
-        from build123d import GeomType
-        self.assertTrue(any(f.geom_type == GeomType.CYLINDER for f in body.faces()))
 
     def test_raised_edge_and_tongue_planes(self):
         from build123d import GeomType, Vector
+        from OCP.BRepAdaptor import BRepAdaptor_Surface
         from latch import build_latch
 
         body = build_latch()
         corner = Vector(0, 219.997761301043, -11.76219965661)
-        edge, = [edge for edge in body.edges() if (edge.center() - corner).length < 1e-6]
-        self.assertAlmostEqual(edge.length, 88.472226, places=5)
+        cylinders = [(face, BRepAdaptor_Surface(face.wrapped).Cylinder().Radius())
+                     for face in body.faces().filter_by(GeomType.CYLINDER)]
+        tongue_fillet, = [face for face, radius in cylinders if abs(radius - 10) < 1e-6]
+        self.assertEqual(sum(abs(radius - 1) < 1e-6 for _, radius in cylinders), 23)
+        self.assertLess((tongue_fillet.center() - corner).length, 3)
 
         planes = body.faces().filter_by(GeomType.PLANE)
         for normal in (Vector(0, .85979329862475, .51064222665185),
@@ -68,9 +70,10 @@ class LatchTests(unittest.TestCase):
     def test_clearance_removes_material_and_rejects_negative(self):
         from latch import build_latch
         nominal = build_latch()
-        zero = build_latch(clearance=0)
+        zero, stages = build_latch(clearance=0, with_stages=True)
         larger = build_latch(clearance=0.3)
-        self.assertAlmostEqual(zero.volume, 261672.9306, delta=0.01)
+        self.assertAlmostEqual(stages[-1]['volumeMm3'], 261672.9306, delta=0.01)
+        self.assertLess(zero.volume, stages[-1]['volumeMm3'])
         self.assertLess(larger.volume, nominal.volume)
         self.assertAlmostEqual(nominal.cut(zero).volume, 0, delta=0.001)
         with self.assertRaises(ValueError):
