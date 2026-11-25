@@ -31,6 +31,7 @@ TONGUE_FILLET_MM = 10.0
 TONGUE_ROOT_FILLET_MM = 4.5
 EDGE_FILLET_MM = 1.0
 BODY_THICKENING_MM = 3.0
+UNDERSIDE_RISE_MM = 8.0
 # Approximate rise per millimeter rearward from the side-view redline.
 UNDERSIDE_SLOPE = 0.154
 # Lower edge of the sloped adapter wall after the approved underside trim.
@@ -43,9 +44,10 @@ def latch_side_profile():
     toward_tip = Vector(0, wall_normal.Z, -wall_normal.Y)
     top_front = MATING_WALL_TOP
     wall_bottom = top_front + toward_tip * ((MATING_WALL_BOTTOM_Z_MM - top_front.Z) / toward_tip.Z)
-    # Extend the mating wall along its plane to meet the offset underside.
+    # Intersect the mating wall with the raised underside plane.
     underside_normal = Vector(0, UNDERSIDE_SLOPE, -1).normalized()
-    shelf_front = wall_bottom + toward_tip * (BODY_THICKENING_MM / toward_tip.dot(underside_normal))
+    underside_offset = BODY_THICKENING_MM + UNDERSIDE_RISE_MM * underside_normal.Z
+    shelf_front = wall_bottom + toward_tip * (underside_offset / toward_tip.dot(underside_normal))
 
     # Original faces 1 and 6 meet at corner. Keep its Y and the length of face 6.
     corner = TONGUE_CORNER
