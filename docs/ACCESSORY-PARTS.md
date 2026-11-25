@@ -23,7 +23,7 @@ A profile loop is in its **named sketch frame**; transform using origin, X, Y an
 
 Offset face selectors record the pre-feature global point, geometry, area and `isParamReversed`; the actual oriented face normal is the surface normal reversed when that flag is true. Use the signed source distance, including negative `Gap=-0.2 mm` and `Gap*1.5=-0.3 mm`. These are source functional fit offsets, separate from the adapter wheel-imprint's zero added clearance.
 
-Source fillets are documented with edge geometry and radii, but **must be omitted** under the user's no-fillets instruction. Use the pre-fillet metrics below for a new build.
+Source fillets are documented with edge geometry and radii. The tables use the pre-fillet checkpoints for the Fusion baseline.
 
 ## SaddleBagMount
 
@@ -57,7 +57,11 @@ The latch mates with the rear adapter dovetail. The current Build123d latch
 uses a redrawn side profile at stage 102 with the tongue corner raised 18 mm
 and 14.39 mm normal thickness through both tongue face pairs. Stage 104
 retains its 110 mm width cap and shifts the 16.76° taper planes up with the
-tongue. The table below records the original
+tongue. A finishing operation uses a 10 mm radius on the outer tongue edge
+closest to the rear handle, 4.5 mm on both long edges of the inner tongue
+wall, and 1 mm on the other eligible sharp edges.
+The slot faces and all edges touching the dovetail cutter stay sharp.
+The table below records the original
 Fusion latch and its archival checkpoints. Current
 Build123d checkpoints are recorded in `logs/latch-validation.json`.
 
