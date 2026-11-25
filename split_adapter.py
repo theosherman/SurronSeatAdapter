@@ -12,7 +12,6 @@ from measure import volume
 
 SPLIT_Y_MM = 37.0
 TOP_POCKET_DEPTH_MM = 12.8
-# 6 mm key (60% of the 10 mm sidewall), plus 0.4 mm clearance per cap.
 CAVITY_POCKET_DEPTH_MM = 6.8
 RECESS_RIM_RADIUS_MM = 1.0
 

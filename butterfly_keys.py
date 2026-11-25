@@ -2,39 +2,23 @@
 from argparse import ArgumentParser
 from pathlib import Path
 
-from build123d import GeomType, Kind, Plane, Solid, export_step
+from build123d import GeomType, Plane, export_step
 
 from export_mesh import export_stl_mm
-from split_adapter import connector_tools, split_plane
-
-
-KEY_CLEARANCE_MM = 0.4
-KEY_FILLET_RADIUS_MM = 1.0
-# A 1 mm concave fillet adds up to 0.13 mm back at the waist.
-KEY_FILLET_SIDE_RELIEF_MM = 0.14
+from split_adapter import RECESS_RIM_RADIUS_MM, connector_tools, split_plane
 
 
 def build_keys():
-    recesses = dict(connector_tools(split_plane()))
-    for name, recess_name in (('top', 'top'), ('cavity', 'cavity-negative-x')):
-        recess = recesses[recess_name]
-        inset = recess.offset_3d([], -(KEY_CLEARANCE_MM + KEY_FILLET_SIDE_RELIEF_MM),
-                                 kind=Kind.INTERSECTION)
-        # The two butterfly ends have more edges than the four-sided extrusion walls.
-        cap, opposite = (face for face in inset.faces() if len(face.edges()) > 4)
-        sweep = opposite.center() - cap.center()
-        # Restore the cap spacing while keeping the extra inset on the sides.
-        extension = sweep * (KEY_FILLET_SIDE_RELIEF_MM / abs(sweep.dot(cap.normal_at())))
-        blank = Solid.extrude(cap.translate(-extension), sweep + 2 * extension)
-        key = blank.fillet(KEY_FILLET_RADIUS_MM, blank.edges())
-        if not key.is_valid or len(key.solids()) != 1:
-            raise ValueError(f'{name}: clearance must produce one valid butterfly key')
-        yield name, key
+    recesses = dict(connector_tools(split_plane(), rim_radius=RECESS_RIM_RADIUS_MM))
+    yield 'top', recesses['top']
+    yield 'cavity', recesses['cavity-negative-x']
 
 
 def lay_flat(key):
-    base = next(face for face in key.faces()
-                if face.geom_type == GeomType.PLANE and len(face.edges()) > 4)
+    # The rounded opening is the wider end and provides a flat print base.
+    base = max((face for face in key.faces()
+                if face.geom_type == GeomType.PLANE and len(face.edges()) > 4),
+               key=lambda face: face.area)
     return Plane(base.center(), z_dir=-base.normal_at()).to_local_coords(key)
 
 
@@ -46,7 +30,6 @@ def export_keys(output, *, stl=False):
             raise ValueError(f'STEP export failed: {step}')
         if stl:
             export_stl_mm(lay_flat(key), step.with_suffix('.stl'))
-
 
 
 def main():

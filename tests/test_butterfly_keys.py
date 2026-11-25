@@ -1,16 +1,16 @@
 """Check the printable keys against the shared recess geometry."""
 import unittest
 
-from build123d import GeomType, Plane
+from build123d import Plane
 
 from butterfly_keys import build_keys, lay_flat
-from split_adapter import connector_tools, split_plane
+from split_adapter import RECESS_RIM_RADIUS_MM, connector_tools, split_plane
 
 
 class ButterflyKeyTests(unittest.TestCase):
     def test_two_printable_keys_fit_all_three_recesses(self):
         seam = split_plane()
-        recesses = dict(connector_tools(seam))
+        recesses = dict(connector_tools(seam, rim_radius=RECESS_RIM_RADIUS_MM))
         keys = dict(build_keys())
         self.assertEqual(set(keys), {'top', 'cavity'})
         cavity = keys['cavity']
@@ -29,13 +29,9 @@ class ButterflyKeyTests(unittest.TestCase):
                 self.assertTrue(key.is_valid)
                 self.assertEqual(len(key.solids()), 1)
                 overlap = key.intersect(recess)
-                self.assertAlmostEqual(sum(solid.volume for solid in overlap.solids()), key.volume, places=5)
-                for face in recess.faces():
-                    self.assertGreaterEqual(key.distance_to(face), 0.39999)
-                blends = [face for face in key.faces() if face.geom_type == GeomType.CYLINDER]
-                self.assertEqual(len(blends), 18)
-                for blend in blends:
-                    self.assertAlmostEqual(blend.radius, 1.0, places=5)
+                overlap_volume = sum(solid.volume for solid in overlap.solids())
+                self.assertAlmostEqual(overlap_volume, key.volume, places=5)
+                self.assertAlmostEqual(overlap_volume, recess.volume, places=5)
                 bounds = lay_flat(key).bounding_box()
                 self.assertAlmostEqual(bounds.min.Z, 0.0, places=5)
-                self.assertAlmostEqual(bounds.size.Z, 12.0 if name == "top" else 6.0, places=5)
+                self.assertAlmostEqual(bounds.size.Z, 12.8 if name == "top" else 6.8, places=5)
