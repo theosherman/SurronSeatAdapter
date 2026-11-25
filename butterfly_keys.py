@@ -1,4 +1,4 @@
-"""Export the two printable butterfly key shapes from the adapter's recesses."""
+"""Export the two printable butterfly keys from the shared connector profiles."""
 from argparse import ArgumentParser
 from pathlib import Path
 
@@ -9,13 +9,16 @@ from split_adapter import RECESS_RIM_RADIUS_MM, connector_tools, split_plane
 
 
 def build_keys():
-    recesses = dict(connector_tools(split_plane(), rim_radius=RECESS_RIM_RADIUS_MM))
-    yield 'top', recesses['top']
-    yield 'cavity', recesses['cavity-negative-x']
+    blanks = dict(connector_tools(split_plane()))
+    for name, blank in (('top', blanks['top']), ('cavity', blanks['cavity-negative-x'])):
+        key = blank.fillet(RECESS_RIM_RADIUS_MM, blank.edges())
+        if not key.is_valid or len(key.solids()) != 1:
+            raise ValueError(f'{name}: fillets must produce one valid butterfly key')
+        yield name, key
 
 
 def lay_flat(key):
-    # The rounded opening is the wider end and provides a flat print base.
+    # Both end caps provide a flat print base.
     base = max((face for face in key.faces()
                 if face.geom_type == GeomType.PLANE and len(face.edges()) > 4),
                key=lambda face: face.area)

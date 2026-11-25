@@ -206,7 +206,7 @@ reflectVector(V) = V - 2*dot(V,n)*n
 
 Transform positions, sketch axes, and extrusion direction independently. A reflection reverses frame handedness; recomputing a normal and always cutting in its negative direction can send a mirrored pocket outward. The recipe's `extrusionDirection` avoids that mistake.
 
-The current [Build123d keys](../README.md#two-piece-printing-variant) use the same solids that cut the recesses, including the 1 mm mouth rounds. The keys seat to the pocket floors with zero nominal CAD clearance. One top key and two copies of the same cavity key fill the three recesses.
+The current Build123d keys and recesses share the same butterfly profiles. The keys have 1 mm fillets on every edge. The recesses match the rounded side corners with zero nominal CAD clearance and retain the 1 mm mouth rounds and sharp floor edges. The flat key ends seat to the pocket floors. One top key and two copies of the same cavity key fit the three recesses.
 
 ## Evidence and limits
 

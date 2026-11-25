@@ -39,7 +39,7 @@ class SplitAdapterTests(unittest.TestCase):
                 removed = bare.cut(finished)
                 self.assertEqual(len(removed if isinstance(removed, list) else removed.solids()), 3)
 
-    def test_recess_rounds_are_confined_to_the_mouth(self):
+    def test_recess_rounds_match_side_corners_and_leave_sharp_floors(self):
         plane = split_plane()
         nominal = dict(connector_tools(plane))
         rounded = dict(connector_tools(plane, rim_radius=1.0))
@@ -48,15 +48,16 @@ class SplitAdapterTests(unittest.TestCase):
         for name, original in nominal.items():
             with self.subTest(recess=name):
                 tool = rounded[name]
-                caps = [face for face in original.faces() if len(face.edges()) > 4]
-                self.assertAlmostEqual(caps[0].distance_to(caps[1]), 12.8 if name == "top" else 6.8, places=5)
-                mouth = max(caps, key=lambda face: face.normal_at().dot(outward[name]))
-                extra = tool.cut(original)
-                self.assertAlmostEqual(original.cut(tool).volume, 0.0, places=5)
-                self.assertGreater(extra.volume, 0.0)
-                self.assertLess(max((mouth.center() - v.center()).dot(mouth.normal_at())
-                                    for v in extra.vertices()), 2.0)
+                mouth = max(original.faces(), key=lambda face: face.normal_at().dot(outward[name]))
+                normal = mouth.normal_at()
+                caps = [face for face in tool.faces()
+                        if face.geom_type == GeomType.PLANE and abs(face.normal_at().dot(normal)) > 0.999]
+                opening, floor = sorted(caps, key=lambda face: face.center().dot(normal), reverse=True)
+                self.assertAlmostEqual((opening.center() - floor.center()).dot(normal),
+                                       12.8 if name == "top" else 6.8, places=5)
+                self.assertGreater(opening.area, floor.area)
                 blends = [face for face in tool.faces() if face.geom_type == GeomType.CYLINDER]
-                self.assertEqual(len(blends), 6)
+                # Six side corners and six mouth edges. The floor remains sharp.
+                self.assertEqual(len(blends), 12)
                 for blend in blends:
                     self.assertAlmostEqual(blend.radius, 1.0, places=5)
