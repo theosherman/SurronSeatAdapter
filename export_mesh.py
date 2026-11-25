@@ -3,7 +3,7 @@ from OCP.BRepMesh import BRepMesh_IncrementalMesh
 from OCP.StlAPI import StlAPI_Writer
 
 
-def export_stl_mm(shape, path, tolerance=.005, angular_tolerance=.05):
+def export_stl_mm(shape, path, tolerance=.005, angular_tolerance=.1):
     # build123d.export_stl uses relative deflection, over-refining tiny blends.
     mesh = BRepMesh_IncrementalMesh(shape.wrapped, tolerance, False,
                                    angular_tolerance, True)
