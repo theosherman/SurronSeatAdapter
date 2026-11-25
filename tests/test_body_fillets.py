@@ -7,9 +7,12 @@ class FilletScopeTest(unittest.TestCase):
     def test_one_mm_and_rail_exclusion(self):
         self.assertEqual(SPEC['radiusMm'], 1)
         for edge in SPEC['edges']:
-            if edge['maximum'][1] > 188:
-                self.assertAlmostEqual(edge['minimum'][1], edge['maximum'][1], places=5)
-                self.assertAlmostEqual(edge['minimum'][1], 261.023, delta=.02)
+            lo, hi = edge['minimum'], edge['maximum']
+            # The rail and its lead-ins occupy the lower center of the rear.
+            # The seat support is above it, and the side reliefs are outboard.
+            if hi[1] > 188 and lo[0] < 23.001 and hi[0] > -23.001 and lo[2] < 90:
+                self.assertAlmostEqual(lo[1], hi[1], places=5)
+                self.assertAlmostEqual(lo[1], 261.023, delta=.02)
 
     def test_body_junction_of_dovetail_stays_sharp(self):
         # Five connected edges form the shoulders and trapezoid where the rail

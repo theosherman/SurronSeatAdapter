@@ -73,7 +73,7 @@ def render(mesh, direction):
 
 
 def main():
-    exports = Path(__file__).resolve().parents[1] / 'exports'
+    exports = Path(__file__).resolve().parents[2] / 'exports'
     output = exports / 'SurronSeatAdapter.zip'
     staging = output.with_suffix('.zip.tmp')
     try:

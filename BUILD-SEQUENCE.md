@@ -9,13 +9,11 @@ The launcher uses `BUILD123D_PYTHON` if set, then `python3.14` on `PATH`, then
 | `./build.sh` | Full STEP set and interactive preview |
 | `./build.sh --preview` | Master STEP and master-only preview |
 | `./build.sh --stl` | Fresh STEP and STL set with the full preview |
-| `./build.sh --release` | Fresh exports, release checks, and `exports/SurronSeatAdapter.zip` |
 | `./build.sh --no-imprint` | Analytic master STEP before finishing and wheel subtraction |
 | `./build.sh --stop M05` | Base checkpoint STEP. Also supports M01, M06, M09 and M20 |
 
 Use `./build.sh --help` for the full option list. Checkpoint and pre-imprint
-exports also accept `--stl`. The older `scripts/build-release.sh` entry point
-delegates to `./build.sh --release`. Node.js is required for the release checks.
+exports also accept `--stl`. Use the HTML preview for routine local CAD review.
 
 Routine builds read the checked-in wheel and seat references. The default and
 preview modes reuse STEP files while inputs and outputs match the hashes in
@@ -27,8 +25,8 @@ before running `split_adapter.py`.
 
 ## Verification
 
-The [release workflow](.github/workflows/cad-release.yml) runs the same release
-command on GitHub Actions. It runs the Python regression suite, probes the
+The [release workflow](.github/workflows/cad-release.yml) builds the printable ZIP
+in GitHub Actions. It runs the Python regression suite, probes the
 mounting ceilings in the STL, and reopens all six STEP and STL files to check
 that each is a single valid solid before packaging. Successful builds publish
 the ZIP to Releases and deploy `exports/preview.html` to GitHub Pages.

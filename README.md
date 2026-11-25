@@ -35,9 +35,9 @@ python3.14 -m pip install --user -r requirements.lock.txt
 ./build.sh --preview
 ```
 
-Open `exports/preview.html` in a WebGL 2 browser. Use `./build.sh` for both
-adapter variants or `./build.sh --release` to rebuild, validate, and package the
-print files locally. The release build also requires Node.js.
+Open `exports/preview.html` in a WebGL 2 browser. Use `./build.sh` to include
+both adapter variants in the viewer. GitHub Actions builds and publishes the
+printable ZIP.
 See the [build guide](BUILD-SEQUENCE.md) for all build and validation commands
 and the [viewer guide](docs/CAD-VIEWERS.md) for controls and VS Code setup.
 
