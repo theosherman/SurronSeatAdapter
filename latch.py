@@ -7,10 +7,11 @@ from pathlib import Path
 import argparse
 import json
 import math
-from build123d import Edge, Wire, Face, Solid, Plane, Vector, Keep, Compound, ShapeList, export_step, export_stl, import_step, Mesher
+from build123d import Edge, Wire, Face, Solid, Plane, Vector, Keep, Compound, ShapeList, export_step, export_stl, import_step
 from OCP.BRepFilletAPI import BRepFilletAPI_MakeFillet
 from coordinates import source_to_model, ADAPTER_TRANSLATION_MM
 from adapter_profiles import profiles as adapter_profiles
+from scripts.validate_mesh import inspect_stl
 from trunk_cavity import REAR_SIDE_X_MM, REAR_WALL_NORMAL, REAR_WALL_POINT_MM
 
 ROOT = Path(__file__).resolve().parent
@@ -193,17 +194,17 @@ def export_latch(output, *, stl=False, clearance=NOMINAL_CLEARANCE_MM):
     output.mkdir(exist_ok=True)
     step, stl_path = output/'latch.step', output/'latch.stl'
     export_step(body, step)
-    exports = [('step', import_step(step))]
+    reopened_step = import_step(step)
+    bounds = reopened_step.bounding_box()
+    reopened = {'step': dict(valid=reopened_step.is_valid, solids=len(reopened_step.solids()),
+                             volumeMm3=reopened_step.volume,
+                             boundsMm=[tuple(bounds.min), tuple(bounds.max)])}
     if stl:
         export_stl(body, stl_path, tolerance=0.005, angular_tolerance=0.05)
-        exports.append(('stl', Compound(Mesher().read(stl_path))))
-    reopened = {}
-    for name, shape in exports:
-        bounds = shape.bounding_box()
-        reopened[name] = dict(valid=shape.is_valid, solids=len(shape.solids()), volumeMm3=shape.volume,
-                              boundsMm=[tuple(bounds.min), tuple(bounds.max)])
-        if not shape.is_valid or len(shape.solids()) != 1 or abs(shape.volume-body.volume)>body.volume*1e-4:
-            raise ValueError(f'Latch export failed validation: {reopened[name]}')
+        reopened['stl'] = inspect_stl(stl_path)
+    for name, metrics in reopened.items():
+        if not metrics['valid'] or metrics['solids'] != 1 or abs(metrics['volumeMm3'] - body.volume) > body.volume * 1e-4:
+            raise ValueError(f'Latch {name} export failed validation: {metrics}')
     report = dict(clearanceMm=clearance, fillets=dict(tongueMm=TONGUE_FILLET_MM, exteriorMm=EDGE_FILLET_MM),
                   coordinateFrame='source (x,y,z) -> model (-x,-y,z)',
                   placementTranslationMm=ADAPTER_TRANSLATION_MM, stages=stages, reopened=reopened, physicalFitTested=False)
@@ -211,7 +212,7 @@ def export_latch(output, *, stl=False, clearance=NOMINAL_CLEARANCE_MM):
     report_path.parent.mkdir(exist_ok=True)
     report_path.write_text(json.dumps(report, indent=2)+'\n')
     print(json.dumps(report, indent=2))
-    return step, exports[0][1]
+    return step, reopened_step
 
 
 def main():

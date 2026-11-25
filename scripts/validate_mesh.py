@@ -21,4 +21,6 @@ def inspect_stl(path):
     graph = coo_matrix((np.ones(len(edges)),(edges[:,0],edges[:,1])),shape=(ids.max()+1,)*2)
     components = connected_components(graph,directed=False,return_labels=False)
     volume = np.einsum('ij,ij->i',triangles[:,0],np.cross(triangles[:,1],triangles[:,2])).sum()/6
-    return dict(valid=bool(np.all(counts==2) and np.all(winding==0)),solids=int(components),volumeMm3=float(volume),triangles=count,topologyToleranceMm=1e-6)
+    points = triangles.reshape(-1, 3)
+    return dict(valid=bool(np.all(counts==2) and np.all(winding==0)),solids=int(components),volumeMm3=float(volume),triangles=count,topologyToleranceMm=1e-6,
+                boundsMm=[points.min(axis=0).tolist(), points.max(axis=0).tolist()])
