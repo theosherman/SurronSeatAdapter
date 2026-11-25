@@ -12,16 +12,17 @@ from OCP.BRepFilletAPI import BRepFilletAPI_MakeFillet
 from coordinates import source_to_model, ADAPTER_TRANSLATION_MM
 from adapter_profiles import profiles as adapter_profiles
 from scripts.validate_mesh import inspect_stl
-from trunk_cavity import REAR_SIDE_X_MM, REAR_WALL_NORMAL, REAR_WALL_POINT_MM
+from trunk_cavity import REAR_SIDE_X_MM, REAR_WALL_NORMAL
 
 ROOT = Path(__file__).resolve().parent
 RECIPE = json.loads((ROOT/'cad-rebuild/accessories/latch-recipe.json').read_text())
 FEATURES = {f['index']: f for f in RECIPE['features']}
-# Run and inward movement of one straight outer ceiling edge in the XY view.
-REAR_CEILING_TAPER = (54.0 - 28.183821804872828) / (260.01919499427396 - 174.31392815517032)
 NOMINAL_CLEARANCE_MM = 0.2
 
 
+MATING_WALL_TOP = Vector(0, 149.9532667443008, 31.702071992564846)
+# Preserve the original taper's width at the outer tongue plane.
+TONGUE_OUTER_HALF_WIDTH_MM = 44.23611308441336
 TONGUE_RISE_MM = 18.0
 TONGUE_THICKNESS_MM = 14.393670059803053
 TONGUE_CORNER = Vector(0, 222.4245484695098, -29.76219965660978 + TONGUE_RISE_MM)
@@ -40,7 +41,7 @@ def latch_side_profile():
     """Construct the latch as a single YZ profile before the shared dovetail cut."""
     wall_normal = Vector(REAR_WALL_NORMAL)
     toward_tip = Vector(0, wall_normal.Z, -wall_normal.Y)
-    top_front = Vector(0, 149.9532667443008, 31.702071992564846)
+    top_front = MATING_WALL_TOP
     wall_bottom = top_front + toward_tip * ((MATING_WALL_BOTTOM_Z_MM - top_front.Z) / toward_tip.Z)
     # Extend the mating wall along its plane to meet the offset underside.
     underside_normal = Vector(0, UNDERSIDE_SLOPE, -1).normalized()
@@ -75,22 +76,14 @@ def latch_side_profile():
 def selected_faces(index):
     if index == 102:
         return [latch_side_profile()]
-    if index == 104:
-        # Rectangular width cap. Its rear edge lies beyond the latch blank.
-        front_y, rear_y = 149.9532667443008, 263.445982162752
-        x = REAR_SIDE_X_MM
-        return [Face(Wire.make_polygon(
-            [(-x, front_y, 0), (x, front_y, 0), (x, rear_y, 0), (-x, rear_y, 0)],
-            close=True,
-        ))]
     if index == 105:
         return adapter_profiles(18)
     raise ValueError(f'Unsupported latch profile: {index}')
 
 
-def extrusion(index, direction, distance=500, two_sided=False):
+def extrusion(index, direction, distance=500):
     vector = Vector(direction).normalized()
-    solids = [Solid.extrude(f.translate(-vector*distance/2) if two_sided else f, vector*distance)
+    solids = [Solid.extrude(f, vector*distance)
               for f in selected_faces(index)]
     return solids[0].fuse(*solids[1:]) if len(solids)>1 else solids[0]
 
@@ -99,19 +92,17 @@ def source_plane(geometry):
     return Plane(source_to_model(geometry['origin']), z_dir=source_to_model(geometry['normal']))
 
 
-def width_envelope():
-    envelope = extrusion(104, (0, 0, 1), two_sided=True)
-    normal = Vector(REAR_WALL_NORMAL)
-    seam = (Vector(REAR_WALL_POINT_MM) - Vector(ADAPTER_TRANSLATION_MM)
-            + normal * NOMINAL_CLEARANCE_MM + Vector(0, 0, TONGUE_RISE_MM))
-    # Lift the taper planes with the tongue while retaining the 110 mm width cap.
+def taper_sides(body):
+    """Use one plane per side between the original front and rear widths."""
+    wall_normal = Vector(REAR_WALL_NORMAL)
+    front = MATING_WALL_TOP + wall_normal * NOMINAL_CLEARANCE_MM
+    run = (TONGUE_CORNER - front).dot(wall_normal)
+    taper = (REAR_SIDE_X_MM - TONGUE_OUTER_HALF_WIDTH_MM) / run
     for side in (-1, 1):
-        plane = Plane(
-            (side * REAR_SIDE_X_MM, seam.Y, seam.Z),
-            z_dir=(side, REAR_CEILING_TAPER, REAR_CEILING_TAPER * normal.Z / normal.Y),
-        )
-        envelope = envelope.split(plane, Keep.BOTTOM)
-    return envelope
+        plane = Plane(front + Vector(side * REAR_SIDE_X_MM, 0, 0),
+                      z_dir=Vector(side, 0, 0) + wall_normal * taper)
+        body = body.split(plane, Keep.BOTTOM)
+    return body
 
 
 def fillet_latch(body, dovetail_cutter):
@@ -170,7 +161,7 @@ def build_latch(clearance=NOMINAL_CLEARANCE_MM, with_stages=False):
     blank = extrusion(102, source_to_model(first['directionHint']))
     body = stage(102, blank.split(source_plane(first['entity']['geometry']), Keep.BOTTOM))
     body = stage(103, body.fuse(body.mirror(Plane.YZ)))
-    body = stage(104, body.intersect(width_envelope()))
+    body = stage(104, taper_sides(body))
     slot_extent = FEATURES[105]['extentOne']
     slot = extrusion(105, source_to_model(slot_extent['directionHint']))
     slot = slot.split(source_plane(slot_extent['entity']['geometry']), Keep.BOTTOM)

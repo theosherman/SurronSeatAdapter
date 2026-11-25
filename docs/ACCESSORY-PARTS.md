@@ -56,10 +56,12 @@ Expected no-fillet result: **1 solid**, volume **55620.93486 mm^3**, bounding bo
 The latch mates with the rear adapter dovetail. The current Build123d latch
 uses a redrawn side profile at stage 102 with the tongue corner raised 18 mm
 and 14.39 mm normal thickness through both tongue face pairs. Stage 104
-retains its 110 mm width cap and shifts the 16.76° taper planes up with the
-tongue. A finishing operation uses a 10 mm radius on the outer tongue edge
-closest to the rear handle, 4.5 mm on both long edges of the inner tongue
-wall, and 1 mm on the other eligible sharp edges.
+uses one straight taper per side, preserving the 110 mm width at the nominal
+front mating plane and the 88.47 mm width at the outer tongue plane before
+fillets. The taper is 13.05° per side in the XY view. A finishing operation
+uses a 10 mm radius on the outer tongue edge closest to the rear handle,
+4.5 mm on both long edges of the inner tongue wall, and 1 mm on the other
+eligible sharp edges.
 The slot faces and all edges touching the dovetail cutter stay sharp.
 The table below records the original
 Fusion latch and its archival checkpoints. Current
