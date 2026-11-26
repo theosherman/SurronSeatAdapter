@@ -3,11 +3,11 @@ from pathlib import Path
 import argparse
 import json
 import time
-from build123d import Wire, Face, Solid, Plane, Vector, Keep, Compound, ShapeList, import_brep, export_step, import_step
+from build123d import Wire, Face, Solid, Plane, Vector, Keep, Compound, ShapeList, export_step, import_step
 
 from adapter_profiles import RECIPE, SKETCHES, profiles
 from coordinates import source_to_model, ADAPTER_TRANSLATION_MM
-from reference.wheel import SEATING_DEPTH_MM, WHEEL_REFERENCE
+from reference.wheel import SEATING_DEPTH_MM, load_wheel_cutter
 from export_mesh import export_stl_mm
 
 ROOT = Path(__file__).resolve().parent
@@ -102,7 +102,7 @@ def build_master(stop=None, imprint=True, airtag_depth=8.5):
     if stop=='M20' or not imprint: return body
     from body_fillets import fillet_body
     body = stage('M20-body-fillets', fillet_body(body))
-    cutter = import_brep(WHEEL_REFERENCE / 'body-scaled.brep')
+    cutter = load_wheel_cutter()
     return stage('M21', body.cut(cutter))
 
 

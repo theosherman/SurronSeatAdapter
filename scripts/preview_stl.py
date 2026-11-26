@@ -9,6 +9,8 @@ from struct import pack
 
 import numpy as np
 
+from reference.wheel import WHEEL_RISE_MM
+
 TRIANGLE = np.dtype([('normal', '<f4', (3,)), ('vertices', '<f4', (3, 3)), ('attribute', '<u2')])
 TEMPLATE = Path(__file__).with_name('stl_preview.html')
 REFERENCE_DIR = Path(__file__).resolve().parents[1] / 'reference'
@@ -56,13 +58,13 @@ FEATURE_LABELS = {
     ('adapter-body-split-front', 'adapter-body-split-rear'): (
         ('Split seam', (33, 37, 52.2), TOP),
         ('Top key recess', (0, 37, 52.2), TOP),
-        ('Cavity key recess', (12, 37, 23), (-.6, 0, -.8)),
+        ('Cavity key recess', (12, 37, 25), (-.6, 0, -.8)),
     ),
     ('butterfly-key-top',): (
         ('Top butterfly key', (0, 37, 51.7), TOP),
     ),
     ('butterfly-key-cavity',): (
-        ('Cavity butterfly key', (-12.4, 37, 23), (.6, 0, -.8)),
+        ('Cavity butterfly key', (-12.4, 37, 25), (.6, 0, -.8)),
     ),
     ('latch',): (
         ('Latch tongue', (0, 216.498, -18.381), (0, .884, -.467)),
@@ -108,9 +110,12 @@ def read_mesh(path, shape=None):
             path.stem in ('butterfly-key-top', 'butterfly-key-cavity') and step.is_file()):
         # The printable key meshes are laid flat. The STEPs preserve the seated pose.
         from build123d import import_step
+        from OCP.BRepMesh import BRepMesh_IncrementalMesh
 
         if shape is None:
             shape = import_step(path if path.suffix.lower() == '.step' else step)
+        # Relative deflection can leave small imprint faces unmeshed.
+        BRepMesh_IncrementalMesh(shape.wrapped, .005, False, .1, True)
         vertices, triangles = shape.tessellate(.05, .15)
         unique, indices = np.unique(np.asarray([tuple(vertex) for vertex in vertices]),
                                     axis=0, return_inverse=True)
@@ -122,6 +127,8 @@ def read_mesh(path, shape=None):
     if not triangles or len(raw) != 84 + TRIANGLE.itemsize * triangles:
         raise ValueError(f'{path} is not a nonempty binary STL')
     coordinates = np.frombuffer(raw, dtype=TRIANGLE, offset=84)['vertices'].reshape(-1, 3)
+    if path.resolve() == REFERENCE_MESHES[0]:
+        coordinates = coordinates + (0, 0, WHEEL_RISE_MM)
     vertices, indices = np.unique(coordinates, axis=0, return_inverse=True)
     return vertices, indices, []
 

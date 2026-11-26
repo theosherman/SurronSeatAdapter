@@ -69,7 +69,7 @@ def connector_tools(plane, rim_radius=0):
     for side, name in ((-1, 'cavity-negative-x'), (1, 'cavity-positive-x')):
         # The long central cavity has parallel walls at X = +/-12 mm.
         mouth = Face(Wire.make_polygon([
-            (side*12, seam_y+y, 23+z)
+            (side*12, seam_y+y, 25+z)
             for z, y in butterfly_outline(2.75, 5.5, 15)
         ], close=True))
         tools.append((name, recess_tool(mouth, (side*CAVITY_POCKET_DEPTH_MM, 0, 0), rim_radius)))

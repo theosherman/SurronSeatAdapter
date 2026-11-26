@@ -33,8 +33,8 @@ class PrintPlaneTests(unittest.TestCase):
         model = import_step(Path(__file__).parents[1] / 'exports/adapter-body.step')
         # Outermost prepared wheel points in the left and right screen-wall bands.
         points = (
-            (-69.8299331665, -171.3075714111, 31.8662738800),
-            (69.1511306763, -172.8207855225, 32.4286346436),
+            (-69.8299331665, -171.3075714111, 33.8662738800),
+            (69.1511306763, -172.8207855225, 34.4286346436),
         )
         for point, plane in zip(points, self.reference['printingPlanes'], strict=True):
             normal = Vector(plane['outwardNormal'])

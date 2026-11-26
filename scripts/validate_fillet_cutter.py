@@ -1,12 +1,14 @@
 """Verify that the asymmetric wheel cutter cannot trim new fillet surfaces."""
 import json
 from pathlib import Path
-from build123d import import_brep, import_step, Face
+from build123d import import_step, Face
 from body_fillets import build_fillet
+
+from reference.wheel import load_wheel_cutter
 
 folder = Path(__file__).resolve().parents[1]
 body = import_step(folder/'exports/adapter-body-pre-imprint.step')
-cutter = import_brep(folder/'reference/wheel/body-scaled.brep')
+cutter = load_wheel_cutter()
 builder, selected = build_fillet(body)
 # Include corner blends generated from vertices as well as edge blends.
 faces = {}

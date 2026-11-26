@@ -1,11 +1,13 @@
 """Reopen deliverables and verify a real editable-parameter change."""
 import json
 from pathlib import Path
-from build123d import import_brep, import_step
+from build123d import import_step
 from .validate_mesh import inspect_stl
 from measure import volume
 from adapter import build_master
 from OCP.BOPAlgo import BOPAlgo_ArgumentAnalyzer
+
+from reference.wheel import load_wheel_cutter
 
 folder = Path(__file__).resolve().parents[1]
 base = import_step(folder/'exports/adapter-body.step')
@@ -18,7 +20,7 @@ delta = volume(nominal)-volume(changed)
 roundtrip_delta = volume(base)-volume(nominal)
 # Curved fillet BSplines change OCCT integration/STEP trimming by about 1.4 ppm.
 roundtrip_limit = max(0.1, volume(nominal)*2e-6)
-cutter = import_brep(folder/'reference/wheel/body-scaled.brep')
+cutter = load_wheel_cutter()
 analysis = BOPAlgo_ArgumentAnalyzer()
 analysis.SetShape1(cutter.wrapped)
 analysis.SelfInterMode = True
