@@ -47,6 +47,6 @@ class CutOffsetTests(unittest.TestCase):
         lower_after, = relief.intersect(flank).faces()
         self.assertAlmostEqual(lower_before.area, lower_after.area, delta=.002)
         self.assertAlmostEqual(sum(f.area for f in lower_before.intersect(lower_after).faces()), lower_before.area, delta=.002)
-        near_seat = (66.36, -112.85, 52.72)
+        near_seat = (58, -113, 52)
         self.assertFalse(original.is_inside(near_seat))
         self.assertTrue(relief.is_inside(near_seat))

@@ -44,7 +44,7 @@ def seat_edge_relief():
     opening, = original.intersect(flank).faces()
     direction = Vector(SKETCHES['SeatCutoutSketch']['normal']).normalized()
     horizontal_axis = Axis((0, 0, 0), (-direction.Y, direction.X, 0))
-    sweep = direction.rotate(horizontal_axis, 10)
+    sweep = direction.rotate(horizontal_axis, 13)
     return Solid.extrude(opening.translate(-120 * sweep), 240 * sweep)
 
 
