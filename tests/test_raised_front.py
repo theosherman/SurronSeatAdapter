@@ -2,6 +2,7 @@
 import unittest
 from build123d import GeomType, Plane, Keep, Vector, Solid
 from adapter import build_master
+from measure import volume
 
 class RaisedFrontTests(unittest.TestCase):
     @classmethod
@@ -73,7 +74,7 @@ class RaisedFrontTests(unittest.TestCase):
         plane=Plane((0,-86.999,0),z_dir=(0,1,0))
         retained=self.body.split(plane,Keep.TOP)
         original=self.baseline.split(plane,Keep.TOP)
-        self.assertAlmostEqual(retained.volume,original.volume,delta=.001)
+        self.assertAlmostEqual(volume(retained),volume(original),delta=.001)
         self.assertLess(retained.cut(original).volume,.001)
         self.assertLess(original.cut(retained).volume,.001)
         # The native bottom plane rises by 20 mm with its slope preserved.

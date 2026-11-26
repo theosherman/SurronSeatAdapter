@@ -3,7 +3,7 @@ from pathlib import Path
 import argparse
 import json
 import time
-from build123d import Wire, Face, Solid, Plane, Vector, Keep, Compound, ShapeList, export_step, import_step
+from build123d import Axis, Wire, Face, Solid, Plane, Vector, Keep, Compound, ShapeList, export_step, import_step
 
 from adapter_profiles import RECIPE, SKETCHES, profiles
 from coordinates import source_to_model, ADAPTER_TRANSLATION_MM
@@ -34,6 +34,18 @@ def checked(name, shape):
     print(json.dumps(row), flush=True)
     assert row['valid'] and row['solids']==1, row
     return shape
+
+
+def seat_edge_relief():
+    """Sweep the original relief opening from the lower flank at a shallower angle."""
+    original = tool(97, 240, symmetric=True).translate(ADAPTER_TRANSLATION_MM)
+    flank = Plane((62.8589058205, -84.9726967486, 0),
+                  z_dir=(0.654991476223, 0.755636265722, 0))
+    opening, = original.intersect(flank).faces()
+    direction = Vector(SKETCHES['SeatCutoutSketch']['normal']).normalized()
+    horizontal_axis = Axis((0, 0, 0), (-direction.Y, direction.X, 0))
+    sweep = direction.rotate(horizontal_axis, 5)
+    return Solid.extrude(opening.translate(-120 * sweep), 240 * sweep)
 
 
 def build_master(stop=None, imprint=True, airtag_depth=8.5):
@@ -96,8 +108,7 @@ def build_master(stop=None, imprint=True, airtag_depth=8.5):
     body = stage('M20-rear-side-relief', body.cut(*rear_side_tools()))
     body = stage('M20-lower-rear-tip', trim_lower_rear_tip(body))
     body = stage('M20-raised-underside', trim_main_underside(body))
-    # M17 uses the original tilted sketch with the approved 28 mm diameter.
-    relief = tool(97,240,symmetric=True).translate(ADAPTER_TRANSLATION_MM)
+    relief = seat_edge_relief()
     body = stage('M20-seat-edge-relief', body.cut(relief, relief.mirror(Plane.YZ)))
     if stop=='M20' or not imprint: return body
     from body_fillets import fillet_body
