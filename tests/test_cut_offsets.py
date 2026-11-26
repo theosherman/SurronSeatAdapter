@@ -33,3 +33,20 @@ class CutOffsetTests(unittest.TestCase):
                 point = center + u * (side * width)
                 self.assertTrue(cutter.is_inside(point - normal * 4))
                 self.assertFalse(cutter.is_inside(point - normal * 8.1))
+
+    def test_seat_relief_keeps_lower_opening_and_extends_at_the_top(self):
+        from adapter import seat_edge_relief, tool
+        from build123d import Plane
+        from coordinates import ADAPTER_TRANSLATION_MM
+
+        original = tool(97, 240, symmetric=True).translate(ADAPTER_TRANSLATION_MM)
+        relief = seat_edge_relief()
+        flank = Plane((62.8589058205, -84.9726967486, 0),
+                      z_dir=(0.654991476223, 0.755636265722, 0))
+        lower_before, = original.intersect(flank).faces()
+        lower_after, = relief.intersect(flank).faces()
+        self.assertAlmostEqual(lower_before.area, lower_after.area, delta=.002)
+        self.assertAlmostEqual(sum(f.area for f in lower_before.intersect(lower_after).faces()), lower_before.area, delta=.002)
+        near_seat = (58, -113, 52)
+        self.assertFalse(original.is_inside(near_seat))
+        self.assertTrue(relief.is_inside(near_seat))

@@ -26,7 +26,7 @@ class RearCavityTests(unittest.TestCase):
             self.assertFalse(self.body.is_inside(origin+y*v-n*30),v)
             self.assertTrue(self.body.is_inside(origin+y*v-n*18),v)
         # The new underside reaches above the old cavity roof near the front.
-        self.assertTrue(self.body.is_inside(origin+y*80-n*5))
+        self.assertTrue(self.body.is_inside(origin+y*80-n*3))
         self.assertFalse(self.body.is_inside(origin+y*80-n*10))
 
     def test_approved_side_cuts_remove_both_corners(self):
@@ -113,9 +113,9 @@ class RearCavityTests(unittest.TestCase):
         self.assertTrue(self.body.is_inside(old_center - 4 * tag_normal))
         self.assertFalse(self.body.is_inside(new_center - 4 * tag_normal))
         self.assertTrue(self.body.is_inside(new_center - 9 * tag_normal))
-        # Independently apply the measured original bottom plane plus 18 mm.
+        # Independently apply the measured original bottom plane plus 20 mm.
         # Its rear intersection is below the latch root and dovetail.
-        upper=Plane((0,0,10.06786030784744), z_dir=(0,.1184039683059526,.9929655081066024))
+        upper=Plane((0,0,12.06786030784744), z_dir=(0,.1184039683059526,.9929655081066024))
         actual_upper=combined(actual.split(upper,Keep.TOP))
         expected_upper=combined(expected.split(upper,Keep.TOP))
         self.assertLess(combined(actual_upper.cut(expected_upper)).volume,.001)

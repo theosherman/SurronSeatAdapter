@@ -17,7 +17,7 @@ class GeometryTests(unittest.TestCase):
         self.assertTrue(arcs)
         for edge in arcs:
             self.assertAlmostEqual(edge.arc_center.Y, -220.37430326680117, places=6)
-            self.assertAlmostEqual(edge.arc_center.Z, 58.87424168191536, places=6)
+            self.assertAlmostEqual(edge.arc_center.Z, 60.87424168191536, places=6)
 
     def test_completed_master_and_mounting_material(self):
         body = build_master()
@@ -28,12 +28,12 @@ class GeometryTests(unittest.TestCase):
         from pathlib import Path
         root = Path(__file__).resolve().parents[1]
         pre = build_master(imprint=False)
-        tool = import_brep(root/'reference/wheel/body-scaled.brep')
+        tool = import_brep(root/'reference/wheel/body-scaled.brep').translate((0, 0, 2))
         from body_fillets import fillet_body
         expected = fillet_body(pre).cut(tool)
         self.assertAlmostEqual(body.volume, expected.volume, delta=0.1)
         # Front clip material formerly removed by the full scan's fixed handle.
-        self.assertTrue(body.solids()[0].is_inside((-40, -237.42678716846677, 59.05263206373636)))
+        self.assertTrue(body.solids()[0].is_inside((-40, -237.42678716846677, 61.05263206373636)))
         # Trunk side walls must survive the subsequent wheel-scan subtraction.
         for y in (45,50,55,60):
             for side in (-1,1):

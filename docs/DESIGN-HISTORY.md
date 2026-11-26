@@ -2,6 +2,14 @@
 
 These entries record decisions and measurements from individual revisions. For the current model and build instructions, see the [README](../README.md) and [CAD source map](CAD-REBUILD.md#cad-source-map).
 
+## 20 mm seat lowering
+
+The Sherman P scan, front clip, tangent ramps, screen walls, and original
+underside trim rise another 2 mm. Both native printing planes move outward
+1 mm along their normals, bringing the total offset to 11 mm and retaining
+the 2 mm screen-wall minimum at the wheel imprint. The two cavity-wall
+connector recesses rise 2 mm to retain their full depth.
+
 ## Implemented 18 mm seat lowering
 
 The Sherman P scan sits **18 mm higher than the printed 8 mm revision**, so the

@@ -25,7 +25,7 @@ were approximately 245.3 × 245.2 mm front and 200.6 × 200.6 mm rear. The
 [historical slicer project](reference/slicer/adapter-body.3mf) preserves an
 earlier model and its settings.
 
-The current design lowers the seat 18 mm relative to the printed 8 mm revision.
+The current design lowers the seat 20 mm relative to the printed 8 mm revision.
 Physical clip fit and printed strength still need verification.
 
 ## Run

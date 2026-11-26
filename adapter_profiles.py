@@ -47,7 +47,7 @@ def profiles(index, with_source=False, sherman_p_bottom=False, seat_shoulders=Fa
                 elif c['type'] == 'Arc3D':
                     edges.append(Edge.make_three_point_arc(point(c['startMm']), point(c['midMm']), point(c['endMm'])))
                 elif c['type'] == 'Circle3D':
-                    radius = 14.0 if manufacturing_offsets and index == 97 else c['radiusMm']
+                    radius = 11.2 if manufacturing_offsets and index == 97 else c['radiusMm']
                     edges.append(Edge.make_circle(radius, Plane(point(c['centerMm']), x_dir=x, z_dir=n)))
                 else:
                     raise ValueError(c['type'])

@@ -26,6 +26,10 @@ class SplitAdapterTests(unittest.TestCase):
         self.assertAlmostEqual(abs(seam.z_dir.Y), 1.0)
         uncut = sorted(master.split(seam, keep=Keep.BOTH), key=lambda part: part.center().Y)
         tools = dict(connector_tools(seam))
+        for name, tool in tools.items():
+            if name.startswith('cavity-'):
+                engaged_volume = sum(s.volume for s in master.intersect(tool).solids())
+                self.assertAlmostEqual(engaged_volume, tool.volume, delta=0.01, msg=name)
 
         for bare, (name, finished) in zip(uncut, build_split(master), strict=True):
             with self.subTest(half=name):

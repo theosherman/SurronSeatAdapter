@@ -19,8 +19,10 @@ The script validates the outputs before replacing the checked-in files in
 `reference/wheel/`. The adapter subtracts `body-scaled.brep` with zero added
 clearance. The CAD viewer reads that same body and the two unscaled handle
 STEPs. The HTML preview reads `merged.stl`, which reunites the body and handles
-for display. Commit the regenerated reference files with any intentional
-preparation changes. The source scan is preserved.
+for display. The adapter and both viewers place the prepared reference at the
+current seating depth using a shared vertical translation. Commit the
+regenerated reference files with any intentional preparation changes. The
+source scan is preserved.
 
 The rear slice now contains two disconnected solids (including a small 353.26 mm³
 scan fragment). Both are retained in the rear-handle reference; the reunited scan

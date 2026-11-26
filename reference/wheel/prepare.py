@@ -6,17 +6,17 @@ import subprocess
 from tempfile import TemporaryDirectory
 from build123d import Mesher, Plane, Keep, Axis, Compound, export_brep, import_brep, export_step, export_stl, import_step
 from coordinates import source_to_model
-from . import SEATING_DEPTH_MM, WHEEL_REFERENCE
+from . import PREPARED_SEATING_DEPTH_MM, WHEEL_REFERENCE
 from .scan_patch import PATCH, repair_screen_patch
 
 FRONT_Y = -191.0
 REAR_Y = 170.0
 BODY_SCALE = 1.003
 # Translate the fit-scale pivot with the wheel to preserve its exact rise after scaling.
-SCALE_ORIGIN = (0, 0, SEATING_DEPTH_MM)
+SCALE_ORIGIN = (0, 0, PREPARED_SEATING_DEPTH_MM)
 # Approved lower-outer-bottom alignment, in the permanent Build123d frame.
 ALIGNMENT_ANGLE_DEG = -3.4932161177016057
-ALIGNMENT_TRANSLATION_MM = (0, 0, 3.464786838041892 + SEATING_DEPTH_MM)
+ALIGNMENT_TRANSLATION_MM = (0, 0, 3.464786838041892 + PREPARED_SEATING_DEPTH_MM)
 
 
 def align_scan(scan):
