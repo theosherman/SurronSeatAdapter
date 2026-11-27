@@ -28,6 +28,9 @@ def profiles(index, with_source=False, sherman_p_bottom=False, seat_shoulders=Fa
             if manufacturing_offsets and index == 12:
                 from rear_seat_support import stepped_roof_curves
                 curves = stepped_roof_curves(curves)
+            if manufacturing_offsets and index == 84:
+                from front_clip import fitted_clip_curves
+                curves = fitted_clip_curves(curves)
             if manufacturing_offsets and index in (14, 86, 89):
                 from cut_offsets import offset_cut_curves
                 curves = offset_cut_curves(index, curves)
