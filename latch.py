@@ -26,6 +26,7 @@ TONGUE_OUTER_HALF_WIDTH_MM = 44.23611308441336
 TONGUE_RISE_MM = 18.0
 TONGUE_THICKNESS_MM = 20.0
 TONGUE_OUTWARD_OFFSET_MM = 0.2
+REAR_FACE_OFFSET_MM = 5.0
 TONGUE_TAPER_DATUM = Vector(0, 222.4245484695098, -29.76219965660978 + TONGUE_RISE_MM)
 TONGUE_TIP_DATUM = Vector(0, 215.4245484695093, -43.00018346988403 + TONGUE_RISE_MM)
 TONGUE_TIP_DIRECTION = (TONGUE_TIP_DATUM - TONGUE_TAPER_DATUM).normalized()
@@ -34,14 +35,12 @@ TONGUE_TIP_NORMAL = Vector(0, -TONGUE_TIP_DIRECTION.Z, TONGUE_TIP_DIRECTION.Y)
 TONGUE_OUTER_SHIFT = (Vector(REAR_WALL_NORMAL) + TONGUE_TIP_NORMAL) * (
     TONGUE_OUTWARD_OFFSET_MM / (1 + Vector(REAR_WALL_NORMAL).dot(TONGUE_TIP_NORMAL))
 )
+TONGUE_OUTER_SHIFT += Vector(REAR_WALL_NORMAL) * REAR_FACE_OFFSET_MM
 TONGUE_CORNER = TONGUE_TAPER_DATUM + TONGUE_OUTER_SHIFT
 TONGUE_INNER_WALL_POINT = TONGUE_CORNER - Vector(REAR_WALL_NORMAL) * TONGUE_THICKNESS_MM
 TONGUE_FILLET_MM = 15.0
 TONGUE_ROOT_FILLET_MM = 4.5
 EDGE_FILLET_MM = 1.0
-REAR_FACE_OFFSET_MM = 5.0
-LOWER_REAR_FACE_LENGTH_MM = 16.0
-REAR_TRANSITION_LENGTH_MM = 10.0
 BODY_THICKENING_MM = 3.0
 UNDERSIDE_RISE_MM = 8.0
 # Approximate rise per millimeter rearward from the side-view redline.
@@ -70,10 +69,7 @@ def latch_side_profile():
 
     # Faces 7 and 10 are parallel offsets of the outer tongue faces.
     # The underside meets the offset face 7 plane.
-    # Offset the broad rear face and taper back to the original hook plane.
-    top_rear = top_front + wall_normal * ((corner-top_front).dot(wall_normal) + REAR_FACE_OFFSET_MM)
-    transition_bottom = corner - toward_tip * LOWER_REAR_FACE_LENGTH_MM
-    transition_top = transition_bottom - toward_tip * REAR_TRANSITION_LENGTH_MM + wall_normal * REAR_FACE_OFFSET_MM
+    top_rear = top_front + wall_normal * (corner-top_front).dot(wall_normal)
     underside = Vector(0, 1, UNDERSIDE_SLOPE)
     inner_root = shelf_front + underside * (
         (TONGUE_INNER_WALL_POINT-shelf_front).dot(wall_normal) / underside.dot(wall_normal)
@@ -85,10 +81,7 @@ def latch_side_profile():
     points = (top_rear, top_front, shelf_front, inner_root, inner_corner, inner_tip)
     edges = [Edge.make_line(a, b) for a, b in zip(points, points[1:])]
     edges.extend((Edge.make_three_point_arc(inner_tip, rounded_tip, outer_tip),
-                  Edge.make_line(outer_tip, corner),
-                  Edge.make_line(corner, transition_bottom),
-                  Edge.make_line(transition_bottom, transition_top),
-                  Edge.make_line(transition_top, top_rear)))
+                  Edge.make_line(outer_tip, corner), Edge.make_line(corner, top_rear)))
     return Face(Wire(edges))
 
 

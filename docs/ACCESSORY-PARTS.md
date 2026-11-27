@@ -56,9 +56,9 @@ Expected no-fillet result: **1 solid**, volume **55620.93486 mm^3**, bounding bo
 The latch mates with the rear adapter dovetail. The current Build123d latch
 uses a redrawn side profile at stage 102 with an 18 mm rise at the original tongue datum
 and 20 mm normal thickness through both tongue face pairs. The broad rear
-body face is 45.12 mm from the adapter mating face, up from 40.12 mm. A
-10 mm-long transition returns the rear face to the hook plane.
-The seated latch clears the rear handle scan by 0.11 mm. The sloped body
+body face is 45.12 mm from the adapter mating face, up from 40.12 mm. The full
+5 mm offset carries through the hook, which intentionally intersects the
+rear-handle scan in the seated CAD assembly. The sloped body
 underside rises 8 mm in Z, exposing more of the tongue. Stage 104
 uses one straight taper per side, preserving the 110 mm width at the nominal
 front mating plane and the 88.47 mm width at the original raised tongue datum before
