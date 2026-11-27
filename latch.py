@@ -24,7 +24,7 @@ MATING_WALL_TOP = Vector(0, 149.9532667443008, 31.702071992564846)
 # Preserve the original taper's width at the outer tongue plane.
 TONGUE_OUTER_HALF_WIDTH_MM = 44.23611308441336
 TONGUE_RISE_MM = 18.0
-TONGUE_THICKNESS_MM = 30.0
+TONGUE_THICKNESS_MM = 20.0
 TONGUE_OUTWARD_OFFSET_MM = 0.2
 TONGUE_TAPER_DATUM = Vector(0, 222.4245484695098, -29.76219965660978 + TONGUE_RISE_MM)
 TONGUE_TIP_DATUM = Vector(0, 215.4245484695093, -43.00018346988403 + TONGUE_RISE_MM)
@@ -39,6 +39,9 @@ TONGUE_INNER_WALL_POINT = TONGUE_CORNER - Vector(REAR_WALL_NORMAL) * TONGUE_THIC
 TONGUE_FILLET_MM = 15.0
 TONGUE_ROOT_FILLET_MM = 4.5
 EDGE_FILLET_MM = 1.0
+REAR_FACE_OFFSET_MM = 5.0
+LOWER_REAR_FACE_LENGTH_MM = 16.0
+REAR_TRANSITION_LENGTH_MM = 10.0
 BODY_THICKENING_MM = 3.0
 UNDERSIDE_RISE_MM = 8.0
 # Approximate rise per millimeter rearward from the side-view redline.
@@ -61,23 +64,31 @@ def latch_side_profile():
     # Faces 1 and 6 meet at the offset corner.
     corner = TONGUE_CORNER
     outer_tip = TONGUE_TIP_DATUM + TONGUE_OUTER_SHIFT
-    # The arc center is one radius from both the outer tip and inner wall.
-    tip_radius = (outer_tip - TONGUE_INNER_WALL_POINT).dot(wall_normal) / (
-        1 + TONGUE_TIP_NORMAL.dot(wall_normal)
-    )
-    tip_center = outer_tip - TONGUE_TIP_NORMAL * tip_radius
-    inner_tip = tip_center - wall_normal * tip_radius
-    rounded_tip = tip_center + (TONGUE_TIP_NORMAL - wall_normal).normalized() * tip_radius
+    tip_direction = TONGUE_TIP_DIRECTION
+    inner_tip = outer_tip - TONGUE_THICKNESS_MM * TONGUE_TIP_NORMAL
+    rounded_tip = (outer_tip+inner_tip)*0.5 + tip_direction * (TONGUE_THICKNESS_MM*0.5)
 
-    top_rear = top_front + wall_normal * (corner-top_front).dot(wall_normal)
+    # Faces 7 and 10 are parallel offsets of the outer tongue faces.
+    # The underside meets the offset face 7 plane.
+    # Offset the broad rear face and taper back to the original hook plane.
+    top_rear = top_front + wall_normal * ((corner-top_front).dot(wall_normal) + REAR_FACE_OFFSET_MM)
+    transition_bottom = corner - toward_tip * LOWER_REAR_FACE_LENGTH_MM
+    transition_top = transition_bottom - toward_tip * REAR_TRANSITION_LENGTH_MM + wall_normal * REAR_FACE_OFFSET_MM
     underside = Vector(0, 1, UNDERSIDE_SLOPE)
     inner_root = shelf_front + underside * (
         (TONGUE_INNER_WALL_POINT-shelf_front).dot(wall_normal) / underside.dot(wall_normal)
     )
-    points = (top_rear, top_front, shelf_front, inner_root, inner_tip)
+    inner_corner = inner_tip + tip_direction * (
+        (TONGUE_INNER_WALL_POINT-inner_tip).dot(wall_normal) / tip_direction.dot(wall_normal)
+    )
+
+    points = (top_rear, top_front, shelf_front, inner_root, inner_corner, inner_tip)
     edges = [Edge.make_line(a, b) for a, b in zip(points, points[1:])]
     edges.extend((Edge.make_three_point_arc(inner_tip, rounded_tip, outer_tip),
-                  Edge.make_line(outer_tip, corner), Edge.make_line(corner, top_rear)))
+                  Edge.make_line(outer_tip, corner),
+                  Edge.make_line(corner, transition_bottom),
+                  Edge.make_line(transition_bottom, transition_top),
+                  Edge.make_line(transition_top, top_rear)))
     return Face(Wire(edges))
 
 

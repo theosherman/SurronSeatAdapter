@@ -26,49 +26,48 @@ class LatchTests(unittest.TestCase):
     def test_checkpoints_and_model_bounds(self):
         from latch import build_latch
         body, stages = build_latch(with_stages=True)
-        expected = [193555.0103, 387110.0205, 281868.1582, 273927.9781, 272412.4866]
+        expected = [196573.4791, 393146.9582, 283127.8717, 274202.9394, 272620.5474]
         self.assertEqual(len(stages), len(expected))
         for stage, volume in zip(stages, expected):
             self.assertAlmostEqual(stage['volumeMm3'], volume, delta=0.01)
             self.assertTrue(stage['valid'])
             self.assertEqual(stage['solids'], 1)
         bounds = body.bounding_box()
-        for actual, wanted in zip(tuple(bounds.min), (-54.694612192,147.800566681,-31.022816651)):
+        for actual, wanted in zip(tuple(bounds.min), (-54.694612192,147.800566681,-30.319984909)):
             self.assertAlmostEqual(actual, wanted, delta=0.001)
-        for actual, wanted in zip(tuple(bounds.max), (54.694612192,218.033855901,52.116976362)):
+        for actual, wanted in zip(tuple(bounds.max), (54.694612192,218.033855901,54.670187495)):
             self.assertAlmostEqual(actual, wanted, delta=0.001)
 
     def test_raised_edge_and_tongue_planes(self):
         from build123d import GeomType, Vector
-        from coordinates import ADAPTER_TRANSLATION_MM
         from OCP.BRepAdaptor import BRepAdaptor_Surface
-        from latch import build_latch, latch_side_profile
+        from latch import build_latch
 
         body = build_latch()
         corner = Vector(0, 219.997761301043, -11.76219965661)
         cylinders = [(face, BRepAdaptor_Surface(face.wrapped).Cylinder().Radius())
                      for face in body.faces().filter_by(GeomType.CYLINDER)]
         tongue_fillet, = [face for face, radius in cylinders if abs(radius - 15) < 1e-6]
-        self.assertEqual(sum(abs(radius - 1) < 1e-6 for _, radius in cylinders), 13)
-        self.assertEqual(sum(abs(radius - 4.5) < 1e-6 for _, radius in cylinders), 1)
+        self.assertEqual(sum(abs(radius - 1) < 1e-6 for _, radius in cylinders), 21)
+        self.assertEqual(sum(abs(radius - 4.5) < 1e-6 for _, radius in cylinders), 2)
         self.assertLess((tongue_fillet.center() - corner).length, 3)
 
-        sketch_corner = corner - Vector(ADAPTER_TRANSLATION_MM)
-        profile = latch_side_profile()
+        planes = body.faces().filter_by(GeomType.PLANE)
         wall_normal = Vector(0, .85979329862475, .51064222665185)
-        for offset in (0.2, 0.2 - 30.0):
-            matching = [edge for edge in profile.edges().filter_by(GeomType.LINE)
-                        if all(abs((Vector(vertex) - sketch_corner).dot(wall_normal) - offset) < 1e-5
-                               for vertex in edge.vertices())]
-            self.assertEqual(len(matching), 1)
+        rear = max((face for face in planes if face.normal_at().dot(wall_normal) > .99999),
+                   key=lambda face: face.area)
+        mating = max((face for face in planes if face.normal_at().dot(-wall_normal) > .99999),
+                      key=lambda face: face.area)
+        self.assertAlmostEqual((rear.center() - mating.center()).dot(wall_normal), 45.115630, places=6)
 
-        tip, = profile.edges().filter_by(GeomType.CIRCLE)
-        tip_normal = Vector(0, .88401823052998, -.46745242334450)
-        self.assertAlmostEqual(tip.tangent_at(0).dot(wall_normal), 0, places=6)
-        self.assertAlmostEqual(tip.tangent_at(1).dot(tip_normal), 0, places=6)
+        for normal in (Vector(0, .85979329862475, .51064222665185),
+                       Vector(0, .88401823052998, -.46745242334450)):
+            inner = [face for face in planes
+                     if face.normal_at().dot(-normal) > 1-1e-7
+                     and abs((corner-face.center()).dot(normal) + 0.2 - 20.0) < 1e-5]
+            self.assertEqual(len(inner), 1)
 
         # The shelf rises 8 mm in Z from its previous 3 mm normal offset.
-        planes = body.faces().filter_by(GeomType.PLANE)
         shelf_normal = Vector(0, .154, -1).normalized()
         shelf, = [face for face in planes if face.normal_at().dot(shelf_normal) > .99999]
         original_shelf = Vector(0, 171.563092565, -8.769549215)
@@ -80,7 +79,7 @@ class LatchTests(unittest.TestCase):
         nominal = build_latch()
         zero, stages = build_latch(clearance=0, with_stages=True)
         larger = build_latch(clearance=0.3)
-        self.assertAlmostEqual(stages[-1]['volumeMm3'], 273927.9781, delta=0.01)
+        self.assertAlmostEqual(stages[-1]['volumeMm3'], 274202.9394, delta=0.01)
         self.assertLess(zero.volume, stages[-1]['volumeMm3'])
         self.assertLess(larger.volume, nominal.volume)
         self.assertAlmostEqual(nominal.cut(zero).volume, 0, delta=0.001)
