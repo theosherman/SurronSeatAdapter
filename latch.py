@@ -24,10 +24,21 @@ MATING_WALL_TOP = Vector(0, 149.9532667443008, 31.702071992564846)
 # Preserve the original taper's width at the outer tongue plane.
 TONGUE_OUTER_HALF_WIDTH_MM = 44.23611308441336
 TONGUE_RISE_MM = 18.0
-TONGUE_THICKNESS_MM = 14.393670059803053
-TONGUE_CORNER = Vector(0, 222.4245484695098, -29.76219965660978 + TONGUE_RISE_MM)
+TONGUE_THICKNESS_MM = 20.0
+TONGUE_OUTWARD_OFFSET_MM = 0.2
+REAR_FACE_OFFSET_MM = 5.0
+TONGUE_TAPER_DATUM = Vector(0, 222.4245484695098, -29.76219965660978 + TONGUE_RISE_MM)
+TONGUE_TIP_DATUM = Vector(0, 215.4245484695093, -43.00018346988403 + TONGUE_RISE_MM)
+TONGUE_TIP_DIRECTION = (TONGUE_TIP_DATUM - TONGUE_TAPER_DATUM).normalized()
+TONGUE_TIP_NORMAL = Vector(0, -TONGUE_TIP_DIRECTION.Z, TONGUE_TIP_DIRECTION.Y)
+# Move both outer planes by the same normal distance while keeping the tip length.
+TONGUE_OUTER_SHIFT = (Vector(REAR_WALL_NORMAL) + TONGUE_TIP_NORMAL) * (
+    TONGUE_OUTWARD_OFFSET_MM / (1 + Vector(REAR_WALL_NORMAL).dot(TONGUE_TIP_NORMAL))
+)
+TONGUE_OUTER_SHIFT += Vector(REAR_WALL_NORMAL) * REAR_FACE_OFFSET_MM
+TONGUE_CORNER = TONGUE_TAPER_DATUM + TONGUE_OUTER_SHIFT
 TONGUE_INNER_WALL_POINT = TONGUE_CORNER - Vector(REAR_WALL_NORMAL) * TONGUE_THICKNESS_MM
-TONGUE_FILLET_MM = 10.0
+TONGUE_FILLET_MM = 15.0
 TONGUE_ROOT_FILLET_MM = 4.5
 EDGE_FILLET_MM = 1.0
 BODY_THICKENING_MM = 3.0
@@ -49,16 +60,15 @@ def latch_side_profile():
     underside_offset = BODY_THICKENING_MM + UNDERSIDE_RISE_MM * underside_normal.Z
     shelf_front = wall_bottom + toward_tip * (underside_offset / toward_tip.dot(underside_normal))
 
-    # Original faces 1 and 6 meet at corner. Keep its Y and the length of face 6.
+    # Faces 1 and 6 meet at the offset corner.
     corner = TONGUE_CORNER
-    outer_tip = Vector(0, 215.4245484695093, -43.00018346988403 + TONGUE_RISE_MM)
-    tip_direction = (outer_tip-corner).normalized()
-    tip_normal = Vector(0, -tip_direction.Z, tip_direction.Y)
-    inner_tip = outer_tip - TONGUE_THICKNESS_MM * tip_normal
+    outer_tip = TONGUE_TIP_DATUM + TONGUE_OUTER_SHIFT
+    tip_direction = TONGUE_TIP_DIRECTION
+    inner_tip = outer_tip - TONGUE_THICKNESS_MM * TONGUE_TIP_NORMAL
     rounded_tip = (outer_tip+inner_tip)*0.5 + tip_direction * (TONGUE_THICKNESS_MM*0.5)
 
     # Faces 7 and 10 are parallel offsets of the outer tongue faces.
-    # The offset underside meets the original face 7 plane.
+    # The underside meets the offset face 7 plane.
     top_rear = top_front + wall_normal * (corner-top_front).dot(wall_normal)
     underside = Vector(0, 1, UNDERSIDE_SLOPE)
     inner_root = shelf_front + underside * (
@@ -98,7 +108,7 @@ def taper_sides(body):
     """Use one plane per side between the original front and rear widths."""
     wall_normal = Vector(REAR_WALL_NORMAL)
     front = MATING_WALL_TOP + wall_normal * NOMINAL_CLEARANCE_MM
-    run = (TONGUE_CORNER - front).dot(wall_normal)
+    run = (TONGUE_TAPER_DATUM - front).dot(wall_normal)
     taper = (REAR_SIDE_X_MM - TONGUE_OUTER_HALF_WIDTH_MM) / run
     for side in (-1, 1):
         plane = Plane(front + Vector(side * REAR_SIDE_X_MM, 0, 0),
