@@ -15,7 +15,7 @@ class RaisedFrontTests(unittest.TestCase):
 
     def test_handle_axis_and_reduced_bore(self):
         arcs=[e for e in self.body.edges() if e.geom_type==GeomType.CIRCLE
-              and abs(e.radius-14.85)<1e-6 and e.arc_center.Y<-200]
+              and abs(e.radius-14.9)<1e-6 and e.arc_center.Y<-200]
         self.assertTrue(arcs)
         for e in arcs:
             self.assertAlmostEqual(e.arc_center.Y,-220.3743032668,places=6)
@@ -30,7 +30,7 @@ class RaisedFrontTests(unittest.TestCase):
         self.assertFalse(dovetail_faces)
 
     def test_extended_screen_gusset_keeps_full_clip_bore_open(self):
-        bore = Solid.make_cylinder(14.85, 100,
+        bore = Solid.make_cylinder(14.9, 100,
             Plane((-50,-220.37430326680117,60.87424168191536), z_dir=(1,0,0)))
         overlap = self.body.intersect(bore)
         self.assertLess(sum(s.volume for s in overlap) if isinstance(overlap,list) else (0 if overlap is None else overlap.volume), 1e-5)
@@ -57,7 +57,7 @@ class RaisedFrontTests(unittest.TestCase):
         for x in (-40, -25, 0, 25, 40):
             with self.subTest(x=x):
                 section = self.body.intersect(Plane((x, 0, 0), z_dir=(1, 0, 0)))
-                contact = Vector(x, -206.1611634942, 46.4418465708)
+                contact = Vector(x, -206.1305086309, 46.4549856595)
                 join = Vector(x, -192.9504174705, 35.07580462039)
                 edges = [edge for edge in section.edges()
                          if min(((edge @ t) - contact).length for t in (0, 1)) < 1e-5]
@@ -66,7 +66,7 @@ class RaisedFrontTests(unittest.TestCase):
                 self.assertIsNotNone(ramp)
                 self.assertIsNotNone(arc)
                 self.assertLess(min(((ramp @ t) - join).length for t in (0, 1)), 1e-5)
-                self.assertAlmostEqual(arc.radius, 5.743855230321, places=6)
+                self.assertAlmostEqual(arc.radius, 5.718855230321, places=6)
                 self.assertAlmostEqual(((ramp @ 1) - (ramp @ 0)).dot(contact - arc.arc_center),
                                        0, places=6)
 

@@ -12,7 +12,7 @@ class CutOffsetTests(unittest.TestCase):
                             and .5 < abs(f.normal_at().X) < .9
                             and abs(f.normal_at().Y) > .5
                             and side * f.center().X > 0)
-            clip_corner = Vertex(side * 49, -193.15953208748562, 0)
+            clip_corner = Vertex(side * 49.4, -193.15953208748562, 0)
             self.assertLess(diagonal.distance_to(clip_corner), 1e-6)
         self.assertTrue(cutter.is_valid)
         self.assertEqual(len(cutter.solids()), 2)

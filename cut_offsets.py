@@ -23,13 +23,14 @@ def offset_cut_curves(index, curves):
         replacements = [(top, (top[0]+PRINTING_OFFSET_MM*length/dv, top[1])),
                         (bottom, (bottom[0], bottom[1]-PRINTING_OFFSET_MM*length/du))]
     elif index == 86:
-        # Keep the outward offset at the rear endpoint. At the front, leave
-        # the source vertex at the 49 mm clip half-width to eliminate the step.
+        from front_clip import CLIP_WIDTH_MM
+        # Keep the rear endpoint offset. Match the widened clip at the front.
         a = (49.0, 193.15953208748562)
         b = (80.0, 163.31122810793568)
         length = hypot(b[0]-a[0], b[1]-a[1])
         for side in (-1, 1):
-            replacements += [((side*b[0], b[1]),
+            replacements += [((side*a[0], a[1]), (side*CLIP_WIDTH_MM/2, a[1])),
+                             ((side*b[0], b[1]),
                               (side*b[0], b[1]+FRONT_CORNER_OFFSET_MM*length/(b[0]-a[0])))]
     elif index == 89:
         # The selected notch loops share internal edges. Extend their common

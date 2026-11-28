@@ -75,7 +75,8 @@ def build_master(stop=None, imprint=True, airtag_depth=8.5):
     # The 30-degree draft raises the inner underside clear of the adjusters.
     hanger = hanger.draft([face],Plane(d['neutralPlane']['originMm'],z_dir=d['neutralPlane']['normal']),30)
     body = stage('M11',body.fuse(hanger,hanger.mirror(Plane.YZ)))
-    body = stage('M12',body.fuse(tool(84,98,source_to_model([1,0,0]),symmetric=True)))
+    from front_clip import CLIP_WIDTH_MM, redesign_front, trim_main_underside
+    body = stage('M12',body.fuse(tool(84,CLIP_WIDTH_MM,source_to_model([1,0,0]),symmetric=True)))
     body = stage('M13',body.cut(tool(86,1000,source_to_model([0,0,1]),symmetric=True)))
     # Exact planar wedge from saved source draft datums.
     points = [(-43,159.1595320874856,11.33586233574399),(-43,159.1595320874856,34.33586233574536),(-43,176.73146895659514,36.4311889499611)]
@@ -98,7 +99,6 @@ def build_master(stop=None, imprint=True, airtag_depth=8.5):
     body = stage('M20', body.cut(tag.translate(Vector(tag_sketch['yAxis']) * 90)))
     # Place the finished geometry before the stationary wheel-body subtraction.
     body = body.translate(ADAPTER_TRANSLATION_MM)
-    from front_clip import redesign_front, trim_main_underside
     body = stage('M20-front-redesign', redesign_front(body))
     from screen_surround import reinforce_screen
     body = stage('M20-screen-surround', reinforce_screen(body))
