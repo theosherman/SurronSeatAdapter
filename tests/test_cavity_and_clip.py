@@ -10,7 +10,7 @@ class CavityAndClipTests(unittest.TestCase):
     def setUpClass(cls):
         cls.body = build_master(imprint=False)
 
-    def test_raised_grip_preserved_outside_redesigned_connection(self):
+    def test_raised_grip_keeps_original_material_with_tighter_bore_and_wider_span(self):
         old = import_step(Path(__file__).parent/'fixtures/front-before-suspension.step').translate((0,0,28))
         # Compare the original grip inside the approved printing planes.
         reference = json.loads((Path(__file__).parent/'fixtures/accepted-dimensions.json').read_text())
@@ -18,15 +18,15 @@ class CavityAndClipTests(unittest.TestCase):
             normal = Vector(plane['outwardNormal'])
             point = Vector(plane['pointMm']) + reference['printingPlaneOutwardOffsetMm'] * normal
             old = old.split(Plane(point, z_dir=normal), Keep.BOTTOM)
-        # The tangent trim begins around Y=-217.21. The jaw forward of
-        # Y=-218 retains its original geometry, translated exactly 28 mm.
+        # The tangent trim begins around Y=-217.21. Compare the grip forward
+        # of that trim, including the stock added by tightening the bore and widening the clip.
         plane=Plane((0,-218,0),z_dir=(0,1,0))
         old_grip=old.split(plane,Keep.BOTTOM)
         new_grip=self.body.split(plane,Keep.BOTTOM)
         old_grip=Compound(old_grip) if isinstance(old_grip,list) else old_grip
         new_grip=Compound(new_grip) if isinstance(new_grip,list) else new_grip
         self.assertLess(old_grip.cut(new_grip).volume,.001)
-        self.assertLess(new_grip.cut(old_grip).volume,.001)
+        self.assertAlmostEqual(new_grip.cut(old_grip).volume, 1075.45, delta=.1)
 
     def test_trunk_has_both_side_walls_and_open_middle(self):
         for y in (45,50,55,60):

@@ -5,13 +5,40 @@ curves with tangent ramps. Trim the main underside to retain the imprint depth.
 """
 from math import acos, atan2, cos, hypot, sin, sqrt
 
-from build123d import Edge, Face, Wire, Solid, Plane, Keep, GeomType, Compound, ShapeList
+from build123d import Edge, Face, Wire, Solid, Plane, Keep, GeomType, Compound, ShapeList, Vector
 
 from reference.wheel import SEATING_DEPTH_MM, SEAT_LOWERING_MM
 
 ORIGINAL_CLIP_RISE_MM = 18.052632063736358
 CLIP_RISE_MM = ORIGINAL_CLIP_RISE_MM + SEATING_DEPTH_MM
 HANDLE_CENTER_Z_MM = 32.87424168191536 + SEATING_DEPTH_MM
+CLIP_BORE_RADIUS_MM = 29.8 / 2
+CLIP_WIDTH_MM = 98.8
+
+
+def fitted_clip_curves(curves):
+    """Redraw the bore and its two tangent jaws in HandleMountSketch."""
+    if not any(abs(curve.get("radiusMm", 0) - 15.1) < 1e-6 for curve in curves):
+        return curves
+    rear_jaw, bore, front_jaw, *outer = curves
+    center = Vector(bore['centerMm'])
+    bore_points = {
+        key: tuple(center + (Vector(bore[key]) - center).normalized() * CLIP_BORE_RADIUS_MM)
+        for key in ('startMm', 'midMm', 'endMm')
+    }
+    jaws = []
+    for jaw, inner_key in ((rear_jaw, 'endMm'), (front_jaw, 'startMm')):
+        outer_key = 'startMm' if inner_key == 'endMm' else 'endMm'
+        inner_point = Vector(bore_points[inner_key])
+        outer_point = Vector(jaw[outer_key])
+        # Each jaw is a semicircle between the concentric bore and outer crown.
+        jaw_center = (inner_point + outer_point) / 2
+        jaw_radius = (outer_point - inner_point).length / 2
+        mid_direction = (Vector(jaw['midMm']) - Vector(jaw['centerMm'])).normalized()
+        jaws.append(dict(jaw, **{inner_key: tuple(inner_point)},
+                         midMm=tuple(jaw_center + mid_direction * jaw_radius),
+                         centerMm=tuple(jaw_center), radiusMm=jaw_radius))
+    return [jaws[0], dict(bore, **bore_points, radiusMm=CLIP_BORE_RADIUS_MM), jaws[1], *outer]
 
 
 def prism_yz(points, width=200):
@@ -120,7 +147,7 @@ def redesign_front(body):
     ramp_air = prism_yz([(tangent[1],tangent[2]),(start,start_z),(start,100),(tangent[1],100)])
     clip = clip.cut(ramp_air).cut(arc_air)
     bore_edge = next(edge for edge in clip.edges() if edge.geom_type == GeomType.CIRCLE
-                     and abs(edge.radius-15.1) < 1e-6)
+                     and abs(edge.radius-CLIP_BORE_RADIUS_MM) < 1e-6)
     bore_center = bore_edge.arc_center
     bore = Solid.make_cylinder(bore_edge.radius,200,
         Plane((-100,bore_center.Y,bore_center.Z),z_dir=(1,0,0)))

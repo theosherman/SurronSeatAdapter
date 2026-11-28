@@ -13,8 +13,10 @@ class GeometryTests(unittest.TestCase):
         from build123d import GeomType
         body = build_master(imprint=False)
         arcs = [e for e in body.edges() if e.geom_type == GeomType.CIRCLE
-                and abs(e.radius-15.1)<1e-6]
+                and abs(e.radius-14.9)<1e-6]
         self.assertTrue(arcs)
+        self.assertAlmostEqual(min(edge.bounding_box().min.X for edge in arcs), -49.4, places=6)
+        self.assertAlmostEqual(max(edge.bounding_box().max.X for edge in arcs), 49.4, places=6)
         for edge in arcs:
             self.assertAlmostEqual(edge.arc_center.Y, -220.37430326680117, places=6)
             self.assertAlmostEqual(edge.arc_center.Z, 60.87424168191536, places=6)
